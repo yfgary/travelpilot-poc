@@ -110,6 +110,7 @@ function richAttractions(data){
       localName:a.jp || b.localName || '',
       summary:textJoin(whyLong) || clean(a.why||''),
       info:clean(a.why||''),
+      scoreReason:clean(b.scoreReason||a.why||whyLong[0]||''),
       history:textJoin(history),
       visit:textJoin(visit),
       highlights:importance.map(clean).filter(Boolean),
