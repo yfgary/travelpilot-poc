@@ -61,7 +61,7 @@ async function open(path,candidate=false){
   if(candidate) await page.waitForFunction(()=>document.documentElement.dataset.standardRuntimeLoader==='v1',{timeout:15000});
   await page.waitForSelector('#weather3dPanel',{timeout:15000});
   await page.waitForSelector('details.day#d9',{timeout:15000});
-  await page.waitForTimeout(1800);
+  await page.waitForTimeout(3600);
   return {page,errors};
 }
 
