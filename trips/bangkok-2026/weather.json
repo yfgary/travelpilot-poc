@@ -1,17 +1,57 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "tripId": "bangkok-2026",
   "profileStandardVersion": "v1",
   "regions": {
     "bangkok": {
-      "name":"曼谷","en":"Bangkok","label":"曼谷市區／夜市／河岸","type":"cityscenic","lat":13.7563,"lon":100.5018,
-      "scoreNote":"技術天氣區域用曼谷市中心座標；行程判斷重點係大雨、雷暴、戶外市場／夜市同船程。",
-      "activityProfiles":[{"id":"city_walk","weight":0.25},{"id":"indoor","weight":0.35},{"id":"outdoor_market","weight":0.20},{"id":"festival_outdoor","weight":0.10},{"id":"boat_cruise","weight":0.10}]
+      "name": "曼谷",
+      "en": "Bangkok",
+      "label": "曼谷市區／夜市／河岸",
+      "type": "cityscenic",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "scoreNote": "技術天氣區域用曼谷市中心座標；行程判斷重點係大雨、雷暴、戶外市場／夜市同船程。",
+      "activityProfiles": [
+        {
+          "id": "city_walk",
+          "weight": 0.25
+        },
+        {
+          "id": "indoor",
+          "weight": 0.35
+        },
+        {
+          "id": "outdoor_market",
+          "weight": 0.2
+        },
+        {
+          "id": "festival_outdoor",
+          "weight": 0.1
+        },
+        {
+          "id": "boat_cruise",
+          "weight": 0.1
+        }
+      ]
     }
   },
-  "dayRegions": {"d1":"bangkok","d2":"bangkok","d3":"bangkok","d4":"bangkok","d5":"bangkok","d6":"bangkok","d7":"bangkok","d8":"bangkok"},
-  "dynamicRegionRules": {},
+  "dayRegions": {
+    "d1": "bangkok",
+    "d2": "bangkok",
+    "d3": "bangkok",
+    "d4": "bangkok",
+    "d5": "bangkok",
+    "d6": "bangkok",
+    "d7": "bangkok",
+    "d8": "bangkok"
+  },
   "scoreProfiles": {
-    "cityscenic":{"visibility":0.08,"cloud":0.04,"gust":0.20,"precipitation":0.50,"snow":0.00}
+    "cityscenic": {
+      "visibility": 0.08,
+      "cloud": 0.04,
+      "gust": 0.2,
+      "precipitation": 0.5,
+      "snow": 0
+    }
   }
 }
