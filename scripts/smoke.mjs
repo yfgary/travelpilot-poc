@@ -56,7 +56,7 @@ await check('photo zoom and attraction detail',async()=>{
 
 await check('Trip Info custom sections and checklist persistence',async()=>{
   await page.goto(base+'/trip-info.html?trip='+encodeURIComponent(golden),{waitUntil:'networkidle'});
-  assert(await page.locator('[id="trains"],[id="train-fares"]').count()===1,'train custom section missing');
+  assert(await page.locator('[id="trains"],[id="train-fares"],[id="rail-prices"]').count()===1,'train custom section missing');
   assert(await page.locator('[id="winter-shrines"],[id="snow-shrines"]').count()===1,'shrine custom section missing');
   const checkbox=page.locator('[data-departure-id]').first();
   const itemId=await checkbox.getAttribute('data-departure-id');
