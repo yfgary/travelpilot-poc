@@ -122,19 +122,31 @@
     if (app) app.innerHTML = `<section class="panel error"><h2>載入失敗</h2><p>${esc(error.message || error)}</p></section>`;
   };
 
+  const registerServiceWorker = () => {
+    if (!('serviceWorker' in navigator) || window.__travelPilotSwRequested) return;
+    window.__travelPilotSwRequested = true;
+    navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'}).catch(()=>{});
+  };
+
   const init = async active => {
     const registry = await fetchJson('trips/registry.json');
-    const requested = (qs.get('trip') || registry.defaultTrip || '').trim();
-    const entry = registry.trips.find(t => t.id === requested) || registry.trips[0];
+    let stored = '';
+    try { stored = localStorage.getItem('multiTrip.activeTrip') || ''; } catch (_) {}
+    const requested = (qs.get('trip') || stored || registry.defaultTrip || '').trim();
+    const entry = registry.trips.find(t => t.id === requested)
+      || registry.trips.find(t => t.id === registry.defaultTrip)
+      || registry.trips[0];
     if (!entry) throw new Error('registry.json 沒有旅程');
     const config = await fetchJson(entry.config || `trips/${entry.id}/trip.json`);
+    try { localStorage.setItem('multiTrip.activeTrip', entry.id); } catch (_) {}
     const ctx = {tripId:entry.id, registry, entry, config};
     renderShell(ctx, active);
+    registerServiceWorker();
     return ctx;
   };
 
   window.TravelPilot = {
     esc, fetchJson, loadData, dataUrl, link, mapUrl, directionsUrl,
-    stateKey, state, feature, init, openModal, closeModal, renderError
+    stateKey, state, feature, init, openModal, closeModal, renderError, registerServiceWorker
   };
 })();
