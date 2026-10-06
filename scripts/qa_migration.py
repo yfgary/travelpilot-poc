@@ -114,6 +114,28 @@ for bad in ("shinhotaka", "shirakawago", "wada-house", "ogimachi-view", "daio-wa
     if bad in attraction_ids("d8"):
         err(f"d8 contains hidden alternate scenario item: {bad}")
 
+
+# Optional shrines / bonus stops must stay optional, not be promoted into the fixed main timeline.
+for bad in ("hirayu-shrine", "hirayu-no-mori", "bear-park"):
+    if bad in attraction_ids("d6"):
+        err(f"d6 optional stop leaked into main timeline: {bad}")
+d6_backups = json.dumps(by_id.get("d6", {}).get("backups") or [], ensure_ascii=False)
+for required in ("hirayu-shrine", "hirayu-no-mori"):
+    if required not in d6_backups:
+        err(f"d6 backup list missing optional stop: {required}")
+
+for bad in ("hida-toshogu", "toyokawa-shiroyama-inari"):
+    if bad in attraction_ids("d7"):
+        err(f"d7 optional shrine leaked into main timeline: {bad}")
+d7_backups = json.dumps(by_id.get("d7", {}).get("backups") or [], ensure_ascii=False)
+for required in ("hida-toshogu", "toyokawa-shiroyama-inari"):
+    if required not in d7_backups:
+        err(f"d7 backup list missing optional shrine: {required}")
+
+d8_backups = json.dumps(by_id.get("d8", {}).get("backups") or [], ensure_ascii=False)
+if "hie-shrine" not in d8_backups:
+    err("d8 backup list missing hie-shrine")
+
 # Scraped UI text should be clean.
 for day in days:
     for item in day.get("items", []):
@@ -180,7 +202,7 @@ for attraction_id in (
 attraction_by_id = {row.get("id"): row for row in attractions}
 expected_days = {
     "shinhotaka": "D6",
-    "hirayu-shrine": "D6",
+    "hirayu-shrine": "D6 Backup",
     "shirakawago": "D7",
     "hida-toshogu": "D7 Backup",
     "toyokawa-shiroyama-inari": "D7 Backup",
@@ -253,6 +275,32 @@ if len(live.get("days") or []) != 9:
     err("Live Cam must expose D1-D9 day records")
 if "groups" in live or "dynamicBindings" in live:
     err("Legacy Live Cam bindings remain")
+
+live_cam_by_id = {row.get("id"): row for row in live.get("cameras", [])}
+live_day_by_id = {row.get("id"): row for row in live.get("days", [])}
+
+def live_day_text(day_id: str) -> str:
+    day = live_day_by_id.get(day_id) or {}
+    cameras = [
+        live_cam_by_id.get(camera_id) or {}
+        for camera_id in day.get("cameras", [])
+    ]
+    return json.dumps(
+        {"day": day, "cameras": cameras},
+        ensure_ascii=False,
+    )
+
+d6_live = live_day_text("d6")
+d7_live = live_day_text("d7")
+d8_live = live_day_text("d8")
+if "新穗高" not in d6_live and "新穂高" not in d6_live:
+    err("D6 Live Cam lost Shinhotaka coverage")
+for banned in ("新穗高", "新穂高"):
+    if banned in d7_live:
+        err(f"D7 Live Cam still contains Shinhotaka content: {banned}")
+for banned in ("白川鄉", "白川郷", "新穗高", "新穂高"):
+    if banned in d8_live:
+        err(f"D8 Live Cam still contains alternate-day content: {banned}")
 
 # Trip Info custom sections
 custom_sections = info.get("customSections") or []
