@@ -29,6 +29,16 @@
 
   const lookupHotel = (hotels, id) => hotels?.hotels?.find(h => h.id === id);
   const lookupAttraction = (attractions, id) => attractions?.attractions?.find(a => a.id === id);
+  const weatherCard = (day, weather) => {
+    const key = weather?.dayRegions?.[day.id] || day.weatherRegion;
+    const region = key ? weather?.regions?.[key] : null;
+    if (!region) return '';
+    const profiles = (region.activityProfiles || []).map(p => typeof p === 'string' ? p : p.id).filter(Boolean);
+    return `<div class="section-strip"><strong>🌤️ ${TP.esc(region.label || region.name || key)}</strong>
+      ${profiles.length ? `<div class="badges">${profiles.map(p=>`<span class="badge">${TP.esc(p)}</span>`).join('')}</div>` : ''}
+      ${region.scoreNote ? `<div class="subtle">${TP.esc(region.scoreNote)}</div>` : ''}
+    </div>`;
+  };
 
   const hotelMarker = (label, hotel) => hotel ? `
     <div class="hotel-marker">
@@ -98,10 +108,11 @@
   async function render() {
     try {
       const ctx = await TP.init('itinerary');
-      const [itinerary, attractions, hotels] = await Promise.all([
+      const [itinerary, attractions, hotels, weather] = await Promise.all([
         TP.loadData(ctx,'itinerary'),
         TP.loadData(ctx,'attractions',true),
-        TP.loadData(ctx,'hotels',true)
+        TP.loadData(ctx,'hotels',true),
+        TP.loadData(ctx,'weather',true)
       ]);
       const app = document.getElementById('app');
       app.innerHTML = `
@@ -124,6 +135,7 @@
             </div>
             <div class="day-body">
               ${day.highlights?.length ? `<div class="highlight-grid">${day.highlights.map(h=>`<div class="highlight"><strong>${TP.esc((h.icon||'⭐')+' '+(h.title||''))}</strong><span>${TP.esc(h.text||'')}</span></div>`).join('')}</div>` : ''}
+              ${weatherCard(day, weather)}
               ${renderMedia(day.media)}
               ${hotelMarker('今朝出發酒店',startHotel)}
               ${day.hardCuts?.length ? `<div class="section-strip warning"><strong>⏰ Hard Cut</strong>${day.hardCuts.map(h=>`<div>• ${TP.esc(h.time)} ${TP.esc(h.label || h.text || '')}</div>`).join('')}</div>` : ''}
