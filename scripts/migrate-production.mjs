@@ -173,43 +173,90 @@ async function scrapeItinerary(page,baseItinerary,attractions){
   await page.waitForTimeout(800);
   const raw=await page.evaluate(()=>{
     const t=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();
+    const visible=e=>{
+      if(!e)return false;
+      let n=e;
+      while(n&&n!==document.documentElement){
+        const s=getComputedStyle(n);
+        if(s.display==='none'||s.visibility==='hidden'||s.opacity==='0'||n.hidden)return false;
+        n=n.parentElement;
+      }
+      return e.getClientRects().length>0;
+    };
+    const directText=e=>{
+      if(!e)return '';
+      const s=[...e.childNodes]
+        .filter(n=>n.nodeType===Node.TEXT_NODE)
+        .map(n=>n.textContent||'')
+        .join(' ')
+        .replace(/\s+/g,' ')
+        .trim();
+      return s||t(e);
+    };
+    const normalTime=e=>directText(e).replace(
+      /^(\d{1,2}:\d{2})(\d{1,2}:\d{2})(.*)$/,
+      '$1–$2$3'
+    );
+    const headingText=e=>{
+      if(!e)return '';
+      const clone=e.cloneNode(true);
+      clone.querySelectorAll('button,.v90-shrine-info-btn,.info-icon,.attraction-info-btn').forEach(x=>x.remove());
+      return t(clone).replace(/\s*[📍ⓘ]+\s*$/gu,'').trim();
+    };
     const mediaItem=box=>{
-      if(!box)return null;
+      if(!box||!visible(box))return null;
       const img=box.querySelector('img');
       if(!img)return null;
       const cap=box.querySelector('.photo-caption');
       const credit=box.querySelector('.v90-plan-photo-credit');
-      return {src:img.getAttribute('src')||'',alt:img.getAttribute('alt')||'',caption:t(cap)||img.dataset.caption||'',credit:credit?{label:t(credit)}:null};
+      return {
+        src:img.getAttribute('src')||'',
+        alt:img.getAttribute('alt')||'',
+        caption:t(cap)||img.dataset.caption||'',
+        credit:credit?{label:t(credit)}:null
+      };
     };
-    return [...document.querySelectorAll('details.day')].map(day=>({
-      id:day.id,
-      title:t(day.querySelector('.day-title')),
-      route:t(day.querySelector('.day-route')),
-      highlights:[...day.querySelectorAll('.highlight-item')].map(x=>({text:t(x),classes:[...x.classList]})),
-      media:{
-        hero:mediaItem(day.querySelector('.hero-photo')),
-        gallery:[...day.querySelectorAll('.photo-card')].map(mediaItem).filter(Boolean)
-      },
-      items:[...day.querySelectorAll('.timeline-item')].map(item=>{
-        const card=item.querySelector('.timeline-card')||item;
-        const h=card.querySelector('h3');
-        const local=card.querySelector('.jp-place-name');
-        const map=h?.dataset?.map||'';
-        const links=[...card.querySelectorAll('a[href]')].map(a=>({label:t(a),href:a.href})).filter(x=>x.label);
-        return {
-          time:t(item.querySelector('.time')),
-          type:t(card.querySelector('.event-type')),
-          title:t(h),
-          localName:t(local),
-          description:[...card.querySelectorAll('p')].map(t).filter(Boolean).join(' '),
-          price:t(card.querySelector('.price')),
-          map,
-          classes:[...card.classList],
-          links
-        };
-      }).filter(x=>x.time||x.title),
-      special:[...day.querySelectorAll('.special-box,.v90-backup-note')].map(x=>({text:t(x),classes:[...x.classList]}))
-    }));
+    return [...document.querySelectorAll('details.day')].map(day=>{
+      const visibleHeroes=[...day.querySelectorAll('.hero-photo')].filter(visible);
+      const visibleCards=[...day.querySelectorAll('.photo-card')].filter(visible);
+      const timelineItems=[...day.querySelectorAll('.timeline > .timeline-item')].filter(visible);
+      return {
+        id:day.id,
+        title:t(day.querySelector('.day-title')),
+        route:t(day.querySelector('.day-route')),
+        highlights:[...day.querySelectorAll('.highlight-item')]
+          .filter(visible)
+          .map(x=>({text:t(x),classes:[...x.classList]})),
+        media:{
+          hero:mediaItem(visibleHeroes[0]),
+          gallery:visibleCards.map(mediaItem).filter(Boolean)
+        },
+        items:timelineItems.map(item=>{
+          const card=item.querySelector(':scope > .timeline-card')||item.querySelector('.timeline-card')||item;
+          const h=card.querySelector('h3');
+          const local=card.querySelector('.jp-place-name');
+          const map=h?.dataset?.map||'';
+          const links=[...card.querySelectorAll('a[href]')]
+            .filter(visible)
+            .map(a=>({label:t(a),href:a.href}))
+            .filter(x=>x.label);
+          return {
+            time:normalTime(item.querySelector(':scope > .time')||item.querySelector('.time')),
+            type:t(card.querySelector(':scope > .event-type')||card.querySelector('.event-type')),
+            title:headingText(h),
+            localName:t(local),
+            description:[...card.querySelectorAll(':scope > p')].filter(visible).map(t).filter(Boolean).join(' '),
+            price:t(card.querySelector(':scope > .price')||card.querySelector('.price')),
+            map,
+            classes:[...card.classList],
+            links
+          };
+        }).filter(x=>x.time||x.title),
+        special:[...day.querySelectorAll('.special-box,.v90-backup-note')]
+          .filter(visible)
+          .map(x=>({text:t(x),classes:[...x.classList]}))
+      };
+    });
   });
   const baseById=new Map(baseItinerary.days.map(d=>[d.id,d]));
   const findAttraction=buildAliasMatcher(attractions);
@@ -222,17 +269,59 @@ async function scrapeItinerary(page,baseItinerary,attractions){
     hardMap.get(id).push({time:m[2],label:h.text||''});
   }
   const fixedRegion={d6:'shinhotaka',d7:'shirakawago',d8:'takayama'};
+  const cleanTitle=s=>clean(s).replace(/\s*[📍ⓘ]+\s*$/gu,'').trim();
+  const textOf=x=>typeof x==='string'?x:(x?.text||x?.title||x?.label||'');
+  const dedupeItems=items=>uniq(items,x=>[x.time,x.type,x.title,x.localName].join('|'));
+  const fixedPlan={
+    d6:{
+      title:'🚡 新穗高 → 平湯 → 高山',
+      route:'高山 → 新穗高纜車 → 平湯神社 → 高山',
+      keepHighlight:/平湯神社|07:45|停車|山路|飛驒牛|晚餐|雪地|運行|Live Cam/i,
+      rejectItemIds:new Set(['miyagawa','takayama-jinya','sanmachi','hida-cave','takayama-supermarket']),
+      constraints:[
+        {text:'07:45 前確認新穗高官方運行、Live Cam、山頂能見度、風況同冬季道路。'},
+        {text:'D6 固定新穗高日；如纜車停駛、能見度差或道路不安全，由人手決定 D6 Plan B。D7／D8 日子不會自動改動。'}
+      ],
+      hardCuts:[{time:'07:45',label:'完成新穗高官方運行／Live Cam／風況確認。'}]
+    },
+    d7:{
+      title:'🏘️ 白川鄉 → 高山',
+      route:'高山 → 白川鄉合掌村／和田家／荻町展望台 → 高山；晚上三寺まいり只作 Bonus',
+      keepHighlight:/白川鄉|三寺|停車|道路|和田家|展望台|世界遺產/i,
+      rejectItemIds:new Set(['shinhotaka','hirayu-shrine','hida-cave']),
+      constraints:[
+        {text:'D7 固定白川鄉日；出發前確認降雪、道路／交通管制及村內狀況。道路不安全時由人手決定 Plan B，App 不會自動換日。'},
+        {text:'1/15 三寺まいり只在主線完成、道路安全同精神狀態良好時先加。'}
+      ]
+    },
+    d8:{
+      title:'🏯 高山市區 → 飛驒大鐘乳洞 → 松本',
+      route:'高山市區 → 飛驒大鐘乳洞 → 平湯／安房 → 松本',
+      keepHighlight:/高山|鐘乳洞|松本|向東|Buffer|山路|朝市/i,
+      rejectItemIds:new Set(['shinhotaka','shirakawago','wada-house','ogimachi-view','daio-wasabi']),
+      constraints:[
+        {text:'D8 固定一路向東返松本，不安排白川鄉／新穗高；冬季道路安全同到松本 Buffer 優先。'}
+      ]
+    }
+  };
   const days=raw.map((d,idx)=>{
     const b=baseById.get(d.id)||{};
-    const items=d.items.map(it=>{
-      let title=it.title;
+    let items=d.items.map(it=>{
+      let title=cleanTitle(it.title);
       if(it.localName && title.endsWith(it.localName)) title=title.slice(0,-it.localName.length).trim();
       const attractionId=findAttraction(title);
       const isGoogle=href=>/google\.[^/]+\/maps|maps\.app\.goo\.gl/.test(href||'');
-      const links=(it.links||[]).filter(l=>!isGoogle(l.href)).map(l=>({label:l.label,href:l.href}));
+      const links=(it.links||[])
+        .filter(l=>!isGoogle(l.href))
+        .map(l=>({label:l.label,href:l.href}));
       const map=it.map || (it.links||[]).map(l=>extractMapFromHref(l.href)).find(Boolean) || '';
       const out={
-        time:it.time,type:it.type||'item',title,localName:it.localName||'',description:it.description||'',map
+        time:clean(it.time),
+        type:it.type||'item',
+        title,
+        localName:it.localName||'',
+        description:it.description||'',
+        map
       };
       if(attractionId)out.attractionId=attractionId;
       if(it.price)out.price=it.price;
@@ -240,27 +329,78 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       if(/hard.?cut|最遲|必須離開/i.test((it.type||'')+' '+title+' '+it.description))out.hardCut=true;
       return out;
     });
-    const backups=[...(b.backups||[])];
-    const bonus=[...(b.bonus||[])];
-    const constraints=[...(b.constraints||[])];
+    items=dedupeItems(items);
+
+    let backups=[...(b.backups||[])];
+    let bonus=[...(b.bonus||[])];
+    let constraints=[...(b.constraints||[])];
     for(const s of d.special){
       const tx=s.text;
       if(/backup|後備|備用/i.test(tx))backups.push({text:tx});
       else if(/bonus|加碼|有時間/i.test(tx))bonus.push({text:tx});
       else constraints.push({text:tx});
     }
+
+    let title=d.title||b.title;
+    let route=d.route||b.route;
+    let highlights=d.highlights.map(h=>({
+      title:h.text,
+      tone:h.classes.includes('highlight-danger')?'warn':
+        h.classes.includes('highlight-weather')?'weather':
+        h.classes.includes('highlight-road')?'road':''
+    }));
+    let hardCuts=hardMap.get(d.id)?.length?hardMap.get(d.id):(b.hardCuts||[]);
+    const fixed=fixedPlan[d.id];
+    if(fixed){
+      title=fixed.title;
+      route=fixed.route;
+      items=items.filter(it=>!fixed.rejectItemIds.has(it.attractionId||''));
+      if(d.id==='d8'){
+        items=items.filter(it=>!/新穗高|新穂高|白川鄉|白川郷|大王山葵/.test(it.title+' '+it.localName));
+      }
+      if(d.id==='d7'){
+        items=items.filter(it=>!/新穗高|新穂高/.test(it.title+' '+it.localName));
+      }
+      if(d.id==='d6'){
+        items=items.filter(it=>!/飛驒大鐘乳洞|宮川朝市|高山陣屋|三町古街/.test(it.title));
+      }
+      highlights=[
+        {
+          title:d.id==='d6'
+            ?'🚡 D6 固定新穗高日；天氣／Live Cam 只作出發安全判斷，App 不會換日。'
+            :d.id==='d7'
+              ?'🏘️ D7 固定白川鄉日；唔再同新穗高互換。'
+              :'➡️ D8 固定高山市區／飛驒大鐘乳洞後一路向東返松本。',
+          tone:''
+        },
+        ...highlights.filter(h=>{
+          const tx=h.title||'';
+          if(/重新揀|互換|順延|按今日天氣決定|最後彈性|尚未完成|Scenario|D6 已|D6 未|D7／D8|D8 再|搶新穗高/.test(tx))return false;
+          return fixed.keepHighlight.test(tx);
+        })
+      ];
+      constraints=fixed.constraints;
+      if(fixed.hardCuts)hardCuts=fixed.hardCuts;
+      if(d.id==='d8')bonus=[];
+      backups=backups.filter(x=>!/D6|D7|D8|互換|新穗高日/.test(textOf(x)));
+      bonus=bonus.filter(x=>!/D6|D7|D8|互換|Scenario|新穗高日/.test(textOf(x)));
+    }
+
     return {
       id:d.id,
       day:b.day||idx+1,
       date:b.date,
-      title:d.title||b.title,
-      route:d.route||b.route,
+      title,
+      route,
       weatherRegion:fixedRegion[d.id]||b.weatherRegion,
       driving:!!b.driving,
       ...(b.hotelId?{hotelId:b.hotelId}:{}),
-      ...(hardMap.get(d.id)?.length?{hardCuts:hardMap.get(d.id)}:(b.hardCuts?.length?{hardCuts:b.hardCuts}:{})),
-      ...(d.highlights.length?{highlights:d.highlights.map(h=>({title:h.text,tone:h.classes.includes('highlight-danger')?'warn':h.classes.includes('highlight-weather')?'weather':h.classes.includes('highlight-road')?'road':''}))}:{}),
-      ...(d.media.hero||d.media.gallery.length?{media:d.media}:{}),
+      ...(hardCuts.length?{hardCuts}:{}),
+      ...(highlights.length?{highlights:uniq(highlights,x=>x.title)}:{}),
+      ...(d.media.hero||d.media.gallery.length?{media:{
+        ...(d.media.hero?{hero:d.media.hero}:{}),
+        ...(d.media.gallery.length?{gallery:uniq(d.media.gallery,x=>x.src+'|'+x.caption)}:{})
+      }}:{}),
       items,
       ...(backups.length?{backups:uniq(backups)}:{}),
       ...(bonus.length?{bonus:uniq(bonus)}:{}),
