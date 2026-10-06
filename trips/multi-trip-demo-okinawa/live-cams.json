@@ -1,7 +1,6 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 1,
   "tripId": "multi-trip-demo-okinawa",
   "cameras": [],
-  "days": [],
-  "enabled": false
+  "days": []
 }
