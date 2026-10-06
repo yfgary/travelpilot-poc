@@ -1,0 +1,12 @@
+{
+  "defaultTrip": "golden-reference-2027",
+  "trips": [
+    {
+      "id": "golden-reference-2027",
+      "name": "白川鄉・新穗高 2027 Golden Reference",
+      "subtitle": "TravelPilot Standard 功能完整 POC",
+      "status": "golden",
+      "config": "trips/golden-reference-2027/trip.json"
+    }
+  ]
+}
