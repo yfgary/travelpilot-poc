@@ -1,76 +1,54 @@
-name: TravelPilot POC QA
+name: TravelPilot QA
 
 on:
-  push:
   pull_request:
+  push:
+    branches:
+      - main
+      - qa-cleanup-v10.12.0
+
+permissions:
+  contents: read
 
 jobs:
-  qa:
+  static-qa:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Checkout production main baseline
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          repository: yfgary/travelpilot
-          ref: main
-          path: production-baseline
-
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
-      - name: Install schema validator
-        run: python -m pip install jsonschema
-
-      - name: Round 7 all-trip Standard architecture QA
-        env:
-          PRODUCTION_BASELINE: production-baseline
-        run: python scripts/qa_round7.py
-
-      - name: JavaScript syntax
+      - name: Run release version QA
+        run: python scripts/qa_release.py
+      - name: Run static QA
+        run: python scripts/qa.py
+      - name: Run checklist migration QA
+        run: python scripts/qa_checklist.py
+      - name: Run observer regression QA
+        run: python scripts/qa_observers.py
+      - name: Run legacy update cleanup QA
+        run: python scripts/qa_legacy_update.py
+      - name: Run loader dependency QA
+        run: python scripts/qa_loader.py
+      - name: Run dead asset QA
+        run: python scripts/qa_dead_assets.py
+      - name: Run orphan JS/CSS QA
+        run: python scripts/qa_orphan_assets.py
+      - name: Run v9 patch surface QA
+        run: python scripts/qa_v9_patch_surface.py
+      - name: Run timer retry surface QA
+        run: python scripts/qa_timer_retry_surface.py
+      - name: Run visit render event audit QA
+        run: python scripts/qa_visit_render_event.py
+      - name: Run visit fallback audit QA
+        run: python scripts/qa_visit_fallback_audit.py
+      - name: Run Trip Info event audit QA
+        run: python scripts/qa_trip_info_event_audit.py
+      - name: Run info-icon event audit QA
+        run: python scripts/qa_info_icon_event_audit.py
+      - name: Check JavaScript syntax
         run: |
-          node --check assets/standard-home-v1.js
-          node --check assets/standard-core-v1.js
-          node --check assets/standard-modes-v1.js
-          node --check assets/standard-render-itinerary-v1.js
-          node --check assets/standard-render-trip-info-v1.js
-          node --check assets/standard-render-attractions-v1.js
-          node --check assets/standard-render-live-v1.js
-          node --check scripts/round7-smoke.mjs
           node --check sw.js
-
-      - name: JSON parse
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          for p in Path('.').rglob('*.json'):
-              if '.git' in p.parts or 'node_modules' in p.parts or 'production-baseline' in p.parts:
-                  continue
-              json.loads(p.read_text(encoding='utf-8'))
-          print('JSON parse PASS')
-          PY
-
-      - name: Install browser dependencies
-        run: |
-          npm install
-          npx playwright install --with-deps chromium
-
-      - name: Round 7 real-browser all-trip QA
-        run: |
-          python -m http.server 8000 --bind 127.0.0.1 >/tmp/travelpilot-poc-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill $SERVER_PID || true' EXIT
-          for i in $(seq 1 30); do
-            if curl -fsS http://127.0.0.1:8000/index.html >/dev/null; then
-              break
-            fi
-            sleep 1
-          done
-          npm run round7
+          find assets -maxdepth 1 -type f -name '*.js' -print0 | xargs -0 -n1 node --check
