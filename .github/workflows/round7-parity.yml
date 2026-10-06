@@ -24,6 +24,29 @@ jobs:
         with:
           node-version: '22'
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Existing production regression QA
+        run: |
+          python scripts/qa_release.py
+          python scripts/qa.py
+          python scripts/qa_checklist.py
+          python scripts/qa_observers.py
+          python scripts/qa_legacy_update.py
+          python scripts/qa_loader.py
+          python scripts/qa_dead_assets.py
+          python scripts/qa_orphan_assets.py
+          python scripts/qa_v9_patch_surface.py
+          python scripts/qa_timer_retry_surface.py
+          python scripts/qa_visit_render_event.py
+          python scripts/qa_visit_fallback_audit.py
+          python scripts/qa_trip_info_event_audit.py
+          python scripts/qa_info_icon_event_audit.py
+          node --check sw.js
+          find assets -maxdepth 1 -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+
       - name: Production public itinerary remains untouched
         run: |
           cmp itinerary.html production-reference/itinerary.html
