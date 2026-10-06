@@ -19,6 +19,8 @@ jobs:
         run: python scripts/qa.py
       - name: Round 4 migration parity QA
         run: python scripts/qa_migration.py
+      - name: Round 5 retirement readiness
+        run: python scripts/round5_readiness.py
       - name: JavaScript syntax
         run: |
           for f in assets/*.js; do
@@ -39,7 +41,7 @@ jobs:
         run: |
           npm install
           npx playwright install --with-deps chromium
-      - name: Browser smoke
+      - name: Browser smoke + Round 5 full parity
         run: |
           python -m http.server 8000 --bind 127.0.0.1 >/tmp/travelpilot-poc-http.log 2>&1 &
           SERVER_PID=$!
@@ -51,3 +53,4 @@ jobs:
             sleep 1
           done
           npm run smoke
+          npm run parity
