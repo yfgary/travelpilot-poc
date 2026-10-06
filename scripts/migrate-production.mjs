@@ -454,6 +454,18 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       }
       if(d.id==='d6'){
         items=items.filter(it=>!/飛驒大鐘乳洞|宮川朝市|高山陣屋|三町古街/.test(it.title));
+        for(const item of items){
+          if(item.attractionId==='hirayu-shrine'){
+            item.description='D6 固定新穗高回程短停約20分鐘；了解溫泉聚落同地方信仰，路面結冰嚴重就以安全為先。';
+          }
+        }
+      }
+      if(d.id==='d7'){
+        for(const item of items){
+          if(item.title.includes('高山 → 白川鄉')){
+            item.description='D7 固定由高山前往白川鄉；導航去官方遊客停車場，冬季道路預留充足 Buffer。';
+          }
+        }
       }
       items=dedupeItems(items);
       highlights=[
