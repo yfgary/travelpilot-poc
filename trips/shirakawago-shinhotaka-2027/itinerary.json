@@ -59,7 +59,7 @@
       },
       "items": [
         {
-          "time": "06:4507:00",
+          "time": "06:45",
           "type": "✈️ 到達機場",
           "title": "香港國際機場 T2",
           "localName": "",
@@ -67,7 +67,7 @@
           "map": ""
         },
         {
-          "time": "07:0007:30",
+          "time": "07:00",
           "type": "🧳 CHECK-IN",
           "title": "HK Express Bag Drop",
           "localName": "",
@@ -76,7 +76,7 @@
           "hardCut": true
         },
         {
-          "time": "07:3009:20",
+          "time": "07:30",
           "type": "🍳 早餐／候機",
           "title": "香港國際機場",
           "localName": "",
@@ -84,7 +84,7 @@
           "map": ""
         },
         {
-          "time": "10:0014:30",
+          "time": "10:00",
           "type": "✈️ 航班",
           "title": "UO680 香港 → 名古屋",
           "localName": "",
@@ -94,7 +94,7 @@
         {
           "time": "14:30–15:30",
           "type": "🛂 入境",
-          "title": "中部國際機場 T2 📍",
+          "title": "中部國際機場 T2",
           "localName": "中部国際空港 第2ターミナル",
           "description": "落機後辦理入境及攞行李。目標約 15:30 出禁區；最遲仍以約 15:45 作保守 Buffer。HK Express 現時使用 T2，出禁區後沿 FLIGHT OF DREAMS／Access Plaza 方向前行。",
           "map": "Chubu Centrair International Airport Terminal 2",
@@ -144,7 +144,7 @@
           "hardCut": true
         },
         {
-          "time": "17:4019:46",
+          "time": "17:40",
           "type": "🔴 HARD CUT・JR",
           "title": "特急信濃・名古屋 → 松本",
           "localName": "",
@@ -154,17 +154,17 @@
           "hardCut": true
         },
         {
-          "time": "19:5020:10",
+          "time": "19:50",
           "type": "🏨 CHECK-IN",
-          "title": "松本・TABINO HOTEL lit 📍",
+          "title": "松本・TABINO HOTEL lit",
           "localName": "たびのホテル lit 松本",
           "description": "已訂豪華雙人房、非吸煙。 D1 酒店不包早餐。",
           "map": "TABINO HOTEL lit Matsumoto"
         },
         {
-          "time": "20:2021:05",
+          "time": "20:20",
           "type": "⭐ BONUS",
-          "title": "🏯 國寶・松本城 📍ⓘ",
+          "title": "🏯 國寶・松本城",
           "localName": "国宝 松本城（こくほう まつもとじょう）",
           "description": "準時抵達而且有精神， 可睇約 30–45 分鐘夜間光影。 夜晚只睇外觀，不能進入天守。",
           "map": "Matsumoto Castle",
@@ -249,7 +249,7 @@
         {
           "time": "08:20–08:30",
           "type": "🧳 CHECK-OUT／寄存",
-          "title": "松本・TABINO HOTEL lit 📍",
+          "title": "松本・TABINO HOTEL lit",
           "localName": "たびのホテル lit 松本",
           "description": "完成 Check-out；大件行李繼續寄存酒店，只帶輕便隨身物品去松本城。",
           "map": "TABINO HOTEL lit Matsumoto"
@@ -257,7 +257,7 @@
         {
           "time": "08:30–09:00",
           "type": "🍳 快早餐",
-          "title": "松本站／酒店附近📍",
+          "title": "松本站／酒店附近",
           "localName": "松本駅",
           "description": "酒店不包早餐。以快食為主，09:00 左右開始行去松本城。",
           "map": "Matsumoto Station"
@@ -265,7 +265,7 @@
         {
           "time": "09:00–09:15",
           "type": "🚶 步行",
-          "title": "早餐位置 → 松本城📍",
+          "title": "早餐位置 → 松本城",
           "localName": "",
           "description": "正常約 10–15 分鐘；如果有積雪／結冰就慢行，唔用平時步速硬趕。",
           "map": "Matsumoto Castle",
@@ -274,7 +274,7 @@
         {
           "time": "09:15–10:45",
           "type": "🏯 核心景點・1小時30分",
-          "title": "🏯 國寶・松本城 📍ⓘ",
+          "title": "🏯 國寶・松本城",
           "localName": "国宝 松本城（こくほう まつもとじょう）",
           "description": "今次預足 1 小時 30 分鐘，先影護城河、黑色天守、紅橋／外圍角度，再入現存木造天守。你鍾意影相，所以唔再壓縮做 30–60 分鐘。",
           "map": "Matsumoto Castle",
@@ -284,7 +284,7 @@
         {
           "time": "10:45–11:00",
           "type": "🚶 返回酒店",
-          "title": "🏯 國寶・松本城 📍ⓘ",
+          "title": "🏯 國寶・松本城",
           "localName": "国宝 松本城（こくほう まつもとじょう）",
           "description": "步行返酒店；冬天地面滑就預多幾分鐘。",
           "map": "TABINO HOTEL lit Matsumoto",
@@ -293,7 +293,7 @@
         {
           "time": "11:00–11:05",
           "type": "🧳 取行李",
-          "title": "松本・TABINO HOTEL lit 📍",
+          "title": "松本・TABINO HOTEL lit",
           "localName": "たびのホテル lit 松本",
           "description": "攞返 28吋／26吋／20吋行李，再去 Times。",
           "map": "TABINO HOTEL lit Matsumoto"
@@ -301,7 +301,7 @@
         {
           "time": "11:05–11:20",
           "type": "🚗 取車",
-          "title": "Times 松本站前・4WD＋雪軚📍",
+          "title": "Times 松本站前・4WD＋雪軚",
           "localName": "タイムズカー松本駅前店",
           "description": "辦文件、驗車、確認雪軚／雪刷。目標約 11:20 正式開車；租車預約時間亦以約 11:00 為較合理。",
           "map": "Times Car Rental Matsumoto Station"
@@ -309,7 +309,7 @@
         {
           "time": "11:20–13:20",
           "type": "🚗 約 2 小時",
-          "title": "松本 → 輕井澤 Outlet📍",
+          "title": "松本 → 輕井澤 Outlet",
           "localName": "軽井沢・プリンスショッピングプラザ",
           "description": "冬季按高速／國道路況慢駛；約 2 小時作行程預算，實際以當日導航為準。",
           "map": "Karuizawa Prince Shopping Plaza",
@@ -318,7 +318,7 @@
         {
           "time": "13:20–15:20",
           "type": "🛍️ SHOPPING＋快午餐",
-          "title": "輕井澤王子購物廣場📍ⓘ",
+          "title": "輕井澤王子購物廣場",
           "localName": "",
           "description": "約 2 小時。快速午餐亦喺呢段時間內完成，唔另外再開一段 45–60 分鐘午餐時間。",
           "map": "Karuizawa Prince Shopping Plaza",
@@ -327,7 +327,7 @@
         {
           "time": "15:20",
           "type": "🚗 目標離開",
-          "title": "千曲館溫泉酒店・Club Wyndham 📍",
+          "title": "千曲館溫泉酒店・Club Wyndham",
           "localName": "クラブウィンダム千曲館 長野",
           "description": "目標 15:20 左右開車。上車前睇即時 ETA；如果冬季路況慢，寧願早幾分鐘離開。",
           "map": "Club Wyndham Chikumakan"
@@ -344,7 +344,7 @@
         {
           "time": "16:50–17:10",
           "type": "♨️ 目標 CHECK-IN",
-          "title": "千曲館溫泉酒店・Club Wyndham 📍",
+          "title": "千曲館溫泉酒店・Club Wyndham",
           "localName": "クラブウィンダム千曲館 長野",
           "description": "正常目標約 16:50–17:10 到；泊車、Check-in、放低行李後仲有時間休息／浸一陣溫泉。",
           "map": "Club Wyndham Chikumakan"
@@ -352,7 +352,7 @@
         {
           "time": "17:30",
           "type": "🔴 最遲到達",
-          "title": "千曲館溫泉酒店・Club Wyndham 📍",
+          "title": "千曲館溫泉酒店・Club Wyndham",
           "localName": "クラブウィンダム千曲館 長野",
           "description": "呢個係全日真正底線。就算前面有延誤，都以 17:30 前到酒店為優先。",
           "map": "Club Wyndham Chikumakan",
@@ -361,7 +361,7 @@
         {
           "time": "18:30",
           "type": "🍽️ 晚餐",
-          "title": "千曲館溫泉酒店・Club Wyndham 📍",
+          "title": "千曲館溫泉酒店・Club Wyndham",
           "localName": "クラブウィンダム千曲館 長野",
           "description": "住宿包晚餐；飯後慢慢浸溫泉。",
           "map": "Club Wyndham Chikumakan"
@@ -431,26 +431,26 @@
       },
       "items": [
         {
-          "time": "08:0009:00",
+          "time": "08:00",
           "type": "🍳 早餐",
-          "title": "千曲館溫泉酒店・Club Wyndham 📍",
+          "title": "千曲館溫泉酒店・Club Wyndham",
           "localName": "クラブウィンダム千曲館 長野",
           "description": "旅館早餐。",
           "map": "Club Wyndham Chikumakan"
         },
         {
-          "time": "09:1510:00",
+          "time": "09:15",
           "type": "🚗 約 45分鐘",
-          "title": "千曲 → 小布施 📍",
+          "title": "千曲 → 小布施",
           "localName": "",
           "description": "今日係成人の日， 刻意唔安排 Snow Monkey。",
           "map": "北斎館駐車場 小布施",
           "attractionId": "obuse"
         },
         {
-          "time": "10:0011:15",
+          "time": "10:00",
           "type": "🌰 散步／小食",
-          "title": "🌰 小布施舊街・栗之小徑 📍ⓘ",
+          "title": "🌰 小布施舊街・栗之小徑",
           "localName": "小布施・栗の小径（おぶせ・くりのこみち）",
           "description": "主力街景、栗子甜品、 栗おこわ及手信。",
           "map": "北斎館駐車場 小布施",
@@ -458,9 +458,9 @@
           "price": "免費"
         },
         {
-          "time": "11:1512:00",
+          "time": "11:15",
           "type": "🎨 OPTIONAL",
-          "title": "🌰 小布施舊街・栗之小徑 📍ⓘ",
+          "title": "🌰 小布施舊街・栗之小徑",
           "localName": "小布施・栗の小径（おぶせ・くりのこみち）",
           "description": "只係有興趣先入， 約 30–45 分鐘。",
           "map": "北斎館 小布施",
@@ -468,54 +468,54 @@
           "price": "成人約 ¥1,200"
         },
         {
-          "time": "12:0012:45",
+          "time": "12:00",
           "type": "🍜 午餐",
-          "title": "小布施 📍",
+          "title": "小布施",
           "localName": "",
           "description": "可選蕎麥麵／栗おこわ。",
           "map": "北斎館駐車場 小布施",
           "attractionId": "obuse"
         },
         {
-          "time": "12:4513:05",
+          "time": "12:45",
           "type": "🚗 約 20分鐘",
-          "title": "小布施 → JA Oranche 📍",
+          "title": "小布施 → JA Oranche",
           "localName": "農産物産館オランチェ",
           "description": "往信州中野方向。",
           "map": "JA中野市 農産物産館 オランチェ",
           "attractionId": "oranche"
         },
         {
-          "time": "13:0513:40",
+          "time": "13:05",
           "type": "🥬 SHOPPING",
-          "title": "🍎 JA中野市・農產物產館 Oranche 📍ⓘ",
+          "title": "🍎 JA中野市・農產物產館 Oranche",
           "localName": "農産物産館オランチェ（のうさんぶっさんかん オランチェ）",
           "description": "地元 JA 農產直賣所。 有蔬菜、菇菌、蘋果及加工品。",
           "map": "JA中野市 農産物産館 オランチェ",
           "attractionId": "oranche"
         },
         {
-          "time": "13:4014:20",
+          "time": "13:40",
           "type": "🚗 約 40分鐘",
-          "title": "JA Oranche → 澀溫泉 📍",
+          "title": "JA Oranche → 澀溫泉",
           "localName": "農産物産館オランチェ",
           "description": "入溫泉街前按旅館指示泊車， 唔好跟導航亂入窄巷。",
           "map": "一乃湯果亭",
           "attractionId": "shibu-onsen"
         },
         {
-          "time": "14:2015:00",
+          "time": "14:20",
           "type": "♨️ 散步",
-          "title": "♨️ 澀溫泉・九湯巡禮 📍ⓘ",
+          "title": "♨️ 澀溫泉・九湯巡禮",
           "localName": "渋温泉・九湯めぐり（しぶおんせん・きゅうとうめぐり）",
           "description": "先認路、影相， 15:00 再入住。",
           "map": "Shibu Onsen",
           "attractionId": "shibu-onsen"
         },
         {
-          "time": "15:0017:30",
+          "time": "15:00",
           "type": "🔴 CHECK-IN／溫泉",
-          "title": "澀溫泉・一乃湯果亭 📍",
+          "title": "澀溫泉・一乃湯果亭",
           "localName": "渋温泉 一乃湯 果亭",
           "description": "住區內旅館可借專用鎖匙 進入九個共同浴場。 穿浴衣沿石板街巡湯係核心體驗。",
           "map": "一乃湯果亭",
@@ -523,18 +523,18 @@
           "price": "住客免費"
         },
         {
-          "time": "18:0019:30",
+          "time": "18:00",
           "type": "🍽️ 晚餐",
-          "title": "澀溫泉・一乃湯果亭 📍ⓘ",
+          "title": "澀溫泉・一乃湯果亭",
           "localName": "渋温泉 一乃湯 果亭",
           "description": "住宿包晚餐。",
           "map": "一乃湯果亭",
           "attractionId": "shibu-onsen"
         },
         {
-          "time": "20:0021:30",
+          "time": "20:00",
           "type": "🌙 夜行／溫泉",
-          "title": "♨️ 澀溫泉・九湯巡禮 📍ⓘ",
+          "title": "♨️ 澀溫泉・九湯巡禮",
           "localName": "渋温泉・九湯めぐり（しぶおんせん・きゅうとうめぐり）",
           "description": "飯後再浸外湯， 浴衣散步及睇夜景。",
           "map": "Shibu Onsen",
@@ -543,7 +543,7 @@
         {
           "time": "晚上",
           "type": "🏨 今日完結",
-          "title": "澀溫泉・一乃湯果亭 ⓘ",
+          "title": "澀溫泉・一乃湯果亭",
           "localName": "渋温泉 一乃湯 果亭",
           "description": "夜間巡湯／散步後返回旅館休息。",
           "map": "",
@@ -613,36 +613,36 @@
       },
       "items": [
         {
-          "time": "08:0009:00",
+          "time": "08:00",
           "type": "🍳 早餐",
-          "title": "澀溫泉・一乃湯果亭 📍",
+          "title": "澀溫泉・一乃湯果亭",
           "localName": "渋温泉 一乃湯 果亭",
           "description": "住宿包早餐。",
           "map": "一乃湯果亭",
           "attractionId": "shibu-onsen"
         },
         {
-          "time": "09:0009:40",
+          "time": "09:00",
           "type": "🚗",
-          "title": "澀溫泉 → 上林 📍",
+          "title": "澀溫泉 → 上林",
           "localName": "渋温泉・九湯めぐり",
           "description": "退房後前往 Snow Monkey 入口。 冬季導航去上林停車場，唔好導航去山入面 Jigokudani Parking。",
           "map": "地獄谷野猿公苑専用駐車場",
           "attractionId": "shibu-onsen"
         },
         {
-          "time": "09:4010:15",
+          "time": "09:40",
           "type": "🥾 雪路",
-          "title": "上林 → 地獄谷 📍ⓘ",
+          "title": "上林 → 地獄谷",
           "localName": "",
           "description": "約 30–35 分鐘林道。",
           "map": "地獄谷野猿公苑専用駐車場",
           "attractionId": "snow-monkey"
         },
         {
-          "time": "10:1511:30",
+          "time": "10:15",
           "type": "🐒 核心景點",
-          "title": "🐒 地獄谷野猿公苑・雪猴 📍ⓘ",
+          "title": "🐒 地獄谷野猿公苑・雪猴",
           "localName": "地獄谷野猿公苑（じごくだにやえんこうえん）",
           "description": "冬季長期積雪。 猴子係真正生活喺附近山林嘅野生日本獼猴。 是否浸溫泉視當日情況。",
           "map": "地獄谷野猿公苑専用駐車場",
@@ -650,43 +650,44 @@
           "price": "成人現行約 ¥800"
         },
         {
-          "time": "11:3012:05",
+          "time": "11:30",
           "type": "🥾",
-          "title": "地獄谷 → 上林 📍ⓘ",
+          "title": "地獄谷 → 上林",
           "localName": "",
           "description": "原路返回。",
           "map": "地獄谷野猿公苑専用駐車場",
           "attractionId": "snow-monkey"
         },
         {
-          "time": "12:0512:45",
+          "time": "12:05",
           "type": "🚗",
-          "title": "上林 → 須坂 📍",
+          "title": "上林 → 須坂",
           "localName": "",
           "description": "約 40 分鐘。",
           "map": "AEON MALL Suzaka"
         },
         {
-          "time": "12:4513:30",
+          "time": "12:45",
           "type": "🍜 午餐",
-          "title": "須坂 📍",
+          "title": "須坂",
           "localName": "",
           "description": "簡單午餐。",
-          "map": "AEON MALL Suzaka"
+          "map": "AEON MALL Suzaka",
+          "attractionId": "aeon-suzaka"
         },
         {
-          "time": "13:3017:00",
+          "time": "13:30",
           "type": "🛍️ SHOPPING",
-          "title": "🛍️ 須坂 AEON MALL・生活補給 📍ⓘ",
+          "title": "🛍️ 須坂 AEON MALL・生活補給",
           "localName": "イオンモール須坂",
           "description": "食品、生果、日用品、 服裝、藥妝同補給。 預約 3.5 小時。",
           "map": "AEON MALL Suzaka",
           "attractionId": "aeon-suzaka"
         },
         {
-          "time": "17:0017:40",
+          "time": "17:00",
           "type": "🔴 HARD CUT",
-          "title": "AEON 須坂 → 長野 📍",
+          "title": "AEON 須坂 → 長野",
           "localName": "イオンモール須坂",
           "description": "約 40 分鐘。 Shopping 唔再延長。",
           "map": "Hotel JAL City Nagano",
@@ -694,17 +695,17 @@
           "hardCut": true
         },
         {
-          "time": "17:4518:30",
+          "time": "17:45",
           "type": "🏨 CHECK-IN",
-          "title": "長野日航都市酒店 📍",
+          "title": "長野日航都市酒店",
           "localName": "ホテルJALシティ長野",
           "description": "翌朝包兩位早餐。",
           "map": "Hotel JAL City Nagano"
         },
         {
-          "time": "19:0020:00",
+          "time": "19:00",
           "type": "🍽️ 晚餐",
-          "title": "長野市內 📍",
+          "title": "長野市內",
           "localName": "",
           "description": "飯後有精神可去 Donki／長野站附近。",
           "map": "Nagano Station"
@@ -786,42 +787,42 @@
       },
       "items": [
         {
-          "time": "07:4508:30",
+          "time": "07:45",
           "type": "🍳 早餐",
-          "title": "長野日航都市酒店 📍",
+          "title": "長野日航都市酒店",
           "localName": "ホテルJALシティ長野",
           "description": "已包兩位自助早餐。",
           "map": "Hotel JAL City Nagano"
         },
         {
-          "time": "08:3009:00",
+          "time": "08:30",
           "type": "🧳 CHECK-OUT",
-          "title": "長野 📍",
+          "title": "長野",
           "localName": "",
           "description": "執行李後出發。",
           "map": "Hotel JAL City Nagano"
         },
         {
-          "time": "09:0010:15",
+          "time": "09:00",
           "type": "🚗 約 1小時15分",
-          "title": "長野 → 白馬岩岳 📍",
+          "title": "長野 → 白馬岩岳",
           "localName": "白馬岩岳マウンテンリゾート",
           "description": "冬季預鬆，遇大雪唔趕。 導航去岩岳 Mountain Resort 山腳，唔好導航去 Mountain Harbor 山頂。",
           "map": "Hakuba Iwatake Mountain Resort",
           "attractionId": "hakuba-iwatake"
         },
         {
-          "time": "10:2010:35",
+          "time": "10:20",
           "type": "🚡 GONDOLA",
-          "title": "山麓 → 山頂 📍",
+          "title": "山麓 → 山頂",
           "localName": "",
           "description": "使用非滑雪旅客觀光票。",
           "map": "Hakuba Iwatake Mountain Resort"
         },
         {
-          "time": "10:3511:15",
+          "time": "10:35",
           "type": "🏔️ 核心景點",
-          "title": "🏔️ 白馬岩岳山岳度假村 📍ⓘ",
+          "title": "🏔️ 白馬岩岳山岳度假村",
           "localName": "白馬岩岳マウンテンリゾート（はくばいわたけ）",
           "description": "當純雪景景點， 唔係滑雪行程。",
           "map": "Hakuba Iwatake Mountain Resort",
@@ -829,68 +830,69 @@
           "price": "參考約 ¥2,900/人"
         },
         {
-          "time": "11:1511:50",
+          "time": "11:15",
           "type": "📷 景點",
-          "title": "🏔️ 白馬岩岳山岳度假村 📍ⓘ",
+          "title": "🏔️ 白馬岩岳山岳度假村",
           "localName": "白馬岩岳マウンテンリゾート（はくばいわたけ）",
           "description": "正面望白馬三山及北阿爾卑斯。 一般車唔可以直接駛上山頂。",
           "map": "Hakuba Iwatake Mountain Resort",
           "attractionId": "hakuba-iwatake"
         },
         {
-          "time": "11:5012:20",
+          "time": "11:50",
           "type": "❄️ 雪地活動",
-          "title": "🏔️ 白馬岩岳山岳度假村 📍ⓘ",
+          "title": "🏔️ 白馬岩岳山岳度假村",
           "localName": "白馬岩岳マウンテンリゾート（はくばいわたけ）",
           "description": "玩雪、散步及影相。",
           "map": "Hakuba Iwatake Mountain Resort",
           "attractionId": "hakuba-iwatake"
         },
         {
-          "time": "12:2012:35",
+          "time": "12:20",
           "type": "🚡",
-          "title": "山頂 → 山麓 📍ⓘ",
+          "title": "山頂 → 山麓",
           "localName": "",
           "description": "落山後午餐。",
           "map": "Hakuba Iwatake Mountain Resort"
         },
         {
-          "time": "12:3513:20",
+          "time": "12:35",
           "type": "🍜 午餐",
-          "title": "白馬 📍",
+          "title": "白馬",
           "localName": "",
           "description": "食完直接去高山。",
-          "map": "Hakuba Iwatake Mountain Resort"
+          "map": "Hakuba Iwatake Mountain Resort",
+          "attractionId": "hakuba-iwatake"
         },
         {
-          "time": "13:2016:30",
+          "time": "13:20",
           "type": "🔴 HARD CUT・離開白馬",
-          "title": "白馬 → 高山 📍",
+          "title": "白馬 → 高山",
           "localName": "",
           "description": "約 3小時10分。 冬季長途山路， 唔為 Bonus 拖到夜晚。",
           "map": "Takayama Ouan",
           "hardCut": true
         },
         {
-          "time": "16:3017:00",
+          "time": "16:30",
           "type": "🏨 CHECK-IN",
-          "title": "飛驒花里之湯・高山櫻庵 📍",
+          "title": "飛驒花里之湯・高山櫻庵",
           "localName": "飛騨花里の湯 高山桜庵",
           "description": "已訂兩晚， 有天然溫泉及露天風呂。",
           "map": "Takayama Ouan"
         },
         {
-          "time": "17:0018:30",
+          "time": "17:00",
           "type": "♨️ 休息",
-          "title": "飛驒花里之湯・高山櫻庵 📍",
+          "title": "飛驒花里之湯・高山櫻庵",
           "localName": "飛騨花里の湯 高山桜庵",
           "description": "D5 以休息為主。",
           "map": "Takayama Ouan"
         },
         {
-          "time": "19:1520:30",
+          "time": "19:15",
           "type": "🍽️ 晚餐",
-          "title": "高山市內 📍",
+          "title": "高山市內",
           "localName": "",
           "description": "第一晚晚餐彈性。",
           "map": "Takayama Station"
@@ -915,23 +917,19 @@
       "day": 6,
       "date": "2027-01-14",
       "title": "🚡 新穗高 → 平湯 → 高山",
-      "route": "新穗高好天優先日；回程經平湯，再返高山。",
+      "route": "高山 → 新穗高纜車 → 平湯神社 → 高山",
       "weatherRegion": "shinhotaka",
       "driving": true,
       "hotelId": "takayama-ouan",
       "hardCuts": [
         {
           "time": "07:45",
-          "label": "🌨️ 完成新穗高天氣判斷。"
+          "label": "完成新穗高官方運行／Live Cam／風況確認。"
         }
       ],
       "highlights": [
         {
-          "title": "☀️ D6 真係好天就去新穗高；天氣唔值就可重新揀 D7／D8。",
-          "tone": ""
-        },
-        {
-          "title": "⛩️ 平湯神社跟新穗高回程自然加入。",
+          "title": "🚡 D6 固定新穗高日；天氣／Live Cam 只作出發安全判斷，App 不會換日。",
           "tone": ""
         },
         {
@@ -975,34 +973,34 @@
       },
       "items": [
         {
-          "time": "07:4508:15",
+          "time": "07:45",
           "type": "🌨️ 天氣判斷",
-          "title": "飛驒花里之湯・高山櫻庵 📍ⓘ",
+          "title": "飛驒花里之湯・高山櫻庵",
           "localName": "飛騨花里の湯 高山桜庵",
           "description": "確認新穗高官方 Operation Status、Live Camera、山頂能見度及風況；真係好天先執行。",
           "map": "Takayama Ouan"
         },
         {
-          "time": "08:1508:50",
+          "time": "08:15",
           "type": "🍳 早餐",
-          "title": "飛驒花里之湯・高山櫻庵 📍",
+          "title": "飛驒花里之湯・高山櫻庵",
           "localName": "飛騨花里の湯 高山桜庵",
           "description": "早餐／出發準備。",
           "map": "Takayama Ouan"
         },
         {
-          "time": "08:5010:10",
+          "time": "08:50",
           "type": "🚗 車",
-          "title": "高山 → 新穗高ⓘ📍",
+          "title": "高山 → 新穗高",
           "localName": "新穂高ロープウェイ",
           "description": "冬季山路預鬆，唔為趕纜車超速。",
           "map": "新穂高温泉駐車場",
           "attractionId": "shinhotaka"
         },
         {
-          "time": "10:1512:45",
+          "time": "10:15",
           "type": "🚡 核心景點",
-          "title": "🚡 新穗高纜車・北阿爾卑斯高山景 ⓘ📍",
+          "title": "🚡 新穗高纜車・北阿爾卑斯高山景",
           "localName": "新穂高ロープウェイ（しんほたかロープウェイ）",
           "description": "兩段纜車去西穗高口；能見度係體驗關鍵。",
           "map": "新穂高温泉駐車場",
@@ -1010,9 +1008,9 @@
           "price": "成人約 ¥3,800"
         },
         {
-          "time": "12:4513:30",
+          "time": "12:45",
           "type": "🍜 午餐",
-          "title": "新穗高ⓘ📍",
+          "title": "新穗高",
           "localName": "新穂高ロープウェイ",
           "description": "簡單午餐，按纜車排隊及實際停留調整。",
           "map": "新穂高温泉駐車場",
@@ -1021,7 +1019,7 @@
         {
           "time": "13:30–14:05",
           "type": "🚗 車",
-          "title": "新穗高 → 平湯神社ⓘ📍",
+          "title": "新穗高 → 平湯神社",
           "localName": "新穂高ロープウェイ",
           "description": "沿R471／R158方向返平湯，神社就在自然回程線，唔需要繞大圈。",
           "map": "平湯神社",
@@ -1030,7 +1028,7 @@
         {
           "time": "14:05–14:25",
           "type": "⛩️ 神社",
-          "title": "⛩️ 平湯神社｜奧飛驒溫泉鄉嘅地方信仰 ⓘ📍ⓘ",
+          "title": "⛩️ 平湯神社｜奧飛驒溫泉鄉嘅地方信仰",
           "localName": "平湯神社（ひらゆじんじゃ）",
           "description": "正式加入新穗高日；短停約20分鐘，了解白猿傳說、溫泉聚落同地方信仰。",
           "map": "平湯神社",
@@ -1039,7 +1037,7 @@
         {
           "time": "14:25–15:15",
           "type": "🚗 車",
-          "title": "平湯 → 高山📍",
+          "title": "平湯 → 高山",
           "localName": "🇯🇵 平湯 → 高山市",
           "description": "參拜後繼續原本主線。冬季以道路安全同即時導航為準。",
           "map": "高山"
@@ -1053,120 +1051,28 @@
           "map": "Takayama Ouan"
         },
         {
-          "time": "15:1016:15",
+          "time": "15:10",
           "type": "🛍️ 彈性",
-          "title": "高山古街／地元超市📍",
+          "title": "高山古街／地元超市",
           "localName": "高山市",
           "description": "買手信或地元食品；高山市區完整參觀留另一日。",
           "map": "高山駅"
         },
         {
-          "time": "17:0019:00",
+          "time": "17:00",
           "type": "♨️ 溫泉／休息",
-          "title": "飛驒花里之湯・高山櫻庵 📍",
+          "title": "飛驒花里之湯・高山櫻庵",
           "localName": "飛騨花里の湯 高山桜庵",
           "description": "返酒店浸天然溫泉、休息。",
           "map": "Takayama Ouan"
         },
         {
-          "time": "19:1520:45",
+          "time": "19:15",
           "type": "🍖 晚餐",
-          "title": "飛驒牛晚餐📍",
+          "title": "飛驒牛晚餐",
           "localName": "高山市",
           "description": "高山市內正式飛驒牛晚餐。",
           "map": "高山駅"
-        },
-        {
-          "time": "08:50",
-          "type": "🚗 約 1小時20分",
-          "title": "高山 → 新穗高 📍ⓘ",
-          "localName": "新穂高ロープウェイ",
-          "description": "冬季山路，預鬆時間。 1 月導航去新穗高溫泉停車場。",
-          "map": "新穂高温泉駐車場",
-          "attractionId": "shinhotaka"
-        },
-        {
-          "time": "10:15",
-          "type": "🚡 核心景點",
-          "title": "🚡 新穗高纜車・北阿爾卑斯高山景 📍ⓘ",
-          "localName": "新穂高ロープウェイ（しんほたかロープウェイ）",
-          "description": "兩段纜車去到海拔約 2,156 米西穗高口。 第二段係雙層車廂， 山頂可望穗高連峰雪山。",
-          "map": "新穂高温泉駐車場",
-          "attractionId": "shinhotaka",
-          "price": "成人約 ¥3,800"
-        },
-        {
-          "time": "12:45",
-          "type": "🍜 午餐",
-          "title": "新穗高 📍ⓘ",
-          "localName": "新穂高ロープウェイ",
-          "description": "簡單午餐。",
-          "map": "新穂高温泉駐車場",
-          "attractionId": "shinhotaka"
-        },
-        {
-          "time": "09:30",
-          "type": "🥬 景點",
-          "title": "🥬 高山・宮川朝市 📍ⓘ",
-          "localName": "宮川朝市（みやがわあさいち）",
-          "description": "漬物、味噌、蔬菜、小食及手工品。",
-          "map": "宮川朝市 高山",
-          "attractionId": "miyagawa"
-        },
-        {
-          "time": "10:15",
-          "type": "🏯 景點",
-          "title": "🏯 高山陣屋・江戶幕府直轄官署 📍ⓘ",
-          "localName": "高山陣屋（たかやまじんや）",
-          "description": "江戶幕府直接管治飛驒時嘅地方行政機關。 高山陣屋本身冇專用停車場，📍 導航去附近中橋駐車場。",
-          "map": "中橋駐車場 高山",
-          "attractionId": "takayama-jinya",
-          "price": "成人約 ¥500"
-        },
-        {
-          "time": "11:00",
-          "type": "🏘️ 古街／酒藏",
-          "title": "🏘️ 高山三町古街・中橋・酒藏 📍ⓘ",
-          "localName": "古い町並・中橋・酒蔵（ふるいまちなみ・なかばし・さかぐら）",
-          "description": "古町家、酒藏、味噌店及傳統老舖。 司機唔試酒。",
-          "map": "中橋駐車場 高山",
-          "attractionId": "sanmachi"
-        },
-        {
-          "time": "12:25",
-          "type": "🍜 午餐",
-          "title": "高山市內 📍",
-          "localName": "",
-          "description": "高山拉麵／蕎麥麵。",
-          "map": "Sanmachi Historic District Takayama"
-        },
-        {
-          "time": "13:10",
-          "type": "🚗",
-          "title": "高山 → 飛驒大鐘乳洞 📍ⓘ",
-          "localName": "飛騨大鍾乳洞・氷の渓谷",
-          "description": "約 40 分鐘。",
-          "map": "Hida Great Limestone Cave",
-          "attractionId": "hida-cave"
-        },
-        {
-          "time": "13:50",
-          "type": "🧊 景點",
-          "title": "🧊 飛驒大鐘乳洞・冰之溪谷 📍ⓘ",
-          "localName": "飛騨大鍾乳洞・氷の渓谷（ひだだいしょうにゅうどう・こおりのけいこく）",
-          "description": "一月重點係大型藍白冰柱。 洞內亦唔太受落雪影響。",
-          "map": "Hida Great Limestone Cave",
-          "attractionId": "hida-cave",
-          "price": "成人約 ¥1,100"
-        },
-        {
-          "time": "16:00",
-          "type": "🛒 SHOPPING",
-          "title": "🛒 高山地元超市・飛驒生活購物 📍ⓘ",
-          "localName": "駿河屋／バロー 高山",
-          "description": "駿河屋／Valor， 買飛驒牛、蔬果、牛奶及調味料。",
-          "map": "Surugaya Takayama",
-          "attractionId": "takayama-supermarket"
         }
       ],
       "backups": [
@@ -1176,10 +1082,10 @@
       ],
       "constraints": [
         {
-          "text": "🌨️ 07:45 天氣判斷： 睇新穗高官方運行狀況、 Live Camera、山頂能見度及風況。 只有「極好天＋正常運行」 先喺 D6 搶新穗高。"
+          "text": "07:45 前確認新穗高官方運行、Live Cam、山頂能見度、風況同冬季道路。"
         },
         {
-          "text": "🍖 19:15： 飛驒牛晚餐。"
+          "text": "D6 固定新穗高日；如纜車停駛、能見度差或道路不安全，由人手決定 D6 Plan B。D7／D8 日子不會自動改動。"
         }
       ]
     },
@@ -1188,17 +1094,13 @@
       "day": 7,
       "date": "2027-01-15",
       "title": "🏘️ 白川鄉 → 高山",
-      "route": "D6 已用新穗高，所以白川鄉順延到 D7；仍然唔留到 D8。",
+      "route": "高山 → 白川鄉合掌村／和田家／荻町展望台 → 高山；晚上三寺まいり只作 Bonus",
       "weatherRegion": "shirakawago",
       "driving": true,
       "hotelId": "residence-takayama",
       "highlights": [
         {
-          "title": "🏘️ 白川鄉最遲 D7 完成，避免最後一日向西兜路。",
-          "tone": ""
-        },
-        {
-          "title": "🕯️ 1/15 三寺まいり只做 Bonus，主線完成先考慮。",
+          "title": "🏘️ D7 固定白川鄉日；唔再同新穗高互換。",
           "tone": ""
         },
         {
@@ -1242,17 +1144,17 @@
       },
       "items": [
         {
-          "time": "08:0008:45",
+          "time": "08:00",
           "type": "🍳 早餐／執行李",
-          "title": "飛驒花里之湯・高山櫻庵 📍",
+          "title": "飛驒花里之湯・高山櫻庵",
           "localName": "飛騨花里の湯 高山桜庵",
           "description": "早餐、執行李；今日退房後搬去 Residence。",
           "map": "Takayama Ouan"
         },
         {
-          "time": "08:4509:15",
+          "time": "08:45",
           "type": "🧳 Check-out／搬行李",
-          "title": "高山站前 Residence Hotel 📍",
+          "title": "高山站前 Residence Hotel",
           "localName": "レジデンスホテル高山駅前",
           "description": "將行李移去 Residence；未能寄存就放車內。",
           "map": "Residence Hotel Takayama Station"
@@ -1260,7 +1162,7 @@
         {
           "time": "15:50–16:00",
           "type": "🚗 車",
-          "title": "前往飛驒東照宮ⓘ📍",
+          "title": "前往飛驒東照宮",
           "localName": "🇯🇵 飛騨東照宮",
           "description": "由上一站順路返高山市區；核心景點完成後先加神社。",
           "map": "飛騨東照宮",
@@ -1269,7 +1171,7 @@
         {
           "time": "16:00–16:20",
           "type": "⛩️ 神社",
-          "title": "⛩️ 飛驒東照宮｜德川家康、金森家與飛驒匠人 ⓘ📍ⓘ",
+          "title": "⛩️ 飛驒東照宮｜德川家康、金森家與飛驒匠人",
           "localName": "飛騨東照宮（ひだとうしょうぐう）",
           "description": "正式主線短停：睇本殿、唐門、62米透塀，同高山陣屋嘅幕府背景串埋理解。",
           "map": "飛騨東照宮",
@@ -1278,7 +1180,7 @@
         {
           "time": "16:20–16:30",
           "type": "🚗 市內短程",
-          "title": "飛驒東照宮 → 豐川城山稻荷ⓘ📍",
+          "title": "飛驒東照宮 → 豐川城山稻荷",
           "localName": "🇯🇵 飛騨東照宮 → 豊川城山稲荷",
           "description": "短程移動去城山一帶。",
           "map": "豊川城山稲荷",
@@ -1287,34 +1189,34 @@
         {
           "time": "16:30–16:50",
           "type": "⛩️ 神社",
-          "title": "豐川城山稻荷・朱紅鳥居ⓘ📍",
+          "title": "豐川城山稻荷・朱紅鳥居",
           "localName": "🇯🇵 豊川城山稲荷（とよかわしろやまいなり）",
           "description": "正式主線短停：雪地朱紅鳥居係攝影重點；路面結冰嚴重就以安全為先。",
           "map": "豊川城山稲荷",
           "attractionId": "toyokawa-shiroyama-inari"
         },
         {
-          "time": "09:1510:15",
+          "time": "09:15",
           "type": "🚗 車",
-          "title": "高山 → 白川鄉ⓘ📍",
+          "title": "高山 → 白川鄉",
           "localName": "白川郷・荻町合掌造り集落",
           "description": "只有 D6 已經用咗去新穗高，白川鄉先順延到 D7；仍然唔會拖到 D8。",
           "map": "せせらぎ公園駐車場 白川郷",
           "attractionId": "shirakawago"
         },
         {
-          "time": "10:1511:20",
+          "time": "10:15",
           "type": "🏘️ 核心景點",
-          "title": "🏘️ 世界遺產・白川鄉荻町合掌村 ⓘ📍",
+          "title": "🏘️ 世界遺產・白川鄉荻町合掌村",
           "localName": "白川郷・荻町合掌造り集落（しらかわごう・おぎまち）",
           "description": "日間完整參觀合掌造聚落。",
           "map": "せせらぎ公園駐車場 白川郷",
           "attractionId": "shirakawago"
         },
         {
-          "time": "11:2011:55",
+          "time": "11:20",
           "type": "🏠 景點",
-          "title": "🏘️ 世界遺產・白川鄉荻町合掌村 ⓘ📍",
+          "title": "🏘️ 世界遺產・白川鄉荻町合掌村",
           "localName": "白川郷・荻町合掌造り集落（しらかわごう・おぎまち）",
           "description": "入屋睇木樑、圍爐及合掌屋頂內部。",
           "map": "和田家 白川郷",
@@ -1322,36 +1224,36 @@
           "price": "成人約 ¥400"
         },
         {
-          "time": "12:0012:50",
+          "time": "12:00",
           "type": "🍜 午餐",
-          "title": "白川鄉ⓘ📍",
+          "title": "白川鄉",
           "localName": "白川郷・荻町合掌造り集落",
           "description": "蕎麥麵／鄉土定食。",
           "map": "白川郷",
           "attractionId": "shirakawago"
         },
         {
-          "time": "13:0013:50",
+          "time": "13:00",
           "type": "📷 景點",
-          "title": "📷 白川鄉・荻町城跡展望台 ⓘ📍",
+          "title": "📷 白川鄉・荻町城跡展望台",
           "localName": "荻町城跡展望台（おぎまちじょうせきてんぼうだい）",
           "description": "俯瞰成個荻町雪村；按當日 Shuttle 安排。",
           "map": "荻町城跡展望台",
           "attractionId": "shirakawago"
         },
         {
-          "time": "14:0015:15",
+          "time": "14:00",
           "type": "🚗 車",
-          "title": "白川鄉 → 高山ⓘ📍",
+          "title": "白川鄉 → 高山",
           "localName": "白川郷・荻町合掌造り集落",
           "description": "冬季預鬆時間返高山。",
           "map": "Residence Hotel Takayama Station",
           "attractionId": "shirakawago"
         },
         {
-          "time": "15:3016:00",
+          "time": "15:30",
           "type": "🏨 Check-in",
-          "title": "高山站前 Residence Hotel 📍",
+          "title": "高山站前 Residence Hotel",
           "localName": "レジデンスホテル高山駅前",
           "description": "放低行李；之後神社短停由現有行程功能接續。",
           "map": "Residence Hotel Takayama Station"
@@ -1359,103 +1261,25 @@
         {
           "time": "晚上",
           "type": "⭐ 1/15 Bonus／可取消",
-          "title": "🕯️ 飛驒古川・三寺巡禮 ⓘ📍",
+          "title": "🕯️ 飛驒古川・三寺巡禮",
           "localName": "三寺まいり（さんてらまいり）",
           "description": "只限道路、體力同時間都合適先去；主線完成先考慮，唔為 Bonus 趕雪路。",
           "map": "飛騨古川駅",
           "attractionId": "hida-furukawa"
-        },
-        {
-          "time": "08:00",
-          "type": "🍳 早餐／行李",
-          "title": "飛驒花里之湯・高山櫻庵 📍",
-          "localName": "飛騨花里の湯 高山桜庵",
-          "description": "退房後搬行李去 Residence。",
-          "map": "Takayama Ouan"
-        },
-        {
-          "time": "09:15",
-          "type": "🚗",
-          "title": "高山 → 白川鄉 📍ⓘ",
-          "localName": "白川郷・荻町合掌造り集落",
-          "description": "約 1 小時。 導航去官方せせらぎ公園駐車場，唔好直接導航入合掌村。",
-          "map": "せせらぎ公園駐車場 白川郷",
-          "attractionId": "shirakawago"
-        },
-        {
-          "time": "10:15",
-          "type": "🏘️ 世界遺產",
-          "title": "🏘️ 世界遺產・白川鄉荻町合掌村 📍ⓘ",
-          "localName": "白川郷・荻町合掌造り集落（しらかわごう・おぎまち）",
-          "description": "一月厚雪覆蓋合掌造屋頂及農田， 係最具代表性季節之一。",
-          "map": "せせらぎ公園駐車場 白川郷",
-          "attractionId": "shirakawago"
-        },
-        {
-          "time": "11:20",
-          "type": "🏠 景點",
-          "title": "🏘️ 世界遺產・白川鄉荻町合掌村 📍ⓘ",
-          "localName": "白川郷・荻町合掌造り集落（しらかわごう・おぎまち）",
-          "description": "泊車後步行入村。 睇木樑、圍爐及合掌造結構。",
-          "map": "せせらぎ公園駐車場 白川郷",
-          "attractionId": "shirakawago",
-          "price": "成人約 ¥400"
-        },
-        {
-          "time": "12:00",
-          "type": "🍜 午餐",
-          "title": "白川鄉 📍ⓘ",
-          "localName": "白川郷・荻町合掌造り集落",
-          "description": "鄉土定食／蕎麥麵。",
-          "map": "せせらぎ公園駐車場 白川郷",
-          "attractionId": "shirakawago"
-        },
-        {
-          "time": "13:00",
-          "type": "📷 景點",
-          "title": "📷 白川鄉・荻町城跡展望台 📍ⓘ",
-          "localName": "荻町城跡展望台（おぎまちじょうせきてんぼうだい）",
-          "description": "可俯瞰整個合掌村。 私家車唔可以駛入展望台停車場。",
-          "map": "せせらぎ公園駐車場 白川郷",
-          "attractionId": "shirakawago",
-          "price": "Shuttle 約 ¥300/人/單程"
-        },
-        {
-          "time": "14:00",
-          "type": "🚗",
-          "title": "白川鄉 → 高山 📍ⓘ",
-          "localName": "白川郷・荻町合掌造り集落",
-          "description": "約 1小時15分。",
-          "map": "Residence Hotel Takayama Station",
-          "attractionId": "shirakawago"
-        },
-        {
-          "time": "15:30",
-          "type": "🏨 CHECK-IN",
-          "title": "高山站前 Residence Hotel 📍",
-          "localName": "レジデンスホテル高山駅前",
-          "description": "D7 住宿。",
-          "map": "Residence Hotel Takayama Station"
         }
       ],
       "bonus": [
         "santera-mairi",
         {
           "text": "🕯️ 1月15日限定 Bonus：飛驒古川三寺巡禮。只喺返高山夠早、道路安全同精神狀態好先加。"
-        },
-        {
-          "text": "🕯️ 1月15日限定 Bonus： 飛驒古川三寺巡禮。 圖片係飛驒古川冬季街區參考， 唔係三寺巡禮活動當晚實況相。"
         }
       ],
       "constraints": [
         {
-          "text": "🌨️ 如果 D6 已成功完成新穗高， D7 固定去白川鄉。"
+          "text": "D7 固定白川鄉日；出發前確認降雪、道路／交通管制及村內狀況。道路不安全時由人手決定 Plan B，App 不會自動換日。"
         },
         {
-          "text": "09:15 高山出發。 📍 新穗高導航仍然用「新穗高溫泉停車場」。 約 10:35–13:15 新穗高纜車。 約 15:20 返回高山。"
-        },
-        {
-          "text": "今日先完成白川鄉， D8 再畀新穗高最後一次機會。"
+          "text": "1/15 三寺まいり只在主線完成、道路安全同精神狀態良好時先加。"
         }
       ]
     },
@@ -1464,17 +1288,13 @@
       "day": 8,
       "date": "2027-01-16",
       "title": "🏯 高山市區 → 飛驒大鐘乳洞 → 松本",
-      "route": "一路向東：高山市區 → 鐘乳洞 → 平湯／安房 → 松本。",
+      "route": "高山市區 → 飛驒大鐘乳洞 → 平湯／安房 → 松本",
       "weatherRegion": "takayama",
       "driving": true,
       "hotelId": "iroha-matsumoto",
       "highlights": [
         {
-          "title": "➡️ D8 不再安排白川鄉，避免先向西再掉頭返松本。",
-          "tone": ""
-        },
-        {
-          "title": "🧊 飛驒大鐘乳洞正正在返松本方向，最後一日最順。",
+          "title": "➡️ D8 固定高山市區／飛驒大鐘乳洞後一路向東返松本。",
           "tone": ""
         },
         {
@@ -1518,34 +1338,34 @@
       },
       "items": [
         {
-          "time": "08:0008:45",
+          "time": "08:00",
           "type": "🍳 早餐",
-          "title": "高山站前 Residence Hotel 📍",
+          "title": "高山站前 Residence Hotel",
           "localName": "レジデンスホテル高山駅前",
           "description": "早餐自行安排。",
           "map": "Residence Hotel Takayama Station"
         },
         {
-          "time": "08:4509:15",
+          "time": "08:45",
           "type": "🧳 Check-out",
-          "title": "高山站前 Residence Hotel 📍",
+          "title": "高山站前 Residence Hotel",
           "localName": "レジデンスホテル高山駅前",
           "description": "退房，行李放車；今日開始一路向東去松本。",
           "map": "Residence Hotel Takayama Station"
         },
         {
-          "time": "09:3010:05",
+          "time": "09:30",
           "type": "🥬 景點",
-          "title": "🥬 高山・宮川朝市 ⓘ📍",
+          "title": "🥬 高山・宮川朝市",
           "localName": "宮川朝市（みやがわあさいち）",
           "description": "朝市短行。",
           "map": "宮川朝市 高山",
           "attractionId": "miyagawa"
         },
         {
-          "time": "10:1010:50",
+          "time": "10:10",
           "type": "🏯 景點",
-          "title": "🏯 高山陣屋・江戶幕府直轄官署 ⓘ📍",
+          "title": "🏯 高山陣屋・江戶幕府直轄官署",
           "localName": "高山陣屋（たかやまじんや）",
           "description": "理解幕府直轄飛驒歷史。",
           "map": "中橋駐車場 高山",
@@ -1553,35 +1373,35 @@
           "price": "成人約 ¥500"
         },
         {
-          "time": "10:5012:00",
+          "time": "10:50",
           "type": "🏘️ 景點／酒藏",
-          "title": "🏘️ 高山三町古街・中橋・酒藏 ⓘ📍",
+          "title": "🏘️ 高山三町古街・中橋・酒藏",
           "localName": "古い町並・中橋・酒蔵（ふるいまちなみ・なかばし・さかぐら）",
           "description": "町屋街景、酒藏、手信；司機唔試酒。",
           "map": "中橋駐車場 高山",
           "attractionId": "sanmachi"
         },
         {
-          "time": "12:0012:40",
+          "time": "12:00",
           "type": "🍜 午餐",
-          "title": "高山市內📍",
+          "title": "高山市內",
           "localName": "高山市",
           "description": "簡單午餐。",
           "map": "高山駅"
         },
         {
-          "time": "12:4013:20",
+          "time": "12:40",
           "type": "🚗 車",
-          "title": "高山 → 飛驒大鐘乳洞ⓘ📍",
+          "title": "高山 → 飛驒大鐘乳洞",
           "localName": "飛騨大鍾乳洞・氷の渓谷",
           "description": "鐘乳洞正正在去平湯／松本方向，最後一日咁排最順。",
           "map": "飛騨大鍾乳洞",
           "attractionId": "hida-cave"
         },
         {
-          "time": "13:2014:40",
+          "time": "13:20",
           "type": "🧊 景點",
-          "title": "🧊 飛驒大鐘乳洞・冰之溪谷 ⓘ📍",
+          "title": "🧊 飛驒大鐘乳洞・冰之溪谷",
           "localName": "飛騨大鍾乳洞・氷の渓谷（ひだだいしょうにゅうどう・こおりのけいこく）",
           "description": "洞穴＋一月冰景。",
           "map": "飛騨大鍾乳洞",
@@ -1589,133 +1409,26 @@
           "price": "成人約 ¥1,100"
         },
         {
-          "time": "14:4017:15",
+          "time": "14:40",
           "type": "🚗 車",
-          "title": "飛驒大鐘乳洞 → 松本ⓘ📍",
+          "title": "飛驒大鐘乳洞 → 松本",
           "localName": "飛騨大鍾乳洞・氷の渓谷",
           "description": "經平湯／安房方向一路向東；比白川鄉返松本自然得多。",
           "map": "Iroha Grand Hotel Matsumoto Ekimae",
           "attractionId": "hida-cave"
         },
         {
-          "time": "17:1517:40",
+          "time": "17:15",
           "type": "🏨 Check-in／今日完結",
-          "title": "松本站前 Iroha Grand Hotel 📍",
+          "title": "松本站前 Iroha Grand Hotel",
           "localName": "いろはグランホテル松本駅前",
           "description": "最後一晚入住，放低行李休息。",
           "map": "Iroha Grand Hotel Matsumoto Ekimae"
-        },
-        {
-          "time": "09:30",
-          "type": "🥬 景點",
-          "title": "🥬 高山・宮川朝市 📍ⓘ",
-          "localName": "宮川朝市（みやがわあさいち）",
-          "description": "約 35 分鐘。",
-          "map": "宮川朝市 高山",
-          "attractionId": "miyagawa"
-        },
-        {
-          "time": "10:10",
-          "type": "🏯",
-          "title": "🏯 高山陣屋・江戶幕府直轄官署 📍ⓘ",
-          "localName": "高山陣屋（たかやまじんや）",
-          "description": "約 40 分鐘。",
-          "map": "中橋駐車場 高山",
-          "attractionId": "takayama-jinya"
-        },
-        {
-          "time": "10:50",
-          "type": "🏘️",
-          "title": "🏘️ 高山三町古街・中橋・酒藏 📍ⓘ",
-          "localName": "古い町並・中橋・酒蔵（ふるいまちなみ・なかばし・さかぐら）",
-          "description": "慢行、買手信。",
-          "map": "中橋駐車場 高山",
-          "attractionId": "sanmachi"
-        },
-        {
-          "time": "12:40",
-          "type": "🚗",
-          "title": "高山 → 飛驒大鐘乳洞 📍ⓘ",
-          "localName": "飛騨大鍾乳洞・氷の渓谷",
-          "description": "順住去松本方向。",
-          "map": "Hida Great Limestone Cave",
-          "attractionId": "hida-cave"
-        },
-        {
-          "time": "13:20",
-          "type": "🧊",
-          "title": "🧊 飛驒大鐘乳洞・冰之溪谷 📍ⓘ",
-          "localName": "飛騨大鍾乳洞・氷の渓谷（ひだだいしょうにゅうどう・こおりのけいこく）",
-          "description": "約 1小時20分。",
-          "map": "Hida Great Limestone Cave",
-          "attractionId": "hida-cave",
-          "price": "成人約 ¥1,100"
-        },
-        {
-          "time": "14:40",
-          "type": "🚗 約 2小時35分",
-          "title": "飛驒大鐘乳洞 → 松本 📍ⓘ",
-          "localName": "飛騨大鍾乳洞・氷の渓谷",
-          "description": "經平湯／安房方向。",
-          "map": "Iroha Grand Hotel Matsumoto Ekimae",
-          "attractionId": "hida-cave"
-        },
-        {
-          "time": "17:15",
-          "type": "🏨 CHECK-IN",
-          "title": "松本站前 Iroha Grand Hotel 📍",
-          "localName": "いろはグランホテル松本駅前",
-          "description": "最後一晚。",
-          "map": "Iroha Grand Hotel Matsumoto Ekimae"
-        },
-        {
-          "time": "09:00",
-          "type": "🚗",
-          "title": "高山 → 新穗高 📍ⓘ",
-          "localName": "新穂高ロープウェイ",
-          "description": "正常運行＋能見度值得先出發。",
-          "map": "新穂高温泉駐車場",
-          "attractionId": "shinhotaka"
-        },
-        {
-          "time": "10:30",
-          "type": "🚡",
-          "title": "🚡 新穗高纜車・北阿爾卑斯高山景 📍ⓘ",
-          "localName": "新穂高ロープウェイ（しんほたかロープウェイ）",
-          "description": "今日係最後機會。 如果仍然大霧／停駛， 唔再追。",
-          "map": "新穂高温泉駐車場",
-          "attractionId": "shinhotaka",
-          "price": "成人約 ¥3,800"
-        },
-        {
-          "time": "13:30",
-          "type": "🚗",
-          "title": "新穗高 → 安曇野／松本 📍ⓘ",
-          "localName": "新穂高ロープウェイ",
-          "description": "向松本方向落山。",
-          "map": "Daio Wasabi Farm",
-          "attractionId": "shinhotaka"
-        },
-        {
-          "time": "15:15",
-          "type": "⭐ BONUS",
-          "title": "🌿 安曇野・大王山葵農場 📍ⓘ",
-          "localName": "大王わさび農場（だいおうわさびのうじょう）",
-          "description": "非常早到安曇野先加。",
-          "map": "Daio Wasabi Farm",
-          "attractionId": "daio-wasabi",
-          "price": "免費"
-        }
-      ],
-      "bonus": [
-        {
-          "text": "🌨️ D8 無論行邊個 Scenario， 最終都一定返松本。 冬季道路安全同到松本嘅 Buffer 比 Bonus 景點重要。"
         }
       ],
       "constraints": [
-        "no-shirakawago-on-d8",
         {
-          "text": "09:15 高山出發。 📍 導航去「白川鄉・せせらぎ公園駐車場」。 10:15–14:00 白川鄉。 14:00 左右離開。 約 17:15 到松本。"
+          "text": "D8 固定一路向東返松本，不安排白川鄉／新穗高；冬季道路安全同到松本 Buffer 優先。"
         }
       ]
     },
@@ -1783,34 +1496,34 @@
       },
       "items": [
         {
-          "time": "08:0009:00",
+          "time": "08:00",
           "type": "🍳 早餐",
-          "title": "松本站前 Iroha Grand Hotel 📍",
+          "title": "松本站前 Iroha Grand Hotel",
           "localName": "いろはグランホテル松本駅前",
           "description": "包兩位早餐， 最後執行李。",
           "map": "Iroha Grand Hotel Matsumoto Ekimae"
         },
         {
-          "time": "09:0009:15",
+          "time": "09:00",
           "type": "🧳 CHECK-OUT",
-          "title": "松本站前 Iroha Grand Hotel 📍",
+          "title": "松本站前 Iroha Grand Hotel",
           "localName": "いろはグランホテル松本駅前",
           "description": "行李全部放車內。",
           "map": "Iroha Grand Hotel Matsumoto Ekimae"
         },
         {
-          "time": "09:1509:30",
+          "time": "09:15",
           "type": "🚗",
-          "title": "酒店 → AEON Mall 松本 📍",
+          "title": "酒店 → AEON Mall 松本",
           "localName": "イオンモール松本",
           "description": "約 15 分鐘。",
           "map": "AEON MALL Matsumoto",
           "attractionId": "aeon-matsumoto"
         },
         {
-          "time": "09:3011:00",
+          "time": "09:30",
           "type": "🛍️ SHOPPING",
-          "title": "🛍️ 松本 AEON MALL・回程補貨 📍ⓘ",
+          "title": "🛍️ 松本 AEON MALL・回程補貨",
           "localName": "イオンモール松本",
           "description": "最後補貨。 11:00 左右離開係 Hard Cut。",
           "map": "AEON MALL Matsumoto",
@@ -1818,7 +1531,7 @@
           "hardCut": true
         },
         {
-          "time": "11:0011:15",
+          "time": "11:00",
           "type": "🔴 HARD CUT",
           "title": "AEON → 油站",
           "localName": "イオンモール松本",
@@ -1827,26 +1540,26 @@
           "hardCut": true
         },
         {
-          "time": "11:4012:10",
+          "time": "11:40",
           "type": "🚗 還車",
-          "title": "Times 松本站前 📍",
+          "title": "Times 松本站前",
           "localName": "タイムズカー松本駅前店",
           "description": "開始處理還車。",
           "map": "Times Car Rental Matsumoto Station"
         },
         {
-          "time": "12:1013:25",
+          "time": "12:10",
           "type": "🔴 HARD CUT・還車完成",
-          "title": "松本站 📍",
+          "title": "松本站",
           "localName": "松本駅",
           "description": "目標 12:10 前已經完成還車。 之後先食午餐或買便當。",
           "map": "Matsumoto Station",
           "hardCut": true
         },
         {
-          "time": "13:5616:07",
+          "time": "13:56",
           "type": "🔴 HARD CUT・JR",
-          "title": "特急信濃・松本 → 名古屋 📍",
+          "title": "特急信濃・松本 → 名古屋",
           "localName": "",
           "description": "現行參考 13:56 → 16:07。",
           "map": "Matsumoto Station",
@@ -1854,7 +1567,7 @@
           "hardCut": true
         },
         {
-          "time": "16:4917:17",
+          "time": "16:49",
           "type": "🚆 名鐵",
           "title": "名古屋 → 中部國際機場",
           "localName": "中部国際空港 第2ターミナル",
@@ -1863,15 +1576,15 @@
           "price": "μSKY 現行參考：約 ¥1,430／人"
         },
         {
-          "time": "17:1719:30",
+          "time": "17:17",
           "type": "✈️ CHECK-IN",
-          "title": "中部國際機場 T2 📍",
+          "title": "中部國際機場 T2",
           "localName": "中部国際空港 第2ターミナル",
           "description": "UO685 Check-in、 保安、晚餐及候機。",
           "map": "Chubu Centrair International Airport Terminal 2"
         },
         {
-          "time": "20:4000:30 +1",
+          "time": "20:40",
           "type": "✈️ UO685",
           "title": "名古屋 → 香港",
           "localName": "",
