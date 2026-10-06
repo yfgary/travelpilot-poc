@@ -11,7 +11,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Checkout production main baseline
-        if: ${{ hashFiles('.poc-full-production-clone.json') != '' }}
         uses: actions/checkout@v4
         with:
           repository: yfgary/travelpilot
@@ -26,23 +25,25 @@ jobs:
         with:
           node-version: '22'
 
-      - name: POC architecture and migration QA
-        if: ${{ hashFiles('.poc-full-production-clone.json') == '' }}
-        run: |
-          python scripts/qa.py
-          python scripts/qa_migration.py
-          python scripts/round5_readiness.py
+      - name: Install schema validator
+        run: python -m pip install jsonschema
 
-      - name: Full production clone QA
-        if: ${{ hashFiles('.poc-full-production-clone.json') != '' }}
+      - name: Round 7 all-trip Standard architecture QA
         env:
           PRODUCTION_BASELINE: production-baseline
-        run: python scripts/qa_full_clone.py
+        run: python scripts/qa_round7.py
 
       - name: JavaScript syntax
         run: |
-          find assets -maxdepth 1 -type f -name '*.js' -print0 | xargs -0 -n1 node --check
-          if [ -f scripts/full-clone-smoke.mjs ]; then node --check scripts/full-clone-smoke.mjs; fi
+          node --check assets/standard-home-v1.js
+          node --check assets/standard-core-v1.js
+          node --check assets/standard-modes-v1.js
+          node --check assets/standard-render-itinerary-v1.js
+          node --check assets/standard-render-trip-info-v1.js
+          node --check assets/standard-render-attractions-v1.js
+          node --check assets/standard-render-live-v1.js
+          node --check scripts/round7-smoke.mjs
+          node --check sw.js
 
       - name: JSON parse
         run: |
@@ -61,27 +62,15 @@ jobs:
           npm install
           npx playwright install --with-deps chromium
 
-      - name: Legacy POC browser QA
-        if: ${{ hashFiles('.poc-full-production-clone.json') == '' }}
-        run: |
-          python -m http.server 8000 --bind 127.0.0.1 >/tmp/travelpilot-poc-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill $SERVER_PID || true' EXIT
-          for i in $(seq 1 20); do
-            if curl -fsS http://127.0.0.1:8000/index.html >/dev/null; then break; fi
-            sleep 1
-          done
-          npm run smoke
-          npm run parity
-
-      - name: Full clone browser QA
-        if: ${{ hashFiles('.poc-full-production-clone.json') != '' }}
+      - name: Round 7 real-browser all-trip QA
         run: |
           python -m http.server 8000 --bind 127.0.0.1 >/tmp/travelpilot-poc-http.log 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID || true' EXIT
           for i in $(seq 1 30); do
-            if curl -fsS http://127.0.0.1:8000/index.html >/dev/null; then break; fi
+            if curl -fsS http://127.0.0.1:8000/index.html >/dev/null; then
+              break
+            fi
             sleep 1
           done
-          node scripts/full-clone-smoke.mjs
+          npm run round7
