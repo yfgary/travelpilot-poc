@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 3,
+  "tripId": "golden-reference-2027",
+  "attractions": [
+    {
+      "id": "matsumoto-castle",
+      "name": "松本城",
+      "localName": "国宝 松本城",
+      "location": "松本",
+      "day": "D2",
+      "status": "main",
+      "score": 9.5,
+      "scoreReason": "現存木造天守、冬季景觀同今次松本停留高度吻合。",
+      "map": "Matsumoto Castle",
+      "durationMinutes": 90,
+      "weatherProfiles": [
+        "historic_outdoor",
+        "city_walk"
+      ],
+      "summary": "國寶現存天守，POC 用嚟驗證 rich attraction detail。",
+      "history": "松本城前身係深志城，現存天守群主要建於戰國末期至江戶初期。",
+      "visit": "由護城河先睇黑色天守外觀，再按現場情況入天守；留意木柱、陡梯同防禦構造。",
+      "access": "由松本市中心步行可達；冬季步道可能濕滑。",
+      "winter": "石路、木梯及陰影位置可能結冰，穿防滑鞋。",
+      "tips": "如果排隊過長，優先保留外圍攝影時間同後續取車 Hard Cut。",
+      "highlights": [
+        "現存木造天守",
+        "護城河倒影",
+        "冬季北阿爾卑斯背景"
+      ],
+      "sources": [
+        {
+          "label": "松本城官方",
+          "url": "https://www.matsumoto-castle.jp/"
+        }
+      ]
+    },
+    {
+      "id": "karuizawa-outlet",
+      "name": "輕井澤王子購物廣場",
+      "localName": "軽井沢・プリンスショッピングプラザ",
+      "location": "輕井澤",
+      "day": "D2",
+      "status": "main",
+      "score": 7.5,
+      "scoreReason": "購物需求高、路線順，而且可以集中一次完成。",
+      "map": "Karuizawa Prince Shopping Plaza",
+      "durationMinutes": 120,
+      "weatherProfiles": [
+        "outlet_open_air",
+        "city_walk"
+      ],
+      "summary": "大型戶外型 Outlet；冬季要計風寒同地面積雪。",
+      "history": "輕井澤由高原避暑地發展成度假區，Outlet 位於車站南口。",
+      "visit": "先按購物清單行最重要區域，唔好由一端漫無目的行到另一端。",
+      "winter": "戶外通道會凍；大雪時行走速度慢。",
+      "tips": "15:30 Hard Cut 優先。"
+    },
+    {
+      "id": "shinhotaka-ropeway",
+      "name": "新穗高纜車",
+      "localName": "新穂高ロープウェイ",
+      "location": "奧飛驒",
+      "day": "D6",
+      "status": "main",
+      "score": 9.2,
+      "scoreReason": "冬季高山景觀非常獨特，但價值高度受能見度及運行狀況影響。",
+      "map": "新穂高ロープウェイ",
+      "durationMinutes": 120,
+      "weatherProfiles": [
+        "ropeway_mountain",
+        "mountain_view",
+        "road_trip"
+      ],
+      "summary": "D6 固定主行程。天氣資料只提供參考，不再自動交換 D6–D8。",
+      "history": "新穗高纜車連接奧飛驒溫泉鄉高海拔山區，冬季可觀賞北阿爾卑斯雪景。",
+      "visit": "出發前先睇官方運行、山頂 Live Cam、能見度及風況；到山頂重點係展望台。",
+      "access": "由高山經國道158號、平湯方向前往；冬季道路風險高。",
+      "winter": "強風、低雲、停駛或道路惡劣時，人手決定 Plan B；App 不自動改日。",
+      "tips": "預留山路 Buffer，唔為 Bonus 壓縮回程安全時間。",
+      "sources": [
+        {
+          "label": "新穗高纜車官方",
+          "url": "https://shinhotaka-ropeway.jp/"
+        }
+      ]
+    },
+    {
+      "id": "hirayu-shrine",
+      "name": "平湯神社",
+      "localName": "平湯神社",
+      "location": "平湯",
+      "day": "D6",
+      "status": "optional",
+      "score": 7.2,
+      "scoreReason": "幾乎唔繞路、停留短，可以補充奧飛驒地方文化。",
+      "map": "Hirayu Shrine",
+      "durationMinutes": 25,
+      "weatherProfiles": [
+        "historic_outdoor",
+        "snow_walk"
+      ],
+      "summary": "新穗高回程短停。",
+      "history": "平湯溫泉聚落嘅地方神社，反映山岳、溫泉同居民信仰。",
+      "visit": "只做短停，雪景好時影社殿同樹林。",
+      "winter": "豪雪區；現場除雪差或路面太滑就 Skip。"
+    },
+    {
+      "id": "shirakawago",
+      "name": "白川鄉合掌村",
+      "localName": "白川郷・荻町",
+      "location": "白川鄉",
+      "day": "D7",
+      "status": "main",
+      "score": 9.7,
+      "scoreReason": "世界文化遺產、冬季雪景同合掌建築係全程最不可取代景點之一。",
+      "map": "Shirakawa-go Ogimachi",
+      "durationMinutes": 180,
+      "weatherProfiles": [
+        "village_scenic",
+        "historic_outdoor",
+        "road_trip"
+      ],
+      "summary": "D7 固定主行程，Standard 由 data render，唔再靠 Japan-specific catalogue。",
+      "history": "荻町保存大量合掌造民居，建築形式同豪雪、養蠶及地方生活方式密切相關。",
+      "visit": "先村內近距離睇合掌屋，再去展望位置收全景。",
+      "access": "導航去遊客停車場，步行過橋入村；唔駛入住宅區。",
+      "winter": "積雪、結冰、人流及交通管制都要即日確認。",
+      "tips": "雪景攝影同步行速度要預多時間。",
+      "sources": [
+        {
+          "label": "白川鄉官方",
+          "url": "https://shirakawa-go.gr.jp/"
+        }
+      ]
+    },
+    {
+      "id": "takayama-old-town",
+      "name": "高山古街",
+      "localName": "古い町並",
+      "location": "高山",
+      "day": "D8",
+      "status": "main",
+      "score": 8.8,
+      "scoreReason": "高山城下町街景、店舖同飲食可用較彈性時間完成。",
+      "map": "Sanmachi Historic District Takayama",
+      "durationMinutes": 120,
+      "weatherProfiles": [
+        "city_walk",
+        "historic_outdoor"
+      ],
+      "summary": "D8 固定市區行程後向東返松本。",
+      "history": "三町一帶保留江戶時代商家街道格局。",
+      "visit": "街景、酒藏、木建築同中橋一帶可以步行串連。",
+      "winter": "屋簷落雪、路面冰雪同早黑要留意。"
+    }
+  ]
+}
