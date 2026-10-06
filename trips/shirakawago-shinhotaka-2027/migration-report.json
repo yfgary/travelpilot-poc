@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-10-06T18:38:37.261Z",
+  "source": {
+    "repo": "yfgary/travelpilot",
+    "ref": "main",
+    "tripId": "shirakawago-shinhotaka-2027"
+  },
+  "fixedPlan": {
+    "d6": "shinhotaka",
+    "d7": "shirakawago",
+    "d8": "takayama-city-to-matsumoto"
+  },
+  "removed": [
+    "D6-D8 automatic day selection",
+    "weather-driven D6-D8 automatic selection"
+  ],
+  "counts": {
+    "days": 9,
+    "timelineItems": 143,
+    "photos": 27,
+    "attractions": 42,
+    "richAttractions": 42,
+    "hotels": 7,
+    "departureChecklistItems": 96,
+    "liveCameras": 37,
+    "liveDays": 9,
+    "customTripInfoSections": 3,
+    "mediaCopied": 22
+  },
+  "tripInfoCustomSections": [
+    {
+      "id": "rail-prices",
+      "title": "🚆 火車票價預算",
+      "type": "notice"
+    },
+    {
+      "id": "winter-shrines",
+      "title": "⛩️ 雪景神社・稻荷 Bonus",
+      "type": "notice"
+    },
+    {
+      "id": "weather-manual-rule",
+      "title": "🌨️ D6–D8 固定日・天氣只作人手判斷",
+      "type": "notice"
+    }
+  ],
+  "mediaRefs": [
+    "assets/images/d1-matsumoto-castle.jpg",
+    "assets/images/d1-shinano.jpg",
+    "assets/images/d1-centrair.jpg",
+    "assets/images/d2-shiraito.jpg",
+    "assets/images/d2-onioshidashi.jpg",
+    "assets/images/d3-obuse.jpg",
+    "assets/images/d3-shibu-onsen.jpg",
+    "assets/images/d3-shibu-onsen-day.jpg",
+    "assets/images/d4-monkey-trail.jpg",
+    "assets/images/d4-snow-monkey.jpg",
+    "assets/images/d4-aeon-suzaka.jpg",
+    "assets/images/d5-hakuba-iwatake.jpg",
+    "assets/images/d5-mountain-harbor.jpg",
+    "assets/images/d5-white-park.jpg",
+    "assets/images/d6-shinhotaka.jpg",
+    "assets/images/d6-takayama.jpg",
+    "assets/images/d9-matsumoto-station.jpg",
+    "assets/images/d7-shirakawago.jpg",
+    "assets/images/d7-shirakawago-view.jpg",
+    "assets/images/d7-hida-furukawa.jpg",
+    "assets/images/d6-hida-cave.jpg",
+    "assets/images/d9-aeon-matsumoto.jpg"
+  ]
+}

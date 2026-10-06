@@ -1,0 +1,807 @@
+{
+  "schemaVersion": 3,
+  "tripId": "shirakawago-shinhotaka-2027",
+  "enabled": true,
+  "notice": "由原 Japan 2027 Live Cam dashboard 遷移到 Standard cameras[] + days[]。D6–D8 已固定，不再有動態 camera binding。",
+  "cameras": [
+    {
+      "id": "cam-001-松本城及北阿爾卑斯",
+      "title": "松本城及北阿爾卑斯",
+      "type": "youtube",
+      "videoId": "3pfpRzVgtoE",
+      "sourceUrl": "https://www.youtube.com/watch?v=3pfpRzVgtoE",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "景點：松本市區。抵達松本後查看松本城一帶天氣、能見度及北阿爾卑斯山景。",
+      "tags": []
+    },
+    {
+      "id": "cam-002-美之原高原王之頭方向",
+      "title": "美之原高原・王之頭方向",
+      "type": "youtube",
+      "videoId": "W7kZdoqGfTg",
+      "sourceUrl": "https://www.youtube.com/watch?v=W7kZdoqGfTg",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "ref",
+      "desc": "松本市區天氣參考：查看松本周邊山區雲量、降雪及能見度。",
+      "tags": []
+    },
+    {
+      "id": "cam-003-國道18號追分",
+      "title": "國道18號・追分",
+      "type": "youtube",
+      "videoId": "Y4KAMd2eGuU",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y4KAMd2eGuU",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "鬼押出園 → 輕井澤 → 千曲：查看輕井澤西面國道18號道路及積雪。",
+      "tags": []
+    },
+    {
+      "id": "cam-004-國道18號繞道消防署附近",
+      "title": "國道18號繞道・消防署附近",
+      "type": "youtube",
+      "videoId": "YiUnKdAq424",
+      "sourceUrl": "https://www.youtube.com/watch?v=YiUnKdAq424",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "鬼押出園 → 輕井澤：查看進入輕井澤市區前嘅道路及雪況。",
+      "tags": []
+    },
+    {
+      "id": "cam-005-新輕井澤西交叉口",
+      "title": "新輕井澤西交叉口",
+      "type": "youtube",
+      "videoId": "GkoIAnOeazM",
+      "sourceUrl": "https://www.youtube.com/watch?v=GkoIAnOeazM",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "前往輕井澤王子購物廣場前，查看市區道路、車流及積雪。",
+      "tags": []
+    },
+    {
+      "id": "cam-006-王子通",
+      "title": "王子通",
+      "type": "youtube",
+      "videoId": "8VbOUB-dplM",
+      "sourceUrl": "https://www.youtube.com/watch?v=8VbOUB-dplM",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "輕井澤王子購物廣場附近。查看 Outlet 周邊道路及天氣。",
+      "tags": []
+    },
+    {
+      "id": "cam-007-輕井澤站北口",
+      "title": "輕井澤站北口",
+      "type": "youtube",
+      "videoId": "1adPpHlPg5M",
+      "sourceUrl": "https://www.youtube.com/watch?v=1adPpHlPg5M",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "ref",
+      "desc": "輕井澤王子購物廣場附近。查看市中心天氣及積雪。",
+      "tags": []
+    },
+    {
+      "id": "cam-008-千曲川平和橋",
+      "title": "千曲川・平和橋",
+      "type": "image",
+      "imageUrl": "https://www.hrr.mlit.go.jp/bosai/img/741029.jpg",
+      "sourceUrl": "https://www.hrr.mlit.go.jp/chikuma/livecamera/",
+      "sourceLabel": "🛣️ 官方來源",
+      "priority": "must",
+      "desc": "輕井澤 → 千曲：接近今晚住宿地前查看千曲一帶天氣及河川狀況。",
+      "tags": []
+    },
+    {
+      "id": "cam-009-小布施橋",
+      "title": "小布施橋",
+      "type": "image",
+      "imageUrl": "https://www.hrr.mlit.go.jp/bosai/img/741013.jpg",
+      "sourceUrl": "https://www.hrr.mlit.go.jp/chikuma/livecamera/c1_obuse.html",
+      "sourceLabel": "🛣️ 官方來源",
+      "priority": "must",
+      "desc": "千曲 → 小布施：接近小布施前查看千曲川、小布施一帶天氣及雪況。",
+      "tags": []
+    },
+    {
+      "id": "cam-010-北信州山之內道之驛",
+      "title": "北信州山之內道之驛",
+      "type": "youtube",
+      "videoId": "9t7uFd290qY",
+      "sourceUrl": "https://www.youtube.com/watch?v=9t7uFd290qY",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "小布施／農產直賣所 → 澀溫泉：接近山之內町前查看道路及積雪。",
+      "tags": []
+    },
+    {
+      "id": "cam-011-湯田中站前",
+      "title": "湯田中站前",
+      "type": "youtube",
+      "videoId": "lAWdqnXJ0w0",
+      "sourceUrl": "https://www.youtube.com/watch?v=lAWdqnXJ0w0",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "山之內 → 澀溫泉：接近澀溫泉前查看湯田中一帶道路及積雪。",
+      "tags": []
+    },
+    {
+      "id": "cam-012-澀溫泉街",
+      "title": "澀溫泉街",
+      "type": "youtube",
+      "videoId": "nOdZW9irJrE",
+      "sourceUrl": "https://www.youtube.com/watch?v=nOdZW9irJrE",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "景點及住宿：澀溫泉。入住後九湯巡禮及晚上溫泉街散步。",
+      "tags": []
+    },
+    {
+      "id": "cam-013-地獄谷野猿公苑巴士候車室",
+      "title": "地獄谷野猿公苑巴士候車室",
+      "type": "youtube",
+      "videoId": "zbQvhlnQC9U",
+      "sourceUrl": "https://www.youtube.com/watch?v=zbQvhlnQC9U",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "由澀溫泉出發前查看上林／野猿公苑入口一帶積雪及天氣。",
+      "tags": []
+    },
+    {
+      "id": "cam-014-須坂長野東交流道",
+      "title": "須坂長野東交流道",
+      "type": "youtube",
+      "videoId": "hlKxhMVdE_0",
+      "sourceUrl": "https://www.youtube.com/watch?v=hlKxhMVdE_0",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "地獄谷野猿公苑 → AEON Mall 須坂：查看須坂入口道路及雪況。",
+      "tags": []
+    },
+    {
+      "id": "cam-015-長野站",
+      "title": "長野站",
+      "type": "youtube",
+      "videoId": "-LxeC1RhMrU",
+      "sourceUrl": "https://www.youtube.com/watch?v=-LxeC1RhMrU",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "AEON Mall 須坂 → 長野：查看今晚住宿地長野市中心天氣及積雪。",
+      "tags": []
+    },
+    {
+      "id": "cam-016-白馬岩岳",
+      "title": "白馬岩岳",
+      "type": "youtube",
+      "videoId": "e3EliJKC6z8",
+      "sourceUrl": "https://www.youtube.com/watch?v=e3EliJKC6z8",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "今日最重要 Camera，用嚟判斷山頂能見度及 HAKUBA MOUNTAIN HARBOR 景觀。",
+      "tags": []
+    },
+    {
+      "id": "cam-017-白馬八方尾根阿爾卑斯四人吊椅",
+      "title": "白馬八方尾根阿爾卑斯四人吊椅",
+      "type": "youtube",
+      "videoId": "21HCv58C99o",
+      "sourceUrl": "https://www.youtube.com/watch?v=21HCv58C99o",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "ref",
+      "desc": "高海拔天氣參考，判斷白馬山區雲量及能見度。",
+      "tags": []
+    },
+    {
+      "id": "cam-018-白馬八方尾根兔平",
+      "title": "白馬八方尾根兔平",
+      "type": "youtube",
+      "videoId": "9ej1bDX8Kd8",
+      "sourceUrl": "https://www.youtube.com/watch?v=9ej1bDX8Kd8",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "ref",
+      "desc": "中高海拔雪況及能見度參考。",
+      "tags": []
+    },
+    {
+      "id": "cam-019-白馬八方尾根白樺纜車站",
+      "title": "白馬八方尾根白樺纜車站",
+      "type": "youtube",
+      "videoId": "hMY3VnL4Pyk",
+      "sourceUrl": "https://www.youtube.com/watch?v=hMY3VnL4Pyk",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "白馬山腳天氣及積雪參考，可同岩岳山頂畫面比較。",
+      "tags": []
+    },
+    {
+      "id": "cam-020-白馬八方尾根第三停車場",
+      "title": "白馬八方尾根第三停車場",
+      "type": "youtube",
+      "videoId": "BHo4tHKIDow",
+      "sourceUrl": "https://www.youtube.com/watch?v=BHo4tHKIDow",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "白馬村山腳道路、停車場及積雪狀況參考。",
+      "tags": []
+    },
+    {
+      "id": "cam-021-白馬47滑雪場",
+      "title": "白馬47滑雪場",
+      "type": "official",
+      "sourceUrl": "https://www.vill.hakuba.nagano.jp/livecamera/",
+      "sourceLabel": "🔴 開啟 Hakuba47 官方 Live",
+      "priority": "ref",
+      "desc": "白馬南面山區雪況及能見度參考。",
+      "tags": [
+        "官方 Live"
+      ]
+    },
+    {
+      "id": "cam-022-白馬五龍阿爾卑斯平北側",
+      "title": "白馬五龍阿爾卑斯平北側",
+      "type": "youtube",
+      "videoId": "5LbQtmFr1Ws",
+      "sourceUrl": "https://www.youtube.com/watch?v=5LbQtmFr1Ws",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "ref",
+      "desc": "白馬五龍高海拔天氣及雲量參考。",
+      "tags": []
+    },
+    {
+      "id": "cam-023-白馬五龍阿爾卑斯平西側",
+      "title": "白馬五龍阿爾卑斯平西側",
+      "type": "youtube",
+      "videoId": "aoBkllBoMWQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=aoBkllBoMWQ",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "ref",
+      "desc": "從另一方向觀察白馬山區山景、雲層及能見度。",
+      "tags": []
+    },
+    {
+      "id": "cam-024-白馬五龍山腳廣場",
+      "title": "白馬五龍山腳廣場",
+      "type": "youtube",
+      "videoId": "xHLUcjh_0NQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=xHLUcjh_0NQ",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "ref",
+      "desc": "白馬五龍山腳積雪及天氣參考。",
+      "tags": []
+    },
+    {
+      "id": "cam-025-白馬五龍第二停車場",
+      "title": "白馬五龍第二停車場",
+      "type": "youtube",
+      "videoId": "itaV65JiPSs",
+      "sourceUrl": "https://www.youtube.com/watch?v=itaV65JiPSs",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "ref",
+      "desc": "白馬區內山腳道路及積雪參考。",
+      "tags": []
+    },
+    {
+      "id": "cam-026-白馬五龍遠見站",
+      "title": "白馬五龍遠見站",
+      "type": "youtube",
+      "videoId": "D8wGuRhf7EQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=D8wGuRhf7EQ",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "ref",
+      "desc": "白馬五龍山腳區域即時天氣參考。",
+      "tags": []
+    },
+    {
+      "id": "cam-027-高山中橋",
+      "title": "高山中橋",
+      "type": "youtube",
+      "videoId": "rRJo8uVlAGo",
+      "sourceUrl": "https://www.youtube.com/watch?v=rRJo8uVlAGo",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "白馬 → 高山：到達高山市前查看今晚住宿地高山市區天氣及積雪。",
+      "tags": []
+    },
+    {
+      "id": "cam-028-新穗高纜車西穗高口",
+      "title": "新穗高纜車・西穗高口",
+      "type": "youtube",
+      "videoId": "jXrh_mQxwl8",
+      "sourceUrl": "https://www.youtube.com/watch?v=jXrh_mQxwl8",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "朝早第一個必睇：判斷今日係咪值得由高山即刻去新穗高。",
+      "tags": []
+    },
+    {
+      "id": "cam-029-國道158號丹生川町茶屋野往平湯",
+      "title": "國道158號・丹生川町茶屋野（往平湯）",
+      "type": "image",
+      "imageUrl": "https://douro.pref.gifu.lg.jp/img/camera/douro_070_0062.jpg",
+      "sourceUrl": "https://douro.pref.gifu.lg.jp/",
+      "sourceLabel": "🛣️ 官方來源",
+      "priority": "must",
+      "desc": "高山 → 新穗高／飛驒大鐘乳洞：離開高山市後主要山路雪況。",
+      "tags": []
+    },
+    {
+      "id": "cam-030-國道158號丹生川町久手往平湯",
+      "title": "國道158號・丹生川町久手（往平湯）",
+      "type": "image",
+      "imageUrl": "https://douro.pref.gifu.lg.jp/img/camera/douro_070_0091.jpg",
+      "sourceUrl": "https://douro.pref.gifu.lg.jp/",
+      "sourceLabel": "🛣️ 官方來源",
+      "priority": "must",
+      "desc": "高山 → 新穗高：進入較高海拔山區前查看路面積雪及結冰。",
+      "tags": []
+    },
+    {
+      "id": "cam-031-國道158號平湯往高山",
+      "title": "國道158號・平湯（往高山）",
+      "type": "image",
+      "imageUrl": "https://douro.pref.gifu.lg.jp/img/camera/douro_080_0181.jpg",
+      "sourceUrl": "https://douro.pref.gifu.lg.jp/",
+      "sourceLabel": "🛣️ 官方來源",
+      "priority": "must",
+      "desc": "高山 ↔ 新穗高：平湯一帶道路及積雪狀況。",
+      "tags": []
+    },
+    {
+      "id": "cam-032-國道158號大瀧橋往平湯",
+      "title": "國道158號・大瀧橋（往平湯）",
+      "type": "image",
+      "imageUrl": "https://douro.pref.gifu.lg.jp/img/camera/douro_080_0081.jpg",
+      "sourceUrl": "https://douro.pref.gifu.lg.jp/",
+      "sourceLabel": "🛣️ 官方來源",
+      "priority": "ref",
+      "desc": "高山 → 新穗高：接近平湯前查看山區道路及積雪。",
+      "tags": []
+    },
+    {
+      "id": "cam-033-國道156號岩瀨橋往白川村",
+      "title": "國道156號・岩瀨橋（往白川村）",
+      "type": "image",
+      "imageUrl": "https://douro.pref.gifu.lg.jp/img/camera/douro_070_0042.jpg",
+      "sourceUrl": "https://douro.pref.gifu.lg.jp/",
+      "sourceLabel": "🛣️ 官方來源",
+      "priority": "must",
+      "desc": "高山 → 白川鄉方案：前往白川鄉方向國道156號雪況。",
+      "tags": []
+    },
+    {
+      "id": "cam-034-國道156號福島往莊川",
+      "title": "國道156號・福島（往莊川）",
+      "type": "image",
+      "imageUrl": "https://douro.pref.gifu.lg.jp/img/camera/douro_070_0071.jpg",
+      "sourceUrl": "https://douro.pref.gifu.lg.jp/",
+      "sourceLabel": "🛣️ 官方來源",
+      "priority": "must",
+      "desc": "高山 → 白川鄉：白川鄉周邊道路積雪及能見度。",
+      "tags": []
+    },
+    {
+      "id": "cam-035-國道156號椿原往莊川",
+      "title": "國道156號・椿原（往莊川）",
+      "type": "image",
+      "imageUrl": "https://douro.pref.gifu.lg.jp/img/camera/douro_070_0011.jpg",
+      "sourceUrl": "https://douro.pref.gifu.lg.jp/",
+      "sourceLabel": "🛣️ 官方來源",
+      "priority": "ref",
+      "desc": "白川村周邊即時雪況。",
+      "tags": []
+    },
+    {
+      "id": "cam-036-高山陣屋前",
+      "title": "高山陣屋前",
+      "type": "youtube",
+      "videoId": "fbY0VRfHsS8",
+      "sourceUrl": "https://www.youtube.com/watch?v=fbY0VRfHsS8",
+      "sourceLabel": "🔗 全螢幕",
+      "priority": "must",
+      "desc": "Plan B：查看高山陣屋附近積雪、天氣及人流。",
+      "tags": []
+    },
+    {
+      "id": "cam-037-國道158號丹生川町茶屋野往高山",
+      "title": "國道158號・丹生川町茶屋野（往高山）",
+      "type": "image",
+      "imageUrl": "https://douro.pref.gifu.lg.jp/img/camera/douro_070_0061.jpg",
+      "sourceUrl": "https://douro.pref.gifu.lg.jp/",
+      "sourceLabel": "🛣️ 官方來源",
+      "priority": "must",
+      "desc": "飛驒大鐘乳洞 → 高山：返回市區道路雪況。",
+      "tags": []
+    }
+  ],
+  "days": [
+    {
+      "id": "d1",
+      "label": "D1",
+      "date": "2027-01-09",
+      "title": "香港 → 名古屋 → 松本",
+      "desc": "中部國際機場 → 名古屋 → 松本",
+      "route": "中部國際機場 → 名鐵 → 名古屋 → JR 特急信濃 → 松本",
+      "cameras": [
+        "cam-001-松本城及北阿爾卑斯",
+        "cam-002-美之原高原王之頭方向"
+      ],
+      "places": [
+        {
+          "label": "📍 松本城",
+          "map": "Matsumoto Castle"
+        },
+        {
+          "label": "📍 松本站",
+          "map": "Matsumoto Station"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "松本市官方 Live Camera",
+          "url": "https://www.city.matsumoto.nagano.jp/soshiki/216/52945.html"
+        }
+      ]
+    },
+    {
+      "id": "d2",
+      "label": "D2",
+      "date": "2027-01-10",
+      "title": "松本城 → 輕井澤 → 千曲",
+      "desc": "松本城（1.5小時）→ Times 取車 → 輕井澤 Outlet → 千曲",
+      "route": "08:30 快早餐 → 步行松本城（1.5小時）→ 返酒店攞行李 → Times 取車 → 輕井澤 Outlet（2小時）→ 千曲｜白絲瀑布／鬼押出園今次取消",
+      "cameras": [
+        "cam-001-松本城及北阿爾卑斯",
+        "cam-003-國道18號追分",
+        "cam-004-國道18號繞道消防署附近",
+        "cam-005-新輕井澤西交叉口",
+        "cam-006-王子通",
+        "cam-007-輕井澤站北口",
+        "cam-008-千曲川平和橋"
+      ],
+      "places": [
+        {
+          "label": "📍 松本城",
+          "map": "Matsumoto Castle"
+        },
+        {
+          "label": "📍 Times 松本站前",
+          "map": "Times Car Rental Matsumoto Station"
+        },
+        {
+          "label": "📍 輕井澤王子購物廣場",
+          "map": "Karuizawa Prince Shopping Plaza"
+        },
+        {
+          "label": "📍 千曲館",
+          "map": "Club Wyndham Chikumakan Nagano"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "輕井澤官方 Live Camera",
+          "url": "https://www.town.karuizawa.lg.jp/page/1427.html"
+        },
+        {
+          "label": "淺間山即時資訊",
+          "url": "https://www.town.karuizawa.lg.jp/site/bousai/1712.html"
+        },
+        {
+          "label": "千曲川 Camera Map",
+          "url": "https://www.hrr.mlit.go.jp/chikuma/livecamera/"
+        }
+      ]
+    },
+    {
+      "id": "d3",
+      "label": "D3",
+      "date": "2027-01-11",
+      "title": "千曲 → 小布施 → 澀溫泉",
+      "desc": "千曲 → 小布施 → JA 農產直賣所 → 澀溫泉",
+      "route": "千曲 → 小布施舊街 → JA 農產直賣所 → 澀溫泉 → 九湯巡禮",
+      "cameras": [
+        "cam-009-小布施橋",
+        "cam-010-北信州山之內道之驛",
+        "cam-011-湯田中站前",
+        "cam-012-澀溫泉街"
+      ],
+      "places": [
+        {
+          "label": "📍 小布施",
+          "map": "Obuse Nagano"
+        },
+        {
+          "label": "📍 JA中野市 Oranche",
+          "map": "JA中野市 農産物産館 オランチェ"
+        },
+        {
+          "label": "📍 澀溫泉",
+          "map": "Shibu Onsen"
+        },
+        {
+          "label": "📍 一乃湯果亭",
+          "map": "Ichinoyu Katei"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "山之內町官方 Live Camera",
+          "url": "https://www.info-yamanouchi.net/livecam/"
+        },
+        {
+          "label": "澀溫泉官方網站",
+          "url": "https://shibuonsen.net/"
+        }
+      ]
+    },
+    {
+      "id": "d4",
+      "label": "D4",
+      "date": "2027-01-12",
+      "title": "澀溫泉 → 地獄谷 → 須坂 → 長野",
+      "desc": "澀溫泉 → 地獄谷野猿公苑 → AEON Mall 須坂 → 長野",
+      "route": "澀溫泉 → 上林停車場 → 雪路步行 → 地獄谷野猿公苑 → AEON Mall 須坂 → 長野",
+      "cameras": [
+        "cam-013-地獄谷野猿公苑巴士候車室",
+        "cam-014-須坂長野東交流道",
+        "cam-015-長野站"
+      ],
+      "places": [
+        {
+          "label": "📍 上林停車場",
+          "map": "Snow Monkey Park parking Kanbayashi"
+        },
+        {
+          "label": "📍 地獄谷野猿公苑",
+          "map": "Jigokudani Yaen Koen"
+        },
+        {
+          "label": "📍 AEON Mall 須坂",
+          "map": "AEON MALL Suzaka"
+        },
+        {
+          "label": "📍 長野酒店",
+          "map": "Hotel JAL City Nagano"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "地獄谷野猿公苑官方 Live Video",
+          "url": "https://jigokudani-yaenkoen.co.jp/livecam2/video.html"
+        },
+        {
+          "label": "地獄谷即時圖片",
+          "url": "https://jigokudani-yaenkoen.co.jp/livecam2/still.html"
+        },
+        {
+          "label": "山之內町官方 Live Camera",
+          "url": "https://www.info-yamanouchi.net/livecam/"
+        }
+      ]
+    },
+    {
+      "id": "d5",
+      "label": "D5",
+      "date": "2027-01-13",
+      "title": "長野 → 白馬岩岳 → 高山",
+      "desc": "長野 → 白馬岩岳 → 高山",
+      "route": "長野 → 白馬岩岳 → 山頂觀景／雪地活動 → 白馬午餐 → 高山",
+      "cameras": [
+        "cam-016-白馬岩岳",
+        "cam-017-白馬八方尾根阿爾卑斯四人吊椅",
+        "cam-018-白馬八方尾根兔平",
+        "cam-019-白馬八方尾根白樺纜車站",
+        "cam-020-白馬八方尾根第三停車場",
+        "cam-021-白馬47滑雪場",
+        "cam-022-白馬五龍阿爾卑斯平北側",
+        "cam-023-白馬五龍阿爾卑斯平西側",
+        "cam-024-白馬五龍山腳廣場",
+        "cam-025-白馬五龍第二停車場",
+        "cam-026-白馬五龍遠見站",
+        "cam-027-高山中橋"
+      ],
+      "places": [
+        {
+          "label": "📍 白馬岩岳",
+          "map": "Hakuba Iwatake Mountain Resort"
+        },
+        {
+          "label": "📍 高山酒店",
+          "map": "Hida Hanasatonoyu Takayama Ouan"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "白馬村官方 Live Camera",
+          "url": "https://www.vill.hakuba.nagano.jp/livecamera/"
+        },
+        {
+          "label": "飛驒高山官方 Live Camera",
+          "url": "https://www.hidatakayama.or.jp/index_10.html"
+        }
+      ]
+    },
+    {
+      "id": "d6",
+      "label": "D6",
+      "date": "2027-01-14",
+      "title": "🚡 新穗高 → 平湯 → 高山",
+      "desc": "今日已選做新穗高日；山頂能見度、風況同纜車運行正常先出發。",
+      "route": "高山 → 新穗高纜車 → 平湯神社 → 高山",
+      "cameras": [
+        "cam-028-新穗高纜車西穗高口",
+        "cam-029-國道158號丹生川町茶屋野往平湯",
+        "cam-030-國道158號丹生川町久手往平湯",
+        "cam-031-國道158號平湯往高山",
+        "cam-032-國道158號大瀧橋往平湯"
+      ],
+      "places": [
+        {
+          "label": "📍 新穗高纜車",
+          "map": "Shinhotaka Ropeway"
+        },
+        {
+          "label": "📍 平湯神社",
+          "map": "平湯神社"
+        },
+        {
+          "label": "📍 高山住宿",
+          "map": "Takayama Ouan"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "新穗高纜車天氣及運行",
+          "url": "https://shinhotaka-ropeway.jp/"
+        },
+        {
+          "label": "飛驒高山官方 Live Camera",
+          "url": "https://www.hidatakayama.or.jp/index_10.html"
+        },
+        {
+          "label": "shinhotakaStatus",
+          "url": "https://shinhotaka-ropeway.jp/"
+        }
+      ]
+    },
+    {
+      "id": "d7",
+      "label": "D7",
+      "date": "2027-01-15",
+      "title": "🏘️ 白川鄉 → 高山",
+      "desc": "D6 已去新穗高，所以今日補白川鄉",
+      "route": "高山 → 白川鄉荻町合掌村 → 和田家 → 荻町城跡展望台 → 高山",
+      "cameras": [
+        "cam-028-新穗高纜車西穗高口",
+        "cam-033-國道156號岩瀨橋往白川村",
+        "cam-034-國道156號福島往莊川",
+        "cam-035-國道156號椿原往莊川"
+      ],
+      "places": [
+        {
+          "label": "📍 白川鄉",
+          "map": "Shirakawa-go"
+        },
+        {
+          "label": "📍 和田家",
+          "map": "Wada House Shirakawa-go"
+        },
+        {
+          "label": "📍 荻町城跡展望台",
+          "map": "Ogimachi Castle Observation Deck"
+        },
+        {
+          "label": "📍 高山住宿",
+          "map": "Residence Hotel Takayama Station"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "白川鄉合掌村官方 Live Cam",
+          "url": "https://www.vill.shirakawa.lg.jp/livecam/"
+        },
+        {
+          "label": "白川鄉交通 Live Cam",
+          "url": "https://shirakawa-going.jp/tw/index.html"
+        },
+        {
+          "label": "新穗高纜車運行狀況",
+          "url": "https://shinhotaka-ropeway.jp/"
+        },
+        {
+          "label": "shirakawagoTraffic",
+          "url": "https://shirakawa-going.jp/tw/index.html"
+        }
+      ]
+    },
+    {
+      "id": "d8",
+      "label": "D8",
+      "date": "2027-01-16",
+      "title": "🏯 高山市區 → 飛驒大鐘乳洞 → 松本",
+      "desc": "完成高山市區＋鐘乳洞後一路向東返松本",
+      "route": "宮川朝市 → 高山陣屋 → 三町古街 → 飛驒大鐘乳洞 → 平湯／安房 → 松本",
+      "cameras": [
+        "cam-027-高山中橋",
+        "cam-036-高山陣屋前",
+        "cam-029-國道158號丹生川町茶屋野往平湯",
+        "cam-037-國道158號丹生川町茶屋野往高山"
+      ],
+      "places": [
+        {
+          "label": "📍 宮川朝市",
+          "map": "Miyagawa Morning Markets Takayama"
+        },
+        {
+          "label": "📍 高山陣屋",
+          "map": "Takayama Jinya"
+        },
+        {
+          "label": "📍 三町古街",
+          "map": "Sanmachi Suji Takayama"
+        },
+        {
+          "label": "📍 飛驒大鐘乳洞",
+          "map": "Hida Great Limestone Cave"
+        },
+        {
+          "label": "📍 松本住宿",
+          "map": "Iroha Grand Hotel Matsumoto Ekimae"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "白川鄉官方 Live Cam",
+          "url": "https://www.vill.shirakawa.lg.jp/livecam/"
+        },
+        {
+          "label": "新穗高纜車運行狀況",
+          "url": "https://shinhotaka-ropeway.jp/"
+        },
+        {
+          "label": "gifuRoad",
+          "url": "https://douro.pref.gifu.lg.jp/"
+        },
+        {
+          "label": "takayamaLive",
+          "url": "https://www.hidatakayama.or.jp/index_10.html"
+        }
+      ]
+    },
+    {
+      "id": "d9",
+      "label": "D9",
+      "date": "2027-01-17",
+      "title": "松本 → 名古屋 → 香港",
+      "desc": "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港",
+      "route": "松本酒店 → AEON Mall 松本 → 入滿油 → Times 松本站前還車 → JR 特急信濃 → 名古屋 → 中部國際機場",
+      "cameras": [
+        "cam-001-松本城及北阿爾卑斯",
+        "cam-002-美之原高原王之頭方向"
+      ],
+      "places": [
+        {
+          "label": "📍 AEON Mall 松本",
+          "map": "AEON MALL Matsumoto"
+        },
+        {
+          "label": "📍 Times 松本站前",
+          "map": "Times Car Rental Matsumoto Station"
+        },
+        {
+          "label": "📍 松本站",
+          "map": "Matsumoto Station"
+        },
+        {
+          "label": "📍 中部國際機場",
+          "map": "Chubu Centrair International Airport"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "松本市官方 Live Camera",
+          "url": "https://www.city.matsumoto.nagano.jp/soshiki/216/52945.html"
+        }
+      ]
+    }
+  ]
+}
