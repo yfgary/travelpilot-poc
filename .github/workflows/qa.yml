@@ -9,48 +9,79 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Checkout production main baseline
+        if: ${{ hashFiles('.poc-full-production-clone.json') != '' }}
+        uses: actions/checkout@v4
+        with:
+          repository: yfgary/travelpilot
+          ref: main
+          path: production-baseline
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Architecture and data QA
-        run: python scripts/qa.py
-      - name: Round 4 migration parity QA
-        run: python scripts/qa_migration.py
-      - name: Round 5 retirement readiness
-        run: python scripts/round5_readiness.py
+
+      - name: POC architecture and migration QA
+        if: ${{ hashFiles('.poc-full-production-clone.json') == '' }}
+        run: |
+          python scripts/qa.py
+          python scripts/qa_migration.py
+          python scripts/round5_readiness.py
+
+      - name: Full production clone QA
+        if: ${{ hashFiles('.poc-full-production-clone.json') != '' }}
+        env:
+          PRODUCTION_BASELINE: production-baseline
+        run: python scripts/qa_full_clone.py
+
       - name: JavaScript syntax
         run: |
-          for f in assets/*.js; do
-            node --check "$f"
-          done
+          find assets -maxdepth 1 -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+          if [ -f scripts/full-clone-smoke.mjs ]; then node --check scripts/full-clone-smoke.mjs; fi
+
       - name: JSON parse
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           for p in Path('.').rglob('*.json'):
-              if 'node_modules' in p.parts:
+              if '.git' in p.parts or 'node_modules' in p.parts or 'production-baseline' in p.parts:
                   continue
               json.loads(p.read_text(encoding='utf-8'))
           print('JSON parse PASS')
           PY
-      - name: Install browser smoke dependencies
+
+      - name: Install browser dependencies
         run: |
           npm install
           npx playwright install --with-deps chromium
-      - name: Browser smoke + Round 5 full parity
+
+      - name: Legacy POC browser QA
+        if: ${{ hashFiles('.poc-full-production-clone.json') == '' }}
         run: |
           python -m http.server 8000 --bind 127.0.0.1 >/tmp/travelpilot-poc-http.log 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID || true' EXIT
           for i in $(seq 1 20); do
-            if curl -fsS http://127.0.0.1:8000/index.html >/dev/null; then
-              break
-            fi
+            if curl -fsS http://127.0.0.1:8000/index.html >/dev/null; then break; fi
             sleep 1
           done
           npm run smoke
           npm run parity
+
+      - name: Full clone browser QA
+        if: ${{ hashFiles('.poc-full-production-clone.json') != '' }}
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 >/tmp/travelpilot-poc-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8000/index.html >/dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/full-clone-smoke.mjs
