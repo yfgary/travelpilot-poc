@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 2,
+  "tripId": "city-demo",
+  "hotels": [
+    {
+      "id": "demo-hotel",
+      "name": "Demo Hotel",
+      "map": "Tokyo Station",
+      "address": "Demo address",
+      "status": "booked",
+      "statusLabel": "✅ Demo",
+      "checkIn": "15:00",
+      "checkOut": "11:00"
+    }
+  ]
+}
