@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 2,
+  "tripId": "multi-trip-demo-okinawa",
+  "title": "🧳 出發前 Checklist",
+  "desc": "真正出發前要準備嘅物品／文件；每個 Trip 獨立儲存進度。",
+  "expectedCount": 12,
+  "groups": [
+    {
+      "title": "🪪 證件／付款",
+      "items": [
+        {
+          "id": "passport",
+          "label": "護照／旅行證件"
+        },
+        {
+          "id": "insurance",
+          "label": "旅遊保險資料"
+        },
+        {
+          "id": "cards",
+          "label": "信用卡＋少量現金"
+        }
+      ]
+    },
+    {
+      "title": "📱 電子／通訊",
+      "items": [
+        {
+          "id": "phone",
+          "label": "手機＋充電線"
+        },
+        {
+          "id": "powerbank",
+          "label": "流動電源"
+        },
+        {
+          "id": "sim",
+          "label": "SIM／漫遊設定"
+        }
+      ]
+    },
+    {
+      "title": "☀️ 沖繩戶外",
+      "items": [
+        {
+          "id": "sunscreen",
+          "label": "防曬"
+        },
+        {
+          "id": "hat",
+          "label": "帽／太陽眼鏡"
+        },
+        {
+          "id": "water",
+          "label": "水樽／補水用品"
+        }
+      ]
+    },
+    {
+      "title": "🌊 海上活動",
+      "items": [
+        {
+          "id": "operator",
+          "label": "確認營運商／集合時間"
+        },
+        {
+          "id": "sea",
+          "label": "出發前再睇海況、浪高、雷暴及取消通知"
+        },
+        {
+          "id": "drybag",
+          "label": "防水袋／替換衣物"
+        }
+      ]
+    }
+  ]
+}
