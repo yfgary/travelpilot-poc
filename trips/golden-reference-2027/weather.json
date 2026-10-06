@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 4,
+  "tripId": "golden-reference-2027",
+  "profileStandardVersion": "v1",
+  "regions": {
+    "karuizawa": {
+      "name": "輕井澤",
+      "label": "輕井澤戶外／Outlet",
+      "type": "cityscenic",
+      "lat": 36.3485,
+      "lon": 138.5969,
+      "scoreNote": "道路積雪／結冰另外確認",
+      "activityProfiles": [
+        {
+          "id": "outlet_open_air",
+          "weight": 0.65
+        },
+        {
+          "id": "road_trip",
+          "weight": 0.35
+        }
+      ]
+    },
+    "shinhotaka": {
+      "name": "新穗高",
+      "label": "新穗高",
+      "type": "mountain",
+      "lat": 36.2828,
+      "lon": 137.5804,
+      "scoreNote": "最後仍要睇官方運行＋Live Cam",
+      "activityProfiles": [
+        {
+          "id": "ropeway_mountain",
+          "weight": 0.5
+        },
+        {
+          "id": "mountain_view",
+          "weight": 0.3
+        },
+        {
+          "id": "road_trip",
+          "weight": 0.2
+        }
+      ]
+    },
+    "shirakawago": {
+      "name": "白川鄉",
+      "label": "白川鄉",
+      "type": "village",
+      "lat": 36.2573,
+      "lon": 136.9068,
+      "scoreNote": "道路積雪／封路另外確認",
+      "activityProfiles": [
+        {
+          "id": "village_scenic",
+          "weight": 0.55
+        },
+        {
+          "id": "road_trip",
+          "weight": 0.3
+        },
+        {
+          "id": "historic_outdoor",
+          "weight": 0.15
+        }
+      ]
+    },
+    "takayama": {
+      "name": "高山",
+      "label": "高山市區",
+      "type": "cityscenic",
+      "lat": 36.1461,
+      "lon": 137.2522,
+      "scoreNote": "道路積雪／結冰另外確認",
+      "activityProfiles": [
+        {
+          "id": "city_walk",
+          "weight": 0.65
+        },
+        {
+          "id": "road_trip",
+          "weight": 0.35
+        }
+      ]
+    }
+  },
+  "dayRegions": {
+    "d2": "karuizawa",
+    "d6": "shinhotaka",
+    "d7": "shirakawago",
+    "d8": "takayama"
+  },
+  "scoreProfiles": {
+    "mountain": {
+      "visibility": 0.35,
+      "cloud": 0.25,
+      "gust": 0.2,
+      "precipitation": 0.1,
+      "snow": 0.1
+    },
+    "village": {
+      "visibility": 0.3,
+      "cloud": 0.05,
+      "gust": 0.25,
+      "precipitation": 0.2,
+      "snow": 0.2
+    },
+    "cityscenic": {
+      "visibility": 0.2,
+      "cloud": 0.1,
+      "gust": 0.25,
+      "precipitation": 0.3,
+      "snow": 0.15
+    }
+  }
+}
