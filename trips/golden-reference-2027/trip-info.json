@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 2,
+  "tripId": "golden-reference-2027",
+  "overview": {
+    "title": "2027 日本中部冬季自駕 · Standard POC",
+    "summary": "Golden Reference：白川鄉現有有用功能全部提升做 Standard capability。",
+    "note": "POC 唯一刻意移除：D6–D8 自動換日及天氣自動選日。",
+    "highlights": [
+      {
+        "title": "🗓️ Rich Itinerary",
+        "text": "Timeline、相片、Hard Cut、Backup、Bonus 全部由 JSON。"
+      },
+      {
+        "title": "ⓘ Rich Attraction",
+        "text": "歷史、去到睇乜、冬季提示、來源全部 data-driven。"
+      },
+      {
+        "title": "📹 Live Cam",
+        "text": "同北海道一樣使用 cameras[] + days[]。"
+      }
+    ]
+  },
+  "transport": {
+    "title": "✈️ 航班・JR・名鐵",
+    "desc": "示範 Standard cards",
+    "cards": [
+      {
+        "badges": [
+          [
+            "D1",
+            ""
+          ],
+          [
+            "JR",
+            "warn"
+          ]
+        ],
+        "title": "JR 名古屋 → 松本",
+        "map": "Nagoya Station",
+        "lines": [
+          "特急信濃",
+          "正式時間出發前再核對。"
+        ]
+      },
+      {
+        "badges": [
+          [
+            "D9",
+            ""
+          ],
+          [
+            "回程",
+            "good"
+          ]
+        ],
+        "title": "松本 → 名古屋 → 機場",
+        "map": "Matsumoto Station",
+        "lines": [
+          "還車後保留 Buffer。"
+        ]
+      }
+    ]
+  },
+  "car": {
+    "title": "🚗 租車資料",
+    "desc": "冬季自駕功能係 Standard capability",
+    "cards": [
+      {
+        "badges": [
+          [
+            "D2",
+            ""
+          ],
+          [
+            "冬季",
+            "warn"
+          ]
+        ],
+        "title": "Times 取車",
+        "map": "Times Car Rental Matsumoto Station",
+        "lines": [
+          "4WD＋雪軚",
+          "檢查雪刷、輪胎、油量、導航。"
+        ]
+      },
+      {
+        "badges": [
+          [
+            "安全",
+            "warn"
+          ]
+        ],
+        "title": "雪地駕駛",
+        "lines": [
+          "慢加速、慢煞車、慢轉方向。",
+          "道路資訊優先過景點。"
+        ]
+      }
+    ]
+  },
+  "hotelStays": {
+    "title": "🏨 住宿一覽",
+    "desc": "酒店付款、取消、泊車都係 Standard fields",
+    "stays": [
+      {
+        "day": "D2",
+        "date": "1/10",
+        "hotelId": "chikumakan",
+        "icon": "♨️",
+        "note": "一泊二食"
+      },
+      {
+        "day": "D6",
+        "date": "1/14",
+        "hotelId": "takayama-ouan",
+        "icon": "♨️",
+        "note": "高山"
+      },
+      {
+        "day": "D7",
+        "date": "1/15",
+        "hotelId": "residence-takayama",
+        "icon": "🏨",
+        "note": "高山站附近"
+      },
+      {
+        "day": "D8",
+        "date": "1/16",
+        "hotelId": "iroha-matsumoto",
+        "icon": "🏯",
+        "note": "松本最後一晚"
+      }
+    ]
+  },
+  "parking": {
+    "title": "🅿️ 重要停車位置",
+    "desc": "導航目標唔一定等於景點名",
+    "cards": [
+      {
+        "badges": [
+          [
+            "D7",
+            ""
+          ]
+        ],
+        "title": "白川鄉遊客停車場",
+        "map": "せせらぎ公園駐車場 白川郷",
+        "lines": [
+          "泊車後步行入合掌村。"
+        ],
+        "warning": "唔駛跟導航駛入住宅區。"
+      },
+      {
+        "badges": [
+          [
+            "D6",
+            ""
+          ]
+        ],
+        "title": "新穗高纜車停車",
+        "map": "新穂高温泉駐車場",
+        "lines": [
+          "先去停車位置，再步行去纜車站。"
+        ]
+      }
+    ]
+  },
+  "hardCuts": {
+    "title": "⏰ 重要 Hard Cut",
+    "desc": "Standard cards/list 可表示",
+    "cards": [
+      {
+        "title": "D2 15:30",
+        "lines": [
+          "最遲離開輕井澤 Outlet。"
+        ]
+      },
+      {
+        "title": "D6 07:45",
+        "lines": [
+          "自行確認新穗高官方運行／Live Cam；App 不自動換日。"
+        ]
+      }
+    ]
+  },
+  "weather": {
+    "title": "🌨️ Weather",
+    "desc": "保留 Weather Score / Activity Profiles；移除 auto selection",
+    "cards": [
+      {
+        "title": "新穗高",
+        "lines": [
+          "山頂能見度、風況、運行狀態供人手決策。"
+        ]
+      },
+      {
+        "title": "白川鄉",
+        "lines": [
+          "降雪、道路、能見度供人手決策。"
+        ]
+      }
+    ]
+  },
+  "checklist": {
+    "title": "🎒 每朝出車 Checklist",
+    "desc": "狀態使用 multiTrip.checklist.<trip-id>.*",
+    "items": [
+      "📱 手機＋充足電量",
+      "🔋 Power Bank",
+      "❄️ 清走車窗／車頂積雪",
+      "⛽ 確認油量",
+      "📹 睇今日 Live Cam",
+      "🌨️ 睇降雪／道路情況"
+    ]
+  },
+  "emergency": {
+    "title": "☎️ 緊急資料",
+    "desc": "Standard section",
+    "cards": [
+      {
+        "title": "110 警察",
+        "lines": [
+          "交通事故、犯罪、人身安全等緊急情況。"
+        ]
+      },
+      {
+        "title": "119 救護／消防",
+        "lines": [
+          "急病、受傷、火警等緊急情況。"
+        ]
+      }
+    ]
+  },
+  "customSections": [
+    {
+      "id": "train-fares",
+      "title": "🚆 火車票價預算",
+      "desc": "以前屬 Japan-specific 內容，而家用 Standard customSections.cards。",
+      "type": "cards",
+      "cards": [
+        {
+          "title": "名古屋 → 松本",
+          "lines": [
+            "票價／指定席預算欄位示範。",
+            "正式出發前再核對。"
+          ]
+        },
+        {
+          "title": "松本 → 名古屋",
+          "lines": [
+            "回程預算欄位示範。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "snow-shrines",
+      "title": "⛩️ 雪景神社・Bonus",
+      "desc": "以前需要 Japan patch；而家係 Standard custom section。",
+      "type": "list",
+      "items": [
+        "平湯神社：D6 路況許可時短停",
+        "飛驒東照宮／日枝神社：市區有時間先加"
+      ]
+    },
+    {
+      "id": "manual-weather-rule",
+      "title": "⚠️ 天氣決策規則",
+      "type": "notice",
+      "text": "天氣可以提示風險及 suitability，但 Standard 不會自動重排 itinerary。"
+    }
+  ]
+}
