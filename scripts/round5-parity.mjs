@@ -85,7 +85,7 @@ await check('All four pages load only Standard runtime scripts',async()=>{
     assert(!internalScripts.some(x=>banned.test(x)),`${url} loaded legacy runtime script`);
     const nav=await page.locator('.page-nav a').evaluateAll(nodes=>nodes.map(a=>a.getAttribute('href')));
     for(const href of nav){
-      const u=new URL(href,location.origin);
+      const u=new URL(href,base);
       assert(u.searchParams.get('trip')===tripId,`nav lost trip id: ${href}`);
     }
     await page.close();
