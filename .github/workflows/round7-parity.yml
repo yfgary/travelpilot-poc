@@ -28,23 +28,27 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Existing production regression QA
+      - name: Existing production QA has no new regressions
         run: |
-          python scripts/qa_release.py
-          python scripts/qa.py
-          python scripts/qa_checklist.py
-          python scripts/qa_observers.py
-          python scripts/qa_legacy_update.py
-          python scripts/qa_loader.py
-          python scripts/qa_dead_assets.py
-          python scripts/qa_orphan_assets.py
-          python scripts/qa_v9_patch_surface.py
-          python scripts/qa_timer_retry_surface.py
-          python scripts/qa_visit_render_event.py
-          python scripts/qa_visit_fallback_audit.py
-          python scripts/qa_trip_info_event_audit.py
-          python scripts/qa_info_icon_event_audit.py
+          set -u
+          tests="qa_release.py qa.py qa_checklist.py qa_observers.py qa_legacy_update.py qa_loader.py qa_dead_assets.py qa_orphan_assets.py qa_v9_patch_surface.py qa_timer_retry_surface.py qa_visit_render_event.py qa_visit_fallback_audit.py qa_trip_info_event_audit.py qa_info_icon_event_audit.py"
+          for test in $tests; do
+            set +e
+            python "scripts/$test" >/tmp/candidate-qa.log 2>&1
+            candidate_rc=$?
+            (cd production-reference && python "scripts/$test") >/tmp/reference-qa.log 2>&1
+            reference_rc=$?
+            set -e
+            echo "$test candidate=$candidate_rc reference=$reference_rc"
+            if [ "$candidate_rc" -ne "$reference_rc" ]; then
+              echo "Candidate changed existing QA result for $test"
+              echo "--- candidate ---"; cat /tmp/candidate-qa.log
+              echo "--- production reference ---"; cat /tmp/reference-qa.log
+              exit 1
+            fi
+          done
           node --check sw.js
+          node --check assets/standard-runtime-loader-v1.js
           find assets -maxdepth 1 -type f -name '*.js' -print0 | xargs -0 -n1 node --check
 
       - name: Production public itinerary remains untouched
