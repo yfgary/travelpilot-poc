@@ -176,6 +176,55 @@ for attraction_id in (
     elif not (attraction.get("summary") and attraction.get("winter")):
         err(f"Attraction {attraction_id} lost rich detail")
 
+# The Golden Reference attraction copy must describe the fixed plan, not the retired selector.
+attraction_by_id = {row.get("id"): row for row in attractions}
+expected_days = {
+    "shinhotaka": "D6",
+    "hirayu-shrine": "D6",
+    "shirakawago": "D7",
+    "hida-toshogu": "D7 Backup",
+    "toyokawa-shiroyama-inari": "D7 Backup",
+    "miyagawa": "D8",
+    "takayama-jinya": "D8",
+    "sanmachi": "D8",
+    "hida-cave": "D8",
+}
+for attraction_id, expected_day in expected_days.items():
+    row = attraction_by_id.get(attraction_id)
+    if not row:
+        err(f"Missing fixed-day attraction {attraction_id}")
+    elif row.get("day") != expected_day:
+        err(f"{attraction_id} day should be {expected_day}, got {row.get('day')}")
+
+retired_attraction_phrases = (
+    "D6–D8選擇器",
+    "D6／D7／D8揀一日",
+    "留D7／D8",
+    "三個可選日期",
+    "你揀咗去新穗高嗰一日",
+    "D6–D8同新穗高互換",
+    "只適合D8新穗高",
+    "如果 D6/D7/D8",
+)
+for attraction_id in (
+    "shinhotaka",
+    "hirayu-shrine",
+    "hirayu-no-mori",
+    "shirakawago",
+    "hida-cave",
+    "hida-toshogu",
+    "toyokawa-shiroyama-inari",
+    "daio-wasabi",
+):
+    row = attraction_by_id.get(attraction_id) or {}
+    text = "\n".join(
+        str(row.get(field) or "")
+        for field in ("summary", "info", "tips", "visit", "winter")
+    )
+    for phrase in retired_attraction_phrases:
+        if phrase in text:
+            err(f"{attraction_id} retains retired flexible-plan copy: {phrase}")
+
 # Hotels
 if len(hotels.get("hotels") or []) != 7:
     err("Expected 7 hotels")
@@ -224,6 +273,32 @@ for day_id, region in fixed_regions.items():
         err(f"weather.dayRegions {day_id} != {region}")
 if "dynamicRegionRules" in weather:
     err("dynamicRegionRules must be removed")
+
+# Fixed D6 media should represent the fixed Shinhotaka / Hirayu / Takayama day.
+d6_media = by_id.get("d6", {}).get("media") or {}
+d6_gallery_text = json.dumps(d6_media.get("gallery") or [], ensure_ascii=False)
+if "平湯神社" not in d6_gallery_text:
+    err("D6 fixed media lost Hirayu Shrine")
+if "松本・今晚終點" in d6_gallery_text or "d9-matsumoto-station" in d6_gallery_text:
+    err("D6 media still contains hidden D8/Matsumoto scenario photo")
+
+# Timeline order/dedupe sanity after legacy DOM extraction.
+def first_minutes(value: str) -> int:
+    match = re.search(r"(\d{1,2}):(\d{2})", value or "")
+    if match:
+        return int(match.group(1)) * 60 + int(match.group(2))
+    if "晚上" in (value or "") or "夜晚" in (value or ""):
+        return 24 * 60
+    return 24 * 60 - 1
+
+for day in days:
+    rows = day.get("items", [])
+    keys = [(row.get("type"), row.get("title"), row.get("localName"), row.get("attractionId")) for row in rows]
+    if len(keys) != len(set(keys)):
+        err(f"{day.get('id')} still has duplicate legacy timeline rows")
+    numeric = [first_minutes(row.get("time") or "") for row in rows]
+    if numeric != sorted(numeric):
+        err(f"{day.get('id')} timeline is not in chronological order")
 
 # Media parity
 media_refs = report.get("mediaRefs") or []
