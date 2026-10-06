@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 2,
+  "tripId": "hokkaido-2025",
+  "title": "🧳 出發前 Checklist",
+  "desc": "自駕北海道版本；每個 Trip 獨立同步。",
+  "expectedCount": 15,
+  "groups": [
+    {
+      "title": "🪪 證件／租車",
+      "items": [
+        {
+          "id": "passport",
+          "label": "護照"
+        },
+        {
+          "id": "idp",
+          "label": "1949 日內瓦公約國際駕照＋香港駕照"
+        },
+        {
+          "id": "rental",
+          "label": "Times 租車確認資料／預約編號"
+        },
+        {
+          "id": "etc",
+          "label": "確認 ETC 卡／高速公路安排"
+        }
+      ]
+    },
+    {
+      "title": "🏨 住宿",
+      "items": [
+        {
+          "id": "hotels",
+          "label": "OMO5／洞爺 Sun Palace／第一滝本館確認資料"
+        },
+        {
+          "id": "airbnb",
+          "label": "札幌 Airbnb App 可登入；入住前確認密碼鎖指示"
+        }
+      ]
+    },
+    {
+      "title": "📱 電子／付款",
+      "items": [
+        {
+          "id": "phone",
+          "label": "手機＋充電線"
+        },
+        {
+          "id": "powerbank",
+          "label": "流動電源"
+        },
+        {
+          "id": "cards",
+          "label": "信用卡＋日圓現金"
+        }
+      ]
+    },
+    {
+      "title": "🚗 自駕",
+      "items": [
+        {
+          "id": "maps",
+          "label": "離線地圖／MapCode 資料"
+        },
+        {
+          "id": "fuel",
+          "label": "確認還車加油規則"
+        },
+        {
+          "id": "route",
+          "label": "每日出發前確認道路／停車／天氣"
+        }
+      ]
+    },
+    {
+      "title": "🌸 春季北海道",
+      "items": [
+        {
+          "id": "layers",
+          "label": "保暖外套＋可分層衣物"
+        },
+        {
+          "id": "rain",
+          "label": "雨具"
+        },
+        {
+          "id": "sakura",
+          "label": "出發前再睇函館／札幌／小樽花況"
+        }
+      ]
+    }
+  ]
+}
