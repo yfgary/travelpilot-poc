@@ -28,6 +28,24 @@ jobs:
           import json
           from pathlib import Path
           for p in Path('.').rglob('*.json'):
+              if 'node_modules' in p.parts:
+                  continue
               json.loads(p.read_text(encoding='utf-8'))
           print('JSON parse PASS')
           PY
+      - name: Install browser smoke dependencies
+        run: |
+          npm install
+          npx playwright install --with-deps chromium
+      - name: Browser smoke
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 >/tmp/travelpilot-poc-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:8000/index.html >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          npm run smoke
