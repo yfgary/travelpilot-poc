@@ -624,9 +624,9 @@
       "id": "d6",
       "label": "D6",
       "date": "2027-01-14",
-      "title": "🚡 新穗高 → 平湯 → 高山",
-      "desc": "今日已選做新穗高日；山頂能見度、風況同纜車運行正常先出發。",
-      "route": "高山 → 新穗高纜車 → 平湯神社 → 高山",
+      "title": "🚡 新穗高 → 高山",
+      "desc": "D6 固定新穗高主線；Live Cam／道路資訊只供安全判斷，平湯 Bonus 不自動加入。",
+      "route": "高山 → 新穗高 → 高山",
       "cameras": [
         "cam-028-新穗高纜車西穗高口",
         "cam-029-國道158號丹生川町茶屋野往平湯",
@@ -656,10 +656,6 @@
         {
           "label": "飛驒高山官方 Live Camera",
           "url": "https://www.hidatakayama.or.jp/index_10.html"
-        },
-        {
-          "label": "shinhotakaStatus",
-          "url": "https://shinhotaka-ropeway.jp/"
         }
       ]
     },
@@ -668,10 +664,9 @@
       "label": "D7",
       "date": "2027-01-15",
       "title": "🏘️ 白川鄉 → 高山",
-      "desc": "D6 已去新穗高，所以今日補白川鄉",
-      "route": "高山 → 白川鄉荻町合掌村 → 和田家 → 荻町城跡展望台 → 高山",
+      "desc": "D7 固定白川鄉；只保留白川鄉及相關道路資訊。",
+      "route": "高山 → 白川鄉 → 高山",
       "cameras": [
-        "cam-028-新穗高纜車西穗高口",
         "cam-033-國道156號岩瀨橋往白川村",
         "cam-034-國道156號福島往莊川",
         "cam-035-國道156號椿原往莊川"
@@ -702,14 +697,6 @@
         {
           "label": "白川鄉交通 Live Cam",
           "url": "https://shirakawa-going.jp/tw/index.html"
-        },
-        {
-          "label": "新穗高纜車運行狀況",
-          "url": "https://shinhotaka-ropeway.jp/"
-        },
-        {
-          "label": "shirakawagoTraffic",
-          "url": "https://shirakawa-going.jp/tw/index.html"
         }
       ]
     },
@@ -718,8 +705,8 @@
       "label": "D8",
       "date": "2027-01-16",
       "title": "🏯 高山市區 → 飛驒大鐘乳洞 → 松本",
-      "desc": "完成高山市區＋鐘乳洞後一路向東返松本",
-      "route": "宮川朝市 → 高山陣屋 → 三町古街 → 飛驒大鐘乳洞 → 平湯／安房 → 松本",
+      "desc": "D8 固定向東返松本；只保留高山市區／R158／松本相關資訊。",
+      "route": "高山 → 飛驒大鐘乳洞 → 平湯／安房 → 松本",
       "cameras": [
         "cam-027-高山中橋",
         "cam-036-高山陣屋前",
@@ -748,24 +735,7 @@
           "map": "Iroha Grand Hotel Matsumoto Ekimae"
         }
       ],
-      "officialLinks": [
-        {
-          "label": "白川鄉官方 Live Cam",
-          "url": "https://www.vill.shirakawa.lg.jp/livecam/"
-        },
-        {
-          "label": "新穗高纜車運行狀況",
-          "url": "https://shinhotaka-ropeway.jp/"
-        },
-        {
-          "label": "gifuRoad",
-          "url": "https://douro.pref.gifu.lg.jp/"
-        },
-        {
-          "label": "takayamaLive",
-          "url": "https://www.hidatakayama.or.jp/index_10.html"
-        }
-      ]
+      "officialLinks": []
     },
     {
       "id": "d9",
