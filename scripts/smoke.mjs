@@ -30,6 +30,14 @@ await check('Golden Reference itinerary rich render',async()=>{
   assert(await page.locator('#d6 .timeline-item').count()>=4,'D6 timeline incomplete');
   assert(await page.getByRole('button',{name:/Today Mode/}).count()===1,'Today Mode missing');
   assert(await page.getByRole('button',{name:/Driving Mode/}).count()===1,'Driving Mode missing');
+  const d6Timeline=await page.locator('#d6 .timeline').innerText();
+  assert(!d6Timeline.includes('平湯神社'),'optional Hirayu Shrine leaked into D6 main timeline');
+  const d6Text=await page.locator('#d6').innerText();
+  assert(d6Text.includes('平湯神社'),'D6 optional Hirayu Shrine backup missing');
+  const d7Timeline=await page.locator('#d7 .timeline').innerText();
+  assert(!d7Timeline.includes('飛驒東照宮')&&!d7Timeline.includes('豐川城山稻荷'),'optional D7 shrines leaked into main timeline');
+  const d7Text=await page.locator('#d7').innerText();
+  assert(d7Text.includes('飛驒東照宮')&&d7Text.includes('豐川城山稻荷'),'D7 optional shrine backups missing');
   assert(pageErrors.length===0,'page errors: '+pageErrors.join(' | '));
 });
 
@@ -81,6 +89,10 @@ await check('Live Cam uses cameras and days data',async()=>{
   await page.goto(base+'/live.html?trip='+encodeURIComponent(golden),{waitUntil:'networkidle'});
   assert(await page.locator('.live-day').count()>=3,'live day rendering missing');
   assert(await page.locator('.live-camera').count()>=5,'camera rendering missing');
+  const d7=await page.locator('#d7').innerText();
+  assert(!d7.includes('新穗高')&&!d7.includes('新穂高'),'D7 Live Cam still shows Shinhotaka');
+  const d8=await page.locator('#d8').innerText();
+  assert(!d8.includes('白川鄉')&&!d8.includes('白川郷')&&!d8.includes('新穗高')&&!d8.includes('新穂高'),'D8 Live Cam still shows alternate-day cameras');
 });
 
 await check('second trip uses same renderer without feature leakage',async()=>{
