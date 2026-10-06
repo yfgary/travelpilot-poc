@@ -100,7 +100,7 @@ for entry in trips:
                 if cid not in cams: err(f"{tid}: live day {day.get('id')} references unknown camera {cid}")
 
 # Golden Reference parity fixture: every Standard gap added in Round 3 must be represented.
-gold=Path("trips/golden-reference-2027")
+gold=Path("trips/shirakawago-shinhotaka-2027") if (ROOT/"trips/shirakawago-shinhotaka-2027").is_dir() else Path("trips/golden-reference-2027")
 g_it=load(gold/"itinerary.json")
 g_ai=load(gold/"attractions.json")
 g_info=load(gold/"trip-info.json")
