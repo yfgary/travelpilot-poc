@@ -711,6 +711,13 @@ async function scrapeLive(page,itinerary){
       d.desc='D8 固定向東返松本；只保留高山市區／R158／松本相關資訊。';
       d.route='高山 → 飛驒大鐘乳洞 → 平湯／安房 → 松本';
       d.officialLinks=d.officialLinks.filter(x=>/高山|道路|岐阜|松本/.test(x.label));
+      for(const id of d.cameras){
+        const cam=camById.get(id); if(!cam)continue;
+        if(cam.title.includes('茶屋野（往平湯）'))cam.desc='高山 → 飛驒大鐘乳洞／平湯方向：離開高山市後主要山路雪況。';
+        if(cam.title.includes('茶屋野（往高山）'))cam.desc='R158 丹生川一帶道路積雪及路面狀況參考。';
+        if(cam.title==='高山中橋')cam.desc='D8 朝早高山市區實際天氣、積雪及能見度參考。';
+        if(cam.title==='高山陣屋前')cam.desc='D8 高山陣屋／古街一帶積雪、天氣及人流參考。';
+      }
     }
   }
   const usedCameras=new Set([...dayAgg.values()].flatMap(d=>d.cameras));
