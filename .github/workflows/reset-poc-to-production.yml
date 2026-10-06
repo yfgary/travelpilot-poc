@@ -31,8 +31,10 @@ jobs:
         run: |
           set -euo pipefail
           PROD_SHA="$(git -C production-source rev-parse HEAD)"
-          rsync -a --delete --exclude='.git/' production-source/ ./
+          rm -rf /tmp/travelpilot-production-baseline
+          cp -a production-source /tmp/travelpilot-production-baseline
           rm -rf production-source
+          rsync -a --delete --exclude='.git/' /tmp/travelpilot-production-baseline/ ./
           python - "$PROD_SHA" <<'PY'
           import json,sys
           from pathlib import Path
