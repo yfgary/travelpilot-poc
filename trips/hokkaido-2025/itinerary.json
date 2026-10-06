@@ -1,1 +1,717 @@
-{"schemaVersion":2,"tripId":"hokkaido-2025","days":[{"id":"d1","day":1,"navLabel":"函館","date":"2025-04-26","title":"香港 → 新千歲 → 函館・五稜郭夜櫻","route":"HKG → CTS → Times 租車 → 函館 → 五稜郭公園 → OMO5 → 大門橫丁","weatherRegion":"hakodate","driving":true,"hotelId":"omo5-hakodate","imagePlan":{"hero":"五稜郭櫻花","small":["函館夜景／市區","北海道自駕"]},"items":[{"time":"05:30","type":"transport","title":"到香港機場","durationMinutes":75},{"time":"08:35–14:50","type":"flight","title":"HX690 香港 → 新千歲","note":"Hong Kong Airlines HX690；08:35 HKG → 14:50 CTS","durationMinutes":375},{"time":"15:30","type":"car","title":"Times 新千歲機場取車","map":"Times Car Rental New Chitose Airport","durationMinutes":30},{"time":"16:00–20:00","type":"drive","title":"新千歲機場 → 函館","note":"來源行程預留約4小時駕駛。","durationMinutes":240},{"time":"20:00–21:30","type":"attraction","title":"五稜郭公園・夜櫻","map":"Goryokaku Park","attractionId":"goryokaku","durationMinutes":90},{"time":"21:30","type":"hotel","title":"OMO5 函館 Check-in","map":"OMO5 Hakodate by Hoshino Resorts"},{"time":"22:00–23:30","type":"meal","title":"大門橫丁晚餐","map":"Hakodate Daimon Yokocho","attractionId":"daimon-yokocho","durationMinutes":90}]},{"id":"d2","day":2,"navLabel":"函館","date":"2025-04-27","title":"函館朝市・五稜郭・函館公園・函館山","route":"OMO5 → 函館朝市 → 五稜郭塔／公園 → 函館公園 → 函館山","weatherRegion":"hakodate","driving":false,"hotelId":"omo5-hakodate","imagePlan":{"hero":"五稜郭塔與櫻花","small":["函館朝市","函館山夜景"]},"items":[{"time":"09:30–11:10","type":"meal","title":"函館朝市 駅二市場・早餐","map":"Hakodate Asaichi Ekini Market","attractionId":"hakodate-morning-market","durationMinutes":100},{"time":"11:40–15:40","type":"attraction","title":"五稜郭塔＋五稜郭公園・櫻花","map":"Goryokaku Tower","attractionId":"goryokaku","durationMinutes":240},{"time":"16:40–17:40","type":"attraction","title":"函館公園","map":"Hakodate Park","attractionId":"hakodate-park","durationMinutes":60},{"time":"18:40–20:40","type":"attraction","title":"函館山展望台・夜景","map":"Mount Hakodate Observatory","attractionId":"mount-hakodate","durationMinutes":120}]},{"id":"d3","day":3,"navLabel":"洞爺湖","date":"2025-04-28","title":"函館 → 洞爺湖・溫泉酒店","route":"函館自由市場 → 桜ヶ丘通り → 函館酪農公社 → 石崎地主海神社 → 洞爺湖 → Toya Sun Palace","weatherRegion":"toyako","driving":true,"hotelId":"toya-sun-palace","imagePlan":{"hero":"洞爺湖","small":["函館櫻花街","洞爺湖溫泉"]},"items":[{"time":"09:30–10:30","type":"meal","title":"函館自由市場・早餐","map":"Hakodate Jiyu Market","attractionId":"hakodate-jiyu-market","durationMinutes":60},{"time":"10:30–11:00","type":"attraction","title":"桜ヶ丘通り","map":"Sakuragaoka-dori Hakodate","attractionId":"sakuragaoka-dori","durationMinutes":30},{"time":"11:00–11:30","type":"activity","title":"函館酪農公社","map":"Hakodate Dairy Corporation","durationMinutes":30},{"time":"11:30–12:00","type":"attraction","title":"石崎地主海神社","map":"Ishizaki Jinushi Kaijin Shrine Hakodate","durationMinutes":30},{"time":"12:00–15:00","type":"drive","title":"函館 → 洞爺湖","durationMinutes":180},{"time":"15:00–16:00","type":"attraction","title":"洞爺湖・湖畔","map":"Lake Toya","attractionId":"lake-toya","durationMinutes":60},{"time":"16:00","type":"hotel","title":"洞爺サンパレス Resort & Spa Check-in","map":"Toya Sun Palace Resort & Spa","note":"酒店 1泊2食；來源行程另記煙花約20:45–21:05。"}]},{"id":"d4","day":4,"navLabel":"登別","date":"2025-04-29","title":"洞爺湖 → 登別地獄谷・大湯沼・天然足湯","route":"洞爺湖 → 武澤水産 → 地獄谷 → 大湯沼 → 大湯沼川天然足湯 → 第一滝本館","weatherRegion":"noboribetsu","driving":true,"hotelId":"daiichi-takimotokan","imagePlan":{"hero":"登別地獄谷","small":["大湯沼","登別溫泉"]},"items":[{"time":"08:30–10:00","type":"meal","title":"酒店早餐＋退房","durationMinutes":90},{"time":"10:00–10:50","type":"drive","title":"洞爺湖 → 登別方向","durationMinutes":50},{"time":"10:50–11:20","type":"shopping","title":"武澤水産 Marketing","map":"Takesawa Suisan Hokkaido","durationMinutes":30},{"time":"11:50–13:50","type":"attraction","title":"登別地獄谷","map":"Noboribetsu Jigokudani","attractionId":"noboribetsu-jigokudani","durationMinutes":120},{"time":"13:50–14:20","type":"attraction","title":"大湯沼","map":"Oyunuma Noboribetsu","attractionId":"oyunuma","durationMinutes":30},{"time":"14:20–15:05","type":"onsen","title":"大湯沼川天然足湯","map":"Oyunuma River Natural Footbath","attractionId":"oyunuma-footbath","durationMinutes":45},{"time":"15:05","type":"hotel","title":"第一滝本館 Check-in","map":"Dai-ichi Takimotokan"}]},{"id":"d5","day":5,"navLabel":"札幌","date":"2025-04-30","title":"登別 → 北廣島 Outlet → 札幌","route":"第一滝本館 → 登別（可選熊牧場）→ 登別伊達時代村／櫻花隧道 → AEON／DONKI → 三井 Outlet → 札幌","weatherRegion":"sapporo","driving":true,"hotelId":"sapporo-hotel-unconfirmed","imagePlan":{"hero":"登別／札幌移動日","small":["三井Outlet札幌北廣島","札幌夜晚"]},"items":[{"time":"08:30–10:00","type":"meal","title":"酒店早餐＋退房","durationMinutes":90},{"time":"10:00","type":"attraction","title":"登別熊牧場（有時間先去）","map":"Noboribetsu Bear Park","attractionId":"noboribetsu-bear-park","note":"來源行程明確標示「有時間才去」。"},{"time":"10:30–11:15","type":"attraction","title":"登別伊達時代村／櫻花隧道","map":"Noboribetsu Date Jidaimura","attractionId":"noboribetsu-date-jidaimura","durationMinutes":45},{"time":"11:45–14:45","type":"shopping","title":"AEON / DONKI","note":"來源只寫 AEON / DONKI，未指定分店。","durationMinutes":180},{"time":"15:45–18:45","type":"shopping","title":"三井Outlet Park 札幌北廣島","map":"Mitsui Outlet Park Sapporo-Kitahiroshima","attractionId":"mitsui-outlet-kitahiroshima","durationMinutes":180},{"time":"晚上","type":"meal","title":"焼肉 味覚園 南3条店","map":"味覚園 南3条店 札幌","durationMinutes":90},{"time":"晚上","type":"hotel","title":"札幌酒店 Check-in","note":"上載來源未提供札幌酒店名稱／地址；暫時保留待確認。"}]},{"id":"d6","day":6,"navLabel":"札幌","date":"2025-05-01","title":"札幌・櫻花 Plan / 市區 Plan","route":"來源保留兩套 D6：櫻花較多時走郊外櫻花線；否則走札幌市區線","weatherRegion":"sapporo","driving":true,"hotelId":"sapporo-hotel-unconfirmed","imagePlan":{"hero":"札幌春季","small":["莫埃來沼公園","北海道神宮"]},"backups":["市區 Plan：札幌電視塔 → 大通公園 → 時計台 → 北海道神宮 → 狸小路 → 藻岩山"],"items":[{"time":"09:30–11:00","type":"meal","title":"二条市場・早餐","map":"Nijo Market Sapporo","attractionId":"nijo-market","durationMinutes":90},{"time":"11:30–13:00","type":"attraction","title":"莫埃來沼公園・櫻花 Plan","map":"Moerenuma Park","attractionId":"moerenuma-park","durationMinutes":90},{"time":"13:20–14:30","type":"attraction","title":"ROYCE' CACAO&CHOCOLATE TOWN","map":"Royce Cacao & Chocolate Town","attractionId":"royce-cacao-town","durationMinutes":70},{"time":"15:00–16:30","type":"attraction","title":"戶田紀念墓地公園・櫻花","map":"Toda Memorial Park Hokkaido","attractionId":"toda-memorial-park","durationMinutes":90},{"time":"17:30–18:30","type":"attraction","title":"北海道神宮・櫻花","map":"Hokkaido Jingu","attractionId":"hokkaido-jingu","durationMinutes":60},{"time":"晚上","type":"attraction","title":"藻岩山（市區 Plan 候選）","map":"Mt. Moiwa","attractionId":"mt-moiwa","note":"來源標示「日本新三大夜景」；屬另一套市區 Plan。"}]},{"id":"d7","day":7,"navLabel":"小樽","date":"2025-05-02","title":"札幌 → 小樽一日遊","route":"白い恋人パーク → 小樽三角市場 → 小樽運河／商店街 → 音樂盒堂 → 手宮公園 → 天狗山（Optional）","weatherRegion":"otaru","driving":true,"hotelId":"sapporo-hotel-unconfirmed","imagePlan":{"hero":"小樽運河","small":["白い恋人パーク","手宮公園櫻花"]},"items":[{"time":"10:00–11:30","type":"attraction","title":"白い恋人パーク","map":"Shiroi Koibito Park","attractionId":"shiroi-koibito-park","durationMinutes":90},{"time":"12:40–13:40","type":"meal","title":"小樽三角市場・Lunch","map":"Sankaku Market Otaru","attractionId":"otaru-sankaku-market","durationMinutes":60},{"time":"14:40–16:10","type":"attraction","title":"小樽運河＋商店街","map":"Otaru Canal","attractionId":"otaru-canal","durationMinutes":90},{"time":"16:10–16:25","type":"attraction","title":"小樽オルゴール堂 蒸気からくり時計","map":"Otaru Music Box Museum","durationMinutes":15},{"time":"16:35–18:35","type":"attraction","title":"手宮公園・櫻花","map":"Temiya Park Otaru","attractionId":"temiya-park","durationMinutes":120},{"time":"18:50–20:20","type":"attraction","title":"小樽天狗山（Optional）","map":"Otaru Tenguyama Ropeway","attractionId":"otaru-tenguyama","durationMinutes":90}]},{"id":"d8","day":8,"navLabel":"札幌→香港","date":"2025-05-03","title":"札幌 → Sapporo Beer Museum → 還車 → 香港","route":"札幌 → Sapporo Beer Museum → Times 新千歲還車 → CTS → HKG","weatherRegion":"sapporo","driving":true,"imagePlan":{"hero":"Sapporo Beer Museum","small":["新千歲機場","北海道最後一日"]},"hardCuts":[{"time":"13:30","label":"Times 新千歲機場還車"},{"time":"15:40","label":"HX691 起飛"}],"items":[{"time":"11:45–13:15","type":"attraction","title":"Sapporo Beer Museum","map":"Sapporo Beer Museum","attractionId":"sapporo-beer-museum","durationMinutes":90},{"time":"13:10–13:30","type":"car","title":"Times 新千歲機場還車","map":"Times Car Rental New Chitose Airport","note":"預約還車時間 13:30。","hardCut":true},{"time":"15:40–20:10","type":"flight","title":"HX691 新千歲 → 香港","note":"Hong Kong Airlines HX691；15:40 CTS → 20:10 HKG","durationMinutes":270,"hardCut":true}]}]}
+{
+  "schemaVersion": 3,
+  "tripId": "hokkaido-2025",
+  "days": [
+    {
+      "id": "d1",
+      "day": 1,
+      "navLabel": "函館",
+      "date": "2025-04-26",
+      "title": "香港 → 新千歲 → 函館・五稜郭夜櫻",
+      "route": "HKG → CTS → Times 租車 → 函館 → 五稜郭公園 → OMO5 → 大門橫丁",
+      "weatherRegion": "hakodate",
+      "driving": true,
+      "hotelId": "omo5-hakodate",
+      "items": [
+        {
+          "time": "05:30",
+          "type": "transport",
+          "title": "到香港機場",
+          "durationMinutes": 75
+        },
+        {
+          "time": "08:35–14:50",
+          "type": "flight",
+          "title": "HX690 香港 → 新千歲",
+          "note": "Hong Kong Airlines HX690；08:35 HKG → 14:50 CTS",
+          "durationMinutes": 375
+        },
+        {
+          "time": "15:30",
+          "type": "car",
+          "title": "Times 新千歲機場取車",
+          "map": "Times Car Rental New Chitose Airport",
+          "durationMinutes": 30
+        },
+        {
+          "time": "16:00–20:00",
+          "type": "drive",
+          "title": "新千歲機場 → 函館",
+          "note": "來源行程預留約4小時駕駛。",
+          "durationMinutes": 240
+        },
+        {
+          "time": "20:00–21:30",
+          "type": "attraction",
+          "title": "五稜郭公園・夜櫻",
+          "map": "Goryokaku Park",
+          "attractionId": "goryokaku",
+          "durationMinutes": 90
+        },
+        {
+          "time": "21:30",
+          "type": "hotel",
+          "title": "OMO5 函館 Check-in",
+          "map": "OMO5 Hakodate by Hoshino Resorts"
+        },
+        {
+          "time": "22:00–23:30",
+          "type": "meal",
+          "title": "大門橫丁晚餐",
+          "map": "Hakodate Daimon Yokocho",
+          "attractionId": "daimon-yokocho",
+          "durationMinutes": 90
+        }
+      ],
+      "media": {
+        "hero": {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Hokkaido-Cherry%20blossoms%20are%20fully%20bloomed%20in%20Goryokaku%20park-xl.jpg?width=1800",
+          "alt": "五稜郭櫻花",
+          "caption": "五稜郭櫻花",
+          "credit": {
+            "label": "五稜郭櫻花（Hokkaido - Cherry blossoms are fully bloomed in Goryokaku park）",
+            "url": "https://commons.wikimedia.org/wiki/File:Hokkaido-Cherry_blossoms_are_fully_bloomed_in_Goryokaku_park-xl.jpg"
+          }
+        },
+        "gallery": [
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Cherry%20of%20Goryokaku%20%E4%BA%94%E7%A8%9C%E9%83%AD%E3%81%AE%E6%A1%9C%20%282497592882%29.jpg?width=1000",
+            "alt": "函館夜景／市區",
+            "caption": "函館夜景／市區",
+            "credit": {
+              "label": "五稜郭櫻花（Cherry of Goryokaku）",
+              "url": "https://commons.wikimedia.org/wiki/File:Cherry_of_Goryokaku_%E4%BA%94%E7%A8%9C%E9%83%AD%E3%81%AE%E6%A1%9C_(2497592882).jpg"
+            }
+          },
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Night%20View%20Hakodate.jpg?width=1000",
+            "alt": "北海道自駕",
+            "caption": "北海道自駕",
+            "credit": {
+              "label": "函館夜景（Night View Hakodate）",
+              "url": "https://commons.wikimedia.org/wiki/File:Night_View_Hakodate.jpg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "d2",
+      "day": 2,
+      "navLabel": "函館",
+      "date": "2025-04-27",
+      "title": "函館朝市・五稜郭・函館公園・函館山",
+      "route": "OMO5 → 函館朝市 → 五稜郭塔／公園 → 函館公園 → 函館山",
+      "weatherRegion": "hakodate",
+      "driving": false,
+      "hotelId": "omo5-hakodate",
+      "items": [
+        {
+          "time": "09:30–11:10",
+          "type": "meal",
+          "title": "函館朝市 駅二市場・早餐",
+          "map": "Hakodate Asaichi Ekini Market",
+          "attractionId": "hakodate-morning-market",
+          "durationMinutes": 100
+        },
+        {
+          "time": "11:40–15:40",
+          "type": "attraction",
+          "title": "五稜郭塔＋五稜郭公園・櫻花",
+          "map": "Goryokaku Tower",
+          "attractionId": "goryokaku",
+          "durationMinutes": 240
+        },
+        {
+          "time": "16:40–17:40",
+          "type": "attraction",
+          "title": "函館公園",
+          "map": "Hakodate Park",
+          "attractionId": "hakodate-park",
+          "durationMinutes": 60
+        },
+        {
+          "time": "18:40–20:40",
+          "type": "attraction",
+          "title": "函館山展望台・夜景",
+          "map": "Mount Hakodate Observatory",
+          "attractionId": "mount-hakodate",
+          "durationMinutes": 120
+        }
+      ],
+      "media": {
+        "hero": {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Hokkaido-Goryokaku%20Fort%20in%20Cherry%20blossom-xl.jpg?width=1800",
+          "alt": "五稜郭塔與櫻花",
+          "caption": "五稜郭塔與櫻花",
+          "credit": {
+            "label": "五稜郭櫻花全景（Hokkaido-Goryokaku Fort in Cherry blossom）",
+            "url": "https://commons.wikimedia.org/wiki/File:Hokkaido-Goryokaku_Fort_in_Cherry_blossom-xl.jpg"
+          }
+        },
+        "gallery": [
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Hakodate%20Gory%C5%8Dkaku%20Park%20Sakura%20May%202016%206.jpg?width=1000",
+            "alt": "函館朝市",
+            "caption": "函館朝市",
+            "credit": {
+              "label": "五稜郭公園櫻花（Hakodate Goryokaku Park Sakura）",
+              "url": "https://commons.wikimedia.org/wiki/File:Hakodate_Gory%C5%8Dkaku_Park_Sakura_May_2016_6.jpg"
+            }
+          },
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Mount-Hakodate%20Night-view.jpg?width=1000",
+            "alt": "函館山夜景",
+            "caption": "函館山夜景",
+            "credit": {
+              "label": "函館山夜景（Mount-Hakodate Night-view）",
+              "url": "https://commons.wikimedia.org/wiki/File:Mount-Hakodate_Night-view.jpg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "d3",
+      "day": 3,
+      "navLabel": "洞爺湖",
+      "date": "2025-04-28",
+      "title": "函館 → 洞爺湖・溫泉酒店",
+      "route": "函館自由市場 → 桜ヶ丘通り → 函館酪農公社 → 石崎地主海神社 → 洞爺湖 → Toya Sun Palace",
+      "weatherRegion": "toyako",
+      "driving": true,
+      "hotelId": "toya-sun-palace",
+      "items": [
+        {
+          "time": "09:30–10:30",
+          "type": "meal",
+          "title": "函館自由市場・早餐",
+          "map": "Hakodate Jiyu Market",
+          "attractionId": "hakodate-jiyu-market",
+          "durationMinutes": 60
+        },
+        {
+          "time": "10:30–11:00",
+          "type": "attraction",
+          "title": "桜ヶ丘通り",
+          "map": "Sakuragaoka-dori Hakodate",
+          "attractionId": "sakuragaoka-dori",
+          "durationMinutes": 30
+        },
+        {
+          "time": "11:00–11:30",
+          "type": "activity",
+          "title": "函館酪農公社",
+          "map": "Hakodate Dairy Corporation",
+          "durationMinutes": 30
+        },
+        {
+          "time": "11:30–12:00",
+          "type": "attraction",
+          "title": "石崎地主海神社",
+          "map": "Ishizaki Jinushi Kaijin Shrine Hakodate",
+          "durationMinutes": 30
+        },
+        {
+          "time": "12:00–15:00",
+          "type": "drive",
+          "title": "函館 → 洞爺湖",
+          "durationMinutes": 180
+        },
+        {
+          "time": "15:00–16:00",
+          "type": "attraction",
+          "title": "洞爺湖・湖畔",
+          "map": "Lake Toya",
+          "attractionId": "lake-toya",
+          "durationMinutes": 60
+        },
+        {
+          "time": "16:00",
+          "type": "hotel",
+          "title": "洞爺サンパレス Resort & Spa Check-in",
+          "map": "Toya Sun Palace Resort & Spa",
+          "note": "酒店 1泊2食；來源行程另記煙花約20:45–21:05。"
+        }
+      ],
+      "media": {
+        "hero": {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20T%C5%8Dya.JPG?width=1800",
+          "alt": "洞爺湖",
+          "caption": "洞爺湖",
+          "credit": {
+            "label": "洞爺湖（Lake Tōya）",
+            "url": "https://commons.wikimedia.org/wiki/File:Lake_T%C5%8Dya.JPG"
+          }
+        },
+        "gallery": [
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake-toya%E3%80%81%E6%B4%9E%E7%88%BA%E6%B9%96%20%E6%B5%AE%E8%A6%8B%E5%A0%82%E5%85%AC%E5%9C%92.jpg?width=1000",
+            "alt": "函館櫻花街",
+            "caption": "函館櫻花街",
+            "credit": {
+              "label": "洞爺湖・浮見堂公園",
+              "url": "https://commons.wikimedia.org/wiki/File:Lake-toya%E3%80%81%E6%B4%9E%E7%88%BA%E6%B9%96_%E6%B5%AE%E8%A6%8B%E5%A0%82%E5%85%AC%E5%9C%92.jpg"
+            }
+          },
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Toya.JPG?width=1000",
+            "alt": "洞爺湖溫泉",
+            "caption": "洞爺湖溫泉",
+            "credit": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "d4",
+      "day": 4,
+      "navLabel": "登別",
+      "date": "2025-04-29",
+      "title": "洞爺湖 → 登別地獄谷・大湯沼・天然足湯",
+      "route": "洞爺湖 → 武澤水産 → 地獄谷 → 大湯沼 → 大湯沼川天然足湯 → 第一滝本館",
+      "weatherRegion": "noboribetsu",
+      "driving": true,
+      "hotelId": "daiichi-takimotokan",
+      "items": [
+        {
+          "time": "08:30–10:00",
+          "type": "meal",
+          "title": "酒店早餐＋退房",
+          "durationMinutes": 90
+        },
+        {
+          "time": "10:00–10:50",
+          "type": "drive",
+          "title": "洞爺湖 → 登別方向",
+          "durationMinutes": 50
+        },
+        {
+          "time": "10:50–11:20",
+          "type": "shopping",
+          "title": "武澤水産 Marketing",
+          "map": "Takesawa Suisan Hokkaido",
+          "durationMinutes": 30
+        },
+        {
+          "time": "11:50–13:50",
+          "type": "attraction",
+          "title": "登別地獄谷",
+          "map": "Noboribetsu Jigokudani",
+          "attractionId": "noboribetsu-jigokudani",
+          "durationMinutes": 120
+        },
+        {
+          "time": "13:50–14:20",
+          "type": "attraction",
+          "title": "大湯沼",
+          "map": "Oyunuma Noboribetsu",
+          "attractionId": "oyunuma",
+          "durationMinutes": 30
+        },
+        {
+          "time": "14:20–15:05",
+          "type": "onsen",
+          "title": "大湯沼川天然足湯",
+          "map": "Oyunuma River Natural Footbath",
+          "attractionId": "oyunuma-footbath",
+          "durationMinutes": 45
+        },
+        {
+          "time": "15:05",
+          "type": "hotel",
+          "title": "第一滝本館 Check-in",
+          "map": "Dai-ichi Takimotokan"
+        }
+      ],
+      "media": {
+        "hero": {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Noboribetsu-jigokudani.JPG?width=1800",
+          "alt": "登別地獄谷",
+          "caption": "登別地獄谷",
+          "credit": {
+            "label": "登別地獄谷（Noboribetsu-jigokudani）",
+            "url": "https://commons.wikimedia.org/wiki/File:Noboribetsu-jigokudani.JPG"
+          }
+        },
+        "gallery": [
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20T%C5%8Dya.JPG?width=1000",
+            "alt": "大湯沼",
+            "caption": "大湯沼",
+            "credit": {
+              "label": "洞爺湖（Lake Tōya）",
+              "url": "https://commons.wikimedia.org/wiki/File:Lake_T%C5%8Dya.JPG"
+            }
+          },
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Noboribetsu-jigokudani.JPG?width=1000",
+            "alt": "登別溫泉",
+            "caption": "登別溫泉",
+            "credit": {
+              "label": "登別地獄谷（Noboribetsu-jigokudani）",
+              "url": "https://commons.wikimedia.org/wiki/File:Noboribetsu-jigokudani.JPG"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "d5",
+      "day": 5,
+      "navLabel": "札幌",
+      "date": "2025-04-30",
+      "title": "登別 → 北廣島 Outlet → 札幌",
+      "route": "第一滝本館 → 登別（可選熊牧場）→ 登別伊達時代村／櫻花隧道 → AEON／DONKI → 三井 Outlet → 札幌",
+      "weatherRegion": "sapporo",
+      "driving": true,
+      "hotelId": "sapporo-hotel-unconfirmed",
+      "items": [
+        {
+          "time": "08:30–10:00",
+          "type": "meal",
+          "title": "酒店早餐＋退房",
+          "durationMinutes": 90
+        },
+        {
+          "time": "10:00",
+          "type": "attraction",
+          "title": "登別熊牧場（有時間先去）",
+          "map": "Noboribetsu Bear Park",
+          "attractionId": "noboribetsu-bear-park",
+          "note": "來源行程明確標示「有時間才去」。"
+        },
+        {
+          "time": "10:30–11:15",
+          "type": "attraction",
+          "title": "登別伊達時代村／櫻花隧道",
+          "map": "Noboribetsu Date Jidaimura",
+          "attractionId": "noboribetsu-date-jidaimura",
+          "durationMinutes": 45
+        },
+        {
+          "time": "11:45–14:45",
+          "type": "shopping",
+          "title": "AEON / DONKI",
+          "note": "來源只寫 AEON / DONKI，未指定分店。",
+          "durationMinutes": 180
+        },
+        {
+          "time": "15:45–18:45",
+          "type": "shopping",
+          "title": "三井Outlet Park 札幌北廣島",
+          "map": "Mitsui Outlet Park Sapporo-Kitahiroshima",
+          "attractionId": "mitsui-outlet-kitahiroshima",
+          "durationMinutes": 180
+        },
+        {
+          "time": "晚上",
+          "type": "meal",
+          "title": "焼肉 味覚園 南3条店",
+          "map": "味覚園 南3条店 札幌",
+          "durationMinutes": 90
+        },
+        {
+          "time": "晚上",
+          "type": "hotel",
+          "title": "札幌酒店 Check-in",
+          "note": "上載來源未提供札幌酒店名稱／地址；暫時保留待確認。"
+        }
+      ],
+      "media": {
+        "hero": {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/MITSUI%20OUTLET%20PARK%20Sapporo%20Kitahiroshima.jpg?width=1800",
+          "alt": "登別／札幌移動日",
+          "caption": "登別／札幌移動日",
+          "credit": {
+            "label": "三井 Outlet Park 札幌北廣島",
+            "url": "https://commons.wikimedia.org/wiki/File:MITSUI_OUTLET_PARK_Sapporo_Kitahiroshima.jpg"
+          }
+        },
+        "gallery": [
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Mitsui%20outlet%20park%20sapporo%20interior.jpg?width=1000",
+            "alt": "三井Outlet札幌北廣島",
+            "caption": "三井Outlet札幌北廣島",
+            "credit": {
+              "label": "三井 Outlet Park 札幌北廣島・室內",
+              "url": "https://commons.wikimedia.org/wiki/File:Mitsui_outlet_park_sapporo_interior.jpg"
+            }
+          },
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Mitsui-outlet-park.png?width=1000",
+            "alt": "札幌夜晚",
+            "caption": "札幌夜晚",
+            "credit": {
+              "label": "三井 Outlet Park",
+              "url": "https://commons.wikimedia.org/wiki/File:Mitsui-outlet-park.png"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "d6",
+      "day": 6,
+      "navLabel": "札幌",
+      "date": "2025-05-01",
+      "title": "札幌・櫻花 Plan / 市區 Plan",
+      "route": "來源保留兩套 D6：櫻花較多時走郊外櫻花線；否則走札幌市區線",
+      "weatherRegion": "sapporo",
+      "driving": true,
+      "hotelId": "sapporo-hotel-unconfirmed",
+      "backups": [
+        "市區 Plan：札幌電視塔 → 大通公園 → 時計台 → 北海道神宮 → 狸小路 → 藻岩山"
+      ],
+      "items": [
+        {
+          "time": "09:30–11:00",
+          "type": "meal",
+          "title": "二条市場・早餐",
+          "map": "Nijo Market Sapporo",
+          "attractionId": "nijo-market",
+          "durationMinutes": 90
+        },
+        {
+          "time": "11:30–13:00",
+          "type": "attraction",
+          "title": "莫埃來沼公園・櫻花 Plan",
+          "map": "Moerenuma Park",
+          "attractionId": "moerenuma-park",
+          "durationMinutes": 90
+        },
+        {
+          "time": "13:20–14:30",
+          "type": "attraction",
+          "title": "ROYCE' CACAO&CHOCOLATE TOWN",
+          "map": "Royce Cacao & Chocolate Town",
+          "attractionId": "royce-cacao-town",
+          "durationMinutes": 70
+        },
+        {
+          "time": "15:00–16:30",
+          "type": "attraction",
+          "title": "戶田紀念墓地公園・櫻花",
+          "map": "Toda Memorial Park Hokkaido",
+          "attractionId": "toda-memorial-park",
+          "durationMinutes": 90
+        },
+        {
+          "time": "17:30–18:30",
+          "type": "attraction",
+          "title": "北海道神宮・櫻花",
+          "map": "Hokkaido Jingu",
+          "attractionId": "hokkaido-jingu",
+          "durationMinutes": 60
+        },
+        {
+          "time": "晚上",
+          "type": "attraction",
+          "title": "藻岩山（市區 Plan 候選）",
+          "map": "Mt. Moiwa",
+          "attractionId": "mt-moiwa",
+          "note": "來源標示「日本新三大夜景」；屬另一套市區 Plan。"
+        }
+      ],
+      "media": {
+        "hero": {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/%E3%83%A2%E3%82%A8%E3%83%AC%E6%B2%BC%E5%85%AC%E5%9C%92%EF%BC%88Moerenuma%20Park%EF%BC%89%20-%20panoramio.jpg?width=1800",
+          "alt": "札幌春季",
+          "caption": "札幌春季",
+          "credit": {
+            "label": "莫埃來沼公園",
+            "url": "https://commons.wikimedia.org/wiki/File:%E3%83%A2%E3%82%A8%E3%83%AC%E6%B2%BC%E5%85%AC%E5%9C%92%EF%BC%88Moerenuma_Park%EF%BC%89_-_panoramio.jpg"
+          }
+        },
+        "gallery": [
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/In%20the%20glass%20pyramid%2C%20Moerenuma%20Park%2020260703a.jpg?width=1000",
+            "alt": "莫埃來沼公園",
+            "caption": "莫埃來沼公園",
+            "credit": {
+              "label": "莫埃來沼公園・玻璃金字塔",
+              "url": "https://commons.wikimedia.org/wiki/File:In_the_glass_pyramid,_Moerenuma_Park_20260703a.jpg"
+            }
+          },
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Hokkaido%20Jingu%2C%20Hokkaido%20Shrine%2C%20Sapporo%2C%20Hokkaido%2C%20Japan%2C%20%E5%8C%97%E6%B5%B7%E9%81%93%E7%A5%9E%E5%AE%AE%2C%20%E6%9C%AD%E5%B9%8C%2C%20%E5%8C%97%E6%B5%B7%E9%81%93%2C%20%E6%97%A5%E6%9C%AC%2C%20%E3%81%BB%E3%81%A3%E3%81%8B%E3%81%84%E3%81%A9%E3%81%86%E3%81%98%E3%82%93%E3%81%90%E3%81%86%2C%20%E3%81%95%E3%81%A3%E3%81%BD%E3%82%8D%E3%81%97%2C%20%E3%81%BB%E3%81%A3%E3%81%8B%E3%81%84%E3%81%A9%E3%81%86%2C%20%E3%81%AB%E3%81%A3%E3%81%BD%E3%82%93%2C%20%E3%81%AB%E3%81%BB%E3%82%93%20%2816578027820%29.jpg?width=1000",
+            "alt": "北海道神宮",
+            "caption": "北海道神宮",
+            "credit": {
+              "label": "北海道神宮",
+              "url": "https://commons.wikimedia.org/wiki/File:Hokkaido_Jingu,_Hokkaido_Shrine,_Sapporo,_Hokkaido,_Japan,_%E5%8C%97%E6%B5%B7%E9%81%93%E7%A5%9E%E5%AE%AE,_%E6%9C%AD%E5%B9%8C,_%E5%8C%97%E6%B5%B7%E9%81%93,_%E6%97%A5%E6%9C%AC,_%E3%81%BB%E3%81%A3%E3%81%8B%E3%81%84%E3%81%A9%E3%81%86%E3%81%98%E3%82%93%E3%81%90%E3%81%86,_%E3%81%95%E3%81%A3%E3%81%BD%E3%82%8D%E3%81%97,_%E3%81%BB%E3%81%A3%E3%81%8B%E3%81%84%E3%81%A9%E3%81%86,_%E3%81%AB%E3%81%A3%E3%81%BD%E3%82%93,_%E3%81%AB%E3%81%BB%E3%82%93_(16578027820).jpg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "d7",
+      "day": 7,
+      "navLabel": "小樽",
+      "date": "2025-05-02",
+      "title": "札幌 → 小樽一日遊",
+      "route": "白い恋人パーク → 小樽三角市場 → 小樽運河／商店街 → 音樂盒堂 → 手宮公園 → 天狗山（Optional）",
+      "weatherRegion": "otaru",
+      "driving": true,
+      "hotelId": "sapporo-hotel-unconfirmed",
+      "items": [
+        {
+          "time": "10:00–11:30",
+          "type": "attraction",
+          "title": "白い恋人パーク",
+          "map": "Shiroi Koibito Park",
+          "attractionId": "shiroi-koibito-park",
+          "durationMinutes": 90
+        },
+        {
+          "time": "12:40–13:40",
+          "type": "meal",
+          "title": "小樽三角市場・Lunch",
+          "map": "Sankaku Market Otaru",
+          "attractionId": "otaru-sankaku-market",
+          "durationMinutes": 60
+        },
+        {
+          "time": "14:40–16:10",
+          "type": "attraction",
+          "title": "小樽運河＋商店街",
+          "map": "Otaru Canal",
+          "attractionId": "otaru-canal",
+          "durationMinutes": 90
+        },
+        {
+          "time": "16:10–16:25",
+          "type": "attraction",
+          "title": "小樽オルゴール堂 蒸気からくり時計",
+          "map": "Otaru Music Box Museum",
+          "durationMinutes": 15
+        },
+        {
+          "time": "16:35–18:35",
+          "type": "attraction",
+          "title": "手宮公園・櫻花",
+          "map": "Temiya Park Otaru",
+          "attractionId": "temiya-park",
+          "durationMinutes": 120
+        },
+        {
+          "time": "18:50–20:20",
+          "type": "attraction",
+          "title": "小樽天狗山（Optional）",
+          "map": "Otaru Tenguyama Ropeway",
+          "attractionId": "otaru-tenguyama",
+          "durationMinutes": 90
+        }
+      ],
+      "media": {
+        "hero": {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Otaru%20canal.jpg?width=1800",
+          "alt": "小樽運河",
+          "caption": "小樽運河",
+          "credit": {
+            "label": "小樽運河",
+            "url": "https://commons.wikimedia.org/wiki/File:Otaru_canal.jpg"
+          }
+        },
+        "gallery": [
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Shiroi%20Koibito%20Park%2020260703i.jpg?width=1000",
+            "alt": "白い恋人パーク",
+            "caption": "白い恋人パーク",
+            "credit": {
+              "label": "白い恋人パーク",
+              "url": "https://commons.wikimedia.org/wiki/File:Shiroi_Koibito_Park_20260703i.jpg"
+            }
+          },
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Otaru%20Music%20Box%20Museum%20interior.jpg?width=1000",
+            "alt": "手宮公園櫻花",
+            "caption": "手宮公園櫻花",
+            "credit": {
+              "label": "小樽音樂盒堂・室內",
+              "url": "https://commons.wikimedia.org/wiki/File:Otaru_Music_Box_Museum_interior.jpg"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "d8",
+      "day": 8,
+      "navLabel": "札幌→香港",
+      "date": "2025-05-03",
+      "title": "札幌 → Sapporo Beer Museum → 還車 → 香港",
+      "route": "札幌 → Sapporo Beer Museum → Times 新千歲還車 → CTS → HKG",
+      "weatherRegion": "sapporo",
+      "driving": true,
+      "hardCuts": [
+        {
+          "time": "13:30",
+          "label": "Times 新千歲機場還車"
+        },
+        {
+          "time": "15:40",
+          "label": "HX691 起飛"
+        }
+      ],
+      "items": [
+        {
+          "time": "11:45–13:15",
+          "type": "attraction",
+          "title": "Sapporo Beer Museum",
+          "map": "Sapporo Beer Museum",
+          "attractionId": "sapporo-beer-museum",
+          "durationMinutes": 90
+        },
+        {
+          "time": "13:10–13:30",
+          "type": "car",
+          "title": "Times 新千歲機場還車",
+          "map": "Times Car Rental New Chitose Airport",
+          "note": "預約還車時間 13:30。",
+          "hardCut": true
+        },
+        {
+          "time": "15:40–20:10",
+          "type": "flight",
+          "title": "HX691 新千歲 → 香港",
+          "note": "Hong Kong Airlines HX691；15:40 CTS → 20:10 HKG",
+          "durationMinutes": 270,
+          "hardCut": true
+        }
+      ],
+      "media": {
+        "hero": {
+          "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sapporo%20Beer%20Museum.jpg?width=1800",
+          "alt": "Sapporo Beer Museum",
+          "caption": "Sapporo Beer Museum",
+          "credit": {
+            "label": "Sapporo Beer Museum",
+            "url": "https://commons.wikimedia.org/wiki/File:Sapporo_Beer_Museum.jpg"
+          }
+        },
+        "gallery": [
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/Sapporo%20Beer%20Museum.JPG?width=1000",
+            "alt": "新千歲機場",
+            "caption": "新千歲機場",
+            "credit": {
+              "label": "Sapporo Beer Museum",
+              "url": "https://commons.wikimedia.org/wiki/File:Sapporo_Beer_Museum.jpg"
+            }
+          },
+          {
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/New%20CHITOSE%20Airport%20terminal.jpg?width=1000",
+            "alt": "北海道最後一日",
+            "caption": "北海道最後一日",
+            "credit": {
+              "label": "新千歲機場 Terminal",
+              "url": "https://commons.wikimedia.org/wiki/File:New_CHITOSE_Airport_terminal.jpg"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
