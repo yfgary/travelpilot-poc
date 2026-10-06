@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 2,
+  "tripId": "multi-trip-demo-okinawa",
+  "days": [
+    {
+      "id": "d1",
+      "day": 1,
+      "date": "2028-06-10",
+      "title": "那霸機場 → 國際通 → 那霸",
+      "route": "那霸機場 → 國際通 → Demo Hotel 那霸",
+      "weatherRegion": "naha",
+      "driving": false,
+      "hotelId": "demo-naha",
+      "items": [
+        {"time":"11:30","type":"transport","title":"抵達那霸機場","map":"Naha Airport"},
+        {"time":"14:00","type":"attraction","title":"國際通散步","map":"Kokusai Dori Naha","attractionId":"kokusai-dori","durationMinutes":120},
+        {"time":"17:00","type":"hotel","title":"Demo Hotel 那霸入住","map":"Naha Kokusai Dori"}
+      ]
+    },
+    {
+      "id": "d2",
+      "day": 2,
+      "date": "2028-06-11",
+      "title": "那霸 → 萬座毛 → 恩納海岸",
+      "route": "取車 → 萬座毛 → 恩納海灘 → 青之洞窟船／浮潛 → 那霸",
+      "weatherRegion": "onna",
+      "driving": true,
+      "hotelId": "demo-naha",
+      "hardCuts": [
+        {"time":"16:30","label":"海上活動最遲完結；按官方海況提早取消亦正常"}
+      ],
+      "items": [
+        {"time":"08:30","type":"car","title":"那霸取車","map":"Naha Airport Rental Car"},
+        {"time":"10:30","type":"attraction","title":"萬座毛海岸景觀","map":"Cape Manzamo","attractionId":"cape-manzamo","durationMinutes":60},
+        {"time":"12:30","type":"attraction","title":"恩納海灘","map":"Onna Seaside Civil Park Nabee Beach","attractionId":"onna-beach","durationMinutes":90},
+        {"time":"14:30","type":"attraction","title":"青之洞窟觀光船／浮潛 Demo","map":"Blue Cave Okinawa","attractionId":"blue-cave","durationMinutes":120},
+        {"time":"17:00","type":"drive","title":"返回那霸","map":"Naha Kokusai Dori"},
+        {"time":"18:30","type":"hotel","title":"Demo Hotel 那霸","map":"Naha Kokusai Dori"}
+      ]
+    },
+    {
+      "id": "d3",
+      "day": 3,
+      "date": "2028-06-12",
+      "title": "那霸 → 美麗海水族館 → 那霸機場",
+      "route": "那霸 → 沖繩美麗海水族館 → 那霸機場",
+      "weatherRegion": "motobu",
+      "driving": true,
+      "hardCuts": [
+        {"time":"15:30","label":"最遲離開本部返機場"}
+      ],
+      "items": [
+        {"time":"08:30","type":"drive","title":"那霸 → 本部","map":"Okinawa Churaumi Aquarium"},
+        {"time":"10:30","type":"attraction","title":"沖繩美麗海水族館","map":"Okinawa Churaumi Aquarium","attractionId":"churaumi-aquarium","durationMinutes":180},
+        {"time":"14:00","type":"attraction","title":"熱帶夢幻中心 Backup","map":"Tropical Dream Center Okinawa","attractionId":"tropical-dream-center","durationMinutes":60},
+        {"time":"15:30","type":"drive","title":"返回那霸機場","map":"Naha Airport"},
+        {"time":"18:00","type":"car","title":"還車","map":"Naha Airport Rental Car"}
+      ]
+    }
+  ]
+}

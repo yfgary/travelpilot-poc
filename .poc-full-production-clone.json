@@ -1,0 +1,8 @@
+{
+  "mode": "full-production-clone-with-standard-overlay",
+  "productionRepo": "yfgary/travelpilot",
+  "productionBranch": "main",
+  "productionMainSha": "5228dd7774274caac7c647d5ca760ce4d31cf946",
+  "standardGoldenReference": "shirakawago-shinhotaka-2027",
+  "note": "Production files are cloned into POC. Standard changes are tested here only."
+}

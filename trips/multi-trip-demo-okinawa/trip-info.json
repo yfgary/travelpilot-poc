@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 2,
+  "tripId": "multi-trip-demo-okinawa",
+  "overview": {
+    "title": "🧪 Multi Trip Demo・沖繩 3日",
+    "summary": "呢個係非正式測試旅程，用嚟驗證第二個 Trip 可唔可以完全唔靠 Japan 2027 legacy scripts 都正常運作。",
+    "note": "所有酒店、時間同活動都係 Demo 資料，唔代表真實預訂。",
+    "highlights": [
+      {"title":"目的","text":"驗證共用 Itinerary / Trip Info / Attractions / Weather / Today / Driving Mode"},
+      {"title":"天氣","text":"城市＋海岸＋海灘＋出海 Activity Profiles"},
+      {"title":"安全","text":"海上活動缺浪高／swell 時必須標示只係初步分"}
+    ]
+  },
+  "nav": [
+    {"id":"transport","label":"交通"},{"id":"car","label":"租車"},{"id":"hotels","label":"酒店"},{"id":"hardcuts","label":"Hard Cut"},{"id":"weather","label":"天氣"},{"id":"departure-checklist","label":"出發前 Checklist"},{"id":"checklist","label":"每日 Checklist"},{"id":"emergency","label":"緊急"}
+  ],
+  "transport": {"title":"✈️ 交通","desc":"Demo Trip 交通資料","cards":[{"title":"D1 那霸機場 → 市區","badges":[["Demo","blue"]],"lines":["抵達後以市區交通前往國際通。","實際旅行請另外加入真實航班／車次。"]}]},
+  "car": {"title":"🚗 租車","desc":"D2–D3 測試 Driving Mode","cards":[{"title":"Demo Rental Car","badges":[["D2–D3","green"]],"lines":["D2 08:30 取車。","D3 18:00 還車。","只用作驗證導航、Parking、道路適合度及 Hard Cut。"]}]},
+  "hotelStays": {"title":"🏨 酒店","desc":"Demo 酒店資料會由 hotels.json 共用讀取","stays":[{"day":"D1","date":"6/10","hotelId":"demo-naha","icon":"🏨"},{"day":"D2","date":"6/11","hotelId":"demo-naha","icon":"🏨"}]},
+  "hardCuts": {"title":"⏰ Hard Cut","desc":"測試由資料層顯示不可拖延時間","items":[{"time":"D2 16:30","text":"海上活動最遲完結；官方停航／取消優先。"},{"time":"D3 15:30","text":"最遲離開本部返那霸機場。"}]},
+  "weather": {"title":"🌤️ 天氣／活動判斷","desc":"測試 Weather Activity Profile Standard v1","decisions":[{"title":"D2 海岸活動","lines":["萬座毛：coastal_scenic","海灘：beach","青之洞窟：boat_cruise + snorkel_dive","冇海浪／swell 資料時只可以當初步分。"]}],"buttons":[]},
+  "departureChecklist": {"title":"🧳 出發前 Checklist","desc":"真正出發前要準備嘅物品／文件；每個 Trip 獨立儲存進度。","groups":[{"title":"🪪 證件／付款","items":[{"id":"passport","label":"護照／旅行證件"},{"id":"insurance","label":"旅遊保險資料"},{"id":"cards","label":"信用卡＋少量現金"}]},{"title":"📱 電子／通訊","items":[{"id":"phone","label":"手機＋充電線"},{"id":"powerbank","label":"流動電源"},{"id":"sim","label":"SIM／漫遊設定"}]},{"title":"☀️ 沖繩戶外","items":[{"id":"sunscreen","label":"防曬"},{"id":"hat","label":"帽／太陽眼鏡"},{"id":"water","label":"水樽／補水用品"}]},{"title":"🌊 海上活動","items":[{"id":"operator","label":"確認營運商／集合時間"},{"id":"sea","label":"出發前再睇海況、浪高、雷暴及取消通知"},{"id":"drybag","label":"防水袋／替換衣物"}]}]},
+  "checklist": {"title":"✅ 每日／當日 Checklist","desc":"每日出發前快速確認；每個 Trip 獨立儲存","items":["確認當日天氣及雷暴","海上活動睇官方運航／取消通知","自駕日前確認油量／導航","帶防曬及飲用水"],"note":"Demo Trip 每日 checklist 唔會影響日本 2027 Trip。"},
+  "emergency": {"title":"🆘 緊急資訊","desc":"Demo 只保留通用日本緊急號碼","items":[{"number":"110","title":"警察","note":"日本警察"},{"number":"119","title":"消防／救護","note":"火警及救護車"}],"note":"正式旅行要再加入保險、租車公司、酒店及當地緊急聯絡資料。"}
+}

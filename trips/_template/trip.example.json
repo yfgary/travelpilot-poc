@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 9,
+  "id": "new-trip-id",
+  "name": "新旅行名稱",
+  "shortName": "短名稱",
+  "subtitle": "地區・日數・旅行方式",
+  "startDate": "2028-01-01",
+  "endDate": "2028-01-05",
+  "timezone": "Asia/Tokyo",
+  "country": "日本",
+  "features": {"itinerary":true,"tripInfo":true,"attractions":true,"liveCam":true,"todayMode":true,"drivingMode":true,"weather":true,"weatherScore":true,"weatherActivityProfiles":true,"packingChecklist":true,"winterDriving":false},
+  "modules": [],
+  "pages": {"itinerary":"itinerary.html","tripInfo":"trip-info.html","attractions":"attractions.html","liveCam":"live.html"},
+  "dataFiles": {"itinerary":"itinerary.json","tripInfo":"trip-info.json","hotels":"hotels.json","attractions":"attractions.json","liveCams":"live-cams.json","weather":"weather.json"},
+  "renderers": {
+    "itinerary":{"mode":"generate","source":"itinerary","preserveLegacyDetails":false},
+    "tripInfo":{"mode":"generate","source":"tripInfo","preserveLegacyShell":false},
+    "attractions":{"mode":"generate","source":"attractions","preserveLegacyDetails":false},
+    "liveCam":{"mode":"generate","source":"liveCams","preserveLegacyMediaTemplates":false},
+    "weather":{"mode":"generate","source":"weather","profileStandard":"v1","preserveLegacyDecisionModules":false},
+    "todayMode":{"mode":"generate","source":"itinerary","useActivityProfiles":true},
+    "drivingMode":{"mode":"generate","source":"itinerary","useActivityProfiles":true}
+  }
+}

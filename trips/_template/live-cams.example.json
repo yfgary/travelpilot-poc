@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "tripId": "new-trip-id",
+  "mode": "generate",
+  "notice": "出發前先睇道路、天氣同主要景點 Live Cam。",
+  "cameras": [
+    {
+      "id": "city-live",
+      "title": "市中心 Live Cam",
+      "type": "youtube",
+      "videoId": "REPLACE_WITH_YOUTUBE_ID",
+      "desc": "查看市區天氣、人流及能見度。",
+      "priority": "must",
+      "tags": ["景點"],
+      "sourceUrl": "https://www.youtube.com/",
+      "map": "Example City"
+    },
+    {
+      "id": "mountain-road",
+      "title": "山路即時影像",
+      "type": "image",
+      "imageUrl": "https://example.com/live.jpg",
+      "desc": "查看積雪、路面及能見度。",
+      "priority": "ref",
+      "tags": ["道路", "冬季"],
+      "sourceUrl": "https://example.com/road",
+      "map": "Example Mountain Road"
+    },
+    {
+      "id": "official-only",
+      "title": "官方交通資訊",
+      "type": "link",
+      "desc": "無法直接嵌入時，以官方網站連結顯示。",
+      "priority": "backup",
+      "sourceUrl": "https://example.com/traffic"
+    }
+  ],
+  "days": [
+    {
+      "id": "d1",
+      "label": "D1",
+      "date": "2028-01-01",
+      "nav": "D1 城市",
+      "title": "抵達城市",
+      "desc": "落機前後查看目的地天氣。",
+      "route": "機場 → 市中心 → 酒店",
+      "places": [
+        {"label": "酒店", "map": "Example Hotel"}
+      ],
+      "cameras": ["city-live"],
+      "officialLinks": [
+        {"label": "官方交通", "url": "https://example.com/traffic"}
+      ]
+    },
+    {
+      "id": "d2",
+      "label": "D2",
+      "date": "2028-01-02",
+      "nav": "D2 山區",
+      "title": "山區自駕",
+      "desc": "出發前查看山區道路同積雪。",
+      "route": "酒店 → 山區景點 → 酒店",
+      "places": [
+        {"label": "山區景點", "map": "Example Mountain"}
+      ],
+      "cameras": ["mountain-road", "official-only"]
+    }
+  ]
+}

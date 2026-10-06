@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "tripId": "new-trip-id",
+  "hotels": [
+    {
+      "id": "example-hotel",
+      "name": "Example Hotel",
+      "checkIn": "2028-01-01 15:00",
+      "checkOut": "2028-01-02 11:00",
+      "payment": "已付款",
+      "map": "Example Hotel",
+      "note": "酒店備註"
+    }
+  ]
+}

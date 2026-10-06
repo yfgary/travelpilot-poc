@@ -1,0 +1,28 @@
+/* Attraction detail modal + hotel booking status */
+.attraction-info-btn{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;margin-left:7px;padding:0;vertical-align:middle;border:1px solid #b8d3e6;border-radius:50%;background:#eaf4fb;color:#1f4e79;font-size:14px;font-weight:900;line-height:1;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.attraction-info-btn:hover{background:#dcecf7;transform:scale(1.05)}
+.attraction-info-btn:active{transform:scale(.96)}
+.attraction-modal{position:fixed;inset:0;z-index:6200;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(8,18,28,.78)}
+.attraction-modal.show{display:flex}
+.attraction-modal-card{width:min(760px,100%);max-height:88vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 8px 35px rgba(0,0,0,.32)}
+.attraction-modal-head{position:sticky;top:0;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 18px 13px;background:linear-gradient(135deg,#eef6fb,#fff);border-bottom:1px solid #dfe7ed}
+.attraction-modal-title{margin:0;color:#1f4e79;font-size:21px;line-height:1.35}
+.attraction-modal-close{flex:0 0 auto;width:36px;height:36px;border:0;border-radius:50%;background:#e8edf1;color:#44515a;font-size:22px;cursor:pointer}
+.attraction-modal-body{padding:16px 18px 20px}
+.attraction-lead{margin:0 0 13px;color:#40505c;font-size:14px;line-height:1.75}
+.attraction-section{margin-top:12px;padding:12px 13px;border-radius:10px;background:#f6f8fa;border:1px solid #e5eaee}
+.attraction-section h4{margin:0 0 7px;color:#294c67;font-size:14px}
+.attraction-section ul{margin:0;padding-left:20px}
+.attraction-section li{margin:5px 0;color:#50606b;font-size:13px;line-height:1.6}
+.attraction-trip-tip{margin-top:12px;padding:11px 13px;border-radius:9px;background:#fff6dd;border-left:4px solid #d8a62f;color:#685319;font-size:13px;line-height:1.65}
+.attraction-source{display:inline-block;margin-top:13px;color:#1f4e79;font-size:12px;font-weight:700;text-decoration:none}
+.attraction-source:hover{text-decoration:underline}
+.hotel-status-inline,.hotel-status-badges{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.hotel-badge,.hotel-status-badge{display:inline-block;padding:4px 7px;border-radius:11px;font-size:10px;font-weight:800;line-height:1.25}
+.hotel-badge.onsen,.hotel-status-badge.onsen{background:#e8eefc;color:#3d518e}
+.hotel-badge.paid,.hotel-status-badge.paid{background:#e6f4e9;color:#2f6f43}
+.hotel-badge.due,.hotel-status-badge.due{background:#fff0d8;color:#805a00}
+.hotel-badge.pending,.hotel-status-badge.pending{background:#ffe8e4;color:#9a3d31}
+.hotel-payment-detail,.hotel-payment-line{margin-top:6px;color:#5d6972;font-size:11px;line-height:1.55}
+.hotel-payment-line{font-weight:700}
+@media(max-width:720px){.attraction-modal{padding:8px}.attraction-modal-card{max-height:94vh;border-radius:12px}.attraction-modal-title{font-size:18px}.attraction-modal-head{padding:13px 14px 11px}.attraction-modal-body{padding:13px 14px 16px}}

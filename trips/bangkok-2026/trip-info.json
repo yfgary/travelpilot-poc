@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 4,
+  "tripId": "bangkok-2026",
+  "overview": {
+    "title": "曼谷 8日7夜 2026",
+    "summary": "呢個係用已完成真實曼谷旅程建立嘅第 3 個 Multi Trip 測試，用嚟驗證 Generic Renderer 可唔可以承載完整城市自由行。",
+    "note": "行程內容按 2026/8/29–9/5 原始行程及你其後補充嘅實際地點整理；未確認嘅資料唔會自行亂估。",
+    "highlights": [
+      {"title":"住宿基地","text":"On Nut・The President Condo Sukhumvit 81"},
+      {"title":"主題","text":"美食・夜市・Outlet・按摩・商場・河岸寺廟"},
+      {"title":"交通","text":"BTS + Grab / Bolt + 船 + 巴士 511"}
+    ]
+  },
+  "nav": [
+    {"id":"transport","label":"交通"},{"id":"hotels","label":"住宿"},{"id":"hardcuts","label":"Hard Cut"},{"id":"weather","label":"天氣"},{"id":"departure-checklist","label":"出發前 Checklist"},{"id":"checklist","label":"每日 Checklist"},{"id":"emergency","label":"緊急資料"}
+  ],
+  "transport": {
+    "title":"✈️ 交通",
+    "desc":"航班＋曼谷市內交通",
+    "cards":[
+      {"title":"去程 UO704","badges":[["8/29","blue"]],"lines":["HKG 07:25 → BKK 09:25","抵達後 Grab / Taxi → On Nut。"]},
+      {"title":"回程 UO703","badges":[["9/5","green"]],"lines":["BKK 19:40 → HKG 23:40","15:15–15:30 左右由市區出發去機場；約16:30 到機場。"]},
+      {"title":"市內交通","badges":[["主力","blue"]],"lines":["BTS + Grab / Bolt","D3：Prannok Pier 上船 → Ratchawong Pier 落船","D6：由 On Nut 搭巴士 511 去 Samut Prakan Crocodile Farm & Zoo。"]}
+    ]
+  },
+  "hotelStays": {
+    "title":"🏨 住宿",
+    "desc":"7晚同一個 On Nut 基地",
+    "stays":[{"day":"D1–D7","date":"8/29–9/4","hotelId":"president-sukhumvit-81","icon":"🏨"}]
+  },
+  "hardCuts": {
+    "title":"⏰ Hard Cut",
+    "desc":"原始行程中最重要嘅固定時間",
+    "items":[
+      {"time":"D6 13:00","text":"Samut Prakan Crocodile Farm & Zoo 園內 Crocodile Show。"},
+      {"time":"D6 13:30","text":"同一園內 Elephant Show。"},
+      {"time":"D7 18:00 後","text":"Chao Phraya Princess Dinner Cruise 辦理 Check-in。"},
+      {"time":"D7 19:30–21:30","text":"Dinner Cruise 航程。"},
+      {"time":"D8 15:15–15:30","text":"出發去 BKK。"},
+      {"time":"D8 19:40","text":"UO703 起飛。"}
+    ]
+  },
+  "weather": {
+    "title":"🌤️ 天氣／活動判斷",
+    "desc":"城市行程主要受大雨、雷暴、戶外市場／夜市及船程影響。",
+    "decisions":[
+      {"title":"戶外市集／夜市","lines":["Chatuchak、Wang Lang、Liabduan、Srinagarindra：落大雨時體驗會明顯下降。"]},
+      {"title":"D3 / D7 船程","lines":["D3 Prannok → Ratchawong 船程及 D7 Dinner Cruise：實際營運狀態優先於天氣分數。"]},
+      {"title":"商場日","lines":["MBK、Platinum、Terminal 21、CentralWorld、ICONSIAM 等室內行程受雨影響相對低。"]}
+    ],
+    "buttons":[]
+  },
+  "departureChecklist": {
+    "title":"🧳 出發前 Checklist",
+    "desc":"按原始行程需要整理嘅基本準備項目。",
+    "groups":[
+      {"title":"🪪 證件／航班","items":[{"id":"passport","label":"護照／旅行證件"},{"id":"flight","label":"UO704 / UO703 航班資料"},{"id":"stay","label":"住宿地址／Building B・Room 2081/27"}]},
+      {"title":"📱 電子／交通","items":[{"id":"phone","label":"手機＋充電線"},{"id":"powerbank","label":"流動電源"},{"id":"rideapps","label":"Grab / Bolt 可用"}]},
+      {"title":"🛍️ 購物／夜市","items":[{"id":"cash","label":"現金／付款方式"},{"id":"bags","label":"購物袋／可摺袋"},{"id":"luggage","label":"預留行李空間畀最後掃貨"}]}
+    ]
+  },
+  "checklist": {
+    "title":"✅ 每日／當日 Checklist",
+    "desc":"城市自由行快速確認",
+    "items":[
+      "出門前睇雷暴／降雨",
+      "確認 BTS / Grab / Bolt 路線",
+      "D1 / D5 按摩係 On Nut 79 Sukhumvit Rd / 77/1 Sukhumvit Rd 一帶現場揀",
+      "D3 船程：Prannok Pier 上、Ratchawong Pier 落",
+      "D6 兩場表演都喺 Samut Prakan Crocodile Farm & Zoo 園內",
+      "D7 再確認 Dinner Cruise Check-in 時間",
+      "D8 Lotus’s On Nut + Big C On Nut 兩間都去，最後午餐 CHARM Bistro and Restaurant，之後預留足夠時間去 BKK"
+    ],
+    "note":"呢份係已完成行程重建資料，Checklist 用作 Multi Trip 功能測試。"
+  },
+  "emergency": {
+    "title":"🆘 緊急資料",
+    "desc":"泰國常用緊急聯絡＋今次住宿／返程備忘",
+    "items":[
+      {"number":"191","title":"警方緊急求助","note":"泰國一般警察／緊急求助。"},
+      {"number":"1669","title":"醫療急救","note":"泰國緊急醫療服務。"},
+      {"number":"1155","title":"旅遊警察 Tourist Police","note":"旅客常用求助熱線；可處理旅遊相關協助。"}
+    ],
+    "note":"住宿基地：The President Condo Sukhumvit 81・On Nut。回程 D8：UO703，BKK 19:40 起飛；行程安排 15:15–15:30 左右由 On Nut 出發去機場。"
+  }
+}

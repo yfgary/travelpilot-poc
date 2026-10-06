@@ -1,19 +1,70 @@
 {
+  "schemaVersion": 2,
   "defaultTrip": "shirakawago-shinhotaka-2027",
   "trips": [
     {
       "id": "shirakawago-shinhotaka-2027",
       "name": "白川鄉・新穗高之旅 2027",
-      "subtitle": "Production data migrated into TravelPilot Standard POC",
-      "status": "golden",
-      "config": "trips/shirakawago-shinhotaka-2027/trip.json"
+      "shortName": "白川鄉・新穗高 2027",
+      "subtitle": "日本中部冬季自駕・9日8夜",
+      "startDate": "2027-01-09",
+      "endDate": "2027-01-17",
+      "country": "日本",
+      "emoji": "🇯🇵",
+      "cover": "assets/images/d7-shirakawago-view.jpg",
+      "entry": "itinerary.html",
+      "config": "trips/shirakawago-shinhotaka-2027/trip.json",
+      "status": "active",
+      "badge": "正式旅程",
+      "features": {"itinerary":true,"tripInfo":true,"attractions":true,"liveCam":true}
     },
     {
-      "id": "city-demo",
-      "name": "City Demo",
-      "subtitle": "第二個 generic trip，驗證 0 destination-specific core code",
-      "status": "demo",
-      "config": "trips/city-demo/trip.json"
+      "id": "multi-trip-demo-okinawa",
+      "name": "🧪 Multi Trip Demo・沖繩 3日",
+      "shortName": "🧪 沖繩 Demo 3日",
+      "subtitle": "Generic Renderer 驗證・城市＋自駕＋海岸活動",
+      "startDate": "2028-06-10",
+      "endDate": "2028-06-12",
+      "country": "測試旅程",
+      "emoji": "🧪",
+      "cover": "https://commons.wikimedia.org/wiki/Special:FilePath/Onna%20Okinawa%20Japan%20Cape-Manzamo-01.jpg?width=1400",
+      "entry": "itinerary.html",
+      "config": "trips/multi-trip-demo-okinawa/trip.json",
+      "status": "test",
+      "badge": "架構測試",
+      "features": {"itinerary":true,"tripInfo":true,"attractions":true,"liveCam":false}
+    },
+    {
+      "id": "bangkok-2026",
+      "name": "曼谷 8日7夜 2026",
+      "shortName": "曼谷 2026・8日7夜",
+      "subtitle": "On Nut 美食・夜市・Outlet・按摩之旅",
+      "startDate": "2026-08-29",
+      "endDate": "2026-09-05",
+      "country": "泰國・曼谷",
+      "emoji": "🇹🇭",
+      "cover": "https://commons.wikimedia.org/wiki/Special:FilePath/Yaowarat%20Road%20at%20night.jpg?width=1400",
+      "entry": "itinerary.html",
+      "config": "trips/bangkok-2026/trip.json",
+      "status": "active",
+      "badge": "真實旅程",
+      "features": {"itinerary":true,"tripInfo":true,"attractions":true,"liveCam":false}
+    },
+    {
+      "id": "hokkaido-2025",
+      "name": "北海道道南・札幌自駕 8日 2025",
+      "shortName": "北海道 2025・8日",
+      "subtitle": "函館櫻花・洞爺湖・登別溫泉・札幌・小樽自駕",
+      "startDate": "2025-04-26",
+      "endDate": "2025-05-03",
+      "country": "日本・北海道",
+      "emoji": "🇯🇵",
+      "cover": "https://commons.wikimedia.org/wiki/Special:FilePath/Hokkaido-Cherry%20blossoms%20are%20fully%20bloomed%20in%20Goryokaku%20park-xl.jpg?width=1400",
+      "entry": "itinerary.html",
+      "config": "trips/hokkaido-2025/trip.json",
+      "status": "active",
+      "badge": "真實旅程",
+      "features": {"itinerary":true,"tripInfo":true,"attractions":true,"liveCam":false}
     }
   ]
 }

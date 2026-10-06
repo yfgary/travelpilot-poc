@@ -1,0 +1,2727 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+
+<head>
+<base href="../">
+<script>(function(){var p=location.pathname.replace(/\/legacy\/([^/]+)$/,'/$1');history.replaceState(null,'',p+location.search+location.hash);})();</script>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="theme-color"
+    content="#1f4e79"
+>
+
+<meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+>
+
+<meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+>
+
+<meta
+    name="apple-mobile-web-app-title"
+    content="Japan 2027"
+>
+
+<link
+    rel="manifest"
+    href="manifest.webmanifest"
+>
+
+<link
+    rel="apple-touch-icon"
+    href="assets/images/app-icon-192.png"
+>
+
+<title>
+    Japan Winter 2027 旅程資料
+</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background: #eef2f6;
+    color: #222;
+
+    font-family:
+        Arial,
+        "Microsoft JhengHei",
+        "Noto Sans TC",
+        sans-serif;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+    background:
+        linear-gradient(
+            135deg,
+            #163a5c,
+            #28689d
+        );
+
+    color: white;
+
+    text-align: center;
+
+    padding:
+        22px 15px;
+}
+
+header h1 {
+    margin: 0;
+
+    font-size: 28px;
+}
+
+header p {
+    margin:
+        7px 0 0;
+
+    opacity: .9;
+}
+
+
+/* =====================================================
+   PAGE SWITCH
+===================================================== */
+
+.page-switch {
+    background: white;
+
+    padding: 8px;
+
+    text-align: center;
+
+    box-shadow:
+        0 2px 6px
+        rgba(0,0,0,.08);
+}
+
+.page-switch a {
+    display: inline-block;
+
+    margin: 3px;
+
+    padding:
+        8px 14px;
+
+    border-radius: 18px;
+
+    text-decoration: none;
+
+    background: #eaf2f8;
+    color: #1f4e79;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.page-switch a.active {
+    background: #1f4e79;
+    color: white;
+}
+
+
+/* =====================================================
+   QUICK NAV
+===================================================== */
+
+.quick-nav {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background:
+        rgba(255,255,255,.97);
+
+    border-bottom:
+        1px solid #d6dee5;
+
+    box-shadow:
+        0 2px 7px
+        rgba(0,0,0,.06);
+}
+
+.quick-nav-inner {
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding:
+        8px 10px;
+
+    display: flex;
+
+    gap: 7px;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+}
+
+.quick-nav a {
+    flex:
+        0 0 auto;
+
+    text-decoration: none;
+
+    background: #eef4f8;
+    color: #1f4e79;
+
+    padding:
+        7px 11px;
+
+    border-radius: 16px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.container {
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 17px;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro {
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+    margin-bottom: 15px;
+
+    box-shadow:
+        0 2px 8px
+        rgba(0,0,0,.07);
+}
+
+.intro h2 {
+    margin:
+        0 0 8px;
+
+    color: #1f4e79;
+}
+
+.intro p {
+    margin:
+        7px 0;
+
+    line-height: 1.6;
+
+    color: #53626d;
+}
+
+.intro-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 9px;
+
+    margin-top: 14px;
+}
+
+.intro-item {
+    background: #f5f8fb;
+
+    border-radius: 9px;
+
+    padding: 11px;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+}
+
+
+/* =====================================================
+   MAP PIN
+===================================================== */
+
+.map-pin {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    margin-left: 6px;
+
+    vertical-align: middle;
+
+    border-radius: 50%;
+
+    background: #e4f3e9;
+
+    border:
+        1px solid #bddac6;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        transform .15s ease,
+        background .15s ease;
+}
+
+.map-pin:hover {
+    background: #d2ead9;
+
+    transform:
+        scale(1.08);
+}
+
+.map-pin:active {
+    transform:
+        scale(.96);
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section {
+    background: white;
+
+    border-radius: 14px;
+
+    margin-bottom: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 2px 8px
+        rgba(0,0,0,.07);
+
+    scroll-margin-top: 65px;
+}
+
+.section-header {
+    padding:
+        15px 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f2f7fb,
+            #ffffff
+        );
+
+    border-bottom:
+        1px solid #e3e9ee;
+}
+
+.section-title {
+    margin: 0;
+
+    color: #1f4e79;
+
+    font-size: 20px;
+}
+
+.section-desc {
+    margin-top: 5px;
+
+    color: #6b7882;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.section-body {
+    padding: 17px;
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.card-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 12px;
+}
+
+.info-card {
+    background: #f6f8fa;
+
+    border-radius: 10px;
+
+    padding: 13px;
+
+    border:
+        1px solid #e7ecef;
+}
+
+.info-card h3 {
+    margin:
+        0 0 8px;
+
+    font-size: 16px;
+
+    line-height: 1.45;
+
+    color: #263f52;
+}
+
+.info-card p {
+    margin:
+        5px 0;
+
+    color: #56656f;
+
+    font-size: 13px;
+
+    line-height: 1.55;
+}
+
+.info-card strong {
+    color: #222;
+}
+
+
+/* =====================================================
+   LABELS
+===================================================== */
+
+.label {
+    display: inline-block;
+
+    padding:
+        4px 8px;
+
+    margin:
+        0 4px 5px 0;
+
+    border-radius: 12px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+.label-blue {
+    background: #e7f0ff;
+    color: #315e92;
+}
+
+.label-green {
+    background: #e7f4e9;
+    color: #317147;
+}
+
+.label-yellow {
+    background: #fff2d5;
+    color: #856000;
+}
+
+.label-red {
+    background: #ffe6e3;
+    color: #a43128;
+}
+
+.label-grey {
+    background: #eceff1;
+    color: #59656d;
+}
+
+
+/* =====================================================
+   HOTEL
+===================================================== */
+
+.hotel-list {
+    display: grid;
+
+    gap: 9px;
+}
+
+.hotel-row {
+    display: grid;
+
+    grid-template-columns:
+        90px 1.2fr 1fr;
+
+    gap: 12px;
+
+    padding:
+        11px 12px;
+
+    background: #f7f9fb;
+
+    border-radius: 9px;
+
+    border:
+        1px solid #e5eaee;
+
+    align-items: center;
+}
+
+.hotel-day {
+    color: #1f4e79;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+.hotel-name {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+.hotel-note {
+    color: #66747e;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   PARKING
+===================================================== */
+
+.parking-list {
+    display: grid;
+
+    gap: 10px;
+}
+
+.parking-card {
+    display: grid;
+
+    grid-template-columns:
+        54px 1fr;
+
+    gap: 12px;
+
+    padding:
+        13px;
+
+    border-radius: 10px;
+
+    background: #f7f9fb;
+
+    border:
+        1px solid #e4eaee;
+}
+
+.parking-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e7f1f8;
+
+    border-radius: 10px;
+
+    font-size: 24px;
+}
+
+.parking-main h3 {
+    margin:
+        0 0 5px;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+.parking-main p {
+    margin:
+        3px 0;
+
+    color: #61707a;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+.parking-warning {
+    margin-top: 7px;
+
+    padding:
+        7px 9px;
+
+    border-radius: 7px;
+
+    background: #fff2df;
+
+    color: #795700;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   HARD CUT
+===================================================== */
+
+.hardcut-list {
+    display: grid;
+
+    gap: 8px;
+}
+
+.hardcut-item {
+    display: grid;
+
+    grid-template-columns:
+        92px 1fr;
+
+    gap: 12px;
+
+    padding:
+        11px 12px;
+
+    background: #fff2f0;
+
+    border:
+        1px solid #ebcac5;
+
+    border-left:
+        4px solid #c94c40;
+
+    border-radius: 9px;
+}
+
+.hardcut-time {
+    color: #a62f26;
+
+    font-weight: 800;
+
+    font-size: 13px;
+}
+
+.hardcut-text {
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    color: #4e555a;
+}
+
+
+/* =====================================================
+   DECISION
+===================================================== */
+
+.decision-box {
+    background: #fff8df;
+
+    border:
+        1px solid #eedb9a;
+
+    border-radius: 10px;
+
+    padding: 13px;
+
+    margin-bottom: 10px;
+}
+
+.decision-box:last-child {
+    margin-bottom: 0;
+}
+
+.decision-title {
+    color: #755800;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    margin-bottom: 7px;
+}
+
+.decision-line {
+    background:
+        rgba(255,255,255,.75);
+
+    border-radius: 7px;
+
+    padding:
+        8px 10px;
+
+    margin-top: 6px;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+
+/* =====================================================
+   CHECKLIST
+===================================================== */
+
+.checklist {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 8px;
+}
+
+.check-item {
+    background: #f5f8fb;
+
+    border-radius: 8px;
+
+    padding:
+        10px 11px;
+
+    font-size: 13px;
+
+    line-height: 1.45;
+
+    border:
+        1px solid #e5eaee;
+}
+
+
+/* =====================================================
+   EMERGENCY
+===================================================== */
+
+.emergency-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 10px;
+}
+
+.emergency-card {
+    padding: 14px;
+
+    border-radius: 10px;
+
+    background: #fff1ef;
+
+    border:
+        1px solid #edcbc5;
+}
+
+.emergency-number {
+    font-size: 30px;
+
+    color: #ad352b;
+
+    font-weight: 900;
+}
+
+.emergency-title {
+    margin-top: 3px;
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+.emergency-note {
+    margin-top: 5px;
+
+    color: #65727b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   NOTE
+===================================================== */
+
+.note-box {
+    background: #eef5fa;
+
+    border-left:
+        4px solid #5283a7;
+
+    border-radius: 8px;
+
+    padding:
+        11px 13px;
+
+    margin-top: 11px;
+
+    font-size: 12px;
+
+    color: #53636f;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.button-row {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 12px;
+}
+
+.button {
+    display: inline-block;
+
+    text-decoration: none;
+
+    background: #1f4e79;
+
+    color: white;
+
+    border-radius: 7px;
+
+    padding:
+        8px 11px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    text-align: center;
+
+    color: #76838d;
+
+    font-size: 12px;
+
+    padding:
+        17px 10px
+        35px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media
+(max-width: 720px) {
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .container {
+        padding: 9px;
+    }
+
+    .intro-grid,
+    .card-grid,
+    .checklist,
+    .emergency-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hotel-row {
+        grid-template-columns: 1fr;
+
+        gap: 5px;
+    }
+
+    .hardcut-item {
+        grid-template-columns:
+            75px 1fr;
+
+        gap: 9px;
+    }
+
+    .parking-card {
+        grid-template-columns:
+            43px 1fr;
+
+        gap: 9px;
+    }
+
+    .parking-icon {
+        width: 40px;
+        height: 40px;
+
+        font-size: 20px;
+    }
+
+    .section-body {
+        padding: 12px;
+    }
+
+}
+
+
+/* ===== TRIP V2 COMMON ===== */
+.tripv2-status {
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    z-index: 4500;
+    padding: 7px 11px;
+    border-radius: 18px;
+    font-size: 11px;
+    font-weight: 800;
+    box-shadow: 0 2px 8px rgba(0,0,0,.16);
+    background: #e7f4e9;
+    color: #2f6d41;
+    border: 1px solid #bfdac6;
+}
+.tripv2-status.offline {
+    background: #fff1d8;
+    color: #795700;
+    border-color: #ebcf92;
+}
+@media (max-width: 720px) {
+    .tripv2-status { right: 8px; bottom: 8px; }
+}
+/* ===== /TRIP V2 COMMON ===== */
+
+
+/* ===== TRIP V2 CHECKLIST ===== */
+#checklist .check-item { cursor:pointer; display:flex; align-items:center; gap:9px; }
+#checklist .check-item.done { opacity:.62; text-decoration:line-through; }
+#checklist .check-item input { width:18px; height:18px; flex:0 0 auto; }
+.tripv2-reset-check { margin-top:10px; border:0; border-radius:7px; padding:8px 11px; background:#647786; color:#fff; font-weight:700; cursor:pointer; }
+.tripv2-weather-summary { margin:0 0 12px; padding:12px; border-radius:9px; background:#eef5fa; border-left:4px solid #5283a7; font-size:13px; line-height:1.6; }
+/* ===== /TRIP V2 CHECKLIST ===== */
+
+</style>
+
+<link rel="stylesheet" href="assets/attraction-info.css?v=1">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>
+    🧳 Japan Winter 2027
+</h1>
+
+<p>
+    旅程資料中心
+</p>
+
+</header>
+
+
+<div class="page-switch">
+
+<a href="index.html">
+    📹 Live Cam
+</a>
+
+<a href="itinerary.html">
+    🗓️ 詳細行程
+</a>
+
+<a
+    href="trip-info.html"
+    class="active">
+    🧳 旅程資料
+</a>
+
+</div>
+
+
+<nav class="quick-nav">
+
+<div class="quick-nav-inner">
+
+<a href="#transport">
+    ✈️ 交通
+</a>
+
+<a href="#car">
+    🚗 租車
+</a>
+
+<a href="#hotels">
+    🏨 酒店
+</a>
+
+<a href="#parking">
+    🅿️ 停車
+</a>
+
+<a href="#hardcuts">
+    ⏰ Hard Cut
+</a>
+
+<a href="#weather">
+    🌨️ 天氣日
+</a>
+
+<a href="#checklist">
+    🎒 Checklist
+</a>
+
+<a href="#emergency">
+    ☎️ 緊急
+</a>
+
+</div>
+
+</nav>
+
+
+<main class="container">
+
+
+<section class="intro">
+
+<h2>
+    2027 日本中部冬季自駕
+</h2>
+
+<p>
+    📅 2027年1月9日 – 1月17日
+    ・9日8夜
+    ・D2–D8 冬季自駕
+</p>
+
+<p>
+    📍 撳景點／酒店旁邊嘅地圖 icon，
+    會直接開 Google Maps 駕車導航。
+</p>
+
+
+<div class="intro-grid">
+
+<div class="intro-item">
+
+<strong>
+    📹 Live Cam
+</strong>
+
+<br>
+
+出發前睇道路、
+雪況及景點即時畫面。
+
+</div>
+
+
+<div class="intro-item">
+
+<strong>
+    🗓️ 詳細行程
+</strong>
+
+<br>
+
+睇每日時間表、
+景點、照片及 Plan A/B/C。
+
+</div>
+
+
+<div class="intro-item">
+
+<strong>
+    📍 Google Maps
+</strong>
+
+<br>
+
+酒店、租車、
+重要停車位置快速導航。
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     TRANSPORT
+====================================================== -->
+
+<section
+    class="section"
+    id="transport">
+
+<div class="section-header">
+
+<h2 class="section-title">
+    ✈️ 航班・JR・名鐵
+</h2>
+
+<div class="section-desc">
+    去程及回程主要交通資料
+</div>
+
+</div>
+
+
+<div class="section-body">
+
+<div class="card-grid">
+
+
+<div class="info-card">
+
+<span class="label label-blue">
+    D1
+</span>
+
+<span class="label label-green">
+    去程
+</span>
+
+<h3
+    data-map="Chubu Centrair International Airport Terminal 2">
+
+    ✈️ UO680・中部國際機場 T2
+
+</h3>
+
+<p>
+<strong>香港 → 名古屋</strong>
+</p>
+
+<p>
+規劃：
+<strong>10:00 → 14:30</strong>
+</p>
+
+<p>
+香港國際機場
+→ 中部國際機場 T2。
+</p>
+
+<p>
+正式航班時間出發前再核對。
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<span class="label label-blue">
+    D1
+</span>
+
+<span class="label label-yellow">
+    JR
+</span>
+
+<h3
+    data-map="Nagoya Station">
+
+    🚆 JR 名古屋站
+
+</h3>
+
+<p>
+<strong>特急信濃・名古屋 → 松本</strong>
+</p>
+
+<p>
+現行參考：
+<strong>17:40 → 19:46</strong>
+</p>
+
+<p>
+D1 最重要轉車目標。
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<span class="label label-blue">
+    D9
+</span>
+
+<span class="label label-yellow">
+    JR
+</span>
+
+<h3
+    data-map="Matsumoto Station">
+
+    🚉 松本站
+
+</h3>
+
+<p>
+<strong>特急信濃・松本 → 名古屋</strong>
+</p>
+
+<p>
+現行參考：
+<strong>13:56 → 16:07</strong>
+</p>
+
+<p>
+還車後保留充足 Buffer。
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<span class="label label-blue">
+    D9
+</span>
+
+<span class="label label-yellow">
+    名鐵
+</span>
+
+<h3
+    data-map="Meitetsu Nagoya Station">
+
+    🚆 名鐵名古屋站
+
+</h3>
+
+<p>
+<strong>名古屋 → 中部國際機場</strong>
+</p>
+
+<p>
+現行參考：
+<strong>16:49 → 17:17</strong>
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<span class="label label-blue">
+    D9
+</span>
+
+<span class="label label-green">
+    回程
+</span>
+
+<h3
+    data-map="Chubu Centrair International Airport Terminal 2">
+
+    ✈️ UO685・中部國際機場 T2
+
+</h3>
+
+<p>
+<strong>名古屋 → 香港</strong>
+</p>
+
+<p>
+規劃：
+<strong>20:40 起飛</strong>
+</p>
+
+<p>
+翌日約
+<strong>00:30</strong>
+抵港。
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<span class="label label-grey">
+    注意
+</span>
+
+<h3>
+    ⏱️ 冬季交通 Buffer
+</h3>
+
+<p>
+大雪有機會令 JR、
+道路及機場交通延誤。
+</p>
+
+<p>
+固定交通時間前，
+唔加入額外 Bonus 景點。
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="note-box">
+
+ℹ️ JR／名鐵時間目前屬行程規劃參考。
+2027 年冬季正式時間表推出後，
+再做一次全程核對。
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CAR
+====================================================== -->
+
+<section
+    class="section"
+    id="car">
+
+<div class="section-header">
+
+<h2 class="section-title">
+    🚗 租車資料
+</h2>
+
+<div class="section-desc">
+    D2–D8 冬季自駕
+</div>
+
+</div>
+
+
+<div class="section-body">
+
+<div class="card-grid">
+
+
+<div class="info-card">
+
+<span class="label label-blue">
+    D2
+</span>
+
+<h3
+    data-map="Times Car Rental Matsumoto Station">
+
+    🚗 Times 松本站前・取車
+
+</h3>
+
+<p>
+<strong>10:00 取車</strong>
+</p>
+
+<p>
+4WD＋雪軚。
+</p>
+
+<p>
+取車後先檢查：
+車身、輪胎、雪刷、
+油量、導航及 ETC。
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<span class="label label-blue">
+    D9
+</span>
+
+<h3
+    data-map="Times Car Rental Matsumoto Station">
+
+    🔑 Times 松本站前・還車
+
+</h3>
+
+<p>
+<strong>目標 12:10 前完成還車</strong>
+</p>
+
+<p>
+還車前：
+入滿油、
+保留入油單據、
+檢查車內有冇遺漏物品。
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<span class="label label-red">
+    冬季
+</span>
+
+<h3>
+    ❄️ 雪地駕駛
+</h3>
+
+<p>
+落雪／結冰道路：
+慢加速、慢煞車、
+慢轉方向。
+</p>
+
+<p>
+安全距離要明顯比乾地長。
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<span class="label label-yellow">
+    山路
+</span>
+
+<h3>
+    🏔️ 主要冬季山路
+</h3>
+
+<p>
+白絲瀑布一帶、
+白馬 → 高山、
+高山 → 新穗高、
+平湯／安房方向。
+</p>
+
+<p>
+道路情況差就放棄 Bonus。
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="note-box">
+
+🚨 車輛故障、爆胎、事故或無法移動：
+優先確保人身安全，
+再依 Times 租車文件／保險文件聯絡支援。
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     HOTELS
+====================================================== -->
+
+<section
+    class="section"
+    id="hotels">
+
+<div class="section-header">
+
+<h2 class="section-title">
+    🏨 住宿一覽
+</h2>
+
+<div class="section-desc">
+    每間酒店直接撳 📍 開 Google Maps
+</div>
+
+</div>
+
+
+<div class="section-body">
+
+<div class="hotel-list">
+
+
+<div class="hotel-row">
+
+<div class="hotel-day">
+    D1・1/9
+</div>
+
+<div
+    class="hotel-name"
+    data-map="TABINO HOTEL lit Matsumoto">
+
+    🏯 TABINO HOTEL lit 松本
+
+</div>
+
+<div class="hotel-note">
+    松本。
+    D1 不包早餐。
+</div>
+
+</div>
+
+
+<div class="hotel-row">
+
+<div class="hotel-day">
+    D2・1/10
+</div>
+
+<div
+    class="hotel-name"
+    data-map="Club Wyndham Chikumakan">
+
+    ♨️ Club Wyndham 千曲館
+
+</div>
+
+<div class="hotel-note">
+    戶倉上山田溫泉。
+    一泊二食。
+</div>
+
+</div>
+
+
+<div class="hotel-row">
+
+<div class="hotel-day">
+    D3・1/11
+</div>
+
+<div
+    class="hotel-name"
+    data-map="一乃湯果亭">
+
+    ♨️ 一乃湯果亭
+
+</div>
+
+<div class="hotel-note">
+    澀溫泉。
+    九湯巡禮。
+</div>
+
+</div>
+
+
+<div class="hotel-row">
+
+<div class="hotel-day">
+    D4・1/12
+</div>
+
+<div
+    class="hotel-name"
+    data-map="Hotel JAL City Nagano">
+
+    🏙️ Hotel JAL City Nagano
+
+</div>
+
+<div class="hotel-note">
+    長野市。
+    翌朝包早餐。
+</div>
+
+</div>
+
+
+<div class="hotel-row">
+
+<div class="hotel-day">
+    D5・1/13
+</div>
+
+<div
+    class="hotel-name"
+    data-map="Takayama Ouan">
+
+    ♨️ 飛驒花里之湯 高山櫻庵
+
+</div>
+
+<div class="hotel-note">
+    高山第一晚。
+</div>
+
+</div>
+
+
+<div class="hotel-row">
+
+<div class="hotel-day">
+    D6・1/14
+</div>
+
+<div
+    class="hotel-name"
+    data-map="Takayama Ouan">
+
+    ♨️ 飛驒花里之湯 高山櫻庵
+
+</div>
+
+<div class="hotel-note">
+    高山第二晚。
+</div>
+
+</div>
+
+
+<div class="hotel-row">
+
+<div class="hotel-day">
+    D7・1/15
+</div>
+
+<div
+    class="hotel-name"
+    data-map="Residence Hotel Takayama Station">
+
+    🏨 Residence Hotel Takayama Station
+
+</div>
+
+<div class="hotel-note">
+    高山站附近。
+</div>
+
+</div>
+
+
+<div class="hotel-row">
+
+<div class="hotel-day">
+    D8・1/16
+</div>
+
+<div
+    class="hotel-name"
+    data-map="Iroha Grand Hotel Matsumoto Ekimae">
+
+    🏯 Iroha Grand Hotel Matsumoto Ekimae
+
+</div>
+
+<div class="hotel-note">
+    松本最後一晚。
+    D9 包早餐。
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     IMPORTANT PARKING
+====================================================== -->
+
+<section
+    class="section"
+    id="parking">
+
+<div class="section-header">
+
+<h2 class="section-title">
+    🅿️ 重要停車位置
+</h2>
+
+<div class="section-desc">
+    呢幾個地方唔應該單純導航去景點名稱
+</div>
+
+</div>
+
+
+<div class="section-body">
+
+<div class="parking-list">
+
+
+<!-- JIGOKUDANI -->
+
+<div class="parking-card">
+
+<div class="parking-icon">
+    🐒
+</div>
+
+<div class="parking-main">
+
+<h3
+    data-map="地獄谷野猿公苑専用駐車場"
+    data-map-label="地獄谷野猿公苑専用駐車場">
+
+    地獄谷野猿公苑・冬季停車
+
+</h3>
+
+<p>
+<strong>
+導航目標：地獄谷野猿公苑専用駐車場
+</strong>
+</p>
+
+<p>
+Google Maps 正式名稱：
+地獄谷野猿公苑専用駐車場。
+</p>
+
+<p>
+泊車後步行約 30–35 分鐘入地獄谷野猿公苑。
+</p>
+
+<div class="parking-warning">
+
+⚠️ 1 月唔好導航去
+「地獄谷駐車場」。
+由澀溫泉上去嗰條林道冬季關閉。
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- HAKUBA -->
+
+<div class="parking-card">
+
+<div class="parking-icon">
+    🏔️
+</div>
+
+<div class="parking-main">
+
+<h3
+    data-map="Hakuba Iwatake Mountain Resort"
+    data-map-label="白馬岩岳山腳">
+
+    白馬岩岳 Mountain Resort
+
+</h3>
+
+<p>
+<strong>
+導航目標：Hakuba Iwatake Mountain Resort
+</strong>
+</p>
+
+<p>
+去山腳 Gondola／停車場。
+</p>
+
+<div class="parking-warning">
+
+⚠️ 唔好導航去 HAKUBA MOUNTAIN HARBOR 山頂。
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SHINHOTAKA -->
+
+<div class="parking-card">
+
+<div class="parking-icon">
+    🚡
+</div>
+
+<div class="parking-main">
+
+<h3
+    data-map="新穂高温泉駐車場"
+    data-map-label="新穗高溫泉停車場">
+
+    新穗高纜車
+
+</h3>
+
+<p>
+<strong>
+導航目標：新穂高温泉駐車場
+</strong>
+</p>
+
+<p>
+1 月使用新穗高溫泉一帶停車位置，
+再步行去第一纜車站。
+</p>
+
+</div>
+
+</div>
+
+
+<!-- SHIRAKAWAGO -->
+
+<div class="parking-card">
+
+<div class="parking-icon">
+    🏘️
+</div>
+
+<div class="parking-main">
+
+<h3
+    data-map="せせらぎ公園駐車場 白川郷"
+    data-map-label="白川鄉・せせらぎ公園駐車場">
+
+    白川鄉
+
+</h3>
+
+<p>
+<strong>
+導航目標：せせらぎ公園駐車場
+</strong>
+</p>
+
+<p>
+泊車後過「であい橋」
+步行入荻町合掌村。
+</p>
+
+<div class="parking-warning">
+
+⚠️ 唔好跟導航直接駛入合掌村住宅區。
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TAKAYAMA -->
+
+<div class="parking-card">
+
+<div class="parking-icon">
+    🏯
+</div>
+
+<div class="parking-main">
+
+<h3
+    data-map="中橋駐車場 高山"
+    data-map-label="高山中橋駐車場">
+
+    高山陣屋・三町古街
+
+</h3>
+
+<p>
+<strong>
+導航目標：中橋駐車場
+</strong>
+</p>
+
+<p>
+泊低車後步行去
+高山陣屋、中橋及三町古街。
+</p>
+
+</div>
+
+</div>
+
+
+<!-- SHIRAITO -->
+
+<div class="parking-card">
+
+<div class="parking-icon">
+    💧
+</div>
+
+<div class="parking-main">
+
+<h3
+    data-map="白糸の滝 駐車場 軽井沢"
+    data-map-label="白絲瀑布停車位置">
+
+    輕井澤白絲瀑布
+
+</h3>
+
+<p>
+<strong>
+導航目標：白糸の滝 駐車場
+</strong>
+</p>
+
+<p>
+泊車後步行去瀑布。
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="note-box">
+
+📍 呢頁嘅停車位置係俾你
+「真正揸車嗰陣快速撳」用。
+
+景點內部步行路線仍然以現場指示為準。
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     HARD CUTS
+====================================================== -->
+
+<section
+    class="section"
+    id="hardcuts">
+
+<div class="section-header">
+
+<h2 class="section-title">
+    ⏰ 全程重要 Hard Cut
+</h2>
+
+<div class="section-desc">
+    唔應該畀 Bonus 景點拖延嘅時間
+</div>
+
+</div>
+
+
+<div class="section-body">
+
+<div class="hardcut-list">
+
+
+<div class="hardcut-item">
+
+<div class="hardcut-time">
+    D1 17:40
+</div>
+
+<div class="hardcut-text">
+    🚆 名古屋 → 松本
+    特急信濃目標班次。
+</div>
+
+</div>
+
+
+<div class="hardcut-item">
+
+<div class="hardcut-time">
+    D2 10:00
+</div>
+
+<div class="hardcut-text">
+    🚗 Times 松本站前取車。
+</div>
+
+</div>
+
+
+<div class="hardcut-item">
+
+<div class="hardcut-time">
+    D2 16:30
+</div>
+
+<div class="hardcut-text">
+    🛍️ 離開輕井澤 Outlet，
+    開車去千曲。
+</div>
+
+</div>
+
+
+<div class="hardcut-item">
+
+<div class="hardcut-time">
+    D4 17:00
+</div>
+
+<div class="hardcut-text">
+    🛍️ 離開 AEON Mall 須坂，
+    前往長野。
+</div>
+
+</div>
+
+
+<div class="hardcut-item">
+
+<div class="hardcut-time">
+    D5 13:20
+</div>
+
+<div class="hardcut-text">
+    🏔️ 離開白馬，
+    開始冬季長途駕駛去高山。
+</div>
+
+</div>
+
+
+<div class="hardcut-item">
+
+<div class="hardcut-time">
+    D6 07:45
+</div>
+
+<div class="hardcut-text">
+    🌨️ 完成新穗高天氣判斷。
+</div>
+
+</div>
+
+
+<div class="hardcut-item">
+
+<div class="hardcut-time">
+    D9 11:00
+</div>
+
+<div class="hardcut-text">
+    🛍️ 必須離開 AEON Mall 松本。
+</div>
+
+</div>
+
+
+<div class="hardcut-item">
+
+<div class="hardcut-time">
+    D9 12:10
+</div>
+
+<div class="hardcut-text">
+    🚗 目標完成 Times 還車。
+</div>
+
+</div>
+
+
+<div class="hardcut-item">
+
+<div class="hardcut-time">
+    D9 13:56
+</div>
+
+<div class="hardcut-text">
+    🚆 松本 → 名古屋
+    特急信濃。
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     WEATHER
+====================================================== -->
+
+<section
+    class="section"
+    id="weather">
+
+<div class="section-header">
+
+<h2 class="section-title">
+    🌨️ D6–D8 天氣決策
+</h2>
+
+<div class="section-desc">
+    新穗高同白川鄉嘅核心決策
+</div>
+
+</div>
+
+
+<div class="section-body">
+
+
+<div class="decision-box">
+
+<div class="decision-title">
+    D6・Weather Day 1
+</div>
+
+<div class="decision-line">
+    🟢 新穗高山頂清晰＋纜車正常
+    → 今日即去新穗高。
+</div>
+
+<div class="decision-line">
+    🟡 普通天／低雲／能見度一般
+    → 高山市區＋飛驒大鐘乳洞。
+</div>
+
+<div class="decision-line">
+    🔴 強風／停駛／大霧
+    → 唔上新穗高。
+</div>
+
+</div>
+
+
+<div class="decision-box">
+
+<div class="decision-title">
+    D7・按 D6 結果
+</div>
+
+<div class="decision-line">
+    🟢 D6 已完成新穗高
+    → 今日固定白川鄉。
+</div>
+
+<div class="decision-line">
+    🟢 D6 未完成＋今日新穗高清晰
+    → 今日新穗高。
+</div>
+
+<div class="decision-line">
+    🟡 D6 未完成＋新穗高天氣差
+    → 今日白川鄉。
+</div>
+
+</div>
+
+
+<div class="decision-box">
+
+<div class="decision-title">
+    D8・最後彈性日
+</div>
+
+<div class="decision-line">
+    🏘️ D7 去咗新穗高
+    → 今日白川鄉 → 松本。
+</div>
+
+<div class="decision-line">
+    🚡 D7 去咗白川鄉
+    → 今日再試新穗高 → 松本。
+</div>
+
+<div class="decision-line">
+    🔴 新穗高仍然大霧／停駛
+    → 唔再追，直接返松本。
+</div>
+
+</div>
+
+
+<div class="button-row">
+
+<a
+    class="button"
+    href="index.html#d6">
+    📹 D6 Live Cam
+</a>
+
+<a
+    class="button"
+    href="index.html#d7">
+    📹 D7 Live Cam
+</a>
+
+<a
+    class="button"
+    href="index.html#d8">
+    📹 D8 Live Cam
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CHECKLIST
+====================================================== -->
+
+<section
+    class="section"
+    id="checklist">
+
+<div class="section-header">
+
+<h2 class="section-title">
+    🎒 每朝出車 Checklist
+</h2>
+
+<div class="section-desc">
+    冬季自駕出發前快速檢查
+</div>
+
+</div>
+
+
+<div class="section-body">
+
+<div class="checklist">
+
+<div class="check-item">
+    📱 手機＋充足電量
+</div>
+
+<div class="check-item">
+    🔋 Power Bank
+</div>
+
+<div class="check-item">
+    🔌 車充／充電線
+</div>
+
+<div class="check-item">
+    🧥 外套／保暖用品
+</div>
+
+<div class="check-item">
+    👢 防水防滑鞋
+</div>
+
+<div class="check-item">
+    🧤 手套
+</div>
+
+<div class="check-item">
+    ❄️ 雪刷／刮冰器
+</div>
+
+<div class="check-item">
+    🚗 清走車窗、車頂積雪
+</div>
+
+<div class="check-item">
+    ⛽ 確認油量
+</div>
+
+<div class="check-item">
+    🧭 Google Maps／導航設定
+</div>
+
+<div class="check-item">
+    📹 先睇今日 Live Cam
+</div>
+
+<div class="check-item">
+    🌨️ 睇降雪／道路情況
+</div>
+
+<div class="check-item">
+    🎫 景點票／預約資料
+</div>
+
+<div class="check-item">
+    💴 現金／信用卡
+</div>
+
+<div class="check-item">
+    🥤 水／簡單小食
+</div>
+
+<div class="check-item">
+    🎒 行李固定好
+</div>
+
+</div>
+
+
+<div class="note-box">
+
+🚗 落大雪時，
+開車前記得清走車頂積雪，
+唔好只清前擋風玻璃。
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     EMERGENCY
+====================================================== -->
+
+<section
+    class="section"
+    id="emergency">
+
+<div class="section-header">
+
+<h2 class="section-title">
+    ☎️ 日本緊急資料
+</h2>
+
+<div class="section-desc">
+    真正緊急情況使用
+</div>
+
+</div>
+
+
+<div class="section-body">
+
+<div class="emergency-grid">
+
+
+<div class="emergency-card">
+
+<div class="emergency-number">
+    110
+</div>
+
+<div class="emergency-title">
+    👮 警察
+</div>
+
+<div class="emergency-note">
+    交通事故、犯罪、
+    人身安全等緊急情況。
+</div>
+
+</div>
+
+
+<div class="emergency-card">
+
+<div class="emergency-number">
+    119
+</div>
+
+<div class="emergency-title">
+    🚑 救護／消防
+</div>
+
+<div class="emergency-note">
+    急病、受傷、
+    火警等緊急情況。
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="note-box">
+
+🚗 租車事故／故障：
+以 Times 租車文件及保險文件內嘅
+支援方式為準。
+
+<br><br>
+
+🏨 非緊急情況：
+可先聯絡當晚酒店 Front Desk。
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+Japan Winter Trip 2027
+
+<br>
+
+📍 = Google Maps 駕車導航
+
+<br>
+
+航班、JR、營業時間及交通安排
+出發前再作最終確認
+
+</footer>
+
+
+<script>
+
+
+/* =====================================================
+   GOOGLE MAPS
+===================================================== */
+
+function googleDriveUrl(
+    destination
+) {
+
+    return (
+        "https://www.google.com/maps/dir/" +
+        "?api=1" +
+        "&destination=" +
+        encodeURIComponent(
+            destination
+        ) +
+        "&travelmode=driving"
+    );
+
+}
+
+
+function addMapPins() {
+
+    document
+    .querySelectorAll(
+        "[data-map]"
+    )
+    .forEach(
+
+        function(element) {
+
+            if (
+                element.dataset.mapAdded ===
+                "true"
+            ) {
+                return;
+            }
+
+
+            const destination =
+                element.dataset.map;
+
+
+            const label =
+                element.dataset.mapLabel ||
+                destination;
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.className =
+                "map-pin";
+
+
+            link.href =
+                googleDriveUrl(
+                    destination
+                );
+
+
+            link.target =
+                "_blank";
+
+
+            link.rel =
+                "noopener";
+
+
+            link.title =
+                "Google Maps 駕車導航：" +
+                label;
+
+
+            link.setAttribute(
+                "aria-label",
+                "Google Maps 駕車導航：" +
+                label
+            );
+
+
+            link.textContent =
+                "📍";
+
+
+            link.addEventListener(
+
+                "click",
+
+                function(event) {
+
+                    event.stopPropagation();
+
+                }
+
+            );
+
+
+            element.appendChild(
+                link
+            );
+
+
+            element.dataset.mapAdded =
+                "true";
+
+        }
+
+    );
+
+}
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+window.addEventListener(
+
+    "load",
+
+    function() {
+
+        addMapPins();
+
+    }
+
+);
+
+
+/* =====================================================
+   PWA SERVICE WORKER
+===================================================== */
+
+if (
+    "serviceWorker" in navigator
+) {
+
+    window.addEventListener(
+
+        "load",
+
+        function() {
+
+            navigator
+            .serviceWorker
+            .register("./sw.js")
+            .catch(
+
+                function(error) {
+
+                    console.warn(
+                        "Service Worker registration failed:",
+                        error
+                    );
+
+                }
+
+            );
+
+        }
+
+    );
+
+}
+
+</script>
+
+
+
+<script id="tripv2-common-script">
+(function(){
+    if (window.__tripV2CommonLoaded) return;
+    window.__tripV2CommonLoaded = true;
+
+    function ensureNetworkStatus(){
+        let el = document.getElementById('tripv2NetworkStatus');
+        if (!el) {
+  el = document.createElement('div');
+  el.id = 'tripv2NetworkStatus';
+  el.className = 'tripv2-status';
+  document.body.appendChild(el);
+        }
+        function refresh(){
+  const online = navigator.onLine;
+  el.textContent = online ? '🟢 Online' : '🟠 Offline';
+  el.classList.toggle('offline', !online);
+  el.title = online ? 'Live Cam / Google Maps 可正常使用' : 'Offline：行程可睇，但 Live Cam / Google Maps 需要網絡';
+        }
+        window.addEventListener('online', refresh);
+        window.addEventListener('offline', refresh);
+        refresh();
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+        ensureNetworkStatus();
+    });
+})();
+</script>
+
+
+<script id="tripv2-info-script">
+(function(){
+    const CHECK_KEY='japanWinter2027_checklist_v1';
+    const WEATHER_KEY='japanWinter2027_shinhotakaDay';
+
+    function setupChecklist(){
+        const wrap=document.querySelector('#checklist .checklist'); if(!wrap) return;
+        let state={}; try{ state=JSON.parse(localStorage.getItem(CHECK_KEY)||'{}'); }catch(e){}
+        wrap.querySelectorAll('.check-item').forEach((item,idx)=>{
+  if(item.querySelector('input')) return;
+  const text=item.textContent.trim();
+  const key='i'+idx;
+  const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[key];
+  item.prepend(cb); item.classList.toggle('done',cb.checked);
+  function save(){ state[key]=cb.checked; localStorage.setItem(CHECK_KEY,JSON.stringify(state)); item.classList.toggle('done',cb.checked); }
+  cb.addEventListener('change',save);
+  item.addEventListener('click',function(e){ if(e.target===cb) return; cb.checked=!cb.checked; save(); });
+        });
+        if(!document.getElementById('tripv2ResetChecklist')){
+  const b=document.createElement('button'); b.id='tripv2ResetChecklist'; b.className='tripv2-reset-check'; b.textContent='↺ 全部 Checklist 重設';
+  b.addEventListener('click',function(){ localStorage.removeItem(CHECK_KEY); wrap.querySelectorAll('input').forEach(c=>{c.checked=false;c.dispatchEvent(new Event('change'));}); });
+  wrap.insertAdjacentElement('afterend',b);
+        }
+    }
+
+    function setupWeatherSummary(){
+        const sec=document.getElementById('weather'); if(!sec) return;
+        const body=sec.querySelector('.section-body'); if(!body) return;
+        let box=document.getElementById('tripv2WeatherSummary'); if(!box){ box=document.createElement('div'); box.id='tripv2WeatherSummary'; box.className='tripv2-weather-summary'; body.prepend(box); }
+        const sh=localStorage.getItem(WEATHER_KEY);
+        const label=sh==='d6'?'D6':sh==='d7'?'D7':sh==='d8'?'D8':null;
+        if(!label){ box.innerHTML='🌨️ <strong>D6–D8 尚未鎖定。</strong> 去「詳細行程」揀 D6／D7／D8 邊日去新穗高。'; return; }
+        let d6=sh==='d6'?'新穗高':'高山市區＋飛驒大鐘乳洞';
+        let d7=sh==='d7'?'新穗高':'白川鄉';
+        let d8=sh==='d8'?'新穗高':(sh==='d7'?'白川鄉':'高山市區＋飛驒大鐘乳洞');
+        box.innerHTML='🚡 <strong>'+label+' 去新穗高</strong><br>D6：'+d6+'<br>D7：'+d7+'<br>D8：'+d8+' → 松本';
+    }
+
+    document.addEventListener('DOMContentLoaded',function(){ setupChecklist(); setupWeatherSummary(); });
+})();
+</script>
+
+<script src="assets/attraction-info.js?v=1"></script>
+
+</body>
+
+</html>

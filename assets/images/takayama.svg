@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="高山">
- <rect width="1200" height="675" fill="#f8f1f1"/>
- <path d="M0 500L220 260l160 150 180-230 190 220 155-170 295 270v175H0z" fill="#7f4c4c" opacity=".18"/>
- <circle cx="970" cy="145" r="72" fill="#7f4c4c" opacity=".15"/>
- <text x="60" y="570" font-family="Arial, sans-serif" font-size="78" font-weight="700" fill="#7f4c4c">高山</text>
- <text x="64" y="625" font-family="Arial, sans-serif" font-size="28" fill="#7f4c4c" opacity=".75">TravelPilot Standard POC placeholder</text>
-</svg>
