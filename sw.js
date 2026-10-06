@@ -10,6 +10,7 @@ const CORE=[
   './assets/travelpilot-home.css',
   './assets/images/travelpilot-icon-exact.jpg',
   './assets/standard-app-v1.css',
+  './assets/standard-home-v1.js',
   './assets/standard-core-v1.js',
   './assets/standard-modes-v1.js',
   './assets/standard-render-itinerary-v1.js',
