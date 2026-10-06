@@ -56,6 +56,7 @@ await check('Trip Info custom sections and checklist persistence',async()=>{
   await page.goto(base+'/trip-info.html?trip=golden-reference-2027',{waitUntil:'networkidle'});
   assert(await page.locator('#train-fares').count()===1,'train fare custom section missing');
   assert(await page.locator('#snow-shrines').count()===1,'snow shrine custom section missing');
+  assert(await page.locator('#official-links').count()===1,'links custom section missing');
   const checkbox=page.locator('[data-departure-id="docs"]');
   await checkbox.check();
   const keys=await page.evaluate(()=>Object.keys(localStorage));
