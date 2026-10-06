@@ -268,6 +268,22 @@
       "title": "⚠️ 天氣決策規則",
       "type": "notice",
       "text": "天氣可以提示風險及 suitability，但 Standard 不會自動重排 itinerary。"
+    },
+    {
+      "id": "official-links",
+      "title": "🔗 官方快速連結",
+      "desc": "Standard customSections.links POC。",
+      "type": "links",
+      "links": [
+        {
+          "label": "新穗高纜車官方",
+          "href": "https://shinhotaka-ropeway.jp/"
+        },
+        {
+          "label": "白川鄉官方",
+          "href": "https://shirakawa-go.gr.jp/"
+        }
+      ]
     }
   ]
 }
