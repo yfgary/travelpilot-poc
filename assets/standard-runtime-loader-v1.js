@@ -23,6 +23,31 @@ const loadScript=src=>new Promise((resolve,reject)=>{
   s.src=src;s.async=false;s.onload=resolve;s.onerror=()=>reject(new Error('script '+src));
   document.head.appendChild(s);
 });
+const mark=(tripId)=>{
+  document.documentElement.dataset.standardRuntimeLoader='v1';
+  if(tripId)document.documentElement.dataset.standardRuntimeTrip=tripId;
+};
+
+function embeddedPlan(){
+  const el=document.getElementById('travelPilotRuntimePlan');
+  if(!el)return null;
+  try{return JSON.parse(el.textContent||'');}catch(e){console.error('Invalid embedded runtime plan',e);return null;}
+}
+function parserBoot(plan){
+  const spec=plan&&plan.pages&&plan.pages[pageKey];
+  if(!spec)return false;
+  (spec.styles||[]).forEach(addCss);
+  mark(plan.tripId||'');
+  if(document.readyState==='loading'){
+    (spec.scripts||[]).forEach(src=>document.write('<script src="'+src+'"><'+'/script>'));
+    document.write('<script>document.dispatchEvent(new CustomEvent("travelpilot:runtime-ready",{detail:{tripId:"'+String(plan.tripId||'').replace(/["\\]/g,'')+'",page:"'+pageKey+'"}}));<'+'/script>');
+    return true;
+  }
+  return false;
+}
+
+const embedded=embeddedPlan();
+if(embedded&&parserBoot(embedded))return;
 
 (async()=>{
   const registry=await json('trips/registry.json');
@@ -41,8 +66,7 @@ const loadScript=src=>new Promise((resolve,reject)=>{
   if(!spec)throw new Error('No runtime plan page '+pageKey);
   (spec.styles||[]).forEach(addCss);
   for(const src of spec.scripts||[])await loadScript(src);
-  document.documentElement.dataset.standardRuntimeLoader='v1';
-  document.documentElement.dataset.standardRuntimeTrip=entry.id;
+  mark(entry.id);
   document.dispatchEvent(new CustomEvent('travelpilot:runtime-ready',{detail:{tripId:entry.id,page:pageKey}}));
 })().catch(err=>{
   console.error('TravelPilot Standard runtime loader failed',err);
