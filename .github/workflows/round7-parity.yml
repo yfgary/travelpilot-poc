@@ -20,6 +20,12 @@ jobs:
           ref: main
           path: production-reference
 
+      - name: Isolate production reference outside candidate tree
+        run: |
+          rm -rf /tmp/production-reference
+          cp -a production-reference /tmp/production-reference
+          rm -rf production-reference
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -36,7 +42,7 @@ jobs:
             set +e
             python "scripts/$test" >/tmp/candidate-qa.log 2>&1
             candidate_rc=$?
-            (cd production-reference && python "scripts/$test") >/tmp/reference-qa.log 2>&1
+            (cd /tmp/production-reference && python "scripts/$test") >/tmp/reference-qa.log 2>&1
             reference_rc=$?
             set -e
             echo "$test candidate=$candidate_rc reference=$reference_rc"
@@ -53,9 +59,9 @@ jobs:
 
       - name: Production public itinerary remains untouched
         run: |
-          cmp itinerary.html production-reference/itinerary.html
-          cmp assets/attraction-info.js production-reference/assets/attraction-info.js
-          cmp assets/images/d1-centrair.jpg production-reference/assets/images/d1-centrair.jpg
+          cmp itinerary.html /tmp/production-reference/itinerary.html
+          cmp assets/attraction-info.js /tmp/production-reference/assets/attraction-info.js
+          cmp assets/images/d1-centrair.jpg /tmp/production-reference/assets/images/d1-centrair.jpg
 
       - name: Candidate loader has no destination hardcodes
         run: |
