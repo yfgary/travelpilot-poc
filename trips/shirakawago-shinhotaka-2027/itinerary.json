@@ -916,8 +916,8 @@
       "id": "d6",
       "day": 6,
       "date": "2027-01-14",
-      "title": "🚡 新穗高 → 平湯 → 高山",
-      "route": "高山 → 新穗高纜車 → 平湯神社 → 高山",
+      "title": "🚡 新穗高 → 高山",
+      "route": "高山 → 新穗高纜車 → 高山｜平湯神社／平湯之森只係有時間先加",
       "weatherRegion": "shinhotaka",
       "driving": true,
       "hotelId": "takayama-ouan",
@@ -1019,32 +1019,6 @@
           "attractionId": "shinhotaka"
         },
         {
-          "time": "13:30–14:05",
-          "type": "🚗 車",
-          "title": "新穗高 → 平湯神社",
-          "localName": "新穂高ロープウェイ",
-          "description": "沿R471／R158方向返平湯，神社就在自然回程線，唔需要繞大圈。",
-          "map": "平湯神社",
-          "attractionId": "shinhotaka"
-        },
-        {
-          "time": "14:05–14:25",
-          "type": "⛩️ 神社",
-          "title": "⛩️ 平湯神社｜奧飛驒溫泉鄉嘅地方信仰",
-          "localName": "平湯神社（ひらゆじんじゃ）",
-          "description": "D6 固定新穗高回程短停約20分鐘；了解溫泉聚落同地方信仰，路面結冰嚴重就以安全為先。",
-          "map": "平湯神社",
-          "attractionId": "hirayu-shrine"
-        },
-        {
-          "time": "14:25–15:15",
-          "type": "🚗 車",
-          "title": "平湯 → 高山",
-          "localName": "🇯🇵 平湯 → 高山市",
-          "description": "參拜後繼續原本主線。冬季以道路安全同即時導航為準。",
-          "map": "高山"
-        },
-        {
           "time": "15:10",
           "type": "🛍️ 彈性",
           "title": "高山古街／地元超市",
@@ -1075,6 +1049,23 @@
         },
         {
           "text": "D6 固定新穗高日；如纜車停駛、能見度差或道路不安全，由人手決定 D6 Plan B。其餘日子保持固定。"
+        },
+        {
+          "text": "平湯神社、平湯之森同熊牧場都係 Optional；唔為 Bonus 壓縮新穗高主線或冬季返高山 Buffer。"
+        }
+      ],
+      "backups": [
+        {
+          "title": "平湯神社｜如有時間加",
+          "attractionId": "hirayu-shrine"
+        },
+        {
+          "title": "平湯之森雪見露天溫泉｜如有時間加",
+          "attractionId": "hirayu-no-mori"
+        },
+        {
+          "title": "奧飛驒熊牧場｜低優先 Backup",
+          "attractionId": "bear-park"
         }
       ]
     },
@@ -1083,7 +1074,7 @@
       "day": 7,
       "date": "2027-01-15",
       "title": "🏘️ 白川鄉 → 高山",
-      "route": "高山 → 白川鄉合掌村／和田家／荻町展望台 → 高山；晚上三寺まいり只作 Bonus",
+      "route": "高山 → 白川鄉合掌村／和田家／荻町展望台 → 高山｜三寺まいり只作 Bonus",
       "weatherRegion": "shirakawago",
       "driving": true,
       "hotelId": "residence-takayama",
@@ -1208,42 +1199,6 @@
           "map": "Residence Hotel Takayama Station"
         },
         {
-          "time": "15:50–16:00",
-          "type": "🚗 車",
-          "title": "前往飛驒東照宮",
-          "localName": "🇯🇵 飛騨東照宮",
-          "description": "由上一站順路返高山市區；核心景點完成後先加神社。",
-          "map": "飛騨東照宮",
-          "attractionId": "hida-toshogu"
-        },
-        {
-          "time": "16:00–16:20",
-          "type": "⛩️ 神社",
-          "title": "⛩️ 飛驒東照宮｜德川家康、金森家與飛驒匠人",
-          "localName": "飛騨東照宮（ひだとうしょうぐう）",
-          "description": "正式主線短停：睇本殿、唐門、62米透塀，同高山陣屋嘅幕府背景串埋理解。",
-          "map": "飛騨東照宮",
-          "attractionId": "hida-toshogu"
-        },
-        {
-          "time": "16:20–16:30",
-          "type": "🚗 市內短程",
-          "title": "飛驒東照宮 → 豐川城山稻荷",
-          "localName": "🇯🇵 飛騨東照宮 → 豊川城山稲荷",
-          "description": "短程移動去城山一帶。",
-          "map": "豊川城山稲荷",
-          "attractionId": "hida-toshogu"
-        },
-        {
-          "time": "16:30–16:50",
-          "type": "⛩️ 神社",
-          "title": "豐川城山稻荷・朱紅鳥居",
-          "localName": "🇯🇵 豊川城山稲荷（とよかわしろやまいなり）",
-          "description": "正式主線短停：雪地朱紅鳥居係攝影重點；路面結冰嚴重就以安全為先。",
-          "map": "豊川城山稲荷",
-          "attractionId": "toyokawa-shiroyama-inari"
-        },
-        {
           "time": "晚上",
           "type": "⭐ 1/15 Bonus／可取消",
           "title": "🕯️ 飛驒古川・三寺巡禮",
@@ -1254,9 +1209,9 @@
         }
       ],
       "bonus": [
-        "santera-mairi",
         {
-          "text": "🕯️ 1月15日限定 Bonus：飛驒古川三寺巡禮。只喺返高山夠早、道路安全同精神狀態好先加。"
+          "title": "1/15 飛驒古川・三寺まいり｜安全、時間、體力全部合適先去",
+          "attractionId": "santera-mairi"
         }
       ],
       "constraints": [
@@ -1265,6 +1220,16 @@
         },
         {
           "text": "1/15 三寺まいり只在主線完成、道路安全同精神狀態良好時先加。"
+        }
+      ],
+      "backups": [
+        {
+          "title": "飛驒東照宮｜如有時間加",
+          "attractionId": "hida-toshogu"
+        },
+        {
+          "title": "豐川城山稻荷｜如有時間加",
+          "attractionId": "toyokawa-shiroyama-inari"
         }
       ]
     },
@@ -1414,6 +1379,16 @@
       "constraints": [
         {
           "text": "D8 固定一路向東返松本，不安排白川鄉／新穗高；冬季道路安全同到松本 Buffer 優先。"
+        }
+      ],
+      "backups": [
+        {
+          "title": "日枝神社｜Backup",
+          "attractionId": "hie-shrine"
+        },
+        {
+          "title": "大王山葵農場｜非常早到安曇野先加",
+          "attractionId": "daio-wasabi"
         }
       ]
     },
