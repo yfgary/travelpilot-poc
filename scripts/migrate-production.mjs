@@ -126,6 +126,72 @@ function richAttractions(data){
       sources
     });
   }
+  const fixedDay={
+    'shinhotaka':'D6',
+    'hirayu-shrine':'D6',
+    'hirayu-no-mori':'D6 Backup',
+    'shirakawago':'D7',
+    'wada-house':'D7',
+    'ogimachi-view':'D7',
+    'hida-furukawa':'D7 Bonus',
+    'santera-mairi':'D7 Bonus',
+    'hida-toshogu':'D7 Backup',
+    'toyokawa-shiroyama-inari':'D7 Backup',
+    'miyagawa':'D8',
+    'takayama-jinya':'D8',
+    'sanmachi':'D8',
+    'hida-cave':'D8',
+    'takayama-supermarket':'D6/D8',
+    'daio-wasabi':'D8 Backup'
+  };
+  const fixedCopy={
+    shinhotaka:{
+      summary:'新穗高係全程最食能見度、但好天回報亦最高嘅景點。唔需要登山，就可以由奧飛驒山谷上到海拔2,156米西穗高口，晴天可直接睇北阿爾卑斯雪峰、山脊同深谷；低雲、大霧或者強風時體驗會明顯下降。',
+      info:'D6 固定新穗高日。出發前睇官方運行、Live Cam、山頂能見度、風況同冬季道路；資料只供人手決定 D6 是否採用 Plan B，App 不會改動 D7／D8。',
+      tips:'D6 07:45 做最後安全判斷；正常運行兼路況可接受先出發。若停駛、低能見度或道路不安全，當日人手改 D6 Plan B；D7 白川鄉同 D8 高山市區／松本保持固定。'
+    },
+    'hirayu-shrine':{
+      summary:'平湯神社幾乎唔需要繞路，最適合放喺 D6 新穗高回程。用約20分鐘短停，可以將奧飛驒嘅山岳、溫泉聚落同地方信仰連埋一齊。',
+      info:'D6 新穗高回程短停；路面除雪差、結冰嚴重或者時間不足就 Skip。',
+      tips:'固定放 D6：新穗高 → 平湯神社 → 高山。唔需要為神社犧牲冬季駕駛 Buffer。'
+    },
+    'hirayu-no-mori':{
+      tips:'只作 D6 新穗高日 Backup：如果主行程早完、道路安全同體力足夠，可考慮新穗高 → 平湯之森 → 高山；唔為浸溫泉拖到夜間山路。'
+    },
+    shirakawago:{
+      tips:'D7 固定白川鄉日。出發前確認降雪、道路／交通管制同村內情況；道路不安全時由人手決定 D7 Plan B，App 不會同 D6／D8 互換。'
+    },
+    'hida-cave':{
+      summary:'飛驒大鐘乳洞係 D8 高山返松本方向上非常實用嘅冬季內容：洞穴主體受降雪影響相對細，1月洞外再有冰之溪谷，天然鐘乳石同冬季冰景可以一程完成。',
+      info:'D8 固定主線景點之一：高山市區 → 飛驒大鐘乳洞 → 平湯／安房 → 松本。外面落雪時仍要以道路安全為先。',
+      tips:'D8 午餐後向東行去鐘乳洞，之後直接返松本。唔再因新穗高／白川鄉天氣改動日期。'
+    },
+    sanmachi:{
+      tips:'D8 高山市區主線：宮川朝市 → 高山陣屋 → 中橋／三町古街最順。預留足夠時間俾午後飛驒大鐘乳洞同返松本。'
+    },
+    'hida-no-sato':{
+      tips:'主要做 D5 早到高山時 Backup。已安排白川鄉主線，唔為飛驒之里壓縮核心行程。'
+    },
+    'yatai-kaikan':{
+      tips:'主要做 D5 早到高山時 Backup；同飛驒之里二選一，唔影響之後固定 D6 新穗高、D7 白川鄉、D8 返松本。'
+    },
+    'daio-wasabi':{
+      tips:'D8 只作非常低優先 Backup：鐘乳洞後如果比計劃早好多到安曇野、仍在營業時間內先考慮；唔可以推遲返松本。'
+    },
+    'hida-toshogu':{
+      tips:'D7 白川鄉返高山後，如果主線明顯提早、仍有日光先短停；唔 Cut 白川鄉、Check-in 或晚間休息。'
+    },
+    'toyokawa-shiroyama-inari':{
+      tips:'D7 只有飛驒東照宮完成後仍有日光同體力先順路加；雪路／結冰差就直接 Skip。'
+    },
+    'takayama-supermarket':{
+      tips:'D6 新穗高返高山早到時可做生活購物；D8 如朝早主線有空亦可短買，但唔影響鐘乳洞同返松本。'
+    }
+  };
+  for(const row of result){
+    if(fixedDay[row.id])row.day=fixedDay[row.id];
+    if(fixedCopy[row.id])Object.assign(row,fixedCopy[row.id]);
+  }
   return {schemaVersion:3,tripId:TRIP_ID,attractions:result};
 }
 
@@ -271,7 +337,25 @@ async function scrapeItinerary(page,baseItinerary,attractions){
   const fixedRegion={d6:'shinhotaka',d7:'shirakawago',d8:'takayama'};
   const cleanTitle=s=>clean(s).replace(/\s*[📍ⓘ]+\s*$/gu,'').trim();
   const textOf=x=>typeof x==='string'?x:(x?.text||x?.title||x?.label||'');
-  const dedupeItems=items=>uniq(items,x=>[x.time,x.type,x.title,x.localName].join('|'));
+  const timeRank=value=>{
+    const text=String(value||'');
+    const match=text.match(/(\d{1,2}):(\d{2})/);
+    if(match)return Number(match[1])*60+Number(match[2]);
+    if(/晚上|夜晚/.test(text))return 24*60;
+    return 23*60+59;
+  };
+  const itemCompleteness=item=>
+    (String(item.time||'').includes('–')?4:0)+
+    (item.description?2:0)+(item.map?1:0)+(item.attractionId?1:0);
+  const dedupeItems=items=>{
+    const best=new Map();
+    for(const item of items){
+      const key=[item.type,item.title,item.localName,item.attractionId||''].join('|');
+      const old=best.get(key);
+      if(!old||itemCompleteness(item)>itemCompleteness(old))best.set(key,item);
+    }
+    return [...best.values()].sort((a,b)=>timeRank(a.time)-timeRank(b.time));
+  };
   const fixedPlan={
     d6:{
       title:'🚡 新穗高 → 平湯 → 高山',
@@ -282,7 +366,14 @@ async function scrapeItinerary(page,baseItinerary,attractions){
         {text:'07:45 前確認新穗高官方運行、Live Cam、山頂能見度、風況同冬季道路。'},
         {text:'D6 固定新穗高日；如纜車停駛、能見度差或道路不安全，由人手決定 D6 Plan B。D7／D8 日子不會自動改動。'}
       ],
-      hardCuts:[{time:'07:45',label:'完成新穗高官方運行／Live Cam／風況確認。'}]
+      hardCuts:[{time:'07:45',label:'完成新穗高官方運行／Live Cam／風況確認。'}],
+      media:{
+        hero:{src:'assets/images/d6-shinhotaka.jpg',alt:'🚡 新穗高纜車',caption:'🚡 新穗高纜車',credit:null},
+        gallery:[
+          {src:'https://commons.wikimedia.org/wiki/Special:FilePath/%E5%B9%B3%E6%B9%AF%E7%A5%9E%E7%A4%BE%20-%20panoramio.jpg?width=1200',alt:'⛩️ 平湯神社',caption:'⛩️ 平湯神社',credit:{label:'Wikimedia Commons'}},
+          {src:'assets/images/d6-takayama.jpg',alt:'🏯 高山',caption:'🏯 返回高山',credit:null}
+        ]
+      }
     },
     d7:{
       title:'🏘️ 白川鄉 → 高山',
@@ -364,6 +455,7 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       if(d.id==='d6'){
         items=items.filter(it=>!/飛驒大鐘乳洞|宮川朝市|高山陣屋|三町古街/.test(it.title));
       }
+      items=dedupeItems(items);
       highlights=[
         {
           title:d.id==='d6'
@@ -376,6 +468,7 @@ async function scrapeItinerary(page,baseItinerary,attractions){
         ...highlights.filter(h=>{
           const tx=h.title||'';
           if(/重新揀|互換|順延|按今日天氣決定|最後彈性|尚未完成|Scenario|D6 已|D6 未|D7／D8|D8 再|搶新穗高/.test(tx))return false;
+          if(d.id==='d7'&&/新穗高|新穂高/.test(tx))return false;
           return fixed.keepHighlight.test(tx);
         })
       ];
@@ -386,6 +479,7 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       bonus=bonus.filter(x=>!/D6|D7|D8|互換|Scenario|新穗高日/.test(textOf(x)));
     }
 
+    const media=fixed?.media||d.media;
     return {
       id:d.id,
       day:b.day||idx+1,
@@ -397,9 +491,9 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       ...(b.hotelId?{hotelId:b.hotelId}:{}),
       ...(hardCuts.length?{hardCuts}:{}),
       ...(highlights.length?{highlights:uniq(highlights,x=>x.title)}:{}),
-      ...(d.media.hero||d.media.gallery.length?{media:{
-        ...(d.media.hero?{hero:d.media.hero}:{}),
-        ...(d.media.gallery.length?{gallery:uniq(d.media.gallery,x=>x.src+'|'+x.caption)}:{})
+      ...(media?.hero||media?.gallery?.length?{media:{
+        ...(media?.hero?{hero:media.hero}:{}),
+        ...(media?.gallery?.length?{gallery:uniq(media.gallery,x=>x.src+'|'+x.caption)}:{})
       }}:{}),
       items,
       ...(backups.length?{backups:uniq(backups)}:{}),
