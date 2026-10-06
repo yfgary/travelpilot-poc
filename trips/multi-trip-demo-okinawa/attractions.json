@@ -1,97 +1,12 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 2,
   "tripId": "multi-trip-demo-okinawa",
   "attractions": [
-    {
-      "id": "kokusai-dori",
-      "name": "國際通",
-      "location": "那霸",
-      "day": "D1",
-      "status": "main",
-      "score": 7.5,
-      "map": "Kokusai Dori Naha",
-      "duration": "約2小時",
-      "summary": "Demo：市區散步及食飯。",
-      "weatherProfiles": [
-        "city_walk"
-      ],
-      "info": "用嚟測試 city_walk Profile 同 Generic Attractions Renderer。"
-    },
-    {
-      "id": "cape-manzamo",
-      "name": "萬座毛",
-      "location": "恩納／海岸",
-      "day": "D2",
-      "status": "main",
-      "score": 8.5,
-      "map": "Cape Manzamo",
-      "duration": "約1小時",
-      "summary": "Demo：海岸景觀，風、雨同能見度會直接影響體驗。",
-      "weatherProfiles": [
-        "coastal_scenic"
-      ],
-      "info": "用嚟測試 coastal_scenic Profile。"
-    },
-    {
-      "id": "onna-beach",
-      "name": "恩納海灘",
-      "location": "恩納／海岸",
-      "day": "D2",
-      "status": "main",
-      "score": 8,
-      "map": "Onna Seaside Civil Park Nabee Beach",
-      "duration": "約90分鐘",
-      "summary": "Demo：沙灘活動。",
-      "weatherProfiles": [
-        "beach"
-      ],
-      "info": "用嚟測試 beach Profile；海況資料不足時應標示初步分。"
-    },
-    {
-      "id": "blue-cave",
-      "name": "青之洞窟觀光船／浮潛 Demo",
-      "location": "恩納／海岸",
-      "day": "D2",
-      "status": "main",
-      "score": 9,
-      "map": "Blue Cave Okinawa",
-      "duration": "約2小時",
-      "summary": "Demo：出海／浮潛活動，官方停航及實際海況優先。",
-      "weatherProfiles": [
-        "boat_cruise",
-        "snorkel_dive"
-      ],
-      "info": "用嚟測試 Marine Profile、operationRequired 同 marineMissing 提示。"
-    },
-    {
-      "id": "churaumi-aquarium",
-      "name": "沖繩美麗海水族館",
-      "location": "本部",
-      "day": "D3",
-      "status": "main",
-      "score": 9,
-      "map": "Okinawa Churaumi Aquarium",
-      "duration": "約3小時",
-      "summary": "Demo：室內景點，落雨對場內體驗影響較低，但自駕到達仍要睇天氣。",
-      "weatherProfiles": [
-        "indoor"
-      ],
-      "info": "用嚟測試 indoor 體驗分同 Access/Safety 分開計。"
-    },
-    {
-      "id": "tropical-dream-center",
-      "name": "熱帶夢幻中心",
-      "location": "本部",
-      "day": "D3",
-      "status": "backup",
-      "score": 7,
-      "map": "Tropical Dream Center Okinawa",
-      "duration": "約1小時",
-      "summary": "Demo Backup 景點。",
-      "weatherProfiles": [
-        "garden_park",
-        "semi_indoor"
-      ]
-    }
+    {"id":"kokusai-dori","name":"國際通","location":"那霸","day":"D1","status":"main","score":7.5,"map":"Kokusai Dori Naha","duration":"約2小時","summary":"Demo：市區散步及食飯。","weatherProfiles":["city_walk"],"info":"用嚟測試 city_walk Profile 同 Generic Attractions Renderer。"},
+    {"id":"cape-manzamo","name":"萬座毛","location":"恩納／海岸","day":"D2","status":"main","score":8.5,"map":"Cape Manzamo","duration":"約1小時","summary":"Demo：海岸景觀，風、雨同能見度會直接影響體驗。","weatherProfiles":["coastal_scenic"],"info":"用嚟測試 coastal_scenic Profile。"},
+    {"id":"onna-beach","name":"恩納海灘","location":"恩納／海岸","day":"D2","status":"main","score":8.0,"map":"Onna Seaside Civil Park Nabee Beach","duration":"約90分鐘","summary":"Demo：沙灘活動。","weatherProfiles":["beach"],"info":"用嚟測試 beach Profile；海況資料不足時應標示初步分。"},
+    {"id":"blue-cave","name":"青之洞窟觀光船／浮潛 Demo","location":"恩納／海岸","day":"D2","status":"main","score":9.0,"map":"Blue Cave Okinawa","duration":"約2小時","summary":"Demo：出海／浮潛活動，官方停航及實際海況優先。","weatherProfiles":["boat_cruise","snorkel_dive"],"info":"用嚟測試 Marine Profile、operationRequired 同 marineMissing 提示。"},
+    {"id":"churaumi-aquarium","name":"沖繩美麗海水族館","location":"本部","day":"D3","status":"main","score":9.0,"map":"Okinawa Churaumi Aquarium","duration":"約3小時","summary":"Demo：室內景點，落雨對場內體驗影響較低，但自駕到達仍要睇天氣。","weatherProfiles":["indoor"],"info":"用嚟測試 indoor 體驗分同 Access/Safety 分開計。"},
+    {"id":"tropical-dream-center","name":"熱帶夢幻中心","location":"本部","day":"D3","status":"backup","score":7.0,"map":"Tropical Dream Center Okinawa","duration":"約1小時","summary":"Demo Backup 景點。","weatherProfiles":["garden_park","semi_indoor"]}
   ]
 }
