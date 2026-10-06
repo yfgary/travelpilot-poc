@@ -34,3 +34,5 @@ h1,h2,h3,p{margin-top:0}.page-title{font-size:var(--font-xl);color:var(--brand-d
 @media(max-width:760px){.app-shell{padding:10px}.grid,.grid-3,.attractions-grid,.highlight-grid,.gallery{grid-template-columns:1fr}.timeline-item{grid-template-columns:56px 1fr}.site-header{padding:12px}.brand strong{font-size:var(--font-md)}}
 
 .section-spaced{margin-top:18px}
+
+.rich-text{white-space:pre-line}
