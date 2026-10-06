@@ -118,7 +118,7 @@ await check('Other production trips still use complete legacy clone',async()=>{
 
 await check('Production image set is loadable from POC',async()=>{
   const imagePaths=[
-    '/assets/images/d2-matsumoto-castle.jpg',
+    '/assets/images/d1-matsumoto-castle.jpg',
     '/assets/images/d6-shinhotaka.jpg',
     '/assets/images/d7-shirakawago.jpg'
   ];
