@@ -459,12 +459,20 @@ async function scrapeItinerary(page,baseItinerary,attractions){
         items=items.filter(it=>!/新穗高|新穂高/.test(it.title+' '+it.localName));
       }
       if(d.id==='d6'){
-        items=items.filter(it=>!/飛驒大鐘乳洞|宮川朝市|高山陣屋|三町古街/.test(it.title));
-        for(const item of items){
-          if(item.attractionId==='hirayu-shrine'){
-            item.description='D6 固定新穗高回程短停約20分鐘；了解溫泉聚落同地方信仰，路面結冰嚴重就以安全為先。';
-          }
-        }
+        items=items.filter(it=>
+          !/飛驒大鐘乳洞|宮川朝市|高山陣屋|三町古街|平湯神社/.test(it.title) &&
+          !/^平湯\s*→\s*高山/.test(it.title)
+        );
+        const returnStop={
+          time:'13:30',
+          type:'🚗 車',
+          title:'新穗高 → 高山',
+          localName:'新穂高ロープウェイ → 高山市',
+          description:'冬季山路保留道路 Buffer，主線直接返高山；任何沿途 Bonus 都唔影響返酒店時間。',
+          map:'Takayama Ouan'
+        };
+        const insertAt=items.findIndex(it=>timeRank(it.time)>=15*60);
+        items.splice(insertAt>=0?insertAt:items.length,0,returnStop);
       }
       if(d.id==='d7'){
         for(const item of items){
