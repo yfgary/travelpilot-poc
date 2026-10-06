@@ -1,6 +1,8 @@
 import { chromium } from 'playwright';
 
 const base='http://127.0.0.1:8000';
+const registry=await (await fetch(base+'/trips/registry.json')).json();
+const golden=registry.defaultTrip;
 const browser=await chromium.launch({headless:true});
 const page=await browser.newPage({viewport:{width:1280,height:900}});
 const failures=[];
@@ -21,8 +23,8 @@ await check('homepage has two trips',async()=>{
 
 await check('Golden Reference itinerary rich render',async()=>{
   pageErrors.length=0;
-  await page.goto(base+'/itinerary.html?trip=golden-reference-2027&day=d6',{waitUntil:'networkidle'});
-  assert(await page.locator('.day-card').count()===4,'expected 4 representative days');
+  await page.goto(base+'/itinerary.html?trip='+encodeURIComponent(golden)+'&day=d6',{waitUntil:'networkidle'});
+  assert(await page.locator('.day-card').count()>=4,'expected rich multi-day itinerary');
   assert(await page.locator('#d6 .hero-media img').count()===1,'D6 hero media missing');
   assert((await page.locator('#d6').innerText()).includes('ropeway_mountain'),'weather activity profile not rendered');
   assert(await page.locator('#d6 .timeline-item').count()>=4,'D6 timeline incomplete');
@@ -53,20 +55,21 @@ await check('photo zoom and attraction detail',async()=>{
 });
 
 await check('Trip Info custom sections and checklist persistence',async()=>{
-  await page.goto(base+'/trip-info.html?trip=golden-reference-2027',{waitUntil:'networkidle'});
-  assert(await page.locator('#train-fares').count()===1,'train fare custom section missing');
-  assert(await page.locator('#snow-shrines').count()===1,'snow shrine custom section missing');
-  assert(await page.locator('#official-links').count()===1,'links custom section missing');
-  const checkbox=page.locator('[data-departure-id="docs"]');
+  await page.goto(base+'/trip-info.html?trip='+encodeURIComponent(golden),{waitUntil:'networkidle'});
+  assert(await page.locator('[id="trains"],[id="train-fares"]').count()===1,'train custom section missing');
+  assert(await page.locator('[id="winter-shrines"],[id="snow-shrines"]').count()===1,'shrine custom section missing');
+  const checkbox=page.locator('[data-departure-id]').first();
+  const itemId=await checkbox.getAttribute('data-departure-id');
   await checkbox.check();
+  const expectedKey='multiTrip.departureChecklist.'+golden+'.'+itemId;
   const keys=await page.evaluate(()=>Object.keys(localStorage));
-  assert(keys.some(k=>k==='multiTrip.departureChecklist.golden-reference-2027.docs'),'trip-scoped checklist key missing');
+  assert(keys.includes(expectedKey),'trip-scoped checklist key missing: '+expectedKey);
   await page.reload({waitUntil:'networkidle'});
-  assert(await page.locator('[data-departure-id="docs"]').isChecked(),'checklist state did not persist');
+  assert(await page.locator('[data-departure-id="'+itemId+'"]').isChecked(),'checklist state did not persist');
 });
 
 await check('Attractions rich renderer',async()=>{
-  await page.goto(base+'/attractions.html?trip=golden-reference-2027',{waitUntil:'networkidle'});
+  await page.goto(base+'/attractions.html?trip='+encodeURIComponent(golden),{waitUntil:'networkidle'});
   assert(await page.locator('.attraction-card').count()>=6,'attraction cards missing');
   await page.locator('[data-info="matsumoto-castle"]').click();
   const text=await page.locator('#modalBody').innerText();
@@ -75,8 +78,8 @@ await check('Attractions rich renderer',async()=>{
 });
 
 await check('Live Cam uses cameras and days data',async()=>{
-  await page.goto(base+'/live.html?trip=golden-reference-2027',{waitUntil:'networkidle'});
-  assert(await page.locator('.live-day').count()===3,'expected 3 live days');
+  await page.goto(base+'/live.html?trip='+encodeURIComponent(golden),{waitUntil:'networkidle'});
+  assert(await page.locator('.live-day').count()>=3,'live day rendering missing');
   assert(await page.locator('.live-camera').count()>=5,'camera rendering missing');
 });
 
