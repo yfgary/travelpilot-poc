@@ -1,0 +1,59 @@
+name: Reset POC to Production Baseline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/reset-poc-to-production.yml
+
+permissions:
+  contents: write
+
+jobs:
+  reset:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout POC
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout production main
+        uses: actions/checkout@v4
+        with:
+          repository: yfgary/travelpilot
+          ref: main
+          path: production-source
+          fetch-depth: 1
+
+      - name: Replace POC working tree with production baseline
+        run: |
+          set -euo pipefail
+          PROD_SHA="$(git -C production-source rev-parse HEAD)"
+          rsync -a --delete --exclude='.git/' production-source/ ./
+          rm -rf production-source
+          python - "$PROD_SHA" <<'PY'
+          import json,sys
+          from pathlib import Path
+          Path(".poc-baseline.json").write_text(
+              json.dumps({
+                  "mode":"production-baseline",
+                  "productionRepo":"yfgary/travelpilot",
+                  "productionBranch":"main",
+                  "productionMainSha":sys.argv[1],
+                  "note":"POC reset after Round 7 parity regression. Rebuild Standard only after feature/visual parity."
+              },ensure_ascii=False,indent=2)+"\n",
+              encoding="utf-8"
+          )
+          PY
+
+      - name: Commit baseline reset
+        run: |
+          set -euo pipefail
+          git config user.name "travelpilot-poc-bot"
+          git config user.email "travelpilot-poc-bot@users.noreply.github.com"
+          git add -A
+          git commit -m "Reset POC to production baseline after Round 7 regression"
+          git pull --rebase origin main
+          git push origin HEAD:main
