@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://travelpilot.local/schemas/itinerary-v3.schema.json",
+  "title": "TravelPilot Itinerary v3",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "tripId",
+    "days"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 3
+    },
+    "tripId": {
+      "type": "string"
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/day"
+      }
+    }
+  },
+  "$defs": {
+    "credit": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "mediaItem": {
+      "type": "object",
+      "required": [
+        "src"
+      ],
+      "properties": {
+        "src": {
+          "type": "string"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        },
+        "credit": {
+          "$ref": "#/$defs/credit"
+        }
+      },
+      "additionalProperties": true
+    },
+    "media": {
+      "type": "object",
+      "properties": {
+        "hero": {
+          "$ref": "#/$defs/mediaItem"
+        },
+        "gallery": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/mediaItem"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "hardCut": {
+      "type": "object",
+      "required": [
+        "time"
+      ],
+      "properties": {
+        "time": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "highlight": {
+      "type": "object",
+      "properties": {
+        "icon": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "tone": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "link": {
+      "type": "object",
+      "required": [
+        "label",
+        "href"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "item": {
+      "type": "object",
+      "required": [
+        "time",
+        "type",
+        "title"
+      ],
+      "properties": {
+        "time": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "localName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "map": {
+          "type": "string"
+        },
+        "attractionId": {
+          "type": "string"
+        },
+        "hotelId": {
+          "type": "string"
+        },
+        "parkingId": {
+          "type": "string"
+        },
+        "durationMinutes": {
+          "type": "number",
+          "minimum": 0
+        },
+        "price": {
+          "type": "string"
+        },
+        "badges": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "object"
+            ]
+          }
+        },
+        "hardCut": {
+          "type": "boolean"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/link"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "day": {
+      "type": "object",
+      "required": [
+        "id",
+        "day",
+        "date",
+        "title",
+        "route",
+        "items"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "day": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "title": {
+          "type": "string"
+        },
+        "route": {
+          "type": "string"
+        },
+        "weatherRegion": {
+          "type": "string"
+        },
+        "driving": {
+          "type": "boolean"
+        },
+        "hotelId": {
+          "type": "string"
+        },
+        "hardCuts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hardCut"
+          }
+        },
+        "backups": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "object"
+            ]
+          }
+        },
+        "bonus": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "object"
+            ]
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "object"
+            ]
+          }
+        },
+        "highlights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/highlight"
+          }
+        },
+        "media": {
+          "$ref": "#/$defs/media"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/item"
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
