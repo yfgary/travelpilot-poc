@@ -50,6 +50,65 @@
 
 <footer class="tp-footer">TravelPilot｜旅程管家・所有旅程，一個地方管理</footer>
 
-<script src="assets/standard-home-v1.js"></script>
+<script src="assets/multi-trip-context-v1.js?v=10.14.0"></script>
+<script>
+(function(){
+  const fallback={id:'shirakawago-shinhotaka-2027',name:'白川鄉・新穗高之旅 2027',shortName:'白川鄉・新穗高 2027',subtitle:'日本中部冬季自駕・9日8夜',startDate:'2027-01-09',endDate:'2027-01-17',country:'日本',emoji:'🇯🇵',cover:'assets/images/d7-shirakawago-view.jpg',entry:'itinerary.html',status:'active',badge:'正式旅程',features:{itinerary:true,tripInfo:true,attractions:true,liveCam:true}};
+  const grid=document.getElementById('tripGrid');
+  const count=document.getElementById('tripCount');
+  let active='';
+  try{active=localStorage.getItem('multiTrip.activeTrip')||''}catch(e){}
+  function esc(s){return String(s||'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c))}
+  function fmt(s){if(!s)return'';const p=s.split('-');return p.length===3?p[0]+'/'+p[1]+'/'+p[2]:s}
+  function url(file,id){const hash=file.includes('#')?file.slice(file.indexOf('#')):'';const clean=hash?file.slice(0,file.indexOf('#')):file;return clean+'?trip='+encodeURIComponent(id)+hash}
+  function remember(id){active=id;try{localStorage.setItem('multiTrip.activeTrip',id)}catch(e){}}
+  function link(label,file,t,secondary){return '<a class="tp-btn'+(secondary?' tp-btn-secondary':'')+'" href="'+url(file,t.id)+'" data-trip="'+esc(t.id)+'">'+label+'</a>'}
+  function displayName(t){return t.status==='test'?(t.displayName||t.shortName||'測試旅程'):(t.displayName||t.name||t.shortName||'未命名旅程')}
+  function displaySub(t){return t.status==='test'?(t.displaySubtitle||'功能驗證用旅程'):(t.displaySubtitle||t.subtitle||'')}
+  function isCompleted(t){
+    if(t.status==='test'||!t.endDate)return false;
+    const end=new Date(t.endDate+'T23:59:59');
+    return !Number.isNaN(end.getTime())&&end.getTime()<Date.now();
+  }
+  function card(t){
+    const f=t.features||{},isTest=t.status==='test',completed=isCompleted(t),isCurrent=active===t.id,el=document.createElement('article');
+    el.className='tp-trip-card'+(isCurrent?' is-current':'')+(isTest?' is-test':'')+(completed?' is-completed':'');
+    const primaryUrl=url(t.entry||'itinerary.html',t.id);
+    el.dataset.href=primaryUrl;
+    el.tabIndex=0;
+    el.setAttribute('role','link');
+    el.setAttribute('aria-label','開啟 '+displayName(t));
+    const cover=t.cover?"background-image:url('"+esc(t.cover)+"')":'';
+    let actions='';
+    if(f.itinerary!==false)actions+=link('▶ 開啟行程',t.entry||'itinerary.html',t,false);
+    if(f.tripInfo!==false)actions+=link('🧳 旅程資料','trip-info.html',t,true);
+    if(f.attractions!==false)actions+=link('📍 景點','attractions.html',t,true);
+    if(f.liveCam!==false)actions+=link('📷 Live Cam','live.html',t,true);
+    const badgeText=isTest?'測試旅程':(completed?'已完成旅程':(t.badge||'旅程'));
+    const badgeClass=isTest?'is-test':(completed?'is-completed':'');
+    el.innerHTML='<div class="tp-cover" style="'+cover+'"><div class="tp-country">'+esc(t.emoji||'✈️')+' '+esc(t.country||'')+'</div><div class="tp-badges"><span class="tp-badge '+badgeClass+'">'+esc(badgeText)+'</span>'+(isCurrent?'<span class="tp-badge is-current">最近使用</span>':'')+'</div></div><div class="tp-trip-body"><div class="tp-trip-name">'+esc(displayName(t))+'</div><div class="tp-trip-sub">'+esc(displaySub(t))+'</div><div class="tp-trip-date">📅 '+esc(fmt(t.startDate))+' – '+esc(fmt(t.endDate))+'</div>'+(isTest?'<div class="tp-test-note">呢個係功能驗證用旅程，不代表真實預訂。</div>':'')+'<div class="tp-actions">'+actions+'</div></div>';
+    el.querySelectorAll('[data-trip]').forEach(x=>x.addEventListener('click',()=>remember(t.id)));
+    el.addEventListener('click',e=>{
+      if(e.target.closest('a,button'))return;
+      remember(t.id);
+      location.href=primaryUrl;
+    });
+    el.addEventListener('keydown',e=>{
+      if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a,button')){
+        e.preventDefault();
+        remember(t.id);
+        location.href=primaryUrl;
+      }
+    });
+    return el;
+  }
+  function render(trips){
+    trips=[...trips].sort((a,b)=>String(b.startDate||'').localeCompare(String(a.startDate||'')));
+    if(!active){const first=trips.find(t=>t.status!=='test')||trips[0];if(first)active=first.id}
+    grid.innerHTML='';trips.forEach(t=>grid.appendChild(card(t)));count.textContent=trips.length+' 個旅程';
+  }
+  fetch('trips/registry.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(x=>render((x.trips||[]).filter(t=>t.status!=='hidden'))).catch(()=>{render([fallback]);});
+})();
+</script>
 </body>
 </html>
