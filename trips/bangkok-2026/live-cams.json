@@ -1,8 +1,5 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 1,
   "tripId": "bangkok-2026",
-  "enabled": false,
-  "notice": "",
-  "cameras": [],
-  "days": []
+  "groups": []
 }
