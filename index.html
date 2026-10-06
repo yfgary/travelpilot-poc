@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-HK">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TravelPilot Standard POC</title><link rel="stylesheet" href="assets/app.css"></head>
+<body><div id="site"><main id="app" class="app-shell"><div class="loading">載入旅程…</div></main></div>
+<script>
+(async()=>{
+ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ try{
+  const r=await fetch('trips/registry.json',{cache:'no-store'}),reg=await r.json();
+  document.getElementById('app').innerHTML='<section class="panel"><div class="panel-body"><h1 class="page-title">TravelPilot Standard POC</h1><p class="subtle">同一套 Standard renderer，唔為任何目的地寫專用 core code。</p></div></section><div class="grid">'+reg.trips.map(t=>'<article class="card"><div class="badges"><span class="badge">'+esc(t.status||'POC')+'</span></div><h2>'+esc(t.name)+'</h2><p>'+esc(t.subtitle||'')+'</p><div class="actions"><a class="btn primary" href="itinerary.html?trip='+encodeURIComponent(t.id)+'">開啟行程</a><a class="btn" href="trip-info.html?trip='+encodeURIComponent(t.id)+'">旅程資料</a></div></article>').join('')+'</div>';
+ }catch(e){document.getElementById('app').innerHTML='<section class="panel error"><div class="panel-body">載入失敗：'+esc(e.message)+'</div></section>';}
+})();
+</script></body></html>
