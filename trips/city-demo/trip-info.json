@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "tripId": "city-demo",
+  "overview": {
+    "title": "City Demo",
+    "summary": "同一套 Standard renderer 嘅第二個 Trip。",
+    "note": "Live Cam / Driving Mode 關閉。",
+    "highlights": [
+      {
+        "title": "✅ Generic",
+        "text": "只靠 trips/city-demo data。"
+      }
+    ]
+  },
+  "transport": {
+    "title": "🚆 交通",
+    "cards": [
+      {
+        "title": "公共交通",
+        "lines": [
+          "Demo data"
+        ]
+      }
+    ]
+  },
+  "customSections": [
+    {
+      "id": "notes",
+      "title": "📝 自訂 Section",
+      "type": "notice",
+      "text": "Generic custom section。"
+    }
+  ]
+}
