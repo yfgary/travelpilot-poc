@@ -75,7 +75,7 @@
       }).join('')}</div>`);
     }
     if (departure?.groups?.length) {
-      parts.push(`<h3 style="margin-top:18px">${TP.esc(departure.title||'出發 Checklist')}</h3><p class="subtle">${TP.esc(departure.desc||'')}</p>`);
+      parts.push(`<h3 class="section-spaced">${TP.esc(departure.title||'出發 Checklist')}</h3><p class="subtle">${TP.esc(departure.desc||'')}</p>`);
       for (const group of departure.groups) {
         parts.push(`<h3>${TP.esc(group.title||'')}</h3><div class="checklist">${group.items.map(item=>{
           const checked=TP.state.get(ctx,'departureChecklist',item.id,false)===true;
