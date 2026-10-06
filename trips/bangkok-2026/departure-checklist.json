@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 2,
+  "tripId": "bangkok-2026",
+  "title": "🧳 出發前 Checklist",
+  "desc": "按原始行程需要整理嘅基本準備項目。",
+  "expectedCount": 9,
+  "groups": [
+    {
+      "title": "🪪 證件／航班",
+      "items": [
+        {
+          "id": "passport",
+          "label": "護照／旅行證件"
+        },
+        {
+          "id": "flight",
+          "label": "UO704 / UO703 航班資料"
+        },
+        {
+          "id": "stay",
+          "label": "住宿地址／Building B・Room 2081/27"
+        }
+      ]
+    },
+    {
+      "title": "📱 電子／交通",
+      "items": [
+        {
+          "id": "phone",
+          "label": "手機＋充電線"
+        },
+        {
+          "id": "powerbank",
+          "label": "流動電源"
+        },
+        {
+          "id": "rideapps",
+          "label": "Grab / Bolt 可用"
+        }
+      ]
+    },
+    {
+      "title": "🛍️ 購物／夜市",
+      "items": [
+        {
+          "id": "cash",
+          "label": "現金／付款方式"
+        },
+        {
+          "id": "bags",
+          "label": "購物袋／可摺袋"
+        },
+        {
+          "id": "luggage",
+          "label": "預留行李空間畀最後掃貨"
+        }
+      ]
+    }
+  ]
+}
