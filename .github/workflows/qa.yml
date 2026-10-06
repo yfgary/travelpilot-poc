@@ -1,0 +1,33 @@
+name: TravelPilot POC QA
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Architecture and data QA
+        run: python scripts/qa.py
+      - name: JavaScript syntax
+        run: |
+          for f in assets/*.js; do
+            node --check "$f"
+          done
+      - name: JSON parse
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for p in Path('.').rglob('*.json'):
+              json.loads(p.read_text(encoding='utf-8'))
+          print('JSON parse PASS')
+          PY
