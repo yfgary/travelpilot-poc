@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://travelpilot.local/schemas/live-cams-v3.schema.json",
+  "title": "TravelPilot Live Cams v3",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "tripId",
+    "cameras",
+    "days"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 3
+    },
+    "tripId": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "notice": {
+      "type": "string"
+    },
+    "cameras": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "youtube",
+              "image",
+              "official",
+              "link"
+            ]
+          },
+          "videoId": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "sourceUrl": {
+            "type": "string"
+          },
+          "sourceLabel": {
+            "type": "string"
+          },
+          "priority": {
+            "enum": [
+              "must",
+              "ref",
+              "optional"
+            ]
+          },
+          "desc": {
+            "type": "string"
+          },
+          "map": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "cameras"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nav": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "title": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "cameras": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "places": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "label",
+                "map"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "map": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "officialLinks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "label",
+                "url"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
