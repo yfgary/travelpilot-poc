@@ -80,15 +80,17 @@ async function snapshot(page){
         special:d.querySelectorAll('.special-box').length
       };
     });
-    const contentBody=document.body.cloneNode(true);
-    contentBody.querySelectorAll('#siteVersionBadge,#backToTopBtn,.tripv2-status,.floating-top').forEach(x=>x.remove());
+    const floatingNodes=[...document.querySelectorAll('#siteVersionBadge,#catalogVersion,#backToTopBtn,.tripv2-status,.floating-top')];
+    const floatingTexts=floatingNodes.map(x=>(x.innerText||x.textContent||'').replace(/\s+/g,' ').trim()).filter(Boolean);
+    let bodyText=(document.body.innerText||'').replace(/\s+/g,' ').trim();
+    for(const t of floatingTexts) bodyText=bodyText.replace(t,'').replace(/\s+/g,' ').trim();
     const floating={
       version:[...document.querySelectorAll('#siteVersionBadge,#catalogVersion')].map(x=>(x.innerText||x.textContent||'').replace(/\s+/g,' ').trim()).filter(Boolean).sort(),
       status:[...document.querySelectorAll('.tripv2-status')].map(x=>(x.innerText||x.textContent||'').replace(/\s+/g,' ').trim()).filter(Boolean).sort(),
       backToTop:document.querySelectorAll('#backToTopBtn,.floating-top').length
     };
     return {
-      bodyText:(contentBody.innerText||contentBody.textContent||'').replace(/\s+/g,' ').trim(),
+      bodyText,
       floating,
       pageSwitch:texts('.page-switch a'),
       dayNav:texts('.day-nav-inner a,.day-nav-inner button'),
