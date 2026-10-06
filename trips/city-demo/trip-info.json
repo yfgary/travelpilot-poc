@@ -25,10 +25,42 @@
   },
   "customSections": [
     {
-      "id": "notes",
-      "title": "📝 自訂 Section",
+      "id": "demo-cards",
+      "title": "Cards Demo",
+      "type": "cards",
+      "cards": [
+        {
+          "title": "Card",
+          "lines": [
+            "Standard cards"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "demo-list",
+      "title": "List Demo",
+      "type": "list",
+      "items": [
+        "Standard list"
+      ]
+    },
+    {
+      "id": "demo-notice",
+      "title": "Notice Demo",
       "type": "notice",
-      "text": "Generic custom section。"
+      "text": "Standard notice"
+    },
+    {
+      "id": "demo-links",
+      "title": "Links Demo",
+      "type": "links",
+      "links": [
+        {
+          "label": "Standard link",
+          "href": "https://example.com/"
+        }
+      ]
     }
   ]
 }
