@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "tripId": "hokkaido-2025",
   "enabled": true,
   "notice": "北海道版先做實用型 Live Cam：可直接播放嘅來源會內嵌；官方只提供自己頁面／定時靜止畫嘅來源會保留『官方來源』按鈕，避免用舊錄影片扮 Live。",
@@ -14,7 +14,10 @@
       "priority": "must",
       "desc": "函館山山頂望函館市街、兩側海灣、夜景同雲層；D1/D2最實用，用嚟判斷夜景能見度。配信由函館山 Ropeway／FMいるか提供；直播重開時 YouTube ID 有機會改，所以同時保留官方頁。",
       "map": "函館山展望台",
-      "tags": ["能見度", "夜景"]
+      "tags": [
+        "能見度",
+        "夜景"
+      ]
     },
     {
       "id": "hakodate-congestion",
@@ -25,7 +28,10 @@
       "priority": "ref",
       "desc": "函館市官方導入嘅函館山混雜資訊，覆蓋山頂展望區、停車場、登山道同 Ropeway 山麓／山頂站。夜景時段比單睇天氣更有用。",
       "map": "函館山ロープウェイ山麓駅",
-      "tags": ["混雜", "交通"]
+      "tags": [
+        "混雜",
+        "交通"
+      ]
     },
     {
       "id": "toya-rusutsu-view",
@@ -36,7 +42,10 @@
       "priority": "ref",
       "desc": "Rusutsu 官方山景 Live Camera 有洞爺湖 View／羊蹄山 View，可用嚟判斷 D3 洞爺湖周邊雲底、遠景同整體天氣；唔係洞爺湖溫泉街正面鏡頭。",
       "map": "Lake Toya",
-      "tags": ["洞爺湖周邊", "雲量"]
+      "tags": [
+        "洞爺湖周邊",
+        "雲量"
+      ]
     },
     {
       "id": "noboribetsu-jigokudani-jma",
@@ -47,7 +56,10 @@
       "priority": "must",
       "desc": "氣象廳倶多樂火山『地獄谷』監視 Camera，約2分鐘更新一次。可以直接睇地獄谷噴氣、霧氣、降水同現場視野，D4去地獄谷前非常實用。",
       "map": "登別地獄谷",
-      "tags": ["地獄谷", "火山"]
+      "tags": [
+        "地獄谷",
+        "火山"
+      ]
     },
     {
       "id": "sapporo-tvh-live",
@@ -59,7 +71,10 @@
       "priority": "ref",
       "desc": "TVh テレビ北海道札幌市內情報 Camera。用嚟快速睇札幌市區實際天色、降雨／降雪同道路表面狀況。",
       "map": "Sapporo Station",
-      "tags": ["札幌", "市區"]
+      "tags": [
+        "札幌",
+        "市區"
+      ]
     },
     {
       "id": "kitahiroshima-stv",
@@ -70,7 +85,10 @@
       "priority": "ref",
       "desc": "STV 北廣島市 Live Camera，D5由登別往三井 Outlet／札幌途中可參考北廣島天氣同視野。",
       "map": "MITSUI OUTLET PARK 札幌北広島",
-      "tags": ["北廣島", "Outlet"]
+      "tags": [
+        "北廣島",
+        "Outlet"
+      ]
     },
     {
       "id": "moiwa-summit-live",
@@ -82,7 +100,10 @@
       "priority": "must",
       "desc": "札幌もいわ山 Ropeway 官方山頂展望台 24小時 Camera。D6如果考慮夜景 Backup，可先睇能見度；市區亦可用佢判斷高位雲霧。",
       "map": "札幌もいわ山ロープウェイ 山頂展望台",
-      "tags": ["夜景", "能見度"]
+      "tags": [
+        "夜景",
+        "能見度"
+      ]
     },
     {
       "id": "otaru-tenguyama-live",
@@ -94,7 +115,10 @@
       "priority": "must",
       "desc": "小樽天狗山 Ropeway 官方 Live Camera，可望小樽市街、小樽港同石狩灣。D7去小樽前最適合判斷遠景同天狗山 Optional 值唔值得加。",
       "map": "小樽天狗山ロープウェイ",
-      "tags": ["小樽", "海景"]
+      "tags": [
+        "小樽",
+        "海景"
+      ]
     },
     {
       "id": "otaru-stv",
@@ -105,7 +129,10 @@
       "priority": "ref",
       "desc": "Hotel Nord Otaru 設置嘅 STV 資訊 Camera，適合睇小樽運河／港口一帶實際天色同降水。",
       "map": "小樽運河",
-      "tags": ["運河", "港口"]
+      "tags": [
+        "運河",
+        "港口"
+      ]
     },
     {
       "id": "new-chitose-stv",
@@ -116,7 +143,10 @@
       "priority": "must",
       "desc": "STV 設於新千歲機場 Terminal 屋頂嘅資訊 Camera。D8還車／返港前可以直接睇機場天氣同現場視野。",
       "map": "New Chitose Airport",
-      "tags": ["機場", "天氣"]
+      "tags": [
+        "機場",
+        "天氣"
+      ]
     },
     {
       "id": "new-chitose-runway",
@@ -127,7 +157,10 @@
       "priority": "ref",
       "desc": "STV 新千歲機場跑道東側 Camera，主要用嚟睇跑道一帶天氣、低雲、雨雪同能見度。",
       "map": "New Chitose Airport Runway",
-      "tags": ["跑道", "能見度"]
+      "tags": [
+        "跑道",
+        "能見度"
+      ]
     }
   ],
   "days": [
@@ -139,9 +172,26 @@
       "title": "函館・五稜郭夜櫻",
       "desc": "新千歲取車後長途去函館；到埗前後主要睇函館山能見度同市內情況。",
       "route": "新千歲機場 → 函館 → 五稜郭／晚餐",
-      "cameras": ["hakodate-mountain-live", "hakodate-congestion"],
-      "places": [{"label":"函館山","map":"函館山展望台"},{"label":"五稜郭","map":"五稜郭公園"}],
-      "officialLinks": [{"label":"函館山 Ropeway Live 官方頁","url":"https://334.co.jp/mtinfo/live/"}]
+      "cameras": [
+        "hakodate-mountain-live",
+        "hakodate-congestion"
+      ],
+      "places": [
+        {
+          "label": "函館山",
+          "map": "函館山展望台"
+        },
+        {
+          "label": "五稜郭",
+          "map": "五稜郭公園"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "函館山 Ropeway Live 官方頁",
+          "url": "https://334.co.jp/mtinfo/live/"
+        }
+      ]
     },
     {
       "id": "d2",
@@ -151,9 +201,26 @@
       "title": "函館市內・函館山夜景",
       "desc": "日間市內行程，黃昏前用 Live Cam 決定函館山夜景值唔值得上。",
       "route": "函館朝市 → 五稜郭 → 市內 → 函館山",
-      "cameras": ["hakodate-mountain-live", "hakodate-congestion"],
-      "places": [{"label":"函館朝市","map":"函館朝市"},{"label":"函館山","map":"函館山ロープウェイ"}],
-      "officialLinks": [{"label":"函館山觀光 Navi","url":"https://www.hakobura.jp/features/375"}]
+      "cameras": [
+        "hakodate-mountain-live",
+        "hakodate-congestion"
+      ],
+      "places": [
+        {
+          "label": "函館朝市",
+          "map": "函館朝市"
+        },
+        {
+          "label": "函館山",
+          "map": "函館山ロープウェイ"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "函館山觀光 Navi",
+          "url": "https://www.hakobura.jp/features/375"
+        }
+      ]
     },
     {
       "id": "d3",
@@ -163,9 +230,21 @@
       "title": "函館 → 洞爺湖",
       "desc": "洞爺湖景色高度受低雲同遠景影響；先睇周邊山景 Camera 再決定停留節奏。",
       "route": "函館 → 洞爺湖 → 洞爺 Sun Palace",
-      "cameras": ["toya-rusutsu-view"],
-      "places": [{"label":"洞爺湖","map":"Lake Toya"}],
-      "officialLinks": [{"label":"Rusutsu Live Mountain Cams","url":"https://rusutsu.com/live-mountain-cams/"}]
+      "cameras": [
+        "toya-rusutsu-view"
+      ],
+      "places": [
+        {
+          "label": "洞爺湖",
+          "map": "Lake Toya"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "Rusutsu Live Mountain Cams",
+          "url": "https://rusutsu.com/live-mountain-cams/"
+        }
+      ]
     },
     {
       "id": "d4",
@@ -175,9 +254,25 @@
       "title": "洞爺湖 → 登別地獄谷",
       "desc": "地獄谷步行前先睇氣象廳監視 Camera，霧大／大雨時可即時調整戶外時間。",
       "route": "洞爺湖 → 登別地獄谷 → 大湯沼 → 第一滝本館",
-      "cameras": ["noboribetsu-jigokudani-jma"],
-      "places": [{"label":"登別地獄谷","map":"登別地獄谷"},{"label":"大湯沼","map":"大湯沼 登別"}],
-      "officialLinks": [{"label":"氣象廳 火山監視 Camera","url":"https://www.data.jma.go.jp/vois/data/obs/volcam/volcam.php?VC=11102"}]
+      "cameras": [
+        "noboribetsu-jigokudani-jma"
+      ],
+      "places": [
+        {
+          "label": "登別地獄谷",
+          "map": "登別地獄谷"
+        },
+        {
+          "label": "大湯沼",
+          "map": "大湯沼 登別"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "氣象廳 火山監視 Camera",
+          "url": "https://www.data.jma.go.jp/vois/data/obs/volcam/volcam.php?VC=11102"
+        }
+      ]
     },
     {
       "id": "d5",
@@ -187,9 +282,26 @@
       "title": "登別 → 北廣島 → 札幌",
       "desc": "由登別北上，先睇北廣島同札幌市區 Live，判斷 Outlet／市內天氣。",
       "route": "登別 → 北廣島 Outlet → 札幌 Airbnb",
-      "cameras": ["kitahiroshima-stv", "sapporo-tvh-live"],
-      "places": [{"label":"三井 Outlet 札幌北廣島","map":"MITSUI OUTLET PARK 札幌北広島"},{"label":"札幌","map":"Sapporo"}],
-      "officialLinks": [{"label":"STV 北廣島 Live","url":"https://www.stv.jp/webcam/live/kitahiroshima.html"}]
+      "cameras": [
+        "kitahiroshima-stv",
+        "sapporo-tvh-live"
+      ],
+      "places": [
+        {
+          "label": "三井 Outlet 札幌北廣島",
+          "map": "MITSUI OUTLET PARK 札幌北広島"
+        },
+        {
+          "label": "札幌",
+          "map": "Sapporo"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "STV 北廣島 Live",
+          "url": "https://www.stv.jp/webcam/live/kitahiroshima.html"
+        }
+      ]
     },
     {
       "id": "d6",
@@ -199,9 +311,26 @@
       "title": "札幌・櫻花 Plan／市區 Plan",
       "desc": "札幌市區天氣同藻岩山能見度可以幫你決定戶外櫻花 Plan 定市區 Plan；藻岩山亦係夜景 Backup。",
       "route": "札幌市內／莫埃來沼／北海道神宮／Backup 藻岩山",
-      "cameras": ["sapporo-tvh-live", "moiwa-summit-live"],
-      "places": [{"label":"北海道神宮","map":"北海道神宮"},{"label":"藻岩山","map":"札幌もいわ山ロープウェイ"}],
-      "officialLinks": [{"label":"札幌もいわ山 Ropeway","url":"https://mt-moiwa.jp/"}]
+      "cameras": [
+        "sapporo-tvh-live",
+        "moiwa-summit-live"
+      ],
+      "places": [
+        {
+          "label": "北海道神宮",
+          "map": "北海道神宮"
+        },
+        {
+          "label": "藻岩山",
+          "map": "札幌もいわ山ロープウェイ"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "札幌もいわ山 Ropeway",
+          "url": "https://mt-moiwa.jp/"
+        }
+      ]
     },
     {
       "id": "d7",
@@ -211,9 +340,26 @@
       "title": "札幌 → 小樽一日遊",
       "desc": "用天狗山高位 Live 睇遠景，再用運河／港口 Camera 睇市區天色；決定天狗山 Optional 值唔值得加。",
       "route": "白い恋人パーク → 小樽 → 手宮公園 → 天狗山 Optional",
-      "cameras": ["otaru-tenguyama-live", "otaru-stv"],
-      "places": [{"label":"小樽運河","map":"小樽運河"},{"label":"小樽天狗山","map":"小樽天狗山ロープウェイ"}],
-      "officialLinks": [{"label":"小樽天狗山 Ropeway","url":"https://tenguyama.ckk.chuo-bus.co.jp/"}]
+      "cameras": [
+        "otaru-tenguyama-live",
+        "otaru-stv"
+      ],
+      "places": [
+        {
+          "label": "小樽運河",
+          "map": "小樽運河"
+        },
+        {
+          "label": "小樽天狗山",
+          "map": "小樽天狗山ロープウェイ"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "小樽天狗山 Ropeway",
+          "url": "https://tenguyama.ckk.chuo-bus.co.jp/"
+        }
+      ]
     },
     {
       "id": "d8",
@@ -223,9 +369,22 @@
       "title": "札幌 → 還車 → 新千歲機場",
       "desc": "還車同返港日最重要係新千歲機場天氣、低雲同跑道視野。",
       "route": "札幌 → Sapporo Beer Museum → Times 還車 → CTS → HKG",
-      "cameras": ["new-chitose-stv", "new-chitose-runway"],
-      "places": [{"label":"新千歲機場","map":"New Chitose Airport"}],
-      "officialLinks": [{"label":"STV 新千歲機場 Live","url":"https://www.stv.jp/webcam/shinchitose/index.html"}]
+      "cameras": [
+        "new-chitose-stv",
+        "new-chitose-runway"
+      ],
+      "places": [
+        {
+          "label": "新千歲機場",
+          "map": "New Chitose Airport"
+        }
+      ],
+      "officialLinks": [
+        {
+          "label": "STV 新千歲機場 Live",
+          "url": "https://www.stv.jp/webcam/shinchitose/index.html"
+        }
+      ]
     }
   ]
 }
