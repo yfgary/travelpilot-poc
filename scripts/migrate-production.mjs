@@ -287,7 +287,7 @@ async function scrapeExtraTripInfo(page){
   await page.goto(BASE_URL+'/trip-info.html?trip='+TRIP_ID,{waitUntil:'domcontentloaded'});
   await page.waitForTimeout(4200);
   return page.evaluate(()=>{
-    const known=new Set(['transport','car','hotels','parking','hardcuts','weather','checklist','emergency']);
+    const known=new Set(['transport','car','hotels','parking','hardcuts','weather','checklist','emergency','departure-checklist']);
     const t=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();
     return [...document.querySelectorAll('section.section')].filter(s=>s.id&&!known.has(s.id)).map(s=>({
       id:s.id,
