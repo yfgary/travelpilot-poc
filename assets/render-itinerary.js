@@ -94,12 +94,18 @@
       ['交通／到達',a.access],
       ['冬季／天氣注意',a.winter],
       ['實用提示',a.tips],
-      ['評分原因',a.scoreReason]
+      ['評分原因',a.scoreReason],
+      ['營業時間',a.openingHours],
+      ['最後入場／受付',a.lastEntry],
+      ['關門時間',a.closingTime],
+      ['票價',a.fee],
+      ['營業／票價備註',a.visitNote],
+      ['建議停留',a.duration]
     ].filter(([,v]) => v);
     return `<h2 id="modalTitle">${TP.esc(a.name)}</h2>
       ${a.localName ? `<p class="subtle">${TP.esc(a.localName)}</p>` : ''}
       ${a.score != null ? `<p class="score">★ ${TP.esc(a.score)} / 10</p>` : ''}
-      ${sections.map(([h,v]) => `<h3>${TP.esc(h)}</h3><p>${TP.esc(v)}</p>`).join('')}
+      ${sections.map(([h,v]) => `<h3>${TP.esc(h)}</h3><p class="rich-text">${TP.esc(v)}</p>`).join('')}
       ${a.highlights?.length ? `<h3>重點</h3><ul>${a.highlights.map(x=>`<li>${TP.esc(x)}</li>`).join('')}</ul>` : ''}
       ${a.sources?.length ? `<h3>資料來源</h3><div class="actions">${a.sources.map(s=>`<a class="btn" href="${TP.esc(s.url)}" target="_blank" rel="noopener">${TP.esc(s.label || s.title || '來源')}</a>`).join('')}</div>` : ''}
     `;
