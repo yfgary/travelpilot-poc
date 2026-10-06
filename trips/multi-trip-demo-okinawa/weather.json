@@ -1,28 +1,93 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "tripId": "multi-trip-demo-okinawa",
   "profileStandardVersion": "v1",
   "regions": {
     "naha": {
-      "name":"那霸","en":"Naha","label":"那霸市區","type":"cityscenic","lat":26.2124,"lon":127.6809,
-      "scoreNote":"市區活動以降雨、風同交通影響為主。",
-      "activityProfiles":[{"id":"city_walk","weight":0.70},{"id":"indoor","weight":0.30}]
+      "name": "那霸",
+      "en": "Naha",
+      "label": "那霸市區",
+      "type": "cityscenic",
+      "lat": 26.2124,
+      "lon": 127.6809,
+      "scoreNote": "市區活動以降雨、風同交通影響為主。",
+      "activityProfiles": [
+        {
+          "id": "city_walk",
+          "weight": 0.7
+        },
+        {
+          "id": "indoor",
+          "weight": 0.3
+        }
+      ]
     },
     "onna": {
-      "name":"恩納／海岸","en":"Onna Coast","label":"恩納海岸／海上活動","type":"coastal","lat":26.4975,"lon":127.8536,
-      "scoreNote":"海上活動一定要再睇浪高、swell、雷暴同營運商決定；缺海況資料時只係初步分。",
-      "activityProfiles":[{"id":"coastal_scenic","weight":0.25},{"id":"beach","weight":0.25},{"id":"boat_cruise","weight":0.25},{"id":"snorkel_dive","weight":0.25}]
+      "name": "恩納／海岸",
+      "en": "Onna Coast",
+      "label": "恩納海岸／海上活動",
+      "type": "coastal",
+      "lat": 26.4975,
+      "lon": 127.8536,
+      "scoreNote": "海上活動一定要再睇浪高、swell、雷暴同營運商決定；缺海況資料時只係初步分。",
+      "activityProfiles": [
+        {
+          "id": "coastal_scenic",
+          "weight": 0.25
+        },
+        {
+          "id": "beach",
+          "weight": 0.25
+        },
+        {
+          "id": "boat_cruise",
+          "weight": 0.25
+        },
+        {
+          "id": "snorkel_dive",
+          "weight": 0.25
+        }
+      ]
     },
     "motobu": {
-      "name":"本部","en":"Motobu","label":"本部／美麗海","type":"cityscenic","lat":26.6943,"lon":127.8779,
-      "scoreNote":"水族館本身受雨影響低，但長途自駕到達安全仍要計。",
-      "activityProfiles":[{"id":"indoor","weight":0.65},{"id":"road_trip","weight":0.35}]
+      "name": "本部",
+      "en": "Motobu",
+      "label": "本部／美麗海",
+      "type": "cityscenic",
+      "lat": 26.6943,
+      "lon": 127.8779,
+      "scoreNote": "水族館本身受雨影響低，但長途自駕到達安全仍要計。",
+      "activityProfiles": [
+        {
+          "id": "indoor",
+          "weight": 0.65
+        },
+        {
+          "id": "road_trip",
+          "weight": 0.35
+        }
+      ]
     }
   },
-  "dayRegions": {"d1":"naha","d2":"onna","d3":"motobu"},
-  "dynamicRegionRules": {},
+  "dayRegions": {
+    "d1": "naha",
+    "d2": "onna",
+    "d3": "motobu"
+  },
   "scoreProfiles": {
-    "cityscenic":{"visibility":0.12,"cloud":0.05,"gust":0.22,"precipitation":0.46,"snow":0.00},
-    "coastal":{"visibility":0.22,"cloud":0.08,"gust":0.30,"precipitation":0.30,"snow":0.00}
+    "cityscenic": {
+      "visibility": 0.12,
+      "cloud": 0.05,
+      "gust": 0.22,
+      "precipitation": 0.46,
+      "snow": 0
+    },
+    "coastal": {
+      "visibility": 0.22,
+      "cloud": 0.08,
+      "gust": 0.3,
+      "precipitation": 0.3,
+      "snow": 0
+    }
   }
 }
