@@ -1,0 +1,55 @@
+name: Round 7 Golden Reference Parity
+
+on:
+  push:
+    branches:
+      - round7-parity-rebuild
+      - main
+  pull_request:
+
+jobs:
+  parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Checkout production reference
+        uses: actions/checkout@v4
+        with:
+          repository: yfgary/travelpilot
+          ref: main
+          path: production-reference
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Production public itinerary remains untouched
+        run: |
+          cmp itinerary.html production-reference/itinerary.html
+          cmp assets/attraction-info.js production-reference/assets/attraction-info.js
+          cmp assets/images/d1-nagoya-night.jpg production-reference/assets/images/d1-nagoya-night.jpg
+
+      - name: Candidate loader has no destination hardcodes
+        run: |
+          node --check assets/standard-runtime-loader-v1.js
+          if grep -Eiq 'shirakawago|shinhotaka|白川|新穗高|japan2027' assets/standard-runtime-loader-v1.js; then
+            echo "Destination hardcode found in Standard loader"
+            exit 1
+          fi
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Golden Reference DOM + feature + visual parity
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 >/tmp/round7-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8000/itinerary.html >/dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/round7-parity.mjs
