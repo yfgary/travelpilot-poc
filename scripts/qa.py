@@ -123,7 +123,7 @@ for field in ("scoreReason","summary","history","visit","winter","sources"):
 
 custom=g_info.get("customSections",[])
 types={s.get("type") for s in custom}
-for required in ("cards","list","notice"):
+for required in ("cards","list","notice","links"):
     if required not in types: err(f"Golden Reference customSections missing type {required}")
 
 if not g_live.get("cameras") or not g_live.get("days"):
