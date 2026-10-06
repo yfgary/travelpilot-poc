@@ -7,6 +7,13 @@
       "subtitle": "TravelPilot Standard 功能完整 POC",
       "status": "golden",
       "config": "trips/golden-reference-2027/trip.json"
+    },
+    {
+      "id": "city-demo",
+      "name": "City Demo",
+      "subtitle": "第二個 generic trip，驗證 0 destination-specific core code",
+      "status": "demo",
+      "config": "trips/city-demo/trip.json"
     }
   ]
 }
