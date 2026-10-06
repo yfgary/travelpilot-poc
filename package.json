@@ -6,6 +6,7 @@
     "playwright": "^1.55.0"
   },
   "scripts": {
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "parity": "node scripts/round5-parity.mjs"
   }
 }
