@@ -147,8 +147,8 @@ function richAttractions(data){
   const fixedCopy={
     shinhotaka:{
       summary:'新穗高係全程最食能見度、但好天回報亦最高嘅景點。唔需要登山，就可以由奧飛驒山谷上到海拔2,156米西穗高口，晴天可直接睇北阿爾卑斯雪峰、山脊同深谷；低雲、大霧或者強風時體驗會明顯下降。',
-      info:'D6 固定新穗高日。出發前睇官方運行、Live Cam、山頂能見度、風況同冬季道路；資料只供人手決定 D6 是否採用 Plan B，App 不會改動 D7／D8。',
-      tips:'D6 07:45 做最後安全判斷；正常運行兼路況可接受先出發。若停駛、低能見度或道路不安全，當日人手改 D6 Plan B；D7 白川鄉同 D8 高山市區／松本保持固定。'
+      info:'D6 固定新穗高日。出發前睇官方運行、Live Cam、山頂能見度、風況同冬季道路；資料只供人手決定 D6 是否採用 Plan B，其他日子保持固定。',
+      tips:'D6 07:45 做最後安全判斷；正常運行兼路況可接受先出發。若停駛、低能見度或道路不安全，當日人手改 D6 Plan B；其餘行程日期保持固定。'
     },
     'hirayu-shrine':{
       summary:'平湯神社幾乎唔需要繞路，最適合放喺 D6 新穗高回程。用約20分鐘短停，可以將奧飛驒嘅山岳、溫泉聚落同地方信仰連埋一齊。',
@@ -159,7 +159,7 @@ function richAttractions(data){
       tips:'只作 D6 新穗高日 Backup：如果主行程早完、道路安全同體力足夠，可考慮新穗高 → 平湯之森 → 高山；唔為浸溫泉拖到夜間山路。'
     },
     shirakawago:{
-      tips:'D7 固定白川鄉日。出發前確認降雪、道路／交通管制同村內情況；道路不安全時由人手決定 D7 Plan B，App 不會同 D6／D8 互換。'
+      tips:'D7 固定白川鄉日。出發前確認降雪、道路／交通管制同村內情況；道路不安全時由人手決定 D7 Plan B，App 不會自動改行程日期。'
     },
     'hida-cave':{
       summary:'飛驒大鐘乳洞係 D8 高山返松本方向上非常實用嘅冬季內容：洞穴主體受降雪影響相對細，1月洞外再有冰之溪谷，天然鐘乳石同冬季冰景可以一程完成。',
@@ -364,7 +364,7 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       rejectItemIds:new Set(['miyagawa','takayama-jinya','sanmachi','hida-cave','takayama-supermarket']),
       constraints:[
         {text:'07:45 前確認新穗高官方運行、Live Cam、山頂能見度、風況同冬季道路。'},
-        {text:'D6 固定新穗高日；如纜車停駛、能見度差或道路不安全，由人手決定 D6 Plan B。D7／D8 日子不會自動改動。'}
+        {text:'D6 固定新穗高日；如纜車停駛、能見度差或道路不安全，由人手決定 D6 Plan B。其餘日子保持固定。'}
       ],
       hardCuts:[{time:'07:45',label:'完成新穗高官方運行／Live Cam／風況確認。'}],
       media:{
@@ -381,7 +381,7 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       keepHighlight:/白川鄉|三寺|停車|道路|和田家|展望台|世界遺產/i,
       rejectItemIds:new Set(['shinhotaka','hirayu-shrine','hida-cave']),
       constraints:[
-        {text:'D7 固定白川鄉日；出發前確認降雪、道路／交通管制及村內狀況。道路不安全時由人手決定 Plan B，App 不會自動換日。'},
+        {text:'D7 固定白川鄉日；出發前確認降雪、道路／交通管制及村內狀況。道路不安全時由人手決定 D7 Plan B。'},
         {text:'1/15 三寺まいり只在主線完成、道路安全同精神狀態良好時先加。'}
       ]
     },
@@ -459,9 +459,9 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       highlights=[
         {
           title:d.id==='d6'
-            ?'🚡 D6 固定新穗高日；天氣／Live Cam 只作出發安全判斷，App 不會換日。'
+            ?'🚡 D6 固定新穗高日；天氣／Live Cam 只作出發安全判斷。'
             :d.id==='d7'
-              ?'🏘️ D7 固定白川鄉日；唔再同新穗高互換。'
+              ?'🏘️ D7 固定白川鄉日。'
               :'➡️ D8 固定高山市區／飛驒大鐘乳洞後一路向東返松本。',
           tone:''
         },
