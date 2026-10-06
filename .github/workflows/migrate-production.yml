@@ -67,7 +67,7 @@ jobs:
           git config user.name "travelpilot-poc-bot"
           git config user.email "travelpilot-poc-bot@users.noreply.github.com"
           git add trips/registry.json
-          git add -A trips/shirakawago-shinhotaka-2027 trips/golden-reference-2027
+          git add -A trips/registry.json trips/shirakawago-shinhotaka-2027
           git add assets/images
           if git diff --cached --quiet; then
             echo "No generated changes to commit"
