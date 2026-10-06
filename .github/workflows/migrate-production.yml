@@ -1,0 +1,77 @@
+name: Round 4 Production Migration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/migrate-production.mjs
+      - scripts/qa_migration.py
+      - .github/workflows/migrate-production.yml
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout POC
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout production TravelPilot
+        uses: actions/checkout@v4
+        with:
+          repository: yfgary/travelpilot
+          ref: main
+          path: production-source
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install browser tooling
+        run: |
+          npm install
+          npx playwright install --with-deps chromium
+
+      - name: Start production app locally
+        run: |
+          python -m http.server 8010 --bind 127.0.0.1 --directory production-source >/tmp/travelpilot-production-http.log 2>&1 &
+          echo $! > /tmp/travelpilot-production.pid
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8010/itinerary.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/travelpilot-production-http.log
+          exit 1
+
+      - name: Generate Standard Golden Reference data
+        env:
+          PRODUCTION_SOURCE: production-source
+          PRODUCTION_URL: http://127.0.0.1:8010
+        run: node scripts/migrate-production.mjs
+
+      - name: Round 4 parity QA
+        run: python scripts/qa_migration.py
+
+      - name: Commit generated migration
+        run: |
+          git config user.name "travelpilot-poc-bot"
+          git config user.email "travelpilot-poc-bot@users.noreply.github.com"
+          git add trips/registry.json
+          git add -A trips/shirakawago-shinhotaka-2027 trips/golden-reference-2027
+          git add assets/images
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit"
+          else
+            git commit -m "Round 4: migrate production Shirakawago data to Standard"
+            git push
+          fi
