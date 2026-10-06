@@ -293,7 +293,7 @@ def first_minutes(value: str) -> int:
 
 for day in days:
     rows = day.get("items", [])
-    keys = [(row.get("type"), row.get("title"), row.get("localName"), row.get("attractionId")) for row in rows]
+    keys = [(row.get("type"), row.get("title"), row.get("attractionId")) for row in rows]
     if len(keys) != len(set(keys)):
         err(f"{day.get('id')} still has duplicate legacy timeline rows")
     numeric = [first_minutes(row.get("time") or "") for row in rows]
