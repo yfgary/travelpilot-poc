@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 3,
+  "tripId": "city-demo",
+  "days": [
+    {
+      "id": "d1",
+      "day": 1,
+      "date": "2028-06-10",
+      "title": "城市散步",
+      "route": "酒店 → 市場 → 博物館 → 酒店",
+      "weatherRegion": "city",
+      "driving": false,
+      "hotelId": "demo-hotel",
+      "highlights": [
+        {
+          "icon": "🏙️",
+          "title": "Generic",
+          "text": "冇 destination-specific JS。"
+        }
+      ],
+      "items": [
+        {
+          "time": "10:00",
+          "type": "attraction",
+          "title": "城市市場",
+          "map": "Tokyo Station",
+          "attractionId": "demo-market",
+          "durationMinutes": 90
+        },
+        {
+          "time": "14:00",
+          "type": "attraction",
+          "title": "博物館",
+          "map": "Tokyo National Museum",
+          "attractionId": "demo-museum",
+          "durationMinutes": 120
+        }
+      ]
+    }
+  ]
+}
