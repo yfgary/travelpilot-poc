@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 3,
+  "tripId": "city-demo",
+  "attractions": [
+    {
+      "id": "demo-market",
+      "name": "城市市場",
+      "location": "市中心",
+      "day": "D1",
+      "status": "main",
+      "score": 8,
+      "map": "Tokyo Station",
+      "weatherProfiles": [
+        "city_walk"
+      ],
+      "summary": "Generic 景點。",
+      "history": "示範 history field。",
+      "visit": "示範 visit field。"
+    },
+    {
+      "id": "demo-museum",
+      "name": "博物館",
+      "location": "市中心",
+      "day": "D1",
+      "status": "main",
+      "score": 8.5,
+      "map": "Tokyo National Museum",
+      "weatherProfiles": [
+        "indoor"
+      ],
+      "summary": "Generic 室內景點。"
+    }
+  ]
+}
