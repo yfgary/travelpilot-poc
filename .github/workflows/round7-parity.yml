@@ -28,7 +28,7 @@ jobs:
         run: |
           cmp itinerary.html production-reference/itinerary.html
           cmp assets/attraction-info.js production-reference/assets/attraction-info.js
-          cmp assets/images/d1-nagoya-night.jpg production-reference/assets/images/d1-nagoya-night.jpg
+          cmp assets/images/d1-centrair.jpg production-reference/assets/images/d1-nagoya-night.jpg
 
       - name: Candidate loader has no destination hardcodes
         run: |
