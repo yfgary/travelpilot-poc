@@ -1,54 +1,63 @@
-name: TravelPilot QA
+name: TravelPilot POC Baseline QA
 
 on:
-  pull_request:
   push:
     branches:
       - main
-      - qa-cleanup-v10.12.0
+  pull_request:
 
 permissions:
   contents: read
 
 jobs:
-  static-qa:
+  baseline:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout POC
         uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
+
+      - name: Checkout production baseline
+        uses: actions/checkout@v4
+        with:
+          repository: yfgary/travelpilot
+          ref: main
+          path: production-reference
+
+      - name: Isolate production baseline
+        run: |
+          rm -rf /tmp/production-reference
+          cp -a production-reference /tmp/production-reference
+          rm -rf production-reference
+
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run release version QA
-        run: python scripts/qa_release.py
-      - name: Run static QA
-        run: python scripts/qa.py
-      - name: Run checklist migration QA
-        run: python scripts/qa_checklist.py
-      - name: Run observer regression QA
-        run: python scripts/qa_observers.py
-      - name: Run legacy update cleanup QA
-        run: python scripts/qa_legacy_update.py
-      - name: Run loader dependency QA
-        run: python scripts/qa_loader.py
-      - name: Run dead asset QA
-        run: python scripts/qa_dead_assets.py
-      - name: Run orphan JS/CSS QA
-        run: python scripts/qa_orphan_assets.py
-      - name: Run v9 patch surface QA
-        run: python scripts/qa_v9_patch_surface.py
-      - name: Run timer retry surface QA
-        run: python scripts/qa_timer_retry_surface.py
-      - name: Run visit render event audit QA
-        run: python scripts/qa_visit_render_event.py
-      - name: Run visit fallback audit QA
-        run: python scripts/qa_visit_fallback_audit.py
-      - name: Run Trip Info event audit QA
-        run: python scripts/qa_trip_info_event_audit.py
-      - name: Run info-icon event audit QA
-        run: python scripts/qa_info_icon_event_audit.py
-      - name: Check JavaScript syntax
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Existing QA outcome parity
+        run: |
+          set -u
+          tests="qa_release.py qa.py qa_checklist.py qa_observers.py qa_legacy_update.py qa_loader.py qa_dead_assets.py qa_orphan_assets.py qa_v9_patch_surface.py qa_timer_retry_surface.py qa_visit_render_event.py qa_visit_fallback_audit.py qa_trip_info_event_audit.py qa_info_icon_event_audit.py"
+          for test in $tests; do
+            set +e
+            python "scripts/$test" >/tmp/candidate-qa.log 2>&1
+            candidate_rc=$?
+            (cd /tmp/production-reference && python "scripts/$test") >/tmp/reference-qa.log 2>&1
+            reference_rc=$?
+            set -e
+            echo "$test candidate=$candidate_rc reference=$reference_rc"
+            if [ "$candidate_rc" -ne "$reference_rc" ]; then
+              echo "POC introduced a new QA outcome for $test"
+              echo "--- POC ---"; cat /tmp/candidate-qa.log
+              echo "--- production baseline ---"; cat /tmp/reference-qa.log
+              exit 1
+            fi
+          done
+
+      - name: JavaScript syntax
         run: |
           node --check sw.js
           find assets -maxdepth 1 -type f -name '*.js' -print0 | xargs -0 -n1 node --check
