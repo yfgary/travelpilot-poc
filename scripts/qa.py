@@ -99,7 +99,7 @@ for entry in trips:
             for cid in day.get("cameras",[]):
                 if cid not in cams: err(f"{tid}: live day {day.get('id')} references unknown camera {cid}")
 
-# Golden Reference parity fixture: every Standard gap added in Round 3 must be represented.
+# Golden Reference production parity: require the rich surfaces that the real trip uses.
 gold=Path("trips/shirakawago-shinhotaka-2027") if (ROOT/"trips/shirakawago-shinhotaka-2027").is_dir() else Path("trips/golden-reference-2027")
 g_it=load(gold/"itinerary.json")
 g_ai=load(gold/"attractions.json")
@@ -110,22 +110,19 @@ g_dep=load(gold/"departure-checklist.json")
 days=g_it.get("days",[])
 def any_day(field): return any(d.get(field) for d in days)
 for field in ("highlights","media","hardCuts","backups","bonus","constraints"):
-    if not any_day(field): err(f"Golden Reference does not exercise itinerary field: {field}")
+    if not any_day(field): err(f"Golden Reference lost itinerary field: {field}")
 items=[i for d in days for i in d.get("items",[])]
-for field in ("description","localName","price","badges","links"):
+for field in ("description","localName","price"):
     if not any(i.get(field) for i in items):
-        err(f"Golden Reference does not exercise rich itinerary item field: {field}")
+        err(f"Golden Reference lost rich itinerary item field: {field}")
 
 attrs=g_ai.get("attractions",[])
-for field in ("scoreReason","summary","history","visit","winter","sources"):
+for field in ("summary","history","visit","winter","sources"):
     if not any(a.get(field) for a in attrs):
-        err(f"Golden Reference does not exercise rich attraction field: {field}")
+        err(f"Golden Reference lost rich attraction field: {field}")
 
-custom=g_info.get("customSections",[])
-types={s.get("type") for s in custom}
-for required in ("cards","list","notice","links"):
-    if required not in types: err(f"Golden Reference customSections missing type {required}")
-
+if not (g_info.get("customSections") or []):
+    err("Golden Reference lost custom Trip Info sections")
 if not g_live.get("cameras") or not g_live.get("days"):
     err("Golden Reference must use Standard Live Cam cameras[] + days[]")
 if "groups" in g_live or "dynamicBindings" in g_live:
@@ -136,6 +133,23 @@ for group in g_dep.get("groups",[]):
     dep_ids += [i.get("id") for i in group.get("items",[])]
 if not dep_ids or None in dep_ids or len(dep_ids)!=len(set(dep_ids)):
     err("Departure checklist requires unique stable item IDs")
+
+# Standard capability fixture: optional renderer surfaces need not be forced into
+# every real trip, but the shared engine must keep them exercised by a second trip.
+fixture=Path("trips/city-demo")
+f_it=load(fixture/"itinerary.json")
+f_ai=load(fixture/"attractions.json")
+f_info=load(fixture/"trip-info.json")
+f_items=[i for d in f_it.get("days",[]) for i in d.get("items",[])]
+for field in ("badges","links"):
+    if not any(i.get(field) for i in f_items):
+        err(f"Standard capability fixture missing itinerary field: {field}")
+if not any(a.get("scoreReason") for a in f_ai.get("attractions",[])):
+    err("Standard capability fixture missing attraction scoreReason")
+fixture_types={s.get("type") for s in f_info.get("customSections",[])}
+for required in ("cards","list","notice","links"):
+    if required not in fixture_types:
+        err(f"Standard capability fixture missing custom section type: {required}")
 
 # Standard presentation ownership: no inline style attributes in shared HTML/JS and typography uses shared tokens.
 for path in shared_files:
