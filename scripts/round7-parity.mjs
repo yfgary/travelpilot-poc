@@ -168,8 +168,11 @@ try{
   if(b.selector!==1) failures.push('D6-D8 manual selector parity missing in candidate baseline lock');
 
   // Interaction parity: photo zoom.
-  const baseZoom=baseline.page.locator('img.zoomable').first();
-  const candZoom=candidate.page.locator('img.zoomable').first();
+  await baseline.page.locator('details.day#d1').evaluate(el=>{el.open=true;});
+  await candidate.page.locator('details.day#d1').evaluate(el=>{el.open=true;});
+  const baseZoom=baseline.page.locator('#d1 img.zoomable').first();
+  const candZoom=candidate.page.locator('#d1 img.zoomable').first();
+  await baseZoom.scrollIntoViewIfNeeded(); await candZoom.scrollIntoViewIfNeeded();
   await baseZoom.click(); await candZoom.click();
   const baseModal=await baseline.page.locator('#photoModal').evaluate(el=>({hidden:el.hidden,display:getComputedStyle(el).display,text:(el.innerText||'').replace(/\s+/g,' ').trim()}));
   const candModal=await candidate.page.locator('#photoModal').evaluate(el=>({hidden:el.hidden,display:getComputedStyle(el).display,text:(el.innerText||'').replace(/\s+/g,' ').trim()}));
