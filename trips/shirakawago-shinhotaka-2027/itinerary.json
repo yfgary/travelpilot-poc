@@ -1045,14 +1045,6 @@
           "map": "高山"
         },
         {
-          "time": "14:25",
-          "type": "🚗 車",
-          "title": "平湯 → 高山",
-          "localName": "新穂高温泉 → 高山市",
-          "description": "由平湯返高山市區，保留冬季道路 Buffer。",
-          "map": "Takayama Ouan"
-        },
-        {
           "time": "15:10",
           "type": "🛍️ 彈性",
           "title": "高山古街／地元超市",
@@ -1075,11 +1067,6 @@
           "localName": "高山市",
           "description": "高山市內正式飛驒牛晚餐。",
           "map": "高山駅"
-        }
-      ],
-      "backups": [
-        {
-          "text": "🔄 神社 Backup｜日枝神社（飛騨山王宮 日枝神社）按你之前決定繼續做 Backup，唔硬塞主線。高山市區主線明顯提早、仍有日光先去；係春之高山祭「山王祭」嘅核心神社，亦有千年大杉。 ⓘ"
         }
       ],
       "constraints": [
@@ -1411,7 +1398,7 @@
           "type": "🚗 車",
           "title": "飛驒大鐘乳洞 → 松本",
           "localName": "飛騨大鍾乳洞・氷の渓谷",
-          "description": "經平湯／安房方向一路向東；比白川鄉返松本自然得多。",
+          "description": "經平湯／安房方向一路向東返松本；冬季道路預留充足 Buffer。",
           "map": "Iroha Grand Hotel Matsumoto Ekimae",
           "attractionId": "hida-cave"
         },

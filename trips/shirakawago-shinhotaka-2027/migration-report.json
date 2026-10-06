@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T18:56:32.866Z",
+  "generatedAt": "2026-10-06T18:59:43.409Z",
   "source": {
     "repo": "yfgary/travelpilot",
     "ref": "main",
@@ -16,7 +16,7 @@
   ],
   "counts": {
     "days": 9,
-    "timelineItems": 114,
+    "timelineItems": 113,
     "photos": 27,
     "attractions": 42,
     "richAttractions": 42,
