@@ -1,13 +1,24 @@
-# TravelPilot Standard Multi-Trip POC
+# TravelPilot POC
 
-Proof-of-concept repository for the data-driven TravelPilot Standard architecture.
+This repository is the **full test clone** of `yfgary/travelpilot/main` plus the new TravelPilot Standard architecture.
 
-Golden Reference principle: useful capabilities from the Shirakawago / Shinhotaka 2027 trip become reusable Standard capabilities. The D6-D8 automatic day selector and weather-driven day auto-selection are intentionally excluded.
+## Safety rule
 
-Current phase: **Round 5 — full Standard parity and production retirement readiness**.
+- Development, migration, QA and manual testing happen here first.
+- `yfgary/travelpilot/main` is production and is not modified by POC work.
+- Production migration requires explicit user approval.
 
-The real `shirakawago-shinhotaka-2027` trip now runs in this POC with schema v12, `modules: []`, no `legacy` block, and generate-only renderers. CI verifies D1-D9, Today Mode, Driving Mode, Trip Info, Attractions, Live Cam, trip-scoped state and the absence of Japan legacy runtime assets.
+## Current phase: Round 7
 
-Round 5 documentation: `docs/round5-standard-parity-retirement.md`.
+All trips in the production registry now run through the same Standard v12 data/rendering architecture:
 
-This repository is isolated from the production `yfgary/travelpilot` repository. Passing Round 5 does **not** authorize deleting production legacy files; production cutover and legacy cleanup remain separate later steps.
+- Shirakawago / Shinhotaka 2027 — Golden Reference
+- Bangkok 2026
+- Hokkaido 2025
+- Okinawa demo
+
+The public pages are direct generic Standard shells. The temporary cutover router and legacy/standard split paths are retired.
+
+The old production runtime files are still physically present only as dead-asset candidates from the cloned production snapshot. Round 8 will perform final dependency/dead-asset cleanup and full acceptance QA.
+
+See `docs/round7-all-trips-standard.md`.
