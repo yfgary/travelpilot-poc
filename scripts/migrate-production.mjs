@@ -101,7 +101,7 @@ function richAttractions(data){
     const whyLong=a.whyLong?.length?a.whyLong:a.why?[a.why]:[];
     const history=a.history?.length?a.history:a.background?[a.background]:[];
     const visit=a.visit?.length?a.visit:a.look?.length?a.look:[];
-    const importance=a.importance?.length?a.importance:[];
+    const importance=Array.isArray(a.importance)?a.importance:(a.importance?[a.importance]:[]);
     const tips=[a.understand,a.fit].filter(Boolean).join('\n\n');
     result.push({
       ...b,
