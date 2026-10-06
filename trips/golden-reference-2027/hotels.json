@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "tripId": "golden-reference-2027",
+  "hotels": [
+    {
+      "id": "tabino-matsumoto",
+      "name": "TABINO HOTEL lit 松本",
+      "map": "TABINO HOTEL lit Matsumoto",
+      "address": "松本市",
+      "status": "booked",
+      "statusLabel": "✅ 已訂",
+      "room": "雙人房",
+      "meals": "早餐不包",
+      "checkIn": "15:00",
+      "checkOut": "11:00"
+    },
+    {
+      "id": "chikumakan",
+      "name": "Club Wyndham 千曲館",
+      "map": "Club Wyndham Chikumakan Nagano",
+      "address": "千曲市上山田溫泉",
+      "status": "booked",
+      "statusLabel": "✅ 已訂",
+      "room": "King Bed",
+      "meals": "一泊二食",
+      "checkIn": "15:00",
+      "checkOut": "10:00",
+      "totalPrice": "POC 保留價格欄位",
+      "paidAmount": "Pay later",
+      "arrivalPayment": "按預訂安排付款",
+      "parking": "酒店停車"
+    },
+    {
+      "id": "takayama-ouan",
+      "name": "高山櫻庵",
+      "map": "Takayama Ouan",
+      "address": "高山市",
+      "status": "booked",
+      "statusLabel": "✅ 已訂",
+      "room": "雙床房",
+      "meals": "依訂房方案",
+      "checkIn": "15:00",
+      "checkOut": "11:00",
+      "parking": "酒店停車"
+    },
+    {
+      "id": "residence-takayama",
+      "name": "Residence Hotel Takayama Station",
+      "map": "Residence Hotel Takayama Station",
+      "address": "高山站附近",
+      "status": "booked",
+      "statusLabel": "✅ 已訂",
+      "room": "標準雙人房",
+      "meals": "早餐不包",
+      "checkIn": "15:00",
+      "checkOut": "11:00",
+      "totalPrice": "POC",
+      "paidAmount": "已付",
+      "arrivalPayment": "到店毋須再付房費",
+      "parking": "酒店車位"
+    },
+    {
+      "id": "iroha-matsumoto",
+      "name": "Iroha Grand Hotel Matsumoto Ekimae",
+      "map": "Iroha Grand Hotel Matsumoto Ekimae",
+      "address": "松本市中央",
+      "status": "booked",
+      "statusLabel": "✅ 已訂",
+      "room": "Moderate Twin",
+      "meals": "包早餐",
+      "checkIn": "14:00",
+      "checkOut": "11:00",
+      "totalPrice": "POC",
+      "paidAmount": "已付",
+      "arrivalPayment": "到店毋須再付房費",
+      "parking": "提攜停車場"
+    }
+  ]
+}
