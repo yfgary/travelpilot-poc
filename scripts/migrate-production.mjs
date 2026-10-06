@@ -129,7 +129,7 @@ function richAttractions(data){
   }
   const fixedDay={
     'shinhotaka':'D6',
-    'hirayu-shrine':'D6',
+    'hirayu-shrine':'D6 Backup',
     'hirayu-no-mori':'D6 Backup',
     'shirakawago':'D7',
     'wada-house':'D7',
@@ -154,7 +154,7 @@ function richAttractions(data){
     'hirayu-shrine':{
       summary:'平湯神社幾乎唔需要繞路，最適合放喺 D6 新穗高回程。用約20分鐘短停，可以將奧飛驒嘅山岳、溫泉聚落同地方信仰連埋一齊。',
       info:'D6 新穗高回程短停；路面除雪差、結冰嚴重或者時間不足就 Skip。',
-      tips:'固定放 D6：新穗高 → 平湯神社 → 高山。唔需要為神社犧牲冬季駕駛 Buffer。'
+      tips:'D6 新穗高回程如果時間、道路同體力都好先短停；平湯神社係 Optional，唔為佢犧牲冬季駕駛 Buffer。'
     },
     'hirayu-no-mori':{
       tips:'只作 D6 新穗高日 Backup：如果主行程早完、道路安全同體力足夠，可考慮新穗高 → 平湯之森 → 高山；唔為浸溫泉拖到夜間山路。'
@@ -359,10 +359,10 @@ async function scrapeItinerary(page,baseItinerary,attractions){
   };
   const fixedPlan={
     d6:{
-      title:'🚡 新穗高 → 平湯 → 高山',
-      route:'高山 → 新穗高纜車 → 平湯神社 → 高山',
-      keepHighlight:/平湯神社|07:45|停車|山路|飛驒牛|晚餐|雪地|運行|Live Cam/i,
-      rejectItemIds:new Set(['miyagawa','takayama-jinya','sanmachi','hida-cave','takayama-supermarket']),
+      title:'🚡 新穗高 → 高山',
+      route:'高山 → 新穗高纜車 → 高山｜平湯神社／平湯之森只係有時間先加',
+      keepHighlight:/07:45|停車|山路|飛驒牛|晚餐|雪地|運行|Live Cam/i,
+      rejectItemIds:new Set(['miyagawa','takayama-jinya','sanmachi','hida-cave','takayama-supermarket','hirayu-shrine']),
       constraints:[
         {text:'07:45 前確認新穗高官方運行、Live Cam、山頂能見度、風況同冬季道路。'},
         {text:'D6 固定新穗高日；如纜車停駛、能見度差或道路不安全，由人手決定 D6 Plan B。其餘日子保持固定。'}
@@ -380,7 +380,7 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       title:'🏘️ 白川鄉 → 高山',
       route:'高山 → 白川鄉合掌村／和田家／荻町展望台 → 高山；晚上三寺まいり只作 Bonus',
       keepHighlight:/白川鄉|三寺|停車|道路|和田家|展望台|世界遺產/i,
-      rejectItemIds:new Set(['shinhotaka','hirayu-shrine','hida-cave']),
+      rejectItemIds:new Set(['shinhotaka','hirayu-shrine','hida-cave','hida-toshogu','toyokawa-shiroyama-inari']),
       constraints:[
         {text:'D7 固定白川鄉日；出發前確認降雪、道路／交通管制及村內狀況。道路不安全時由人手決定 D7 Plan B。'},
         {text:'1/15 三寺まいり只在主線完成、道路安全同精神狀態良好時先加。'}
@@ -493,9 +493,27 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       constraints=fixed.constraints;
       if(fixed.hardCuts)hardCuts=fixed.hardCuts;
       if(d.id==='d6'){
-        backups=[{text:'🔄 神社 Backup｜日枝神社：D6 返回高山後明顯提早、仍有日光而且路面安全先去；唔影響溫泉休息同晚餐。'}];
+        backups=[
+          {title:'平湯神社｜如有時間加',attractionId:'hirayu-shrine'},
+          {title:'平湯之森雪見露天溫泉｜如有時間加',attractionId:'hirayu-no-mori'},
+          {title:'奧飛驒熊牧場｜低優先 Backup',attractionId:'bear-park'}
+        ];
+        bonus=[];
       }
-      if(d.id==='d8')bonus=[];
+      if(d.id==='d7'){
+        backups=[
+          {title:'飛驒東照宮｜如有時間加',attractionId:'hida-toshogu'},
+          {title:'豐川城山稻荷｜如有時間加',attractionId:'toyokawa-shiroyama-inari'}
+        ];
+        bonus=[{title:'1/15 飛驒古川・三寺まいり｜安全、時間、體力全部合適先去',attractionId:'santera-mairi'}];
+      }
+      if(d.id==='d8'){
+        backups=[
+          {title:'日枝神社｜Backup',attractionId:'hie-shrine'},
+          {title:'大王山葵農場｜非常早到安曇野先加',attractionId:'daio-wasabi'}
+        ];
+        bonus=[];
+      }
       backups=backups.filter(x=>!/D6|D7|D8|互換|新穗高日/.test(textOf(x)));
       bonus=bonus.filter(x=>!/D6|D7|D8|互換|Scenario|新穗高日/.test(textOf(x)));
     }
@@ -667,10 +685,39 @@ async function scrapeLive(page,itinerary){
     const d=dayAgg.get(target);
     if(d)d.officialLinks.push({label,url});
   }
+
+  const camById=new Map([...camByKey.values()].map(c=>[c.id,c]));
+  const keep={
+    d6:/新穗高|國道158號.*(平湯|久手|大瀧橋|茶屋野)/,
+    d7:/國道156號|白川/,
+    d8:/高山中橋|高山陣屋前|國道158號|松本城/
+  };
+  for(const d of dayAgg.values()){
+    if(keep[d.id])d.cameras=d.cameras.filter(id=>keep[d.id].test(camById.get(id)?.title||''));
+    if(d.id==='d6'){
+      d.title='🚡 新穗高 → 高山';
+      d.desc='D6 固定新穗高主線；Live Cam／道路資訊只供安全判斷，平湯 Bonus 不自動加入。';
+      d.route='高山 → 新穗高 → 高山';
+      d.officialLinks=d.officialLinks.filter(x=>/新穗高|道路|岐阜|高山/.test(x.label));
+    }
+    if(d.id==='d7'){
+      d.title='🏘️ 白川鄉 → 高山';
+      d.desc='D7 固定白川鄉；只保留白川鄉及相關道路資訊。';
+      d.route='高山 → 白川鄉 → 高山';
+      d.officialLinks=d.officialLinks.filter(x=>/白川|道路|岐阜/.test(x.label));
+    }
+    if(d.id==='d8'){
+      d.title='🏯 高山市區 → 飛驒大鐘乳洞 → 松本';
+      d.desc='D8 固定向東返松本；只保留高山市區／R158／松本相關資訊。';
+      d.route='高山 → 飛驒大鐘乳洞 → 平湯／安房 → 松本';
+      d.officialLinks=d.officialLinks.filter(x=>/高山|道路|岐阜|松本/.test(x.label));
+    }
+  }
+  const usedCameras=new Set([...dayAgg.values()].flatMap(d=>d.cameras));
   return {
     schemaVersion:3,tripId:TRIP_ID,enabled:true,
     notice:'由原 Japan 2027 Live Cam dashboard 遷移到 Standard cameras[] + days[]。D6–D8 已固定，不再有動態 camera binding。',
-    cameras:[...camByKey.values()],
+    cameras:[...camByKey.values()].filter(c=>usedCameras.has(c.id)),
     days:[...dayAgg.values()]
   };
 }
