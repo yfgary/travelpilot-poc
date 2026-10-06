@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 12,
+  "schemaVersion": 9,
   "id": "multi-trip-demo-okinawa",
   "name": "🧪 Multi Trip Demo・沖繩 3日",
   "shortName": "🧪 沖繩 Demo 3日",
@@ -34,39 +34,20 @@
     "hotels": "hotels.json",
     "attractions": "attractions.json",
     "liveCams": "live-cams.json",
-    "weather": "weather.json",
-    "departureChecklist": "departure-checklist.json"
+    "weather": "weather.json"
   },
   "renderers": {
-    "itinerary": {
-      "mode": "generate",
-      "source": "itinerary"
-    },
-    "tripInfo": {
-      "mode": "generate",
-      "source": "tripInfo"
-    },
-    "attractions": {
-      "mode": "generate",
-      "source": "attractions"
-    },
-    "liveCam": {
-      "mode": "generate",
-      "source": "liveCams"
-    },
-    "weather": {
-      "mode": "generate",
-      "source": "weather",
-      "profileStandard": "v1",
-      "useActivityProfiles": true
-    },
-    "todayMode": {
-      "mode": "generate",
-      "source": "itinerary"
-    },
-    "drivingMode": {
-      "mode": "generate",
-      "source": "itinerary"
-    }
+    "itinerary": {"mode":"generate","source":"itinerary","preserveLegacyDetails":false},
+    "tripInfo": {"mode":"generate","source":"tripInfo","preserveLegacyShell":false},
+    "attractions": {"mode":"generate","source":"attractions","preserveLegacyDetails":false},
+    "liveCam": {"mode":"generate","source":"liveCams","preserveLegacyMediaTemplates":false},
+    "weather": {"mode":"generate","source":"weather","profileStandard":"v1","preserveLegacyDecisionModules":false},
+    "todayMode": {"mode":"generate","source":"itinerary"},
+    "drivingMode": {"mode":"generate","source":"itinerary"}
+  },
+  "legacy": {
+    "dataMode": "generic-only",
+    "migrationStage": 9,
+    "note": "Non-production validation trip used to prove the shared Multi Trip renderers without Japan 2027 legacy scripts."
   }
 }
