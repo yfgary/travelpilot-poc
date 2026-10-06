@@ -24,7 +24,10 @@
   },
   "$defs": {
     "credit": {
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "properties": {
         "label": {
           "type": "string"
