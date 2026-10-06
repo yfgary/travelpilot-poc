@@ -9,15 +9,10 @@
       "map": "TABINO HOTEL lit Matsumoto",
       "address": "〒390-0815 長野県松本市深志1-4-5",
       "phone": "+81 263-39-5050",
-      "nights": [
-        "2027-01-09"
-      ],
+      "nights": ["2027-01-09"],
       "status": "booked",
       "statusLabel": "✅ 已訂",
-      "badges": [
-        "booked",
-        "arrival-pay"
-      ],
+      "badges": ["booked", "arrival-pay"],
       "room": "豪華雙人房・非吸煙",
       "meals": "早餐不包",
       "checkIn": "15:00",
@@ -35,16 +30,10 @@
       "map": "Club Wyndham Chikumakan Nagano",
       "address": "〒389-0821 長野県千曲市上山田温泉1-33-4",
       "phone": "+81 26-275-1111",
-      "nights": [
-        "2027-01-10"
-      ],
+      "nights": ["2027-01-10"],
       "status": "booked",
       "statusLabel": "✅ 已訂",
-      "badges": [
-        "booked",
-        "onsen",
-        "arrival-clear"
-      ],
+      "badges": ["booked", "onsen", "arrival-clear"],
       "room": "King Bed／高級雙人房",
       "meals": "包早餐＋晚餐（一泊二食）",
       "checkIn": "15:00",
@@ -62,16 +51,10 @@
       "map": "Ichinoyu Katei",
       "address": "〒381-0401 長野県下高井郡山ノ内町大字平穏2219",
       "phone": "+81 269-33-2101",
-      "nights": [
-        "2027-01-11"
-      ],
+      "nights": ["2027-01-11"],
       "status": "booked",
       "statusLabel": "✅ 已訂",
-      "badges": [
-        "booked",
-        "onsen",
-        "arrival-tax"
-      ],
+      "badges": ["booked", "onsen", "arrival-tax"],
       "room": "10疊和室B・2張日式床墊",
       "meals": "包早餐＋晚餐",
       "checkIn": "15:00",
@@ -90,16 +73,10 @@
       "map": "Hotel JAL City Nagano",
       "address": "〒380-0834 長野県長野市問御所町1221",
       "phone": "+81 26-225-1131",
-      "nights": [
-        "2027-01-12"
-      ],
+      "nights": ["2027-01-12"],
       "status": "booked",
       "statusLabel": "✅ 已訂",
-      "badges": [
-        "booked",
-        "arrival-clear",
-        "breakfast"
-      ],
+      "badges": ["booked", "arrival-clear", "breakfast"],
       "room": "Renewal 經濟雙人房・非吸煙",
       "meals": "包2人自助早餐",
       "checkIn": "15:00",
@@ -118,17 +95,10 @@
       "map": "Takayama Ouan",
       "address": "〒506-0026 岐阜県高山市花里町4-313",
       "phone": "+81 577-37-2244",
-      "nights": [
-        "2027-01-13",
-        "2027-01-14"
-      ],
+      "nights": ["2027-01-13", "2027-01-14"],
       "status": "booked",
       "statusLabel": "✅ 已訂・2晚",
-      "badges": [
-        "booked",
-        "onsen",
-        "arrival-tax"
-      ],
+      "badges": ["booked", "onsen", "arrival-tax"],
       "room": "雙床房・非吸煙",
       "meals": "早餐未確認／依最終訂房方案",
       "checkIn": "15:00",
@@ -147,15 +117,10 @@
       "map": "Residence Hotel Takayama Station",
       "address": "〒506-0026 岐阜県高山市花里町6-105",
       "phone": "+81 577-57-5578",
-      "nights": [
-        "2027-01-15"
-      ],
+      "nights": ["2027-01-15"],
       "status": "booked",
       "statusLabel": "✅ 已正式預訂",
-      "badges": [
-        "booked",
-        "arrival-clear"
-      ],
+      "badges": ["booked", "arrival-clear"],
       "room": "標準雙人房・非吸煙",
       "meals": "早餐不包",
       "checkIn": "15:00",
@@ -175,16 +140,10 @@
       "map": "Iroha Grand Hotel Matsumoto Ekimae",
       "address": "〒390-0811 長野県松本市中央1-14-9",
       "phone": "+81 263-87-0168",
-      "nights": [
-        "2027-01-16"
-      ],
+      "nights": ["2027-01-16"],
       "status": "booked",
       "statusLabel": "✅ 已正式預訂",
-      "badges": [
-        "booked",
-        "arrival-clear",
-        "breakfast"
-      ],
+      "badges": ["booked", "arrival-clear", "breakfast"],
       "room": "Moderate Twin 22.5㎡・2×110cm床・非吸煙",
       "meals": "包2人早餐",
       "checkIn": "14:00",
