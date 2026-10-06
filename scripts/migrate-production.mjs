@@ -167,7 +167,7 @@ function extractMapFromHref(href){
 }
 
 async function scrapeItinerary(page,baseItinerary,attractions){
-  await page.goto(BASE_URL+'/itinerary.html?trip='+TRIP_ID,{waitUntil:'networkidle'});
+  await page.goto(BASE_URL+'/itinerary.html?trip='+TRIP_ID,{waitUntil:'domcontentloaded'});
   await page.waitForTimeout(4200);
   await page.evaluate(()=>{document.querySelectorAll('details.day').forEach(d=>d.open=true);});
   await page.waitForTimeout(800);
@@ -284,7 +284,7 @@ function normalizeCardSection(s){
 }
 
 async function scrapeExtraTripInfo(page){
-  await page.goto(BASE_URL+'/trip-info.html?trip='+TRIP_ID,{waitUntil:'networkidle'});
+  await page.goto(BASE_URL+'/trip-info.html?trip='+TRIP_ID,{waitUntil:'domcontentloaded'});
   await page.waitForTimeout(4200);
   return page.evaluate(()=>{
     const known=new Set(['transport','car','hotels','parking','hardcuts','weather','checklist','emergency']);
@@ -338,7 +338,7 @@ function buildTripInfo(extraSections){
 }
 
 async function scrapeLive(page,itinerary){
-  await page.goto(BASE_URL+'/live.html?trip='+TRIP_ID,{waitUntil:'networkidle'});
+  await page.goto(BASE_URL+'/live.html?trip='+TRIP_ID,{waitUntil:'domcontentloaded'});
   await page.waitForTimeout(4200);
   await page.evaluate(()=>{document.querySelectorAll('details.region').forEach(d=>d.open=true);});
   await page.waitForTimeout(1200);
