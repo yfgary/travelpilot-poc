@@ -147,3 +147,8 @@ It does **not** mean:
 > Production legacy files are already safe to delete.
 
 Deletion is a later, separately verified cleanup after the production cutover.
+
+
+## Regeneration gate
+
+The final Round 5 acceptance run must execute **after** the Round 4 production-migration workflow has regenerated the Golden Reference. This proves the generated output itself, not only a hand-edited intermediate commit, passes the Standard runtime, readiness and real-browser parity gates.
