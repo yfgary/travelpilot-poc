@@ -17,6 +17,8 @@ jobs:
           node-version: '22'
       - name: Architecture and data QA
         run: python scripts/qa.py
+      - name: Round 4 migration parity QA
+        run: python scripts/qa_migration.py
       - name: JavaScript syntax
         run: |
           for f in assets/*.js; do
