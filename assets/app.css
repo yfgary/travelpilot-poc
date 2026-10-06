@@ -32,3 +32,5 @@ h1,h2,h3,p{margin-top:0}.page-title{font-size:var(--font-xl);color:var(--brand-d
 .mode-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.mode-card{padding:16px;background:#eaf4fb;border:1px solid #cfe1ee;border-radius:var(--radius-sm)}
 .error{padding:20px;border-color:#e4b9b5;color:var(--danger)}
 @media(max-width:760px){.app-shell{padding:10px}.grid,.grid-3,.attractions-grid,.highlight-grid,.gallery{grid-template-columns:1fr}.timeline-item{grid-template-columns:56px 1fr}.site-header{padding:12px}.brand strong{font-size:var(--font-md)}}
+
+.section-spaced{margin-top:18px}
