@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://travelpilot.local/schemas/trip-v12.schema.json",
+  "title": "TravelPilot Trip Manifest v12",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "startDate",
+    "endDate",
+    "timezone",
+    "features",
+    "pages",
+    "dataFiles",
+    "renderers"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 12
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "shortName": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "timezone": {
+      "type": "string",
+      "minLength": 1
+    },
+    "country": {
+      "type": "string"
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "itinerary": {
+          "type": "boolean"
+        },
+        "tripInfo": {
+          "type": "boolean"
+        },
+        "attractions": {
+          "type": "boolean"
+        },
+        "liveCam": {
+          "type": "boolean"
+        },
+        "todayMode": {
+          "type": "boolean"
+        },
+        "drivingMode": {
+          "type": "boolean"
+        },
+        "weather": {
+          "type": "boolean"
+        },
+        "weatherScore": {
+          "type": "boolean"
+        },
+        "weatherActivityProfiles": {
+          "type": "boolean"
+        },
+        "packingChecklist": {
+          "type": "boolean"
+        },
+        "winterDriving": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "pages": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "dataFiles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "renderers": {
+      "type": "object",
+      "properties": {
+        "itinerary": {
+          "$ref": "#/$defs/generateRenderer"
+        },
+        "tripInfo": {
+          "$ref": "#/$defs/generateRenderer"
+        },
+        "attractions": {
+          "$ref": "#/$defs/generateRenderer"
+        },
+        "liveCam": {
+          "$ref": "#/$defs/generateRenderer"
+        },
+        "weather": {
+          "$ref": "#/$defs/generateRenderer"
+        },
+        "todayMode": {
+          "$ref": "#/$defs/generateRenderer"
+        },
+        "drivingMode": {
+          "$ref": "#/$defs/generateRenderer"
+        }
+      },
+      "additionalProperties": true
+    },
+    "photoCredits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "label",
+          "url"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "$defs": {
+    "generateRenderer": {
+      "type": "object",
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "const": "generate"
+        },
+        "source": {
+          "type": "string"
+        },
+        "profileStandard": {
+          "type": "string"
+        },
+        "useActivityProfiles": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
