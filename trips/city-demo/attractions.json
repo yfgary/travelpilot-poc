@@ -15,7 +15,15 @@
       ],
       "summary": "Generic 景點。",
       "history": "示範 history field。",
-      "visit": "示範 visit field。"
+      "visit": "示範 visit field。",
+      "scoreReason": "POC fixture：驗證 Standard scoreReason renderer。",
+      "winter": "POC winter note。",
+      "sources": [
+        {
+          "label": "POC Source",
+          "url": "https://example.com/"
+        }
+      ]
     },
     {
       "id": "demo-museum",
