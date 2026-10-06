@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://travelpilot.local/schemas/weather-v4.schema.json",
+  "title": "TravelPilot Weather v4",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "tripId",
+    "regions",
+    "dayRegions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 4
+    },
+    "tripId": {
+      "type": "string"
+    },
+    "profileStandardVersion": {
+      "type": "string"
+    },
+    "regions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "name",
+          "lat",
+          "lon"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "en": {
+            "type": "string"
+          },
+          "jp": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "lat": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "lon": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "scoreNote": {
+            "type": "string"
+          },
+          "activityProfiles": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "object"
+              ]
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "dayRegions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "scoreProfiles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}
