@@ -8,18 +8,95 @@
   "endDate": "2027-01-17",
   "timezone": "Asia/Tokyo",
   "country": "日本",
-  "features": {"itinerary":true,"tripInfo":true,"attractions":true,"liveCam":true,"todayMode":true,"drivingMode":true,"weather":true,"weatherScore":true,"weatherActivityProfiles":true,"packingChecklist":true,"winterDriving":true,"shinhotakaPlanner":true},
-  "modules": [{"id":"shinhotaka-weather-day-selector","type":"weather-day-selector","enabled":true,"candidateDays":[6,7,8],"destination":"shinhotaka","pairedDestination":"shirakawago"}],
-  "pages": {"itinerary":"itinerary.html","tripInfo":"trip-info.html","attractions":"attractions.html","liveCam":"live.html"},
-  "dataFiles": {"itinerary":"itinerary.json","tripInfo":"trip-info.json","hotels":"hotels.json","attractions":"attractions.json","liveCams":"live-cams.json","weather":"weather.json","departureChecklist":"departure-checklist.json"},
-  "renderers": {
-    "itinerary":{"mode":"hydrate","source":"itinerary","preserveLegacyDetails":true},
-    "tripInfo":{"mode":"hydrate","source":"tripInfo","preserveLegacyShell":true},
-    "attractions":{"mode":"hydrate","source":"attractions","preserveLegacyDetails":true},
-    "liveCam":{"mode":"hydrate","source":"liveCams","preserveLegacyMediaTemplates":true},
-    "weather":{"mode":"generate","source":"weather","profileStandard":"v1","preserveLegacyDecisionModules":true},
-    "todayMode":{"mode":"hydrate","source":"itinerary","useActivityProfiles":true},
-    "drivingMode":{"mode":"hydrate","source":"itinerary","useActivityProfiles":true}
+  "features": {
+    "itinerary": true,
+    "tripInfo": true,
+    "attractions": true,
+    "liveCam": true,
+    "todayMode": true,
+    "drivingMode": true,
+    "weather": true,
+    "weatherScore": true,
+    "weatherActivityProfiles": true,
+    "packingChecklist": true,
+    "winterDriving": true,
+    "shinhotakaPlanner": true
   },
-  "legacy": {"core":"assets/trip-core-v1.js","dataMode":"hybrid-data-v8","migrationStage":10,"note":"v10.12 Stage 2: Japan departure checklist is now canonical Trip JSON rendered by shared multi-trip modules. Rich itinerary/trip overlays remain in hydrate mode while legacy presentation code is retired incrementally."}
+  "modules": [
+    {
+      "id": "shinhotaka-weather-day-selector",
+      "type": "weather-day-selector",
+      "enabled": true,
+      "candidateDays": [
+        6,
+        7,
+        8
+      ],
+      "destination": "shinhotaka",
+      "pairedDestination": "shirakawago"
+    }
+  ],
+  "pages": {
+    "itinerary": "itinerary.html",
+    "tripInfo": "trip-info.html",
+    "attractions": "attractions.html",
+    "liveCam": "live.html"
+  },
+  "dataFiles": {
+    "itinerary": "itinerary.json",
+    "tripInfo": "trip-info.json",
+    "hotels": "hotels.json",
+    "attractions": "attractions.json",
+    "liveCams": "live-cams.json",
+    "weather": "weather.json",
+    "departureChecklist": "departure-checklist.json"
+  },
+  "renderers": {
+    "itinerary": {
+      "mode": "hydrate",
+      "source": "itinerary",
+      "preserveLegacyDetails": true
+    },
+    "tripInfo": {
+      "mode": "hydrate",
+      "source": "tripInfo",
+      "preserveLegacyShell": true
+    },
+    "attractions": {
+      "mode": "hydrate",
+      "source": "attractions",
+      "preserveLegacyDetails": true
+    },
+    "liveCam": {
+      "mode": "hydrate",
+      "source": "liveCams",
+      "preserveLegacyMediaTemplates": true
+    },
+    "weather": {
+      "mode": "generate",
+      "source": "weather",
+      "profileStandard": "v1",
+      "preserveLegacyDecisionModules": true
+    },
+    "todayMode": {
+      "mode": "hydrate",
+      "source": "itinerary",
+      "useActivityProfiles": true
+    },
+    "drivingMode": {
+      "mode": "hydrate",
+      "source": "itinerary",
+      "useActivityProfiles": true
+    }
+  },
+  "legacy": {
+    "core": "assets/trip-core-v1.js",
+    "dataMode": "hybrid-data-v8",
+    "migrationStage": 10,
+    "note": "v10.12 Stage 2: Japan departure checklist is now canonical Trip JSON rendered by shared multi-trip modules. Rich itinerary/trip overlays remain in hydrate mode while legacy presentation code is retired incrementally."
+  },
+  "runtime": {
+    "plan": "runtime-plan.json",
+    "phase": "round7-parity-rebuild"
+  }
 }
