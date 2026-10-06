@@ -1019,21 +1019,12 @@
           "attractionId": "shinhotaka"
         },
         {
-          "time": "13:30–14:05",
+          "time": "13:30",
           "type": "🚗 車",
-          "title": "新穗高 → 平湯神社",
-          "localName": "新穂高ロープウェイ",
-          "description": "沿R471／R158方向返平湯，神社就在自然回程線，唔需要繞大圈。",
-          "map": "平湯神社",
-          "attractionId": "shinhotaka"
-        },
-        {
-          "time": "14:25–15:15",
-          "type": "🚗 車",
-          "title": "平湯 → 高山",
-          "localName": "🇯🇵 平湯 → 高山市",
-          "description": "參拜後繼續原本主線。冬季以道路安全同即時導航為準。",
-          "map": "高山"
+          "title": "新穗高 → 高山",
+          "localName": "新穂高ロープウェイ → 高山市",
+          "description": "冬季山路保留道路 Buffer，主線直接返高山；任何沿途 Bonus 都唔影響返酒店時間。",
+          "map": "Takayama Ouan"
         },
         {
           "time": "15:10",
