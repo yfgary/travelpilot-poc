@@ -85,7 +85,7 @@ if 'groups' in live or 'dynamicBindings' in live: err('Legacy Live Cam bindings 
 
 custom=info.get('customSections') or []
 ids={s.get('id') for s in custom}
-if 'trains' not in ids: err('Rendered production train section was not migrated')
+if not ({'trains','rail-prices','train-fares'} & ids): err('Rendered production train/rail section was not migrated')
 if 'winter-shrines' not in ids: err('Rendered production shrine section was not migrated')
 if 'weather-manual-rule' not in ids: err('Manual weather rule section missing')
 if (info.get('checklist') or {}).get('legacyStorageKey'): err('Legacy checklist storage key remains')
