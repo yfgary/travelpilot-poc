@@ -350,7 +350,7 @@ async function scrapeItinerary(page,baseItinerary,attractions){
   const dedupeItems=items=>{
     const best=new Map();
     for(const item of items){
-      const key=[item.type,item.title,item.localName,item.attractionId||''].join('|');
+      const key=[item.type,item.title,item.attractionId||''].join('|');
       const old=best.get(key);
       if(!old||itemCompleteness(item)>itemCompleteness(old))best.set(key,item);
     }
@@ -448,6 +448,11 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       items=items.filter(it=>!fixed.rejectItemIds.has(it.attractionId||''));
       if(d.id==='d8'){
         items=items.filter(it=>!/新穗高|新穂高|白川鄉|白川郷|大王山葵/.test(it.title+' '+it.localName));
+        for(const item of items){
+          if(item.title.includes('飛驒大鐘乳洞 → 松本')){
+            item.description='經平湯／安房方向一路向東返松本；冬季道路預留充足 Buffer。';
+          }
+        }
       }
       if(d.id==='d7'){
         items=items.filter(it=>!/新穗高|新穂高/.test(it.title+' '+it.localName));
@@ -486,6 +491,9 @@ async function scrapeItinerary(page,baseItinerary,attractions){
       ];
       constraints=fixed.constraints;
       if(fixed.hardCuts)hardCuts=fixed.hardCuts;
+      if(d.id==='d6'){
+        backups=[{text:'🔄 神社 Backup｜日枝神社：D6 返回高山後明顯提早、仍有日光而且路面安全先去；唔影響溫泉休息同晚餐。'}];
+      }
       if(d.id==='d8')bonus=[];
       backups=backups.filter(x=>!/D6|D7|D8|互換|新穗高日/.test(textOf(x)));
       bonus=bonus.filter(x=>!/D6|D7|D8|互換|Scenario|新穗高日/.test(textOf(x)));
