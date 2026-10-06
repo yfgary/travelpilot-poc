@@ -1,171 +1,36 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 1,
   "tripId": "shirakawago-shinhotaka-2027",
   "overview": {
     "title": "2027 日本中部冬季自駕",
     "summary": "📅 2027年1月9日 – 1月17日・9日8夜・D2–D8 冬季自駕",
     "note": "📍 撳景點／酒店旁邊嘅地圖 icon，會直接開 Google Maps 駕車導航。",
     "highlights": [
-      {
-        "title": "📹 Live Cam",
-        "text": "出發前睇道路、雪況及景點即時畫面。"
-      },
-      {
-        "title": "🗓️ 詳細行程",
-        "text": "睇每日時間表、景點、照片及 Plan A/B/C。"
-      },
-      {
-        "title": "📍 Google Maps",
-        "text": "酒店、租車、重要停車位置快速導航。"
-      }
+      {"title":"📹 Live Cam","text":"出發前睇道路、雪況及景點即時畫面。"},
+      {"title":"🗓️ 詳細行程","text":"睇每日時間表、景點、照片及 Plan A/B/C。"},
+      {"title":"📍 Google Maps","text":"酒店、租車、重要停車位置快速導航。"}
     ]
   },
   "nav": [
-    {
-      "id": "transport",
-      "label": "✈️ 交通"
-    },
-    {
-      "id": "car",
-      "label": "🚗 租車"
-    },
-    {
-      "id": "hotels",
-      "label": "🏨 酒店"
-    },
-    {
-      "id": "parking",
-      "label": "🅿️ 停車"
-    },
-    {
-      "id": "hardcuts",
-      "label": "⏰ Hard Cut"
-    },
-    {
-      "id": "weather",
-      "label": "🌨️ 天氣日"
-    },
-    {
-      "id": "checklist",
-      "label": "🎒 Checklist"
-    },
-    {
-      "id": "emergency",
-      "label": "☎️ 緊急"
-    }
+    {"id":"transport","label":"✈️ 交通"},
+    {"id":"car","label":"🚗 租車"},
+    {"id":"hotels","label":"🏨 酒店"},
+    {"id":"parking","label":"🅿️ 停車"},
+    {"id":"hardcuts","label":"⏰ Hard Cut"},
+    {"id":"weather","label":"🌨️ 天氣日"},
+    {"id":"checklist","label":"🎒 Checklist"},
+    {"id":"emergency","label":"☎️ 緊急"}
   ],
   "transport": {
     "title": "✈️ 航班・JR・名鐵",
     "desc": "去程及回程主要交通資料",
     "cards": [
-      {
-        "badges": [
-          [
-            "D1",
-            "blue"
-          ],
-          [
-            "去程",
-            "green"
-          ]
-        ],
-        "title": "✈️ UO680・中部國際機場 T2",
-        "map": "Chubu Centrair International Airport Terminal 2",
-        "lines": [
-          "香港 → 名古屋",
-          "規劃：10:00 → 14:30",
-          "香港國際機場 → 中部國際機場 T2。",
-          "正式航班時間出發前再核對。"
-        ]
-      },
-      {
-        "badges": [
-          [
-            "D1",
-            "blue"
-          ],
-          [
-            "JR",
-            "yellow"
-          ]
-        ],
-        "title": "🚆 JR 名古屋站",
-        "map": "Nagoya Station",
-        "lines": [
-          "特急信濃・名古屋 → 松本",
-          "現行參考：17:40 → 19:46",
-          "D1 最重要轉車目標。"
-        ]
-      },
-      {
-        "badges": [
-          [
-            "D9",
-            "blue"
-          ],
-          [
-            "JR",
-            "yellow"
-          ]
-        ],
-        "title": "🚉 松本站",
-        "map": "Matsumoto Station",
-        "lines": [
-          "特急信濃・松本 → 名古屋",
-          "現行參考：13:56 → 16:07",
-          "還車後保留充足 Buffer。"
-        ]
-      },
-      {
-        "badges": [
-          [
-            "D9",
-            "blue"
-          ],
-          [
-            "名鐵",
-            "yellow"
-          ]
-        ],
-        "title": "🚆 名鐵名古屋站",
-        "map": "Meitetsu Nagoya Station",
-        "lines": [
-          "名古屋 → 中部國際機場",
-          "現行參考：16:49 → 17:17"
-        ]
-      },
-      {
-        "badges": [
-          [
-            "D9",
-            "blue"
-          ],
-          [
-            "回程",
-            "green"
-          ]
-        ],
-        "title": "✈️ UO685・中部國際機場 T2",
-        "map": "Chubu Centrair International Airport Terminal 2",
-        "lines": [
-          "名古屋 → 香港",
-          "規劃：20:40 起飛",
-          "翌日約 00:30 抵港。"
-        ]
-      },
-      {
-        "badges": [
-          [
-            "注意",
-            "grey"
-          ]
-        ],
-        "title": "⏱️ 冬季交通 Buffer",
-        "lines": [
-          "大雪有機會令 JR、道路及機場交通延誤。",
-          "固定交通時間前，唔加入額外 Bonus 景點。"
-        ]
-      }
+      {"badges":[["D1","blue"],["去程","green"]],"title":"✈️ UO680・中部國際機場 T2","map":"Chubu Centrair International Airport Terminal 2","lines":["香港 → 名古屋","規劃：10:00 → 14:30","香港國際機場 → 中部國際機場 T2。","正式航班時間出發前再核對。"]},
+      {"badges":[["D1","blue"],["JR","yellow"]],"title":"🚆 JR 名古屋站","map":"Nagoya Station","lines":["特急信濃・名古屋 → 松本","現行參考：17:40 → 19:46","D1 最重要轉車目標。"]},
+      {"badges":[["D9","blue"],["JR","yellow"]],"title":"🚉 松本站","map":"Matsumoto Station","lines":["特急信濃・松本 → 名古屋","現行參考：13:56 → 16:07","還車後保留充足 Buffer。"]},
+      {"badges":[["D9","blue"],["名鐵","yellow"]],"title":"🚆 名鐵名古屋站","map":"Meitetsu Nagoya Station","lines":["名古屋 → 中部國際機場","現行參考：16:49 → 17:17"]},
+      {"badges":[["D9","blue"],["回程","green"]],"title":"✈️ UO685・中部國際機場 T2","map":"Chubu Centrair International Airport Terminal 2","lines":["名古屋 → 香港","規劃：20:40 起飛","翌日約 00:30 抵港。"]},
+      {"badges":[["注意","grey"]],"title":"⏱️ 冬季交通 Buffer","lines":["大雪有機會令 JR、道路及機場交通延誤。","固定交通時間前，唔加入額外 Bonus 景點。"]}
     ],
     "note": "ℹ️ JR／名鐵時間目前屬行程規劃參考。2027 年冬季正式時間表推出後，再做一次全程核對。"
   },
@@ -173,61 +38,10 @@
     "title": "🚗 租車資料",
     "desc": "D2–D8 冬季自駕",
     "cards": [
-      {
-        "badges": [
-          [
-            "D2",
-            "blue"
-          ]
-        ],
-        "title": "🚗 Times 松本站前・取車",
-        "map": "Times Car Rental Matsumoto Station",
-        "lines": [
-          "10:00 取車",
-          "4WD＋雪軚。",
-          "取車後先檢查：車身、輪胎、雪刷、油量、導航及 ETC。"
-        ]
-      },
-      {
-        "badges": [
-          [
-            "D9",
-            "blue"
-          ]
-        ],
-        "title": "🔑 Times 松本站前・還車",
-        "map": "Times Car Rental Matsumoto Station",
-        "lines": [
-          "目標 12:10 前完成還車",
-          "還車前：入滿油、保留入油單據、檢查車內有冇遺漏物品。"
-        ]
-      },
-      {
-        "badges": [
-          [
-            "冬季",
-            "red"
-          ]
-        ],
-        "title": "❄️ 雪地駕駛",
-        "lines": [
-          "落雪／結冰道路：慢加速、慢煞車、慢轉方向。",
-          "安全距離要明顯比乾地長。"
-        ]
-      },
-      {
-        "badges": [
-          [
-            "山路",
-            "yellow"
-          ]
-        ],
-        "title": "🏔️ 主要冬季山路",
-        "lines": [
-          "白絲瀑布一帶、白馬 → 高山、高山 → 新穗高、平湯／安房方向。",
-          "道路情況差就放棄 Bonus。"
-        ]
-      }
+      {"badges":[["D2","blue"]],"title":"🚗 Times 松本站前・取車","map":"Times Car Rental Matsumoto Station","lines":["10:00 取車","4WD＋雪軚。","取車後先檢查：車身、輪胎、雪刷、油量、導航及 ETC。"]},
+      {"badges":[["D9","blue"]],"title":"🔑 Times 松本站前・還車","map":"Times Car Rental Matsumoto Station","lines":["目標 12:10 前完成還車","還車前：入滿油、保留入油單據、檢查車內有冇遺漏物品。"]},
+      {"badges":[["冬季","red"]],"title":"❄️ 雪地駕駛","lines":["落雪／結冰道路：慢加速、慢煞車、慢轉方向。","安全距離要明顯比乾地長。"]},
+      {"badges":[["山路","yellow"]],"title":"🏔️ 主要冬季山路","lines":["白絲瀑布一帶、白馬 → 高山、高山 → 新穗高、平湯／安房方向。","道路情況差就放棄 Bonus。"]}
     ],
     "note": "🚨 車輛故障、爆胎、事故或無法移動：優先確保人身安全，再依 Times 租車文件／保險文件聯絡支援。"
   },
@@ -235,270 +49,75 @@
     "title": "🏨 住宿一覽",
     "desc": "每間酒店直接撳 📍 開 Google Maps",
     "stays": [
-      {
-        "day": "D1",
-        "date": "1/9",
-        "hotelId": "tabino-matsumoto",
-        "icon": "🏯",
-        "note": "松本。D1 不包早餐。"
-      },
-      {
-        "day": "D2",
-        "date": "1/10",
-        "hotelId": "chikumakan",
-        "icon": "♨️",
-        "note": "戶倉上山田溫泉。一泊二食。"
-      },
-      {
-        "day": "D3",
-        "date": "1/11",
-        "hotelId": "ichinoyu-katei",
-        "icon": "♨️",
-        "note": "澀溫泉。九湯巡禮。"
-      },
-      {
-        "day": "D4",
-        "date": "1/12",
-        "hotelId": "jal-nagano",
-        "icon": "🏙️",
-        "note": "長野市。翌朝包早餐。"
-      },
-      {
-        "day": "D5",
-        "date": "1/13",
-        "hotelId": "takayama-ouan",
-        "icon": "♨️",
-        "note": "高山第一晚。"
-      },
-      {
-        "day": "D6",
-        "date": "1/14",
-        "hotelId": "takayama-ouan",
-        "icon": "♨️",
-        "note": "高山第二晚。"
-      },
-      {
-        "day": "D7",
-        "date": "1/15",
-        "hotelId": "residence-takayama",
-        "icon": "🏨",
-        "note": "高山站附近。"
-      },
-      {
-        "day": "D8",
-        "date": "1/16",
-        "hotelId": "iroha-matsumoto",
-        "icon": "🏯",
-        "note": "松本最後一晚。D9 包早餐。"
-      }
+      {"day":"D1","date":"1/9","hotelId":"tabino-matsumoto","icon":"🏯","note":"松本。D1 不包早餐。"},
+      {"day":"D2","date":"1/10","hotelId":"chikumakan","icon":"♨️","note":"戶倉上山田溫泉。一泊二食。"},
+      {"day":"D3","date":"1/11","hotelId":"ichinoyu-katei","icon":"♨️","note":"澀溫泉。九湯巡禮。"},
+      {"day":"D4","date":"1/12","hotelId":"jal-nagano","icon":"🏙️","note":"長野市。翌朝包早餐。"},
+      {"day":"D5","date":"1/13","hotelId":"takayama-ouan","icon":"♨️","note":"高山第一晚。"},
+      {"day":"D6","date":"1/14","hotelId":"takayama-ouan","icon":"♨️","note":"高山第二晚。"},
+      {"day":"D7","date":"1/15","hotelId":"residence-takayama","icon":"🏨","note":"高山站附近。"},
+      {"day":"D8","date":"1/16","hotelId":"iroha-matsumoto","icon":"🏯","note":"松本最後一晚。D9 包早餐。"}
     ]
   },
   "parking": {
     "title": "🅿️ 重要停車位置",
     "desc": "呢幾個地方唔應該單純導航去景點名稱",
-    "cards": [
-      {
-        "title": "🐒 地獄谷野猿公苑・冬季停車",
-        "map": "地獄谷野猿公苑専用駐車場",
-        "lines": [
-          "導航目標：地獄谷野猿公苑専用駐車場",
-          "Google Maps 正式名稱：地獄谷野猿公苑専用駐車場。",
-          "泊車後步行約 30–35 分鐘入地獄谷野猿公苑。"
-        ],
-        "warning": "⚠️ 1 月唔好導航去「地獄谷駐車場」。由澀溫泉上去嗰條林道冬季關閉。"
-      },
-      {
-        "title": "🏔️ 白馬岩岳 Mountain Resort",
-        "map": "Hakuba Iwatake Mountain Resort",
-        "lines": [
-          "導航目標：Hakuba Iwatake Mountain Resort",
-          "去山腳 Gondola／停車場。"
-        ],
-        "warning": "⚠️ 唔好導航去 HAKUBA MOUNTAIN HARBOR 山頂。"
-      },
-      {
-        "title": "🚡 新穗高纜車",
-        "map": "新穂高温泉駐車場",
-        "lines": [
-          "導航目標：新穂高温泉駐車場",
-          "1 月使用新穗高溫泉一帶停車位置，再步行去第一纜車站。"
-        ]
-      },
-      {
-        "title": "🏘️ 白川鄉",
-        "map": "せせらぎ公園駐車場 白川郷",
-        "lines": [
-          "導航目標：せせらぎ公園駐車場",
-          "泊車後過「であい橋」步行入荻町合掌村。"
-        ],
-        "warning": "⚠️ 唔好跟導航直接駛入合掌村住宅區。"
-      },
-      {
-        "title": "🏯 高山陣屋・三町古街",
-        "map": "中橋駐車場 高山",
-        "lines": [
-          "導航目標：中橋駐車場",
-          "泊低車後步行去高山陣屋、中橋及三町古街。"
-        ]
-      },
-      {
-        "title": "💧 輕井澤白絲瀑布",
-        "map": "白糸の滝 駐車場 軽井沢",
-        "lines": [
-          "導航目標：白糸の滝 駐車場",
-          "泊車後步行去瀑布。"
-        ]
-      }
+    "items": [
+      {"icon":"🐒","title":"地獄谷野猿公苑・冬季停車","map":"地獄谷野猿公苑専用駐車場","mapLabel":"地獄谷野猿公苑専用駐車場","target":"導航目標：地獄谷野猿公苑専用駐車場","lines":["Google Maps 正式名稱：地獄谷野猿公苑専用駐車場。","泊車後步行約 30–35 分鐘入地獄谷野猿公苑。"],"warning":"⚠️ 1 月唔好導航去「地獄谷駐車場」。由澀溫泉上去嗰條林道冬季關閉。"},
+      {"icon":"🏔️","title":"白馬岩岳 Mountain Resort","map":"Hakuba Iwatake Mountain Resort","mapLabel":"白馬岩岳山腳","target":"導航目標：Hakuba Iwatake Mountain Resort","lines":["去山腳 Gondola／停車場。"],"warning":"⚠️ 唔好導航去 HAKUBA MOUNTAIN HARBOR 山頂。"},
+      {"icon":"🚡","title":"新穗高纜車","map":"新穂高温泉駐車場","mapLabel":"新穗高溫泉停車場","target":"導航目標：新穂高温泉駐車場","lines":["1 月使用新穗高溫泉一帶停車位置，再步行去第一纜車站。"]},
+      {"icon":"🏘️","title":"白川鄉","map":"せせらぎ公園駐車場 白川郷","mapLabel":"白川鄉・せせらぎ公園駐車場","target":"導航目標：せせらぎ公園駐車場","lines":["泊車後過「であい橋」步行入荻町合掌村。"],"warning":"⚠️ 唔好跟導航直接駛入合掌村住宅區。"},
+      {"icon":"🏯","title":"高山陣屋・三町古街","map":"中橋駐車場 高山","mapLabel":"高山中橋駐車場","target":"導航目標：中橋駐車場","lines":["泊低車後步行去高山陣屋、中橋及三町古街。"]},
+      {"icon":"💧","title":"輕井澤白絲瀑布","map":"白糸の滝 駐車場 軽井沢","mapLabel":"白絲瀑布停車位置","target":"導航目標：白糸の滝 駐車場","lines":["泊車後步行去瀑布。"]}
     ],
     "note": "📍 呢頁嘅停車位置係俾你「真正揸車嗰陣快速撳」用。景點內部步行路線仍然以現場指示為準。"
   },
   "hardCuts": {
     "title": "⏰ 全程重要 Hard Cut",
     "desc": "唔應該畀 Bonus 景點拖延嘅時間",
-    "cards": [
-      {
-        "title": "D1 17:40",
-        "lines": [
-          "🚆 名古屋 → 松本 特急信濃目標班次。"
-        ]
-      },
-      {
-        "title": "D2 10:00",
-        "lines": [
-          "🚗 Times 松本站前取車。"
-        ]
-      },
-      {
-        "title": "D2 16:30",
-        "lines": [
-          "🛍️ 離開輕井澤 Outlet，開車去千曲。"
-        ]
-      },
-      {
-        "title": "D4 17:00",
-        "lines": [
-          "🛍️ 離開 AEON Mall 須坂，前往長野。"
-        ]
-      },
-      {
-        "title": "D5 13:20",
-        "lines": [
-          "🏔️ 離開白馬，開始冬季長途駕駛去高山。"
-        ]
-      },
-      {
-        "title": "D6 07:45",
-        "lines": [
-          "🌨️ 完成新穗高天氣判斷。"
-        ]
-      },
-      {
-        "title": "D9 11:00",
-        "lines": [
-          "🛍️ 必須離開 AEON Mall 松本。"
-        ]
-      },
-      {
-        "title": "D9 12:10",
-        "lines": [
-          "🚗 目標完成 Times 還車。"
-        ]
-      },
-      {
-        "title": "D9 13:56",
-        "lines": [
-          "🚆 松本 → 名古屋 特急信濃。"
-        ]
-      }
-    ],
-    "note": ""
+    "items": [
+      {"time":"D1 17:40","text":"🚆 名古屋 → 松本 特急信濃目標班次。"},
+      {"time":"D2 10:00","text":"🚗 Times 松本站前取車。"},
+      {"time":"D2 16:30","text":"🛍️ 離開輕井澤 Outlet，開車去千曲。"},
+      {"time":"D4 17:00","text":"🛍️ 離開 AEON Mall 須坂，前往長野。"},
+      {"time":"D5 13:20","text":"🏔️ 離開白馬，開始冬季長途駕駛去高山。"},
+      {"time":"D6 07:45","text":"🌨️ 完成新穗高天氣判斷。"},
+      {"time":"D9 11:00","text":"🛍️ 必須離開 AEON Mall 松本。"},
+      {"time":"D9 12:10","text":"🚗 目標完成 Times 還車。"},
+      {"time":"D9 13:56","text":"🚆 松本 → 名古屋 特急信濃。"}
+    ]
   },
   "weather": {
-    "title": "🌨️ 天氣／道路判斷",
-    "desc": "保留天氣資料，但移除 D6–D8 auto selection。",
-    "cards": [
-      {
-        "title": "D6・新穗高",
-        "lines": [
-          "睇官方運行、山頂 Live Cam、能見度、風況同冬季道路。天氣差由人手決定 Plan B。"
-        ]
-      },
-      {
-        "title": "D7・白川鄉",
-        "lines": [
-          "睇降雪、道路／交通管制同村內情況。行程日子固定。"
-        ]
-      },
-      {
-        "title": "D8・高山市區 → 松本",
-        "lines": [
-          "睇高山、平湯／安房方向道路情況，安全返松本優先。"
-        ]
-      }
+    "title": "🌨️ D6–D8 天氣決策",
+    "desc": "新穗高同白川鄉嘅核心決策",
+    "dynamicSummary": true,
+    "storageKey": "japanWinter2027_shinhotakaDay",
+    "kindLabels": {"shinhotaka":"新穗高","shirakawago":"白川鄉","cityCave":"高山市區＋飛驒大鐘乳洞","planning":"彈性規劃","planningEast":"向東返松本"},
+    "decisions": [
+      {"title":"D6・Weather Day 1","lines":["🟢 新穗高山頂清晰＋纜車正常 → 今日即去新穗高。","🟡 普通天／低雲／能見度一般 → 高山市區＋飛驒大鐘乳洞。","🔴 強風／停駛／大霧 → 唔上新穗高。"]},
+      {"title":"D7・按 D6 結果","lines":["🟢 D6 已完成新穗高 → 今日固定白川鄉。","🟢 D6 未完成＋今日新穗高清晰 → 今日新穗高。","🟡 D6 未完成＋新穗高天氣差 → 今日白川鄉。"]},
+      {"title":"D8・最後彈性日","lines":["🚡 如果新穗高留到 D8 → 今日新穗高＋平湯 → 松本。","🏙️ 如果新穗高已完成 → 高山市區／飛驒大鐘乳洞 → 松本。","🔴 D8 唔安排白川鄉；所有路線只向東返松本。"]}
+    ],
+    "buttons": [
+      {"label":"📹 D6 Live Cam","href":"live.html#d6"},
+      {"label":"📹 D7 Live Cam","href":"live.html#d7"},
+      {"label":"📹 D8 Live Cam","href":"live.html#d8"}
     ]
   },
   "checklist": {
     "title": "🎒 每朝出車 Checklist",
     "desc": "冬季自駕出發前快速檢查",
-    "items": [
-      "📱 手機＋充足電量",
-      "🔋 Power Bank",
-      "🔌 車充／充電線",
-      "🧥 外套／保暖用品",
-      "👢 防水防滑鞋",
-      "🧤 手套",
-      "❄️ 雪刷／刮冰器",
-      "🚗 清走車窗、車頂積雪",
-      "⛽ 確認油量",
-      "🧭 Google Maps／導航設定",
-      "📹 先睇今日 Live Cam",
-      "🌨️ 睇降雪／道路情況",
-      "🎫 景點票／預約資料",
-      "💴 現金／信用卡",
-      "🥤 水／簡單小食",
-      "🎒 行李固定好"
-    ],
+    "legacyStorageKey": "japanWinter2027_checklist_v1",
+    "items": ["📱 手機＋充足電量","🔋 Power Bank","🔌 車充／充電線","🧥 外套／保暖用品","👢 防水防滑鞋","🧤 手套","❄️ 雪刷／刮冰器","🚗 清走車窗、車頂積雪","⛽ 確認油量","🧭 Google Maps／導航設定","📹 先睇今日 Live Cam","🌨️ 睇降雪／道路情況","🎫 景點票／預約資料","💴 現金／信用卡","🥤 水／簡單小食","🎒 行李固定好"],
     "note": "🚗 落大雪時，開車前記得清走車頂積雪，唔好只清前擋風玻璃。"
   },
   "emergency": {
     "title": "☎️ 日本緊急資料",
     "desc": "真正緊急情況使用",
-    "cards": [
-      {
-        "title": "110 👮 警察",
-        "lines": [
-          "交通事故、犯罪、人身安全等緊急情況。"
-        ]
-      },
-      {
-        "title": "119 🚑 救護／消防",
-        "lines": [
-          "急病、受傷、火警等緊急情況。"
-        ]
-      }
+    "items": [
+      {"number":"110","title":"👮 警察","note":"交通事故、犯罪、人身安全等緊急情況。"},
+      {"number":"119","title":"🚑 救護／消防","note":"急病、受傷、火警等緊急情況。"}
     ],
     "note": "🚗 租車事故／故障：以 Times 租車文件及保險文件內嘅支援方式為準。\n\n🏨 非緊急情況：可先聯絡當晚酒店 Front Desk。"
-  },
-  "customSections": [
-    {
-      "id": "rail-prices",
-      "title": "🚆 火車票價預算",
-      "desc": "D1／D9 名鐵 μSKY＋JR 特急しなの・現行參考",
-      "type": "notice",
-      "text": "🚆D1・NGO → 名古屋 → 松本μSKY：約 ¥1,430／人（普通運賃＋μticket）特急しなの指定席：約 ¥6,160／人單人約 ¥7,590｜2人約 ¥15,180 🚆D9・松本 → 名古屋 → NGO特急しなの指定席：約 ¥6,160／人μSKY：約 ¥1,430／人單人約 ¥7,590｜2人約 ¥15,180 💴 D1＋D9 兩人來回鐵路暫計：約 ¥30,360。以上全部係現行票價預算；2027正式時刻／票價於2026年12月最後核對。"
-    },
-    {
-      "id": "winter-shrines",
-      "title": "⛩️ 雪景神社・稻荷 Bonus",
-      "desc": "唔硬塞主線；按當日時間、積雪同道路安全先加",
-      "type": "notice",
-      "text": "⛩️ 飛驒東照宮 ⭐ 如有時間加📍ⓘ 建議時間：25–35分鐘。祭祀德川家康，紅橋、長石階、唐門配白雪係重點。 停車：神社官方資料有普通車停車位；導航直接用「飛騨東照宮」。 ❄️ 石階有雪／冰時慢行；跟「高山市區日」一齊移動。 ⛩️ 豊川城山稲荷 ⭐ 如有時間加📍ⓘ 建議時間：20–30分鐘。今程高山最貼「雪＋一排朱紅鳥居」要求嘅位置。 停車：城山公園普通車約15台；冬天停車場會除雪。 ⚠️ 上城山公園係急斜路。大雪時即使雪軚都可以好難行；4WD較有利，但路況差直接取消。 ⛩️ 日枝神社 🔄 Backup📍ⓘ 建議時間：30–40分鐘＋步行。1141年起源，係春之高山祭「山王祭」核心神社；杉林、石燈籠同雪景氣氛好傳統。 停車：日枝神社官方旅遊資料列明無普通車停車位，使用市營天滿駐車場。普通車92台；日間現行 ¥150／30分鐘。 🚶 泊車後步行前往；雪地預比平時慢。 ⛩️ 平湯神社 ⭐ 如有時間加📍ⓘ 建議時間：15–20分鐘。細型山間神社，但一月奧飛驒積雪可靠；經平湯時順路停最合理。 停車：導航「平湯民俗館」。官方資料普通車約5台；神社／民俗館由平湯巴士總站附近步行約3分鐘級別。 ❄️ 唔專登為佢改路；滿位、大雪或道路唔靚就 Skip。 🦊 瘡守稲荷神社 🔄 松本 Backup📍ⓘ 建議時間：15–25分鐘＋步行。浄林寺後面，有紅鳥居、大型白狐同彩色社殿雕刻；歷史上亦有祈求免受疱瘡侵害嘅信仰。 停車：本身無專用停車位；建議松本市營中央駐車場（M Wing北棟），165台，現行 ¥150／30分鐘。 🔄 唔會影響 D2 松本城／Outlet 或 D9 JR Hard Cut；只係真正多時間先去。 📌 優先邏輯：豊川城山稲荷／飛驒東照宮＝如有時間加；平湯神社＝經過先加；日枝神社／瘡守稲荷＝Backup。"
-    },
-    {
-      "id": "weather-manual-rule",
-      "title": "🌨️ D6–D8 固定日・天氣只作人手判斷",
-      "type": "notice",
-      "text": "D6 固定新穗高、D7 固定白川鄉、D8 固定高山市區／向東返松本。Weather Score、Live Cam、道路資訊仍保留，但 App 不會自動換日或重排 itinerary。"
-    }
-  ]
+  }
 }
