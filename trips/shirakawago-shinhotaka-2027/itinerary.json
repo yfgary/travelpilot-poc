@@ -929,7 +929,7 @@
       ],
       "highlights": [
         {
-          "title": "🚡 D6 固定新穗高日；天氣／Live Cam 只作出發安全判斷，App 不會換日。",
+          "title": "🚡 D6 固定新穗高日；天氣／Live Cam 只作出發安全判斷。",
           "tone": ""
         },
         {
@@ -958,15 +958,17 @@
         },
         "gallery": [
           {
-            "src": "assets/images/d6-takayama.jpg",
-            "alt": "🏯 高山",
-            "caption": "🏯 高山",
-            "credit": null
+            "src": "https://commons.wikimedia.org/wiki/Special:FilePath/%E5%B9%B3%E6%B9%AF%E7%A5%9E%E7%A4%BE%20-%20panoramio.jpg?width=1200",
+            "alt": "⛩️ 平湯神社",
+            "caption": "⛩️ 平湯神社",
+            "credit": {
+              "label": "Wikimedia Commons"
+            }
           },
           {
-            "src": "assets/images/d9-matsumoto-station.jpg",
-            "alt": "🚉 松本・今晚終點",
-            "caption": "🚉 松本・今晚終點",
+            "src": "assets/images/d6-takayama.jpg",
+            "alt": "🏯 高山",
+            "caption": "🏯 返回高山",
             "credit": null
           }
         ]
@@ -1030,7 +1032,7 @@
           "type": "⛩️ 神社",
           "title": "⛩️ 平湯神社｜奧飛驒溫泉鄉嘅地方信仰",
           "localName": "平湯神社（ひらゆじんじゃ）",
-          "description": "正式加入新穗高日；短停約20分鐘，了解白猿傳說、溫泉聚落同地方信仰。",
+          "description": "D6 固定新穗高回程短停約20分鐘；了解溫泉聚落同地方信仰，路面結冰嚴重就以安全為先。",
           "map": "平湯神社",
           "attractionId": "hirayu-shrine"
         },
@@ -1085,7 +1087,7 @@
           "text": "07:45 前確認新穗高官方運行、Live Cam、山頂能見度、風況同冬季道路。"
         },
         {
-          "text": "D6 固定新穗高日；如纜車停駛、能見度差或道路不安全，由人手決定 D6 Plan B。D7／D8 日子不會自動改動。"
+          "text": "D6 固定新穗高日；如纜車停駛、能見度差或道路不安全，由人手決定 D6 Plan B。其餘日子保持固定。"
         }
       ]
     },
@@ -1100,11 +1102,7 @@
       "hotelId": "residence-takayama",
       "highlights": [
         {
-          "title": "🏘️ D7 固定白川鄉日；唔再同新穗高互換。",
-          "tone": ""
-        },
-        {
-          "title": "🏘️ 今日集中 白川鄉合掌村，唔再同新穗高兩邊走。",
+          "title": "🏘️ D7 固定白川鄉日。",
           "tone": ""
         },
         {
@@ -1160,47 +1158,11 @@
           "map": "Residence Hotel Takayama Station"
         },
         {
-          "time": "15:50–16:00",
-          "type": "🚗 車",
-          "title": "前往飛驒東照宮",
-          "localName": "🇯🇵 飛騨東照宮",
-          "description": "由上一站順路返高山市區；核心景點完成後先加神社。",
-          "map": "飛騨東照宮",
-          "attractionId": "hida-toshogu"
-        },
-        {
-          "time": "16:00–16:20",
-          "type": "⛩️ 神社",
-          "title": "⛩️ 飛驒東照宮｜德川家康、金森家與飛驒匠人",
-          "localName": "飛騨東照宮（ひだとうしょうぐう）",
-          "description": "正式主線短停：睇本殿、唐門、62米透塀，同高山陣屋嘅幕府背景串埋理解。",
-          "map": "飛騨東照宮",
-          "attractionId": "hida-toshogu"
-        },
-        {
-          "time": "16:20–16:30",
-          "type": "🚗 市內短程",
-          "title": "飛驒東照宮 → 豐川城山稻荷",
-          "localName": "🇯🇵 飛騨東照宮 → 豊川城山稲荷",
-          "description": "短程移動去城山一帶。",
-          "map": "豊川城山稲荷",
-          "attractionId": "hida-toshogu"
-        },
-        {
-          "time": "16:30–16:50",
-          "type": "⛩️ 神社",
-          "title": "豐川城山稻荷・朱紅鳥居",
-          "localName": "🇯🇵 豊川城山稲荷（とよかわしろやまいなり）",
-          "description": "正式主線短停：雪地朱紅鳥居係攝影重點；路面結冰嚴重就以安全為先。",
-          "map": "豊川城山稲荷",
-          "attractionId": "toyokawa-shiroyama-inari"
-        },
-        {
           "time": "09:15",
           "type": "🚗 車",
           "title": "高山 → 白川鄉",
           "localName": "白川郷・荻町合掌造り集落",
-          "description": "只有 D6 已經用咗去新穗高，白川鄉先順延到 D7；仍然唔會拖到 D8。",
+          "description": "D7 固定由高山前往白川鄉；導航去官方遊客停車場，冬季道路預留充足 Buffer。",
           "map": "せせらぎ公園駐車場 白川郷",
           "attractionId": "shirakawago"
         },
@@ -1259,6 +1221,42 @@
           "map": "Residence Hotel Takayama Station"
         },
         {
+          "time": "15:50–16:00",
+          "type": "🚗 車",
+          "title": "前往飛驒東照宮",
+          "localName": "🇯🇵 飛騨東照宮",
+          "description": "由上一站順路返高山市區；核心景點完成後先加神社。",
+          "map": "飛騨東照宮",
+          "attractionId": "hida-toshogu"
+        },
+        {
+          "time": "16:00–16:20",
+          "type": "⛩️ 神社",
+          "title": "⛩️ 飛驒東照宮｜德川家康、金森家與飛驒匠人",
+          "localName": "飛騨東照宮（ひだとうしょうぐう）",
+          "description": "正式主線短停：睇本殿、唐門、62米透塀，同高山陣屋嘅幕府背景串埋理解。",
+          "map": "飛騨東照宮",
+          "attractionId": "hida-toshogu"
+        },
+        {
+          "time": "16:20–16:30",
+          "type": "🚗 市內短程",
+          "title": "飛驒東照宮 → 豐川城山稻荷",
+          "localName": "🇯🇵 飛騨東照宮 → 豊川城山稲荷",
+          "description": "短程移動去城山一帶。",
+          "map": "豊川城山稲荷",
+          "attractionId": "hida-toshogu"
+        },
+        {
+          "time": "16:30–16:50",
+          "type": "⛩️ 神社",
+          "title": "豐川城山稻荷・朱紅鳥居",
+          "localName": "🇯🇵 豊川城山稲荷（とよかわしろやまいなり）",
+          "description": "正式主線短停：雪地朱紅鳥居係攝影重點；路面結冰嚴重就以安全為先。",
+          "map": "豊川城山稲荷",
+          "attractionId": "toyokawa-shiroyama-inari"
+        },
+        {
           "time": "晚上",
           "type": "⭐ 1/15 Bonus／可取消",
           "title": "🕯️ 飛驒古川・三寺巡禮",
@@ -1276,7 +1274,7 @@
       ],
       "constraints": [
         {
-          "text": "D7 固定白川鄉日；出發前確認降雪、道路／交通管制及村內狀況。道路不安全時由人手決定 Plan B，App 不會自動換日。"
+          "text": "D7 固定白川鄉日；出發前確認降雪、道路／交通管制及村內狀況。道路不安全時由人手決定 D7 Plan B。"
         },
         {
           "text": "1/15 三寺まいり只在主線完成、道路安全同精神狀態良好時先加。"
