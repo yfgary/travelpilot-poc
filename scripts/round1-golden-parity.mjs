@@ -42,7 +42,7 @@ async function clean(page,selectors){
   document.querySelectorAll('#siteVersionBadge,#catalogVersion').forEach(x=>x.remove());
  },selectors);
 }
-async function body(page){return page.evaluate(()=>document.body.innerText.replace(/\s+/g,' ').trim());}
+async function body(page){return page.evaluate(()=>{const clone=document.body.cloneNode(true);clone.querySelectorAll('#siteVersionBadge,#catalogVersion,#tripv2NetworkStatus,#backToTopBtn').forEach(x=>x.remove());return (clone.innerText||'').replace(/\s+/g,' ').trim();});}
 async function shot(page){return hash(await page.screenshot({fullPage:true,animations:'disabled'}));}
 async function style(page,sel){
  return page.locator(sel).first().evaluate(el=>{
