@@ -26,7 +26,7 @@ def read(path: str) -> str:
 def main() -> int:
     try:
         meta = json.loads(read("version.json"))
-    except Exception as exc:  # noqa: BLE001 - QA should report malformed metadata
+    except Exception as exc:
         error(f"Invalid version.json: {exc}")
         meta = {}
 
@@ -44,37 +44,36 @@ def main() -> int:
         error("version.json updated timestamp is missing or invalid")
 
     context = read("assets/multi-trip-context-v1.js")
+    runtime = read("assets/multi-trip-runtime-v1.js")
+    shim = read("assets/attraction-info.js")
+    live_entry = read("assets/multi-trip-live-entry-v1.js")
     index = read("index.html")
+    itinerary = read("itinerary.html")
+    trip_info = read("trip-info.html")
+    attractions = read("attractions.html")
+    live = read("live.html")
     manifest = read("manifest.webmanifest")
     sw = read("sw.js")
-    loader = read("assets/attraction-info.js")
-    live_entry = read("assets/multi-trip-live-entry-v1.js")
 
     if plain:
-        expected = {
-            "runtime APP_VERSION": f"const APP_VERSION='{version}'",
-            "homepage manifest pin": f"manifest.webmanifest?v={plain}",
-            "homepage CSS pin": f"assets/travelpilot-home.css?v={plain}",
-            "homepage runtime pin": f"assets/multi-trip-context-v1.js?v={plain}",
-            "homepage icon pin": f"assets/images/travelpilot-icon-exact.jpg?v={plain}",
-            "manifest icon pin": f"assets/images/travelpilot-icon-exact.jpg?v={plain}",
-            "legacy loader runtime pin": f"assets/multi-trip-context-v1.js?v={plain}",
-            "Live Cam injected shim pin": f"assets/multi-trip-live-entry-v1.js?v={plain}",
-            "Live Cam entry runtime pin": f"assets/multi-trip-context-v1.js?v={plain}",
-        }
-        checks = {
-            "runtime APP_VERSION": context,
-            "homepage manifest pin": index,
-            "homepage CSS pin": index,
-            "homepage runtime pin": index,
-            "homepage icon pin": index,
-            "manifest icon pin": manifest,
-            "legacy loader runtime pin": loader,
-            "Live Cam injected shim pin": sw,
-            "Live Cam entry runtime pin": live_entry,
-        }
-        for label, marker in expected.items():
-            if marker not in checks[label]:
+        checks = (
+            ("context APP_VERSION", f"const APP_VERSION='{version}'", context),
+            ("runtime APP_VERSION", f"const APP_VERSION='{plain}'", runtime),
+            ("homepage manifest pin", f"manifest.webmanifest?v={plain}", index),
+            ("homepage CSS pin", f"assets/travelpilot-home.css?v={plain}", index),
+            ("homepage context pin", f"assets/multi-trip-context-v1.js?v={plain}", index),
+            ("homepage icon pin", f"assets/images/travelpilot-icon-exact.jpg?v={plain}", index),
+            ("manifest icon pin", f"assets/images/travelpilot-icon-exact.jpg?v={plain}", manifest),
+            ("itinerary runtime pin", f"assets/multi-trip-runtime-v1.js?v={plain}", itinerary),
+            ("Trip Info runtime pin", f"assets/multi-trip-runtime-v1.js?v={plain}", trip_info),
+            ("Attractions runtime pin", f"assets/multi-trip-runtime-v1.js?v={plain}", attractions),
+            ("Live runtime pin", f"assets/multi-trip-runtime-v1.js?v={plain}", live),
+            ("compatibility shim runtime pin", f"assets/multi-trip-runtime-v1.js?v={plain}", shim),
+            ("Service Worker cached Live runtime pin", f"assets/multi-trip-runtime-v1.js?v={plain}", sw),
+            ("Live entry context pin", f"assets/multi-trip-context-v1.js?v={plain}", live_entry),
+        )
+        for label, marker, source in checks:
+            if marker not in source:
                 error(f"{label} does not match {version}: {marker}")
 
         if index.count(f"assets/images/travelpilot-icon-exact.jpg?v={plain}") < 3:
@@ -87,19 +86,24 @@ def main() -> int:
         if cache_marker not in sw:
             error(f"Service Worker cache name does not match release/date: {cache_marker}")
 
-    # Guard against accidentally shipping the immediately previous production pin
-    # in files whose cache-busters are release-owned rather than module-owned.
-    previous = "10.13.3"
-    for path, text in (
+    previous = "10.16.0"
+    release_owned = (
         ("index.html", index),
+        ("itinerary.html", itinerary),
+        ("trip-info.html", trip_info),
+        ("attractions.html", attractions),
+        ("live.html", live),
         ("manifest.webmanifest", manifest),
         ("sw.js", sw),
         ("assets/multi-trip-context-v1.js", context),
-        ("assets/attraction-info.js", loader),
+        ("assets/multi-trip-runtime-v1.js", runtime),
+        ("assets/attraction-info.js", shim),
         ("assets/multi-trip-live-entry-v1.js", live_entry),
-    ):
-        if previous in text:
-            error(f"Stale production release pin {previous} remains in {path}")
+    )
+    if plain and plain != previous:
+        for p, text in release_owned:
+            if previous in text:
+                error(f"Stale prior POC release pin {previous} remains in {p}")
 
     print("TravelPilot release QA")
     print(f"Release: {version or 'UNKNOWN'}")
