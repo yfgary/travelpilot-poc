@@ -1,5 +1,29 @@
 import { test, expect } from './fixtures'
 
+test('shared Back has a prominent circular touch target and distinct interaction states', async ({ page }) => {
+  await page.goto('#/settings')
+  const back = page.getByRole('button', { name: '返回上一頁' })
+  await expect(page.locator('.app-header').getByRole('button', { name: '返回上一頁' })).toBeVisible()
+  await expect(back).toHaveCSS('width', '44px')
+  await expect(back).toHaveCSS('height', '44px')
+  await expect(back).toHaveCSS('border-radius', '50%')
+  await expect(back).toHaveCSS('background-color', 'rgb(8, 121, 209)')
+  await expect(back.locator('svg')).toHaveCSS('stroke', 'rgb(255, 255, 255)')
+  await back.hover()
+  await expect(back).toHaveCSS('background-color', 'rgb(8, 101, 173)')
+  await back.focus()
+  await page.keyboard.press('Tab')
+  await page.keyboard.press('Shift+Tab')
+  await expect(back).toBeFocused()
+  await expect(back).toHaveCSS('outline-style', 'solid')
+  await expect(back).toHaveCSS('outline-width', '3px')
+  await page.mouse.down()
+  await expect(back).toHaveCSS('background-color', 'rgb(9, 46, 114)')
+  await page.mouse.move(0, 0)
+  await page.mouse.up()
+  await expect(page).toHaveURL(/#\/settings$/)
+})
+
 for (const view of ['itinerary', 'info']) {
   test(`shared Back restores exact ${view} from Settings and after reload`, async ({ page }) => {
     await page.goto(`#/trip/demo-trip/${view}`)

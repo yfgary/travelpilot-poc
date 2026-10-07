@@ -150,7 +150,7 @@ All Step 3 acceptance criteria passed:
 
 ## Step 6 completed schema / loader / navigation foundation
 - Mandatory Step 4 navigation regression fixed first in Step 6 preflight. Shared visual Back button on every non-Home route, aria-label `返回上一頁`, safe recorded app-route history, direct-entry Home fallback and reload persistence. Pending router entries are flushed before unload, covering immediate reloads before React commits. No Settings-specific navigation logic or native history-length assumption.
-- Final Step 6 release App Version `v2.0.0-poc.5` from package.json; Trip Schema Version 1; Trip Data Version separate (local demo `demo.1`). Exact Zod 4.6.5 and idb 8.0.4 dependencies pinned and lockfile committed.
+- Final Step 6 release App Version `v2.0.0-poc.6` from package.json; Trip Schema Version 1; Trip Data Version separate (local demo `demo.1`). Exact Zod 4.6.5 and idb 8.0.4 dependencies pinned and lockfile committed.
 - One canonical Zod snapshot schema with inferred TypeScript types for trip/regions/days/timeline/places/accommodation/transport/navigation/hard cuts/checklists/weather/Live Cams/images/sources. Generic weather and Live Cam data only, no engines.
 - Structured runtime issues reject unsupported versions, malformed shape, duplicate stable IDs, broken references, invalid dates/date order/day range or duplicates, coordinates, ratings and negative durations.
 - Local demo converted to a valid minimal version-1 snapshot with region/day/timeline/place/navigation references. Home still lists only demo-trip; trip content views remain placeholders.
@@ -173,8 +173,12 @@ All Step 3 acceptance criteria passed:
 - All automated Supabase responses are intercepted; no real password or live test data writes. Existing Supabase metadata was read only for the baseline; RLS/advisor verification remains the prior Step 5 handoff, with no claim that V1 warnings were fixed.
 - `git diff --check` passed. POC workflow remains protected and unchanged.
 - Initial Step 6 candidate `v2.0.0-poc.4` (`7add6cd`) failed CI with 8 immediate-reload navigation failures (302 passed) and was not deployed. The subsequent navigation repair (`2f1c0c7`) passed all 315 tests locally and in CI and deployed, but incorrectly retained `v2.0.0-poc.4`, violating the per-update version-bump rule.
-- The corrected repair/final Step 6 release is `v2.0.0-poc.5`. This correction changes only package/lockfile release metadata, automated App Version expectations and this release record. Schema, loader, IndexedDB cache, navigation logic, live Supabase, V1 tables, production and canonical assets are unchanged. Step 7 remains unstarted.
-- Final `v2.0.0-poc.5` correction verification: `npm ci` succeeded (90 packages), `npm run build` passed including TypeScript, complete Playwright suite **315 passed** across all five widths, and `git diff --check` passed. The unchanged test-gated POC workflow verifies CI and deployment after push.
+- The version-correction candidate was `v2.0.0-poc.5` (`ba20abb`), successfully tested and deployed. This correction changes only package/lockfile release metadata, automated App Version expectations and this release record. Schema, loader, IndexedDB cache, navigation logic, live Supabase, V1 tables, production and canonical assets are unchanged. Step 7 remains unstarted.
+- `v2.0.0-poc.5` version-correction verification: `npm ci` succeeded (90 packages), `npm run build` passed including TypeScript, complete Playwright suite **315 passed** across all five widths, and `git diff --check` passed. The unchanged test-gated POC workflow verifies CI and deployment after push.
+
+- Final Step 6 release is `v2.0.0-poc.6`: shared Back button visibility improved after real-user feedback with a solid TravelPilot blue background, white arrow, circular 44×44px target, border/shadow and distinct hover/focus/pressed states on mobile and desktop. The shared header, accessible label, Home visibility rule and navigation behavior are unchanged. Only styling, release metadata, tests and this record changed; Step 7 remains unstarted.
+
+- Final `v2.0.0-poc.6` visual-correction verification: `npm ci` succeeded (90 packages), `npm run build` passed including TypeScript, complete Playwright suite **320 passed** (all prior 315 plus Back visual/interaction checks at 320px, 390px, 430px, 1024px and 1440px), and `git diff --check` passed. The unchanged test-gated POC workflow verifies CI/deployment after push. Existing non-blocking build warnings remain.
 
 ## Known limitations
 - No real published V2 trip data is seeded by this task, and no real account password was used. Remote loader/auth behavior is tested with the actual SDK and mocked network responses. No live DDL or advisor remediation is performed.
