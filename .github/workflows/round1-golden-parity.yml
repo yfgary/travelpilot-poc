@@ -39,6 +39,7 @@ jobs:
           python scripts/qa_release.py
           python scripts/qa.py
           python scripts/qa_standard_contract.py
+          python scripts/qa_round4_itinerary.py
           python scripts/qa_checklist.py
           python scripts/qa_observers.py
           python scripts/qa_legacy_update.py
