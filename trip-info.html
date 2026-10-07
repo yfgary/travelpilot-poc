@@ -2678,7 +2678,6 @@ if (
 <script id="tripv2-info-script">
 (function(){
     const CHECK_KEY='japanWinter2027_checklist_v1';
-    const WEATHER_KEY='japanWinter2027_shinhotakaDay';
 
     function setupChecklist(){
         const wrap=document.querySelector('#checklist .checklist'); if(!wrap) return;
@@ -2704,13 +2703,8 @@ if (
         const sec=document.getElementById('weather'); if(!sec) return;
         const body=sec.querySelector('.section-body'); if(!body) return;
         let box=document.getElementById('tripv2WeatherSummary'); if(!box){ box=document.createElement('div'); box.id='tripv2WeatherSummary'; box.className='tripv2-weather-summary'; body.prepend(box); }
-        const sh=localStorage.getItem(WEATHER_KEY);
-        const label=sh==='d6'?'D6':sh==='d7'?'D7':sh==='d8'?'D8':null;
-        if(!label){ box.innerHTML='🌨️ <strong>D6–D8 尚未鎖定。</strong> 去「詳細行程」揀 D6／D7／D8 邊日去新穗高。'; return; }
-        let d6=sh==='d6'?'新穗高':'高山市區＋飛驒大鐘乳洞';
-        let d7=sh==='d7'?'新穗高':'白川鄉';
-        let d8=sh==='d8'?'新穗高':(sh==='d7'?'白川鄉':'高山市區＋飛驒大鐘乳洞');
-        box.innerHTML='🚡 <strong>'+label+' 去新穗高</strong><br>D6：'+d6+'<br>D7：'+d7+'<br>D8：'+d8+' → 松本';
+        try{ localStorage.removeItem('japanWinter2027_shinhotakaDay'); }catch(e){}
+        box.innerHTML='🗓️ <strong>D6–D8 固定行程</strong><br>D6：白川鄉<br>D7：新穗高<br>D8：高山市區＋飛驒大鐘乳洞 → 松本<br><span style="font-size:11px">天氣只影響安全安排，不會再自動或手動交換日子。</span>';
     }
 
     document.addEventListener('DOMContentLoaded',function(){ setupChecklist(); setupWeatherSummary(); });
