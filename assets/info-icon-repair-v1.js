@@ -35,6 +35,8 @@ function ensureButton(h3,info){
   ariaLabel:'詳盡景點介紹：'+(info.title||info.id),
   setExistingIdIfMissing:true
  });
+ const pin=h3.querySelector('.map-pin');
+ if(button&&pin&&button.nextElementSibling!==pin)h3.insertBefore(button,pin);
  return !existed&&!!button;
 }
 function repair(){
