@@ -92,7 +92,7 @@ function createOverlay(){
 function close(){const o=$('#travelModeOverlay');if(o)o.hidden=true;document.body.style.overflow='';const u=new URL(location.href);if(u.searchParams.get('travel')==='1'){u.searchParams.delete('travel');history.replaceState({},'',u.pathname+(u.search?u.search:'')+u.hash);}document.querySelectorAll('.page-switch a[data-travel-mode-link]').forEach(a=>a.classList.remove('active'));const normal=document.querySelector('.page-switch a[href="itinerary.html"],.page-switch a[href$="/itinerary.html"]');if(normal)normal.classList.add('active');}
 
 function renderDay(dayId){
- const overlay=createOverlay(),day=document.getElementById(dayId);if(!day)return;
+ const overlay=createOverlay(),day=document.getElementById('legacy-mode-'+dayId)||document.getElementById(dayId);if(!day)return;
  localStorage.setItem(PREVIEW_KEY,dayId);
  const t=tokyoParts(),coreDay=CORE&&CORE.days&&CORE.days[dayId],actual=!!(coreDay&&coreDay.date===t.date),items=extractItems(day),state=findNext(items,actual),parking=findParking(items,state.index<0?0:state.index),hotel=findHotel(items),hard=findHard(items);
  const title=text($('.day-title',day))||dayLabel(dayId),date=text($('.day-date',day)),route=text($('.day-route',day));
