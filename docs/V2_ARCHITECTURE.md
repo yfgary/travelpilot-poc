@@ -270,7 +270,7 @@ At minimum test:
 
 ## Step 6 implemented boundaries
 
-- Shared header Back action is present on every non-Home route. `NavigationHistory` records safe app-relative router entries and restores them from sessionStorage only when the current router key/path matches. It navigates to the previous recorded route or Home, never to an unverified native browser entry. Reloaded Settings preserves the trip page where possible; unavailable storage falls back safely.
+- Shared header Back action is present on every non-Home route. `NavigationHistory` records safe app-relative router entries and restores them from sessionStorage only when the current router key/path matches. It flushes a pending safe router URL/key before pagehide/beforeunload, so immediate reloads preserve navigation even before React commits the new view. It navigates to the previous recorded route or Home, never to an unverified native browser entry. Reloaded Settings preserves the trip page where possible; unavailable storage falls back safely.
 - `data/schema/trip.ts` is the single Zod schema, with inferred TypeScript types and supported Trip Schema Version 1. Shape and cross-reference validation return structured issues.
 - `data/trips.ts` provides one generic versioned local demo snapshot. Home lists that fixture only; multi-trip proof and remote Home listing remain later steps.
 - `services/trips.ts` owns read-only, owner-scoped V2 queries and the loader result model (loading, remote/cache/demo success, not found, authentication required, unavailable, invalid data, unsupported schema). Raw backend errors never enter the UI.

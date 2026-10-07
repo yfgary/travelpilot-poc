@@ -37,6 +37,32 @@ export function NavigationHistory({ children }: { children: ReactNode }) {
     try { sessionStorage.setItem(storageKey, JSON.stringify(current)) } catch { /* Optional persistence. */ }
   }, [location.key, path, action])
 
+  useLayoutEffect(() => {
+    // Router updates the URL before React commits its transition. An immediate
+    // reload must persist that pending entry too, using only safe hash routes.
+    function persistBeforeUnload() {
+      const current = history.current!
+      const pendingPath = window.location.hash.slice(1) || '/'
+      const pendingKey: unknown = window.history.state?.key ?? 'default'
+      if (!safePath(pendingPath) || typeof pendingKey !== 'string') return
+      const existing = current.entries.findIndex((entry) => entry.key === pendingKey)
+      if (existing >= 0) current.index = existing
+      else if (current.entries[current.index].path === pendingPath) {
+        current.entries[current.index] = { key: pendingKey, path: pendingPath }
+      } else {
+        current.entries = [...current.entries.slice(0, current.index + 1), { key: pendingKey, path: pendingPath }].slice(-50)
+        current.index = current.entries.length - 1
+      }
+      try { sessionStorage.setItem(storageKey, JSON.stringify(current)) } catch { /* Safe Home fallback on reload. */ }
+    }
+    window.addEventListener('pagehide', persistBeforeUnload)
+    window.addEventListener('beforeunload', persistBeforeUnload)
+    return () => {
+      window.removeEventListener('pagehide', persistBeforeUnload)
+      window.removeEventListener('beforeunload', persistBeforeUnload)
+    }
+  }, [])
+
   function back() {
     const current = history.current!
     const previous = current.entries[current.index - 1]

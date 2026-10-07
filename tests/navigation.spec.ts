@@ -43,3 +43,14 @@ test('fresh direct Settings reload Back falls back Home', async ({ page }) => {
   await page.getByRole('button', { name: '返回上一頁' }).click()
   await expect(page).toHaveURL(/\/travelpilot-poc\/#\/$/)
 })
+
+test('reload persists a safe pending router entry before React commits the new view', async ({ page }) => {
+  await page.goto('#/trip/demo-trip/info')
+  await expect(page.getByRole('heading', { name: '旅程資料', exact: true })).toBeVisible()
+  // Reproduce the router URL commit occurring before its React transition.
+  await page.evaluate(() => history.pushState({ ...history.state, key: 'pending-settings', idx: (history.state.idx ?? 0) + 1 }, '', '#/settings'))
+  await page.reload()
+  await expect(page.getByRole('heading', { name: '設定', exact: true })).toBeVisible()
+  await page.getByRole('button', { name: '返回上一頁' }).click()
+  await expect(page).toHaveURL(/#\/trip\/demo-trip\/info$/)
+})

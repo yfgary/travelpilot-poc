@@ -149,7 +149,7 @@ All Step 3 acceptance criteria passed:
 - `git diff --check` passed. Production repository and all Supabase tables remain untouched by this task.
 
 ## Step 6 completed schema / loader / navigation foundation
-- Mandatory Step 4 navigation regression fixed first in Step 6 preflight. Shared visual Back button on every non-Home route, aria-label `返回上一頁`, safe recorded app-route history, direct-entry Home fallback and reload persistence. No Settings-specific navigation logic or native history-length assumption.
+- Mandatory Step 4 navigation regression fixed first in Step 6 preflight. Shared visual Back button on every non-Home route, aria-label `返回上一頁`, safe recorded app-route history, direct-entry Home fallback and reload persistence. Pending router entries are flushed before unload, covering immediate reloads before React commits. No Settings-specific navigation logic or native history-length assumption.
 - App Version `v2.0.0-poc.4` from package.json; Trip Schema Version 1; Trip Data Version separate (local demo `demo.1`). Exact Zod 4.6.5 and idb 8.0.4 dependencies pinned and lockfile committed.
 - One canonical Zod snapshot schema with inferred TypeScript types for trip/regions/days/timeline/places/accommodation/transport/navigation/hard cuts/checklists/weather/Live Cams/images/sources. Generic weather and Live Cam data only, no engines.
 - Structured runtime issues reject unsupported versions, malformed shape, duplicate stable IDs, broken references, invalid dates/date order/day range or duplicates, coordinates, ratings and negative durations.
@@ -164,14 +164,14 @@ All Step 3 acceptance criteria passed:
 - Navigation preflight: **30 passed** across five widths before proceeding to schema/loader work; final coverage also includes fresh direct Settings reload.
 - `npm ci` succeeded (90 packages installed).
 - `npm run build` passed, including strict application/tool/test TypeScript checks.
-- Complete Playwright suite against the stable final production build: **310 passed**, at 320px, 390px, 430px, 1024px and 1440px.
+- Final complete Playwright suite against the stable production build: **315 passed**, at 320px, 390px, 430px, 1024px and 1440px.
 - All 145 Step 3–5 tests retained, with only App Version expectations updated. Canonical image hashes/served bytes, route reloads, labels, font sizes/persistence, no overflow, touch targets, lower-left status and auth tests pass.
 - Back tests cover exact itinerary/info restoration through Settings, page A → B → Settings → B, repeated Back, fresh direct Settings/trip entries, Settings reload, Home hiding Back, blocked storage and external-history safety.
 - Schema tests cover valid minimal and rich generic content, malformed input, unsupported versions, duplicates, all required references, invalid dates/time/coordinates/rating/duration and invalid/duplicate checklist item IDs.
 - Mocked remote tests verify owner filtering, only V2 content GET queries, current published filters, separate versions, generic failure states, invalid/unsupported payload rejection and unchanged valid cache.
 - Real browser IndexedDB tests verify reload persistence, retained old/new versions and pointers (including opaque labels preserved exactly), corruption rejection, remote fallback, signed-out/offline reads, logout retention, account isolation and blocked storage behavior.
 - All automated Supabase responses are intercepted; no real password or live test data writes. Existing Supabase metadata was read only for the baseline; RLS/advisor verification remains the prior Step 5 handoff, with no claim that V1 warnings were fixed.
-- `git diff --check` passed. POC workflow remains protected and unchanged; remote CI/deployment result is verified after push.
+- `git diff --check` passed. POC workflow remains protected and unchanged. Initial CI reported 8 immediate-reload navigation failures (302 passed), so deployment was skipped. Unload-time router-ledger persistence now closes that timing gap; a deterministic pending-route test was added and the unchanged original regression tests pass. The complete repaired local suite passed 315 tests; remote CI/deployment is verified after pushing the repair. The mandatory Step 6 release remains v2.0.0-poc.4; the failed initial candidate was not deployed.
 
 ## Known limitations
 - No real published V2 trip data is seeded by this task, and no real account password was used. Remote loader/auth behavior is tested with the actual SDK and mocked network responses. No live DDL or advisor remediation is performed.
