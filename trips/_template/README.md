@@ -2,7 +2,9 @@
 
 Create a new folder under `trips/<trip-id>/` and copy the example files in this folder.
 
-The shared app uses one set of HTML pages. A new trip does **not** need another `itinerary.html`, `trip-info.html`, `attractions.html` or `live.html`.
+Every trip must declare `"contractVersion": "standard-v1"` and comply with `schemas/standard-v1/contract.json`.
+
+The shared app uses one set of HTML pages. A trip folder is data/media only and must **never** contain trip-specific HTML, JavaScript, runtime loaders or CSS patches. A new trip does **not** need another `itinerary.html`, `trip-info.html`, `attractions.html` or `live.html`.
 
 ## Itinerary
 
@@ -78,6 +80,15 @@ Driving Mode keeps a per-trip/per-day stop index, opens Google Maps driving dire
 
 For Japan 2027 the tested legacy Today/Driving overlays are preserved in `hydrate` mode; the shared mode core supplies trip/time/weather/profile data and bridges the new Activity Profile scores into those overlays.
 
-## Trip-specific modules
+## Generic optional modules
 
-Trip-specific modules remain optional and belong in that trip's own `trip.json`. They are not copied into every trip automatically. For example, the 2027 Japan trip keeps its Shinhotaka D6–D8 weather-day selector as a trip-specific module while still using the shared itinerary, Trip Info, Attractions, Live Cam, Weather and mode engines.
+Optional behaviour is declared as **generic module data**, never as trip-specific runtime code.
+
+Standard v1 currently defines:
+- `conditional-day-planner` with `weather-score`
+- `weather-comparison` for read-only comparison
+
+A module may reference trip-specific day ids and region ids. Those values stay inside the trip JSON; the shared engine must not hardcode any destination, trip id or day range.
+
+During migration, the 2027 Japan Golden Reference still runs its proven legacy D6–D8 behaviour. The data contract is already generic so later rounds can move that behaviour into the shared engine without changing presentation.
+
