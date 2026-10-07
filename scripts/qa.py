@@ -100,8 +100,8 @@ def check_version_ownership() -> None:
         error("sw.js CACHE_NAME does not match version.json")
     if "live-v9-2-sync.js" in sw:
         error("Service worker must not inject Japan Live sync a second time")
-    if f"assets/multi-trip-live-entry-v1.js?v={plain}" not in sw:
-        error("Service worker Live Cam shim is not pinned to the current release")
+    if f"assets/multi-trip-runtime-v1.js?v={plain}" not in sw:
+        error("Service worker cached Live fallback is not pinned to the shared runtime release")
 
     index = read("index.html")
     for expected in (
