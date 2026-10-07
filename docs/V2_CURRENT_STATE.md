@@ -2,8 +2,10 @@
 
 Last updated: 08/10/2026
 
-## Current phase
-**Phase 1 — Specification and architecture (schema validation complete)**
+## Progress
+**Step 2/16 — Lock V2 technical architecture: COMPLETE**
+
+Next: **Step 3/16 — Codex Foundation scaffold**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -60,16 +62,39 @@ In a new conversation/session:
 4. Do not modify code until the requested task is clear.
 
 
-## Pending architecture review — not yet approved
-A higher-effort review on 08/10/2026 identified several recommendations that must be discussed/approved before they become final architecture decisions:
+## Architecture review resolution
+The 08/10/2026 higher-effort architecture review has been resolved and recorded in `V2_DECISIONS.md`.
 
-1. Consider React + TypeScript + Vite for the V2 frontend to reduce long-term patch-script sprawl.
-2. Prefer GitHub-Pages-friendly hash routing (for example `#/trip/<slug>/itinerary`) over history routes that can 404 on direct reload.
-3. Consider simplifying the V2 Supabase content model to a hybrid/versioned JSONB trip snapshot model instead of highly normalized content tables, because trip import, offline caching, atomic versioning and rollback may be simpler.
-4. Keep all new V2 Supabase tables isolated from existing V1 tables, preferably with a `v2_` prefix.
-5. Existing Supabase project was inspected: current public V1 tables are `trip_checklist_state`, `trip_checklist_shared`, and `trip_sync_config`. Do not alter them for V2 without explicit approval.
-6. Preserve the generic ideas from V1's newer weather activity-profile scoring (experience + access/safety + safety caps), but reimplement cleanly rather than copying legacy Japan-specific modules.
-7. Make the lower-left version + online/offline indicator an explicit requirement on every page.
-8. Correct repository-relative branding paths to `assets/images/travelpilot_banner.PNG` and `assets/images/travelpilot_icon.PNG`.
+Locked decisions:
+- React + TypeScript + Vite
+- GitHub Pages hash routing
+- hybrid versioned JSONB trip snapshot model
+- `v2_` Supabase isolation; existing V1 tables remain untouched
+- generic V1 weather-profile ideas reimplemented cleanly in TypeScript
+- persistent lower-left online/offline + App Version on every page
+- repository-relative branding paths
+- 16-step progress tracking
 
-These are **pending recommendations**, not approved decisions. A future conversation must not silently implement them; summarize them to the user first.
+## Next bounded task
+**Step 3/16 — Codex Foundation scaffold**
+
+Scope:
+- create React + TypeScript + Vite app
+- configure hash routing
+- create seven empty/shared route views
+- wire canonical banner/icon
+- create PWA manifest skeleton
+- add basic app version metadata
+- make build pass
+
+Explicitly out of scope for Step 3:
+- real Japan 2027 migration
+- Supabase DDL/migrations
+- full authentication
+- weather API/scoring
+- Live Cam
+- checklist sync
+- full offline trip download
+- visual feature parity beyond a basic clean shell
+
+Production must not be modified.
