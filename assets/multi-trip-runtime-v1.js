@@ -62,7 +62,6 @@ const legacyItineraryScripts=[
   'assets/trip-v8-9-user-fixes.js?v=913',
   'assets/trip-v9-final-fixes.js?v=914',
   'assets/trip-v9-hotfix.js?v=4',
-  'assets/trip-v9-1-routing.js?v=2',
   'assets/trip-v9-1-visit-fix.js?v=5',
   'assets/info-icon-repair-v1.js?v=7',
   'assets/multi-trip-itinerary-renderer-v1.js?v=4',
