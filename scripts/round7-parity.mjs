@@ -1,7 +1,8 @@
 import { chromium } from 'playwright';
 import crypto from 'node:crypto';
 
-const base='http://127.0.0.1:8000';
+const candidateBase='http://127.0.0.1:8000';
+const referenceBase='http://127.0.0.1:8001';
 const trip='shirakawago-shinhotaka-2027';
 const failures=[];
 const assert=(v,m)=>{if(!v)throw new Error(m);};
@@ -52,7 +53,7 @@ async function prep(page){
   }));
 }
 
-async function open(path,candidate=false){
+async function open(base,path,candidate=false){
   const page=await browser.newPage({viewport:{width:1440,height:1100},serviceWorkers:'block'});
   const errors=[];
   page.on('pageerror',e=>errors.push(String(e)));
@@ -151,8 +152,8 @@ function diff(a,b,path='root',out=[]){
 
 const browser=await chromium.launch({headless:true});
 try{
-  const baseline=await open('/itinerary.html?trip='+trip,false);
-  const candidate=await open('/candidate/itinerary.html?trip='+trip,true);
+  const baseline=await open(referenceBase,'/itinerary.html?trip='+trip,false);
+  const candidate=await open(candidateBase,'/itinerary.html?trip='+trip,true);
 
   assert(baseline.errors.length===0,'baseline page errors: '+baseline.errors.join(' | '));
   assert(candidate.errors.length===0,'candidate page errors: '+candidate.errors.join(' | '));
@@ -174,8 +175,8 @@ try{
     ['photo credits',b.rich.credits,1]
   ]) if(value<min) failures.push(label+' '+value+' < '+min);
   if(!b.bonusText) failures.push('Snow shrine / torii Bonus text missing');
-  if(b.d68.panel!==1||b.d68.cards!==3) failures.push('D6-D8 weather comparison parity missing in candidate baseline lock');
-  if(b.selector!==1) failures.push('D6-D8 manual selector parity missing in candidate baseline lock');
+  if(b.d68.panel!==1||b.d68.cards!==3) failures.push('D6-D8 weather comparison parity missing');
+  if(b.selector!==1) failures.push('D6-D8 selector parity missing');
 
   // Interaction parity: photo zoom.
   await baseline.page.locator('details.day#d1').evaluate(el=>{el.open=true;});

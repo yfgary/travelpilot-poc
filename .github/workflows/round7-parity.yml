@@ -57,9 +57,23 @@ jobs:
           node --check assets/standard-runtime-loader-v1.js
           find assets -maxdepth 1 -type f -name '*.js' -print0 | xargs -0 -n1 node --check
 
-      - name: Production public itinerary remains untouched
+      - name: Public itinerary differs only by the generic Standard loader
         run: |
-          cmp itinerary.html /tmp/production-reference/itinerary.html
+          python - <<'PY'
+          from pathlib import Path
+          import re, sys
+
+          candidate=Path("itinerary.html").read_text(encoding="utf-8")
+          reference=Path("/tmp/production-reference/itinerary.html").read_text(encoding="utf-8")
+
+          candidate=re.sub(r'<script type="application/json" id="travelPilotRuntimePlan">[\s\S]*?</script>\s*','',candidate)
+          candidate=candidate.replace('<script src="assets/standard-runtime-loader-v1.js"></script>','<script src="assets/attraction-info.js?v=1"></script>')
+
+          if candidate!=reference:
+              print("Unexpected itinerary.html drift outside the generic Standard loader")
+              sys.exit(1)
+          print("Public itinerary structural diff PASS")
+          PY
           cmp assets/attraction-info.js /tmp/production-reference/assets/attraction-info.js
           cmp assets/images/d1-centrair.jpg /tmp/production-reference/assets/images/d1-centrair.jpg
 
@@ -78,11 +92,13 @@ jobs:
 
       - name: Golden Reference DOM + feature + visual parity
         run: |
-          python -m http.server 8000 --bind 127.0.0.1 >/tmp/round7-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill $SERVER_PID || true' EXIT
+          python -m http.server 8000 --bind 127.0.0.1 >/tmp/round7-candidate-http.log 2>&1 &
+          CANDIDATE_PID=$!
+          (cd /tmp/production-reference && python -m http.server 8001 --bind 127.0.0.1 >/tmp/round7-reference-http.log 2>&1) &
+          REFERENCE_PID=$!
+          trap 'kill $CANDIDATE_PID $REFERENCE_PID || true' EXIT
           for i in $(seq 1 30); do
-            if curl -fsS http://127.0.0.1:8000/itinerary.html >/dev/null; then break; fi
+            if curl -fsS http://127.0.0.1:8000/itinerary.html >/dev/null && curl -fsS http://127.0.0.1:8001/itinerary.html >/dev/null; then break; fi
             sleep 1
           done
           node scripts/round7-parity.mjs
