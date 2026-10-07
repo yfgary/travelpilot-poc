@@ -1,8 +1,7 @@
-import { NavLink, Outlet, useParams } from 'react-router-dom'
+import { Outlet, useParams } from 'react-router-dom'
 import { findTrip } from '../services/trips'
 import { NotFound } from './NotFound'
-import { tripViews } from './tripViews'
-import type { TripSummary } from '../data/schema/trip'
+import { PageNavigation } from '../components/PageNavigation'
 
 export function TripLayout() {
   const { tripSlug } = useParams<{ tripSlug: string }>()
@@ -11,17 +10,14 @@ export function TripLayout() {
 
   return (
     <>
-      <h2>{trip.title}</h2>
-      <p>{trip.summary}</p>
-      <p>旅程識別碼：<code>{tripSlug}</code></p>
-      <nav className="trip-navigation" aria-label="旅程頁面">
-        {tripViews.map((view) => (
-          <NavLink key={view.path} to={`/trip/${encodeURIComponent(trip.slug)}/${view.path}`}>
-            {view.title}
-          </NavLink>
-        ))}
-      </nav>
-      <Outlet context={trip satisfies TripSummary} />
+      <section className="trip-heading">
+        <p className="eyebrow">你的旅程</p>
+        <h2>{trip.title}</h2>
+        <p>{trip.summary}</p>
+        <p className="trip-identifier">旅程識別碼：<code>{tripSlug}</code></p>
+        <PageNavigation tripSlug={trip.slug} />
+      </section>
+      <Outlet context={trip} />
     </>
   )
 }

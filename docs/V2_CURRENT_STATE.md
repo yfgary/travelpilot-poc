@@ -3,9 +3,9 @@
 Last updated: 08/10/2026
 
 ## Progress
-**Step 3/16 — Codex Foundation scaffold: COMPLETE**
+**Step 4/16 — Shared UI shell + responsive baseline: COMPLETE**
 
-Next: **Step 4/16 — Shared UI shell + responsive baseline**
+Next: **Step 5/16 — Supabase V2 foundation**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -30,11 +30,11 @@ Next: **Step 4/16 — Shared UI shell + responsive baseline**
 - Phase 1 schema validation result: PASS.
 
 ## Not started
-- Full V2 feature implementation (only the foundation scaffold is complete)
+- Full V2 feature implementation (foundation and shared visual shell complete)
 - Supabase schema migration
 - Complete PWA/offline implementation (manifest foundation only is complete)
 - multi-trip renderer implementation
-- UI parity implementation
+- Complete V1 UI parity (shared responsive baseline only is complete)
 - weather engine
 - suitability engine
 - checklists implementation
@@ -50,7 +50,7 @@ Next: **Step 4/16 — Shared UI shell + responsive baseline**
   - `assets/images/travelpilot_icon.PNG`
 
 ## Next step
-Proceed to **Step 4/16 — Shared UI shell + responsive baseline** only when requested. Step 3 is complete; Step 4 has not begun. Real trip migration, backend integration and feature engines remain outside this foundation.
+Step 4 is complete. Next is **Step 5/16 — Supabase V2 foundation**, only when explicitly authorized. No Step 5 implementation has begun. Real trip migration and feature engines remain outside the shared shell.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -100,23 +100,46 @@ All Step 3 acceptance criteria passed:
 - Existing V2 specification/architecture/schema/decision/handoff/roadmap/validation files and canonical source assets remain unchanged.
 - `git diff --check` passed.
 
-## Known issues / deliberate foundation limits
-- No known Step 3 acceptance failures.
-- Manifest only: no service worker, cold offline reload, offline trip download, IndexedDB or installability claim yet.
-- ONLINE/OFFLINE is the browser connectivity hint, not a backend availability check.
-- Trip views are generic placeholders; no itinerary, attractions, hotel, weather, Live Cam or Today Mode functionality.
-- Browser coverage is Chromium mobile/desktop viewport emulation, not physical iPhone/Safari certification.
-- GitHub Pages publication was not tested remotely. The POC Pages source must be GitHub Actions before the manual workflow is run.
-- No new architectural decision was required; `V2_DECISIONS.md` is unchanged.
+## Step 4 implemented shell
+- App Version bumped to `v2.0.0-poc.2`; package.json remains canonical. AGENTS.md now requires every POC implementation/update commit intended for main and every production release to bump App Version, independently of Trip Data Version.
+- V1 Home HTML/CSS inspected read-only as the Golden Visual Reference. The new shell uses its blue/cyan family, Arial/Traditional Chinese font fallbacks, pale blue background, rounded white cards and compact navigation. No legacy V1 scripts were copied.
+- `app/pages.ts` defines all seven approved labels: 首頁 / 詳細行程 / 旅程資料 / 景點總覽 / Live Cam / 今日模式 / 設定. Routing and reusable navigation derive from this configuration.
+- Reusable header, page heading, navigation and Loading / Empty / Error presentation components. Unknown trips still use one generic not-found state.
+- One global 小 / 中 / 大 preference provider scales the root font size (14 / 16 / 18px). Valid values persist in localStorage. Invalid or blocked storage does not crash the app; blocked writes show a session-only notice.
+- Home retains the canonical banner, approved product/tagline copy and one generic demo-trip card. Trip pages remain placeholders.
+- Settings provides font-size controls, 繁體中文 and canonical App Version. Login/offline/sync/update remain future placeholders.
+- A reserved lower-left footer keeps ONLINE/OFFLINE and App Version visible below the scrollable main content without covering controls. Includes safe-area spacing.
+- POC workflow now triggers on pushes to main and workflow_dispatch. Both jobs are guarded for yfgary/travelpilot-poc/main; deployment requires successful npm ci, typecheck/build and the complete Playwright suite.
+- Production was read only for visual reference, never modified. No trip-specific application branches or backend functionality were introduced.
+
+## Step 4 verification
+- `npm ci` succeeded (79 packages installed).
+- `npm run build` passed, including strict TypeScript application/tool/test checks.
+- `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test`: **105 passed** against the final production build.
+- All Step 3 checks retained, with approved label changes; tested at 320px, 390px, 430px, 1024px and 1440px.
+- All seven views, direct hash-route reloads, generic unknown trips/pages, shared navigation, connection transitions and persistent status passed.
+- All three font sizes tested across every route and width; body/content overflow, navigation touch targets and bounds, preference reload persistence, invalid storage and blocked storage passed.
+- Main content stays above the status footer; actionable controls remain reachable after scrolling.
+- Banner aspect ratio and original icon/banner SHA-256 hashes checked. Served assets remain byte-for-byte identical to source originals.
+- Home and large-font Settings screenshots inspected for mobile/desktop baseline.
+- `git diff --check` passed; no canonical source assets or production files changed.
+- No new architecture decision was necessary; V2_DECISIONS.md remains unchanged.
+
+## Known limitations
+- No final V1 parity or physical iPhone/Safari certification; browser checks use Chromium viewport emulation.
+- Manifest foundation only. No service worker, cold offline startup, trip download, IndexedDB or installability claim.
+- Connection status is navigator.onLine, not backend reachability.
+- Demo metadata only; no real trip content, snapshot loader, Supabase auth/migrations, weather, checklist sync, Live Cam engine or Today Mode logic.
+- The user confirmed changing the POC Pages source from legacy branch/Jekyll publication to GitHub Actions before the Step 4 push, so automatic publication follows the build/test gate. Remote workflow results are verified after pushing; local acceptance checks passed.
 
 ## Next bounded task
-**Step 4/16 — Shared UI shell + responsive baseline**
+**Step 5/16 — Supabase V2 foundation** (not started)
 
-Scope from the roadmap:
-- V1-inspired shared header/navigation/layout
-- iPhone + desktop responsive behaviour
-- global typography/font-size system
-- refined lower-left online/offline + version status
-- shared loading/error/empty states
+Scope from the roadmap, only when Step 5 is explicitly authorized:
+- approved v2_ tables and RLS/policies
+- frontend Supabase client
+- Settings login/logout
+- preserve all existing V1 tables
+- run advisors after actual DDL changes
 
-Step 4 has not begun. Production must not be modified.
+Do not begin Step 5. Production must not be modified.

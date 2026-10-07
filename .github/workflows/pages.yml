@@ -1,7 +1,9 @@
 name: POC GitHub Pages
 
-# Manual only: adding the scaffold does not deploy it automatically.
+# POC only; deployment requires the complete build and test job to pass.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -13,7 +15,7 @@ concurrency:
 
 jobs:
   build:
-    if: github.repository == 'yfgary/travelpilot-poc'
+    if: github.repository == 'yfgary/travelpilot-poc' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +31,7 @@ jobs:
         with:
           path: dist
   deploy:
+    if: github.repository == 'yfgary/travelpilot-poc' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:

@@ -4,9 +4,9 @@ import packageMetadata from '../package.json' with { type: 'json' }
 
 const tripPages = [
   ['itinerary', '詳細行程'],
-  ['info', '旅程資訊'],
+  ['info', '旅程資料'],
   ['attractions', '景點總覽'],
-  ['live', '即時影像'],
+  ['live', 'Live Cam'],
   ['today', '今日模式'],
 ]
 const pages = [
@@ -92,4 +92,98 @@ test('unmatched page retains the shell and offers home navigation', async ({ pag
   await page.goto('#/unknown-page')
   await expect(page.getByRole('heading', { name: '找不到頁面' })).toBeVisible()
   await expect(page.getByRole('status')).toBeVisible()
+})
+
+test('approved labels and release version are shown', async ({ page }) => {
+  expect(packageMetadata.version).toBe('2.0.0-poc.2')
+  await page.goto('#/trip/demo-trip/itinerary')
+  await expect(page.getByRole('navigation', { name: '主導覽' }).getByRole('link')).toHaveText(['首頁', '設定'])
+  await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveText(tripPages.map(([, title]) => title))
+  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.2')
+  await expect(page.getByText('旅程資訊', { exact: true })).toHaveCount(0)
+  await expect(page.getByText('即時影像', { exact: true })).toHaveCount(0)
+})
+
+test('all font sizes scale the global UI, persist and fit every route', async ({ page }) => {
+  const samples: number[][] = []
+  for (const [label, size] of [['小', 'small'], ['中', 'medium'], ['大', 'large']]) {
+    await page.goto('#/settings')
+    await page.getByRole('radio', { name: label, exact: true }).check()
+    await expect(page.getByRole('radio', { name: label, exact: true })).toBeChecked()
+    await expect(page.locator('html')).toHaveAttribute('data-font-size', size)
+    await page.reload()
+    await expect(page.getByRole('radio', { name: label, exact: true })).toBeChecked()
+    samples.push(await page.evaluate(() => [
+      document.body, document.querySelector('h1')!, document.querySelector('.brand')!,
+      document.querySelector('.app-status')!,
+    ].map((element) => parseFloat(getComputedStyle(element).fontSize))))
+    for (const [route] of pages) {
+      await page.goto(route)
+      await expect(page.locator('html')).toHaveAttribute('data-font-size', size)
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+      expect(await page.locator('main').evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true)
+      const contentBox = (await page.locator('main').boundingBox())!
+      expect(contentBox.y + contentBox.height).toBeLessThanOrEqual((await page.locator('.status-dock').boundingBox())!.y)
+      for (const link of await page.locator('nav a').all()) {
+        const box = (await link.boundingBox())!
+        expect(box.height).toBeGreaterThanOrEqual(44)
+        expect(box.width).toBeGreaterThanOrEqual(44)
+        expect(box.x).toBeGreaterThanOrEqual(0)
+        expect(box.x + box.width).toBeLessThanOrEqual(page.viewportSize()!.width)
+      }
+      // At the end of scrolling, every actionable control can clear the status dock.
+      await page.locator('main').evaluate((element) => { element.scrollTop = element.scrollHeight })
+      const dockTop = (await page.locator('.status-dock').boundingBox())!.y
+      for (const control of await page.locator('main a, main label').all()) {
+        const box = (await control.boundingBox())!
+        if (box.y >= 0) expect(box.y + box.height).toBeLessThanOrEqual(dockTop)
+      }
+      await expect(page.getByRole('status')).toBeVisible()
+    }
+  }
+  for (let index = 0; index < samples[0].length; index++) {
+    expect(samples[0][index]).toBeLessThan(samples[1][index])
+    expect(samples[1][index]).toBeLessThan(samples[2][index])
+  }
+})
+
+test('invalid saved font value falls back to medium', async ({ page }) => {
+  await page.goto('#/settings')
+  await page.evaluate(() => localStorage.setItem('travelpilot.font-size', 'invalid'))
+  await page.reload()
+  await expect(page.getByRole('radio', { name: '中', exact: true })).toBeChecked()
+})
+
+test('blocked preference storage keeps font controls usable', async ({ page }) => {
+  await page.addInitScript(() => {
+    Storage.prototype.getItem = () => { throw new Error('Storage unavailable') }
+    Storage.prototype.setItem = () => { throw new Error('Storage unavailable') }
+  })
+  await page.goto('#/settings')
+  await page.getByRole('radio', { name: '大', exact: true }).check()
+  await expect(page.locator('html')).toHaveAttribute('data-font-size', 'large')
+  await expect(page.getByRole('alert')).toContainText('字體設定只適用於本次使用')
+})
+
+test('home banner preserves its aspect ratio and cards stay readable', async ({ page }) => {
+  await page.goto('#/')
+  const box = (await page.locator('.home-banner').boundingBox())!
+  expect(box.width / box.height).toBeCloseTo(1672 / 941, 2)
+  await expect(page.getByText('行程、景點、天氣與旅途資訊，一站管理。', { exact: true })).toBeVisible()
+  await expect(page.getByRole('article')).toHaveCount(1)
+  await page.screenshot({ path: test.info().outputPath('home.png'), fullPage: true })
+  await page.goto('#/settings')
+  await page.getByRole('radio', { name: '大', exact: true }).check()
+  await page.screenshot({ path: test.info().outputPath('settings-large.png'), fullPage: true })
+})
+
+test('canonical source images still match the Step 3 originals', async () => {
+  const { createHash } = await import('node:crypto')
+  const originals = {
+    'travelpilot_banner.PNG': 'f9e41195b72afb12415ac055cf7a73327ad50b984df21e07f70990d315bbc513',
+    'travelpilot_icon.PNG': 'ddab7c01b69509f742a557ab01a85e9f9c37f5995fcdc6131a85114be9f1d6e7',
+  }
+  for (const [filename, checksum] of Object.entries(originals)) {
+    expect(createHash('sha256').update(readFileSync(`assets/images/${filename}`)).digest('hex')).toBe(checksum)
+  }
 })

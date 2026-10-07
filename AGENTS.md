@@ -48,6 +48,13 @@ If a requested feature cannot be implemented generically, **stop and report the 
 - Supabase is the backend for login, sync, user preferences, checklist state, and structured trip data.
 - Local-first behaviour is required for checklists and cached trip data.
 
+## Release versions
+- Every POC implementation/update commit intended for main must bump App Version.
+- Production releases also require a version bump.
+- `package.json` remains the canonical App Version source.
+- App Version and Trip Data Version remain separate.
+- Never hard-code the version string into multiple UI components.
+
 ## Branding assets
 Expected canonical assets (repository-relative paths):
 - `assets/images/travelpilot_banner.PNG`
