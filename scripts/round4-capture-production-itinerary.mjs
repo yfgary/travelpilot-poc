@@ -107,6 +107,10 @@ async function snapshot(browser,selection){
       label:clean(a.textContent),
       href:a.getAttribute('href')||''
     }));
+    const extras=[...card.children].filter(el=>visible(el)&&el.classList.contains('v90-route-stop')).map(el=>({
+      className:[...el.classList].join(' '),
+      html:html(el)
+    }));
     return {
       itemClass:[...item.classList].join(' '),
       cardClass:[...card.classList].join(' '),
@@ -120,7 +124,8 @@ async function snapshot(browser,selection){
       localName:clean(card.querySelector(':scope > .jp-place-name')?.textContent||card.querySelector('.jp-place-name')?.textContent).replace(/^🇯🇵\s*/u,''),
       paragraphs:[...card.querySelectorAll(':scope > p')].filter(visible).map(p=>html(p)),
       price:clean(card.querySelector(':scope > .price')?.textContent||card.querySelector('.price')?.textContent),
-      links
+      links,
+      extras
     };
   }
 
