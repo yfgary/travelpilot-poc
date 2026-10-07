@@ -5,6 +5,8 @@ if(window.Japan2027Core)return;
 const VERSION='v9.1.1';
 const SH_KEY='japanWinter2027_shinhotakaDay';
 const WEATHER_REGION_KEY='japan2027_weather_region';
+/* D6-D8 selector retired */
+try{localStorage.removeItem(SH_KEY);}catch(e){}
 
 const regions={
  matsumoto:{id:'matsumoto',name:'松本',en:'Matsumoto',jp:'松本市',label:'松本城／市區',type:'cityscenic',lat:36.2381,lon:137.9720},
