@@ -135,12 +135,12 @@ def check_runtime() -> None:
 
     if (ROOT / "assets" / "checklist-sync.js").exists():
         error("Retired Japan-only checklist-sync.js still exists")
-    if "assets/checklist-sync.js" in loader:
-        error("Trip loader still references retired checklist-sync.js")
+    if "assets/checklist-sync.js" in runtime or "assets/checklist-sync.js" in shim:
+        error("Shared runtime still references retired checklist-sync.js")
 
-    blocks = re.findall(r"const (?:tripInfoScripts|genericTripInfoScripts)=commonHead\.concat\(\[(.*?)\]\);", loader, re.S)
+    blocks = re.findall(r"const (?:legacyTripInfoScripts|genericTripInfoScripts)=\[(.*?)\];", runtime, re.S)
     if len(blocks) != 2:
-        error("Could not identify both Trip Info loader blocks")
+        error("Could not identify both Standard runtime Trip Info dependency blocks")
     else:
         for idx, block in enumerate(blocks, 1):
             for required in ("multi-trip-departure-checklist-v1.js", "multi-trip-checklist-sync-v1.js"):
