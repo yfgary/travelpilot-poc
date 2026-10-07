@@ -137,7 +137,7 @@ function richTimelineItem(item){
  const price=item.price?'<span class="price">'+esc(item.price)+'</span>':'';
  const links=(item.links||[]).map(x=>'<a class="'+esc(x.className||'')+'" href="'+esc(x.href||'#')+'">'+esc(x.label||'')+'</a>').join('');
  return '<div class="'+esc(item.itemClass||'timeline-item')+'"><div class="time">'+time+'</div><div class="'+esc(item.cardClass||'timeline-card')+'">'
-  +event+duration+'<h3'+attrs+'>'+esc(item.title||'')+(item.map?' ':'')+'</h3>'+local+paras+price+links+'</div></div>';
+  +event+duration+'<h3'+attrs+'>'+esc(item.title||'')+'</h3>'+local+paras+price+links+'</div></div>';
 }
 
 function richContentBlock(b){
