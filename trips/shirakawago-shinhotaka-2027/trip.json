@@ -22,20 +22,7 @@
     "winterDriving": true,
     "shinhotakaPlanner": false
   },
-  "modules": [
-    {
-      "id": "shinhotaka-weather-day-selector",
-      "type": "weather-day-selector",
-      "enabled": false,
-      "candidateDays": [
-        6,
-        7,
-        8
-      ],
-      "destination": "shinhotaka",
-      "pairedDestination": "shirakawago"
-    }
-  ],
+  "modules": [],
   "pages": {
     "itinerary": "itinerary.html",
     "tripInfo": "trip-info.html",
@@ -94,9 +81,5 @@
     "dataMode": "hybrid-data-v8",
     "migrationStage": 10,
     "note": "v10.12 Stage 2: Japan departure checklist is now canonical Trip JSON rendered by shared multi-trip modules. Rich itinerary/trip overlays remain in hydrate mode while legacy presentation code is retired incrementally."
-  },
-  "runtime": {
-    "plan": "runtime-plan.json",
-    "phase": "round7-parity-rebuild"
   }
 }

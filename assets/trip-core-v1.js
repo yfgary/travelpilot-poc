@@ -4,9 +4,8 @@ if(window.Japan2027Core)return;
 
 const VERSION='v9.1.1';
 const SH_KEY='japanWinter2027_shinhotakaDay';
-const WEATHER_REGION_KEY='japan2027_weather_region';
-/* D6-D8 selector retired */
 try{localStorage.removeItem(SH_KEY);}catch(e){}
+const WEATHER_REGION_KEY='japan2027_weather_region';
 
 const regions={
  matsumoto:{id:'matsumoto',name:'松本',en:'Matsumoto',jp:'松本市',label:'松本城／市區',type:'cityscenic',lat:36.2381,lon:137.9720},
@@ -48,10 +47,10 @@ const externalLinks={
 };
 
 function uniq(a){return [...new Set(a||[])];}
-function selectedShinhotakaDay(){try{localStorage.removeItem(SH_KEY);}catch(e){}return '';}
-function setSelectedShinhotakaDay(){try{localStorage.removeItem(SH_KEY);}catch(e){}return '';}
+function selectedShinhotakaDay(){try{localStorage.removeItem(SH_KEY);}catch(e){}return'';}
+function setSelectedShinhotakaDay(){try{localStorage.removeItem(SH_KEY);}catch(e){}return'';}
 function resolveFlexibleDays(){
- return{selected:'',d6:'shirakawago',d7:'planning',d8:'planningEast'};
+ return{selected:'',d6:'shirakawago',d7:'shinhotaka',d8:'cityCave'};
 }
 function weatherRegionForDay(dayId,v){
  const d=days[dayId];if(!d)return'matsumoto';if(d.weather!=='dynamic')return d.weather;
@@ -75,19 +74,19 @@ function d2Live(){return{
 };}
 function shirakawagoLive(day){return{
  nav:'🏘️ '+day.toUpperCase()+' 白川鄉',title:'🏘️ 白川鄉 Shirakawa-go',
- desc:day==='d6'?'白川鄉優先日；只有新穗高突然極好天先改計劃':'D6 已去新穗高，所以今日補白川鄉',
+ desc:day==='d6'?'D6 固定白川鄉；只按道路安全調整出發節奏':'白川鄉固定行程',
  route:'高山 → 白川鄉荻町合掌村 → 和田家 → 荻町城跡展望台 → 高山',
  places:[['白川鄉','Shirakawa-go'],['和田家','Wada House Shirakawa-go'],['荻町城跡展望台','Ogimachi Castle Observation Deck'],['高山住宿',day==='d7'?'Residence Hotel Takayama Station':'Takayama Ouan']],
  cams:cameras.shirakawago.slice(),
- decision:{title:day.toUpperCase()+' 天氣決策',steps:['白川鄉只安排 D6 或 D7；D8 不再向西兜去白川鄉。','出發前照睇一次新穗高山頂；如果今日係三日唯一極佳能見度，可以即時改今日去新穗高。','白川鄉道路大雪／封路就安全優先。'],links:[['白川鄉交通 Live Cam',externalLinks.shirakawagoTraffic],['岐阜道路雪況',externalLinks.gifuRoad],['新穗高運行狀況',externalLinks.shinhotakaStatus]]}
+ decision:{title:day.toUpperCase()+' 道路重點',steps:['D6 固定白川鄉，不會因新穗高天氣改日子。','出發前睇白川鄉交通 Live Cam 同道路雪況。','白川鄉道路大雪／封路就安全優先。'],links:[['白川鄉交通 Live Cam',externalLinks.shirakawagoTraffic],['岐阜道路雪況',externalLinks.gifuRoad]]}
 };}
 function shinhotakaLive(day){return{
  nav:'🚡 '+day.toUpperCase()+' 新穗高',title:'🚡 新穗高纜車 Shinhotaka Ropeway',
- desc:'今日已選做新穗高日；山頂能見度、風況同纜車運行正常先出發。',
+ desc:'D7 固定新穗高；山頂能見度、風況同纜車運行狀況只影響是否安全出發，不會改去其他日子。',
  route:'高山 → 新穗高纜車 → 平湯神社'+(day==='d8'?' → 安房方向 → 松本':' → 高山'),
  places:[['新穗高纜車','Shinhotaka Ropeway'],['平湯神社','平湯神社'],[day==='d8'?'松本住宿':'高山住宿',day==='d8'?'Iroha Grand Hotel Matsumoto Ekimae':(day==='d7'?'Residence Hotel Takayama Station':'Takayama Ouan')]],
  cams:uniq(cameras.shinhotaka.concat(day==='d8'?cameras.east:[])),
- decision:{title:day.toUpperCase()+' 新穗高判斷',steps:['先睇西穗高口 Live Cam＋官方 Operation Status。','山頂清晰、風況可接受、纜車正常先出發。',day==='d8'?'D8 完成後一路向東返松本；白川鄉唔會放今日。':'完成新穗高後，其餘兩日自動分配白川鄉／高山市區＋鐘乳洞。'],links:[['新穗高運行狀況',externalLinks.shinhotakaStatus],['岐阜道路雪況',externalLinks.gifuRoad]]}
+ decision:{title:day.toUpperCase()+' 新穗高判斷',steps:['先睇西穗高口 Live Cam＋官方 Operation Status。','山頂清晰、風況可接受、纜車正常先出發。','D7 固定新穗高；如停駛／危險只取消或改做安全後備，不會交換 D6／D8。'],links:[['新穗高運行狀況',externalLinks.shinhotakaStatus],['岐阜道路雪況',externalLinks.gifuRoad]]}
 };}
 function cityCaveLive(day){return{
  nav:'🧊 '+day.toUpperCase()+' 高山・鐘乳洞',title:'🧊 高山市區・飛驒大鐘乳洞'+(day==='d8'?' → 松本':''),
@@ -97,19 +96,15 @@ function cityCaveLive(day){return{
  cams:uniq(cameras.city.concat(day==='d8'?cameras.east:[])),
  decision:{title:day.toUpperCase()+' 道路重點',steps:['鐘乳洞位於高山東面方向。',day==='d8'?'鐘乳洞後直接經平湯／安房方向返松本。':'1/15 三寺まいり只係 Bonus；道路、體力、時間任何一樣唔理想就 Skip。','冬季 R158 以道路安全同即時導航為準。'],links:[['飛驒高山 Live Camera',externalLinks.takayamaLive],['岐阜道路雪況',externalLinks.gifuRoad]]}
 };}
-function planningD7Live(){return{nav:'🌨️ D7 彈性日',title:'🌨️ D7 新穗高／高山市區',desc:'視 D6 結果同新穗高天氣決定；1/15 三寺まいり只做 Bonus。',route:'新穗高 或 高山市區＋飛驒大鐘乳洞',places:[['新穗高纜車','Shinhotaka Ropeway'],['飛驒大鐘乳洞','Hida Great Limestone Cave'],['高山站','Takayama Station']],cams:uniq(cameras.shinhotaka.concat(cameras.city)),decision:{title:'D7 規劃模式',steps:['用「D6–D8 新穗高日子」鎖定日子。','如果 D6 已去新穗高，D7 就係白川鄉。','如果新穗高留 D8，D7 做高山市區＋鐘乳洞。'],links:[['新穗高運行狀況',externalLinks.shinhotakaStatus],['岐阜道路雪況',externalLinks.gifuRoad]]}};}
-function planningD8Live(){return{nav:'🚗 D8 東面→松本',title:'🚗 D8 剩餘東面行程 → 松本',desc:'D8 不再安排白川鄉；只會係新穗高或者高山市區＋鐘乳洞後返松本。',route:'新穗高／飛驒大鐘乳洞 → 平湯／安房方向 → 松本',places:[['新穗高纜車','Shinhotaka Ropeway'],['飛驒大鐘乳洞','Hida Great Limestone Cave'],['松本住宿','Iroha Grand Hotel Matsumoto Ekimae']],cams:uniq(cameras.shinhotaka.concat(cameras.east)),decision:{title:'D8 規劃模式',steps:['D8 永遠唔去白川鄉。','如果新穗高留 D8，朝早以 Live Cam／運行狀況作最後判斷。','如果新穗高已完成，D8 做高山市區＋鐘乳洞後直接返松本。'],links:[['新穗高運行狀況',externalLinks.shinhotakaStatus],['岐阜道路雪況',externalLinks.gifuRoad]]}};}
 function liveConfig(dayId,v){
  if(dayId==='d2')return d2Live();
  const plan=resolveFlexibleDays(v),kind=plan[dayId];
  if(kind==='shinhotaka')return shinhotakaLive(dayId);
  if(kind==='shirakawago')return shirakawagoLive(dayId);
  if(kind==='cityCave')return cityCaveLive(dayId);
- if(dayId==='d7')return planningD7Live();
- if(dayId==='d8')return planningD8Live();
  return null;
 }
-function selectorStatus(v){const s=['d6','d7','d8'].includes(v)?v:selectedShinhotakaDay();return s?s.toUpperCase()+' 去新穗高｜白川鄉自動放 D6／D7；D8 不去白川鄉。':'規劃模式｜D6 白川鄉優先；到時睇新穗高 Live Cam 再決定 D6／D7／D8。';}
+function selectorStatus(){return'D6 白川鄉｜D7 新穗高｜D8 高山市區＋飛驒大鐘乳洞 → 松本（固定行程）';}
 
 window.Japan2027Core={
  version:VERSION,

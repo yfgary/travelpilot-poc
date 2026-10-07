@@ -321,15 +321,8 @@ function patchTripInfoHardCuts(){
 }
 
 function addItineraryShrineQuick(){
-    if(!document.getElementById('d1')) return;
-    const selector=document.getElementById('tripv2WeatherSelect');
-    const weather=document.getElementById('weather3dPanel');
-    const existing=document.getElementById('v87ShrineQuick');
-    if(existing){
-        if(!selector && weather && existing.previousElementSibling!==weather) weather.insertAdjacentElement('afterend',existing);
-        return;
-    }
-    const anchor=selector || weather || document.querySelector('.intro');
+    if(!document.getElementById('d1') || document.getElementById('v87ShrineQuick')) return;
+    const anchor=document.getElementById('tripv2WeatherSelect') || document.getElementById('weather3dPanel') || document.querySelector('.intro');
     if(!anchor) return;
     const box=document.createElement('section');
     box.id='v87ShrineQuick';

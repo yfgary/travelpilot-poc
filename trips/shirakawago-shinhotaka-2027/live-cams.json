@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "tripId": "shirakawago-shinhotaka-2027",
   "mode": "hydrate",
-  "note": "Japan 2027 keeps the proven media templates in live.html, while this file owns the trip/day camera group bindings and external decision links. Future trips can use generated camera definitions instead.",
+  "note": "Fixed D6/D7/D8 camera-group bindings. Weather and camera data are informational only and never change itinerary days.",
   "groups": {
     "d2": [
       "松本城及北阿爾卑斯",
@@ -39,14 +39,10 @@
     ]
   },
   "fixedDayBindings": {
-    "d2": "d2"
-  },
-  "dynamicBindings": {
-    "shinhotaka": "shinhotaka",
-    "shirakawago": "shirakawago",
-    "cityCave": "city",
-    "planning": "shinhotaka+city",
-    "planningEast": "shinhotaka+city+east"
+    "d2": "d2",
+    "d6": "shirakawago",
+    "d7": "shinhotaka",
+    "d8": "city+east"
   },
   "externalLinks": {
     "shinhotakaStatus": "https://shinhotaka-ropeway.jp/",

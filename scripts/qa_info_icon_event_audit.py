@@ -13,8 +13,6 @@ ERRORS: list[str] = []
 loader = (ASSETS / "attraction-info.js").read_text(encoding="utf-8")
 repair = (ASSETS / "info-icon-repair-v1.js").read_text(encoding="utf-8")
 renderer = (ASSETS / "multi-trip-itinerary-renderer-v1.js").read_text(encoding="utf-8")
-i18n = (ASSETS / "i18n-v1.js").read_text(encoding="utf-8")
-final = (ASSETS / "trip-v9-final-fixes.js").read_text(encoding="utf-8")
 itinerary = (ROOT / "itinerary.html").read_text(encoding="utf-8")
 
 # Stage 5U completes the startup/choice timer cleanup. Renderer and reserved language events remain bounded.
@@ -60,32 +58,14 @@ for marker in (
     if marker not in renderer:
         ERRORS.append(f"Itinerary renderer evidence changed: missing {marker}")
 
-# Current i18n changes language by reload, but the reserved languagechange repair hook stays future-compatible.
-for marker in (
-    "localStorage.setItem(KEY,lang==='en'?'zh':'en');location.reload();",
-    "setLang:n=>{localStorage.setItem(KEY,n==='en'?'en':'zh');location.reload();}",
-):
-    if marker not in i18n:
-        ERRORS.append(f"i18n reload contract changed: missing {marker}")
+# The reserved languagechange repair hook remains harmless and future-compatible.
 if "japan2027:languagechange" not in repair:
     ERRORS.append("Reserved japan2027:languagechange info-icon repair hook was removed")
 
-# .tripv2-choice is the D6-D8 Shinhotaka selector; final-fixes owns its state transition and reloads at 60 ms.
-for marker in (
-    "id = 'tripv2WeatherSelect'",
-    "class=\"tripv2-choice\" data-sh=\"d6\"",
-    "class=\"tripv2-choice\" data-sh=\"d7\"",
-    "class=\"tripv2-choice\" data-sh=\"d8\"",
-):
-    if marker not in itinerary:
-        ERRORS.append(f"D6-D8 selector ownership evidence changed: missing {marker}")
-for marker in (
-    "#tripv2WeatherSelect [data-sh]",
-    "setTimeout(()=>location.reload(),60)",
-    "localStorage.setItem(SH_KEY,v)",
-):
-    if marker not in final:
-        ERRORS.append(f"D6-D8 choice/reload evidence changed: missing {marker}")
+# Round 1 permanently retires the D6-D8 manual selector. Info-icon QA must
+# not require or recreate that retired UI.
+if "tripv2WeatherSelect" in itinerary:
+    ERRORS.append("Retired D6-D8 manual selector returned to itinerary.html")
 
 # Repair must load after the shared core/visit owner but before the renderer so normal completion events cannot be missed.
 match = re.search(r"const\s+itineraryScripts\s*=\s*commonHead\.concat\(\[(.*?)\]\);", loader, flags=re.S)
@@ -98,17 +78,12 @@ else:
         "visit": block.find("trip-v9-1-visit-fix.js"),
         "repair": block.find("info-icon-repair-v1.js"),
         "renderer": block.find("multi-trip-itinerary-renderer-v1.js"),
-        "i18n": block.find("i18n-v1.js"),
-        "polish": block.find("i18n-polish-en-v1.js"),
     }
     if min(positions.values()) < 0:
         ERRORS.append(f"Stage 5U itinerary loader evidence incomplete: {positions}")
-    elif not (
-        positions["core"] < positions["visit"] < positions["repair"] < positions["renderer"]
-        < positions["i18n"] < positions["polish"]
-    ):
+    elif not (positions["core"] < positions["visit"] < positions["repair"] < positions["renderer"]):
         ERRORS.append(
-            "Expected core < visit-fix < info-icon-repair < renderer < i18n < polish loader order; "
+            "Expected core < visit-fix < info-icon-repair < renderer loader order; "
             f"found {positions}"
         )
 
@@ -130,9 +105,9 @@ print("Renderer emits itinerary-rendered event:", "multitrip:itineraryrendered" 
 print("Repair loads before renderer:", bool(match and match.group(1).find("info-icon-repair-v1.js") < match.group(1).find("multi-trip-itinerary-renderer-v1.js")))
 print("Deterministic catch-up present:", "dataset.itineraryRenderer" in repair and "catchUp();" in repair)
 print("Reserved languagechange repair hook retained:", "japan2027:languagechange" in repair)
-print("D6-D8 selection reloads at 60 ms:", "setTimeout(()=>location.reload(),60)" in final)
+print("D6-D8 manual selector retired:", "tripv2WeatherSelect" not in itinerary)
 print("Info-icon setTimeout surfaces:", repair.count("setTimeout"))
-print("Stage 5U conclusion: info-icon startup and choice fallbacks are removed; renderer lifecycle + catch-up own normal reconciliation, with language support reserved")
+print("Round 1 conclusion: info-icon renderer lifecycle remains intact while the retired D6-D8 selector is no longer part of the QA contract")
 print(f"Errors: {len(ERRORS)}")
 for item in ERRORS:
     print("ERROR:", item)

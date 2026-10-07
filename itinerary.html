@@ -5392,8 +5392,121 @@ if (
 </script>
 
 
-<script type="application/json" id="travelPilotRuntimePlan">{"schemaVersion":1,"tripId":"shirakawago-shinhotaka-2027","pages":{"itinerary":{"styles":["assets/trip-enhancements-v2.css?v=913","assets/trip-enhancements-v3.css?v=913","assets/site-shell-v7.css?v=913","assets/trip-v8.css?v=913","assets/trip-v8-1.css?v=913"],"scripts":["assets/multi-trip-context-v1.js?v=10.14.0","assets/multi-trip-data-v1.js?v=2","assets/multi-trip-nav-v1.js?v=2","assets/trip-core-v1.js?v=8","assets/site-shell-v7.js?v=10.12.0","assets/weather-suitability-v1.js?v=6","assets/d6-d8-weather-decision-v1.js?v=1","assets/nav-enhancements-v1.js?v=3","assets/trip-enhancement-data.js?v=913","assets/japan2027-attraction-core-v1.js?v=2","assets/trip-user-overrides.js?v=913","assets/trip-deep-info-d1-d4.js?v=913","assets/trip-deep-info-d5-d9.js?v=913","assets/trip-deep-info-backups.js?v=913","assets/trip-v8-data.js?v=913","assets/trip-v8-1-overrides.js?v=913","assets/trip-enhancements-v3.js?v=913","assets/trip-v8-ui.js?v=913","assets/trip-v8-7-user-plan.js?v=913","assets/trip-v8-8-d2-plan.js?v=913","assets/trip-v8-9-user-fixes.js?v=913","assets/trip-v9-final-fixes.js?v=914","assets/trip-v9-hotfix.js?v=4","assets/trip-v9-1-routing.js?v=2","assets/trip-v9-1-visit-fix.js?v=5","assets/info-icon-repair-v1.js?v=7","assets/multi-trip-itinerary-renderer-v1.js?v=4","assets/itinerary-hotel-detail-v1.js?v=1","assets/multi-trip-weather-v1.js?v=2","assets/weather-profile-standard-v1.js?v=1","assets/multi-trip-mode-core-v1.js?v=1","assets/catalog-link.js?v=2","assets/travel-mode-v1.js?v=2","assets/travel-mode-nav-fix-v1.js?v=2","assets/driving-mode-v1.js?v=1","assets/multi-trip-mode-weather-bridge-v1.js?v=1"]}}}</script>
-<script src="assets/standard-runtime-loader-v1.js"></script>
+<script id="tripv2-itinerary-script">
+(function(){
+    const LEGACY_KEY = 'japanWinter2027_shinhotakaDay';
+    try { localStorage.removeItem(LEGACY_KEY); } catch(e) {}
+
+    const plans = {
+        d6: {
+            summaryTitle:'🏘️ 高山 → 白川鄉 → 高山',
+            summaryRoute:'高山 → 白川鄉合掌村 → 荻町城跡展望台 → 高山',
+            heading:'D6｜白川鄉',
+            note:'🏘️ D6 固定白川鄉。導航去「せせらぎ公園駐車場」，泊車後步行入荻町；唔好直接跟導航駛入合掌村住宅區。',
+            highlights:[
+                ['','🏘️ 今日固定 <strong>白川鄉合掌村</strong>，唔再同新穗高互換。'],
+                ['highlight-road','🚗 導航去 <strong>せせらぎ公園駐車場</strong>，冬季道路預鬆。'],
+                ['','📷 和田家＋荻町城跡展望台係今日主要內容。'],
+                ['highlight-weather','🌨️ 大雪／封路時以道路安全同官方交通安排優先。']
+            ],
+            items:[
+                {time:'09:15',type:'🚗 約 1小時',title:'高山 → 白川鄉',desc:'導航去官方せせらぎ公園駐車場，唔好直接導航入合掌村。',map:'せせらぎ公園駐車場 白川郷',mapLabel:'白川鄉・せせらぎ公園駐車場'},
+                {time:'10:15',type:'🏘️ 世界遺產',title:'荻町合掌村',desc:'一月厚雪覆蓋合掌造屋頂及農田，係最具代表性季節之一。',map:'せせらぎ公園駐車場 白川郷',mapLabel:'白川鄉・せせらぎ公園駐車場'},
+                {time:'11:20',type:'🏠 景點',title:'和田家',desc:'泊車後步行入村，睇木樑、圍爐及合掌造結構。',map:'せせらぎ公園駐車場 白川郷',mapLabel:'白川鄉・せせらぎ公園駐車場',price:'成人約 ¥400'},
+                {time:'12:00',type:'🍜 午餐',title:'白川鄉',desc:'鄉土定食／蕎麥麵。',map:'せせらぎ公園駐車場 白川郷',mapLabel:'白川鄉・せせらぎ公園駐車場'},
+                {time:'13:00',type:'📷 景點',title:'荻町城跡展望台',desc:'可俯瞰整個合掌村。私家車唔可以駛入展望台停車場，按現場交通安排上去。',map:'せせらぎ公園駐車場 白川郷',mapLabel:'白川鄉・せせらぎ公園駐車場',price:'Shuttle 約 ¥300/人/單程'},
+                {time:'14:00',type:'🚗 返回高山',title:'白川鄉 → 高山',desc:'約 1小時15分，冬季視道路情況預鬆。',map:'Takayama Ouan'},
+                {time:'15:30',type:'🏨 返回高山',title:'高山櫻庵／高山市區',desc:'返酒店休息；晚餐按原定高山安排。',map:'Takayama Ouan'}
+            ]
+        },
+        d7: {
+            summaryTitle:'🚡 高山 → 新穗高 → 高山',
+            summaryRoute:'高山 → 新穗高纜車 → 高山',
+            heading:'D7｜新穗高纜車',
+            note:'🚡 D7 固定新穗高。朝早處理退房／行李後直接向新穗高出發；天氣同纜車運行狀況只影響是否安全出發，不會再改去 D6 或 D8。',
+            highlights:[
+                ['highlight-weather','🌨️ 出發前再確認 <strong>纜車正常運行＋山頂能見度</strong>。'],
+                ['highlight-road','🚗 高山 → 新穗高係冬季山路，唔趕時間。'],
+                ['','🚡 今日固定新穗高；<strong>白川鄉已安排 D6</strong>。'],
+                ['','🕯️ 返到高山夠早＋道路安全，先考慮三寺巡禮 Bonus。']
+            ],
+            items:[
+                {time:'08:00',type:'🍳 早餐／退房',title:'高山櫻庵',desc:'早餐、退房，先處理行李；需要時先放去 Residence。',map:'Takayama Ouan'},
+                {time:'09:15',type:'🚗 約 1小時20分',title:'高山 → 新穗高',desc:'冬季山路預鬆；導航去新穗高溫泉停車場。',map:'新穂高温泉駐車場',mapLabel:'新穗高溫泉停車場'},
+                {time:'10:35',type:'🚡 核心景點',title:'新穗高纜車',desc:'兩段纜車上西穗高口；天氣好最值得，重點係雪山景觀。',map:'新穂高温泉駐車場',mapLabel:'新穗高溫泉停車場',price:'成人約 ¥3,800'},
+                {time:'13:15',type:'🚗 離開',title:'新穗高 → 高山',desc:'約呢個時間離開，保留冬季道路 Buffer。',map:'Residence Hotel Takayama Station'},
+                {time:'15:20',type:'🏨 返回高山',title:'Residence Hotel Takayama Station',desc:'返酒店 Check-in／休息。',map:'Residence Hotel Takayama Station'}
+            ],
+            bonus:'🕯️ 1月15日限定 Bonus：飛驒古川三寺巡禮。只喺返高山夠早、道路安全先考慮。'
+        },
+        d8: {
+            summaryTitle:'🏯 高山市區＋鐘乳洞 → 松本',
+            summaryRoute:'宮川朝市 → 高山陣屋／三町古街 → 飛驒大鐘乳洞 → 松本',
+            heading:'D8｜高山市區＋飛驒大鐘乳洞 → 松本',
+            note:'🚗 D6 白川鄉同 D7 新穗高已完成。今日固定高山市區＋飛驒大鐘乳洞，之後直接返松本；道路 Buffer 比 Bonus 重要。',
+            highlights:[
+                ['','🥬 朝早補 <strong>宮川朝市＋高山舊城區</strong>。'],
+                ['','🧊 下午順路做 <strong>飛驒大鐘乳洞＋冰之溪谷</strong>。'],
+                ['highlight-danger','🔴 今日最終一定要返 <strong>松本</strong>，唔為 Bonus 拖夜路。'],
+                ['highlight-road','🚗 飛驒大鐘乳洞 → 松本預約 2小時35分，雪天再加 Buffer。']
+            ],
+            items:[
+                {time:'09:30',type:'🥬 景點',title:'宮川朝市',desc:'約 35 分鐘。',map:'宮川朝市 高山'},
+                {time:'10:10',type:'🏯 景點',title:'高山陣屋',desc:'約 40 分鐘；導航去附近中橋駐車場。',map:'中橋駐車場 高山',mapLabel:'中橋駐車場・高山陣屋附近'},
+                {time:'10:50',type:'🏘️ 古街／酒藏',title:'三町古街＋酒藏',desc:'慢行、買手信；司機唔試酒。',map:'中橋駐車場 高山',mapLabel:'中橋駐車場・三町古街附近'},
+                {time:'12:40',type:'🚗',title:'高山 → 飛驒大鐘乳洞',desc:'順住去松本方向。',map:'Hida Great Limestone Cave'},
+                {time:'13:20',type:'🧊 景點',title:'飛驒大鐘乳洞＋冰之溪谷',desc:'約 1小時20分，一月重點係大型冰柱。',map:'Hida Great Limestone Cave',price:'成人約 ¥1,100'},
+                {time:'14:40',type:'🚗 約 2小時35分',title:'飛驒大鐘乳洞 → 松本',desc:'經平湯／安房方向，冬季路況慢行。',map:'Iroha Grand Hotel Matsumoto Ekimae'},
+                {time:'17:15',type:'🏨 CHECK-IN',title:'Iroha Grand Hotel Matsumoto Ekimae',desc:'最後一晚。',map:'Iroha Grand Hotel Matsumoto Ekimae'}
+            ]
+        }
+    };
+
+    function escapeAttr(value){
+        return String(value).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function timelineItem(item){
+        const h3Attrs = item.map ? ' data-map="' + escapeAttr(item.map) + '"' + (item.mapLabel ? ' data-map-label="' + escapeAttr(item.mapLabel) + '"' : '') : '';
+        const cardClass = item.hard ? 'timeline-card hard-cut' : 'timeline-card';
+        return '<div class="timeline-item"><div class="time">' + item.time + '</div><div class="' + cardClass + '"><span class="event-type">' + item.type + '</span><h3' + h3Attrs + '>' + item.title + '</h3><p>' + item.desc + '</p>' + (item.price ? '<span class="price">' + item.price + '</span>' : '') + '</div></div>';
+    }
+
+    function renderDay(id){
+        const day = document.getElementById(id);
+        const plan = plans[id];
+        if (!day || !plan) return;
+        day.querySelectorAll('.tripv2-dynamic').forEach(function(el){ el.remove(); });
+        day.querySelectorAll('.day-highlights,.quick-decision,.day-content').forEach(function(el){ el.classList.add('tripv2-hidden-original'); });
+
+        const title = day.querySelector('.day-title');
+        const route = day.querySelector('.day-route');
+        if (title) title.textContent = plan.summaryTitle;
+        if (route) route.textContent = plan.summaryRoute;
+
+        const highlights = document.createElement('div');
+        highlights.className = 'day-highlights tripv2-dynamic';
+        highlights.innerHTML = '<div class="highlights-title">✅ 固定行程｜' + plan.heading + '</div><div class="highlights-grid">' + plan.highlights.map(function(h){ return '<div class="highlight-item ' + h[0] + '">' + h[1] + '</div>'; }).join('') + '</div>';
+        const photo = day.querySelector('.photo-section');
+        if (photo) photo.insertAdjacentElement('beforebegin', highlights);
+
+        const content = document.createElement('div');
+        content.className = 'day-content tripv2-dynamic';
+        content.innerHTML = '<div class="tripv2-selected-note"><strong>' + plan.heading + '</strong><br>' + plan.note + '</div><div class="timeline">' + plan.items.map(timelineItem).join('') + '</div>' + (plan.bonus ? '<div class="special-box bonus">' + plan.bonus + '</div>' : '') + '<div class="day-buttons"><a class="button" href="index.html#' + id + '">📹 睇 ' + id.toUpperCase() + ' Live Cam</a></div>';
+        if (photo) photo.insertAdjacentElement('afterend', content); else day.querySelector('.day-inner').appendChild(content);
+        if (typeof addMapPins === 'function') addMapPins();
+    }
+
+    function render(){
+        ['d6','d7','d8'].forEach(renderDay);
+        document.documentElement.dataset.d68FixedPlan='d6-shirakawago_d7-shinhotaka_d8-city-cave';
+    }
+
+    document.addEventListener('DOMContentLoaded', render);
+})();
+</script>
+
+<script src="assets/attraction-info.js?v=1"></script>
 
 
 </body>
