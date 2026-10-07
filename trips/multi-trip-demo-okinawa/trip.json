@@ -19,7 +19,8 @@
     "weatherScore": true,
     "weatherActivityProfiles": true,
     "packingChecklist": true,
-    "winterDriving": false
+    "winterDriving": false,
+    "conditionalDayPlanning": false
   },
   "modules": [],
   "pages": {
@@ -37,17 +38,45 @@
     "weather": "weather.json"
   },
   "renderers": {
-    "itinerary": {"mode":"generate","source":"itinerary","preserveLegacyDetails":false},
-    "tripInfo": {"mode":"generate","source":"tripInfo","preserveLegacyShell":false},
-    "attractions": {"mode":"generate","source":"attractions","preserveLegacyDetails":false},
-    "liveCam": {"mode":"generate","source":"liveCams","preserveLegacyMediaTemplates":false},
-    "weather": {"mode":"generate","source":"weather","profileStandard":"v1","preserveLegacyDecisionModules":false},
-    "todayMode": {"mode":"generate","source":"itinerary"},
-    "drivingMode": {"mode":"generate","source":"itinerary"}
+    "itinerary": {
+      "mode": "generate",
+      "source": "itinerary",
+      "preserveLegacyDetails": false
+    },
+    "tripInfo": {
+      "mode": "generate",
+      "source": "tripInfo",
+      "preserveLegacyShell": false
+    },
+    "attractions": {
+      "mode": "generate",
+      "source": "attractions",
+      "preserveLegacyDetails": false
+    },
+    "liveCam": {
+      "mode": "generate",
+      "source": "liveCams",
+      "preserveLegacyMediaTemplates": false
+    },
+    "weather": {
+      "mode": "generate",
+      "source": "weather",
+      "profileStandard": "v1",
+      "preserveLegacyDecisionModules": false
+    },
+    "todayMode": {
+      "mode": "generate",
+      "source": "itinerary"
+    },
+    "drivingMode": {
+      "mode": "generate",
+      "source": "itinerary"
+    }
   },
   "legacy": {
     "dataMode": "generic-only",
     "migrationStage": 9,
     "note": "Non-production validation trip used to prove the shared Multi Trip renderers without Japan 2027 legacy scripts."
-  }
+  },
+  "contractVersion": "standard-v1"
 }
