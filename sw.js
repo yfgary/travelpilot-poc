@@ -10,6 +10,8 @@ const CORE=[
   './assets/travelpilot-home.css',
   './assets/images/travelpilot-icon-exact.jpg',
   './assets/images/d5-mountain-harbor.jpg',
+  './assets/multi-trip-runtime-v1.js',
+  './assets/attraction-info.js',
   './assets/multi-trip-context-v1.js',
   './assets/multi-trip-shared-ui-v1.css',
   './assets/multi-trip-nav-v1.js',
@@ -57,16 +59,15 @@ self.addEventListener('activate',event=>{
   })());
 });
 
-/* live.html is still a legacy Japan page. Inject only the shared multi-trip
-   entry shim so non-Japan trips can replace/disable that legacy content. The
-   Japan-specific live-v9-2 sync is already loaded by site-shell-v7 and must not
-   be injected here a second time. */
+/* Older cached live.html copies may not contain the Standard runtime entry yet.
+   Inject the same shared runtime boot used by all four pages; the runtime then
+   chooses the compatibility or Standard module set. */
 async function patchLive(response,url){
   if(!response||!url.pathname.endsWith('/live.html'))return response;
   try{
     let text=await response.text();
-    if(!text.includes('assets/multi-trip-live-entry-v1.js')){
-      text=text.replace(/<\/body>/i,'<script src="assets/multi-trip-live-entry-v1.js?v=10.16.0"><\/script>\n</body>');
+    if(!text.includes('assets/multi-trip-runtime-v1.js')){
+      text=text.replace(/<\/body>/i,'<script src="assets/multi-trip-runtime-v1.js?v=10.17.0"><\/script>\n</body>');
     }
     const headers=new Headers(response.headers);
     headers.delete('content-length');
