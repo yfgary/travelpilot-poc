@@ -133,6 +133,22 @@ async function snapshot(page){
   });
 }
 
+async function d68Surface(page){
+  return page.evaluate(() => ({
+    selector:document.querySelectorAll('#tripv2WeatherSelect').length,
+    panel:document.querySelectorAll('#d6d8WeatherDecision').length,
+    cards:document.querySelectorAll('#d6d8WeatherDecision .d68-card').length,
+    apply:document.querySelectorAll('#d68Apply').length,
+    text:(document.querySelector('#d6d8WeatherDecision')?.innerText||'').replace(/\s+/g,' ').trim()
+  }));
+}
+
+async function removeApprovedD6D8Variation(page){
+  return page.evaluate(() => {
+    document.querySelectorAll('#tripv2WeatherSelect,#d6d8WeatherDecision').forEach(el=>el.remove());
+  });
+}
+
 async function overlaySnapshot(page,selector){
   return page.locator(selector).evaluate(el=>({
     hidden:el.hidden,
@@ -174,6 +190,30 @@ try{
   assert(baseline.errors.length===0,'baseline page errors: '+baseline.errors.join(' | '));
   assert(candidate.errors.length===0,'candidate page errors: '+candidate.errors.join(' | '));
 
+  const [baseD68,candD68]=await Promise.all([d68Surface(baseline.page),d68Surface(candidate.page)]);
+  if(baseD68.selector!==1) failures.push('Production Golden Reference D6-D8 selector surface missing');
+  if(candD68.selector!==0) failures.push('Candidate still exposes D6-D8 selector');
+  if(candD68.panel!==1||candD68.cards!==3) failures.push('Read-only D6-D8 weather comparison missing');
+  if(candD68.apply!==0) failures.push('D6-D8 weather comparison still exposes Apply action');
+  if(!candD68.text.includes('只作天氣比較')||!candD68.text.includes('不會套用或改動')) failures.push('D6-D8 weather comparison is not clearly read-only');
+
+  const retiredState=await candidate.page.evaluate(() => {
+    localStorage.setItem('japanWinter2027_shinhotakaDay','d8');
+    const api=window.Japan2027Core;
+    const setter=api&&api.setSelectedShinhotakaDay;
+    if(setter)setter('d7');
+    return {
+      key:localStorage.getItem('japanWinter2027_shinhotakaDay'),
+      selected:api&&api.getSelectedShinhotakaDay?api.getSelectedShinhotakaDay():null,
+      plan:api&&api.resolveFlexibleDays?api.resolveFlexibleDays('d8'):null
+    };
+  });
+  if(retiredState.key!==null||retiredState.selected!=='') failures.push('Legacy D6-D8 selection storage/API still active');
+  if(!retiredState.plan||retiredState.plan.selected!=='') failures.push('Legacy D6-D8 flexible plan resolver still accepts a selected day');
+
+  // Normalize only the explicitly approved D6-D8 UI difference before full DOM/pixel comparison.
+  await Promise.all([removeApprovedD6D8Variation(baseline.page),removeApprovedD6D8Variation(candidate.page)]);
+
   const [a,b]=await Promise.all([snapshot(baseline.page),snapshot(candidate.page)]);
   const differences=diff(a,b);
   if(differences.length) failures.push('DOM/feature parity:\n'+differences.slice(0,80).join('\n'));
@@ -191,8 +231,8 @@ try{
     ['photo credits',b.rich.credits,1]
   ]) if(value<min) failures.push(label+' '+value+' < '+min);
   if(!b.bonusText) failures.push('Snow shrine / torii Bonus text missing');
-  if(b.d68.panel!==1||b.d68.cards!==3) failures.push('D6-D8 weather comparison parity missing');
-  if(b.selector!==1) failures.push('D6-D8 selector parity missing');
+  if(candD68.panel!==1||candD68.cards!==3) failures.push('D6-D8 weather score comparison missing');
+  if(b.selector!==0) failures.push('Normalized candidate still contains D6-D8 selector');
 
   // Interaction parity: photo zoom.
   await baseline.page.locator('details.day#d1').evaluate(el=>{el.open=true;});
