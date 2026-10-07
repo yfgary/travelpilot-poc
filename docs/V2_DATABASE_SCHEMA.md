@@ -1,6 +1,6 @@
 # TravelPilot V2 — Supabase / Data Schema
 
-Status: locked architecture baseline; no migration applied yet.
+Status: Step 5 V2 database foundation already applied and verified in the existing Supabase project; this frontend task performs no DDL or migrations.
 
 ## Design choice
 Use a **hybrid versioned-snapshot model**.
@@ -19,7 +19,32 @@ Current Supabase public V1 tables observed on 08/10/2026:
 
 V2 uses new `v2_` tables only.
 
-## Proposed V2 tables
+## Applied Step 5 foundation
+
+Project: **Japan Winter 2027 Sync**
+
+Project URL: `https://rihnuowhkzrpfkvrsxej.supabase.co`
+
+The five V2 tables, RLS policies and grants were created and verified by GPT-5.6 Sol before this frontend integration task, as confirmed in the Step 5 handoff. No table was created, altered, dropped or migrated by this task.
+
+| Existing V2 table | Applied browser access model |
+| --- | --- |
+| `v2_trips` | Authenticated SELECT of own rows only |
+| `v2_trip_versions` | Authenticated SELECT only when the parent trip belongs to the user |
+| `v2_checklist_state` | Authenticated CRUD of own rows / own trips only |
+| `v2_user_preferences` | Authenticated CRUD of own row only |
+| `v2_app_versions` | Anonymous and authenticated SELECT of published rows only |
+
+V2 trip content is private by default. App shell, Home and Settings may load signed out. Ordinary browser users cannot administer or publish content. No public/shared trip feature is provided in Step 5. The local demo fixture remains independent of real trip access; its loader is unchanged until Step 6.
+
+The Step 5 database foundation was verified with Supabase advisors before this task. The handoff reports that the new V2 policies introduced no advisor security warnings. Existing V1 advisor warnings were intentionally left untouched; they were not fixed by this foundation or frontend task.
+
+Existing V1 tables remain untouched and isolated. No V2 migration should modify a V1 table. The browser integration uses only the supplied modern publishable key; it never uses privileged credentials or a legacy anon JWT.
+
+## Original schema field guidance
+
+The field lists below are the earlier design guidance, not a fresh SQL introspection or DDL instruction. The applied ownership policies above are authoritative for access. Exact snapshot TypeScript definitions and the real data loader belong to Step 6.
+
 
 ### v2_trips
 Stable trip identity and lightweight list/home metadata.
@@ -317,15 +342,9 @@ Use IndexedDB for structured payloads.
 Use Cache Storage for app/static assets and selected essential images.
 
 ## RLS/security
-Before V2 tables are created, define explicit policies.
+The Step 5 applied policies/grants follow the access model recorded above. Content reads require authenticated ownership, while published App Version metadata alone permits anonymous reads. Checklist and preference writes remain owner-scoped. Content administration/publishing is not exposed to ordinary browser users.
 
-Expected direction:
-- published trip content: read according to product visibility decision
-- checklist state: authenticated user can read/write only own rows
-- preferences: authenticated user can read/write only own row
-- content publishing: not writable by ordinary anonymous browser sessions
-
-Run Supabase security/performance advisors after actual DDL changes.
+The prior database foundation was verified with advisors. Run security/performance advisors after future authorized DDL changes. This frontend task makes no DDL changes and does not change V1 warnings.
 
 ## Validation gate
 Before real Japan 2027 migration:

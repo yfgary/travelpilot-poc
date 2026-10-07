@@ -23,7 +23,7 @@ Before changing implementation, read:
 - Do not reintroduce legacy V1 POC code into this repository.
 - Do not hard-code trip-specific behaviour.
 
-## V2 shared foundation (Step 4)
+## V2 shared foundation (Step 5)
 
 Node.js 22.12+ (Node 24 recommended):
 
@@ -83,3 +83,27 @@ legacy branch publication from bypassing this gate. Production is untouched.
 
 Every POC implementation/update commit intended for main must bump the package
 version. App Version is independent of future Trip Data Versions.
+
+## Supabase frontend foundation
+
+`src/services/supabaseConfig.ts` contains the public project URL and modern
+publishable key; `supabase.ts` creates the single browser client. The exact
+`@supabase/supabase-js` version is pinned in package.json and the lockfile.
+`auth/AuthProvider.tsx` restores SDK-managed sessions, subscribes to auth changes
+and exposes shared initialization/session/error state. Settings supports existing
+email/password account login/logout only. Passwords are not manually persisted
+or logged; the password field is cleared on submit.
+
+Settings performs one bounded published `v2_app_versions` read per visit for
+backend status (no polling or automatic query retries). This is separate from
+navigator.onLine. An empty published list still confirms a successful read.
+App shell/Home/Settings and the local demo fixture work signed out; real trip
+content remains private and owner-scoped. Its loader is not implemented yet.
+
+The database foundation was already created/verified before this task. No SQL,
+table migration, V1 access or content publishing is added by this release.
+Playwright fixtures intercept all Supabase requests and use fake sessions, so
+CI never needs real account credentials. Browser session restoration and logout
+use normal SDK behavior; default logout scope is global, and the SDK clears the
+local session even if server logout fails. Blocked browser storage cannot provide
+normal reload persistence.

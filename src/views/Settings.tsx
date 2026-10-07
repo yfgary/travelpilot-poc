@@ -1,5 +1,7 @@
 import { APP_VERSION } from '../app/metadata'
 import { fontOptions, usePreferences } from '../app/Preferences'
+import { AuthPanel } from '../components/AuthPanel'
+import { BackendStatus } from '../components/BackendStatus'
 import { PageHeading } from '../components/PageHeading'
 
 export function Settings() {
@@ -29,8 +31,10 @@ export function Settings() {
           <h2>關於應用程式</h2>
           <p className="version-detail">App Version {APP_VERSION}</p>
           <p className="muted">TravelPilot｜旅程管家</p>
-          <p>登入、離線資料、同步及更新功能將於後續階段加入。</p>
+          <BackendStatus />
+          <p>離線資料、同步及更新功能將於後續階段加入。</p>
         </section>
+        <AuthPanel />
       </div>
     </>
   )

@@ -3,9 +3,9 @@
 Last updated: 08/10/2026
 
 ## Progress
-**Step 4/16 — Shared UI shell + responsive baseline: COMPLETE**
+**Step 5/16 — Supabase V2 foundation — frontend integration: COMPLETE**
 
-Next: **Step 5/16 — Supabase V2 foundation**
+Next: **Step 6/16 — Trip schema + versioned data loader**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -31,7 +31,6 @@ Next: **Step 5/16 — Supabase V2 foundation**
 
 ## Not started
 - Full V2 feature implementation (foundation and shared visual shell complete)
-- Supabase schema migration
 - Complete PWA/offline implementation (manifest foundation only is complete)
 - multi-trip renderer implementation
 - Complete V1 UI parity (shared responsive baseline only is complete)
@@ -50,7 +49,7 @@ Next: **Step 5/16 — Supabase V2 foundation**
   - `assets/images/travelpilot_icon.PNG`
 
 ## Next step
-Step 4 is complete. Next is **Step 5/16 — Supabase V2 foundation**, only when explicitly authorized. No Step 5 implementation has begun. Real trip migration and feature engines remain outside the shared shell.
+Step 5 is complete. Next is **Step 6/16 — Trip schema + versioned data loader**, only when explicitly authorized. No Step 6 implementation has begun. Real trip migration and feature engines remain outside this foundation.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -125,21 +124,48 @@ All Step 3 acceptance criteria passed:
 - `git diff --check` passed; no canonical source assets or production files changed.
 - No new architecture decision was necessary; V2_DECISIONS.md remains unchanged.
 
+## Step 5 completed frontend foundation
+- Existing Supabase project: Japan Winter 2027 Sync. The V2 database tables, grants and ownership policies were already applied and verified with advisors by GPT-5.6 Sol before this task, as confirmed by the handoff. No DDL, table changes or migrations were performed here.
+- `docs/V2_DATABASE_SCHEMA.md` now records the applied V2 access model and the prior advisor verification. V1 tables and existing V1 advisor warnings remain untouched.
+- App Version bumped to `v2.0.0-poc.3`, using package.json as the canonical source.
+- Exact `@supabase/supabase-js` version pinned to 2.117.3, with committed lockfile and compatible Node requirement.
+- One public configuration module holds the supplied project URL and modern publishable key; one reusable browser client owns standard SDK session persistence and auto refresh. No privileged credential or legacy anon JWT is used.
+- Shared AuthProvider restores/checks sessions with getSession, subscribes synchronously to auth events and unsubscribes on cleanup. Generic states cover initialization, signed out, signed in and auth error. Startup results cannot overwrite a newer auth event.
+- Settings supports existing-account email/password login and logout only, with duplicate-submit protection, password-type input, field clearing on submit and generic Traditional Chinese errors. Signed-in UI shows email, not internal user IDs.
+- Settings checks published v2_app_versions with one bounded read per visit. Loading/success/failure is separate from navigator.onLine. No polling or automatic database-read retries; an empty result is a successful connection.
+- Private trip ownership and existing-account-only authentication decisions recorded in V2_DECISIONS.md. App shell, Home, Settings and the unchanged local demo fixture remain available signed out. Real trip loading is deferred to Step 6.
+
+## Step 5 verification
+- `npm ci` succeeded (88 packages installed).
+- `npm run build` passed, including strict application/tool/test TypeScript checks.
+- Complete Playwright suite: **145 passed** against the final production build, at 320px, 390px, 430px, 1024px and 1440px.
+- All 105 Step 3/4 checks retained with the release-version expectation updated.
+- Added signed-out/password-only UI, password input type, no signup/reset actions, duplicate-submit loading, generic login error, password clearing/no console or storage exposure, signed-in email, SDK persistence/reload, successful logout and remote logout failure checks.
+- Delayed session refresh verifies initialization without blocking the shell, then shared signed-in state across navigation.
+- Backend loading/success/empty-list/failure checks verify published-only bounded reads and separation from browser ONLINE status.
+- Source/build credential checks found no privileged keys; new frontend data code references no V1 tables and introduces no trip-specific branches.
+- Supabase requests are intercepted at the network boundary in all automated tests. CI uses fake sessions and never needs real account credentials or writes to the real database.
+- Canonical branding remains unchanged; responsive/font preference/hash route/error/status regressions pass.
+- `git diff --check` passed. Production repository and all Supabase tables remain untouched by this task.
+
 ## Known limitations
-- No final V1 parity or physical iPhone/Safari certification; browser checks use Chromium viewport emulation.
-- Manifest foundation only. No service worker, cold offline startup, trip download, IndexedDB or installability claim.
-- Connection status is navigator.onLine, not backend reachability.
-- Demo metadata only; no real trip content, snapshot loader, Supabase auth/migrations, weather, checklist sync, Live Cam engine or Today Mode logic.
-- The user confirmed changing the POC Pages source from legacy branch/Jekyll publication to GitHub Actions before the Step 4 push, so automatic publication follows the build/test gate. Remote workflow results are verified after pushing; local acceptance checks passed.
+- Real-account login was not exercised because no user password was requested or used. Automated tests validate the actual SDK against intercepted network responses.
+- Live Supabase REST reachability was not reverified from this execution environment: its network policy excludes the Supabase host. The Settings check runs in the user's browser; prior database/RLS/advisor verification is recorded from the supplied handoff.
+- Default SDK logout scope is global. SDK session storage is cleared even when remote logout returns an error; the UI reports this without claiming that server-side logout succeeded.
+- Standard reload persistence requires available browser storage. Font preferences remain local only; no Supabase preference or checklist sync.
+- No public/shared trip content, real snapshot loader, schema validator, trip download, service worker strategy, weather, Live Cam or Today Mode engine.
+- Existing Chromium viewport coverage is not physical iPhone/Safari certification or complete V1 parity.
+- POC automatic build/test/deploy workflow remains intact; its remote result is verified after pushing.
 
 ## Next bounded task
-**Step 5/16 — Supabase V2 foundation** (not started)
+**Step 6/16 — Trip schema + versioned data loader** (not started)
 
-Scope from the roadmap, only when Step 5 is explicitly authorized:
-- approved v2_ tables and RLS/policies
-- frontend Supabase client
-- Settings login/logout
-- preserve all existing V1 tables
-- run advisors after actual DDL changes
+Only when explicitly authorized:
+- versioned TypeScript trip schema/validation
+- generic dummy snapshot format
+- owner-scoped Supabase snapshot loader
+- IndexedDB trip cache
+- distinct App / Trip Data / Trip Schema versions
+- validation/error handling
 
-Do not begin Step 5. Production must not be modified.
+Do not begin Step 6. Production must not be modified.

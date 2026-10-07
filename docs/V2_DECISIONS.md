@@ -87,3 +87,12 @@ Expected paths:
 
 ## 2026-10-08 — 16-step progress model
 **Decision:** Project progress is tracked as Step N/16. Each completed implementation task updates `V2_CURRENT_STATE.md`.
+
+## 2026-10-08 — Private V2 content with a signed-out shell
+**Decision:** V2 trip data is private by default. App shell, Home and Settings may load signed out. Real `v2_trips` and `v2_trip_versions` content requires authenticated ownership enforced by RLS, including ownership of the parent trip for version reads. No public/shared trip feature is implemented in Step 5. The local demo fixture is unchanged; the real loader belongs to Step 6.
+
+## 2026-10-08 — Existing-account password authentication in Settings
+**Decision:** Settings provides existing-account email/password login and logout only, using the shared Supabase browser client and auth state. No self-service signup, account creation, password reset, magic link or social login is implemented in Step 5. Supabase JS manages persisted sessions and token refresh.
+
+## 2026-10-08 — Modern browser key and V1 isolation
+**Decision:** Use the modern Supabase publishable key in the browser client, with public project configuration in one module. Do not use privileged credentials or the legacy anon JWT. The already-applied V2 tables remain isolated from V1; existing V1 Supabase tables, policies and advisor warnings stay untouched. This Step 5 frontend integration performs no database DDL or migrations.
