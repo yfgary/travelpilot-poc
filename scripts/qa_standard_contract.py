@@ -129,6 +129,7 @@ def validate(entry):
         if tr and tr not in regions:err(f"{tid} module {m.get('id')} unknown targetRegion {tr}")
     if f.get("conditionalDayPlanning")!=bool(modules):err(f"{tid} conditionalDayPlanning must match modules")
     if f.get("packingChecklist") and "departureChecklist" not in data:debt(f"{tid} checklist still embedded in Trip Info")
+    if itinerary.get("flexibleRules"):debt(f"{tid} legacy flexibleRules compatibility data remains")
     if t.get("legacy"):debt(f"{tid} legacy metadata remains")
 
 def main():
