@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - round4-standard-itinerary-engine
+      - round4-standard-itinerary-final
     paths:
       - scripts/round4-capture-production-itinerary.mjs
       - .github/workflows/round4-capture-itinerary.yml
@@ -63,4 +64,4 @@ jobs:
             exit 0
           fi
           git commit -m "Round 4: capture Production itinerary as Standard typed data"
-          git push origin HEAD:round4-standard-itinerary-engine
+          git push origin HEAD:"$GITHUB_REF_NAME"
