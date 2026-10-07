@@ -294,5 +294,35 @@
         }
       ]
     }
-  ]
+  ],
+  "flexibleRules": {
+    "storageKey": "japanWinter2027_shinhotakaDay",
+    "choices": [
+      "d6",
+      "d7",
+      "d8"
+    ],
+    "scenarios": {
+      "d6": {
+        "d6": "shinhotaka",
+        "d7": "shirakawago",
+        "d8": "cityCave"
+      },
+      "d7": {
+        "d6": "shirakawago",
+        "d7": "shinhotaka",
+        "d8": "cityCave"
+      },
+      "d8": {
+        "d6": "shirakawago",
+        "d7": "cityCave",
+        "d8": "shinhotaka"
+      },
+      "unset": {
+        "d6": "shirakawago",
+        "d7": "planning",
+        "d8": "planningEast"
+      }
+    }
+  }
 }
