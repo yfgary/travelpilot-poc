@@ -257,9 +257,25 @@ function ensureMarker(container,legacy){
  if(first)first.parentNode.insertBefore(generatedMarker,first);else container.appendChild(generatedMarker);
  return generatedMarker;
 }
+function preserveLegacyModeSource(existing){
+ if(document.getElementById('multiTripLegacyModeSource'))return;
+ const box=document.createElement('div');
+ box.id='multiTripLegacyModeSource';
+ box.hidden=true;
+ box.setAttribute('aria-hidden','true');
+ box.dataset.migrationOnly='round4-mode-source';
+ existing.forEach(day=>{
+  const clone=day.cloneNode(true);
+  clone.id='legacy-mode-'+day.id;
+  clone.querySelectorAll('[id]').forEach(el=>{el.id='legacy-mode-'+el.id;});
+  box.appendChild(clone);
+ });
+ document.body.appendChild(box);
+}
 function insertGeneratedDays(container,ds){
- const existing=[...container.querySelectorAll('details.day')];
+ const existing=[...container.querySelectorAll('details.day')].filter(x=>!x.closest('#multiTripLegacyModeSource'));
  const marker=ensureMarker(container,existing);
+ preserveLegacyModeSource(existing);
  existing.forEach(x=>x.remove());
  const tpl=document.createElement('template');tpl.innerHTML=ds.map(renderDay).join('');
  marker.after(tpl.content);
