@@ -114,7 +114,7 @@ jobs:
                   sys.exit(1)
 
           prod=a['sw.js'].read_text(encoding='utf-8')
-          poc=b['sw.js'].read_text(encoding='utf-8').replace('v10.15.0','v10.14.0').replace('20261007','20261005')
+          poc=b['sw.js'].read_text(encoding='utf-8').replace('v10.15.0','v10.14.0').replace('10.15.0','10.14.0').replace('20261007','20261005')
           if prod!=poc:
               print('Unexpected sw.js drift outside version/cache identity')
               sys.exit(1)
