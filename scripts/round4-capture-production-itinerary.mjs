@@ -6,6 +6,7 @@ const ROOT=process.cwd();
 const TRIP='shirakawago-shinhotaka-2027';
 const OUT=path.join(ROOT,'trips',TRIP,'itinerary.json');
 const BASE_URL=process.env.PRODUCTION_URL||'http://127.0.0.1:8010';
+// Round 4 capture emits generic Standard presentationMarkup data.
 
 const readJson=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 const clean=s=>String(s??'').replace(/\s+/g,' ').trim();
