@@ -74,10 +74,9 @@ def main() -> int:
         if "window.MutationObserver=" in text:
             error(f"Unexpected global MutationObserver replacement: assets/{path.name}")
 
-    # The Japan itinerary itself now has only the intentional i18n observer.
-    # It watches child additions so Today/Driving UI created later can still be
-    # translated. All itinerary decoration observers are gone.
-    intentional_itinerary = {"assets/i18n-v1.js"}
+    # Production no longer ships i18n-v1.js. The Japan itinerary must stay
+    # free of persistent MutationObservers; all decoration uses bounded passes.
+    intentional_itinerary = set()
     found: dict[str, int] = {}
     for rel in itinerary_asset_paths(blocks["itineraryScripts"]):
         text = read(rel)
@@ -91,9 +90,6 @@ def main() -> int:
     missing_known = intentional_itinerary - set(found)
     if missing_known:
         error("Intentional observer missing: " + ", ".join(sorted(missing_known)))
-    if found.get("assets/i18n-v1.js") != 1:
-        error(f"Intentional observer count changed for assets/i18n-v1.js: {found.get('assets/i18n-v1.js', 0)}")
-
     v3 = read("assets/trip-enhancements-v3.js")
     if direct_observer_count(v3):
         error("trip-enhancements-v3.js must stay observer-free")
@@ -112,12 +108,6 @@ def main() -> int:
     if "[120,350,800,1600,2600]" not in v8_ui or "setTimeout(enrichModal,0)" not in v8_ui:
         error("trip-v8-ui.js lost its bounded startup/click refresh strategy")
 
-    i18n = read("assets/i18n-v1.js")
-    if "observer.observe(document.documentElement,{subtree:true,childList:true})" not in i18n:
-        error("i18n observer must stay scoped to documentElement child additions only")
-    if "attributes:true" in i18n[i18n.find("function boot()"):] and direct_observer_count(i18n):
-        error("i18n observer unexpectedly watches attributes")
-
     # Trip Info checklist sync legitimately uses two scoped observers: one
     # temporary waiter for the checklist section and one observer limited to
     # the rendered checklist body so cloud-sync state stays accurate.
@@ -131,7 +121,7 @@ def main() -> int:
 
     # Other page types may only use their explicitly scoped observers.
     page_allowed = {
-        "tripInfoScripts": {"assets/i18n-v1.js", "assets/multi-trip-checklist-sync-v1.js"},
+        "tripInfoScripts": {"assets/multi-trip-checklist-sync-v1.js"},
         "genericItineraryScripts": set(),
         "genericTripInfoScripts": {"assets/multi-trip-checklist-sync-v1.js"},
     }
@@ -146,8 +136,7 @@ def main() -> int:
             error(f"Unexpected observer users in {name}: " + ", ".join(sorted(extra)))
 
     print("TravelPilot observer QA")
-    print("Japan itinerary persistent observer:")
-    print(f"  assets/i18n-v1.js: {found.get('assets/i18n-v1.js', 0)}")
+    print("Japan itinerary persistent observers:", sum(found.values()))
     print("Remaining legacy itinerary observers: 0")
     print("Global MutationObserver overrides: 0")
     print("Trip Info checklist observers: scoped/intentional")
