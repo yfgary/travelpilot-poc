@@ -1,0 +1,66 @@
+name: Round 4 Capture Production Itinerary
+
+on:
+  push:
+    branches:
+      - round4-standard-itinerary-engine
+    paths:
+      - scripts/round4-capture-production-itinerary.mjs
+      - .github/workflows/round4-capture-itinerary.yml
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout POC branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout Production golden reference
+        uses: actions/checkout@v4
+        with:
+          repository: yfgary/travelpilot
+          ref: 5228dd7774274caac7c647d5ca760ce4d31cf946
+          path: production-reference
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Serve Production
+        run: |
+          (cd production-reference && python -m http.server 8010 --bind 127.0.0.1 >/tmp/round4-prod.log 2>&1) &
+          echo $! >/tmp/round4-prod.pid
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8010/itinerary.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/round4-prod.log
+          exit 1
+
+      - name: Capture typed Standard itinerary data
+        env:
+          PRODUCTION_URL: http://127.0.0.1:8010
+        run: node scripts/round4-capture-production-itinerary.mjs
+
+      - name: Commit generated Standard data
+        run: |
+          rm -rf production-reference
+          git config user.name "travelpilot-poc-bot"
+          git config user.email "travelpilot-poc-bot@users.noreply.github.com"
+          git add trips/shirakawago-shinhotaka-2027/itinerary.json trips/shirakawago-shinhotaka-2027/round4-itinerary-capture-report.json
+          if git diff --cached --quiet; then
+            echo "No capture changes"
+            exit 0
+          fi
+          git commit -m "Round 4: capture Production itinerary as Standard typed data"
+          git push origin HEAD:round4-standard-itinerary-engine
