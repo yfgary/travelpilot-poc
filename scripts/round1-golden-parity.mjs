@@ -104,6 +104,31 @@ async function itineraryStructure(page){
    }
  })));
 }
+async function visualGeometry(page){
+ return page.evaluate(()=>{
+  const round=n=>Math.round(Number(n)*100)/100;
+  const snap=(el)=>{
+   if(!el)return null;
+   const r=el.getBoundingClientRect(),s=getComputedStyle(el);
+   return {
+    tag:el.tagName.toLowerCase(),cls:[...el.classList].join(' '),
+    rect:[round(r.x),round(r.y),round(r.width),round(r.height)],
+    display:s.display,fontSize:s.fontSize,fontWeight:s.fontWeight,lineHeight:s.lineHeight,
+    margin:[s.marginTop,s.marginRight,s.marginBottom,s.marginLeft],
+    padding:[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft],
+    borderRadius:s.borderRadius,background:s.backgroundColor,color:s.color
+   };
+  };
+  return {
+   panels:['#weather3dPanel','#d6d8WeatherDecision','#tripv2WeatherSelect','#v87ShrineQuick'].map(sel=>[sel,snap(document.querySelector(sel))]),
+   days:[...document.querySelectorAll('details.day[id]')].map(day=>({
+     id:day.id,open:day.open,day:snap(day),summary:snap(day.querySelector(':scope > summary')),
+     number:snap(day.querySelector('.day-number')),title:snap(day.querySelector('.day-title')),
+     date:snap(day.querySelector('.day-date')),route:snap(day.querySelector('.day-route'))
+   }))
+  };
+ });
+}
 
 const browser=await chromium.launch({headless:true});
 try{
@@ -117,6 +142,9 @@ try{
  const [structA,structB]=await Promise.all([itineraryStructure(a),itineraryStructure(b)]);
  const structDiff=diff(structA,structB,'itineraryStructure');
  if(structDiff.length)failures.push('Itinerary structure parity:\n'+structDiff.slice(0,120).join('\n'));
+ const [geoA,geoB]=await Promise.all([visualGeometry(a),visualGeometry(b)]);
+ const geoDiff=diff(geoA,geoB,'visualGeometry');
+ if(geoDiff.length)failures.push('Visual geometry parity:\n'+geoDiff.slice(0,160).join('\n'));
  const gates=await b.evaluate(()=>({
    selector:document.querySelectorAll('#tripv2WeatherSelect').length,
    d68Panel:document.querySelectorAll('#d6d8WeatherDecision').length,
