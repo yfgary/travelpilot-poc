@@ -27,8 +27,8 @@ If a feature cannot be implemented generically, report its complexity before pro
 Product name: **TravelPilot｜旅程管家**
 
 Canonical assets:
-- `travelpilot/assets/images/travelpilot_banner.PNG`
-- `travelpilot/assets/images/travelpilot_icon.PNG`
+- `assets/images/travelpilot_banner.PNG`
+- `assets/images/travelpilot_icon.PNG`
 
 Suggested homepage copy:
 - Main line: **每一段旅程，都準備妥當。**
@@ -54,7 +54,7 @@ Copy remains editable without architecture changes.
 - Today Mode clock: `HH:MM:SS`, 24-hour
 - Global font size: Small / Medium / Large
 - Future language support should be structurally possible, but V2 initially supports Traditional Chinese only.
-- Every page displays online/offline state.
+- Every page displays a persistent lower-left online/offline state and current App Version.
 - Every page remains useful offline after trip data has previously been downloaded/synced.
 - Online mode checks version state and can download newer data without unexpectedly reloading the active screen.
 - App Version and Trip Data Version are tracked separately.
@@ -204,7 +204,7 @@ Offline state must not produce a broken browser error page.
 - apply the update on user reload/reopen, or after an explicit user action when necessary
 
 ## 14. Supabase
-Existing Supabase usage is retained.
+The existing Supabase project/Auth approach is retained, but V2 data structures are isolated from V1 tables. New V2 tables use the `v2_` prefix.
 V2 uses Supabase for:
 - authentication
 - structured trip data
