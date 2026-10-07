@@ -26,6 +26,8 @@ jobs:
         run: python scripts/qa.py
       - name: Run Standard Multi-Trip contract QA
         run: python scripts/qa_standard_contract.py
+      - name: Run Round 4 Standard itinerary QA
+        run: python scripts/qa_round4_itinerary.py
       - name: Run checklist migration QA
         run: python scripts/qa_checklist.py
       - name: Run observer regression QA
