@@ -13,13 +13,5 @@
 <nav class="catalog-nav"><div class="location-nav" id="locationNav"><span>載入地區…</span></div></nav>
 <div class="container"><section class="catalog-intro"><h2>全部景點</h2><p id="catalogIntroText">景點資料會跟隨目前選擇嘅 Trip，分組只按實際地區。</p><div class="catalog-count" id="catalogCount">整理景點中…</div><div class="toolbar"><button class="filter-btn active" data-filter="all">全部</button><button class="filter-btn" data-filter="main">✅ 主行程</button><button class="filter-btn" data-filter="backup">🔄 後備景點</button></div></section><div id="catalogGroups"></div></div>
 <footer>Multi Trip｜景點總覽</footer>
-<script>
-(function(){
- const DEFAULT='shirakawago-shinhotaka-2027',p=new URLSearchParams(location.search),selected=(p.get('trip')||DEFAULT).trim(),legacy=selected===DEFAULT;
- const base=['assets/multi-trip-context-v1.js?v=10.12.0','assets/multi-trip-data-v1.js?v=2'];
- const japan=['assets/trip-core-v1.js?v=8','assets/nav-enhancements-v1.js?v=3','assets/trip-enhancement-data.js?v=913','assets/trip-deep-info-d1-d4.js?v=913','assets/trip-deep-info-d5-d9.js?v=913','assets/trip-deep-info-backups.js?v=913','assets/trip-v8-data.js?v=913','assets/trip-v8-1-overrides.js?v=913','assets/i18n-content-en-v1.js?v=1','assets/attractions-catalog.js?v=3','assets/attractions-layout-v2.js?v=2','assets/attractions-group-fix.js?v=2','assets/i18n-v1.js?v=3'];
- const tail=['assets/multi-trip-attractions-renderer-v1.js?v=5'];
- base.concat(legacy?japan:[],tail).forEach(src=>document.write('<script src="'+src+'"><'+'/script>'));
-})();
-</script>
+<script src="assets/multi-trip-runtime-v1.js?v=10.17.0"></script>
 </body></html>
