@@ -130,11 +130,9 @@ const legacyAttractionsScripts=[
   'assets/trip-deep-info-backups.js?v=913',
   'assets/trip-v8-data.js?v=913',
   'assets/trip-v8-1-overrides.js?v=913',
-  'assets/i18n-content-en-v1.js?v=1',
   'assets/attractions-catalog.js?v=3',
   'assets/attractions-layout-v2.js?v=2',
   'assets/attractions-group-fix.js?v=2',
-  'assets/i18n-v1.js?v=3',
   'assets/multi-trip-attractions-renderer-v1.js?v=5'
 ];
 
