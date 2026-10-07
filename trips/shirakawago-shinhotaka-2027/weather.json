@@ -4,75 +4,263 @@
   "profileStandardVersion": "v1",
   "regions": {
     "matsumoto": {
-      "name":"松本","en":"Matsumoto","jp":"松本市","label":"松本城／市區","type":"cityscenic","lat":36.2381,"lon":137.9720,
-      "scoreNote":"道路積雪／結冰要另外確認",
-      "activityProfiles":[{"id":"historic_outdoor","weight":0.65},{"id":"city_walk","weight":0.35}]
+      "name": "松本",
+      "en": "Matsumoto",
+      "jp": "松本市",
+      "label": "松本城／市區",
+      "type": "cityscenic",
+      "lat": 36.2381,
+      "lon": 137.972,
+      "scoreNote": "道路積雪／結冰要另外確認",
+      "activityProfiles": [
+        {
+          "id": "historic_outdoor",
+          "weight": 0.65
+        },
+        {
+          "id": "city_walk",
+          "weight": 0.35
+        }
+      ]
     },
     "karuizawa": {
-      "name":"輕井澤","en":"Karuizawa","jp":"軽井沢町","label":"輕井澤戶外／Outlet","type":"cityscenic","lat":36.3485,"lon":138.5969,
-      "scoreNote":"道路積雪／結冰要另外確認",
-      "activityProfiles":[{"id":"outlet_open_air","weight":0.65},{"id":"city_walk","weight":0.20},{"id":"road_trip","weight":0.15}]
+      "name": "輕井澤",
+      "en": "Karuizawa",
+      "jp": "軽井沢町",
+      "label": "輕井澤戶外／Outlet",
+      "type": "cityscenic",
+      "lat": 36.3485,
+      "lon": 138.5969,
+      "scoreNote": "道路積雪／結冰要另外確認",
+      "activityProfiles": [
+        {
+          "id": "outlet_open_air",
+          "weight": 0.65
+        },
+        {
+          "id": "city_walk",
+          "weight": 0.2
+        },
+        {
+          "id": "road_trip",
+          "weight": 0.15
+        }
+      ]
     },
     "chikuma": {
-      "name":"千曲","en":"Chikuma","jp":"千曲市","label":"千曲","type":"road","lat":36.5330,"lon":138.1200,
-      "scoreNote":"實際道路積雪／結冰要另外確認",
-      "activityProfiles":[{"id":"road_trip","weight":0.70},{"id":"outdoor_onsen","weight":0.30}]
+      "name": "千曲",
+      "en": "Chikuma",
+      "jp": "千曲市",
+      "label": "千曲",
+      "type": "road",
+      "lat": 36.533,
+      "lon": 138.12,
+      "scoreNote": "實際道路積雪／結冰要另外確認",
+      "activityProfiles": [
+        {
+          "id": "road_trip",
+          "weight": 0.7
+        },
+        {
+          "id": "outdoor_onsen",
+          "weight": 0.3
+        }
+      ]
     },
     "yamanouchi": {
-      "name":"山之內／澀溫泉","en":"Yamanouchi / Shibu Onsen","jp":"山ノ内町・渋温泉","label":"地獄谷／澀溫泉","type":"snowwalk","lat":36.7344,"lon":138.4331,
-      "scoreNote":"步道積雪／結冰要另外確認",
-      "activityProfiles":[{"id":"snow_walk","weight":0.55},{"id":"wildlife_outdoor","weight":0.35},{"id":"outdoor_onsen","weight":0.10}]
+      "name": "山之內／澀溫泉",
+      "en": "Yamanouchi / Shibu Onsen",
+      "jp": "山ノ内町・渋温泉",
+      "label": "地獄谷／澀溫泉",
+      "type": "snowwalk",
+      "lat": 36.7344,
+      "lon": 138.4331,
+      "scoreNote": "步道積雪／結冰要另外確認",
+      "activityProfiles": [
+        {
+          "id": "snow_walk",
+          "weight": 0.55
+        },
+        {
+          "id": "wildlife_outdoor",
+          "weight": 0.35
+        },
+        {
+          "id": "outdoor_onsen",
+          "weight": 0.1
+        }
+      ]
     },
     "nagano": {
-      "name":"長野／須坂","en":"Nagano / Suzaka","jp":"長野市・須坂市","label":"長野／須坂","type":"city","lat":36.6486,"lon":138.2450,
-      "scoreNote":"道路積雪／結冰要另外確認",
-      "activityProfiles":[{"id":"indoor","weight":0.70},{"id":"city_walk","weight":0.30}]
+      "name": "長野／須坂",
+      "en": "Nagano / Suzaka",
+      "jp": "長野市・須坂市",
+      "label": "長野／須坂",
+      "type": "city",
+      "lat": 36.6486,
+      "lon": 138.245,
+      "scoreNote": "道路積雪／結冰要另外確認",
+      "activityProfiles": [
+        {
+          "id": "indoor",
+          "weight": 0.7
+        },
+        {
+          "id": "city_walk",
+          "weight": 0.3
+        }
+      ]
     },
     "hakuba": {
-      "name":"白馬","en":"Hakuba","jp":"白馬村","label":"白馬岩岳","type":"mountain","lat":36.6982,"lon":137.8619,
-      "scoreNote":"最後仍要睇岩岳 Live Cam／運行狀況",
-      "activityProfiles":[{"id":"ropeway_mountain","weight":0.40},{"id":"mountain_view","weight":0.35},{"id":"ski_snow","weight":0.25}]
+      "name": "白馬",
+      "en": "Hakuba",
+      "jp": "白馬村",
+      "label": "白馬岩岳",
+      "type": "mountain",
+      "lat": 36.6982,
+      "lon": 137.8619,
+      "scoreNote": "最後仍要睇岩岳 Live Cam／運行狀況",
+      "activityProfiles": [
+        {
+          "id": "ropeway_mountain",
+          "weight": 0.4
+        },
+        {
+          "id": "mountain_view",
+          "weight": 0.35
+        },
+        {
+          "id": "ski_snow",
+          "weight": 0.25
+        }
+      ]
     },
     "takayama": {
-      "name":"高山","en":"Takayama","jp":"高山市","label":"高山市區","type":"cityscenic","lat":36.1461,"lon":137.2522,
-      "scoreNote":"道路積雪／結冰要另外確認",
-      "activityProfiles":[{"id":"city_walk","weight":0.45},{"id":"cave","weight":0.30},{"id":"road_trip","weight":0.25}]
+      "name": "高山",
+      "en": "Takayama",
+      "jp": "高山市",
+      "label": "高山市區",
+      "type": "cityscenic",
+      "lat": 36.1461,
+      "lon": 137.2522,
+      "scoreNote": "道路積雪／結冰要另外確認",
+      "activityProfiles": [
+        {
+          "id": "city_walk",
+          "weight": 0.45
+        },
+        {
+          "id": "cave",
+          "weight": 0.3
+        },
+        {
+          "id": "road_trip",
+          "weight": 0.25
+        }
+      ]
     },
     "shinhotaka": {
-      "name":"新穗高","en":"Shinhotaka","jp":"新穂高ロープウェイ周辺","label":"新穗高","type":"mountain","lat":36.2828,"lon":137.5804,
-      "scoreNote":"最後仍要睇山頂 Live Cam＋纜車運行",
-      "activityProfiles":[{"id":"ropeway_mountain","weight":0.50},{"id":"mountain_view","weight":0.30},{"id":"road_trip","weight":0.20}]
+      "name": "新穗高",
+      "en": "Shinhotaka",
+      "jp": "新穂高ロープウェイ周辺",
+      "label": "新穗高",
+      "type": "mountain",
+      "lat": 36.2828,
+      "lon": 137.5804,
+      "scoreNote": "最後仍要睇山頂 Live Cam＋纜車運行",
+      "activityProfiles": [
+        {
+          "id": "ropeway_mountain",
+          "weight": 0.5
+        },
+        {
+          "id": "mountain_view",
+          "weight": 0.3
+        },
+        {
+          "id": "road_trip",
+          "weight": 0.2
+        }
+      ]
     },
     "shirakawago": {
-      "name":"白川鄉","en":"Shirakawa-go","jp":"白川郷・荻町","label":"白川鄉","type":"village","lat":36.2573,"lon":136.9068,
-      "scoreNote":"道路積雪／封路狀況要另外確認",
-      "activityProfiles":[{"id":"village_scenic","weight":0.55},{"id":"road_trip","weight":0.30},{"id":"historic_outdoor","weight":0.15}]
+      "name": "白川鄉",
+      "en": "Shirakawa-go",
+      "jp": "白川郷・荻町",
+      "label": "白川鄉",
+      "type": "village",
+      "lat": 36.2573,
+      "lon": 136.9068,
+      "scoreNote": "道路積雪／封路狀況要另外確認",
+      "activityProfiles": [
+        {
+          "id": "village_scenic",
+          "weight": 0.55
+        },
+        {
+          "id": "road_trip",
+          "weight": 0.3
+        },
+        {
+          "id": "historic_outdoor",
+          "weight": 0.15
+        }
+      ]
     }
   },
   "dayRegions": {
-    "d1":"matsumoto",
-    "d2":"karuizawa",
-    "d3":"yamanouchi",
-    "d4":"yamanouchi",
-    "d5":"hakuba",
-    "d6":"dynamic",
-    "d7":"dynamic",
-    "d8":"dynamic",
-    "d9":"matsumoto"
-  },
-  "dynamicRegionRules": {
-    "shinhotaka":"shinhotaka",
-    "shirakawago":"shirakawago",
-    "cityCave":"takayama",
-    "planning":"takayama",
-    "planningEast":"takayama"
+    "d1": "matsumoto",
+    "d2": "karuizawa",
+    "d3": "yamanouchi",
+    "d4": "yamanouchi",
+    "d5": "hakuba",
+    "d6": "shirakawago",
+    "d7": "shinhotaka",
+    "d8": "takayama",
+    "d9": "matsumoto"
   },
   "scoreProfiles": {
-    "mountain": {"visibility":0.35,"cloud":0.25,"gust":0.20,"precipitation":0.10,"snow":0.10},
-    "village": {"visibility":0.30,"cloud":0.05,"gust":0.25,"precipitation":0.20,"snow":0.20},
-    "snowwalk": {"visibility":0.20,"cloud":0.08,"gust":0.25,"precipitation":0.22,"snow":0.25},
-    "road": {"visibility":0.25,"cloud":0.05,"gust":0.30,"precipitation":0.25,"snow":0.15},
-    "cityscenic": {"visibility":0.20,"cloud":0.10,"gust":0.25,"precipitation":0.30,"snow":0.15},
-    "city": {"visibility":0.15,"cloud":0.05,"gust":0.25,"precipitation":0.40,"snow":0.15}
+    "mountain": {
+      "visibility": 0.35,
+      "cloud": 0.25,
+      "gust": 0.2,
+      "precipitation": 0.1,
+      "snow": 0.1
+    },
+    "village": {
+      "visibility": 0.3,
+      "cloud": 0.05,
+      "gust": 0.25,
+      "precipitation": 0.2,
+      "snow": 0.2
+    },
+    "snowwalk": {
+      "visibility": 0.2,
+      "cloud": 0.08,
+      "gust": 0.25,
+      "precipitation": 0.22,
+      "snow": 0.25
+    },
+    "road": {
+      "visibility": 0.25,
+      "cloud": 0.05,
+      "gust": 0.3,
+      "precipitation": 0.25,
+      "snow": 0.15
+    },
+    "cityscenic": {
+      "visibility": 0.2,
+      "cloud": 0.1,
+      "gust": 0.25,
+      "precipitation": 0.3,
+      "snow": 0.15
+    },
+    "city": {
+      "visibility": 0.15,
+      "cloud": 0.05,
+      "gust": 0.25,
+      "precipitation": 0.4,
+      "snow": 0.15
+    }
   }
 }
