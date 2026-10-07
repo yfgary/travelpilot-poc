@@ -181,7 +181,10 @@ function renderPlannerUi(){
   box=document.createElement('section');
   box.id=ui.id||'multiTripConditionalPlanner';
   box.className=ui.className||'tripv2-weather-select';
-  intro.insertAdjacentElement('afterend',box);
+  const anchor=document.getElementById('d6d8WeatherDecision')||document.getElementById('weather3dPanel')||intro;
+  anchor.insertAdjacentElement('afterend',box);
+  const shrine=document.getElementById('v87ShrineQuick');
+  if(shrine)box.insertAdjacentElement('afterend',shrine);
  }
  box.innerHTML='<h2>'+esc(ui.title||'行程選擇')+'</h2>'+(ui.description?'<p>'+esc(ui.description)+'</p>':'')
   +'<div class="tripv2-choice-row">'+(ui.choices||[]).map(x=>'<button class="tripv2-choice" data-sh="'+esc(x.value||'')+'">'+esc(x.label||x.value||'')+'</button>').join('')
@@ -292,7 +295,11 @@ Promise.all([
  window.MultiTripData&&window.MultiTripData.ready?window.MultiTripData.ready:Promise.resolve()
 ]).then(()=>{
  const m=mode();
- if(m==='generate')return ensureAttractionRenderer().then(()=>render());
+ if(m==='generate'){
+  const start=()=>ensureAttractionRenderer().then(()=>render());
+  if(presentationProfile()==='standard-itinerary-v1')return setTimeout(start,2450);
+  return start();
+ }
  [0,350,900,1800].forEach(t=>setTimeout(render,t));
 }).catch(err=>console.error('Multi Trip itinerary renderer failed',err));
 })();
