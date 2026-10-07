@@ -38,11 +38,16 @@ async function normalizeRuntimeUi(page){
 }
 async function bodySnapshot(page){
  return page.evaluate(()=>{
-   const clone=document.body.cloneNode(true);
-   clone.querySelectorAll('#siteVersionBadge,#catalogVersion,#backToTopBtn,.tripv2-status,.floating-top,script,style,template,noscript').forEach(x=>x.remove());
+   const hidden=[];
+   document.querySelectorAll('#siteVersionBadge,#catalogVersion,#backToTopBtn,.tripv2-status,.floating-top,script,style,template,noscript').forEach(x=>{
+     hidden.push([x,x.style.display]);x.style.display='none';
+   });
+   const clean=s=>String(s||'').replace(/\s*📍\s*/g,' 📍 ').replace(/\s+/g,' ').trim();
+   const text=clean(document.body.innerText||'');
+   hidden.forEach(([x,d])=>{x.style.display=d;});
    return {
-     text:(clone.innerText||clone.textContent||'').replace(/\s+/g,' ').trim(),
-     links:[...document.querySelectorAll('.page-switch a')].map(x=>(x.textContent||'').replace(/\s+/g,' ').trim()),
+     text,
+     links:[...document.querySelectorAll('.page-switch a')].map(x=>clean(x.textContent||'')),
      dayCount:document.querySelectorAll('details.day[id]').length,
      regionCount:document.querySelectorAll('details.region[id]').length,
      sectionCount:document.querySelectorAll('main section,.container section').length
@@ -82,7 +87,7 @@ async function comparePage(path,{screenshot=true}={}){
  }
  return {a,b};
 }
-async function overlaySnapshot(page,sel){return page.locator(sel).evaluate(el=>({hidden:el.hidden,text:(el.innerText||'').replace(/\s+/g,' ').trim(),htmlClass:el.className}));}
+async function overlaySnapshot(page,sel){return page.locator(sel).evaluate(el=>({hidden:el.hidden,text:(el.innerText||'').replace(/\s*📍\s*/g,' 📍 ').replace(/\s+/g,' ').trim(),htmlClass:el.className}));}
 async function itineraryStructure(page){
  return page.evaluate(()=>[...document.querySelectorAll('details.day[id]')].map(day=>({
    id:day.id,
