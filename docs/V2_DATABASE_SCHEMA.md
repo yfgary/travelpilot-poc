@@ -327,3 +327,126 @@ Before any migration is applied, validate this schema against:
 2. one unrelated trip with different transport/accommodation patterns
 3. offline checklist sync requirements
 4. place reuse in Detailed Itinerary + Attractions Overview + Today Mode
+
+
+## Golden Content validation additions (Japan 2027)
+Validated against the production/reference trip `shirakawago-shinhotaka-2027`.
+
+The baseline schema must additionally support the following generic concepts observed in the Golden Content trip:
+
+### trip_day metadata
+Add/allow:
+- driving_required (boolean)
+- notes
+- constraints (array or normalized child records where needed)
+- bonus_items / optional_items (prefer normalized relations)
+- dynamic/module references only as generic rules, never trip-specific code
+
+### timeline item navigation
+Add/allow:
+- map_query (nullable text)
+- map_label (nullable text)
+- navigation_mode (nullable; e.g. driving / walking / transit)
+- warning_text (nullable)
+- optional/bonus flag
+- booking/reference link where appropriate
+
+### parking / navigation targets
+Add a generic `navigation_targets` entity:
+- id
+- trip_id (nullable)
+- place_id (nullable)
+- region_id (nullable)
+- target_type (parking / entrance / station / pickup / dropoff / other)
+- title
+- map_query
+- map_label
+- description
+- warning_text
+- latitude / longitude (nullable)
+- sort_order
+
+This is required because some attractions must navigate to a specific parking area or entrance rather than the attraction name itself.
+
+### hotel detail expansion
+Hotels must support:
+- address
+- phone
+- nights / stay dates through a normalized trip accommodation relation
+- room_type
+- meal_plan_text
+- booking_status
+- badges/tags
+- check_in_time
+- check_out_time
+- total_price
+- currency
+- paid_amount
+- payment_status
+- arrival_payment_text
+- cancellation_text
+- parking_text
+- notes
+
+Prefer numeric amount + currency fields where possible, with display text only for complex/legacy wording.
+
+### transport detail expansion
+Transport records must support:
+- public-facing label/title
+- map/navigation target
+- planned/reference schedule text
+- hard-cut relation where applicable
+- notes/warnings
+- booking/payment state where relevant
+
+### hard cuts
+`trip_hard_cuts` must support:
+- day reference
+- time-only and full datetime cases
+- severity/priority
+- display icon/category
+- source relation (transport / hotel / attraction / manual)
+- note
+
+### checklist definitions
+Checklist definition/items must support:
+- multiple groups/sections
+- icon/emoji presentation metadata
+- expected item count for validation
+- notes
+- trip-specific definitions without trip-specific rendering code
+
+### live cam grouping
+Live cams must support generic grouping/binding:
+- region
+- route/day
+- place
+- arbitrary named group
+- external status/official links
+- source capability type (embed / image / external)
+
+Do not copy V1's legacy day-specific binding logic into application code.
+
+### weather / suitability
+The schema must support:
+- weather regions with lat/lon/timezone
+- per-region activity profile weights
+- per-day primary/default weather region
+- generic score profile definitions
+- generic rule-driven region selection where genuinely required
+
+Scoring rules belong in data/config, not place-name branches.
+
+### trip information sections
+Trip Information requires reusable structured section types rather than freeform page HTML:
+- transport
+- rental car
+- accommodation summary
+- parking/navigation
+- hard cuts
+- weather/decision notes
+- checklists
+- emergency contacts
+
+### source-of-truth caution
+The production/reference Japan 2027 data contains legacy D6–D8 dynamic weather-day logic. It is useful for validating schema flexibility, but it must **not** be assumed to be the current desired itinerary. Real-trip migration must use the user's latest approved itinerary, not blindly copy stale V1 planning logic.
