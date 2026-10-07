@@ -10,16 +10,16 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 ERRORS: list[str] = []
 
-loader = (ASSETS / "attraction-info.js").read_text(encoding="utf-8")
+loader = (ASSETS / "multi-trip-runtime-v1.js").read_text(encoding="utf-8")
 renderer = (ASSETS / "multi-trip-itinerary-renderer-v1.js").read_text(encoding="utf-8")
 visit = (ASSETS / "trip-v9-1-visit-fix.js").read_text(encoding="utf-8")
 user_plan = (ASSETS / "trip-v8-7-user-plan.js").read_text(encoding="utf-8")
 repair = (ASSETS / "info-icon-repair-v1.js").read_text(encoding="utf-8")
 
 # Loader ordering matters: visit-fix must subscribe before renderer events start.
-match = re.search(r"const\s+itineraryScripts\s*=\s*commonHead\.concat\(\[(.*?)\]\);", loader, flags=re.S)
+match = re.search(r"const\s+legacyItineraryScripts\s*=\s*\[(.*?)\];", loader, flags=re.S)
 if not match:
-    ERRORS.append("itineraryScripts loader block missing")
+    ERRORS.append("legacyItineraryScripts runtime block missing")
 else:
     block = match.group(1)
     visit_pos = block.find("trip-v9-1-visit-fix.js")
