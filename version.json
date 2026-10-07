@@ -1,6 +1,6 @@
 {
-  "version": "v10.14.0",
-  "build": "2026-10-05.74",
-  "updated": "2026-10-05T20:45:00+08:00",
-  "notes": "Stable baseline release after the Stage 5 multi-trip, Trip Info, checklist, visit and info-icon event-migration cleanup. No itinerary content or UI behavior changes; refresh release-owned cache-busters and Service Worker cache identity for the new baseline."
+  "version": "v10.14.1",
+  "build": "2026-10-07.75",
+  "updated": "2026-10-07T15:49:00+08:00",
+  "notes": "POC Round 1 fresh rebuild from production golden reference. D6/D7/D8 are fixed to Shirakawago, Shinhotaka and Hida Great Limestone Cave → Matsumoto; manual and weather-recommended day selection are retired."
 }
