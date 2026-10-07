@@ -5,6 +5,8 @@ if(window.Japan2027Core)return;
 const VERSION='v9.1.1';
 const SH_KEY='japanWinter2027_shinhotakaDay';
 const WEATHER_REGION_KEY='japan2027_weather_region';
+/* D6-D8 selector retired */
+try{localStorage.removeItem(SH_KEY);}catch(e){}
 
 const regions={
  matsumoto:{id:'matsumoto',name:'松本',en:'Matsumoto',jp:'松本市',label:'松本城／市區',type:'cityscenic',lat:36.2381,lon:137.9720},
@@ -46,13 +48,9 @@ const externalLinks={
 };
 
 function uniq(a){return [...new Set(a||[])];}
-function selectedShinhotakaDay(){const v=localStorage.getItem(SH_KEY)||'';return ['d6','d7','d8'].includes(v)?v:'';}
-function setSelectedShinhotakaDay(v){if(['d6','d7','d8'].includes(v))localStorage.setItem(SH_KEY,v);else localStorage.removeItem(SH_KEY);}
-function resolveFlexibleDays(v){
- const s=['d6','d7','d8'].includes(v)?v:selectedShinhotakaDay();
- if(s==='d6')return{selected:s,d6:'shinhotaka',d7:'shirakawago',d8:'cityCave'};
- if(s==='d7')return{selected:s,d6:'shirakawago',d7:'shinhotaka',d8:'cityCave'};
- if(s==='d8')return{selected:s,d6:'shirakawago',d7:'cityCave',d8:'shinhotaka'};
+function selectedShinhotakaDay(){try{localStorage.removeItem(SH_KEY);}catch(e){}return '';}
+function setSelectedShinhotakaDay(){try{localStorage.removeItem(SH_KEY);}catch(e){}return '';}
+function resolveFlexibleDays(){
  return{selected:'',d6:'shirakawago',d7:'planning',d8:'planningEast'};
 }
 function weatherRegionForDay(dayId,v){

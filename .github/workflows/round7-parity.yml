@@ -57,7 +57,7 @@ jobs:
           node --check assets/standard-runtime-loader-v1.js
           find assets -maxdepth 1 -type f -name '*.js' -print0 | xargs -0 -n1 node --check
 
-      - name: Public itinerary differs only by the generic Standard loader
+      - name: Public itinerary differs only by generic loader and approved D6-D8 selector retirement
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -68,14 +68,39 @@ jobs:
 
           candidate=re.sub(r'<script type="application/json" id="travelPilotRuntimePlan">[\s\S]*?</script>\s*','',candidate)
           candidate=candidate.replace('<script src="assets/standard-runtime-loader-v1.js"></script>','<script src="assets/attraction-info.js?v=1"></script>')
+          candidate=re.sub(r'<script id="tripv2-itinerary-script">[\s\S]*?</script>\s*','',candidate)
+          reference=re.sub(r'<script id="tripv2-itinerary-script">[\s\S]*?</script>\s*','',reference)
 
           if candidate!=reference:
-              print("Unexpected itinerary.html drift outside the generic Standard loader")
+              print("Unexpected itinerary.html drift outside generic loader + approved D6-D8 selector retirement")
               sys.exit(1)
           print("Public itinerary structural diff PASS")
           PY
           cmp assets/attraction-info.js /tmp/production-reference/assets/attraction-info.js
           cmp assets/images/d1-centrair.jpg /tmp/production-reference/assets/images/d1-centrair.jpg
+
+      - name: D6-D8 selector retirement is canonical
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          trip=json.loads(Path("trips/shirakawago-shinhotaka-2027/trip.json").read_text())
+          itinerary=json.loads(Path("trips/shirakawago-shinhotaka-2027/itinerary.json").read_text())
+          weather=json.loads(Path("trips/shirakawago-shinhotaka-2027/weather.json").read_text())
+
+          assert trip["features"].get("shinhotakaPlanner") is False
+          selector=[m for m in trip.get("modules",[]) if m.get("id")=="shinhotaka-weather-day-selector"]
+          assert selector and selector[0].get("enabled") is False
+          assert "flexibleRules" not in itinerary
+          for day in itinerary["days"]:
+              if day["id"] in {"d6","d7","d8"}:
+                  assert "moduleRefs" not in day
+                  assert day.get("weatherRegion") != "dynamic"
+          for day in ("d6","d7","d8"):
+              assert weather["dayRegions"].get(day) != "dynamic"
+          print("D6-D8 selector retirement canonical PASS")
+          PY
 
       - name: Candidate loader has no destination hardcodes
         run: |

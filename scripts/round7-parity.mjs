@@ -133,6 +133,38 @@ async function snapshot(page){
   });
 }
 
+async function d68Surface(page){
+  return page.evaluate(() => ({
+    selector:document.querySelectorAll('#tripv2WeatherSelect').length,
+    panel:document.querySelectorAll('#d6d8WeatherDecision').length,
+    cards:document.querySelectorAll('#d6d8WeatherDecision .d68-card').length,
+    apply:document.querySelectorAll('#d68Apply').length,
+    text:(document.querySelector('#d6d8WeatherDecision')?.innerText||'').replace(/\s+/g,' ').trim()
+  }));
+}
+
+async function removeApprovedD6D8Variation(page){
+  return page.evaluate(() => {
+    document.querySelectorAll('#tripv2WeatherSelect,#d6d8WeatherDecision').forEach(el=>el.remove());
+  });
+}
+
+async function overlaySnapshot(page,selector){
+  return page.locator(selector).evaluate(el=>({
+    hidden:el.hidden,
+    text:(el.innerText||el.textContent||'').replace(/\s+/g,' ').trim(),
+    buttons:[...el.querySelectorAll('button')].map(x=>(x.innerText||x.textContent||'').replace(/\s+/g,' ').trim()),
+    links:[...el.querySelectorAll('a[href]')].map(x=>({
+      text:(x.innerText||x.textContent||'').replace(/\s+/g,' ').trim(),
+      href:x.getAttribute('href')||''
+    })),
+    dayButtons:[...el.querySelectorAll('[data-tm-day],[data-dm-day]')].map(x=>({
+      day:x.getAttribute('data-tm-day')||x.getAttribute('data-dm-day')||'',
+      active:x.classList.contains('active')
+    }))
+  }));
+}
+
 function diff(a,b,path='root',out=[]){
   if(typeof a!==typeof b){out.push(path+': type '+typeof a+' != '+typeof b);return out;}
   if(a===null||b===null||typeof a!=='object'){if(a!==b)out.push(path+': '+JSON.stringify(a)+' != '+JSON.stringify(b));return out;}
@@ -158,6 +190,30 @@ try{
   assert(baseline.errors.length===0,'baseline page errors: '+baseline.errors.join(' | '));
   assert(candidate.errors.length===0,'candidate page errors: '+candidate.errors.join(' | '));
 
+  const [baseD68,candD68]=await Promise.all([d68Surface(baseline.page),d68Surface(candidate.page)]);
+  if(baseD68.selector!==1) failures.push('Production Golden Reference D6-D8 selector surface missing');
+  if(candD68.selector!==0) failures.push('Candidate still exposes D6-D8 selector');
+  if(candD68.panel!==1||candD68.cards!==3) failures.push('Read-only D6-D8 weather comparison missing');
+  if(candD68.apply!==0) failures.push('D6-D8 weather comparison still exposes Apply action');
+  if(!candD68.text.includes('只作天氣比較')||!candD68.text.includes('不會套用或改動')) failures.push('D6-D8 weather comparison is not clearly read-only');
+
+  const retiredState=await candidate.page.evaluate(() => {
+    localStorage.setItem('japanWinter2027_shinhotakaDay','d8');
+    const api=window.Japan2027Core;
+    const setter=api&&api.setSelectedShinhotakaDay;
+    if(setter)setter('d7');
+    return {
+      key:localStorage.getItem('japanWinter2027_shinhotakaDay'),
+      selected:api&&api.getSelectedShinhotakaDay?api.getSelectedShinhotakaDay():null,
+      plan:api&&api.resolveFlexibleDays?api.resolveFlexibleDays('d8'):null
+    };
+  });
+  if(retiredState.key!==null||retiredState.selected!=='') failures.push('Legacy D6-D8 selection storage/API still active');
+  if(!retiredState.plan||retiredState.plan.selected!=='') failures.push('Legacy D6-D8 flexible plan resolver still accepts a selected day');
+
+  // Normalize only the explicitly approved D6-D8 UI difference before full DOM/pixel comparison.
+  await Promise.all([removeApprovedD6D8Variation(baseline.page),removeApprovedD6D8Variation(candidate.page)]);
+
   const [a,b]=await Promise.all([snapshot(baseline.page),snapshot(candidate.page)]);
   const differences=diff(a,b);
   if(differences.length) failures.push('DOM/feature parity:\n'+differences.slice(0,80).join('\n'));
@@ -175,8 +231,8 @@ try{
     ['photo credits',b.rich.credits,1]
   ]) if(value<min) failures.push(label+' '+value+' < '+min);
   if(!b.bonusText) failures.push('Snow shrine / torii Bonus text missing');
-  if(b.d68.panel!==1||b.d68.cards!==3) failures.push('D6-D8 weather comparison parity missing');
-  if(b.selector!==1) failures.push('D6-D8 selector parity missing');
+  if(candD68.panel!==1||candD68.cards!==3) failures.push('D6-D8 weather score comparison missing');
+  if(b.selector!==0) failures.push('Normalized candidate still contains D6-D8 selector');
 
   // Interaction parity: photo zoom.
   await baseline.page.locator('details.day#d1').evaluate(el=>{el.open=true;});
@@ -189,6 +245,47 @@ try{
   const candModal=await candidate.page.locator('#photoModal').evaluate(el=>({hidden:el.hidden,display:getComputedStyle(el).display,text:(el.innerText||'').replace(/\s+/g,' ').trim()}));
   const modalDiff=diff(baseModal,candModal,'photoModal');
   if(modalDiff.length) failures.push('Photo zoom parity:\n'+modalDiff.join('\n'));
+
+
+  // Interaction parity: Today mode. Verify the overlay itself and a day switch.
+  await baseline.page.evaluate(()=>window.Japan2027TravelMode.open('d2'));
+  await candidate.page.evaluate(()=>window.Japan2027TravelMode.open('d2'));
+  await baseline.page.waitForSelector('#travelModeOverlay:not([hidden])');
+  await candidate.page.waitForSelector('#travelModeOverlay:not([hidden])');
+  await baseline.page.waitForTimeout(250); await candidate.page.waitForTimeout(250);
+  const baseToday=await overlaySnapshot(baseline.page,'#travelModeOverlay');
+  const candToday=await overlaySnapshot(candidate.page,'#travelModeOverlay');
+  const todayDiff=diff(baseToday,candToday,'todayMode');
+  if(todayDiff.length) failures.push('Today mode parity:\n'+todayDiff.slice(0,80).join('\n'));
+  await baseline.page.locator('#travelModeOverlay [data-tm-day="d3"]').click();
+  await candidate.page.locator('#travelModeOverlay [data-tm-day="d3"]').click();
+  await baseline.page.waitForTimeout(150); await candidate.page.waitForTimeout(150);
+  const baseTodayD3=await overlaySnapshot(baseline.page,'#travelModeOverlay');
+  const candTodayD3=await overlaySnapshot(candidate.page,'#travelModeOverlay');
+  const todayD3Diff=diff(baseTodayD3,candTodayD3,'todayModeD3');
+  if(todayD3Diff.length) failures.push('Today mode D3 switch parity:\n'+todayD3Diff.slice(0,80).join('\n'));
+  await baseline.page.evaluate(()=>window.Japan2027TravelMode.close());
+  await candidate.page.evaluate(()=>window.Japan2027TravelMode.close());
+
+  // Interaction parity: Driving mode. Verify destination details and next-stop action.
+  await baseline.page.evaluate(()=>window.Japan2027DrivingMode.open('d2'));
+  await candidate.page.evaluate(()=>window.Japan2027DrivingMode.open('d2'));
+  await baseline.page.waitForSelector('#drivingModeOverlay:not([hidden])');
+  await candidate.page.waitForSelector('#drivingModeOverlay:not([hidden])');
+  await baseline.page.waitForTimeout(250); await candidate.page.waitForTimeout(250);
+  const baseDrive=await overlaySnapshot(baseline.page,'#drivingModeOverlay');
+  const candDrive=await overlaySnapshot(candidate.page,'#drivingModeOverlay');
+  const driveDiff=diff(baseDrive,candDrive,'drivingMode');
+  if(driveDiff.length) failures.push('Driving mode parity:\n'+driveDiff.slice(0,80).join('\n'));
+  await baseline.page.locator('#drivingModeOverlay #dmNext').click();
+  await candidate.page.locator('#drivingModeOverlay #dmNext').click();
+  await baseline.page.waitForTimeout(150); await candidate.page.waitForTimeout(150);
+  const baseDriveNext=await overlaySnapshot(baseline.page,'#drivingModeOverlay');
+  const candDriveNext=await overlaySnapshot(candidate.page,'#drivingModeOverlay');
+  const driveNextDiff=diff(baseDriveNext,candDriveNext,'drivingModeNext');
+  if(driveNextDiff.length) failures.push('Driving mode next-stop parity:\n'+driveNextDiff.slice(0,80).join('\n'));
+  await baseline.page.evaluate(()=>window.Japan2027DrivingMode.close());
+  await candidate.page.evaluate(()=>window.Japan2027DrivingMode.close());
 
   // Same deterministic viewport + data should render identical pixels.
   await baseline.page.locator('#photoModal').press('Escape').catch(()=>{});

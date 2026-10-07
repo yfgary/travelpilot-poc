@@ -20,13 +20,13 @@
     "weatherActivityProfiles": true,
     "packingChecklist": true,
     "winterDriving": true,
-    "shinhotakaPlanner": true
+    "shinhotakaPlanner": false
   },
   "modules": [
     {
       "id": "shinhotaka-weather-day-selector",
       "type": "weather-day-selector",
-      "enabled": true,
+      "enabled": false,
       "candidateDays": [
         6,
         7,
