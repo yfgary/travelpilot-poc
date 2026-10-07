@@ -1,4 +1,4 @@
-const CACHE_NAME='travelpilot-v10.16.0-20261007';
+const CACHE_NAME='travelpilot-v10.17.0-20261007';
 const CORE=[
   './',
   './index.html',
