@@ -262,7 +262,8 @@ def check_runtime_routing() -> None:
     """Guard the exact cross-trip failures seen during the multi-trip rollout."""
     context = read("assets/multi-trip-context-v1.js")
     nav = read("assets/multi-trip-nav-v1.js")
-    loader = read("assets/attraction-info.js")
+    runtime = read("assets/multi-trip-runtime-v1.js")
+    shim = read("assets/attraction-info.js")
     generic_fix = read("assets/multi-trip-generic-qa-fix-v1.js")
     travel_fix = read("assets/travel-mode-nav-fix-v1.js")
     live_entry = read("assets/multi-trip-live-entry-v1.js")
@@ -275,11 +276,14 @@ def check_runtime_routing() -> None:
         if f"enabled('{feature_name}')" not in nav:
             error(f"Shared navigation no longer feature-gates {feature_name}")
 
+    if "window.MultiTripRuntime" not in runtime or "dataset.multiTripRuntime='v1'" not in runtime:
+        error("Shared runtime no longer exposes the canonical runtime owner/debug marker")
+
     generic_itinerary = re.search(
-        r"const genericItineraryScripts=commonHead\.concat\(\[(.*?)\]\);", loader, re.S
+        r"const genericItineraryScripts=\[(.*?)\];", runtime, re.S
     )
     if not generic_itinerary:
-        error("Cannot locate generic itinerary loader block")
+        error("Cannot locate generic itinerary runtime block")
     else:
         block = generic_itinerary.group(1)
         for banned in (
@@ -298,10 +302,25 @@ def check_runtime_routing() -> None:
                 error(f"Generic itinerary is missing shared runtime: {required}")
 
     generic_trip_info = re.search(
-        r"const genericTripInfoScripts=commonHead\.concat\(\[(.*?)\]\);", loader, re.S
+        r"const genericTripInfoScripts=\[(.*?)\];", runtime, re.S
     )
     if not generic_trip_info or "assets/multi-trip-departure-checklist-v1.js" not in generic_trip_info.group(1):
         error("Generic Trip Info no longer loads the departure checklist renderer")
+
+    generic_attractions = re.search(
+        r"const genericAttractionsScripts=\[(.*?)\];", runtime, re.S
+    )
+    if not generic_attractions or "assets/multi-trip-attractions-renderer-v1.js" not in generic_attractions.group(1):
+        error("Generic Attractions no longer uses the shared attractions renderer")
+
+    generic_live = re.search(
+        r"const genericLiveScripts=\[(.*?)\];", runtime, re.S
+    )
+    if not generic_live or "assets/multi-trip-live-entry-v1.js" not in generic_live.group(1):
+        error("Generic Live no longer uses the shared Live entry")
+
+    if "assets/multi-trip-runtime-v1.js" not in shim:
+        error("Legacy attraction-info compatibility shim no longer forwards to Standard runtime")
 
     if "tripv2WeatherSelect" not in generic_fix:
         error("Generic runtime no longer removes the Japan-only D6-D8 selector")
