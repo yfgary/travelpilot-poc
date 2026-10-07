@@ -322,7 +322,7 @@ function patchTripInfoHardCuts(){
 
 function addItineraryShrineQuick(){
     if(!document.getElementById('d1') || document.getElementById('v87ShrineQuick')) return;
-    const anchor=document.getElementById('tripv2WeatherSelect') || document.querySelector('.intro');
+    const anchor=document.getElementById('tripv2WeatherSelect') || document.getElementById('weather3dPanel') || document.querySelector('.intro');
     if(!anchor) return;
     const box=document.createElement('section');
     box.id='v87ShrineQuick';
