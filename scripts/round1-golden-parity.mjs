@@ -145,6 +145,16 @@ try{
  const [geoA,geoB]=await Promise.all([visualGeometry(a),visualGeometry(b)]);
  const geoDiff=diff(geoA,geoB,'visualGeometry');
  if(geoDiff.length)failures.push('Visual geometry parity:\n'+geoDiff.slice(0,160).join('\n'));
+ const sectionSelectors=['header','.page-switch','.day-nav','.intro','#weather3dPanel','#d6d8WeatherDecision','#tripv2WeatherSelect','#v87ShrineQuick',
+   ...Array.from({length:9},(_,i)=>'#d'+(i+1)+' > summary'),'footer'];
+ for(const sel of sectionSelectors){
+   const [la,lb]=[a.locator(sel).first(),b.locator(sel).first()];
+   const [ca,cb]=await Promise.all([la.count(),lb.count()]);
+   if(!ca||!cb)continue;
+   const [ia,ib]=await Promise.all([la.screenshot({animations:'disabled'}),lb.screenshot({animations:'disabled'})]);
+   const ha=crypto.createHash('sha256').update(ia).digest('hex'),hb=crypto.createHash('sha256').update(ib).digest('hex');
+   if(ha!==hb)failures.push('Section screenshot mismatch '+sel+' '+ha+' != '+hb);
+ }
  const gates=await b.evaluate(()=>({
    selector:document.querySelectorAll('#tripv2WeatherSelect').length,
    d68Panel:document.querySelectorAll('#d6d8WeatherDecision').length,
