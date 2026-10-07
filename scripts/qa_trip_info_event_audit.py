@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 ERRORS: list[str] = []
 
-loader = (ASSETS / "attraction-info.js").read_text(encoding="utf-8")
+loader = (ASSETS / "multi-trip-runtime-v1.js").read_text(encoding="utf-8")
 hotfix = (ASSETS / "trip-v9-hotfix.js").read_text(encoding="utf-8")
 renderer = (ASSETS / "multi-trip-trip-info-renderer-v1.js").read_text(encoding="utf-8")
 final = (ASSETS / "trip-v9-final-fixes.js").read_text(encoding="utf-8")
@@ -62,12 +62,12 @@ for marker in (
         ERRORS.append(f"finalpatch completion evidence changed: missing {marker}")
 
 trip_info_match = re.search(
-    r"const\s+tripInfoScripts\s*=\s*commonHead\.concat\(\[(.*?)\]\);",
+    r"const\s+legacyTripInfoScripts\s*=\s*\[(.*?)\];",
     loader,
     flags=re.S,
 )
 if not trip_info_match:
-    ERRORS.append("tripInfoScripts loader block missing")
+    ERRORS.append("legacyTripInfoScripts runtime block missing")
 else:
     block = trip_info_match.group(1)
     positions = {
@@ -87,12 +87,12 @@ if loader.count("trip-v9-hotfix.js?v=4") != 2:
 
 # Japan-specific legacy patches must remain out of generic Trip Info chains.
 generic_match = re.search(
-    r"const\s+genericTripInfoScripts\s*=\s*commonHead\.concat\(\[(.*?)\]\);",
+    r"const\s+genericTripInfoScripts\s*=\s*\[(.*?)\];",
     loader,
     flags=re.S,
 )
 if not generic_match:
-    ERRORS.append("genericTripInfoScripts loader block missing")
+    ERRORS.append("genericTripInfoScripts runtime block missing")
 else:
     generic = generic_match.group(1)
     for forbidden in (
