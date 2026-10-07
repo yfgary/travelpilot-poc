@@ -23,7 +23,7 @@ Before changing implementation, read:
 - Do not reintroduce legacy V1 POC code into this repository.
 - Do not hard-code trip-specific behaviour.
 
-## V2 shared foundation (Step 6)
+## V2 shared foundation (Step 7)
 
 Node.js 22.12+ (Node 24 recommended):
 
@@ -47,7 +47,18 @@ Folders under `src/`: `app` (shell, routing, metadata), `views`, `components`,
 placeholder component. `app/pages.ts` supplies all seven route labels and the
 shared navigation. The application preference provider applies 小 / 中 / 大 to
 the root font size and persists the choice in localStorage; blocked storage
-falls back to session-only changes. `demo-trip` is a validated generic schema-version-1 local snapshot; the trip content views remain placeholders.
+falls back to session-only changes. `demo-trip` (fictional city/public transport)
+and `demo-road-trip` (fictional mountain/road trip) are schema-version-1 local
+snapshots in `data/demoTrips`. Registering a new data record in `data/trips.ts`
+is sufficient; the existing loader/routes/components stay shared. Trip content
+views remain placeholders.
+
+Home derives current/upcoming/completed status from dates in each trip's timezone
+using `data/tripDates.ts`. Current trips come first, then upcoming by nearest start,
+then completed by most recent end; slugs break ties deterministically. The fixture
+array intentionally starts with the completed trip to prove sorting. Cards show
+destination, dates, status and the existing demo indication. Final Home parity
+belongs to Step 8.
 
 The manifest uses the original canonical icon. The build copies both branding
 files byte-for-byte into `dist/assets/images/`; originals stay in `assets/images/`.
@@ -96,7 +107,7 @@ or logged; the password field is cleared on submit.
 Settings performs one bounded published `v2_app_versions` read per visit for
 backend status (no polling or automatic query retries). This is separate from
 navigator.onLine. An empty published list still confirms a successful read.
-App shell/Home/Settings and the local demo fixture work signed out; real trip
+App shell/Home/Settings and both local demo fixtures work signed out; real trip
 content remains private and owner-scoped; its read-only loader validates current published versions.
 
 The database foundation was already created/verified before this task. A source-control SQL baseline reference records the existing catalog metadata; it is not a migration and must not be auto-applied. No DDL, table migration, V1 access or content publishing is performed by this release.
@@ -135,4 +146,6 @@ back to Home. It never follows an unverified native browser history entry.
 The complete Playwright suite retains foundation/auth coverage and adds shared
 Back navigation, runtime schema, mocked remote loading, IndexedDB version
 retention, invalid-response protection, reload/offline/logout and account
-isolation checks. No tests require a real password or write to Supabase.
+isolation checks, plus two unrelated local snapshots, all ten trip routes, generic
+Home date sorting and two mocked remote trips with isolated versions/caches.
+No tests require a real password or write to Supabase.

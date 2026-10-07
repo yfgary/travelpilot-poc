@@ -53,7 +53,7 @@ for (const [path] of tripPages) {
 
 test('navigation and connection status remain shared across routes', async ({ page, context }) => {
   await page.goto('#/')
-  await page.getByRole('link', { name: '開啟旅程' }).click()
+  await page.getByRole('article').filter({ hasText: '城市週末示範旅程' }).getByRole('link', { name: '開啟旅程' }).click()
   for (const [, title] of tripPages) {
     await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: title, exact: true }).click()
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(title)
@@ -95,11 +95,11 @@ test('unmatched page retains the shell and offers home navigation', async ({ pag
 })
 
 test('approved labels and release version are shown', async ({ page }) => {
-  expect(packageMetadata.version).toBe('2.0.0-poc.6')
+  expect(packageMetadata.version).toBe('2.0.0-poc.7')
   await page.goto('#/trip/demo-trip/itinerary')
   await expect(page.getByRole('navigation', { name: '主導覽' }).getByRole('link')).toHaveText(['首頁', '設定'])
   await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveText(tripPages.map(([, title]) => title))
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.6')
+  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.7')
   await expect(page.getByText('旅程資訊', { exact: true })).toHaveCount(0)
   await expect(page.getByText('即時影像', { exact: true })).toHaveCount(0)
 })
@@ -170,7 +170,7 @@ test('home banner preserves its aspect ratio and cards stay readable', async ({ 
   const box = (await page.locator('.home-banner').boundingBox())!
   expect(box.width / box.height).toBeCloseTo(1672 / 941, 2)
   await expect(page.getByText('行程、景點、天氣與旅途資訊，一站管理。', { exact: true })).toBeVisible()
-  await expect(page.getByRole('article')).toHaveCount(1)
+  await expect(page.getByRole('article')).toHaveCount(2)
   await page.screenshot({ path: test.info().outputPath('home.png'), fullPage: true })
   await page.goto('#/settings')
   await page.getByRole('radio', { name: '大', exact: true }).check()

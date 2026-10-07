@@ -13,7 +13,7 @@ test('signed-out Settings offers password login only, with the release version',
   await expect(page.getByRole('button', { name: '登入', exact: true })).toBeVisible()
   await expect(page.getByLabel('電郵', { exact: true })).toHaveAttribute('type', 'email')
   await expect(page.getByLabel('密碼', { exact: true })).toHaveAttribute('type', 'password')
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.6')
+  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.7')
   await expect(page.getByRole('button', { name: /Sign Up|Create Account|註冊|建立帳戶|重設密碼|Magic Link/i })).toHaveCount(0)
   await expect(page.getByRole('link', { name: /Sign Up|Create Account|註冊|建立帳戶|重設密碼/i })).toHaveCount(0)
   await page.goto('#/trip/demo-trip/info')

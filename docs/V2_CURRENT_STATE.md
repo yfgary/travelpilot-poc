@@ -3,9 +3,9 @@
 Last updated: 08/10/2026
 
 ## Progress
-**Step 6/16 — Trip schema + versioned data loader: COMPLETE**
+**Step 7/16 — Multi-Trip Proof: COMPLETE**
 
-Next: **Step 7/16 — Multi-Trip Proof**
+Next: **Step 8/16 — Home Page Parity**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -32,7 +32,7 @@ Next: **Step 7/16 — Multi-Trip Proof**
 ## Not started
 - Full V2 feature implementation (foundation and shared visual shell complete)
 - Complete PWA/offline implementation (manifest and versioned snapshot cache foundations are complete)
-- multi-trip renderer implementation
+- Full trip content renderers (shared multi-trip placeholder shell is proven)
 - Complete V1 UI parity (shared responsive baseline only is complete)
 - weather engine
 - suitability engine
@@ -49,7 +49,7 @@ Next: **Step 7/16 — Multi-Trip Proof**
   - `assets/images/travelpilot_icon.PNG`
 
 ## Next step
-Step 6 is complete, including the shared-navigation regression fix. Next is **Step 7/16 — Multi-Trip Proof**, only when explicitly authorized. No Step 7 implementation has begun. Real trip migration and feature engines remain outside this foundation.
+Step 7 passed the multi-trip architecture gate. Next is **Step 8/16 — Home Page Parity**, only when explicitly authorized. No Step 8 implementation has begun. Real trip migration and feature engines remain outside this foundation.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -173,24 +173,45 @@ All Step 3 acceptance criteria passed:
 - All automated Supabase responses are intercepted; no real password or live test data writes. Existing Supabase metadata was read only for the baseline; RLS/advisor verification remains the prior Step 5 handoff, with no claim that V1 warnings were fixed.
 - `git diff --check` passed. POC workflow remains protected and unchanged.
 - Initial Step 6 candidate `v2.0.0-poc.4` (`7add6cd`) failed CI with 8 immediate-reload navigation failures (302 passed) and was not deployed. The subsequent navigation repair (`2f1c0c7`) passed all 315 tests locally and in CI and deployed, but incorrectly retained `v2.0.0-poc.4`, violating the per-update version-bump rule.
-- The version-correction candidate was `v2.0.0-poc.5` (`ba20abb`), successfully tested and deployed. This correction changes only package/lockfile release metadata, automated App Version expectations and this release record. Schema, loader, IndexedDB cache, navigation logic, live Supabase, V1 tables, production and canonical assets are unchanged. Step 7 remains unstarted.
+- The version-correction candidate was `v2.0.0-poc.5` (`ba20abb`), successfully tested and deployed. This correction changes only package/lockfile release metadata, automated App Version expectations and this release record. Schema, loader, IndexedDB cache, navigation logic, live Supabase, V1 tables, production and canonical assets are unchanged. Step 7 remained unstarted at that release.
 - `v2.0.0-poc.5` version-correction verification: `npm ci` succeeded (90 packages), `npm run build` passed including TypeScript, complete Playwright suite **315 passed** across all five widths, and `git diff --check` passed. The unchanged test-gated POC workflow verifies CI and deployment after push.
 
-- Final Step 6 release is `v2.0.0-poc.6`: shared Back button visibility improved after real-user feedback with a solid TravelPilot blue background, white arrow, circular 44×44px target, border/shadow and distinct hover/focus/pressed states on mobile and desktop. The shared header, accessible label, Home visibility rule and navigation behavior are unchanged. Only styling, release metadata, tests and this record changed; Step 7 remains unstarted.
+- Final Step 6 release is `v2.0.0-poc.6`: shared Back button visibility improved after real-user feedback with a solid TravelPilot blue background, white arrow, circular 44×44px target, border/shadow and distinct hover/focus/pressed states on mobile and desktop. The shared header, accessible label, Home visibility rule and navigation behavior are unchanged. Only styling, release metadata, tests and this record changed; Step 7 remained unstarted at that release.
 
 - Final `v2.0.0-poc.6` visual-correction verification: `npm ci` succeeded (90 packages), `npm run build` passed including TypeScript, complete Playwright suite **320 passed** (all prior 315 plus Back visual/interaction checks at 320px, 390px, 430px, 1024px and 1440px), and `git diff --check` passed. The unchanged test-gated POC workflow verifies CI/deployment after push. Existing non-blocking build warnings remain.
+
+## Step 7 completed multi-trip architecture gate
+**STEP 7 MULTI-TRIP GATE: PASS**
+
+- App Version `v2.0.0-poc.7` from canonical package.json, with consistent lockfile/test expectations. Trip Schema Version remains 1; data versions are independent.
+- `src/data/demoTrips/cityTrip.ts`: `demo-trip`, 城市週末示範旅程, `demo.city.1`, 12–14/04/2030. Fictional city/public-transport data with one region, three days, train/walk transport, one accommodation, indoor/food/shopping places, simple grouped checklist and weather profiles. Live Cams, hard cuts and navigation targets are intentionally empty.
+- `src/data/demoTrips/roadTrip.ts`: `demo-road-trip`, 山區自駕示範旅程, `demo.road.1`, 05–08/02/2025. Fictional mountain/road data with two regions, four days, car transport, two accommodations, nature and backup places, parking target, hard cut, optional/backup references, multiple checklist groups, weather relationships and an example.invalid external Live Cam data record.
+- The registry deliberately stores road before city. Adding Trip B required a snapshot/data record only: the canonical schema/validator, loadTrip service, cache, TripLayout, five views, routes, navigation, Back behavior and status/version components are unchanged. No destination-specific component, route, CSS or application branch was added; no schema field was weakened.
+- `src/data/tripDates.ts` provides shared temporal status and sorting. Dates are compared in each trip's timezone: start <= today <= end is current, today < start is upcoming, today > end is completed. Current first; upcoming by nearest start; completed by most recent end; slug ties are deterministic. Sorting does not mutate registry order.
+- Home retains its Step 4 presentation and shows both fictional cards with title, destination, DD/MM/YYYY 星期X date range, generic status (旅程進行中 / 未出發 / 旅程已完成), 示範資料 and Open Trip. Final visual parity and real remote trip listing are not implemented.
+
+## Step 7 verification
+- `npm ci` succeeded (90 packages); no dependency changes beyond release metadata.
+- `npm run build` passed, including strict application/tool/test TypeScript checks.
+- Complete Playwright suite: **395 passed** against the stable production build at 320px, 390px, 430px, 1024px and 1440px. All prior **320** regression cases are retained; **75** additional checks cover the gate across five widths. Existing tests only adjust release/fixture expectations and scope the city Open Trip action now that Home has two cards. The former minimal snapshot remains independent schema-test data, retaining all original malformed/rich-content assertions.
+- Both local snapshots validate and load through unchanged loadTrip signed out/offline. They share no nested mutable objects; modifying returned validated data does not mutate either registered fixture. All ten local trip routes, direct reloads, title/summary/slug, data/schema versions, demo source, navigation/status and Settings → Back are verified.
+- Fixed-clock Home tests cover the road trip in progress, city upcoming/in progress at both date boundaries, and both completed; explicit displayed order differs from registry order where appropriate. Generic helper tests cover all statuses, inclusive boundaries, timezone day shifts, sorting priorities and deterministic ties. No horizontal overflow; original font-size, branding and Back visual tests pass. Narrow Home screenshot inspected.
+- Actual SDK/browser requests are mocked for distinct remote-city-trip and remote-road-trip payloads/IDs/data versions. Tests enforce GET-only v2_trips ownership/slug filtering and v2_trip_versions matching current/published filters. Independent metadata and cache/version/current/device pointers persist; unavailable, signed-out and offline fallback returns the correct slug. Logout retains both caches.
+- Invalid remote Trip B is rejected before caching and cannot change Trip A or replace a previously validated B. A forged pointer to another slug is rejected; a delayed city response cannot replace the road route. Unknown third slugs stay generic. Shared Back preserves the originating trip/page, including cross-trip and Settings reload paths.
+- Source audit forbids fixture slugs/destination names outside data fixtures and checks obvious trip/country/day/place branches. Protected core files, SQL baseline, workflow, styles and canonical branding assets have no diff. Original asset hash/served-byte tests pass. Only POC files changed; production, live Supabase schema, V1 tables and data remain untouched. All network tests use fake sessions; no real password or live test writes.
+- `git diff --check` passed. The unchanged POC-only workflow requires npm ci → build/typecheck → complete Playwright → Pages deployment; GitHub Actions records the pushed release's CI/deployment result. No new architectural decision was necessary; V2_DECISIONS.md is unchanged.
 
 ## Known limitations
 - No real published V2 trip data is seeded by this task, and no real account password was used. Remote loader/auth behavior is tested with the actual SDK and mocked network responses. No live DDL or advisor remediation is performed.
 - Cached private trip snapshots remain readable signed out in the same browser profile until cleared/evicted. Clear Offline Data UI, image caching, service worker and cold offline app-shell startup are later steps.
-- Home still lists the single local demo; full itinerary/other trip renderers and multi-trip proof are not implemented. No weather scoring/API, playback, Today Mode, checklist sync or Supabase preference sync.
+- Home lists the two local fictional demos only. Real remote Home listing, final Home parity and full itinerary/other trip content renderers are not implemented. No weather scoring/API, playback, Today Mode, checklist sync or Supabase preference sync. Home temporal statuses recalculate on render/visit; no continuous midnight update timer is added.
 - Auth uses standard browser storage and default global logout scope; a failed server logout may still clear the local session, as documented in Step 5.
-- Build has non-blocking upstream Zod comment-annotation warnings and a ~610kB minified JS chunk (~179kB gzip). No warning threshold or test requirement was weakened.
+- Build has non-blocking upstream Zod comment-annotation warnings and a ~620kB minified JS chunk (~182kB gzip). No warning threshold or test requirement was weakened.
 - Chromium viewport tests are not physical iPhone/Safari certification or final V1 parity. App-managed Back relies on session storage for reload continuity; blocked storage safely falls back Home after reload.
 
 ## Next bounded task
-**Step 7/16 — Multi-Trip Proof** (not started)
+**Step 8/16 — Home Page Parity** (not started)
 
-Only when explicitly authorized: prove two unrelated dummy trips use the same schema, loader, routes and components, with Home sorting/status and no special-case application code.
+Only when explicitly authorized: refine Home presentation to the Golden Visual Reference while retaining the proven generic trip/date architecture.
 
-Do not begin Step 7. Production must not be modified.
+Do not begin Step 8. Production must not be modified.

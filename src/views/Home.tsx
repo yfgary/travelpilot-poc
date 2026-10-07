@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { branding } from '../app/metadata'
 import { pages, pageHref } from '../app/pages'
 import { trips } from '../data/trips'
+import { orderTrips, tripStatusLabels, formatTripDate } from '../data/tripDates'
 import { EmptyState } from '../components/ViewState'
 
 export function Home() {
@@ -19,10 +20,13 @@ export function Home() {
       <section className="panel" aria-labelledby="trips-title">
         <div className="section-heading"><h2 id="trips-title">我的旅程</h2><span className="muted">{trips.length} 個旅程</span></div>
         <div className="trip-list">
-          {trips.map((trip) => (
+          {orderTrips(trips).map(({ trip, status }) => (
             <article className="trip-card" key={trip.slug}>
               <span className="badge">示範資料</span>
               <h3>{trip.title}</h3>
+              <p>{trip.destinationLabel}</p>
+              <p><time dateTime={trip.startDate}>{formatTripDate(trip.startDate)}</time> → <time dateTime={trip.endDate}>{formatTripDate(trip.endDate)}</time></p>
+              <p className="badge" data-testid="trip-status">{tripStatusLabels[status]}</p>
               <p>{trip.summary}</p>
               <Link className="button" to={pageHref(itinerary, trip.slug)}>開啟旅程 <span aria-hidden="true">→</span></Link>
             </article>

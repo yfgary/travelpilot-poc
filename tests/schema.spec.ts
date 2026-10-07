@@ -1,8 +1,8 @@
 import { test, expect } from './fixtures'
-import { localTrips } from '../src/data/trips'
+import { minimalSnapshot } from './minimalSnapshot'
 import { validateTripSnapshot, TRIP_SCHEMA_VERSION } from '../src/data/schema/trip'
 import type { TripSnapshot } from '../src/data/schema/trip'
-const sample = () => structuredClone(localTrips[0].payload)
+const sample = () => structuredClone(minimalSnapshot)
 
 test('canonical version-1 demo validates with structured issues for malformed input', () => {
   expect(TRIP_SCHEMA_VERSION).toBe(1)
