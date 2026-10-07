@@ -128,9 +128,9 @@ try{
  if(pT.errors.length)fail('Production Trip Info page errors: '+pT.errors.join(' | '));
  if(cT.errors.length)fail('Candidate Trip Info page errors: '+cT.errors.join(' | '));
  const ti=await cT.page.evaluate(()=>({summary:document.querySelector('#tripv2WeatherSummary')?.innerText||'',weather:document.querySelector('#weather')?.innerText||''}));
- if(!ti.summary.includes('D6–D8 固定行程')||!ti.summary.includes('D7：新穗高'))fail('Trip Info fixed summary missing');
+ if(!ti.weather.includes('D6–D8 固定行程')||!ti.weather.includes('D7・新穗高'))fail('Trip Info fixed D6-D8 weather section missing');
  if(!ti.weather.includes('天氣只影響安全安排')&&!ti.weather.includes('不會再交換日子'))fail('Trip Info weather safety-only wording missing');
- await clean(pT.page,['#weather','#hardcuts']); await clean(cT.page,['#weather','#hardcuts']);
+ await clean(pT.page,['#weather','#hardcuts','#d6d8WeatherDecision']); await clean(cT.page,['#weather','#hardcuts','#d6d8WeatherDecision']);
  same(await body(pT.page),await body(cT.page),'Trip Info unaffected DOM text');
  for(const sel of ['header','.page-switch','#transport','#car','#hotels','#parking','#checklist','#emergency','#departure-checklist','footer']){
   const pc=await pT.page.locator(sel).count(),cc=await cT.page.locator(sel).count();
