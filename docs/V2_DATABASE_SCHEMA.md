@@ -1,452 +1,336 @@
-# TravelPilot V2 — Initial Data / Supabase Schema
+# TravelPilot V2 — Supabase / Data Schema
 
-Status: design baseline, not yet a migration.
+Status: locked architecture baseline; no migration applied yet.
 
-## Principles
-- Reuse canonical entities rather than duplicate them across pages.
-- Trip itinerary references places/hotels/transport records by IDs.
-- Optional features are data-driven.
-- User-specific state is separated from shared trip content.
-- Schema must support multiple unrelated trips without code changes.
+## Design choice
+Use a **hybrid versioned-snapshot model**.
 
-## Core entities
+Trip content is mostly read-heavy, versioned together, downloaded for offline use, and commonly generated/imported as a whole by ChatGPT. Therefore the canonical content for each published trip version is one validated JSONB payload.
 
-### trips
+Mutable per-user state remains in normal relational tables.
+
+This avoids an unnecessarily large number of tightly coupled content tables while preserving validation, rollback, multi-trip isolation and offline simplicity.
+
+## Existing V1 tables — DO NOT MODIFY
+Current Supabase public V1 tables observed on 08/10/2026:
+- `trip_checklist_state`
+- `trip_checklist_shared`
+- `trip_sync_config`
+
+V2 uses new `v2_` tables only.
+
+## Proposed V2 tables
+
+### v2_trips
+Stable trip identity and lightweight list/home metadata.
+
 Suggested fields:
-- id (uuid)
-- slug (unique text)
+- id uuid primary key
+- slug text unique not null
+- title text not null
+- destination_label text
+- start_date date not null
+- end_date date not null
+- latest_published_version_id uuid nullable
+- published boolean default false
+- created_at timestamptz
+- updated_at timestamptz
+
+Home cards may read lightweight metadata from this table and/or the latest published snapshot.
+
+### v2_trip_versions
+Immutable or append-only published/draft content snapshots.
+
+Suggested fields:
+- id uuid primary key
+- trip_id uuid references v2_trips
+- data_version text not null
+- schema_version integer not null
+- payload jsonb not null
+- checksum text nullable
+- status text — draft / published / archived
+- created_at timestamptz
+- published_at timestamptz nullable
+- notes text nullable
+
+Constraints:
+- unique(trip_id, data_version)
+- only a validated version may become published
+- normal edits create a new version rather than mutating an already-published historical version
+
+### v2_checklist_state
+User-specific mutable checklist state.
+
+Suggested fields:
+- user_id uuid references auth.users
+- trip_id uuid references v2_trips
+- checklist_item_id text
+- checked boolean default false
+- updated_at timestamptz
+- device_id text nullable
+
+Primary key:
+- user_id + trip_id + checklist_item_id
+
+Checklist item IDs in payloads must be stable across ordinary trip updates.
+
+### v2_user_preferences
+Suggested fields:
+- user_id uuid primary key references auth.users
+- font_size text — small / medium / large
+- language text default zh-HK
+- auto_update boolean
+- updated_at timestamptz
+
+### v2_app_versions
+Suggested fields:
+- app_version text primary key
+- released_at timestamptz
+- minimum_schema_version integer nullable
+- notes text nullable
+- published boolean
+
+## Trip snapshot payload
+A snapshot must be self-contained for trip rendering and offline use.
+
+Illustrative top-level shape:
+
+```json
+{
+  "schemaVersion": 1,
+  "trip": {},
+  "regions": [],
+  "days": [],
+  "places": [],
+  "accommodations": [],
+  "transport": [],
+  "navigationTargets": [],
+  "hardCuts": [],
+  "checklists": [],
+  "weather": {},
+  "liveCams": [],
+  "images": [],
+  "sources": []
+}
+```
+
+This is a conceptual contract, not the final TypeScript interface. Exact field definitions are created with the implementation schema.
+
+## Required generic content concepts
+
+### trip
+Must support:
 - title
-- destination_label
-- year
-- summary
-- start_date
-- end_date
-- status_override (nullable)
-- hero_image_id (nullable)
-- banner_image_id (nullable)
-- default_language
-- data_version
-- published
-- created_at
-- updated_at
-
-Status should normally be derived from dates; override exists only for exceptional data/admin needs.
-
-### trip_days
-- id
-- trip_id
-- day_number
-- date
-- title
-- route_summary
-- highlights
-- accommodation_id (nullable)
-- primary_weather_location_id (nullable)
-- notes
-- sort_order
-
-### timeline_items
-- id
-- trip_day_id
-- item_type
-- start_time
-- end_time
-- title
-- place_id (nullable)
-- transport_id (nullable)
-- hotel_id (nullable)
-- duration_minutes (nullable)
-- description
-- is_hard_cut
-- sort_order
-
-`item_type` is generic, e.g. place / transport / meal / hotel / note / activity.
-
-### places
-- id
-- slug
-- name
-- region_id
-- place_type
-- summary
-- description
-- why_visit
-- history_background
-- local_importance
-- what_to_see
-- takeaway
-- suggested_duration_minutes
-- opening_time_text
-- last_entry_text
-- closing_time_text
-- fee_text
-- rating_10
-- latitude (nullable)
-- longitude (nullable)
-- google_maps_url (nullable)
-- official_url (nullable)
-- active
-- updated_at
+- short title
+- destination label
+- introduction/summary
+- start/end date
+- timezone
+- hero/banner references
+- display metadata
+- optional feature flags only when they describe generic capability, never trip-specific renderer modes
 
 ### regions
-- id
-- name
-- country_code
-- timezone
-- latitude (nullable)
-- longitude (nullable)
+Must support:
+- stable ID
+- names/labels
+- timezone where required
+- coordinates
+- weather coordinates/config
 
-### hotels
-- id
-- place_id (nullable)
-- name
-- hotel_type
-- booking_price
-- currency
-- payment_status
-- breakfast_included
-- check_in_text
-- check_out_text
-- booking_reference_private (nullable; protect appropriately)
+### days
+Must support:
+- stable ID
+- day number
+- date
+- title
+- route summary
+- highlights
+- hero/gallery image references
+- accommodation reference
+- primary weather region
+- generic constraints/warnings
+- optional/bonus references
+- ordered timeline
+
+### timeline items
+Must support:
+- stable ID
+- generic item type
+- start/end time
+- title/description
+- place/accommodation/transport references
+- duration
+- map/navigation target
+- warning
+- optional/bonus state
+- hard-cut relation where relevant
+
+### places
+Must support:
+- stable ID
+- region
+- generic place type
+- short/long descriptions
+- why worth visiting
+- history/background
+- local importance
+- what to see
+- takeaway/what to understand
+- suggested duration
+- opening/last entry/closing information
+- fee
+- rating out of 10
+- map/coordinates
+- official links
+- images
+- source references
+- activity profile references
+
+### accommodations
+Must support:
+- stable ID
+- name/type
+- address/phone/map
+- stay dates
+- room
+- meal plan
+- booking/payment status
+- total/paid/arrival payment information
+- check-in/out
+- cancellation
+- parking
 - notes
+
+Sensitive booking information must not be placed in a publicly readable payload unless explicitly intended.
 
 ### transport
-- id
-- trip_id
-- transport_type
-- provider
-- service_number
-- origin_place_id (nullable)
-- destination_place_id (nullable)
-- departure_at (nullable)
-- arrival_at (nullable)
-- booking_status
-- price
-- currency
-- notes
-
-### rental_cars
-- id
-- trip_id
-- provider
-- vehicle_class
-- pickup_place_id
-- dropoff_place_id
-- pickup_at
-- dropoff_at
-- drive_type
-- winter_tires
-- package_name
-- price
-- currency
-- notes
-
-### weather_locations
-- id
-- trip_id
-- region_id (nullable)
-- label
-- latitude
-- longitude
-- sort_order
-- active
-
-### activity_categories
-- id
-- key
-- label
-- description
-
-### place_activity_categories
-- place_id
-- activity_category_id
-- weight (default 1)
-
-### day_activity_categories
-Optional override/aggregation table if a day's suitability needs explicit weighting independent of its places:
-- trip_day_id
-- activity_category_id
-- weight
-
-### backup_places
-- id
-- trip_day_id
-- place_id
-- priority
-- reason
-- notes
-
-### live_cams
-- id
-- label
-- region_id (nullable)
-- place_id (nullable)
-- source_type
-- source_url
-- preview_url (nullable)
-- official_url (nullable)
-- active
-- sort_order
-
-### trip_live_cams
-- trip_id
-- live_cam_id
-- sort_order
-
-### images
-- id
-- storage_path_or_url
-- alt_text
-- source_url (nullable)
-- attribution (nullable)
-- license_note (nullable)
-- width (nullable)
-- height (nullable)
-
-### place_images
-- place_id
-- image_id
-- role
-- sort_order
-
-### day_images
-- trip_day_id
-- image_id
-- role
-- sort_order
-
-### sources
-- id
-- entity_type
-- entity_id
-- source_type
-- title
-- url
-- checked_at
-
-## Trip information / hard cuts
-
-### trip_hard_cuts
-- id
-- trip_id
-- trip_day_id (nullable)
-- title
-- hard_cut_at
-- description
-- priority
-
-### emergency_info
-- id
-- trip_id
-- category
-- label
-- value
-- notes
-- sort_order
-
-## Checklists
-
-### checklist_definitions
-- id
-- trip_id
-- checklist_type
-- title
-- description
-
-Typical types:
-- pre_departure
-- morning_departure
-
-### checklist_items
-- id
-- checklist_definition_id
-- label
-- description
-- sort_order
-- active
-
-### user_checklist_state
-- user_id
-- checklist_item_id
-- checked
-- checked_at
-- updated_at
-- device_id (nullable)
-
-This table is user-specific and requires RLS.
-
-## User preferences
-
-### user_preferences
-- user_id
-- font_size
-- language
-- auto_update
-- updated_at
-
-Initial font size values:
-- small
-- medium
-- large
-
-Language ships as Traditional Chinese initially.
-
-## Versioning
-
-### app_versions
-- version
-- released_at
-- minimum_supported_data_version (nullable)
-- notes
-
-### trip_versions
-- trip_id
-- data_version
-- published_at
-- notes
-
-Client keeps local:
-- app_version
-- trip_data_version per downloaded trip
-- last_sync_at
-
-## Optional future entities
-Do not implement until needed:
-- translations
-- trip collaborators
-- user trip ownership/sharing
-- notification subscriptions
-- audit history
-
-## RLS/security requirement
-Before enabling writes, define RLS policies for all user-specific tables. Do not expose privileged keys in browser code.
-
-## Validation requirement
-Before any migration is applied, validate this schema against:
-1. Japan 2027 Golden Content trip
-2. one unrelated trip with different transport/accommodation patterns
-3. offline checklist sync requirements
-4. place reuse in Detailed Itinerary + Attractions Overview + Today Mode
-
-
-## Golden Content validation additions (Japan 2027)
-Validated against the production/reference trip `shirakawago-shinhotaka-2027`.
-
-The baseline schema must additionally support the following generic concepts observed in the Golden Content trip:
-
-### trip_day metadata
-Add/allow:
-- driving_required (boolean)
-- notes
-- constraints (array or normalized child records where needed)
-- bonus_items / optional_items (prefer normalized relations)
-- dynamic/module references only as generic rules, never trip-specific code
-
-### timeline item navigation
-Add/allow:
-- map_query (nullable text)
-- map_label (nullable text)
-- navigation_mode (nullable; e.g. driving / walking / transit)
-- warning_text (nullable)
-- optional/bonus flag
-- booking/reference link where appropriate
-
-### parking / navigation targets
-Add a generic `navigation_targets` entity:
-- id
-- trip_id (nullable)
-- place_id (nullable)
-- region_id (nullable)
-- target_type (parking / entrance / station / pickup / dropoff / other)
-- title
-- map_query
-- map_label
-- description
-- warning_text
-- latitude / longitude (nullable)
-- sort_order
-
-This is required because some attractions must navigate to a specific parking area or entrance rather than the attraction name itself.
-
-### hotel detail expansion
-Hotels must support:
-- address
-- phone
-- nights / stay dates through a normalized trip accommodation relation
-- room_type
-- meal_plan_text
-- booking_status
-- badges/tags
-- check_in_time
-- check_out_time
-- total_price
-- currency
-- paid_amount
-- payment_status
-- arrival_payment_text
-- cancellation_text
-- parking_text
-- notes
-
-Prefer numeric amount + currency fields where possible, with display text only for complex/legacy wording.
-
-### transport detail expansion
-Transport records must support:
-- public-facing label/title
-- map/navigation target
-- planned/reference schedule text
-- hard-cut relation where applicable
+Must support:
+- generic transport type
+- provider/service
+- origin/destination
+- date/time
+- map/navigation references
+- booking/payment state
+- price/currency
 - notes/warnings
-- booking/payment state where relevant
+
+### navigation targets
+Generic targets such as:
+- parking
+- entrance
+- station
+- pickup
+- dropoff
+- other
+
+Fields may include:
+- title
+- map query / URL
+- coordinates
+- description
+- warning
 
 ### hard cuts
-`trip_hard_cuts` must support:
-- day reference
-- time-only and full datetime cases
+Must support:
+- related day
+- time or datetime
+- title
 - severity/priority
-- display icon/category
-- source relation (transport / hotel / attraction / manual)
-- note
+- category/icon
+- description
+- optional source relation
 
-### checklist definitions
-Checklist definition/items must support:
-- multiple groups/sections
-- icon/emoji presentation metadata
-- expected item count for validation
+### checklists
+Definitions live in trip payload and can differ by trip.
+
+Must support:
+- stable checklist ID
+- type
+- title/description
+- multiple groups
+- stable item IDs
+- display/order metadata
 - notes
-- trip-specific definitions without trip-specific rendering code
-
-### live cam grouping
-Live cams must support generic grouping/binding:
-- region
-- route/day
-- place
-- arbitrary named group
-- external status/official links
-- source capability type (embed / image / external)
-
-Do not copy V1's legacy day-specific binding logic into application code.
+- expected count for validation
 
 ### weather / suitability
-The schema must support:
-- weather regions with lat/lon/timezone
-- per-region activity profile weights
-- per-day primary/default weather region
-- generic score profile definitions
-- generic rule-driven region selection where genuinely required
+Must support:
+- weather regions
+- current/forecast provider configuration where required
+- activity profiles
+- region/day profile weighting
+- score configuration version
+- generic operation/status notes
 
-Scoring rules belong in data/config, not place-name branches.
+Do not encode a named attraction in scoring code.
 
-### trip information sections
-Trip Information requires reusable structured section types rather than freeform page HTML:
-- transport
-- rental car
-- accommodation summary
-- parking/navigation
-- hard cuts
-- weather/decision notes
-- checklists
-- emergency contacts
+### live cams
+Must support:
+- stable ID
+- label
+- region/place/route/group references
+- generic source capability type
+- source URL
+- preview/snapshot URL where relevant
+- official/status URL
+- sort/display metadata
 
-### source-of-truth caution
-The production/reference Japan 2027 data contains legacy D6–D8 dynamic weather-day logic. It is useful for validating schema flexibility, but it must **not** be assumed to be the current desired itinerary. Real-trip migration must use the user's latest approved itinerary, not blindly copy stale V1 planning logic.
+### images
+Must support:
+- stable ID
+- local/storage/external asset reference
+- alt text
+- source URL
+- attribution/license note where required
+- role and sort order via referencing content
+
+### sources
+Research/source records may include:
+- title
+- URL
+- source type
+- checked_at
+- referenced entity ID/type
+
+## Publishing workflow
+Target workflow:
+1. User supplies itinerary/document.
+2. ChatGPT transforms it into the current trip schema.
+3. ChatGPT researches approved missing place/image/source information.
+4. Validate payload against the V2 schema.
+5. Show/report validation issues instead of hard-coding around them.
+6. Create a new draft trip version.
+7. Publish only the complete validated version.
+8. Client sees newer Trip Data Version and downloads it.
+9. Previous published versions remain available for rollback/history if retained.
+
+## Offline model
+When a trip is downloaded, store:
+- trip ID
+- data version
+- schema version
+- complete validated payload
+- last sync/download timestamp
+
+Use IndexedDB for structured payloads.
+Use Cache Storage for app/static assets and selected essential images.
+
+## RLS/security
+Before V2 tables are created, define explicit policies.
+
+Expected direction:
+- published trip content: read according to product visibility decision
+- checklist state: authenticated user can read/write only own rows
+- preferences: authenticated user can read/write only own row
+- content publishing: not writable by ordinary anonymous browser sessions
+
+Run Supabase security/performance advisors after actual DDL changes.
+
+## Validation gate
+Before real Japan 2027 migration:
+1. validate two unrelated dummy trips
+2. prove one renderer handles both without special cases
+3. prove snapshot offline storage works
+4. prove checklist IDs survive a trip data version update
+5. prove rollback/version selection works conceptually
