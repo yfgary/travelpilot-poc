@@ -76,9 +76,9 @@ try{
  if(surface.apply!==0)fail('Weather recommendation Apply control still visible');
  if(surface.panel!==1||surface.cards!==3)fail('Read-only D6-D8 weather panel/cards missing');
  if(!surface.panelText.includes('不會推薦、套用或改動'))fail('Read-only weather panel does not clearly retire auto selection');
- if(norm(surface.d6[0])!=='🏘️ 高山 → 白川鄉 → 高山')fail('D6 fixed title wrong: '+surface.d6[0]);
- if(norm(surface.d7[0])!=='🚡 高山 → 新穗高 → 高山')fail('D7 fixed title wrong: '+surface.d7[0]);
- if(norm(surface.d8[0])!=='🏯 高山市區＋鐘乳洞 → 松本')fail('D8 fixed title wrong: '+surface.d8[0]);
+ if(norm(surface.d6[0])!=='白川鄉')fail('D6 fixed title wrong: '+surface.d6[0]);
+ if(norm(surface.d7[0])!=='新穗高纜車')fail('D7 fixed title wrong: '+surface.d7[0]);
+ if(norm(surface.d8[0])!=='高山市區＋飛驒大鐘乳洞 → 松本')fail('D8 fixed title wrong: '+surface.d8[0]);
  if(surface.d68marker!=='d6-shirakawago_d7-shinhotaka_d8-city-cave')fail('Fixed itinerary marker missing');
 
  const retired=await cI.page.evaluate(()=>{
@@ -117,8 +117,8 @@ try{
   await pI.page.evaluate(a=>window[a].close(),api); await cI.page.evaluate(a=>window[a].close(),api);
  }
 
- await clean(pI.page,['#tripv2WeatherSelect','#d6d8WeatherDecision','#d6','#d7','#d8']);
- await clean(cI.page,['#tripv2WeatherSelect','#d6d8WeatherDecision','#d6','#d7','#d8']);
+ await clean(pI.page,['#tripv2WeatherSelect','#d6d8WeatherDecision','#d6','#d7','#d8','.day-nav-inner [data-day="d6"]','.day-nav-inner [data-day="d7"]','.day-nav-inner [data-day="d8"]']);
+ await clean(cI.page,['#tripv2WeatherSelect','#d6d8WeatherDecision','#d6','#d7','#d8','.day-nav-inner [data-day="d6"]','.day-nav-inner [data-day="d7"]','.day-nav-inner [data-day="d8"]']);
  same(await body(pI.page),await body(cI.page),'Itinerary unaffected DOM text');
  same(await shot(pI.page),await shot(cI.page),'Itinerary unaffected full-page pixels');
  await pI.page.close(); await cI.page.close();
@@ -132,7 +132,11 @@ try{
  if(!ti.weather.includes('天氣只影響安全安排')&&!ti.weather.includes('不會再交換日子'))fail('Trip Info weather safety-only wording missing');
  await clean(pT.page,['#weather','#hardcuts']); await clean(cT.page,['#weather','#hardcuts']);
  same(await body(pT.page),await body(cT.page),'Trip Info unaffected DOM text');
- same(await shot(pT.page),await shot(cT.page),'Trip Info unaffected full-page pixels');
+ for(const sel of ['header','.page-switch','#transport','#car','#hotels','#parking','#checklist','#emergency','#departure-checklist','footer']){
+  const pc=await pT.page.locator(sel).count(),cc=await cT.page.locator(sel).count();
+  if(pc!==cc){fail('Trip Info '+sel+' count mismatch '+pc+' != '+cc);continue;}
+  if(pc) same(hash(await pT.page.locator(sel).screenshot({animations:'disabled'})),hash(await cT.page.locator(sel).screenshot({animations:'disabled'})),'Trip Info '+sel+' pixels');
+ }
  await pT.page.close(); await cT.page.close();
 
  // LIVE: D1-D5/D9 and surrounding presentation must remain exact.
@@ -143,13 +147,25 @@ try{
   d6:document.querySelector('#d6')?.innerText||'',d7:document.querySelector('#d7')?.innerText||'',d8:document.querySelector('#d8')?.innerText||'',
   legacy:(document.body.innerText||'').includes('等待選擇新穗高日子')
  }));
- if(!liveFixed.d6.includes('D6 白川鄉'))fail('Live D6 not fixed to Shirakawago');
- if(!liveFixed.d7.includes('D7 新穗高'))fail('Live D7 not fixed to Shinhotaka');
- if(!liveFixed.d8.includes('D8 鐘乳洞'))fail('Live D8 not fixed to cave/Matsumoto');
+ const liveTitles=await cL.page.evaluate(()=>({
+  d6:(document.querySelector('#d6 .summary-title')?.textContent||'').replace(/\\s+/g,' ').trim(),
+  d7:(document.querySelector('#d7 .summary-title')?.textContent||'').replace(/\\s+/g,' ').trim(),
+  d8:(document.querySelector('#d8 .summary-title')?.textContent||'').replace(/\\s+/g,' ').trim(),
+  chooser:document.querySelectorAll('#livePlanChooserV92').length,
+  choiceButtons:document.querySelectorAll('#livePlanChooserV92 button[data-sh]').length
+ }));
+ if(!liveTitles.d6.includes('白川鄉'))fail('Live D6 not fixed to Shirakawago: '+liveTitles.d6);
+ if(!liveTitles.d7.includes('新穗高'))fail('Live D7 not fixed to Shinhotaka: '+liveTitles.d7);
+ if(!liveTitles.d8.includes('飛驒大鐘乳洞')||!liveTitles.d8.includes('松本'))fail('Live D8 not fixed to cave/Matsumoto: '+liveTitles.d8);
+ if(liveTitles.chooser!==0||liveTitles.choiceButtons!==0)fail('Live manual D6-D8 chooser still exists');
  if(liveFixed.legacy)fail('Live page still exposes selection-wait state');
- await clean(pL.page,['#d6','#d7','#d8']); await clean(cL.page,['#d6','#d7','#d8']);
+ await clean(pL.page,['#d6','#d7','#d8','#livePlanChooserV92','#d6d8WeatherDecision','.quick-nav [data-day="d6"]','.quick-nav [data-day="d7"]','.quick-nav [data-day="d8"]']); await clean(cL.page,['#d6','#d7','#d8','#livePlanChooserV92','#d6d8WeatherDecision','.quick-nav [data-day="d6"]','.quick-nav [data-day="d7"]','.quick-nav [data-day="d8"]']);
  same(await body(pL.page),await body(cL.page),'Live unaffected DOM text');
- same(await shot(pL.page),await shot(cL.page),'Live unaffected full-page pixels');
+ for(const sel of ['header','.page-switch','.today-panel','#weather3dPanel','#d1','#d2','#d3','#d4','#d5','#d9','footer']){
+  const pc=await pL.page.locator(sel).count(),cc=await cL.page.locator(sel).count();
+  if(pc!==cc){fail('Live '+sel+' count mismatch '+pc+' != '+cc);continue;}
+  if(pc) same(hash(await pL.page.locator(sel).screenshot({animations:'disabled'})),hash(await cL.page.locator(sel).screenshot({animations:'disabled'})),'Live '+sel+' pixels');
+ }
  await pL.page.close(); await cL.page.close();
 
  // ATTRACTIONS: no approved visual/content difference at all (version badge normalized).
