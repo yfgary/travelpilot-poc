@@ -52,3 +52,12 @@ Expected paths:
 **Decision:** Remove all legacy V1/previous POC implementation files from `travelpilot-poc`. Keep only V2 documentation, V2 repository guidance, a clean README, and the canonical banner/icon assets.  
 **Reason:** The user will not reuse the old POC implementation and wants to avoid legacy clutter influencing the V2 rebuild.  
 **Reference rule:** V1 remains a Golden Visual/Content Reference externally, but V1 implementation files must not be copied back into the V2 POC unless explicitly requested.
+
+## 2026-10-08 — Golden Content schema validation passed
+**Decision:** The V2 entity model is approved to proceed after amendments discovered from the Japan 2027 reference trip.  
+**Added generic concepts:** navigation targets/parking, richer accommodation payment metadata, grouped checklist structure, richer hard-cut metadata, flexible live-cam grouping, timeline navigation metadata, and weather activity-profile weights.  
+**Rejected:** copying V1 legacy hydrate modes, page filenames, storage keys, or trip/day-specific modules into V2.
+
+## 2026-10-08 — V1 content detail is reference, not itinerary truth
+**Decision:** Japan 2027 V1 remains the Golden Content detail reference, but its itinerary logic is not automatically considered current.  
+**Reason:** production still contains legacy D6–D8 flexible-weather logic that may be stale compared with the user's newer approved plan. Migration must use the latest approved itinerary.
