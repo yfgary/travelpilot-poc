@@ -1,6 +1,6 @@
 {
-  "version": "v10.17.0",
-  "build": "2026-10-07.3",
-  "updated": "2026-10-07T18:30:00+08:00",
-  "notes": "POC Round 3 One Standard Runtime: all four shared pages boot through multi-trip-runtime-v1, legacy page routers are reduced to compatibility shims, and runtime ownership is enforced by QA."
+  "version": "v10.18.0",
+  "build": "2026-10-07.4",
+  "updated": "2026-10-07T23:18:00+08:00",
+  "notes": "POC Round 4 Standard Itinerary Engine: Shirakawago itinerary is generated from Standard trip data with Production-captured presentation markup while preserving Golden Reference UI and interactions."
 }

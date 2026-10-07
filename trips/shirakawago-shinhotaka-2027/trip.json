@@ -67,7 +67,31 @@
             "shirakawago"
           ]
         }
-      ]
+      ],
+      "stateKey": "japanWinter2027_shinhotakaDay",
+      "ui": {
+        "enabled": true,
+        "mount": "after-intro",
+        "id": "tripv2WeatherSelect",
+        "className": "tripv2-weather-select",
+        "title": "🌨️ D6–D8 新穗高日子",
+        "description": "揀邊一日去新穗高。揀咗之後 D6–D8 會直接變成完整嘅「實際行程」：有今日重點、景點介紹、時間線同 📍，唔再同時顯示 Plan A／B／C。撳「重設」會返回原本規劃模式。",
+        "choices": [
+          {
+            "value": "d6",
+            "label": "🚡 D6 去新穗高"
+          },
+          {
+            "value": "d7",
+            "label": "🚡 D7 去新穗高"
+          },
+          {
+            "value": "d8",
+            "label": "🚡 D8 去新穗高"
+          }
+        ],
+        "resetLabel": "重設／規劃模式"
+      }
     }
   ],
   "pages": {
@@ -87,9 +111,9 @@
   },
   "renderers": {
     "itinerary": {
-      "mode": "hydrate",
+      "mode": "generate",
       "source": "itinerary",
-      "preserveLegacyDetails": true
+      "presentationProfile": "standard-markup-v1"
     },
     "tripInfo": {
       "mode": "hydrate",

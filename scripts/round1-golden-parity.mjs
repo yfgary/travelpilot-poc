@@ -51,7 +51,16 @@ async function bodySnapshot(page){
 }
 function diff(a,b,path='root',out=[]){
  if(typeof a!==typeof b){out.push(path+': type mismatch');return out;}
- if(a===null||b===null||typeof a!=='object'){if(a!==b)out.push(path+': '+JSON.stringify(a)+' != '+JSON.stringify(b));return out;}
+ if(a===null||b===null||typeof a!=='object'){
+  if(a!==b){
+   if(typeof a==='string'&&typeof b==='string'){
+    let i=0;while(i<a.length&&i<b.length&&a[i]===b[i])i++;
+    const start=Math.max(0,i-260),endA=Math.min(a.length,i+360),endB=Math.min(b.length,i+360);
+    out.push(path+': first string difference at '+i+'\nREFERENCE …'+JSON.stringify(a.slice(start,endA))+'…\nCANDIDATE …'+JSON.stringify(b.slice(start,endB))+'…');
+   }else out.push(path+': '+JSON.stringify(a)+' != '+JSON.stringify(b));
+  }
+  return out;
+ }
  if(Array.isArray(a)){if(a.length!==b.length)out.push(path+': length '+a.length+' != '+b.length);for(let i=0;i<Math.min(a.length,b.length);i++)diff(a[i],b[i],path+'['+i+']',out);return out;}
  for(const k of new Set([...Object.keys(a),...Object.keys(b)])){if(!(k in a)||!(k in b))out.push(path+'.'+k+': missing');else diff(a[k],b[k],path+'.'+k,out);}
  return out;
