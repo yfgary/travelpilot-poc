@@ -1,4 +1,4 @@
-const CACHE_NAME='travelpilot-v10.17.0-20261007';
+const CACHE_NAME='travelpilot-v10.18.0-20261007';
 const CORE=[
   './',
   './index.html',
@@ -67,7 +67,7 @@ async function patchLive(response,url){
   try{
     let text=await response.text();
     if(!text.includes('assets/multi-trip-runtime-v1.js')){
-      text=text.replace(/<\/body>/i,'<script src="assets/multi-trip-runtime-v1.js?v=10.17.0"><\/script>\n</body>');
+      text=text.replace(/<\/body>/i,'<script src="assets/multi-trip-runtime-v1.js?v=10.18.0"><\/script>\n</body>');
     }
     const headers=new Headers(response.headers);
     headers.delete('content-length');
