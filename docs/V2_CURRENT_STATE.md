@@ -3,9 +3,9 @@
 Last updated: 08/10/2026
 
 ## Progress
-**Step 5/16 — Supabase V2 foundation — frontend integration: COMPLETE**
+**Step 6/16 — Trip schema + versioned data loader: COMPLETE**
 
-Next: **Step 6/16 — Trip schema + versioned data loader**
+Next: **Step 7/16 — Multi-Trip Proof**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -31,7 +31,7 @@ Next: **Step 6/16 — Trip schema + versioned data loader**
 
 ## Not started
 - Full V2 feature implementation (foundation and shared visual shell complete)
-- Complete PWA/offline implementation (manifest foundation only is complete)
+- Complete PWA/offline implementation (manifest and versioned snapshot cache foundations are complete)
 - multi-trip renderer implementation
 - Complete V1 UI parity (shared responsive baseline only is complete)
 - weather engine
@@ -49,7 +49,7 @@ Next: **Step 6/16 — Trip schema + versioned data loader**
   - `assets/images/travelpilot_icon.PNG`
 
 ## Next step
-Step 5 is complete. Next is **Step 6/16 — Trip schema + versioned data loader**, only when explicitly authorized. No Step 6 implementation has begun. Real trip migration and feature engines remain outside this foundation.
+Step 6 is complete, including the shared-navigation regression fix. Next is **Step 7/16 — Multi-Trip Proof**, only when explicitly authorized. No Step 7 implementation has begun. Real trip migration and feature engines remain outside this foundation.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -148,24 +148,42 @@ All Step 3 acceptance criteria passed:
 - Canonical branding remains unchanged; responsive/font preference/hash route/error/status regressions pass.
 - `git diff --check` passed. Production repository and all Supabase tables remain untouched by this task.
 
+## Step 6 completed schema / loader / navigation foundation
+- Mandatory Step 4 navigation regression fixed first in Step 6 preflight. Shared visual Back button on every non-Home route, aria-label `返回上一頁`, safe recorded app-route history, direct-entry Home fallback and reload persistence. No Settings-specific navigation logic or native history-length assumption.
+- App Version `v2.0.0-poc.4` from package.json; Trip Schema Version 1; Trip Data Version separate (local demo `demo.1`). Exact Zod 4.6.5 and idb 8.0.4 dependencies pinned and lockfile committed.
+- One canonical Zod snapshot schema with inferred TypeScript types for trip/regions/days/timeline/places/accommodation/transport/navigation/hard cuts/checklists/weather/Live Cams/images/sources. Generic weather and Live Cam data only, no engines.
+- Structured runtime issues reject unsupported versions, malformed shape, duplicate stable IDs, broken references, invalid dates/date order/day range or duplicates, coordinates, ratings and negative durations.
+- Local demo converted to a valid minimal version-1 snapshot with region/day/timeline/place/navigation references. Home still lists only demo-trip; trip content views remain placeholders.
+- Read-only authenticated Supabase loader checks own v2_trips row, current published v2_trip_versions row, schema versions, payload trip ID/slug and full runtime validation. No content writes or V1 table access.
+- IndexedDB version records keyed by tripId/dataVersion and atomic owner/device current pointers retain older snapshots. Reads revalidate cache. Remote invalid/unavailable/unsupported responses use valid cache without overwriting it; blocked storage leaves remote data usable with a notice.
+- Signed-out/offline cached data remains readable on the device. Logout does not delete it; privacy behavior is documented in architecture/schema/decisions/README. Signed-in fallback is account-scoped.
+- Asynchronous TripLayout shows loading/shared generic failures and metadata/version/source details. Cancellation prevents stale route results from replacing another trip's UI.
+- `supabase/schema/v2_foundation.sql` is an unapplied source-control baseline reconstructed from read-only V2 catalog metadata, including indexes/RLS/grants/policies/private updated_at triggers. Live Step 5 foundation already exists; do not auto-apply. Future DDL requires proper migrations. No tables, V1 DDL or production files changed.
+
+## Step 6 verification
+- Navigation preflight: **30 passed** across five widths before proceeding to schema/loader work; final coverage also includes fresh direct Settings reload.
+- `npm ci` succeeded (90 packages installed).
+- `npm run build` passed, including strict application/tool/test TypeScript checks.
+- Complete Playwright suite against the stable final production build: **310 passed**, at 320px, 390px, 430px, 1024px and 1440px.
+- All 145 Step 3–5 tests retained, with only App Version expectations updated. Canonical image hashes/served bytes, route reloads, labels, font sizes/persistence, no overflow, touch targets, lower-left status and auth tests pass.
+- Back tests cover exact itinerary/info restoration through Settings, page A → B → Settings → B, repeated Back, fresh direct Settings/trip entries, Settings reload, Home hiding Back, blocked storage and external-history safety.
+- Schema tests cover valid minimal and rich generic content, malformed input, unsupported versions, duplicates, all required references, invalid dates/time/coordinates/rating/duration and invalid/duplicate checklist item IDs.
+- Mocked remote tests verify owner filtering, only V2 content GET queries, current published filters, separate versions, generic failure states, invalid/unsupported payload rejection and unchanged valid cache.
+- Real browser IndexedDB tests verify reload persistence, retained old/new versions and pointers (including opaque labels preserved exactly), corruption rejection, remote fallback, signed-out/offline reads, logout retention, account isolation and blocked storage behavior.
+- All automated Supabase responses are intercepted; no real password or live test data writes. Existing Supabase metadata was read only for the baseline; RLS/advisor verification remains the prior Step 5 handoff, with no claim that V1 warnings were fixed.
+- `git diff --check` passed. POC workflow remains protected and unchanged; remote CI/deployment result is verified after push.
+
 ## Known limitations
-- Real-account login was not exercised because no user password was requested or used. Automated tests validate the actual SDK against intercepted network responses.
-- Live Supabase REST reachability was not reverified from this execution environment: its network policy excludes the Supabase host. The Settings check runs in the user's browser; prior database/RLS/advisor verification is recorded from the supplied handoff.
-- Default SDK logout scope is global. SDK session storage is cleared even when remote logout returns an error; the UI reports this without claiming that server-side logout succeeded.
-- Standard reload persistence requires available browser storage. Font preferences remain local only; no Supabase preference or checklist sync.
-- No public/shared trip content, real snapshot loader, schema validator, trip download, service worker strategy, weather, Live Cam or Today Mode engine.
-- Existing Chromium viewport coverage is not physical iPhone/Safari certification or complete V1 parity.
-- POC automatic build/test/deploy workflow remains intact; its remote result is verified after pushing.
+- No real published V2 trip data is seeded by this task, and no real account password was used. Remote loader/auth behavior is tested with the actual SDK and mocked network responses. No live DDL or advisor remediation is performed.
+- Cached private trip snapshots remain readable signed out in the same browser profile until cleared/evicted. Clear Offline Data UI, image caching, service worker and cold offline app-shell startup are later steps.
+- Home still lists the single local demo; full itinerary/other trip renderers and multi-trip proof are not implemented. No weather scoring/API, playback, Today Mode, checklist sync or Supabase preference sync.
+- Auth uses standard browser storage and default global logout scope; a failed server logout may still clear the local session, as documented in Step 5.
+- Build has non-blocking upstream Zod comment-annotation warnings and a ~610kB minified JS chunk (~179kB gzip). No warning threshold or test requirement was weakened.
+- Chromium viewport tests are not physical iPhone/Safari certification or final V1 parity. App-managed Back relies on session storage for reload continuity; blocked storage safely falls back Home after reload.
 
 ## Next bounded task
-**Step 6/16 — Trip schema + versioned data loader** (not started)
+**Step 7/16 — Multi-Trip Proof** (not started)
 
-Only when explicitly authorized:
-- versioned TypeScript trip schema/validation
-- generic dummy snapshot format
-- owner-scoped Supabase snapshot loader
-- IndexedDB trip cache
-- distinct App / Trip Data / Trip Schema versions
-- validation/error handling
+Only when explicitly authorized: prove two unrelated dummy trips use the same schema, loader, routes and components, with Home sorting/status and no special-case application code.
 
-Do not begin Step 6. Production must not be modified.
+Do not begin Step 7. Production must not be modified.

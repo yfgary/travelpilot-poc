@@ -267,3 +267,14 @@ At minimum test:
 - version comparison/update behaviour
 - iPhone and desktop layouts
 - schema validation failures
+
+## Step 6 implemented boundaries
+
+- Shared header Back action is present on every non-Home route. `NavigationHistory` records safe app-relative router entries and restores them from sessionStorage only when the current router key/path matches. It navigates to the previous recorded route or Home, never to an unverified native browser entry. Reloaded Settings preserves the trip page where possible; unavailable storage falls back safely.
+- `data/schema/trip.ts` is the single Zod schema, with inferred TypeScript types and supported Trip Schema Version 1. Shape and cross-reference validation return structured issues.
+- `data/trips.ts` provides one generic versioned local demo snapshot. Home lists that fixture only; multi-trip proof and remote Home listing remain later steps.
+- `services/trips.ts` owns read-only, owner-scoped V2 queries and the loader result model (loading, remote/cache/demo success, not found, authentication required, unavailable, invalid data, unsupported schema). Raw backend errors never enter the UI.
+- `offline/tripCache.ts` stores immutable-version keys and current pointers atomically in IndexedDB. Each read is revalidated. Valid remote data replaces the current pointer while retaining prior versions; failed/invalid remote reads use valid cache without overwriting it. A signed-in user's pointer is account-scoped; signed-out reads use the device pointer.
+- `TripLayout` owns the asynchronous route loading boundary, cancellation and a 15-second request deadline. Stale route results cannot replace another trip's metadata. The shell exposes title, summary, slug, Trip Data Version, Trip Schema Version and discreet POC source metadata; content pages remain placeholders.
+- Logout leaves cached trip snapshots on the device. Signed-out access is an explicit offline privacy trade-off; future Settings clearing will remove them. Browser storage eviction can remove caches. This is data caching only: no service worker or cold offline shell guarantee is added.
+- `supabase/schema/v2_foundation.sql` records read-only catalog metadata as an unapplied source-control baseline. It is excluded from deployment execution; future DDL requires real migrations. V1 and production remain untouched.

@@ -23,7 +23,7 @@ Before changing implementation, read:
 - Do not reintroduce legacy V1 POC code into this repository.
 - Do not hard-code trip-specific behaviour.
 
-## V2 shared foundation (Step 5)
+## V2 shared foundation (Step 6)
 
 Node.js 22.12+ (Node 24 recommended):
 
@@ -39,20 +39,19 @@ hash, for example `/travelpilot-poc/#/trip/demo-trip/itinerary`, so bookmarks an
 reloads request the same single HTML document on GitHub Pages.
 
 `package.json` → `version` is the only App Version source. Vite injects its value
-with a `v` prefix. Trip data and schema versions are separate future concerns.
+with a `v` prefix. Trip Data Version and Trip Schema Version are stored and displayed separately.
 
 Folders under `src/`: `app` (shell, routing, metadata), `views`, `components`,
-`data/schema` (routing fixture type), `services` (fixture lookup), `offline`
-(reserved boundary), `styles`, and `types`. The five trip views use one generic
+`data/schema` (canonical Zod snapshot contract), `services` (read-only loader), `offline`
+(versioned IndexedDB cache), `styles`, and `types`. The five trip views use one generic
 placeholder component. `app/pages.ts` supplies all seven route labels and the
 shared navigation. The application preference provider applies 小 / 中 / 大 to
 the root font size and persists the choice in localStorage; blocked storage
-falls back to session-only changes. `demo-trip` contains routing metadata only; it is not a
-published trip snapshot or a full itinerary.
+falls back to session-only changes. `demo-trip` is a validated generic schema-version-1 local snapshot; the trip content views remain placeholders.
 
 The manifest uses the original canonical icon. The build copies both branding
 files byte-for-byte into `dist/assets/images/`; originals stay in `assets/images/`.
-There is no service worker or offline download yet. ONLINE/OFFLINE reflects the
+Trip data is cached in IndexedDB; no service worker or cold offline app startup is implemented yet. ONLINE/OFFLINE reflects the
 browser connection hint and does not guarantee backend reachability.
 
 ## Routing checks
@@ -82,7 +81,7 @@ job. The POC repository Pages source must be **GitHub Actions** to prevent
 legacy branch publication from bypassing this gate. Production is untouched.
 
 Every POC implementation/update commit intended for main must bump the package
-version. App Version is independent of future Trip Data Versions.
+version. App Version is independent of Trip Data Versions.
 
 ## Supabase frontend foundation
 
@@ -98,12 +97,42 @@ Settings performs one bounded published `v2_app_versions` read per visit for
 backend status (no polling or automatic query retries). This is separate from
 navigator.onLine. An empty published list still confirms a successful read.
 App shell/Home/Settings and the local demo fixture work signed out; real trip
-content remains private and owner-scoped. Its loader is not implemented yet.
+content remains private and owner-scoped; its read-only loader validates current published versions.
 
-The database foundation was already created/verified before this task. No SQL,
-table migration, V1 access or content publishing is added by this release.
+The database foundation was already created/verified before this task. A source-control SQL baseline reference records the existing catalog metadata; it is not a migration and must not be auto-applied. No DDL, table migration, V1 access or content publishing is performed by this release.
 Playwright fixtures intercept all Supabase requests and use fake sessions, so
 CI never needs real account credentials. Browser session restoration and logout
 use normal SDK behavior; default logout scope is global, and the SDK clears the
 local session even if server logout fails. Blocked browser storage cannot provide
 normal reload persistence.
+
+## Schema, loader and offline trip cache
+
+`src/data/schema/trip.ts` defines Trip Schema Version 1 and infers all snapshot
+TypeScript types from one Zod runtime contract. Validation returns structured
+issues for malformed content, unsupported versions, duplicates, broken references
+and invalid dates/numbers. Generic weather/Live Cam structures define data only.
+
+`src/services/trips.ts` reads the authenticated owner's matching `v2_trips` row,
+then its published `is_current` `v2_trip_versions` row. It validates both the row
+metadata and complete payload before returning/caching. It never publishes or
+writes content. Local demo fixtures use the same validator.
+
+`src/offline/tripCache.ts` stores `[tripId, dataVersion]` records and atomically
+updates current pointers without deleting prior versions. Invalid/unavailable
+remote data falls back to a revalidated cache. Signed-in pointers are scoped to
+the owner; signed-out reads use the last downloaded device pointer. Storage
+failure leaves valid remote data usable with a cache notice.
+
+**Device privacy:** logout does not remove downloaded trip snapshots. Anyone
+using the same browser profile while signed out can read those cached routes.
+They remain until explicitly cleared or browser storage is removed/evicted.
+A Settings Clear Offline Data control belongs to a later step.
+
+The shared header Back button uses application-recorded paths and safely falls
+back to Home. It never follows an unverified native browser history entry.
+
+The complete Playwright suite retains foundation/auth coverage and adds shared
+Back navigation, runtime schema, mocked remote loading, IndexedDB version
+retention, invalid-response protection, reload/offline/logout and account
+isolation checks. No tests require a real password or write to Supabase.

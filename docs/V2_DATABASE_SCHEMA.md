@@ -35,85 +35,24 @@ The five V2 tables, RLS policies and grants were created and verified by GPT-5.6
 | `v2_user_preferences` | Authenticated CRUD of own row only |
 | `v2_app_versions` | Anonymous and authenticated SELECT of published rows only |
 
-V2 trip content is private by default. App shell, Home and Settings may load signed out. Ordinary browser users cannot administer or publish content. No public/shared trip feature is provided in Step 5. The local demo fixture remains independent of real trip access; its loader is unchanged until Step 6.
+V2 trip content is private by default. App shell, Home and Settings may load signed out. Ordinary browser users cannot administer or publish content. No public/shared trip feature is provided in Step 5. The local demo snapshot remains independent of real trip access and available signed out. Step 6 validates it with the same runtime contract as remote snapshots.
 
 The Step 5 database foundation was verified with Supabase advisors before this task. The handoff reports that the new V2 policies introduced no advisor security warnings. Existing V1 advisor warnings were intentionally left untouched; they were not fixed by this foundation or frontend task.
 
 Existing V1 tables remain untouched and isolated. No V2 migration should modify a V1 table. The browser integration uses only the supplied modern publishable key; it never uses privileged credentials or a legacy anon JWT.
 
-## Original schema field guidance
+## Source-controlled foundation reference (Step 6)
 
-The field lists below are the earlier design guidance, not a fresh SQL introspection or DDL instruction. The applied ownership policies above are authoritative for access. Exact snapshot TypeScript definitions and the real data loader belong to Step 6.
+`supabase/schema/v2_foundation.sql` is a **SOURCE-CONTROL BASELINE**, not an applied migration. It was reconstructed from read-only catalog inspection of the existing V2 columns, constraints, indexes, grants, policies and triggers. The live Step 5 schema already exists. Do not auto-apply this file to the current project; future changes require proper migrations. No DDL was run in Step 6 and no V1 DDL is included.
 
+Actual content table fields used by the loader:
+- `v2_trips`: UUID `id`, `owner_id` referencing auth.users, slug, title, destination_label, start_date, end_date, created_at, updated_at. Slug uniqueness is `(owner_id, slug)`, not global. Date-order and slug-format constraints apply.
+- `v2_trip_versions`: UUID id, trip_id, data_version, positive schema_version, object payload, optional checksum, status (draft/published/archived), is_current, created_at, published_at, notes. Unique `(trip_id, data_version)` and a partial unique index allow at most one current version per trip. Current implies published; published requires published_at.
+- `v2_checklist_state`: user_id + trip_id + checklist_item_id primary key, checked, updated_at, optional device_id.
+- `v2_user_preferences`: user_id primary key, font_size (small/medium/large), language, auto_update, updated_at.
+- `v2_app_versions`: app_version primary key, released_at, optional minimum_schema_version and notes, published.
 
-### v2_trips
-Stable trip identity and lightweight list/home metadata.
-
-Suggested fields:
-- id uuid primary key
-- slug text unique not null
-- title text not null
-- destination_label text
-- start_date date not null
-- end_date date not null
-- latest_published_version_id uuid nullable
-- published boolean default false
-- created_at timestamptz
-- updated_at timestamptz
-
-Home cards may read lightweight metadata from this table and/or the latest published snapshot.
-
-### v2_trip_versions
-Immutable or append-only published/draft content snapshots.
-
-Suggested fields:
-- id uuid primary key
-- trip_id uuid references v2_trips
-- data_version text not null
-- schema_version integer not null
-- payload jsonb not null
-- checksum text nullable
-- status text — draft / published / archived
-- created_at timestamptz
-- published_at timestamptz nullable
-- notes text nullable
-
-Constraints:
-- unique(trip_id, data_version)
-- only a validated version may become published
-- normal edits create a new version rather than mutating an already-published historical version
-
-### v2_checklist_state
-User-specific mutable checklist state.
-
-Suggested fields:
-- user_id uuid references auth.users
-- trip_id uuid references v2_trips
-- checklist_item_id text
-- checked boolean default false
-- updated_at timestamptz
-- device_id text nullable
-
-Primary key:
-- user_id + trip_id + checklist_item_id
-
-Checklist item IDs in payloads must be stable across ordinary trip updates.
-
-### v2_user_preferences
-Suggested fields:
-- user_id uuid primary key references auth.users
-- font_size text — small / medium / large
-- language text default zh-HK
-- auto_update boolean
-- updated_at timestamptz
-
-### v2_app_versions
-Suggested fields:
-- app_version text primary key
-- released_at timestamptz
-- minimum_schema_version integer nullable
-- notes text nullable
-- published boolean
+All five tables have RLS enabled. Browser grants/policies match the applied access table above. The baseline also records trip foreign-key indexes and the private `v2_set_updated_at()` trigger function on trips/checklist state/preferences. It uses invoker security, an empty search_path and restricted execution privileges; it does not expose a browser publishing function.
 
 ## Trip snapshot payload
 A snapshot must be self-contained for trip rendering and offline use.
@@ -139,7 +78,7 @@ Illustrative top-level shape:
 }
 ```
 
-This is a conceptual contract, not the final TypeScript interface. Exact field definitions are created with the implementation schema.
+The canonical Step 6 contract is `src/data/schema/trip.ts`, with `TRIP_SCHEMA_VERSION = 1`. Types are inferred from the Zod runtime schema; there is no separate snapshot interface. Dates use ISO calendar dates, times use HH:MM and datetimes include a UTC/offset zone. Durations are minutes, monetary values carry a three-letter currency, and all entity IDs (including timeline/checklist groups/items) are unique across a snapshot. Live Cam route relationships use routeDayId; group is a display label. Arrays preserve timeline order; checklist groups/items additionally carry order values.
 
 ## Required generic content concepts
 
@@ -353,3 +292,18 @@ Before real Japan 2027 migration:
 3. prove snapshot offline storage works
 4. prove checklist IDs survive a trip data version update
 5. prove rollback/version selection works conceptually
+
+## Step 6 validation, loader and device cache
+
+Runtime validation returns structured path/code/message issues. It rejects unsupported schema versions, malformed/extra fields, duplicate stable IDs, broken entity references, impossible dates, reversed trip dates, out-of-range/duplicate days, invalid coordinates, ratings outside 0–10 and negative durations. Weather configuration and Live Cam capabilities are data only; no engines are implemented.
+
+Authenticated loader flow is read-only: select matching slug and owner_id in `v2_trips`, then matching trip_id with `status = published` and `is_current = true` in `v2_trip_versions`. RLS is the security boundary. It checks row shape/ownership, row and payload schema versions, payload trip ID/slug, complete schema and references before returning or caching. No browser content writes occur.
+
+IndexedDB database `travelpilot-v2-trips`, storage version 1:
+- `versions`: key `[tripId, dataVersion]`, validated payload, schemaVersion, slug, ownerId and cachedAt.
+- `current`: key `[slug, ownerId]`, pointer to an account's active cached trip/version.
+- `deviceCurrent`: key slug, most recently cached device pointer for signed-out access.
+
+A transaction stores a valid remote version and both pointers atomically, retaining older versions. Data Version labels are opaque identities, preserved exactly rather than trimmed or normalized; blank labels are rejected. Cache reads revalidate the payload and its identity/version metadata. Remote unavailability, invalid data or unsupported versions may fall back to a valid cache without overwriting it. Signed-in lookup is account-scoped; signed-out/offline lookup uses the device pointer. A valid remote result is still usable if storage is blocked, with a visible cache warning.
+
+**Privacy:** offline trip snapshots are local device data. Logout does not delete them; anyone using the same browser profile while signed out can read previously cached trips by route. They remain until explicitly cleared, browser storage is removed/evicted, or a future Clear Offline Data control is used. Step 6 does not implement that control. No auth password is cached in trip records. App Version, Trip Data Version and Trip Schema Version are distinct.

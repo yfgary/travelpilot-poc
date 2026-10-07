@@ -96,3 +96,6 @@ Expected paths:
 
 ## 2026-10-08 — Modern browser key and V1 isolation
 **Decision:** Use the modern Supabase publishable key in the browser client, with public project configuration in one module. Do not use privileged credentials or the legacy anon JWT. The already-applied V2 tables remain isolated from V1; existing V1 Supabase tables, policies and advisor warnings stay untouched. This Step 5 frontend integration performs no database DDL or migrations.
+
+## 2026-10-08 — Retain offline snapshots after logout
+**Decision:** Validated offline trip snapshots remain local device data after logout and are readable signed out/offline in that browser profile. Clearing is explicit in a future Settings control; browser storage removal/eviction may also remove them. Signed-in fallback uses owner-scoped pointers so switching accounts does not silently return another account's cached trip. Remote ownership remains enforced by Supabase RLS. App Version, Trip Data Version and Trip Schema Version remain separate.

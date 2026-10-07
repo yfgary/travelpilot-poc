@@ -105,3 +105,4 @@ p { margin: 0.65rem 0; }
 .auth-error { color: #993f2d; }
 .account-email { overflow-wrap: anywhere; }
 .backend-status { padding: 0.6rem 0.75rem; border-radius: 11px; background: #edf5fa; font-size: 0.9rem; }
+.back-button { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 44px; width: 44px; height: 44px; border: 1px solid var(--tp-line); border-radius: 50%; background: white; color: var(--tp-deep); cursor: pointer; }
