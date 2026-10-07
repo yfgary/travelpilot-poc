@@ -1,6 +1,6 @@
 {
-  "version": "v10.16.0",
-  "build": "2026-10-07.2",
-  "updated": "2026-10-07T17:46:00+08:00",
-  "notes": "POC Round 2 Standard Multi-Trip data contract: canonical Standard v1 contract, generic conditional-day planning config, semantic cross-file QA, and persistent Golden Reference browser parity."
+  "version": "v10.17.0",
+  "build": "2026-10-07.3",
+  "updated": "2026-10-07T18:30:00+08:00",
+  "notes": "POC Round 3 One Standard Runtime: all four shared pages boot through multi-trip-runtime-v1, legacy page routers are reduced to compatibility shims, and runtime ownership is enforced by QA."
 }
