@@ -136,7 +136,7 @@ if repair.count("setTimeout") != 2:
         f"found {repair.count('setTimeout')} setTimeout token(s)"
     )
 
-loader = (ASSETS / "attraction-info.js").read_text(encoding="utf-8")
+loader = (ASSETS / "multi-trip-runtime-v1.js").read_text(encoding="utf-8")
 expected_loader_counts = {
     "japan2027-attraction-core-v1.js": 2,
     "trip-v9-final-fixes.js": 2,
@@ -160,8 +160,8 @@ if loader.count("trip-v9-1-visit-fix.js?v=5") != 1:
 if loader.count("info-icon-repair-v1.js?v=7") != 1:
     ERRORS.append("Stage 5U requires itinerary info icon repair module pin v7")
 
-for array_name in ("itineraryScripts", "tripInfoScripts"):
-    match = re.search(rf"const\s+{array_name}\s*=\s*commonHead\.concat\(\[(.*?)\]\);", loader, flags=re.S)
+for array_name in ("legacyItineraryScripts", "legacyTripInfoScripts"):
+    match = re.search(rf"const\s+{array_name}\s*=\s*\[(.*?)\];", loader, flags=re.S)
     if not match:
         ERRORS.append(f"Loader array missing: {array_name}")
         continue
@@ -173,26 +173,26 @@ for array_name in ("itineraryScripts", "tripInfoScripts"):
         ERRORS.append(f"{array_name}: shared attraction core must load before trip-v9-hotfix.js")
     if final_pos < 0 or hotfix_pos < 0 or final_pos > hotfix_pos:
         ERRORS.append(f"{array_name}: final-fixes must load before hotfix for finalpatch event ownership")
-    if array_name == "itineraryScripts":
+    if array_name == "legacyItineraryScripts":
         visit_pos = block.find("trip-v9-1-visit-fix.js")
         renderer_pos = block.find("multi-trip-itinerary-renderer-v1.js")
         repair_pos = block.find("info-icon-repair-v1.js")
         if visit_pos < 0 or core_pos > visit_pos:
-            ERRORS.append("itineraryScripts: shared attraction core must load before trip-v9-1-visit-fix.js")
+            ERRORS.append("legacyItineraryScripts: shared attraction core must load before trip-v9-1-visit-fix.js")
         if renderer_pos < 0 or visit_pos > renderer_pos:
-            ERRORS.append("itineraryScripts: visit-fix must load before itinerary renderer for event ownership")
+            ERRORS.append("legacyItineraryScripts: visit-fix must load before itinerary renderer for event ownership")
         if repair_pos < 0 or core_pos > repair_pos:
-            ERRORS.append("itineraryScripts: shared attraction core must load before info-icon-repair-v1.js")
+            ERRORS.append("legacyItineraryScripts: shared attraction core must load before info-icon-repair-v1.js")
         if visit_pos < 0 or repair_pos < 0 or visit_pos > repair_pos:
-            ERRORS.append("itineraryScripts: visit-fix must remain before info-icon-repair-v1.js")
+            ERRORS.append("legacyItineraryScripts: visit-fix must remain before info-icon-repair-v1.js")
         if repair_pos < 0 or renderer_pos < 0 or repair_pos > renderer_pos:
             ERRORS.append("Stage 5R+ requires info-icon-repair-v1.js to load before itinerary renderer for event subscription")
     else:
         renderer_pos = block.find("multi-trip-trip-info-renderer-v1.js")
         if renderer_pos < 0 or hotfix_pos > renderer_pos:
-            ERRORS.append("tripInfoScripts: hotfix must load before Trip Info renderer for event ownership")
+            ERRORS.append("legacyTripInfoScripts: hotfix must load before Trip Info renderer for event ownership")
         if "info-icon-repair-v1.js" in block:
-            ERRORS.append("tripInfoScripts must not load itinerary-only info-icon-repair-v1.js")
+            ERRORS.append("legacyTripInfoScripts must not load itinerary-only info-icon-repair-v1.js")
 
 button_tokens = (
     "enhance-info-btn",

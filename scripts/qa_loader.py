@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dependency and duplicate-load regression QA for TravelPilot trip loaders."""
+"""Dependency and one-entry runtime regression QA for TravelPilot."""
 from __future__ import annotations
 
 import re
@@ -28,17 +28,13 @@ def logical(src: str) -> str:
 
 
 def quoted_assets(block: str) -> list[str]:
-    return re.findall(r"['\"](assets/[^'\"]+\.js(?:\?[^'\"]*)?)['\"]", block)
+    return re.findall(r"""['"](assets/[^'"]+\.js(?:\?[^'"]*)?)['"]""", block)
 
 
-def array_block(source: str, name: str, concat: bool = False) -> list[str]:
-    if concat:
-        pattern = rf"const\s+{re.escape(name)}\s*=\s*commonHead\.concat\(\[(.*?)\]\);"
-    else:
-        pattern = rf"const\s+{re.escape(name)}\s*=\s*\[(.*?)\];"
-    match = re.search(pattern, source, flags=re.S)
+def array_block(source: str, name: str) -> list[str]:
+    match = re.search(rf"const\s+{re.escape(name)}\s*=\s*\[(.*?)\];", source, flags=re.S)
     if not match:
-        error(f"Loader array not found: {name}")
+        error(f"Runtime array not found: {name}")
         return []
     return quoted_assets(match.group(1))
 
@@ -57,18 +53,26 @@ def check_exists(label: str, values: list[str]) -> None:
             error(f"{label}: missing referenced asset {path}")
 
 
-loader = read("assets/attraction-info.js")
-common = array_block(loader, "commonHead")
-itinerary_extra = array_block(loader, "itineraryScripts", concat=True)
-trip_info_extra = array_block(loader, "tripInfoScripts", concat=True)
-generic_itinerary_extra = array_block(loader, "genericItineraryScripts", concat=True)
-generic_trip_info_extra = array_block(loader, "genericTripInfoScripts", concat=True)
+runtime = read("assets/multi-trip-runtime-v1.js")
+common = array_block(runtime, "commonScripts")
+legacy_itinerary = array_block(runtime, "legacyItineraryScripts")
+generic_itinerary = array_block(runtime, "genericItineraryScripts")
+legacy_trip_info = array_block(runtime, "legacyTripInfoScripts")
+generic_trip_info = array_block(runtime, "genericTripInfoScripts")
+legacy_attractions = array_block(runtime, "legacyAttractionsScripts")
+generic_attractions = array_block(runtime, "genericAttractionsScripts")
+legacy_live = array_block(runtime, "legacyLiveScripts")
+generic_live = array_block(runtime, "genericLiveScripts")
 
 sets = {
-    "Japan itinerary": common + itinerary_extra,
-    "Japan trip info": common + trip_info_extra,
-    "Generic itinerary": common + generic_itinerary_extra,
-    "Generic trip info": common + generic_trip_info_extra,
+    "Legacy itinerary": common + legacy_itinerary,
+    "Generic itinerary": common + generic_itinerary,
+    "Legacy trip info": common + legacy_trip_info,
+    "Generic trip info": common + generic_trip_info,
+    "Legacy attractions": common + legacy_attractions,
+    "Generic attractions": common + generic_attractions,
+    "Legacy live": legacy_live,
+    "Generic live": generic_live,
 }
 
 for label, values in sets.items():
@@ -81,7 +85,7 @@ expected_common = {
     "assets/multi-trip-nav-v1.js",
 }
 if {logical(v) for v in common} != expected_common:
-    error("commonHead changed unexpectedly; keep shared trip context/data/nav ownership explicit")
+    error("commonScripts changed unexpectedly; shared context/data/nav ownership must stay explicit")
 
 legacy_markers = (
     "assets/trip-v8",
@@ -97,32 +101,62 @@ legacy_markers = (
     "assets/d6-d8-weather-decision-v1.js",
     "assets/japan2027-",
     "assets/info-icon-repair-v1.js",
+    "assets/live-v9-2-sync.js",
 )
-for label in ("Generic itinerary", "Generic trip info"):
+for label in ("Generic itinerary", "Generic trip info", "Generic attractions", "Generic live"):
     for src in sets[label]:
         path = logical(src)
         if path.startswith(legacy_markers):
-            error(f"{label}: Japan legacy dependency leaked into generic trips: {path}")
+            error(f"{label}: Japan legacy dependency leaked into Standard runtime: {path}")
 
-script_src_re = re.compile(r'<script\b[^>]*\bsrc=["\']([^"\']+)["\'][^>]*>', re.I)
-for page, loader_set in (
-    ("itinerary.html", sets["Japan itinerary"]),
-    ("trip-info.html", sets["Japan trip info"]),
+for required in (
+    "assets/multi-trip-today-mode-v1.js",
+    "assets/multi-trip-driving-mode-v1.js",
+    "assets/multi-trip-generic-qa-fix-v1.js",
 ):
+    if required not in {logical(x) for x in generic_itinerary}:
+        error(f"Generic itinerary missing shared runtime: {required}")
+
+if "assets/multi-trip-departure-checklist-v1.js" not in {logical(x) for x in generic_trip_info}:
+    error("Generic Trip Info no longer loads departure checklist renderer")
+if {logical(x) for x in generic_attractions} != {"assets/multi-trip-attractions-renderer-v1.js"}:
+    error("Generic Attractions must boot only the shared attractions renderer after common scripts")
+if {logical(x) for x in generic_live} != {"assets/multi-trip-live-entry-v1.js"}:
+    error("Generic Live must boot through the shared Live entry")
+if {logical(x) for x in legacy_live} != {"assets/site-shell-v7.js"}:
+    error("Legacy Live compatibility must remain isolated behind site-shell-v7 during migration")
+
+script_src_re = re.compile(r"""<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>""", re.I)
+for page in ("itinerary.html", "trip-info.html", "attractions.html", "live.html"):
     direct = [s for s in script_src_re.findall(read(page)) if s.startswith("assets/")]
-    direct_logical = [logical(s) for s in direct]
-    check_unique(f"{page} direct scripts", direct)
-    effective = {logical(s) for s in loader_set}
-    for path in direct_logical:
-        if path == "assets/attraction-info.js":
-            continue
-        if path in effective:
-            error(f"{page}: direct script duplicates attraction-info loader dependency: {path}")
+    runtime_refs = [s for s in direct if logical(s) == "assets/multi-trip-runtime-v1.js"]
+    if len(runtime_refs) != 1:
+        error(f"{page}: expected exactly one direct multi-trip-runtime entry, found {len(runtime_refs)}")
+    banned_direct = {
+        "assets/attraction-info.js",
+        "assets/site-shell-v7.js",
+        "assets/multi-trip-live-entry-v1.js",
+        "assets/multi-trip-context-v1.js",
+        "assets/multi-trip-data-v1.js",
+    }
+    leaked = sorted(set(logical(s) for s in direct) & banned_direct)
+    if leaked:
+        error(f"{page}: page-local runtime ownership remains: {leaked}")
 
-if "assets/trip-v9-final-fixes.js" in [logical(s) for s in script_src_re.findall(read("itinerary.html"))]:
-    error("itinerary.html still directly loads trip-v9-final-fixes.js")
+shim = read("assets/attraction-info.js")
+if "assets/multi-trip-runtime-v1.js" not in shim:
+    error("attraction-info compatibility shim no longer forwards to shared runtime")
+for marker in ("legacyItineraryScripts", "genericItineraryScripts", "trip-core-v1.js", "site-shell-v7.js"):
+    if marker in shim:
+        error(f"attraction-info compatibility shim regained runtime routing logic: {marker}")
 
-print("TravelPilot loader dependency QA")
+sw = read("sw.js")
+if "assets/multi-trip-runtime-v1.js" not in sw:
+    error("Service Worker no longer preserves the shared runtime entry for cached Live pages")
+if "assets/multi-trip-live-entry-v1.js?v=" in re.search(r"async function patchLive[\s\S]*?self\.addEventListener\('fetch'", sw).group(0):
+    error("Service Worker patchLive still injects a second Live-specific boot entry")
+
+print("TravelPilot one-entry runtime dependency QA")
 for label, values in sets.items():
     print(f"{label}: {len(values)} dependencies")
 print(f"Errors: {len(ERRORS)}")

@@ -95,7 +95,7 @@ function loadScriptOnce(id,src){
 }
 function loadLiveSync(){
  if(!/(?:^|\/)live\.html$/.test(location.pathname))return;
- if(!window.MultiTripLiveEntry)loadScriptOnce('multiTripLiveEntryScript','assets/multi-trip-live-entry-v1.js?v=10.12.0');
+ if(!window.MultiTripLiveEntry)loadScriptOnce('multiTripLiveEntryScript','assets/multi-trip-live-entry-v1.js?v=10.17.0');
  const trip=requestedTrip();
  if(trip&&trip!==DEFAULT_TRIP)return;
  if(!window.__japan2027LiveV1050Sync)loadScriptOnce('liveV92SyncScript','assets/live-v9-2-sync.js?v=10.12.0');
