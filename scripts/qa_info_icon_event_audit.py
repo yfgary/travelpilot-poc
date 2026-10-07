@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 ERRORS: list[str] = []
 
-loader = (ASSETS / "attraction-info.js").read_text(encoding="utf-8")
+loader = (ASSETS / "multi-trip-runtime-v1.js").read_text(encoding="utf-8")
 repair = (ASSETS / "info-icon-repair-v1.js").read_text(encoding="utf-8")
 renderer = (ASSETS / "multi-trip-itinerary-renderer-v1.js").read_text(encoding="utf-8")
 final = (ASSETS / "trip-v9-final-fixes.js").read_text(encoding="utf-8")
@@ -82,9 +82,9 @@ for marker in (
         ERRORS.append(f"D6-D8 choice/reload evidence changed: missing {marker}")
 
 # Repair must load after the shared core/visit owner but before the renderer so normal completion events cannot be missed.
-match = re.search(r"const\s+itineraryScripts\s*=\s*commonHead\.concat\(\[(.*?)\]\);", loader, flags=re.S)
+match = re.search(r"const\s+legacyItineraryScripts\s*=\s*\[(.*?)\];", loader, flags=re.S)
 if not match:
-    ERRORS.append("itineraryScripts loader block missing")
+    ERRORS.append("legacyItineraryScripts runtime block missing")
 else:
     block = match.group(1)
     positions = {
@@ -107,9 +107,9 @@ if loader.count("info-icon-repair-v1.js?v=7") != 1:
     ERRORS.append("Stage 5U requires the Japan itinerary chain to use info-icon-repair module pin v7 exactly once")
 
 # Repair remains Japan-itinerary-only and must not leak into generic itinerary chains.
-generic = re.search(r"const\s+genericItineraryScripts\s*=\s*commonHead\.concat\(\[(.*?)\]\);", loader, flags=re.S)
+generic = re.search(r"const\s+genericItineraryScripts\s*=\s*\[(.*?)\];", loader, flags=re.S)
 if not generic:
-    ERRORS.append("genericItineraryScripts loader block missing")
+    ERRORS.append("genericItineraryScripts runtime block missing")
 elif "info-icon-repair-v1.js" in generic.group(1):
     ERRORS.append("Generic itinerary chain must not load Japan info-icon repair")
 
