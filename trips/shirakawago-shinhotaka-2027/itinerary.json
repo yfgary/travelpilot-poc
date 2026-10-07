@@ -114,7 +114,8 @@
                   "UO680 規劃 10:00 起飛。 建議約 06:45 到 T2， 預留寄行李、保安及早餐時間。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -131,7 +132,8 @@
                   "辦理 UO680 及寄行李。 最遲截行李時間出發前再確認。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -148,7 +150,8 @@
                   "完成保安及出境後食早餐， 約 09:20 開始向登機閘口移動。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -165,7 +168,8 @@
                   "規劃時間 10:00 → 14:30。 最終航班時間出發前再核對。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -182,7 +186,8 @@
                   "落機後辦理入境及攞行李。<strong>目標約 15:30 出禁區</strong>；最遲仍以約 15:45 作保守 Buffer。HK Express 現時使用 T2，出禁區後沿 FLIGHT OF DREAMS／Access Plaza 方向前行。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item v86-d1-lunch",
@@ -199,7 +204,8 @@
                   "UO680 無飛機餐，出禁區後先快食。呢度正正在 T2 前往 Access Plaza／T1 路線附近；建議揀<strong>烏冬、拉麵或 Food Court 快食</strong>，控制約 20–25 分鐘。<br><strong>⚠️ 如果 15:35 後先出禁區：</strong>改外賣／便利店，唔好為午餐影響 17:40 JR 特急信濃 Hard Cut。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item v86-d1-jr-ticket",
@@ -216,7 +222,8 @@
                   "由 T2／FLIGHT OF DREAMS 行去 T1 2樓到着大堂。呢個櫃位<strong>可以出票 JR 車票</strong>，營業 09:00–19:00（旅行業務至 19:00）。直接買<strong>名古屋 → 松本・特急しなの指定席</strong>。<br>⚠️ 呢度<strong>唔賣名鐵車票</strong>。如果排隊太長，立即 Skip，改到 JR 名古屋站指定席售票機／JR Ticket Office 買。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item v86-d1-meitetsu-ticket",
@@ -233,7 +240,8 @@
                   "去 Access Plaza 旁嘅名鐵中部國際空港站。閘口<strong>左邊</strong>有售票機／有人櫃位，可買普通乘車券＋μSKY 所需嘅 <strong>μticket</strong>。μSKY 特別車廂現行 μticket 為 ¥450。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -250,7 +258,8 @@
                   "買完兩程車票後，搭<strong>最近一班 μSKY</strong>前往名鐵名古屋。現行最快約 28 分鐘；2027 正式班次出發前再確認。<strong>目標 17:05 前到名古屋</strong>，保留轉 JR Buffer。"
                 ],
                 "price": "μSKY 現行參考：約 ¥1,430／人（普通運賃＋μticket）",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -267,7 +276,8 @@
                   "到名鐵名古屋後轉去 JR 名古屋站。最好已經喺機場買好 JR 信濃指定席，咁到名古屋可以直接搵月台；如果機場未買到，立即用 JR 指定席售票機／JR Ticket Office 買。<strong>17:40 特急信濃係今日 Hard Cut。</strong>"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -284,7 +294,8 @@
                   "現行參考約 17:40 → 19:46。 冬季大雪有機會慢車或延誤。"
                 ],
                 "price": "特急しなの指定席 現行參考：約 ¥6,160／人",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -301,7 +312,8 @@
                   "已訂豪華雙人房、非吸煙。 D1 酒店不包早餐。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -318,7 +330,8 @@
                   "準時抵達而且有精神， 可睇約 30–45 分鐘夜間光影。 夜晚只睇外觀，不能進入天守。"
                 ],
                 "price": "免費",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item v3-hotel-end",
@@ -335,7 +348,8 @@
                   "Bonus完成／Skip後返回酒店休息。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
@@ -502,7 +516,8 @@
                   "完成 Check-out；大件行李繼續寄存酒店，只帶輕便隨身物品去松本城。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -519,7 +534,8 @@
                   "酒店不包早餐。以快食為主，09:00 左右開始行去松本城。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -536,7 +552,8 @@
                   "正常約 10–15 分鐘；如果有積雪／結冰就慢行，唔用平時步速硬趕。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -553,7 +570,8 @@
                   "今次預足 1 小時 30 分鐘，先影護城河、黑色天守、紅橋／外圍角度，再入現存木造天守。你鍾意影相，所以唔再壓縮做 30–60 分鐘。"
                 ],
                 "price": "現行參考：電子票 ¥1,200／現場 ¥1,300",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -570,7 +588,8 @@
                   "步行返酒店；冬天地面滑就預多幾分鐘。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -587,7 +606,8 @@
                   "攞返 28吋／26吋／20吋行李，再去 Times。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -604,7 +624,8 @@
                   "辦文件、驗車、確認雪軚／雪刷。目標約 11:20 正式開車；租車預約時間亦以約 11:00 為較合理。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -621,7 +642,13 @@
                   "冬季按高速／國道路況慢駛；約 2 小時作行程預算，實際以當日導航為準。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": [
+                  {
+                    "className": "v90-route-stop",
+                    "html": "<strong>🛣️ 預定高速線 SA／PA：</strong> 梓川SA → 筑北PA → 姨捨SA → 千曲川さかきPA → <span class=\"big\">⭐【大SA】東部湯の丸SA</span>。想落車行下，首選東部湯の丸SA；有餐飲、手信、加油等。冬季實際路線以導航／封路為準。"
+                  }
+                ]
               },
               {
                 "itemClass": "timeline-item",
@@ -638,7 +665,8 @@
                   "約 2 小時。快速午餐亦喺呢段時間內完成，唔另外再開一段 45–60 分鐘午餐時間。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -655,7 +683,13 @@
                   "目標 15:20 左右開車。上車前睇即時 ETA；如果冬季路況慢，寧願早幾分鐘離開。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": [
+                  {
+                    "className": "v90-route-stop",
+                    "html": "<strong>🛣️ 預定 E18 SA／PA：</strong> 佐久平PA → <span class=\"big\">⭐【大SA】東部湯の丸SA</span> → 千曲川さかきPA。呢段如果想正式休息／行下，東部湯の丸SA最合適。"
+                  }
+                ]
               },
               {
                 "itemClass": "timeline-item",
@@ -672,7 +706,8 @@
                   "15:30 必須開車。之後唔再加任何景點，直接去戶倉上山田溫泉。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -689,7 +724,8 @@
                   "正常目標約 16:50–17:10 到；泊車、Check-in、放低行李後仲有時間休息／浸一陣溫泉。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -706,7 +742,8 @@
                   "呢個係全日真正底線。就算前面有延誤，都以 17:30 前到酒店為優先。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -723,7 +760,8 @@
                   "住宿包晚餐；飯後慢慢浸溫泉。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
@@ -869,7 +907,8 @@
                   "旅館早餐。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -886,7 +925,13 @@
                   "今日係成人の日， 刻意唔安排 Snow Monkey。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": [
+                  {
+                    "className": "v90-route-stop",
+                    "html": "<strong>🛣️ 預定 SA／PA：</strong><span class=\"big\">⭐【大PA】松代PA</span> → 小布施PA。松代PA小型車位規模較大、有餐飲／購物；小布施PA較細，但同今日小布施主題最貼。"
+                  }
+                ]
               },
               {
                 "itemClass": "timeline-item",
@@ -903,7 +948,8 @@
                   "主力街景、栗子甜品、 栗おこわ及手信。"
                 ],
                 "price": "免費",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -920,7 +966,8 @@
                   "只係有興趣先入， 約 30–45 分鐘。"
                 ],
                 "price": "成人約 ¥1,200",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -937,7 +984,8 @@
                   "可選蕎麥麵／栗おこわ。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -954,7 +1002,8 @@
                   "往信州中野方向。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -971,7 +1020,8 @@
                   "地元 JA 農產直賣所。 有蔬菜、菇菌、蘋果及加工品。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -988,7 +1038,8 @@
                   "入溫泉街前按旅館指示泊車， 唔好跟導航亂入窄巷。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1005,7 +1056,8 @@
                   "先認路、影相， 15:00 再入住。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1022,7 +1074,8 @@
                   "住區內旅館可借專用鎖匙 進入九個共同浴場。 穿浴衣沿石板街巡湯係核心體驗。"
                 ],
                 "price": "住客免費",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1039,7 +1092,8 @@
                   "住宿包晚餐。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1056,7 +1110,8 @@
                   "飯後再浸外湯， 浴衣散步及睇夜景。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item v3-hotel-end",
@@ -1073,7 +1128,8 @@
                   "夜間巡湯／散步後返回旅館休息。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
@@ -1213,7 +1269,8 @@
                   "住宿包早餐。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1230,7 +1287,8 @@
                   "退房後前往 Snow Monkey 入口。 冬季導航去上林停車場，唔好導航去山入面 Jigokudani Parking。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1247,7 +1305,8 @@
                   "約 30–35 分鐘林道。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1264,7 +1323,8 @@
                   "冬季長期積雪。 猴子係真正生活喺附近山林嘅野生日本獼猴。 是否浸溫泉視當日情況。"
                 ],
                 "price": "成人現行約 ¥800",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1281,7 +1341,8 @@
                   "原路返回。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1298,7 +1359,8 @@
                   "約 40 分鐘。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1315,7 +1377,8 @@
                   "簡單午餐。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1332,7 +1395,8 @@
                   "食品、生果、日用品、 服裝、藥妝同補給。 預約 3.5 小時。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1349,7 +1413,8 @@
                   "約 40 分鐘。 Shopping 唔再延長。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1366,7 +1431,8 @@
                   "翌朝包兩位早餐。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1383,7 +1449,8 @@
                   "飯後有精神可去 Donki／長野站附近。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item v3-hotel-end",
@@ -1400,7 +1467,8 @@
                   "晚餐後返回酒店，今日正式完結。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
@@ -1535,7 +1603,8 @@
                   "已包兩位自助早餐。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1552,7 +1621,8 @@
                   "執行李後出發。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1569,7 +1639,13 @@
                   "冬季預鬆，遇大雪唔趕。 導航去岩岳 Mountain Resort 山腳，唔好導航去 Mountain Harbor 山頂。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": [
+                  {
+                    "className": "v90-route-stop",
+                    "html": "<strong>🛣️ 休息點：</strong><span class=\"none\">呢段主線主要係一般國道，冇高速SA／PA。</span> 如果想落車伸展，可視路線考慮「道の駅 中条」。"
+                  }
+                ]
               },
               {
                 "itemClass": "timeline-item",
@@ -1586,7 +1662,8 @@
                   "使用非滑雪旅客觀光票。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1603,7 +1680,8 @@
                   "當純雪景景點， 唔係滑雪行程。"
                 ],
                 "price": "參考約 ¥2,900/人",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1620,7 +1698,8 @@
                   "正面望白馬三山及北阿爾卑斯。 一般車唔可以直接駛上山頂。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1637,7 +1716,8 @@
                   "玩雪、散步及影相。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1654,7 +1734,8 @@
                   "落山後午餐。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1671,7 +1752,8 @@
                   "食完直接去高山。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1688,7 +1770,8 @@
                   "約 3小時10分。 冬季長途山路， 唔為 Bonus 拖到夜晚。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1705,7 +1788,8 @@
                   "已訂兩晚， 有天然溫泉及露天風呂。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1722,7 +1806,8 @@
                   "D5 以休息為主。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1739,7 +1824,8 @@
                   "第一晚晚餐彈性。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item v3-hotel-end",
@@ -1756,7 +1842,8 @@
                   "晚餐後返回酒店；浸溫泉／休息。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
@@ -1897,7 +1984,13 @@
                   "冬季山路，預鬆時間。 1 月導航去新穗高溫泉停車場。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": [
+                  {
+                    "className": "v90-route-stop",
+                    "html": "<strong>🛣️ 休息點：</strong><span class=\"none\">山區國道，冇高速SA／PA。</span> 沿線可留意「道の駅 奥飛騨温泉郷上宝」；但新穗高天氣窗口優先，唔好為休息站拖慢上山。"
+                  }
+                ]
               },
               {
                 "itemClass": "timeline-item",
@@ -1914,7 +2007,8 @@
                   "兩段纜車去到海拔約 2,156 米西穗高口。 第二段係雙層車廂， 山頂可望穗高連峰雪山。"
                 ],
                 "price": "成人約 ¥3,800",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1931,7 +2025,8 @@
                   "簡單午餐。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1948,7 +2043,8 @@
                   "保留道路 Buffer。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
@@ -1976,7 +2072,8 @@
                   "漬物、味噌、蔬菜、小食及手工品。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -1993,7 +2090,8 @@
                   "江戶幕府直接管治飛驒時嘅地方行政機關。 高山陣屋本身冇專用停車場，📍 導航去附近中橋駐車場。"
                 ],
                 "price": "成人約 ¥500",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -2010,7 +2108,8 @@
                   "古町家、酒藏、味噌店及傳統老舖。 司機唔試酒。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -2027,7 +2126,8 @@
                   "高山拉麵／蕎麥麵。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -2044,7 +2144,8 @@
                   "約 40 分鐘。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -2061,7 +2162,8 @@
                   "一月重點係大型藍白冰柱。 洞內亦唔太受落雪影響。"
                 ],
                 "price": "成人約 ¥1,100",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -2078,7 +2180,8 @@
                   "駿河屋／Valor， 買飛驒牛、蔬果、牛奶及調味料。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
@@ -2185,7 +2288,8 @@
                     "確認新穗高官方 Operation Status、Live Camera、山頂能見度及風況；真係好天先執行。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2202,7 +2306,8 @@
                     "早餐／出發準備。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2219,7 +2324,13 @@
                     "冬季山路預鬆，唔為趕纜車超速。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": [
+                    {
+                      "className": "v90-route-stop",
+                      "html": "<strong>🛣️ 休息點：</strong><span class=\"none\">山區國道，冇高速SA／PA。</span> 沿線可留意「道の駅 奥飛騨温泉郷上宝」；但新穗高天氣窗口優先，唔好為休息站拖慢上山。"
+                    }
+                  ]
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2236,7 +2347,8 @@
                     "兩段纜車去西穗高口；能見度係體驗關鍵。"
                   ],
                   "price": "成人約 ¥3,800",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2253,7 +2365,8 @@
                     "簡單午餐，按纜車排隊及實際停留調整。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-hirayu-shrine",
@@ -2270,7 +2383,8 @@
                     "沿R471／R158方向返平湯，神社就在自然回程線，唔需要繞大圈。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-hirayu-shrine",
@@ -2287,7 +2401,8 @@
                     "正式加入新穗高日；短停約20分鐘，了解白猿傳說、溫泉聚落同地方信仰。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-hirayu-shrine",
@@ -2304,7 +2419,8 @@
                     "參拜後繼續原本主線。冬季以道路安全同即時導航為準。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2321,7 +2437,8 @@
                     "由平湯返高山市區，保留冬季道路 Buffer。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2338,7 +2455,8 @@
                     "買手信或地元食品；高山市區完整參觀留另一日。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2355,7 +2473,8 @@
                     "返酒店浸天然溫泉、休息。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2372,7 +2491,8 @@
                     "高山市內正式飛驒牛晚餐。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 }
               ]
             },
@@ -2473,7 +2593,8 @@
                     "朝早仍先睇新穗高 Live Cam／風況。如果 D6 突然係三日唯一極好天，可以即刻用上面選擇器改做「D6 去新穗高」。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2490,7 +2611,8 @@
                     "早餐、出發準備。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2507,7 +2629,13 @@
                     "D6 星期四優先去白川鄉；方向向西，今日去完再返高山，避免最後一日先向西兜路。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": [
+                    {
+                      "className": "v90-route-stop",
+                      "html": "<strong>🛣️ E41 SA／PA：</strong> 飛驒河合PA → 飛驒白川PA；兩個都係小型PA，呢段冇大型SA。"
+                    }
+                  ]
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2524,7 +2652,8 @@
                     "日間完整參觀合掌造聚落；平日一般比星期六更有利避人潮。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2541,7 +2670,8 @@
                     "入屋睇木樑、圍爐、屋頂骨架同過去生活空間。"
                   ],
                   "price": "成人約 ¥400",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2558,7 +2688,8 @@
                     "蕎麥麵／鄉土定食；唔為食飯拖慢下午展望台。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2575,7 +2706,8 @@
                     "俯瞰成個荻町雪村；按當日 Shuttle／步道路況決定上落方式。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2592,7 +2724,13 @@
                     "冬季預鬆返高山；D8 已經唔會再安排白川鄉。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": [
+                    {
+                      "className": "v90-route-stop",
+                      "html": "<strong>🛣️ E41 SA／PA：</strong> 飛驒白川PA → 飛驒河合PA；兩個都係小型PA，唔需要特登為佢哋留長時間。"
+                    }
+                  ]
                 },
                 {
                   "itemClass": "timeline-item v90-city-shrines",
@@ -2609,7 +2747,8 @@
                     "返到高山後短停；睇本殿、唐門、透塀，唔需要改核心景點。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-city-shrines",
@@ -2626,7 +2765,8 @@
                     "雪地朱紅鳥居攝影短停；城山路面結冰嚴重就直接 Skip。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2643,7 +2783,8 @@
                     "返酒店浸溫泉、休息。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -2660,7 +2801,8 @@
                     "高山市內正式飛驒牛晚餐。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 }
               ]
             },
@@ -2804,7 +2946,8 @@
                   "退房後搬行李去 Residence。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -2821,7 +2964,13 @@
                   "約 1 小時。 導航去官方せせらぎ公園駐車場，唔好直接導航入合掌村。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": [
+                  {
+                    "className": "v90-route-stop",
+                    "html": "<strong>🛣️ E41 SA／PA：</strong> 飛驒河合PA → 飛驒白川PA；兩個都係小型PA，呢段冇大型SA。"
+                  }
+                ]
               },
               {
                 "itemClass": "timeline-item",
@@ -2838,7 +2987,8 @@
                   "一月厚雪覆蓋合掌造屋頂及農田， 係最具代表性季節之一。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -2855,7 +3005,8 @@
                   "泊車後步行入村。 睇木樑、圍爐及合掌造結構。"
                 ],
                 "price": "成人約 ¥400",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -2872,7 +3023,8 @@
                   "鄉土定食／蕎麥麵。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -2889,7 +3041,8 @@
                   "可俯瞰整個合掌村。 私家車唔可以駛入展望台停車場。"
                 ],
                 "price": "Shuttle 約 ¥300/人/單程",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -2906,7 +3059,13 @@
                   "約 1小時15分。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": [
+                  {
+                    "className": "v90-route-stop",
+                    "html": "<strong>🛣️ E41 SA／PA：</strong> 飛驒白川PA → 飛驒河合PA；兩個都係小型PA，唔需要特登為佢哋留長時間。"
+                  }
+                ]
               },
               {
                 "itemClass": "timeline-item",
@@ -2923,7 +3082,8 @@
                   "D7 住宿。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
@@ -3060,7 +3220,8 @@
                     "早餐、執行李；今日退房後搬去 Residence。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3077,7 +3238,8 @@
                     "將行李移去 Residence；未能寄存就放車內。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-city-shrines",
@@ -3094,7 +3256,8 @@
                     "由上一站順路返高山市區；核心景點完成後先加神社。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-city-shrines",
@@ -3111,7 +3274,8 @@
                     "正式主線短停：睇本殿、唐門、62米透塀，同高山陣屋嘅幕府背景串埋理解。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-city-shrines",
@@ -3128,7 +3292,8 @@
                     "短程移動去城山一帶。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-city-shrines",
@@ -3145,7 +3310,8 @@
                     "正式主線短停：雪地朱紅鳥居係攝影重點；路面結冰嚴重就以安全為先。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3162,7 +3328,13 @@
                     "只有 D6 已經用咗去新穗高，白川鄉先順延到 D7；仍然唔會拖到 D8。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": [
+                    {
+                      "className": "v90-route-stop",
+                      "html": "<strong>🛣️ E41 SA／PA：</strong> 飛驒河合PA → 飛驒白川PA；兩個都係小型PA，呢段冇大型SA。"
+                    }
+                  ]
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3179,7 +3351,8 @@
                     "日間完整參觀合掌造聚落。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3196,7 +3369,8 @@
                     "入屋睇木樑、圍爐及合掌屋頂內部。"
                   ],
                   "price": "成人約 ¥400",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3213,7 +3387,8 @@
                     "蕎麥麵／鄉土定食。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3230,7 +3405,8 @@
                     "俯瞰成個荻町雪村；按當日 Shuttle 安排。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3247,7 +3423,13 @@
                     "冬季預鬆時間返高山。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": [
+                    {
+                      "className": "v90-route-stop",
+                      "html": "<strong>🛣️ E41 SA／PA：</strong> 飛驒白川PA → 飛驒河合PA；兩個都係小型PA，唔需要特登為佢哋留長時間。"
+                    }
+                  ]
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3264,7 +3446,8 @@
                     "放低行李；之後神社短停由現有行程功能接續。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3281,7 +3464,8 @@
                     "只限道路、體力同時間都合適先去；主線完成先考慮，唔為 Bonus 趕雪路。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 }
               ]
             },
@@ -3387,7 +3571,8 @@
                     "早餐、執行李；今日退房後搬去 Residence。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3404,7 +3589,8 @@
                     "將行李移去 Residence；未能寄存就放車內。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3421,7 +3607,13 @@
                     "D7 天氣最好先選呢日；冬季唔為趕纜車超速。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": [
+                    {
+                      "className": "v90-route-stop",
+                      "html": "<strong>🛣️ 休息點：</strong><span class=\"none\">山區國道，冇高速SA／PA。</span> 沿線可留意「道の駅 奥飛騨温泉郷上宝」；但新穗高天氣窗口優先，唔好為休息站拖慢上山。"
+                    }
+                  ]
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3438,7 +3630,8 @@
                     "雙層纜車上高海拔展望位置，睇北阿爾卑斯雪峰。"
                   ],
                   "price": "成人約 ¥3,800",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3455,7 +3648,8 @@
                     "簡單午餐。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-hirayu-shrine",
@@ -3472,7 +3666,8 @@
                     "沿R471／R158方向返平湯，神社就在自然回程線，唔需要繞大圈。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-hirayu-shrine",
@@ -3489,7 +3684,8 @@
                     "正式加入新穗高日；短停約20分鐘，了解白猿傳說、溫泉聚落同地方信仰。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-hirayu-shrine",
@@ -3506,7 +3702,8 @@
                     "參拜後繼續原本主線。冬季以道路安全同即時導航為準。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3523,7 +3720,8 @@
                     "由平湯返高山市區，保留冬季道路 Buffer。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3540,7 +3738,8 @@
                     "正式入住 Residence。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3557,7 +3756,8 @@
                     "如果新穗高回程順、道路安全同體力足夠先考慮；唔係必去。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 }
               ]
             },
@@ -3663,7 +3863,8 @@
                     "早餐、執行李；今日先處理高山市區＋鐘乳洞。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3680,7 +3881,8 @@
                     "將行李移去 Residence；未能寄存就放車內。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3697,7 +3899,8 @@
                     "朝市短行，睇地元食品、漬物、味噌同小食。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3714,7 +3917,8 @@
                     "理解幕府直轄飛驒歷史。"
                   ],
                   "price": "成人約 ¥500",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3731,7 +3935,8 @@
                     "町屋街景、酒藏、手信；司機唔試酒。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3748,7 +3953,8 @@
                     "簡單午餐。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3765,7 +3971,8 @@
                     "鐘乳洞喺東面方向；今日去完返高山，D8 就可以專心新穗高→松本。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3782,7 +3989,8 @@
                     "室內洞穴較少受落雪影響；一月冰景係特色。"
                   ],
                   "price": "成人約 ¥1,100",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3799,7 +4007,8 @@
                     "返高山市區做兩個短神社停留。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-city-shrines",
@@ -3816,7 +4025,8 @@
                     "短停睇本殿、唐門同透塀。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-city-shrines",
@@ -3833,7 +4043,8 @@
                     "雪地朱紅鳥居；路面結冰嚴重就 Skip。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3850,7 +4061,8 @@
                     "正式入住 Residence。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -3867,7 +4079,8 @@
                     "今日已經較充實；只有道路、體力同時間都好先去，否則直接休息。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 }
               ]
             },
@@ -4016,7 +4229,8 @@
                   "約 35 分鐘。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4033,7 +4247,8 @@
                   "約 40 分鐘。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4050,7 +4265,8 @@
                   "慢行、買手信。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4067,7 +4283,8 @@
                   "順住去松本方向。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4084,7 +4301,8 @@
                   "約 1小時20分。"
                 ],
                 "price": "成人約 ¥1,100",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4101,7 +4319,13 @@
                   "經平湯／安房方向。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": [
+                  {
+                    "className": "v90-route-stop",
+                    "html": "<strong>🛣️ R158 山路：</strong><span class=\"none\">冇高速SA／PA。</span> 過安房隧道後可用「道の駅 風穴の里」做主要休息／洗手間位；冬季天黑前到松本優先。"
+                  }
+                ]
               },
               {
                 "itemClass": "timeline-item",
@@ -4118,7 +4342,8 @@
                   "最後一晚。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
@@ -4156,7 +4381,13 @@
                   "正常運行＋能見度值得先出發。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": [
+                  {
+                    "className": "v90-route-stop",
+                    "html": "<strong>🛣️ 休息點：</strong><span class=\"none\">山區國道，冇高速SA／PA。</span> 沿線可留意「道の駅 奥飛騨温泉郷上宝」；但新穗高天氣窗口優先，唔好為休息站拖慢上山。"
+                  }
+                ]
               },
               {
                 "itemClass": "timeline-item",
@@ -4173,7 +4404,8 @@
                   "今日係最後機會。 如果仍然大霧／停駛， 唔再追。"
                 ],
                 "price": "成人約 ¥3,800",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4190,7 +4422,8 @@
                   "向松本方向落山。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4207,7 +4440,8 @@
                   "非常早到安曇野先加。"
                 ],
                 "price": "免費",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
@@ -4319,7 +4553,8 @@
                     "早餐自行安排。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4336,7 +4571,8 @@
                     "退房，行李放車；今日開始一路向東去松本。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4353,7 +4589,8 @@
                     "朝市短行。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4370,7 +4607,8 @@
                     "理解幕府直轄飛驒歷史。"
                   ],
                   "price": "成人約 ¥500",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4387,7 +4625,8 @@
                     "町屋街景、酒藏、手信；司機唔試酒。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4404,7 +4643,8 @@
                     "簡單午餐。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4421,7 +4661,8 @@
                     "鐘乳洞正正在去平湯／松本方向，最後一日咁排最順。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4438,7 +4679,8 @@
                     "洞穴＋一月冰景。"
                   ],
                   "price": "成人約 ¥1,100",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4455,7 +4697,13 @@
                     "經平湯／安房方向一路向東；比白川鄉返松本自然得多。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": [
+                    {
+                      "className": "v90-route-stop",
+                      "html": "<strong>🛣️ R158 山路：</strong><span class=\"none\">冇高速SA／PA。</span> 過安房隧道後可用「道の駅 風穴の里」做主要休息／洗手間位；冬季天黑前到松本優先。"
+                    }
+                  ]
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4472,7 +4720,8 @@
                     "最後一晚入住，放低行李休息。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 }
               ]
             },
@@ -4573,7 +4822,8 @@
                     "早餐＋退房；朝早最後確認新穗高係咪真係值得去。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4590,7 +4840,13 @@
                     "只有纜車正常＋能見度非常好先用 D8；否則可以提前改 D6／D7。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": [
+                    {
+                      "className": "v90-route-stop",
+                      "html": "<strong>🛣️ 休息點：</strong><span class=\"none\">山區國道，冇高速SA／PA。</span> 沿線可留意「道の駅 奥飛騨温泉郷上宝」；但新穗高天氣窗口優先，唔好為休息站拖慢上山。"
+                    }
+                  ]
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4607,7 +4863,8 @@
                     "D8 仍然保留為天氣選項；好天就用最高回報雪山景。"
                   ],
                   "price": "成人約 ¥3,800",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4624,7 +4881,8 @@
                     "簡單午餐。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-hirayu-shrine",
@@ -4641,7 +4899,8 @@
                     "沿R471／R158方向返平湯，神社就在自然回程線，唔需要繞大圈。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-hirayu-shrine",
@@ -4658,7 +4917,8 @@
                     "正式加入新穗高日；短停約20分鐘，了解白猿傳說、溫泉聚落同地方信仰。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item v90-shrine-card v90-hirayu-shrine",
@@ -4675,7 +4935,13 @@
                     "參拜後繼續原本主線。冬季以道路安全同即時導航為準。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": [
+                    {
+                      "className": "v90-route-stop",
+                      "html": "<strong>🛣️ R158 山路：</strong><span class=\"none\">冇高速SA／PA。</span> 過安房隧道後可用「道の駅 風穴の里」做主要休息／洗手間位；冬季天黑前到松本優先。"
+                    }
+                  ]
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4692,7 +4958,13 @@
                     "由平湯沿主要道路直接去松本；大王山葵農場只保留真正早到先用嘅 Bonus。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": [
+                    {
+                      "className": "v90-route-stop",
+                      "html": "<strong>🛣️ R158 山路：</strong><span class=\"none\">冇高速SA／PA。</span> 過安房隧道後可用「道の駅 風穴の里」做主要休息／洗手間位；冬季天黑前到松本優先。"
+                    }
+                  ]
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4709,7 +4981,8 @@
                     "加咗平湯神社後，正常時間已唔追呢個 Bonus；只有實際行程比預定早好多，而且仍趕到冬季關門前先考慮。"
                   ],
                   "price": "免費入場",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4726,7 +4999,8 @@
                     "去 Iroha；冬季唔為 Bonus 壓縮道路 Buffer。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 },
                 {
                   "itemClass": "timeline-item",
@@ -4743,7 +5017,8 @@
                     "入住最後一晚酒店。"
                   ],
                   "price": "",
-                  "links": []
+                  "links": [],
+                  "extras": []
                 }
               ]
             },
@@ -4878,7 +5153,8 @@
                   "包兩位早餐， 最後執行李。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4895,7 +5171,8 @@
                   "行李全部放車內。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4912,7 +5189,8 @@
                   "約 15 分鐘。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4929,7 +5207,8 @@
                   "最後補貨。 11:00 左右離開係 Hard Cut。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4946,7 +5225,8 @@
                   "11:00 必須離開 AEON。 入滿油、保留單據。 油站到時按 Times 指示／附近油站選擇。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4963,7 +5243,8 @@
                   "開始處理還車。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4980,7 +5261,8 @@
                   "目標 12:10 前已經完成還車。 之後先食午餐或買便當。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -4997,7 +5279,8 @@
                   "現行參考 13:56 → 16:07。"
                 ],
                 "price": "特急しなの指定席 現行參考：約 ¥6,160／人",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -5014,7 +5297,8 @@
                   "現行參考 16:49 → 17:17。"
                 ],
                 "price": "μSKY 現行參考：約 ¥1,430／人",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -5031,7 +5315,8 @@
                   "UO685 Check-in、 保安、晚餐及候機。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               },
               {
                 "itemClass": "timeline-item",
@@ -5048,7 +5333,8 @@
                   "規劃 20:40 起飛， 翌日約 00:30 抵港。"
                 ],
                 "price": "",
-                "links": []
+                "links": [],
+                "extras": []
               }
             ]
           },
