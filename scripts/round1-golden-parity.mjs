@@ -104,8 +104,8 @@ try{
 
  // Photo zoom on unaffected D1.
  for(const x of [pI.page,cI.page]){await x.locator('#d1').evaluate(el=>el.open=true);await x.locator('#d1 img.zoomable').first().click();}
- const modalP=await pI.page.locator('#photoModal').evaluate(el=>({display:getComputedStyle(el).display,text:norm(el.innerText)}));
- const modalC=await cI.page.locator('#photoModal').evaluate(el=>({display:getComputedStyle(el).display,text:norm(el.innerText)}));
+ const modalP=await pI.page.locator('#photoModal').evaluate(el=>({display:getComputedStyle(el).display,text:(el.innerText||'').replace(/\\s+/g,' ').trim()}));
+ const modalC=await cI.page.locator('#photoModal').evaluate(el=>({display:getComputedStyle(el).display,text:(el.innerText||'').replace(/\\s+/g,' ').trim()}));
  same(modalP,modalC,'D1 photo modal');
  for(const x of [pI.page,cI.page])await x.keyboard.press('Escape');
 
