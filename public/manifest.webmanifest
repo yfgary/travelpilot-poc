@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "TravelPilot｜旅程管家",
+  "short_name": "TravelPilot",
+  "lang": "zh-HK",
+  "start_url": "./#/",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7f6",
+  "theme_color": "#214d49",
+  "icons": [
+    {
+      "src": "assets/images/travelpilot_icon.PNG",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
