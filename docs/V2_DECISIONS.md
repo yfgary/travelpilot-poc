@@ -47,3 +47,8 @@ Expected paths:
 
 ## 2026-10-08 — Complexity escalation
 **Decision:** Difficult/complex/high-risk features must be explained before implementation so the user can keep, simplify, or drop them. No hard-coded workaround is acceptable.
+
+## 2026-10-08 — Clean POC to V2-only repository
+**Decision:** Remove all legacy V1/previous POC implementation files from `travelpilot-poc`. Keep only V2 documentation, V2 repository guidance, a clean README, and the canonical banner/icon assets.  
+**Reason:** The user will not reuse the old POC implementation and wants to avoid legacy clutter influencing the V2 rebuild.  
+**Reference rule:** V1 remains a Golden Visual/Content Reference externally, but V1 implementation files must not be copied back into the V2 POC unless explicitly requested.

@@ -36,15 +36,15 @@ Last updated: 08/10/2026
 - Today Mode implementation
 - real trip data migration
 
-## Known issue / verification needed
-The user states the canonical assets are already uploaded at:
-- `travelpilot/assets/images/travelpilot_banner.PNG`
-- `travelpilot/assets/images/travelpilot_icon.PNG`
-
-At the start of Phase 1, those exact paths were not found on the POC repository default branch through the GitHub connector. Re-check before Phase 2; do not silently substitute other artwork.
+## Repository cleanup
+- Legacy V1/previous POC implementation files have been removed from this repository by user request.
+- The POC repository now contains only V2 planning/docs, a clean V2 README, and the two canonical TravelPilot branding assets.
+- Canonical assets verified on POC:
+  - `assets/images/travelpilot_banner.PNG`
+  - `assets/images/travelpilot_icon.PNG`
 
 ## Next step
-Review Phase 1 documentation for missing requirements and confirm/inspect the existing V1/Supabase structures needed for migration planning.
+Review Phase 1 documentation for missing requirements and validate the V2 schema against the Golden Content trip. Any V1 reference required later should be read from the production/reference repository, not restored into this POC repo.
 
 Do **not** start broad implementation until the architecture/data model has been reviewed against the Golden Content trip.
 
