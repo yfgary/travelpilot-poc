@@ -47,7 +47,7 @@ def main() -> int:
     index = read("index.html")
     manifest = read("manifest.webmanifest")
     sw = read("sw.js")
-    loader = read("assets/attraction-info.js")
+    loader = read("assets/attraction-info.js")  # legacy loader pin is migration-owned, not release-owned
     live_entry = read("assets/multi-trip-live-entry-v1.js")
 
     if plain:
@@ -58,7 +58,6 @@ def main() -> int:
             "homepage runtime pin": f"assets/multi-trip-context-v1.js?v={plain}",
             "homepage icon pin": f"assets/images/travelpilot-icon-exact.jpg?v={plain}",
             "manifest icon pin": f"assets/images/travelpilot-icon-exact.jpg?v={plain}",
-            "legacy loader runtime pin": f"assets/multi-trip-context-v1.js?v={plain}",
             "Live Cam injected shim pin": f"assets/multi-trip-live-entry-v1.js?v={plain}",
             "Live Cam entry runtime pin": f"assets/multi-trip-context-v1.js?v={plain}",
         }
@@ -69,7 +68,6 @@ def main() -> int:
             "homepage runtime pin": index,
             "homepage icon pin": index,
             "manifest icon pin": manifest,
-            "legacy loader runtime pin": loader,
             "Live Cam injected shim pin": sw,
             "Live Cam entry runtime pin": live_entry,
         }
