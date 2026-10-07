@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 ERRORS: list[str] = []
 
-loader = (ASSETS / "attraction-info.js").read_text(encoding="utf-8")
+loader = (ASSETS / "multi-trip-runtime-v1.js").read_text(encoding="utf-8")
 visit = (ASSETS / "trip-v9-1-visit-fix.js").read_text(encoding="utf-8")
 renderer = (ASSETS / "multi-trip-itinerary-renderer-v1.js").read_text(encoding="utf-8")
 final = (ASSETS / "trip-v9-final-fixes.js").read_text(encoding="utf-8")
@@ -55,9 +55,9 @@ if "japan2027:finalpatch" not in final:
 if "japan2027:finalpatch" not in visit:
     ERRORS.append("Stage 5M requires visit-fix to consume japan2027:finalpatch")
 
-match = re.search(r"const\s+itineraryScripts\s*=\s*commonHead\.concat\(\[(.*?)\]\);", loader, flags=re.S)
+match = re.search(r"const\s+legacyItineraryScripts\s*=\s*\[(.*?)\];", loader, flags=re.S)
 if not match:
-    ERRORS.append("itineraryScripts loader block missing")
+    ERRORS.append("legacyItineraryScripts runtime block missing")
 else:
     block = match.group(1)
     positions = {
