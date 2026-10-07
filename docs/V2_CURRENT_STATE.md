@@ -58,3 +58,18 @@ In a new conversation/session:
 2. Read all `docs/V2_*.md` files, especially this file and the Decision Log.
 3. Summarize current phase, completed work, open issues, and next bounded task.
 4. Do not modify code until the requested task is clear.
+
+
+## Pending architecture review — not yet approved
+A higher-effort review on 08/10/2026 identified several recommendations that must be discussed/approved before they become final architecture decisions:
+
+1. Consider React + TypeScript + Vite for the V2 frontend to reduce long-term patch-script sprawl.
+2. Prefer GitHub-Pages-friendly hash routing (for example `#/trip/<slug>/itinerary`) over history routes that can 404 on direct reload.
+3. Consider simplifying the V2 Supabase content model to a hybrid/versioned JSONB trip snapshot model instead of highly normalized content tables, because trip import, offline caching, atomic versioning and rollback may be simpler.
+4. Keep all new V2 Supabase tables isolated from existing V1 tables, preferably with a `v2_` prefix.
+5. Existing Supabase project was inspected: current public V1 tables are `trip_checklist_state`, `trip_checklist_shared`, and `trip_sync_config`. Do not alter them for V2 without explicit approval.
+6. Preserve the generic ideas from V1's newer weather activity-profile scoring (experience + access/safety + safety caps), but reimplement cleanly rather than copying legacy Japan-specific modules.
+7. Make the lower-left version + online/offline indicator an explicit requirement on every page.
+8. Correct repository-relative branding paths to `assets/images/travelpilot_banner.PNG` and `assets/images/travelpilot_icon.PNG`.
+
+These are **pending recommendations**, not approved decisions. A future conversation must not silently implement them; summarize them to the user first.
