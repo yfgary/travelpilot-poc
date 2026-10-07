@@ -24,7 +24,7 @@ def read(path: str) -> str:
 
 def loader_block(loader: str, name: str) -> str:
     match = re.search(
-        rf"const {re.escape(name)}=commonHead\.concat\(\[(.*?)\]\);",
+        rf"const {re.escape(name)}=\[(.*?)\];",
         loader,
         re.S,
     )
@@ -53,12 +53,12 @@ def main() -> int:
         if path.exists():
             error(f"Retired observer cleanup file still exists: {path.relative_to(ROOT)}")
 
-    loader = read("assets/attraction-info.js")
+    loader = read("assets/multi-trip-runtime-v1.js")
     blocks = {
         name: loader_block(loader, name)
         for name in (
-            "itineraryScripts",
-            "tripInfoScripts",
+            "legacyItineraryScripts",
+            "legacyTripInfoScripts",
             "genericItineraryScripts",
             "genericTripInfoScripts",
         )
@@ -79,7 +79,7 @@ def main() -> int:
     # translated. All itinerary decoration observers are gone.
     intentional_itinerary = set()
     found: dict[str, int] = {}
-    for rel in itinerary_asset_paths(blocks["itineraryScripts"]):
+    for rel in itinerary_asset_paths(blocks["legacyItineraryScripts"]):
         text = read(rel)
         count = direct_observer_count(text)
         if count:
@@ -122,7 +122,7 @@ def main() -> int:
 
     # Other page types may only use their explicitly scoped observers.
     page_allowed = {
-        "tripInfoScripts": {"assets/multi-trip-checklist-sync-v1.js"},
+        "legacyTripInfoScripts": {"assets/multi-trip-checklist-sync-v1.js"},
         "genericItineraryScripts": set(),
         "genericTripInfoScripts": {"assets/multi-trip-checklist-sync-v1.js"},
     }
