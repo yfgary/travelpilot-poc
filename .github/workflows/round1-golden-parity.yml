@@ -58,6 +58,28 @@ jobs:
           node --check sw.js
           find assets -maxdepth 1 -type f -name '*.js' -print0 | xargs -0 -n1 node --check
 
+      - name: Presentation assets remain byte-identical to Production
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import sys
+          root=Path('.')
+          prod=Path('/tmp/production-reference')
+          candidates=list((root/'assets').glob('*.css'))+list((root/'assets'/'images').rglob('*'))
+          changed=[]
+          for p in candidates:
+              if not p.is_file():
+                  continue
+              q=prod/p
+              if not q.is_file() or p.read_bytes()!=q.read_bytes():
+                  changed.append(str(p))
+          if changed:
+              print("Unexpected presentation asset drift:")
+              print("\n".join(changed))
+              sys.exit(1)
+          print(f"Presentation asset byte parity PASS ({len([p for p in candidates if p.is_file()])} files)")
+          PY
+
       - name: Install Playwright
         run: |
           npm install --no-save playwright@1.55.0
