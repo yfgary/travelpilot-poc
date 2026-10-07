@@ -3,7 +3,7 @@
 Last updated: 08/10/2026
 
 ## Current phase
-**Phase 1 — Specification and architecture**
+**Phase 1 — Specification and architecture (schema validation complete)**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -22,6 +22,10 @@ Last updated: 08/10/2026
 - Roadmap drafted.
 - Decision log initialized.
 - Engineering rules initialized in `AGENTS.md`.
+- Production V1 Golden Content files inspected for schema validation.
+- V2 schema validated against Japan 2027 and amended for navigation targets, richer hotel/payment data, grouped checklists, live-cam grouping, weather profiles, and richer hard-cut metadata.
+- `docs/V2_SCHEMA_VALIDATION.md` added.
+- Phase 1 schema validation result: PASS.
 
 ## Not started
 - Functional V2 application rewrite
@@ -44,7 +48,7 @@ Last updated: 08/10/2026
   - `assets/images/travelpilot_icon.PNG`
 
 ## Next step
-Review Phase 1 documentation for missing requirements and validate the V2 schema against the Golden Content trip. Any V1 reference required later should be read from the production/reference repository, not restored into this POC repo.
+Prepare the first bounded **Phase 2 Foundation Codex task**. It must build only the generic V2 shell/routing/PWA foundation with dummy trip data. Do not migrate Japan 2027 yet and do not implement full weather, Live Cam, or checklist sync in the first task.
 
 Do **not** start broad implementation until the architecture/data model has been reviewed against the Golden Content trip.
 
