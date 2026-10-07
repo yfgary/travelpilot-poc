@@ -1,5 +1,6 @@
 {
   "schemaVersion": 9,
+  "contractVersion": "standard-v1",
   "id": "new-trip-id",
   "name": "新旅行名稱",
   "shortName": "短名稱",
@@ -8,17 +9,42 @@
   "endDate": "2028-01-05",
   "timezone": "Asia/Tokyo",
   "country": "日本",
-  "features": {"itinerary":true,"tripInfo":true,"attractions":true,"liveCam":true,"todayMode":true,"drivingMode":true,"weather":true,"weatherScore":true,"weatherActivityProfiles":true,"packingChecklist":true,"winterDriving":false},
+  "features": {
+    "itinerary": true,
+    "tripInfo": true,
+    "attractions": true,
+    "liveCam": true,
+    "todayMode": true,
+    "drivingMode": true,
+    "weather": true,
+    "weatherScore": true,
+    "weatherActivityProfiles": true,
+    "packingChecklist": false,
+    "winterDriving": false,
+    "conditionalDayPlanning": false
+  },
   "modules": [],
-  "pages": {"itinerary":"itinerary.html","tripInfo":"trip-info.html","attractions":"attractions.html","liveCam":"live.html"},
-  "dataFiles": {"itinerary":"itinerary.json","tripInfo":"trip-info.json","hotels":"hotels.json","attractions":"attractions.json","liveCams":"live-cams.json","weather":"weather.json"},
+  "pages": {
+    "itinerary": "itinerary.html",
+    "tripInfo": "trip-info.html",
+    "attractions": "attractions.html",
+    "liveCam": "live.html"
+  },
+  "dataFiles": {
+    "itinerary": "itinerary.json",
+    "tripInfo": "trip-info.json",
+    "hotels": "hotels.json",
+    "attractions": "attractions.json",
+    "liveCams": "live-cams.json",
+    "weather": "weather.json"
+  },
   "renderers": {
-    "itinerary":{"mode":"generate","source":"itinerary","preserveLegacyDetails":false},
-    "tripInfo":{"mode":"generate","source":"tripInfo","preserveLegacyShell":false},
-    "attractions":{"mode":"generate","source":"attractions","preserveLegacyDetails":false},
-    "liveCam":{"mode":"generate","source":"liveCams","preserveLegacyMediaTemplates":false},
-    "weather":{"mode":"generate","source":"weather","profileStandard":"v1","preserveLegacyDecisionModules":false},
-    "todayMode":{"mode":"generate","source":"itinerary","useActivityProfiles":true},
-    "drivingMode":{"mode":"generate","source":"itinerary","useActivityProfiles":true}
+    "itinerary": {"mode": "generate", "source": "itinerary"},
+    "tripInfo": {"mode": "generate", "source": "tripInfo"},
+    "attractions": {"mode": "generate", "source": "attractions"},
+    "liveCam": {"mode": "generate", "source": "liveCams"},
+    "weather": {"mode": "generate", "source": "weather", "profileStandard": "v1"},
+    "todayMode": {"mode": "generate", "source": "itinerary", "useActivityProfiles": true},
+    "drivingMode": {"mode": "generate", "source": "itinerary", "useActivityProfiles": true}
   }
 }
