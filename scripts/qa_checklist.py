@@ -126,7 +126,8 @@ def check_trip_data() -> None:
 
 
 def check_runtime() -> None:
-    loader = read("assets/attraction-info.js")
+    runtime = read("assets/multi-trip-runtime-v1.js")
+    shim = read("assets/attraction-info.js")
     renderer = read("assets/multi-trip-departure-checklist-v1.js")
     sync = read("assets/multi-trip-checklist-sync-v1.js")
     hotfix = read("assets/trip-v9-hotfix.js")
@@ -144,7 +145,7 @@ def check_runtime() -> None:
         for idx, block in enumerate(blocks, 1):
             for required in ("multi-trip-departure-checklist-v1.js", "multi-trip-checklist-sync-v1.js"):
                 if required not in block:
-                    error(f"Trip Info loader block #{idx} is missing {required}")
+                    error(f"Trip Info runtime block #{idx} is missing {required}")
 
     for required in (
         "all('departureChecklist')",
