@@ -66,17 +66,6 @@ async function open(base,path,candidate=false){
   return {page,errors};
 }
 
-async function removeApprovedD6D8Automation(page){
-  return page.evaluate(() => {
-    const result={
-      selector:document.querySelectorAll('#tripv2WeatherSelect').length,
-      comparison:document.querySelectorAll('#d6d8WeatherDecision').length
-    };
-    document.querySelectorAll('#tripv2WeatherSelect,#d6d8WeatherDecision').forEach(el=>el.remove());
-    return result;
-  });
-}
-
 async function snapshot(page){
   return page.evaluate(() => {
     const texts=(sel)=>[...document.querySelectorAll(sel)].map(x=>(x.innerText||x.textContent||'').replace(/\s+/g,' ').trim());
@@ -169,11 +158,6 @@ try{
   assert(baseline.errors.length===0,'baseline page errors: '+baseline.errors.join(' | '));
   assert(candidate.errors.length===0,'candidate page errors: '+candidate.errors.join(' | '));
 
-  const approvedBaseline=await removeApprovedD6D8Automation(baseline.page);
-  const approvedCandidate=await removeApprovedD6D8Automation(candidate.page);
-  if(approvedBaseline.selector!==1||approvedBaseline.comparison!==1) failures.push('Production reference did not expose both approved D6-D8 automation surfaces');
-  if(approvedCandidate.selector!==0||approvedCandidate.comparison!==0) failures.push('Candidate still exposes approved-for-removal D6-D8 automation surfaces');
-
   const [a,b]=await Promise.all([snapshot(baseline.page),snapshot(candidate.page)]);
   const differences=diff(a,b);
   if(differences.length) failures.push('DOM/feature parity:\n'+differences.slice(0,80).join('\n'));
@@ -191,8 +175,8 @@ try{
     ['photo credits',b.rich.credits,1]
   ]) if(value<min) failures.push(label+' '+value+' < '+min);
   if(!b.bonusText) failures.push('Snow shrine / torii Bonus text missing');
-  if(b.d68.panel!==0) failures.push('D6-D8 weather auto-comparison was not removed');
-  if(b.selector!==0) failures.push('D6-D8 manual selector/auto-swap was not removed');
+  if(b.d68.panel!==1||b.d68.cards!==3) failures.push('D6-D8 weather comparison parity missing');
+  if(b.selector!==1) failures.push('D6-D8 selector parity missing');
 
   // Interaction parity: photo zoom.
   await baseline.page.locator('details.day#d1').evaluate(el=>{el.open=true;});
