@@ -83,6 +83,22 @@ async function comparePage(path,{screenshot=true}={}){
  return {a,b};
 }
 async function overlaySnapshot(page,sel){return page.locator(sel).evaluate(el=>({hidden:el.hidden,text:(el.innerText||'').replace(/\s+/g,' ').trim(),htmlClass:el.className}));}
+async function itineraryStructure(page){
+ return page.evaluate(()=>[...document.querySelectorAll('details.day[id]')].map(day=>({
+   id:day.id,
+   children:[...(day.querySelector(':scope > .day-inner')?.children||[])].map(x=>x.tagName.toLowerCase()+'.'+[...x.classList].join('.')),
+   counts:{
+     timeline:day.querySelectorAll('.timeline-item').length,
+     mapPins:day.querySelectorAll('a.map-pin').length,
+     info:day.querySelectorAll('.enhance-info-btn,.attraction-info-btn,.v90-shrine-info-btn,.backup-info-btn').length,
+     jp:day.querySelectorAll('.jp-place-name').length,
+     duration:day.querySelectorAll('.duration-badge').length,
+     visit:day.querySelectorAll('.visit-meta,.visit-meta-inline,.visit-meta-backup').length,
+     routeStop:day.querySelectorAll('.v90-route-stop').length,
+     backup:day.querySelectorAll('details.backup-panel').length
+   }
+ })));
+}
 
 const browser=await chromium.launch({headless:true});
 try{
@@ -93,6 +109,9 @@ try{
  await info.a.page.close();await info.b.page.close();await attr.a.page.close();await attr.b.page.close();await live.a.page.close();await live.b.page.close();
 
  const a=it.a.page,b=it.b.page;
+ const [structA,structB]=await Promise.all([itineraryStructure(a),itineraryStructure(b)]);
+ const structDiff=diff(structA,structB,'itineraryStructure');
+ if(structDiff.length)failures.push('Itinerary structure parity:\n'+structDiff.slice(0,120).join('\n'));
  const gates=await b.evaluate(()=>({
    selector:document.querySelectorAll('#tripv2WeatherSelect').length,
    d68Panel:document.querySelectorAll('#d6d8WeatherDecision').length,
