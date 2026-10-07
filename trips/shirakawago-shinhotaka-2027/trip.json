@@ -113,8 +113,7 @@
     "itinerary": {
       "mode": "generate",
       "source": "itinerary",
-      "preserveLegacyDetails": true,
-      "presentationProfile": "standard-itinerary-v1"
+      "presentationProfile": "standard-markup-v1"
     },
     "tripInfo": {
       "mode": "hydrate",
