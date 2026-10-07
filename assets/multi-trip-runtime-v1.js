@@ -2,7 +2,7 @@
 'use strict';
 if(window.MultiTripRuntime&&window.MultiTripRuntime.__v1)return;
 
-const APP_VERSION='10.17.0';
+const APP_VERSION='10.18.0';
 const DEFAULT_TRIP='shirakawago-shinhotaka-2027';
 const params=new URLSearchParams(location.search);
 const selectedTrip=(params.get('trip')||DEFAULT_TRIP).trim();
