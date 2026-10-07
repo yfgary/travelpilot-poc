@@ -11,6 +11,7 @@ Before any implementation or refactor, read:
 4. `docs/V2_DECISIONS.md`
 5. `docs/V2_CURRENT_STATE.md`
 6. `docs/V2_ROADMAP.md`
+7. `docs/V2_SCHEMA_VALIDATION.md`
 
 ## Repository safety
 - This repository is the POC/test lab: `yfgary/travelpilot-poc`.
@@ -20,7 +21,7 @@ Before any implementation or refactor, read:
 - The Japan 2027 / Shirakawa-go detailed itinerary is the Golden Content Reference.
 - Preserve existing user-approved visual language unless a spec explicitly changes it.
 
-## Absolute no-hard-code rule
+## Zero trip-specific hard-coding rule
 Never write trip-specific behavior such as:
 - `if (trip === "japan2027")`
 - `if (day === 6)`
@@ -29,6 +30,8 @@ Never write trip-specific behavior such as:
 - separate HTML pages per trip
 
 Rendering must be driven by shared schemas and data. Optional features appear when relevant data exists and remain hidden when it does not.
+
+Generic shared business rules/configuration are allowed (for example font-size choices, score thresholds, activity categories, reusable renderer logic). The prohibition is against trip/country/day/place-specific application logic.
 
 If a requested feature cannot be implemented generically, **stop and report the complexity/trade-off to the user before implementing a workaround**.
 
@@ -46,9 +49,9 @@ If a requested feature cannot be implemented generically, **stop and report the 
 - Local-first behaviour is required for checklists and cached trip data.
 
 ## Branding assets
-Expected canonical assets:
-- `travelpilot/assets/images/travelpilot_banner.PNG`
-- `travelpilot/assets/images/travelpilot_icon.PNG`
+Expected canonical assets (repository-relative paths):
+- `assets/images/travelpilot_banner.PNG`
+- `assets/images/travelpilot_icon.PNG`
 
 Do not replace or regenerate branding assets without explicit user approval.
 
