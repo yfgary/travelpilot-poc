@@ -48,6 +48,8 @@ jobs:
         run: python scripts/qa_trip_info_event_audit.py
       - name: Run info-icon event audit QA
         run: python scripts/qa_info_icon_event_audit.py
+      - name: Run Round 1 fixed D6-D8 QA
+        run: python scripts/qa_round1_fixed_d6d8.py
       - name: Check JavaScript syntax
         run: |
           node --check sw.js
