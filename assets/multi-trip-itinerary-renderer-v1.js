@@ -92,6 +92,15 @@ function resolvedView(day){
  const variant=variantKey&&day.variants[variantKey];
  return variant?Object.assign({},base,variant):base;
 }
+function resolvedMarkup(day){
+ const m=plannerFor(day),selected=plannerState(m);
+ if(m&&selected&&day.variants){
+  const variantKey=m.assignments&&m.assignments[selected]&&m.assignments[selected][day.id];
+  const variant=variantKey&&day.variants[variantKey];
+  if(variant&&variant.presentationMarkup)return variant.presentationMarkup;
+ }
+ return day.presentationMarkup||'';
+}
 function trusted(v){return String(v==null?'':v);}
 
 function richHighlights(view){
@@ -145,6 +154,19 @@ function richContentBlock(b){
  return panelBlock(b);
 }
 
+function markupDay(day){
+ const html=resolvedMarkup(day);
+ if(!html)return'';
+ const tpl=document.createElement('template');
+ tpl.innerHTML=String(html).trim();
+ const el=tpl.content.firstElementChild;
+ if(!el||!el.matches('details.day'))return'';
+ el.removeAttribute('open');
+ el.dataset.tripGenerated='1';
+ el.dataset.tripDataSource='itinerary.json';
+ return el.outerHTML;
+}
+
 function richDay(day){
  const view=resolvedView(day);
  return '<details class="day" id="'+esc(day.id)+'" data-trip-generated="1" data-trip-data-source="itinerary.json" data-trip-day="'+esc(day.day)+'" data-trip-date="'+esc(day.date||'')+'">'
@@ -165,7 +187,7 @@ function renderDynamicDays(){
  ds.forEach(day=>{
   const old=document.getElementById(day.id);if(!old)return;
   const open=old.open;
-  const tmp=document.createElement('template');tmp.innerHTML=richDay(day).trim();
+  const tmp=document.createElement('template');tmp.innerHTML=renderDay(day).trim();
   const next=tmp.content.firstElementChild;if(!next)return;
   next.open=open;old.replaceWith(next);
  });
@@ -241,7 +263,7 @@ function simpleDay(day){
  const cutMap=hardCutMap(day),items=Array.isArray(day.items)?day.items:[],timeline=items.length?'<div class="timeline">'+items.map(x=>renderItem(x,cutMap)).join('')+'</div>':'<div class="special-box">🧭 呢日由專用 Module／彈性規則決定；目前路線：'+esc(day.route||'待定')+'</div>';
  return'<details class="day" id="'+esc(day.id)+'" data-trip-generated="1" data-trip-data-source="itinerary.json" data-trip-day="'+esc(day.day)+'"><summary><div class="day-summary-main"><div class="day-number">DAY '+esc(day.day)+'</div><div class="day-title">'+esc(day.title||'')+'</div><div class="day-date">'+esc(formatDate(day.date))+'</div><div class="day-route">'+esc(day.route||'')+'</div></div></summary>'+renderHighlights(day)+'<div class="day-content">'+gallery(day)+timeline+renderHotel(day)+'</div></details>';
 }
-function renderDay(day){return presentationProfile()==='standard-itinerary-v1'&&day.view?richDay(day):simpleDay(day);}
+function renderDay(day){if(presentationProfile()==='standard-markup-v1'&&day.presentationMarkup)return markupDay(day);return presentationProfile()==='standard-itinerary-v1'&&day.view?richDay(day):simpleDay(day);}
 
 function renderGenericIntro(ds){
  const c=cfg(),intro=document.querySelector('.container > .intro, main.container > .intro');if(!intro)return;
@@ -276,9 +298,9 @@ function insertGeneratedDays(container,ds){
 function generateAll(){
  const ds=days();if(!ds.length)return 0;
  const container=document.querySelector('.container');if(!container)return 0;
- if(presentationProfile()!=='standard-itinerary-v1'){ensureGalleryAssets();renderGenericIntro(ds);}
+ if(!['standard-itinerary-v1','standard-markup-v1'].includes(presentationProfile())){ensureGalleryAssets();renderGenericIntro(ds);}
  insertGeneratedDays(container,ds);
- if(presentationProfile()!=='standard-itinerary-v1')rebuildNav(ds);
+ if(!['standard-itinerary-v1','standard-markup-v1'].includes(presentationProfile()))rebuildNav(ds);
  renderPlannerUi();
  ensureInfoBinding();
  postGenerate();
