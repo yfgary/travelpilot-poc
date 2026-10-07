@@ -61,3 +61,29 @@ Expected paths:
 ## 2026-10-08 — V1 content detail is reference, not itinerary truth
 **Decision:** Japan 2027 V1 remains the Golden Content detail reference, but its itinerary logic is not automatically considered current.  
 **Reason:** production still contains legacy D6–D8 flexible-weather logic that may be stale compared with the user's newer approved plan. Migration must use the latest approved itinerary.
+
+## 2026-10-08 — V2 frontend stack locked
+**Decision:** Use React + TypeScript + Vite for the shared V2 application.  
+**Reason:** Seven shared views, stateful PWA behaviour and long-term maintenance benefit from typed reusable components rather than V1-style accumulated patch scripts.
+
+## 2026-10-08 — GitHub Pages hash routing
+**Decision:** Use hash routes such as `#/trip/<slug>/itinerary`.  
+**Reason:** Direct reload/bookmark works cleanly on GitHub Pages without a server rewrite or 404 workaround.
+
+## 2026-10-08 — Hybrid versioned trip snapshots
+**Decision:** Store canonical trip content as validated versioned JSONB snapshots in Supabase, while keeping mutable user state relational.  
+**Reason:** This better matches the ChatGPT → validate → publish workflow, offline downloads, atomic updates and rollback.  
+**Supersedes:** the earlier highly normalized content-table proposal as the primary V2 content model.
+
+## 2026-10-08 — V1 / V2 Supabase isolation
+**Decision:** Existing V1 tables must remain untouched. New V2 tables use the `v2_` prefix.  
+**Observed V1 public tables:** `trip_checklist_state`, `trip_checklist_shared`, `trip_sync_config`.
+
+## 2026-10-08 — Weather scoring direction
+**Decision:** Reuse the generic concepts proven in V1's newer activity-profile system—Experience score, Access/Safety score, safety caps and profile weighting—but reimplement cleanly in TypeScript. Do not copy Japan-specific legacy modules.
+
+## 2026-10-08 — Persistent lower-left status
+**Decision:** Every page/view must show a lower-left status area containing online/offline state and current App Version. Trip Data Version is available in Settings/detail status.
+
+## 2026-10-08 — 16-step progress model
+**Decision:** Project progress is tracked as Step N/16. Each completed implementation task updates `V2_CURRENT_STATE.md`.
