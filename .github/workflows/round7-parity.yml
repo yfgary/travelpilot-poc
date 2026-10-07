@@ -57,7 +57,7 @@ jobs:
           node --check assets/standard-runtime-loader-v1.js
           find assets -maxdepth 1 -type f -name '*.js' -print0 | xargs -0 -n1 node --check
 
-      - name: Public itinerary differs only by Standard loader and approved D6-D8 removal
+      - name: Public itinerary differs only by the generic Standard loader
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -66,17 +66,11 @@ jobs:
           candidate=Path("itinerary.html").read_text(encoding="utf-8")
           reference=Path("/tmp/production-reference/itinerary.html").read_text(encoding="utf-8")
 
-          def normalize_candidate(s):
-              s=re.sub(r'<script type="application/json" id="travelPilotRuntimePlan">[\s\S]*?</script>\s*','',s)
-              s=s.replace('<script src="assets/standard-runtime-loader-v1.js"></script>','<script src="assets/attraction-info.js?v=1"></script>')
-              s=re.sub(r'<script id="tripv2-itinerary-script">[\s\S]*?</script>\s*','',s)
-              return s
+          candidate=re.sub(r'<script type="application/json" id="travelPilotRuntimePlan">[\s\S]*?</script>\s*','',candidate)
+          candidate=candidate.replace('<script src="assets/standard-runtime-loader-v1.js"></script>','<script src="assets/attraction-info.js?v=1"></script>')
 
-          def normalize_reference(s):
-              return re.sub(r'<script id="tripv2-itinerary-script">[\s\S]*?</script>\s*','',s)
-
-          if normalize_candidate(candidate)!=normalize_reference(reference):
-              print("Unexpected itinerary.html drift outside the Standard loader and approved D6-D8 automation removal")
+          if candidate!=reference:
+              print("Unexpected itinerary.html drift outside the generic Standard loader")
               sys.exit(1)
           print("Public itinerary structural diff PASS")
           PY
