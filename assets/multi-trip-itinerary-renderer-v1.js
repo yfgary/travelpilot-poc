@@ -194,6 +194,14 @@ function renderPlannerUi(){
   document.dispatchEvent(new CustomEvent('multitrip:plannerchange',{detail:{moduleId:m.id,value:v,tripId:window.MultiTrip&&window.MultiTrip.id}}));
  }));
  updatePlannerActive(box,m);
+ const place=()=>{
+  const anchor=document.getElementById('d6d8WeatherDecision')||document.getElementById('weather3dPanel');
+  if(anchor&&box.previousElementSibling!==anchor)anchor.insertAdjacentElement('afterend',box);
+  const shrine=document.getElementById('v87ShrineQuick');
+  if(shrine&&shrine.previousElementSibling!==box)box.insertAdjacentElement('afterend',shrine);
+ };
+ place();
+ [120,450,1000,1800].forEach(t=>setTimeout(place,t));
 }
 
 function postGenerate(){
@@ -257,25 +265,9 @@ function ensureMarker(container,legacy){
  if(first)first.parentNode.insertBefore(generatedMarker,first);else container.appendChild(generatedMarker);
  return generatedMarker;
 }
-function preserveLegacyModeSource(existing){
- if(document.getElementById('multiTripLegacyModeSource'))return;
- const box=document.createElement('div');
- box.id='multiTripLegacyModeSource';
- box.hidden=true;
- box.setAttribute('aria-hidden','true');
- box.dataset.migrationOnly='round4-mode-source';
- existing.forEach(day=>{
-  const clone=day.cloneNode(true);
-  clone.id='legacy-mode-'+day.id;
-  clone.querySelectorAll('[id]').forEach(el=>{el.id='legacy-mode-'+el.id;});
-  box.appendChild(clone);
- });
- document.body.appendChild(box);
-}
 function insertGeneratedDays(container,ds){
- const existing=[...container.querySelectorAll('details.day')].filter(x=>!x.closest('#multiTripLegacyModeSource'));
+ const existing=[...container.querySelectorAll('details.day')];
  const marker=ensureMarker(container,existing);
- preserveLegacyModeSource(existing);
  existing.forEach(x=>x.remove());
  const tpl=document.createElement('template');tpl.innerHTML=ds.map(renderDay).join('');
  marker.after(tpl.content);
