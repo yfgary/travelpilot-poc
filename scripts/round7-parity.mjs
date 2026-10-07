@@ -133,6 +133,22 @@ async function snapshot(page){
   });
 }
 
+async function overlaySnapshot(page,selector){
+  return page.locator(selector).evaluate(el=>({
+    hidden:el.hidden,
+    text:(el.innerText||el.textContent||'').replace(/\s+/g,' ').trim(),
+    buttons:[...el.querySelectorAll('button')].map(x=>(x.innerText||x.textContent||'').replace(/\s+/g,' ').trim()),
+    links:[...el.querySelectorAll('a[href]')].map(x=>({
+      text:(x.innerText||x.textContent||'').replace(/\s+/g,' ').trim(),
+      href:x.getAttribute('href')||''
+    })),
+    dayButtons:[...el.querySelectorAll('[data-tm-day],[data-dm-day]')].map(x=>({
+      day:x.getAttribute('data-tm-day')||x.getAttribute('data-dm-day')||'',
+      active:x.classList.contains('active')
+    }))
+  }));
+}
+
 function diff(a,b,path='root',out=[]){
   if(typeof a!==typeof b){out.push(path+': type '+typeof a+' != '+typeof b);return out;}
   if(a===null||b===null||typeof a!=='object'){if(a!==b)out.push(path+': '+JSON.stringify(a)+' != '+JSON.stringify(b));return out;}
@@ -189,6 +205,47 @@ try{
   const candModal=await candidate.page.locator('#photoModal').evaluate(el=>({hidden:el.hidden,display:getComputedStyle(el).display,text:(el.innerText||'').replace(/\s+/g,' ').trim()}));
   const modalDiff=diff(baseModal,candModal,'photoModal');
   if(modalDiff.length) failures.push('Photo zoom parity:\n'+modalDiff.join('\n'));
+
+
+  // Interaction parity: Today mode. Verify the overlay itself and a day switch.
+  await baseline.page.evaluate(()=>window.Japan2027TravelMode.open('d2'));
+  await candidate.page.evaluate(()=>window.Japan2027TravelMode.open('d2'));
+  await baseline.page.waitForSelector('#travelModeOverlay:not([hidden])');
+  await candidate.page.waitForSelector('#travelModeOverlay:not([hidden])');
+  await baseline.page.waitForTimeout(250); await candidate.page.waitForTimeout(250);
+  const baseToday=await overlaySnapshot(baseline.page,'#travelModeOverlay');
+  const candToday=await overlaySnapshot(candidate.page,'#travelModeOverlay');
+  const todayDiff=diff(baseToday,candToday,'todayMode');
+  if(todayDiff.length) failures.push('Today mode parity:\n'+todayDiff.slice(0,80).join('\n'));
+  await baseline.page.locator('#travelModeOverlay [data-tm-day="d3"]').click();
+  await candidate.page.locator('#travelModeOverlay [data-tm-day="d3"]').click();
+  await baseline.page.waitForTimeout(150); await candidate.page.waitForTimeout(150);
+  const baseTodayD3=await overlaySnapshot(baseline.page,'#travelModeOverlay');
+  const candTodayD3=await overlaySnapshot(candidate.page,'#travelModeOverlay');
+  const todayD3Diff=diff(baseTodayD3,candTodayD3,'todayModeD3');
+  if(todayD3Diff.length) failures.push('Today mode D3 switch parity:\n'+todayD3Diff.slice(0,80).join('\n'));
+  await baseline.page.evaluate(()=>window.Japan2027TravelMode.close());
+  await candidate.page.evaluate(()=>window.Japan2027TravelMode.close());
+
+  // Interaction parity: Driving mode. Verify destination details and next-stop action.
+  await baseline.page.evaluate(()=>window.Japan2027DrivingMode.open('d2'));
+  await candidate.page.evaluate(()=>window.Japan2027DrivingMode.open('d2'));
+  await baseline.page.waitForSelector('#drivingModeOverlay:not([hidden])');
+  await candidate.page.waitForSelector('#drivingModeOverlay:not([hidden])');
+  await baseline.page.waitForTimeout(250); await candidate.page.waitForTimeout(250);
+  const baseDrive=await overlaySnapshot(baseline.page,'#drivingModeOverlay');
+  const candDrive=await overlaySnapshot(candidate.page,'#drivingModeOverlay');
+  const driveDiff=diff(baseDrive,candDrive,'drivingMode');
+  if(driveDiff.length) failures.push('Driving mode parity:\n'+driveDiff.slice(0,80).join('\n'));
+  await baseline.page.locator('#drivingModeOverlay #dmNext').click();
+  await candidate.page.locator('#drivingModeOverlay #dmNext').click();
+  await baseline.page.waitForTimeout(150); await candidate.page.waitForTimeout(150);
+  const baseDriveNext=await overlaySnapshot(baseline.page,'#drivingModeOverlay');
+  const candDriveNext=await overlaySnapshot(candidate.page,'#drivingModeOverlay');
+  const driveNextDiff=diff(baseDriveNext,candDriveNext,'drivingModeNext');
+  if(driveNextDiff.length) failures.push('Driving mode next-stop parity:\n'+driveNextDiff.slice(0,80).join('\n'));
+  await baseline.page.evaluate(()=>window.Japan2027DrivingMode.close());
+  await candidate.page.evaluate(()=>window.Japan2027DrivingMode.close());
 
   // Same deterministic viewport + data should render identical pixels.
   await baseline.page.locator('#photoModal').press('Escape').catch(()=>{});
