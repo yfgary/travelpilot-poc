@@ -1,6 +1,6 @@
 {
-  "version": "v10.14.0",
-  "build": "2026-10-05.74",
-  "updated": "2026-10-05T20:45:00+08:00",
-  "notes": "Stable baseline release after the Stage 5 multi-trip, Trip Info, checklist, visit and info-icon event-migration cleanup. No itinerary content or UI behavior changes; refresh release-owned cache-busters and Service Worker cache identity for the new baseline."
+  "version": "v10.15.0",
+  "build": "2026-10-07.1",
+  "updated": "2026-10-07T15:49:00+08:00",
+  "notes": "POC Round 1 clean Production golden baseline. Fresh source copy only; architecture migration has not started and Production remains read-only."
 }

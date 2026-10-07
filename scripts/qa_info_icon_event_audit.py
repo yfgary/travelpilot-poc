@@ -13,7 +13,6 @@ ERRORS: list[str] = []
 loader = (ASSETS / "attraction-info.js").read_text(encoding="utf-8")
 repair = (ASSETS / "info-icon-repair-v1.js").read_text(encoding="utf-8")
 renderer = (ASSETS / "multi-trip-itinerary-renderer-v1.js").read_text(encoding="utf-8")
-i18n = (ASSETS / "i18n-v1.js").read_text(encoding="utf-8")
 final = (ASSETS / "trip-v9-final-fixes.js").read_text(encoding="utf-8")
 itinerary = (ROOT / "itinerary.html").read_text(encoding="utf-8")
 
@@ -60,13 +59,8 @@ for marker in (
     if marker not in renderer:
         ERRORS.append(f"Itinerary renderer evidence changed: missing {marker}")
 
-# Current i18n changes language by reload, but the reserved languagechange repair hook stays future-compatible.
-for marker in (
-    "localStorage.setItem(KEY,lang==='en'?'zh':'en');location.reload();",
-    "setLang:n=>{localStorage.setItem(KEY,n==='en'?'en':'zh');location.reload();}",
-):
-    if marker not in i18n:
-        ERRORS.append(f"i18n reload contract changed: missing {marker}")
+# The reserved languagechange repair hook remains part of the repair module,
+# but Production no longer ships a separate i18n runtime in this loader.
 if "japan2027:languagechange" not in repair:
     ERRORS.append("Reserved japan2027:languagechange info-icon repair hook was removed")
 
@@ -98,17 +92,14 @@ else:
         "visit": block.find("trip-v9-1-visit-fix.js"),
         "repair": block.find("info-icon-repair-v1.js"),
         "renderer": block.find("multi-trip-itinerary-renderer-v1.js"),
-        "i18n": block.find("i18n-v1.js"),
-        "polish": block.find("i18n-polish-en-v1.js"),
     }
     if min(positions.values()) < 0:
         ERRORS.append(f"Stage 5U itinerary loader evidence incomplete: {positions}")
     elif not (
         positions["core"] < positions["visit"] < positions["repair"] < positions["renderer"]
-        < positions["i18n"] < positions["polish"]
     ):
         ERRORS.append(
-            "Expected core < visit-fix < info-icon-repair < renderer < i18n < polish loader order; "
+            "Expected core < visit-fix < info-icon-repair < renderer loader order; "
             f"found {positions}"
         )
 

@@ -10,7 +10,7 @@
   "orientation": "any",
   "lang": "zh-HK",
   "icons": [
-    {"src":"assets/images/travelpilot-icon-exact.jpg?v=10.14.0","sizes":"192x192","type":"image/jpeg","purpose":"any"},
-    {"src":"assets/images/travelpilot-icon-exact.jpg?v=10.14.0","sizes":"192x192","type":"image/jpeg","purpose":"maskable"}
+    {"src":"assets/images/travelpilot-icon-exact.jpg?v=10.15.0","sizes":"192x192","type":"image/jpeg","purpose":"any"},
+    {"src":"assets/images/travelpilot-icon-exact.jpg?v=10.15.0","sizes":"192x192","type":"image/jpeg","purpose":"maskable"}
   ]
 }
