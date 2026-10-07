@@ -90,7 +90,7 @@ function close(){
 function open(dayId){const o=createOverlay();o.hidden=false;document.body.style.overflow='hidden';renderDay(dayId||initialDay());}
 
 function renderDay(dayId,forcedIndex){
- const day=document.getElementById('legacy-mode-'+dayId)||document.getElementById(dayId);if(!day)return;activeDay=dayId;localStorage.setItem(PREVIEW_KEY,dayId);
+ const day=document.getElementById(dayId);if(!day)return;activeDay=dayId;localStorage.setItem(PREVIEW_KEY,dayId);
  const o=createOverlay(),coreDay=CORE&&CORE.days&&CORE.days[dayId],tp=tokyoParts(),actual=!!(coreDay&&coreDay.date===tp.date),items=extractItems(day);
  if(!items.length){$('#dmBody',o).innerHTML='<div class="dm-card">今日冇可用行程資料。</div>';return;}
  activeIndex=forcedIndex==null?defaultIndex(items,actual):Math.max(0,Math.min(items.length-1,forcedIndex));sessionStorage.setItem(INDEX_PREFIX+dayId,String(activeIndex));
