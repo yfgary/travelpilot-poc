@@ -109,6 +109,9 @@ function panelBlock(b){
    +'<div class="decision-options">'+(b.options||[]).map(x=>'<div class="'+esc(x.className||'decision-option')+'">'+trusted(x.html)+'</div>').join('')+'</div>'
    +'</div>';
  }
+ if(String(b.className||'').split(/\s+/).includes('backup-panel')){
+  return '<details class="'+esc(b.className||'backup-panel')+'">'+trusted(b.html)+'</details>';
+ }
  return '<div class="'+esc(b.className||'special-box')+'">'+trusted(b.html)+'</div>';
 }
 
@@ -129,12 +132,12 @@ function richTimelineItem(item){
  const time=esc(item.start||'')+(item.end?'<span class="end-time">'+esc(item.end)+'</span>':'');
  const event=item.eventType?'<span class="event-type">'+esc(item.eventType)+'</span>':'';
  const duration=item.duration?'<span class="duration-badge">'+esc(item.duration)+'</span>':'';
- const local=item.localName?'<div class="jp-place-name">'+esc(item.localName)+'</div>':'';
+ const local=item.localName?'<div class="jp-place-name">🇯🇵 '+esc(item.localName)+'</div>':'';
  const paras=(item.paragraphs||[]).map(x=>'<p>'+trusted(x)+'</p>').join('');
  const price=item.price?'<span class="price">'+esc(item.price)+'</span>':'';
  const links=(item.links||[]).map(x=>'<a class="'+esc(x.className||'')+'" href="'+esc(x.href||'#')+'">'+esc(x.label||'')+'</a>').join('');
  return '<div class="'+esc(item.itemClass||'timeline-item')+'"><div class="time">'+time+'</div><div class="'+esc(item.cardClass||'timeline-card')+'">'
-  +event+duration+'<h3'+attrs+'>'+esc(item.title||'')+'</h3>'+local+paras+price+links+'</div></div>';
+  +event+duration+'<h3'+attrs+'>'+esc(item.title||'')+(item.map?' ':'')+'</h3>'+local+paras+price+links+'</div></div>';
 }
 
 function richContentBlock(b){
@@ -146,11 +149,13 @@ function richContentBlock(b){
 }
 
 function richDay(day){
- const view=resolvedView(day);
+ const view=resolvedView(day),blocks=view.preBlocks||[];
+ const after=blocks.filter(b=>String(b&&b.className||'').split(/\s+/).includes('backup-panel'));
+ const before=blocks.filter(b=>!String(b&&b.className||'').split(/\s+/).includes('backup-panel'));
  return '<details class="day" id="'+esc(day.id)+'" data-trip-generated="1" data-trip-data-source="itinerary.json" data-trip-day="'+esc(day.day)+'" data-trip-date="'+esc(day.date||'')+'">'
   +'<summary><div class="day-summary-main"><div class="day-number">DAY '+esc(day.day)+'</div><div class="day-title">'+esc(view.title||day.title||'')+'</div><div class="day-date">'+esc(view.dateLabel||day.dateLabel||formatDate(day.date))+'</div><div class="day-route">'+esc(view.route||day.route||'')+'</div></div></summary>'
-  +'<div class="day-inner">'+richHighlights(view)+(view.preBlocks||[]).map(panelBlock).join('')+richMedia(view)
-  +'<div class="day-content">'+(view.contentBlocks||[]).map(richContentBlock).join('')+'</div></div></details>';
+  +'<div class="day-inner">'+richHighlights(view)+before.map(panelBlock).join('')+richMedia(view)
+  +'<div class="day-content">'+(view.contentBlocks||[]).map(richContentBlock).join('')+'</div>'+after.map(panelBlock).join('')+'</div></details>';
 }
 
 function plannerUi(){
