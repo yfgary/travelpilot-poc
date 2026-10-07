@@ -150,11 +150,15 @@ async function snapshot(browser,selection){
     }
     const hero=[...(photo?.querySelectorAll(':scope > .hero-photo')||[])].find(visible);
     const gallery=[...(photo?.querySelectorAll('.photo-gallery > .photo-card')||[])].filter(visible).map(mediaItem).filter(Boolean);
+    const clone=day.cloneNode(true);
+    clone.removeAttribute('open');
+    clone.querySelectorAll('[open]').forEach(x=>x.removeAttribute('open'));
     return {
       id:day.id,
       title:clean(day.querySelector('.day-title')?.textContent),
       route:clean(day.querySelector('.day-route')?.textContent),
       dateLabel:clean(day.querySelector('.day-date')?.textContent),
+      outerHTML:clone.outerHTML,
       highlights:highlightData(day),
       preBlocks:pre,
       media:photo?{hero:mediaItem(hero),gallery}:null,
@@ -184,7 +188,7 @@ const outDays=[];
 for(const d of base.days||[]){
  const snap=defaultViews.get(d.id);
  if(!snap)throw new Error('Production snapshot missing '+d.id);
- const out={...d,title:snap.title,route:snap.route,dateLabel:snap.dateLabel,view:{
+ const out={...d,title:snap.title,route:snap.route,dateLabel:snap.dateLabel,presentationMarkup:snap.outerHTML,view:{
    highlights:snap.highlights,
    preBlocks:snap.preBlocks,
    media:snap.media,
@@ -197,7 +201,7 @@ for(const d of base.days||[]){
      const candidate=byState[sel]?.get(d.id);
      if(assigned&&candidate){
        const v={
-         title:candidate.title,route:candidate.route,dateLabel:candidate.dateLabel,
+         title:candidate.title,route:candidate.route,dateLabel:candidate.dateLabel,presentationMarkup:candidate.outerHTML,
          highlights:candidate.highlights,preBlocks:candidate.preBlocks,media:candidate.media,contentBlocks:candidate.contentBlocks
        };
        if(!sameView(v,out.view))variants[assigned]=v;
@@ -211,7 +215,7 @@ for(const d of base.days||[]){
 const output={
  schemaVersion:4,
  tripId:TRIP,
- presentationProfile:'standard-itinerary-v1',
+ presentationProfile:'standard-markup-v1',
  days:outDays
 };
 if(base.flexibleRules)output.flexibleRules=base.flexibleRules;
