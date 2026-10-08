@@ -38,12 +38,20 @@
 ## 2026-10-08 — Localization is future-ready only
 **Decision:** Prepare data/UI boundaries so localization is possible later, but V2 initially implements Traditional Chinese only.
 
-## 2026-10-08 — Canonical branding
-**Decision:** Use the supplied TravelPilot banner and icon as official assets; do not regenerate/replace without approval.
+## 2026-10-08 — Canonical branding and trip-cover separation
+**Decision:** The supplied TravelPilot banner and icon are official product-brand assets and must not be regenerated/replaced without approval.
 
-Expected paths:
-- `travelpilot/assets/images/travelpilot_banner.PNG`
-- `travelpilot/assets/images/travelpilot_icon.PNG`
+Repository-relative canonical paths:
+- `assets/images/travelpilot_banner.PNG`
+- `assets/images/travelpilot_icon.PNG`
+
+**Banner role:** `travelpilot_banner.PNG` is reserved for the global TravelPilot **Home** hero/banner. It is not an individual trip cover and must never be used as the banner/cover fallback for a real trip.
+
+**Trip-cover rule:** Every real trip receives its own representative destination/journey image, researched and selected during trip migration/content enrichment. The image should represent the most iconic or defining place in that specific journey, not merely the arrival city. Example: for a Nagoya / Shirakawa-go / Takayama journey, Shirakawa-go may be selected as the trip cover because it best represents the trip.
+
+**Research/source rule:** Trip-cover research should prefer official tourism boards, official attractions or other reliable/licensable sources. Store source/attribution/licence information in trip data where required.
+
+**Fallback rule:** Fictional/test trips may use a generic non-destination visual fallback when no image exists. A real trip must not silently fall back to the TravelPilot brand banner; resolve a suitable trip image during migration, or ask the user if a source/choice is required.
 
 ## 2026-10-08 — Complexity escalation
 **Decision:** Difficult/complex/high-risk features must be explained before implementation so the user can keep, simplify, or drop them. No hard-coded workaround is acceptable.

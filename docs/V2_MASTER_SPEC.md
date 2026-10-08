@@ -26,9 +26,24 @@ If a feature cannot be implemented generically, report its complexity before pro
 ## 3. Branding
 Product name: **TravelPilot｜旅程管家**
 
-Canonical assets:
+Canonical product-brand assets:
 - `assets/images/travelpilot_banner.PNG`
 - `assets/images/travelpilot_icon.PNG`
+
+Asset roles:
+- `travelpilot_banner.PNG` is the **global Home-page TravelPilot hero/banner only**.
+- `travelpilot_icon.PNG` is the canonical app/PWA/favicon/header brand icon.
+- The TravelPilot brand banner must **never** be used as an individual real-trip banner/cover or as a real-trip image fallback.
+
+Real-trip cover images:
+- every real trip must have its own representative journey/destination image
+- ChatGPT researches/selects that image during trip migration/content enrichment
+- choose the place that best represents the whole journey, not automatically the arrival/departure city
+- example: a Nagoya / Shirakawa-go / Takayama journey may use Shirakawa-go as its representative trip banner
+- prefer official tourism boards, official attractions or other reliable/licensable sources
+- preserve source/attribution/licence metadata where required
+- if a suitable real-trip image cannot be resolved safely, ask the user rather than substituting the TravelPilot brand banner
+- fictional/test trips may use a generic non-destination fallback
 
 Suggested homepage copy:
 - Main line: **每一段旅程，都準備妥當。**
@@ -64,7 +79,7 @@ Must:
 - show TravelPilot｜旅程管家 branding and canonical icon/banner
 - work clearly on iPhone and desktop
 - show one card per trip
-- include trip images, place/region, trip name (location + year), travel dates, and shortcut entry
+- include each trip's own representative trip image, place/region, trip name (location + year), travel dates, and shortcut entry; never reuse the global TravelPilot Home banner as a real-trip cover
 - distinguish upcoming and completed trips
 - surface version and online/offline state
 - sort trips using actual travel dates, not hard-coded order

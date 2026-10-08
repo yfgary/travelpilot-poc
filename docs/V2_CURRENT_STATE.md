@@ -48,6 +48,14 @@ Next: **Step 8/16 — Home Page Parity**
   - `assets/images/travelpilot_banner.PNG`
   - `assets/images/travelpilot_icon.PNG`
 
+## Pre-Step 8 branding clarification
+- Documentation release App Version `v2.0.0-poc.8` records a locked asset-role rule before Step 8 implementation.
+- `assets/images/travelpilot_banner.PNG` is reserved for the global TravelPilot Home hero/banner only.
+- A real trip must use its own representative researched destination/journey image; the TravelPilot brand banner is never a real-trip cover fallback.
+- Example decision: a Nagoya / Shirakawa-go / Takayama trip may use Shirakawa-go as its representative image when it best defines the journey.
+- Fictional demo trips may use a generic non-destination fallback.
+- Step 8 implementation remains unstarted by this documentation release.
+
 ## Next step
 Step 7 passed the multi-trip architecture gate. Next is **Step 8/16 — Home Page Parity**, only when explicitly authorized. No Step 8 implementation has begun. Real trip migration and feature engines remain outside this foundation.
 

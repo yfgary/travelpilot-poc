@@ -62,6 +62,14 @@ Expected canonical assets (repository-relative paths):
 
 Do not replace or regenerate branding assets without explicit user approval.
 
+Asset-role rules:
+- `travelpilot_banner.PNG` is **Home-page brand artwork only**.
+- Never use `travelpilot_banner.PNG` as an individual real-trip banner/cover or real-trip fallback.
+- Each real trip must receive its own representative destination/journey image from researched trip data.
+- The representative image should reflect the defining place in that itinerary, not merely the arrival city.
+- Fictional/test trips may use a generic non-destination fallback.
+- If a real-trip representative image cannot be sourced/selected safely, stop and ask rather than substituting the TravelPilot brand banner.
+
 ## Workflow
 Use Chat/architecture work to settle requirements first. Use Codex/implementation only for bounded tasks with clear acceptance criteria.
 At the end of every implementation task:
