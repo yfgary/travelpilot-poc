@@ -1,3 +1,4 @@
+import { DaySuitability } from '../weather/DaySuitability'
 import type { TripDay } from '../../data/itinerary'
 import type { TripSnapshot } from '../../data/schema/trip'
 import { formatTripDate } from '../../data/tripDates'
@@ -15,7 +16,7 @@ export function DayAccordion({ day, snapshot, open, onToggle, onDetail }: {
     onToggle={(event) => onToggle(day.id, event.currentTarget.open)}>
     <summary><div className="day-summary"><span className="day-number">DAY {day.dayNumber}</span>
       <time dateTime={day.date}>{formatTripDate(day.date)}</time><h2>{day.title}</h2><p>{day.routeSummary}</p></div><span className="day-toggle-icon" aria-hidden="true" /></summary>
-    <div className="day-content"><DayHighlights day={day} snapshot={snapshot} /><DayGallery imageIds={day.imageIds} images={snapshot.images} />
+    <div className="day-content"><DaySuitability dayId={day.id} date={day.date} /><DayHighlights day={day} snapshot={snapshot} /><DayGallery imageIds={day.imageIds} images={snapshot.images} />
       <Timeline items={day.timeline} snapshot={snapshot} onDetail={onDetail} />
       {stay && <div className="day-accommodation"><AccommodationCard stay={stay} /></div>}
       {([{ key: 'optionalContent', label: '可選／Bonus' }, { key: 'backupContent', label: '備用行程' }] as const).map(({ key, label }) =>

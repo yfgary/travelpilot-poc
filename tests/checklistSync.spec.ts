@@ -217,7 +217,7 @@ test('two remote trips isolate local values, versioned caches, queues and server
   await settings(page); await expect(page.locator('.cached-trip-list li')).toHaveCount(2)
   for (const snapshot of [syncCity,syncRoad]) {
     const card = page.locator('.cached-trip-list li').filter({ hasText:snapshot.trip.title })
-    await expect(card).toContainText(`Trip Data Version：sync.${snapshot.trip.slug}.1`); await expect(card).toContainText('Trip Schema Version：2'); await expect(card).toContainText('下載時間：')
+    await expect(card).toContainText(`Trip Data Version：sync.${snapshot.trip.slug}.1`); await expect(card).toContainText('Trip Schema Version：3'); await expect(card).toContainText('下載時間：')
   }
 })
 test('orphan local/remote rows remain stored but never render or upload under current definitions', async ({ page, context }) => {
@@ -260,10 +260,10 @@ test('LWW helper matches SQL ordering including microseconds and monotonic clock
   expect(compareChanges(tuple('2026-01-01T00:00:00Z'),tuple('2026-01-01T00:00:00Z'))).toBe(0)
 })
 test('safe version comparator treats prerelease numbers numerically and missing metadata neutrally', () => {
-  expect(compareAppVersions('v2.0.0-poc.13','v2.0.0-poc.9')).toBe(1)
-  expect(compareAppVersions('v2.0.0','v2.0.0-poc.13')).toBe(1)
-  expect(compareAppVersions('garbage','v2.0.0-poc.13')).toBeUndefined()
-  expect(resolveAppUpdate('v2.0.0-poc.13',['v2.0.0-poc.11'])).toEqual({state:'unsynced'})
+  expect(compareAppVersions('v2.0.0-poc.14','v2.0.0-poc.9')).toBe(1)
+  expect(compareAppVersions('v2.0.0','v2.0.0-poc.14')).toBe(1)
+  expect(compareAppVersions('garbage','v2.0.0-poc.14')).toBeUndefined()
+  expect(resolveAppUpdate('v2.0.0-poc.14',['v2.0.0-poc.11'])).toEqual({state:'unsynced'})
 })
 test('source boundaries protect trip definitions, credentials, V1, navigation and server timestamps', () => {
   const files=(dir:string):string[]=>readdirSync(dir,{withFileTypes:true}).flatMap((entry)=>entry.isDirectory()?files(join(dir,entry.name)):[join(dir,entry.name)])

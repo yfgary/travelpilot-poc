@@ -1,3 +1,4 @@
+import { WeatherPanel } from '../components/weather/WeatherPanel'
 import type { ReactNode } from 'react'
 import { useLoadedTrip } from '../app/TripContext'
 import { pages } from '../app/pages'
@@ -55,6 +56,7 @@ export function TripInformation() {
       <p><time dateTime={trip.startDate}>{formatTripDate(trip.startDate)}</time> – <time dateTime={trip.endDate}>{formatTripDate(trip.endDate)}</time></p>
       {trip.introduction && <p>{trip.introduction}</p>}<p className="info-section-note">{trip.destinationLabel} · 時區：{trip.timezone}</p>
     </section>
+    <WeatherPanel />
     {sections.length > 0 && <nav className="info-quick-nav" aria-label="旅程資料章節">{sections.map((section) =>
       <button key={section.id} className="itinerary-action" aria-controls={`trip-info-${section.id}`} onClick={() => jump(section.id)}>{section.shortcut}</button>)}</nav>}
     {sections.map((section) => <section key={section.id} className={`info-section info-${section.id}`} aria-labelledby={`trip-info-${section.id}`}>

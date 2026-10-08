@@ -137,8 +137,8 @@ Before a trip snapshot is published:
 
 Schema evolution is controlled with `schema_version`.
 
-### Step 10 backward-compatible snapshot reader
-- Current Trip Schema Version is **2**; supported versions are **1 and 2**. `TRIP_SCHEMA_VERSION` aliases `CURRENT_TRIP_SCHEMA_VERSION`; supported-version checks are centralized.
+### Backward-compatible snapshot reader (Steps 10 and 12)
+- Current Trip Schema Version is **3**; supported versions are **1 / 2 / 3**. `TRIP_SCHEMA_VERSION` aliases `CURRENT_TRIP_SCHEMA_VERSION`; supported-version checks are centralized.
 - Schema 1 retains its strict Step 9 contract. Schema 2 shares the common shape and cross-reference validator, adds required top-level `emergency` (empty contacts/notes allowed), and permits generic `emergencyContact` entity references. No duplicate complete schema/validator or destination-specific fields.
 - Emergency contacts have globally unique stable IDs, generic categories, optional phone/HTTP(S) URL/region/availability/description, notes and source IDs. Region/source/entity references and safe URLs are validated. `getEmergencyInfo()` centralizes the version-specific UI access; Schema 1 has no emergency data.
 - Remote row/payload schema versions must match and both be supported. `LoadedTrip.schemaVersion` reports the actual source version, never the current app's preferred format.
@@ -302,3 +302,35 @@ At minimum test:
 - Approved live migration and catalog/advisor proof: `supabase/migrations/20261008135932_step11_checklist_client_clock.sql`, `supabase/verification/step11.md`. Only v2_checklist_state and its dedicated private trigger/function changed; the historical baseline, other V2 objects and all V1 objects remain untouched.
 
 Remaining boundaries: cold offline app/static-image caching, real trip migration, cloud preference sync, automatic daily resets, selective cache clearing and Weather/Suitability are future work. Stored snapshot notes are preserved even where old fictional notes still describe Step 10 read-only presentation.
+
+
+## Step 12 — Generic weather and Official Alerts foundation
+
+Current App Version is v2.0.0-poc.14; current Trip Schema is 3 with strict readers 1/2/3. Local Data Versions are demo.city.4/demo.road.4. Schema 3 extends the weather payload only; Schema 2 emergency content remains available. Original Schema 1/2 contracts, actual source-version metadata and trip-cache physical storage remain unchanged; reads do not rewrite old data.
+
+```
+Validated Schema 3 snapshot configuration
+  → TripLayout / TripWeatherProvider (one trip boundary)
+  → forecast-provider registry → Open-Meteo adapter
+  → validated normalized WeatherForecast
+  → dedicated version-1 weather IndexedDB cache + ten-minute TTL
+  → shared scoring service → WeatherPanel / DaySuitability
+
+Snapshot alert-provider configuration
+  → alert registry → fictional demo adapter
+  → validated OfficialAlert[] → active region filter/sort → shared alert UI
+```
+
+Contracts live in `src/data/schema/weather.ts`, composed into the sole trip schema. `forecastProviders` select adapter IDs, weatherRegions select provider IDs and optionally a weather-specific latitude/longitude/elevation sample; otherwise canonical Region.coordinates are used. Region timezone overrides trip timezone. `dayRegions` explicitly maps stable day IDs to weather region IDs. References, globally unique provider IDs, coordinates, safe JSON config, curve ordering/weights, shares/caps/coverage and known demo-alert configuration are validated. Unknown future adapters remain data-configurable but degrade safely until implemented.
+
+`services/weather/providers/openMeteo.ts` fixes the provider URL and units, requests `timeformat=unixtime`, current metrics, five daily standard variables and hourly visibility/cloud/humidity/snow-depth. All provider output is normalized/validated before components or cache use it. Epoch times are localized using the configured IANA timezone; daily means/extremes and local-noon snow are derived from hourly samples rather than assuming unsupported daily parameters. Missing values remain absent. Documentation reference: https://open-meteo.com/en/docs. Current conditions are model samples, not certified local station/operation observations.
+
+`offline/weatherCache.ts` is separate from immutable trip storage: database `travelpilot-v2-weather-cache`, storage version 1, `forecasts` store keyed by `[tripId,weatherRegionId,providerId]`. Each record includes a provider/location/timezone/config signature and validated normalized payload/fetchedAt/attribution. Cache reads validate identity/signature again. `services/weather/forecasts.ts` deduplicates matching in-flight requests, enforces a 15-second abort deadline, reuses online fresh cache for ten minutes, refreshes expired/manual requests, retains good cache on invalid/non-OK/network failure, and returns offline/stale states. Storage failure preserves remote/session use with an honest notice. No weather Supabase writes or trip-cache redesign.
+
+`data/weather/suitability.ts` evaluates generic piecewise linear or weather-code lookup rules chosen by data. Baselines and available metrics produce independent Experience and Access scores; coverage uses configured metric weights excluding baselines. Insufficient coverage yields no numeric score. Access share combines them, configured thresholds cap final scores, and results clamp/round consistently. Profile weights aggregate Experience/final; minimum Access and unrounded cap comparisons remain conservative. Legacy `weights`/`scoring.config` metadata are retained in the extended contract but are not a second scoring engine; Schema 3 uses explicit Experience/Access rule arrays and scoring schemaVersion 1. Profiles marked operationRequired always show the official-status caveat, including insufficient-data states.
+
+One shared WeatherPanel is used on itinerary, information and the Live Cam placeholder; it never loads trip content itself. Trip-level selected-region/result state survives page switches and deduplicates consumers. Preferences use a guarded local per-trip key; default priority is valid remembered region, active mapped itinerary day, first weather region. Keyed trip boundaries and per-region result maps prevent late responses from replacing another trip/selection. DaySuitability uses day mapping and dayId weighting only when its exact date exists in that region's forecast; it never substitutes today's weather. Current metrics, profile chips, horizontal five-day forecast, trend labels, timestamps/source/stale notices and accessible refresh/keyboard controls share the responsive stylesheet.
+
+Official alerts are independent of forecasts and suitability. `alertProviders` choose adapter IDs through data; provider-specific service adapters are permitted, while country/slug/place/timezone selection branches are forbidden. Only `demo-alerts` exists here, always normalized with isTest=true and both visible fictional-warning labels. Provider region scope, active dates and deterministic severity/time/id sorting protect UI isolation. A future JMA adapter is planned for real-trip migration and must be selected by trip data; no live JMA/TMD/AEMET/global adapter or automatic score override is implemented. No Today weather integration or Live Cam playback in Step 12.
+
+Weather cache is local device data and is not deleted by logout. Step 11 Settings clearing remains unchanged and does not clear this new dedicated weather store; site-data clearing/eviction can remove it. App shell/image service-worker expansion and dedicated weather management remain later work.

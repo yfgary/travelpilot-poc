@@ -5,6 +5,8 @@ import type { Page } from '@playwright/test'
 import { test, expect, testUser, supabaseOrigin } from './fixtures'
 import { localTrips } from '../src/data/trips'
 import { CURRENT_TRIP_SCHEMA_VERSION, SUPPORTED_TRIP_SCHEMA_VERSIONS, TRIP_SCHEMA_VERSION, validateTripSnapshot, getEmergencyInfo } from '../src/data/schema/trip'
+import schema2City from './fixtures/schema2-city.json' with { type: 'json' }
+import schema2Road from './fixtures/schema2-road.json' with { type: 'json' }
 import type { TripSnapshot, Schema2Snapshot } from '../src/data/schema/trip'
 import { emergencyTypes, navigationTypes, formatTransportDateTime, phoneAction, sortedHardCuts, orderedDefinitions } from '../src/data/tripInformation'
 import { formatMoney, resolveMaps } from '../src/data/itinerary'
@@ -14,7 +16,7 @@ import packageMetadata from '../package.json' with { type: 'json' }
 
 const cityRecord = localTrips.find(({ payload }) => payload.trip.slug === 'demo-trip')!
 const roadRecord = localTrips.find(({ payload }) => payload.trip.slug === 'demo-road-trip')!
-const city = cityRecord.payload as Schema2Snapshot, road = roadRecord.payload as Schema2Snapshot
+const city = schema2City as Schema2Snapshot, road = schema2Road as Schema2Snapshot
 const info = `#/trip/${remoteSlug}/info`
 const section = (page: Page, id: string) => page.locator(`.info-${id}`)
 function versionFor(snapshot: TripSnapshot, dataVersion = 'information.1', rowVersion = snapshot.schemaVersion as number) {
@@ -58,18 +60,18 @@ async function seedOldCache(page: Page) {
   return record
 }
 
-test('current 2 supports frozen 1 and new 2 without changing source versions', () => {
-  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(2); expect(TRIP_SCHEMA_VERSION).toBe(2)
-  expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2])
-  for (const snapshot of [legacyCity, legacyRoad, city, road]) {
+test('current 3 supports frozen 1 and 2 and new 3 without changing source versions', () => {
+  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(3); expect(TRIP_SCHEMA_VERSION).toBe(3)
+  expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3])
+  for (const snapshot of [legacyCity, legacyRoad, city, road, cityRecord.payload, roadRecord.payload]) {
     const result = validateTripSnapshot(snapshot)
     expect(result).toMatchObject({ valid: true, snapshot: { schemaVersion: snapshot.schemaVersion } })
     if (result.valid) expect(result.snapshot).toEqual(snapshot)
   }
   expect(getEmergencyInfo(legacyCity)).toBeUndefined(); expect(getEmergencyInfo(city)).toEqual(city.emergency)
-  for (const schemaVersion of [0, 3, 4, '2', null]) expect(validateTripSnapshot({ ...city, schemaVersion })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
-  expect(packageMetadata.version).toBe('2.0.0-poc.13')
-  expect(cityRecord.dataVersion).toBe('demo.city.3'); expect(roadRecord.dataVersion).toBe('demo.road.3')
+  for (const schemaVersion of [0, 4, 5, '2', null]) expect(validateTripSnapshot({ ...city, schemaVersion })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
+  expect(packageMetadata.version).toBe('2.0.0-poc.14')
+  expect(cityRecord.dataVersion).toBe('demo.city.4'); expect(roadRecord.dataVersion).toBe('demo.road.4')
 })
 
 test('both contracts remain strict; malformed emergency records return structured issues', () => {
@@ -126,10 +128,10 @@ for (const [snapshot, rowVersion] of [[city, 1], [legacyCity, 2]] as const) {
     expect((await cacheContents(page)).versions).toEqual([])
   })
 }
-test('future Schema 3 remote row/payload is rejected cleanly', async ({ page }) => {
+test('future Schema 4 remote row/payload is rejected cleanly', async ({ page }) => {
   await seedAuth(page)
-  const version = versionFor(city, 'future.3', 3)
-  await mockRemote(page, () => ({ ...version, payload: { ...version.payload, schemaVersion: 3 } }))
+  const version = versionFor(city, 'future.4', 4)
+  await mockRemote(page, () => ({ ...version, payload: { ...version.payload, schemaVersion: 4 } }))
   await page.goto(info); await expect(page.getByRole('heading', { name: '未支援此旅程資料格式' })).toBeVisible()
   expect((await cacheContents(page)).versions).toEqual([])
 })
@@ -215,9 +217,9 @@ for (const snapshot of [city, road]) {
       const headingBox = (await page.locator(`#trip-info-${ids[i]}`).boundingBox())!, navBox = (await nav.boundingBox())!
       expect(headingBox.y).toBeGreaterThanOrEqual(navBox.y + navBox.height - 1)
     }
-    await expect(page.getByTestId('trip-versions')).toContainText(snapshot === city ? 'demo.city.3' : 'demo.road.3')
-    await expect(page.getByTestId('trip-versions')).toContainText('Trip Schema Version：2')
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.13')
+    await expect(page.getByTestId('trip-versions')).toContainText(snapshot === city ? 'demo.city.4' : 'demo.road.4')
+    await expect(page.getByTestId('trip-versions')).toContainText('Trip Schema Version：3')
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.14')
   })
 }
 

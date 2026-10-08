@@ -1,4 +1,5 @@
 import { test as base, expect } from '@playwright/test'
+import { openMeteoResponse } from './weatherFixtures'
 import { supabaseConfig } from '../src/services/supabaseConfig'
 
 export const supabaseOrigin = supabaseConfig.url
@@ -30,6 +31,7 @@ export const test = base.extend<{ supabaseNetwork: void }>({
         await route.fulfill({ status: 400, json: { code: 'invalid_credentials', message: 'Invalid login credentials' } })
       }
     })
+    await page.route('https://api.open-meteo.com/**', (route) => route.fulfill({ json: openMeteoResponse() }))
     await use()
   }, { auto: true }],
 })

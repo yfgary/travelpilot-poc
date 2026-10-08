@@ -5,6 +5,7 @@ import { loadTrip } from '../services/trips'
 import type { TripLoadResult, TripFailure } from '../services/trips'
 import { PageNavigation } from '../components/PageNavigation'
 import { LoadingState, ErrorState } from '../components/ViewState'
+import { TripWeatherProvider } from '../app/TripWeather'
 import { useChecklistSync } from '../app/ChecklistSync'
 
 const failures: Record<TripFailure, { title: string; description: string }> = {
@@ -47,6 +48,6 @@ export function TripLayout() {
       {result.source === 'cache' && <p className="muted">正在使用此裝置已儲存的旅程資料。</p>}
       <PageNavigation tripSlug={trip.slug} />
     </section>
-    <Outlet key={`${trip.id}:${result.dataVersion}`} context={result} />
+    <TripWeatherProvider key={`${trip.id}:${result.dataVersion}`} snapshot={result.snapshot}><Outlet context={result} /></TripWeatherProvider>
   </>
 }

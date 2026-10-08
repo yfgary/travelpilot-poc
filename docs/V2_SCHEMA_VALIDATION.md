@@ -106,3 +106,16 @@ Before Codex writes Foundation code:
 - use dummy/sample trip data
 - do not migrate Japan 2027 yet
 - do not implement full weather/live cam/checklist sync yet
+
+
+## Step 12 — Schema 3 weather configuration gate
+
+Current Trip Schema is 3, supported strict contracts are 1/2/3. `src/data/schema/trip.ts` remains the canonical snapshot validator and composes `schema/weather.ts`; types are inferred. Actual Schema 1 archives and newly frozen pre-Step12 Schema 2 snapshots validate unchanged. The loader requires row/payload version consistency and preserves the source version. Original IndexedDB trip stores/name/storage version remain intact; read tests guard against writes, upgrades or old-cache deletion.
+
+Schema 3 validates forecast-provider IDs/adapter/safe JSON config, region provider references/location/elevation/coordinate fallback, explicit day-region references/unique mappings, activity-profile metric rules/strictly ordered curves/positive weights, independent score parts, accessShare/caps/coverage ranges and operation metadata. Alert-provider config uses the same safe config boundary and validates known demo seed fields, allowed region scope and duplicate IDs. Globally stable provider IDs share the snapshot uniqueness audit. Unknown future adapter IDs degrade gracefully, never infer services from destination/country/timezone.
+
+Normalized WeatherForecast validates trip/region/provider/timezone/fetchedAt/current timestamp/current metrics, five chronological local forecast dates, daily temperature ranges, finite percentages/nonnegative physical units and attribution. Open-Meteo units/chronological aligned raw series/hourly values are checked before normalization; null/missing metrics stay unavailable. Daily hourly aggregation/noon sampling and timezone tests cover conversions. OfficialAlert validates stable ID/type/severity/timestamps/region/provider/source/test provenance; framework filtering protects provider scope and active dates.
+
+Scoring tests cover independent Experience/Access, data-defined curves/weights/share/caps, high Experience with unsafe Access, missing metric exclusion/weighted coverage, baseline coverage separation, one-decimal clamp/round, minimum aggregate Access/raw cap thresholds and operation caveats. Day tests score only exact dates and mappings. Weather-cache tests exercise TTL/manual/failure/offline/config signatures/tampering/isolation/dedup/late responses. Mobile/all-font tests and screenshot review cover shared UI, fictional/absent alerts, horizontal forecast, trend labels and status clearance. No destination-specific fields/branches, live Supabase migration/writes, V1 changes or Step 13 work.
+
+Final test count and gate evidence are recorded in `V2_CURRENT_STATE.md` once all acceptance checks pass.

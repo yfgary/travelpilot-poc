@@ -1,3 +1,4 @@
+import { WeatherPanel } from '../components/weather/WeatherPanel'
 import { useState } from 'react'
 import { useLoadedTrip } from '../app/TripContext'
 import { pages } from '../app/pages'
@@ -33,6 +34,7 @@ export function DetailedItinerary() {
       <p className="itinerary-date-range"><time dateTime={trip.startDate}>{formatTripDate(trip.startDate)}</time> – <time dateTime={trip.endDate}>{formatTripDate(trip.endDate)}</time> · {days.length} 天行程</p>
       {trip.introduction && <p>{trip.introduction}</p>}
     </section>
+    <WeatherPanel />
     {days.length ? <><nav className="day-jump" aria-label="行程日期">{days.map((day) => <button key={day.id} className="itinerary-action" aria-controls={dayElementId(day.id)}
       aria-label={`跳至 DAY ${day.dayNumber}`} onClick={() => jump(day.id)}>D{day.dayNumber}</button>)}</nav>
       {days.map((day) => <DayAccordion key={day.id} day={day} snapshot={snapshot} open={openDays.has(day.id)} onToggle={toggle} onDetail={setPlaceId} />)}

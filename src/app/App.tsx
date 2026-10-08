@@ -26,7 +26,7 @@ export function App() {
                 <Route path={pages.find((page) => page.id === 'settings')!.path} element={<Settings />} />
                 <Route path="trip/:tripSlug" element={<TripLayout />}>
                   {tripPages.map((view) => (
-                    <Route key={view.path} path={view.path} element={view.id === 'itinerary' ? <DetailedItinerary /> : view.id === 'info' ? <TripInformation /> : <TripView title={view.title} />} />
+                    <Route key={view.path} path={view.path} element={view.id === 'itinerary' ? <DetailedItinerary /> : view.id === 'info' ? <TripInformation /> : <TripView title={view.title} showWeather={view.id === 'live'} />} />
                   ))}
                 </Route>
                 <Route path="*" element={<NotFound />} />

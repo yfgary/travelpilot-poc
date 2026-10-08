@@ -236,3 +236,13 @@ Sensitive credentials must not be committed to the repository.
 
 ## 15. Difficulty rule
 Any function assessed as Complex or High-risk must be discussed with the user before implementation. The user may simplify or drop it. No feature justifies trip-specific hard-coded architecture.
+
+
+## Step 12 weather/suitability and alert contract
+
+- Current Trip Schema Version is 3; readers 1/2/3 remain supported without rewriting old offline snapshots. Schema 3 provides data-selected forecast/alert providers, provider-region mapping, optional sample elevation, explicit day-region mapping and rich activity-profile rules. Current release is v2.0.0-poc.14; fictional Data Versions demo.city.4/demo.road.4 are separate.
+- One shared WeatherPanel on Detailed Itinerary, Trip Information and the Live Cam placeholder displays normalized Open-Meteo current weather and five current-date forecast days. Hourly samples derive daily visibility/cloud/humidity/noon snow. Region preference is per-trip; mobile forecasts scroll horizontally with keyboard support. Forecast days 4–5 visibly say 趨勢參考. Out-of-range itinerary dates receive no fabricated score.
+- Experience and Access/Safety are separate weighted data-configured rules, combined by access share and capped by conservative safety thresholds. Weighted metric coverage gates insufficient data; missing values are not zero and a baseline cannot conceal missing coverage. Region aggregation uses minimum Access. Operation-required profiles state 官方運行狀態優先於天氣分數; no score implies an operation is open.
+- Dynamic forecasts live in dedicated IndexedDB, never immutable trip content/Supabase. Ten-minute fresh TTL, explicit refresh and offline/stale fallback preserve good cached data with timestamps/source notices. Request deduplication and trip/region identity prevent stale response leakage. Weather cache survives logout; Settings remains unchanged and dedicated weather-cache management is deferred.
+- Official Alerts use a provider-independent validated contract and data-selected adapter registry. Adapter files for individual external services are allowed; country/slug/destination/timezone-based selection is forbidden. Step 12 implements only fictional demo alerts, visibly labelled POC測試警告 / 非真實官方警告. Empty alert sections hide; active region-scoped alerts show type/severity/timing/instructions/source above forecasts.
+- Future JMA integration is planned for real Japan-trip migration through Trip Data configuration. No live JMA/TMD/AEMET/global aggregation or alert-driven suitability override exists in Step 12. Today weather, real camera playback, migrations and service-worker expansion remain out of scope. Next authorized task must be separately requested: Step 13/16 — Attractions Overview + Live Cam.

@@ -1,8 +1,9 @@
 import { z } from 'zod'
+import { weatherConfigurationSchema } from './weather'
 
-export const CURRENT_TRIP_SCHEMA_VERSION = 2
+export const CURRENT_TRIP_SCHEMA_VERSION = 3
 export const TRIP_SCHEMA_VERSION = CURRENT_TRIP_SCHEMA_VERSION
-export const SUPPORTED_TRIP_SCHEMA_VERSIONS = [1, 2] as const
+export const SUPPORTED_TRIP_SCHEMA_VERSIONS = [1, 2, 3] as const
 export function isSupportedTripSchemaVersion(value: unknown): value is typeof SUPPORTED_TRIP_SCHEMA_VERSIONS[number] {
   return SUPPORTED_TRIP_SCHEMA_VERSIONS.some((version) => version === value)
 }
@@ -105,10 +106,14 @@ const versionedSnapshotSchema = z.discriminatedUnion('schemaVersion', [
     days: z.array(commonShape.days.element.extend({ optionalContent: z.array(emergencyEntityReference), backupContent: z.array(emergencyEntityReference) })),
     sources: z.array(commonShape.sources.element.extend({ entity: emergencyEntityReference.optional() })),
   }),
+  z.strictObject({ ...commonShape, schemaVersion: z.literal(3), weather: weatherConfigurationSchema, emergency: emergencySchema,
+    days: z.array(commonShape.days.element.extend({ optionalContent: z.array(emergencyEntityReference), backupContent: z.array(emergencyEntityReference) })),
+    sources: z.array(commonShape.sources.element.extend({ entity: emergencyEntityReference.optional() })),
+  }),
 ])
 export const tripSnapshotSchema = versionedSnapshotSchema.superRefine((snapshot, ctx) => {
   const issue = (path: (string | number)[], message: string) => ctx.addIssue({ code: 'custom', path, message })
-  const sets = new Map<string, Set<string>>([...entityKinds, 'emergencyContact'].map((kind) => [kind, new Set<string>()]))
+  const sets = new Map<string, Set<string>>([...entityKinds, 'emergencyContact', 'forecastProvider', 'alertProvider'].map((kind) => [kind, new Set<string>()]))
   const seen = new Set<string>()
   function register(kind: string, records: { id: string }[], path: (string | number)[]) {
     records.forEach((record, index) => {
@@ -170,6 +175,23 @@ export const tripSnapshotSchema = versionedSnapshotSchema.superRefine((snapshot,
   snapshot.weather.weighting.forEach((weight, i) => {
     ref('region', weight.regionId, ['weather', 'weighting', i, 'regionId']); ref('day', weight.dayId, ['weather', 'weighting', i, 'dayId']); ref('activityProfile', weight.activityProfileId, ['weather', 'weighting', i, 'activityProfileId'])
   })
+  if (snapshot.schemaVersion === 3) {
+    const weather = snapshot.weather
+    register('forecastProvider', weather.forecastProviders, ['weather', 'forecastProviders'])
+    register('alertProvider', weather.alertProviders, ['weather', 'alertProviders'])
+    weather.weatherRegions.forEach((region, i) => {
+      ref('forecastProvider', region.providerId, ['weather', 'weatherRegions', i, 'providerId'])
+      if (!region.location && !snapshot.regions.find((item) => item.id === region.regionId)?.coordinates) issue(['weather', 'weatherRegions', i, 'location'], 'Weather location or canonical region coordinates required')
+    })
+    const mappedDays = new Set<string>()
+    weather.dayRegions.forEach((mapping, i) => {
+      ref('day', mapping.dayId, ['weather', 'dayRegions', i, 'dayId'])
+      ref('weatherRegion', mapping.weatherRegionId, ['weather', 'dayRegions', i, 'weatherRegionId'])
+      if (mappedDays.has(mapping.dayId)) issue(['weather', 'dayRegions', i, 'dayId'], 'Duplicate day weather mapping')
+      mappedDays.add(mapping.dayId)
+    })
+    weather.alertProviders.forEach((provider, i) => refs('weatherRegion', provider.weatherRegionIds ?? [], ['weather', 'alertProviders', i, 'weatherRegionIds']))
+  }
   snapshot.liveCams.forEach((cam, i) => {
     ref('region', cam.regionId, ['liveCams', i, 'regionId']); ref('place', cam.placeId, ['liveCams', i, 'placeId']); ref('day', cam.routeDayId, ['liveCams', i, 'routeDayId'])
   })
@@ -183,8 +205,9 @@ export const tripSnapshotSchema = versionedSnapshotSchema.superRefine((snapshot,
 export type TripSnapshot = z.infer<typeof versionedSnapshotSchema>
 export type Schema1Snapshot = Extract<TripSnapshot, { schemaVersion: 1 }>
 export type Schema2Snapshot = Extract<TripSnapshot, { schemaVersion: 2 }>
+export type Schema3Snapshot = Extract<TripSnapshot, { schemaVersion: 3 }>
 export function getEmergencyInfo(snapshot: TripSnapshot) {
-  return snapshot.schemaVersion === 2 ? snapshot.emergency : undefined
+  return 'emergency' in snapshot ? snapshot.emergency : undefined
 }
 export type TripSummary = TripSnapshot['trip']
 export type ValidationIssue = { path: (string | number)[]; code: string; message: string }

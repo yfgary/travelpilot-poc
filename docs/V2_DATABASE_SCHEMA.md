@@ -61,7 +61,7 @@ Illustrative top-level shape:
 
 ```json
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "trip": {},
   "regions": [],
   "days": [],
@@ -79,7 +79,7 @@ Illustrative top-level shape:
 }
 ```
 
-The canonical runtime contract is `src/data/schema/trip.ts`. Step 10 sets `CURRENT_TRIP_SCHEMA_VERSION = 2` (also `TRIP_SCHEMA_VERSION`) and supports versions 1 and 2. Types are inferred from the shared Zod runtime definitions; there is no separate snapshot interface. Schema 1's original strict contract remains readable and omits emergency; Schema 2 adds generic emergency information. Dates use ISO calendar dates, times use HH:MM and datetimes include a UTC/offset zone. Durations are minutes, monetary values carry a three-letter currency, and all entity IDs (including emergency contacts, timeline/checklist groups/items) are unique across a snapshot. Live Cam route relationships use routeDayId; group is a display label. Arrays preserve timeline order; checklist groups/items additionally carry order values.
+The canonical runtime contract is `src/data/schema/trip.ts`. Step 12 sets `CURRENT_TRIP_SCHEMA_VERSION = 3` (also `TRIP_SCHEMA_VERSION`) and supports strict versions 1, 2 and 3. Step 10 introduced emergency content in version 2. Types are inferred from the shared Zod runtime definitions; there is no separate snapshot interface. Schema 1's original strict contract remains readable and omits emergency; Schema 2 adds generic emergency information. Dates use ISO calendar dates, times use HH:MM and datetimes include a UTC/offset zone. Durations are minutes, monetary values carry a three-letter currency, and all entity IDs (including emergency contacts, timeline/checklist groups/items) are unique across a snapshot. Live Cam route relationships use routeDayId; group is a display label. Arrays preserve timeline order; checklist groups/items additionally carry order values.
 
 Schema 2 emergency contacts include category, title, optional phone/HTTP(S) URL/region/context, availability, description, notes and canonical source IDs. `emergencyContact` is a supported Schema 2 entity reference. The existing JSONB payload and positive integer schema_version need **no live DDL or data changes**. Remote row/payload versions must match. IndexedDB retains storage version 1 and its existing stores/keys; Schema 1 and 2 snapshots retain their actual metadata and are never rewritten/deleted merely on read. Invalid updates cannot overwrite a valid cache. All V1 tables and the unapplied SQL baseline remain unchanged.
 
@@ -331,3 +331,14 @@ RLS, the four ownership policies, table grants, indexes and all other V2 timesta
 Definitions stay exclusively in validated trip snapshots; state does not change Trip Schema/Data Version. Remote reads are authenticated-owner/trip scoped and bounded by current canonical item IDs, avoiding server row-limit truncation. Orphans remain retained but are neither presented nor uploaded/deleted. Local winners are batched; remote winners are stored clean; every push is followed by a final pull to reconcile server-rejected races. Failure retains local values and pending state.
 
 **Device privacy:** logout retains downloaded trips, local checklist state and pending mutations; signed-out cached-owner edits can later sync only when that owner logs back in. Signed-in IndexedDB reads, in-memory values and REST requests are owner-scoped. A different signed-in account cannot upload or present another owner's queue; explicit all-device clearing may inspect only its aggregate pending-loss count. Settings explicitly warns and confirms before clearing all browser-profile trip snapshots/pointers, checklist rows, dirty queue and sync timestamps. It never deletes server rows or changes Auth/font preferences/assets/definitions. The non-secret device identity/clock remains to avoid timestamp reuse. Blocked/evicted browser storage cannot guarantee reload persistence; session values and an honest warning remain available.
+
+
+## Step 12 — JSON payload evolution only; no live database change
+
+Trip Schema 3 adds forecastProviders/weatherRegion.providerId/optional location elevation, dayRegions, richer activityProfiles with Experience/Access metric curves and weights, accessShare/safetyCaps/minimumCoverage/operationRequired, and alertProviders. The canonical trip/weather Zod schemas infer TypeScript types and validate shape/references/safe configuration. Schema 1 and 2 remain unchanged/readable and cached row metadata retains its actual version; schemas 4+ are unsupported. `v2_trip_versions.schema_version` must equal `payload.schemaVersion` for all supported versions.
+
+Existing JSONB/positive schema_version columns already accommodate this payload; **no Step 12 DDL, migration, grants/policies, live rows or V1 tables are modified**. The approved Step 11 checklist migration and unapplied baseline SQL remain byte-for-byte unchanged. Browser trip content remains read-only. Dynamic provider forecasts and alerts are not written into v2_trips/v2_trip_versions/checklist tables or immutable snapshots.
+
+Normalized WeatherForecast and OfficialAlert contracts are runtime data, distinct from the published trip config. Forecasts are stored only in local `travelpilot-v2-weather-cache` IndexedDB, keyed by trip/region/provider with a configuration signature and fetchedAt. Ten-minute TTL, stale/offline fallback and validation protect valid cache records. The original trip-cache name/version/stores/keys are untouched; original Schema 1/2 physical records need no migration/rewrite/deletion.
+
+Local weather cache remains after logout, subject to browser eviction/site-data clearing. The unchanged Step 11 Settings clear action handles trip/checklist state and does not add dedicated weather-cache clearing. App Version v2.0.0-poc.14, Data Versions demo.city.4/demo.road.4 and Trip Schema 3 remain separate. All automated Supabase/Auth/forecast network tests are mocked; no real user credentials or live test writes.

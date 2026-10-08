@@ -3,15 +3,15 @@
 Last updated: 08/10/2026
 
 ## Progress
-**Step 11/16 — Settings + Checklist Local-First Sync: COMPLETE**
+**Step 12/16 — Weather + Suitability + Official Alerts Framework: COMPLETE**
 
-Current App Version: **v2.0.0-poc.13** (canonical source: package.json)
+Current App Version: **v2.0.0-poc.14** (canonical source: package.json)
 
-Current Trip Schema Version: **2**; supported readers: **1 and 2**.
+Current Trip Schema Version: **3**; supported readers: **1 / 2 / 3**.
 
-Local Trip Data Versions: **demo.city.3** / **demo.road.3**.
+Local Trip Data Versions: **demo.city.4** / **demo.road.4**.
 
-Next: **Step 12/16 — Weather + Suitability**
+Next: **Step 13/16 — Attractions Overview + Live Cam**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -40,8 +40,6 @@ Next: **Step 12/16 — Weather + Suitability**
 - Complete PWA/offline implementation (manifest and versioned snapshot cache foundations are complete)
 - Remaining trip content renderers (generic Detailed Itinerary and Trip Information are complete; Attractions, Live Cam and Today remain placeholders)
 - Complete V1 UI parity across trip pages (shared responsive shell and Home parity are complete)
-- weather engine
-- suitability engine
 - Live Cam implementation
 - Today Mode implementation
 - real trip data migration
@@ -62,7 +60,7 @@ Next: **Step 12/16 — Weather + Suitability**
 - Step 8 implementation was unstarted at this documentation release; the implementation release below is `v2.0.0-poc.9`.
 
 ## Next step
-Step 11 passed the Settings + Checklist Sync gate while preserving Trip Information, Detailed Itinerary, Home and multi-trip architecture. Next is **Step 12/16 — Weather + Suitability**, only when explicitly authorized. Step 12 has not begun. Real trip migration remains outside this release.
+Step 12 implements the generic weather/suitability engine and fictional Official Alerts framework. After the Step 12 gate passes, next is **Step 13/16 — Attractions Overview + Live Cam**, only when explicitly authorized. Step 13 has not begun; real trip migration remains outside this release.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -339,7 +337,7 @@ Release App Version: **v2.0.0-poc.13**, canonical package.json; lockfile and aut
 - `git diff --check`: PASS. Canonical assets remain byte-for-byte unchanged. Trip schema, fixtures/data versions, Home, Back history and historical SQL baseline remain unchanged; the shared place-dialog lifecycle repair is documented above. Production repository untouched.
 - POC-only push-to-main workflow remains build/test gated; CI and Pages results must be checked after this release commit is pushed; deployment still requires a successful complete suite.
 
-### Step 10 historical limitations
+### Step 11 known limitations (historical)
 - Sync is item-level device-clock LWW with focus/reconnect/visible polling, not Realtime or a collaborative merge model. Demo fixtures never sync; no real trip migration or Home Supabase list was added.
 - App/static-image cold offline caching, cloud font/auto-check preferences, automatic daily resets, selective offline clearing and localization remain deferred. Storage blocking/eviction prevents guaranteed persistence.
 - Logout intentionally retains device-private data; anyone using the same signed-out browser profile can access previously downloaded routes. Use confirmed local clearing before sharing a browser profile.
@@ -347,4 +345,36 @@ Release App Version: **v2.0.0-poc.13**, canonical package.json; lockfile and aut
 - Original fictional snapshot notes are preserved, including historical Step 10 read-only wording; checklist definitions and their Data Versions were not rewritten.
 - Existing non-fatal Vite bundle-size/Zod annotation notices remain; pre-existing Supabase advisor findings are recorded without changes.
 
-Next: **Step 12/16 — Weather + Suitability**. Step 12 is not started; it requires separate authorization.
+Historical Step 11 next task was Step 12; its implementation record follows.
+
+
+## Step 12/16 — Weather + Suitability + Official Alerts Framework
+
+**STEP 12 WEATHER + SUITABILITY GATE: PASS.** Release **v2.0.0-poc.14** uses canonical package.json, current Trip Schema **3**, supported readers **1 / 2 / 3**, and separate fictional Data Versions **demo.city.4 / demo.road.4**.
+
+### Implementation
+- All eight requested Production V1 weather/profile/suitability/bridge/config files were inspected read-only as visual, metric and scoring references. No legacy JavaScript, destination/day branching, default-trip logic or legacy weather storage keys were copied.
+- Schema 3 extends weather with forecast-provider definitions, provider mapping, optional coordinate/elevation sample points, explicit day-to-weather-region mapping, Experience/Access rules, access share, coverage, safety caps, operation requirements and alert-provider configuration. Canonical Zod schemas infer types; Schema 1/2 strict contracts remain unchanged. Frozen actual Schema 2 fixtures join the existing Schema 1 archives.
+- A data-selected `open-meteo` registry adapter requests current metrics plus five daily forecasts and hourly samples, using configured timezone/coordinates/elevation and epoch timestamps. Normalization converts visibility metres to kilometres and snow depth metres to centimetres; snowfall remains centimetres. Daily visibility mean/min/max, cloud/humidity means and nearest available local-noon snow depth are derived from hourly data. Missing metrics stay unavailable; malformed units, dates/series or metrics fail safely. Provider attribution is visible.
+- Dedicated `travelpilot-v2-weather-cache` IndexedDB storage uses `[tripId, weatherRegionId, providerId]` and a sample/provider configuration signature. Online fresh TTL is ten minutes; expired/manual refresh fetches, failed refresh preserves valid stale data, offline reads cache, and no-cache failure leaves the trip usable. Timestamps and source/stale/storage limitations are visible. In-flight requests deduplicate, and region/trip identity protects against late responses. No forecast is written into immutable trip snapshots or Supabase.
+- Piecewise/categorical rules and weights come from trip data. Experience and Access are calculated separately; missing metrics renormalize available weights while weighted coverage gates misleading scores. Baselines cannot disguise missing metric coverage. Final uses access share then configured caps, rounded/clamped to one decimal. Aggregate Access uses the minimum and retains unrounded thresholds when applying caps. Operation-required activities state that official operation status takes priority; scores never assert an attraction/road/service is open.
+- One `WeatherPanel`, shared trip-level weather context and scoring service serve Detailed Itinerary, Trip Information and the Live Cam placeholder. Region preference is device-local and per-trip, with active mapped day then first-region fallback. Day suitability uses the exact mapped region and forecast date; unrelated dates show an honest out-of-range note. Mobile forecasts scroll horizontally, support arrow-key navigation, and mark days 4–5 as trend reference.
+- Provider-independent validated Official Alerts use a data-selected registry. Step 12 includes only `demo-alerts`; every fictional alert visibly says **POC測試警告 / 非真實官方警告**. Active alerts are region-scoped, sorted deterministically and displayed above forecasts with severity/type/timing/instructions/source. Empty alert sections are hidden. Alerts do not override meteorological suitability.
+- Both unrelated fictional fixtures remain data-only. City indoor/walking/transit profiles illustrate resilient indoor Experience and potentially reduced Access. Road scenic/driving/operation profiles have stronger visibility/gust/snow-depth sensitivity and a fictional warning. No real destination or trip migration.
+
+### Verification
+- `npm ci`: PASS. `npm run build` (both TypeScript checks + production Vite build): PASS. Complete Playwright suite: **1,355 passed** in **21.8 minutes**, two workers, across **320 / 390 / 430 / 1024 / 1440px**; all 990 prior cases retained plus 365 Step 12 cases. `git diff --check`: PASS.
+- Local preflight found a duplicate fixture profile/checklist ID and outdated test expectations/selectors/reduced-day references; these were corrected without weakening validation/assertions. A desktop focus-visible test now explicitly exercises keyboard input, keeping its outline assertion. Five-width focused checks passed, followed by the complete green suite above. No failed candidate was pushed.
+- Existing POC-only main workflow remains npm ci → typecheck/build → complete Playwright → deploy only after success. CI/Pages verification occurs after this release commit is pushed and is reported in the release handoff; no production workflow was modified.
+- Required visual screenshots generated and inspected: 390px city/road itinerary, 390px Trip Information/Live Cam placeholder, 1440px road itinerary, and 320px Large road weather. Current metrics, selector, score splits/chips/caps, operation note, five horizontal cards/trend labels, stale timestamp, fictional/absent alerts, in-range day score, out-of-range note and status clearance were reviewed. No body/main overflow in these captures.
+- The original 990 regression cases are retained. New coverage exercises all three schema readers, actual pre-Step12 physical Schema 2 cache reads without migration/write, normalized units/hourly aggregates/noon, weighted coverage/safety caps, cache TTL/manual/offline/failure, three-part cache isolation/config changes/tampering, pending/late requests, alert scope/expiry/sorting, all fonts/five widths and long labels.
+- Canonical banner/icon, Home, Settings, router/Back behavior, existing trip/checklist cache design and approved Step 11 SQL remain unchanged. No live Supabase request writes/migration or production modifications. Automated Auth/Supabase/Open-Meteo boundaries are mocked; no real password or provider availability required in CI.
+
+### Known limitations
+- Only Open-Meteo forecast and fictional demo alerts are implemented. JMA is planned for real Japan-trip migration via trip-data provider configuration; no live JMA/TMD/AEMET/global aggregation exists. Alert-to-score safety overrides are deferred; users must check official operations independently.
+- Schema 1/2 trips lacking Schema 3 configuration show an informational state rather than fabricated providers/rules. No automatic snapshot conversion, cache deletion, database rename or storage-version bump occurs.
+- Forecast horizon is five current-date days, not arbitrary itinerary dates; days 4–5 are trend-only. Demonstration coordinates/content are fictional. Forecasts represent model sample locations, not verified attraction/road operations.
+- Weather cache is separate device data and survives logout. The unchanged Step 11 Settings clear control manages trip/checklist stores; dedicated weather-cache clearing is not added in Step 12. Browser site-data clearing/eviction removes weather cache; blocked storage permits session-only use without durable offline guarantees.
+- No background weather polling, Today integration, camera playback, real alert provider, Supabase weather storage, migrations or service-worker expansion. Existing nonfatal Vite bundle-size/Zod notices remain.
+
+Next: **Step 13/16 — Attractions Overview + Live Cam**. **Not started.**

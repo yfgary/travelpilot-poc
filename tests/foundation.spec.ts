@@ -26,7 +26,7 @@ for (const [route, title] of pages) {
       if (route.endsWith('/itinerary') || route.endsWith('/info')) {
         await expect(page.locator('.trip-heading')).toContainText('demo-trip')
         await expect(page.getByTestId(route.endsWith('/info') ? 'trip-information' : 'detailed-itinerary')).toBeVisible()
-      } else await expect(page.locator('.panel')).toContainText('demo-trip')
+      } else await expect(page.locator('main > .panel:not(.weather-panel)')).toContainText('demo-trip')
       await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveCount(5)
     }
     await page.reload()
@@ -98,11 +98,11 @@ test('unmatched page retains the shell and offers home navigation', async ({ pag
 })
 
 test('approved labels and release version are shown', async ({ page }) => {
-  expect(packageMetadata.version).toBe('2.0.0-poc.13')
+  expect(packageMetadata.version).toBe('2.0.0-poc.14')
   await page.goto('#/trip/demo-trip/itinerary')
   await expect(page.getByRole('navigation', { name: '主導覽' }).getByRole('link')).toHaveText(['首頁', '設定'])
   await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveText(tripPages.map(([, title]) => title))
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.13')
+  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.14')
   await expect(page.getByText('旅程資訊', { exact: true })).toHaveCount(0)
   await expect(page.getByText('即時影像', { exact: true })).toHaveCount(0)
 })
