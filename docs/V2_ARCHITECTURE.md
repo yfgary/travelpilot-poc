@@ -202,7 +202,7 @@ Supabase when online
 Other signed-in devices
 ```
 
-Initial conflict policy: item-level last-write-wins using `updated_at`. Review if testing exposes a real conflict problem.
+Step 11 supersedes the initial server-updated_at conflict proposal: item-level LWW uses `(client_updated_at, device_id)` with deterministic C/UTF-8 device ordering. Server `updated_at` is accepted-arrival metadata only. A private SECURITY INVOKER trigger rejects stale/equal upserts atomically; the browser always pulls again after pushing.
 
 Checklist item IDs must remain stable across trip content versions so state survives normal itinerary updates.
 
@@ -287,3 +287,18 @@ At minimum test:
 - `TripLayout` owns the asynchronous route loading boundary, cancellation and a 15-second request deadline. Stale route results cannot replace another trip's metadata. The shell exposes title, summary, slug, Trip Data Version, Trip Schema Version and discreet POC source metadata; content pages remain placeholders.
 - Logout leaves cached trip snapshots on the device. Signed-out access is an explicit offline privacy trade-off; future Settings clearing will remove them. Browser storage eviction can remove caches. This is data caching only: no service worker or cold offline shell guarantee is added.
 - `supabase/schema/v2_foundation.sql` records read-only catalog metadata as an unapplied source-control baseline. It is excluded from deployment execution; future DDL requires real migrations. V1 and production remain untouched.
+
+
+## Step 11 implemented local-first checklist and Settings boundaries
+
+- TripLayout remains the sole content-loading boundary; LoadedTrip adds ownerId (null for local demos, authenticated owner for remote, retained downloaded owner for cache). No second trip loader or trip-specific branch was added.
+- ChecklistSyncProvider supplies one shared session/connection-aware manager. Checklist presentation uses canonical checklist/group/item order and stable IDs, immediate checkboxes, completion counts, status and confirmed per-list reset; reset is ordinary item mutations. Definitions and trip versions remain immutable.
+- `offline/checklistState.ts` owns the separate `travelpilot-v2-user-state` IndexedDB database, durable dirty records, device identity/monotonic clock and sync metadata. `services/checklists.ts` is the only checklist REST boundary. `services/checklistSync.ts` performs pull/tuple-merge/batch-upsert/final-pull with serialized local persistence, cancellation on account changes/clearing and protection for edits made during requests.
+- Sync is debounced after mutations/sign-in/online, on visible focus/visibility, Settings manual action and a conservative 30-second visible authenticated online interval. Hidden/signed-out/offline sessions do not continuously sync. No Realtime subscription/publication or browser content publishing exists.
+- Device cache remains readable signed out; only its original authenticated owner may sync its pending edits. Another signed-in account is isolated. Orphan state remains retained but is ignored by current definitions and uploads.
+- Settings retains existing Auth/font behavior and adds real pending/success/error information, account-scoped validated cached-trip inspection and confirmed explicit local clearing. Clear cancels in-flight sync and removes downloaded snapshots/pointers, checklist rows/pending records and sync timestamps without server DELETE or Auth/font changes. Device identity/clock remains non-secret continuity metadata.
+- Version checks SELECT published v2_app_versions only. SemVer comparison handles numeric prereleases; missing current App Version produces neutral metadata-unsynced status, never a downgrade. Persisted optional auto-check defaults off and checks metadata only on Settings entry/enabling; manual remains available. No forced reload, trip refresh or code replacement occurs.
+- Trip Schema Version stays current 2/readers 1+2; fixtures retain demo.city.3/demo.road.3. The original trip cache name/storage version/stores/keys and read validation are unchanged; new inspection and explicitly confirmed clearing are additive.
+- Approved live migration and catalog/advisor proof: `supabase/migrations/20261008135932_step11_checklist_client_clock.sql`, `supabase/verification/step11.md`. Only v2_checklist_state and its dedicated private trigger/function changed; the historical baseline, other V2 objects and all V1 objects remain untouched.
+
+Remaining boundaries: cold offline app/static-image caching, real trip migration, cloud preference sync, automatic daily resets, selective cache clearing and Weather/Suitability are future work. Stored snapshot notes are preserved even where old fictional notes still describe Step 10 read-only presentation.

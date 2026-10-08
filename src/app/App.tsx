@@ -11,10 +11,12 @@ import { PreferencesProvider } from './Preferences'
 import { AuthProvider } from '../auth/AuthProvider'
 import { NotFound } from '../views/NotFound'
 import { NavigationHistory } from './NavigationHistory'
+import { ChecklistSyncProvider } from './ChecklistSync'
 
 export function App() {
   return (
     <AuthProvider>
+      <ChecklistSyncProvider>
       <PreferencesProvider>
         <HashRouter>
           <NavigationHistory>
@@ -33,6 +35,7 @@ export function App() {
           </NavigationHistory>
         </HashRouter>
       </PreferencesProvider>
+      </ChecklistSyncProvider>
     </AuthProvider>
   )
 }

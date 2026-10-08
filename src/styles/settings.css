@@ -1,0 +1,10 @@
+.setting-checkbox { display: flex; gap: 0.6rem; align-items: center; min-height: 44px; margin-top: 1rem; cursor: pointer; }
+.setting-checkbox input { width: 22px; height: 22px; flex: 0 0 22px; accent-color: var(--tp-blue); }
+.settings-grid button { max-width: 100%; overflow-wrap: anywhere; cursor: pointer; }
+.settings-grid button:hover:not(:disabled) { filter: brightness(0.93); }
+.settings-grid button:active:not(:disabled) { transform: translateY(1px); }
+.cached-trip-list { list-style: none; padding-left: 0; }
+.cached-trip-list li { border: 1px solid var(--tp-line); border-radius: 12px; padding: 0.9rem; background: #f5f9fc; margin-block: 0.6rem; min-width: 0; }
+.cached-trip-list h3 { margin-top: 0; font-size: 1rem; }
+.cached-trip-list p { font-size: 0.85rem; }
+.danger-button { background: #a9432c; }

@@ -24,7 +24,7 @@ export const test = base.extend<{ supabaseNetwork: void }>({
   supabaseNetwork: [async ({ page }, use) => {
     await page.route(`${supabaseOrigin}/**`, async (route) => {
       const url = new URL(route.request().url())
-      if (url.pathname === '/rest/v1/v2_app_versions') {
+      if (url.pathname === '/rest/v1/v2_app_versions' || (url.pathname === '/rest/v1/v2_checklist_state' && route.request().method() === 'GET')) {
         await route.fulfill({ status: 200, json: [] })
       } else {
         await route.fulfill({ status: 400, json: { code: 'invalid_credentials', message: 'Invalid login credentials' } })

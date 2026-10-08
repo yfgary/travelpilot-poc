@@ -50,3 +50,20 @@ export async function readCachedTrip(slug: string, ownerId: string | null): Prom
     return { ...record, payload: validation.snapshot }
   } finally { db.close() }
 }
+
+// Inspect only current, validated pointers. No cache rewrite/migration on read.
+export async function listCachedTrips(ownerId: string | null): Promise<CachedTrip[]> {
+  const db = await database()
+  let pointers: Pointer[]
+  try { pointers = ownerId ? (await db.getAll('current')).filter((pointer) => pointer.ownerId === ownerId) : await db.getAll('deviceCurrent') }
+  finally { db.close() }
+  const records = await Promise.all(pointers.map((pointer) => readCachedTrip(pointer.slug, ownerId)))
+  return records.filter((record): record is CachedTrip => record !== null).sort((a, b) => a.slug.localeCompare(b.slug, 'en'))
+}
+export async function clearTripCache(): Promise<void> {
+  const db = await database()
+  try {
+    const tx = db.transaction(['versions', 'current', 'deviceCurrent'], 'readwrite')
+    await Promise.all([tx.objectStore('versions').clear(), tx.objectStore('current').clear(), tx.objectStore('deviceCurrent').clear(), tx.done])
+  } finally { db.close() }
+}

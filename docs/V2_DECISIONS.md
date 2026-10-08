@@ -116,3 +116,13 @@ Repository-relative canonical paths:
 **Database:** No live schema change is required because published trip payloads remain JSONB. No Supabase DDL, V1 table changes or browser publishing is performed.
 
 **Step boundary:** Trip Information reuses canonical transport/accommodation/navigation/hard-cut/checklist/source data. Step 10 renders checklist definitions only; local-first state/sync belongs to Step 11 and weather belongs to Step 12.
+
+
+## 2026-10-08 — Step 11 deterministic local-first checklist sync
+**Decision:** Keep canonical checklist definitions immutable in trip snapshots and store checked state/dirty queue separately in `travelpilot-v2-user-state`. Scope state by owner, trip ID and stable item ID. Demos are null-owner local-only; downloaded real trips retain their owner. Logout retains device data; another authenticated account cannot sync it; original-owner sign-in resumes synchronization.
+
+**Conflict policy:** `(client_updated_at, device_id)` replaces server-arrival `updated_at` as LWW ordering. Persist a non-secret UUID device identity and monotonically increasing per-device mutation clock. Use deterministic UTF-8/C-collation tie ordering on browser and database. The approved migration adds client_updated_at and a restricted private SECURITY INVOKER trigger that skips stale/equal writes and assigns server updated_at only to accepted changes. A final pull after every push reconciles server-rejected races. RLS/ownership/grants remain the security boundary; no SECURITY DEFINER, V1 modifications or real-user test data.
+
+**Sync/controls:** Debounced mutation/sign-in/reconnect, visible focus/visibility, conservative visible 30-second polling and manual Settings sync; no Realtime. Confirmed per-list reset uses normal state changes. Orphans are retained without rendering/upload/deletion. Explicit confirmed Settings clearing removes local trip/checklist/queue/sync data only, warns about pending loss, retains Auth/fonts/non-secret device clock, and never issues server DELETE.
+
+**Update checks:** Settings reads published App Version metadata only. Missing current metadata is neutral, numeric prereleases compare semantically, and older rows are never offered as upgrades. Optional persisted automatic checking defaults off and controls checking only; neither manual nor automatic checks reload or replace the current app. Language remains Traditional Chinese and cloud preference sync is deferred.

@@ -1,6 +1,6 @@
 # TravelPilot V2 — Supabase / Data Schema
 
-Status: Step 5 V2 database foundation already applied and verified in the existing Supabase project; this frontend task performs no DDL or migrations.
+Status: Step 5 foundation remains applied. Step 11 applies the first intentional post-foundation V2 migration, strictly limited to checklist state and its dedicated private trigger/function.
 
 ## Design choice
 Use a **hybrid versioned-snapshot model**.
@@ -286,7 +286,7 @@ Use Cache Storage for app/static assets and selected essential images.
 ## RLS/security
 The Step 5 applied policies/grants follow the access model recorded above. Content reads require authenticated ownership, while published App Version metadata alone permits anonymous reads. Checklist and preference writes remain owner-scoped. Content administration/publishing is not exposed to ordinary browser users.
 
-The prior database foundation was verified with advisors. Run security/performance advisors after future authorized DDL changes. This frontend task makes no DDL changes and does not change V1 warnings.
+The prior database foundation was verified with advisors. Step 11 ran security/performance advisors after the explicitly approved checklist migration; findings match preflight and existing V1 warnings remain untouched. See the verification record below.
 
 ## Validation gate
 Before real Japan 2027 migration:
@@ -309,4 +309,25 @@ IndexedDB database `travelpilot-v2-trips`, storage version 1:
 
 A transaction stores a valid remote version and both pointers atomically, retaining older versions. Data Version labels are opaque identities, preserved exactly rather than trimmed or normalized; blank labels are rejected. Cache reads revalidate the payload and its identity/version metadata. Remote unavailability, invalid data or unsupported versions may fall back to a valid cache without overwriting it. Signed-in lookup is account-scoped; signed-out/offline lookup uses the device pointer. A valid remote result is still usable if storage is blocked, with a visible cache warning.
 
-**Privacy:** offline trip snapshots are local device data. Logout does not delete them; anyone using the same browser profile while signed out can read previously cached trips by route. They remain until explicitly cleared, browser storage is removed/evicted, or a future Clear Offline Data control is used. Step 6 does not implement that control. No auth password is cached in trip records. App Version, Trip Data Version and Trip Schema Version are distinct.
+**Privacy:** offline trip snapshots are local device data. Logout does not delete them; anyone using the same browser profile while signed out can read previously cached trips by route. They remain until explicitly cleared, browser storage is removed/evicted, or a future Clear Offline Data control is used. Step 6 did not implement that control; Step 11 now provides confirmed clearing in Settings. No auth password is cached in trip records. App Version, Trip Data Version and Trip Schema Version are distinct.
+
+
+## Step 11 — mutable checklist state and approved live migration
+
+The exact approved SQL is `supabase/migrations/20261008135932_step11_checklist_client_clock.sql`. It was created through the Supabase CLI migration workflow and applied to the existing project; its filename matches the recorded live migration history version. The source baseline above remains unchanged, historical and unapplied. No additional schema changes, V1 changes, data backfill or live-user test writes were made.
+
+Checklist state now also has `client_updated_at timestamptz NOT NULL DEFAULT now()`. Client time plus non-secret device ID determines item-level LWW; server `updated_at` records accepted arrival time and never decides which offline edit wins. Browser writes contain only user_id, trip_id, checklist_item_id, checked, client_updated_at and device_id, with the original three-column conflict key. A dedicated private SECURITY INVOKER BEFORE INSERT/UPDATE trigger rejects stale/equal UPDATE tuples atomically, using C collation for device-ID ties; accepted writes receive `updated_at = now()`.
+
+RLS, the four ownership policies, table grants, indexes and all other V2 timestamp triggers remain unchanged. Anonymous checklist access and direct browser function execution remain unavailable. [Step 11 live verification](../supabase/verification/step11.md) records catalog checks, unchanged V1 row counts and unchanged security/performance advisor findings. The V2 checklist table still had zero rows at verification; testing inserted no real user state. Existing V1 and global Auth warnings were not fixed.
+
+### Separate device user-state database
+
+`travelpilot-v2-user-state`, IndexedDB storage version 1:
+
+- `checklistState`: key `[owner scope, tripId, canonical checklistItemId]`, checked, clientUpdatedAt, deviceId, dirty and optional accepted serverUpdatedAt. Null-owner demos use a generic local scope and never sync remotely.
+- `syncMeta`: key `[ownerId, tripId]`, actual lastSuccessfulAt from a completed sync, absent until success.
+- `meta`: persisted non-secret random device ID and monotonic lastMutationTime. One atomic state/clock transaction prevents timestamp reuse across rapid edits and reloads.
+
+Definitions stay exclusively in validated trip snapshots; state does not change Trip Schema/Data Version. Remote reads are authenticated-owner/trip scoped and bounded by current canonical item IDs, avoiding server row-limit truncation. Orphans remain retained but are neither presented nor uploaded/deleted. Local winners are batched; remote winners are stored clean; every push is followed by a final pull to reconcile server-rejected races. Failure retains local values and pending state.
+
+**Device privacy:** logout retains downloaded trips, local checklist state and pending mutations; signed-out cached-owner edits can later sync only when that owner logs back in. Signed-in IndexedDB reads, in-memory values and REST requests are owner-scoped. A different signed-in account cannot upload or present another owner's queue; explicit all-device clearing may inspect only its aggregate pending-loss count. Settings explicitly warns and confirms before clearing all browser-profile trip snapshots/pointers, checklist rows, dirty queue and sync timestamps. It never deletes server rows or changes Auth/font preferences/assets/definitions. The non-secret device identity/clock remains to avoid timestamp reuse. Blocked/evicted browser storage cannot guarantee reload persistence; session values and an honest warning remain available.

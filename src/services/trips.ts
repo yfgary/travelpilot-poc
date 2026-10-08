@@ -6,7 +6,7 @@ import { cacheTrip, readCachedTrip } from '../offline/tripCache'
 import { supabase } from './supabase'
 
 export type TripFailure = 'not-found' | 'auth-required' | 'unavailable' | 'invalid-data' | 'unsupported-schema'
-export type LoadedTrip = { state: 'loaded'; source: 'remote' | 'cache' | 'demo'; snapshot: TripSnapshot; dataVersion: string; schemaVersion: TripSnapshot['schemaVersion']; cacheSaved?: boolean; fallbackReason?: TripFailure }
+export type LoadedTrip = { state: 'loaded'; source: 'remote' | 'cache' | 'demo'; ownerId: string | null; snapshot: TripSnapshot; dataVersion: string; schemaVersion: TripSnapshot['schemaVersion']; cacheSaved?: boolean; fallbackReason?: TripFailure }
 export type TripLoadResult = LoadedTrip | { state: 'loading' } | { state: TripFailure; issues?: ValidationIssue[] }
 const tripRowSchema = z.object({ id: z.uuid(), slug: z.string(), owner_id: z.uuid() })
 // Data Version is an opaque database identity; normalization could merge distinct versions.
@@ -17,14 +17,14 @@ export async function loadTrip(slug: string, options: { userId: string | null; s
   if (local) {
     const validation = validateTripSnapshot(local.payload)
     return validation.valid
-      ? { state: 'loaded', source: 'demo', snapshot: validation.snapshot, dataVersion: local.dataVersion, schemaVersion: validation.snapshot.schemaVersion }
+      ? { state: 'loaded', source: 'demo', ownerId: null, snapshot: validation.snapshot, dataVersion: local.dataVersion, schemaVersion: validation.snapshot.schemaVersion }
       : { state: validation.reason, issues: validation.issues }
   }
   const { userId, signal } = options
   let cached = null
   try { cached = await readCachedTrip(slug, userId) } catch { /* Storage failures must not block remote reads. */ }
   const fallback = (state: TripFailure, issues?: ValidationIssue[]): TripLoadResult => cached
-    ? { state: 'loaded', source: 'cache', snapshot: cached.payload, dataVersion: cached.dataVersion, schemaVersion: cached.payload.schemaVersion, fallbackReason: state }
+    ? { state: 'loaded', source: 'cache', ownerId: cached.ownerId, snapshot: cached.payload, dataVersion: cached.dataVersion, schemaVersion: cached.payload.schemaVersion, fallbackReason: state }
     : { state, issues }
   if (options.online === false) return fallback('unavailable')
   if (!userId) return fallback('auth-required')
@@ -51,6 +51,6 @@ export async function loadTrip(slug: string, options: { userId: string | null; s
       await cacheTrip({ tripId: row.data.id, slug, ownerId: userId, dataVersion: parsed.data.data_version, schemaVersion: snapshot.schemaVersion, payload: snapshot, cachedAt: new Date().toISOString() })
       cacheSaved = true
     } catch { /* A valid remote trip remains readable when device storage is unavailable. */ }
-    return { state: 'loaded', source: 'remote', snapshot, dataVersion: parsed.data.data_version, schemaVersion: snapshot.schemaVersion, cacheSaved }
+    return { state: 'loaded', source: 'remote', ownerId: userId, snapshot, dataVersion: parsed.data.data_version, schemaVersion: snapshot.schemaVersion, cacheSaved }
   } catch { return fallback('unavailable') }
 }

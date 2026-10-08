@@ -16,6 +16,11 @@ test('authenticated remote read is owner-scoped and requires current published v
   const gate = new Promise<void>((resolve) => { release = resolve })
   await page.route(`${supabaseOrigin}/rest/v1/**`, async (route) => {
     const request = route.request(), url = new URL(request.url())
+    if (url.pathname === '/rest/v1/v2_checklist_state') {
+      expect(request.method()).toBe('GET'); expect(url.searchParams.get('user_id')).toBe(`eq.${testUser.id}`)
+      expect(url.searchParams.get('trip_id')).toBe(`eq.${remoteId}`)
+      await route.fulfill({ json: [] }); return
+    }
     requests.push(url.pathname)
     expect(request.method()).toBe('GET')
     if (url.pathname.endsWith('/v2_trips')) {
@@ -38,7 +43,7 @@ test('authenticated remote read is owner-scoped and requires current published v
   await expect(dataSource(page)).toHaveText('POC 資料來源：remote')
   await expect(page.locator('.trip-heading h2')).toHaveText('通用遠端測試旅程')
   await expect(page.getByTestId('trip-versions')).toHaveText('Trip Data Version：content.1 · Trip Schema Version：1')
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.11')
+  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.12')
   expect(requests).toEqual(['/rest/v1/v2_trips', '/rest/v1/v2_trip_versions'])
   const cached = await cacheContents(page)
   expect(cached.versions).toHaveLength(1)

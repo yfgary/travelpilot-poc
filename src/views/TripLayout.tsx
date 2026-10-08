@@ -5,6 +5,7 @@ import { loadTrip } from '../services/trips'
 import type { TripLoadResult, TripFailure } from '../services/trips'
 import { PageNavigation } from '../components/PageNavigation'
 import { LoadingState, ErrorState } from '../components/ViewState'
+import { useChecklistSync } from '../app/ChecklistSync'
 
 const failures: Record<TripFailure, { title: string; description: string }> = {
   'not-found': { title: '找不到旅程', description: '此旅程不存在或尚未發佈。' },
@@ -16,6 +17,7 @@ const failures: Record<TripFailure, { title: string; description: string }> = {
 export function TripLayout() {
   const { tripSlug = '' } = useParams<{ tripSlug: string }>()
   const { phase, session } = useAuth()
+  const { manager } = useChecklistSync()
   const userId = session?.user.id ?? null
   const initializing = phase === 'initializing'
   const [loaded, setLoaded] = useState<{ slug: string; userId: string | null; result: TripLoadResult } | null>(null)
@@ -31,6 +33,7 @@ export function TripLayout() {
     return () => { active = false; controller.abort(); window.clearTimeout(timeout) }
   }, [tripSlug, userId, initializing])
   const result: TripLoadResult = !initializing && loaded?.slug === tripSlug && loaded.userId === userId ? loaded.result : { state: 'loading' }
+  useEffect(() => { if (result.state === 'loaded') manager.register(result.snapshot, result.ownerId) }, [manager, result])
   if (result.state === 'loading') return <LoadingState title="正在載入旅程" />
   if (result.state !== 'loaded') return <ErrorState {...failures[result.state]} headingLevel={1} action={<Link to="/">返回首頁</Link>} />
   const trip = result.snapshot.trip

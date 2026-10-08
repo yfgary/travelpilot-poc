@@ -68,7 +68,7 @@ test('current 2 supports frozen 1 and new 2 without changing source versions', (
   }
   expect(getEmergencyInfo(legacyCity)).toBeUndefined(); expect(getEmergencyInfo(city)).toEqual(city.emergency)
   for (const schemaVersion of [0, 3, 4, '2', null]) expect(validateTripSnapshot({ ...city, schemaVersion })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
-  expect(packageMetadata.version).toBe('2.0.0-poc.11')
+  expect(packageMetadata.version).toBe('2.0.0-poc.12')
   expect(cityRecord.dataVersion).toBe('demo.city.3'); expect(roadRecord.dataVersion).toBe('demo.road.3')
 })
 
@@ -217,7 +217,7 @@ for (const snapshot of [city, road]) {
     }
     await expect(page.getByTestId('trip-versions')).toContainText(snapshot === city ? 'demo.city.3' : 'demo.road.3')
     await expect(page.getByTestId('trip-versions')).toContainText('Trip Schema Version：2')
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.11')
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.12')
   })
 }
 
@@ -306,21 +306,21 @@ test('checklists, groups and items sort order values without mutating source def
   await expect(section(page, 'checklists').locator('.checklist-definition > h3')).toHaveText(['清單 0', '清單 1', '清單 2'])
   for (const list of await section(page, 'checklists').locator('.checklist-definition').all()) {
     await expect(list.locator('.checklist-group h4')).toHaveText(['群組 0', '群組 1'])
-    for (const group of await list.locator('.checklist-group').all()) await expect(group.locator(':scope > ul > li > span')).toHaveText(['項目 0', '項目 1', '項目 2'])
+    for (const group of await list.locator('.checklist-group').all()) await expect(group.locator(':scope > ul > li > label > span')).toHaveText(['項目 0', '項目 1', '項目 2'])
     await expect(list).toContainText('清單注意'); await expect(list).toContainText('群組注意'); await expect(list).toContainText('項目注意')
   }
 })
 
-test('definitions create no checklist UI state, local storage, IndexedDB state or backend calls', async ({ page }) => {
+test('definitions remain immutable while local demo controls create no backend or checklist localStorage writes', async ({ page }) => {
   const requests: string[] = []
   page.on('request', (request) => { if (request.url().startsWith(supabaseOrigin)) requests.push(request.method() + ' ' + new URL(request.url()).pathname) })
   await page.goto('#/')
-  const stored = () => page.evaluate(async () => ({ local: Object.fromEntries(Object.entries(localStorage)), databases: await indexedDB.databases() }))
+  const stored = () => page.evaluate(() => Object.fromEntries(Object.entries(localStorage)))
   const before = await stored()
   for (const snapshot of [city, road]) {
     await openLocal(page, snapshot)
     await expect(section(page, 'checklists')).toContainText(snapshot.checklists[0].title)
-    await expect(section(page, 'checklists').locator('input, [role="checkbox"], button')).toHaveCount(0)
+    await expect(section(page, 'checklists').getByRole('checkbox')).toHaveCount(snapshot.checklists.flatMap((list) => list.groups.flatMap((group) => group.items)).length)
     for (const group of snapshot.checklists[0].groups) for (const item of group.items) await expect(section(page, 'checklists')).toContainText(item.label)
   }
   expect(await stored()).toEqual(before)
@@ -435,14 +435,16 @@ test('long operator names, warnings and emergency contacts wrap at every width',
   expect(await page.locator('main').evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true)
 })
 
-test('source audit forbids content child IO, checklist state and destination/default emergency code', () => {
+test('source audit forbids content child IO and destination/default emergency code; clearing is explicit', () => {
   const files = (dir: string): string[] => readdirSync(dir, { withFileTypes: true }).flatMap((entry) => entry.isDirectory() ? files(join(dir, entry.name)) : [join(dir, entry.name)])
   for (const path of ['src/views/TripInformation.tsx', ...files('src/components/tripInfo'), 'src/data/tripInformation.ts']) {
     const source = readFileSync(path, 'utf8')
     expect(source).not.toMatch(/loadTrip\(|supabase|indexedDB|localStorage|readCachedTrip|v2_checklist_state|DEFAULT_TRIP|hydrate|Japan|Nagoya|Shirakawa|Takayama|Bangkok|Hokkaido|demo-trip|demo-road-trip|\b(?:110|119|112|911|999)\b|Times/)
   }
   expect(readFileSync('src/views/TripInformation.tsx', 'utf8')).toContain('useLoadedTrip()')
-  expect(readFileSync('src/offline/tripCache.ts', 'utf8')).not.toMatch(/deleteDatabase|deleteObjectStore|clear\(/)
+  const cacheSource = readFileSync('src/offline/tripCache.ts', 'utf8')
+  expect(cacheSource.slice(0, cacheSource.indexOf('export async function clearTripCache'))).not.toMatch(/deleteDatabase|deleteObjectStore|clear\(/)
+  expect(cacheSource).not.toMatch(/deleteDatabase|deleteObjectStore/)
   for (const asset of ['travelpilot_banner.PNG', 'travelpilot_icon.PNG']) expect(createHash('sha256').update(readFileSync(`assets/images/${asset}`)).digest('hex')).toBe(createHash('sha256').update(readFileSync(`dist/assets/images/${asset}`)).digest('hex'))
 })
 

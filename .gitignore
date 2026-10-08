@@ -4,3 +4,5 @@ work/
 test-results/
 playwright-report/
 *.local
+
+supabase/.temp/
