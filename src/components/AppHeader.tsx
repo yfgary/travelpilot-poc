@@ -14,7 +14,7 @@ export function AppHeader() {
         </button>}
         <NavLink to="/" className="brand" aria-label="TravelPilot｜旅程管家 首頁">
           <img src={branding.icon} alt="" width="44" height="44" />
-          <span>TravelPilot<span className="brand-subtitle">｜旅程管家</span></span>
+          <span className="brand-text"><strong>TravelPilot</strong><span className="brand-subtitle">旅程管家</span></span>
         </NavLink>
         <PageNavigation />
       </div>

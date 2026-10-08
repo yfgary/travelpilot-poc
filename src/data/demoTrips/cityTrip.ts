@@ -203,7 +203,7 @@ export const cityTrip: TripSnapshot = {
     {
       "id": "city-train",
       "type": "train",
-      "origin": "都會车站",
+      "origin": "都會車站",
       "destination": "街區中心",
       "navigationTargetIds": [],
       "notes": [],

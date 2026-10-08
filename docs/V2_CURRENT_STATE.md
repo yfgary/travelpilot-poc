@@ -3,9 +3,9 @@
 Last updated: 08/10/2026
 
 ## Progress
-**Step 7/16 — Multi-Trip Proof: COMPLETE**
+**Step 8/16 — Home Page Parity: COMPLETE**
 
-Next: **Step 8/16 — Home Page Parity**
+Next: **Step 9/16 — Detailed Itinerary Engine**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -33,7 +33,7 @@ Next: **Step 8/16 — Home Page Parity**
 - Full V2 feature implementation (foundation and shared visual shell complete)
 - Complete PWA/offline implementation (manifest and versioned snapshot cache foundations are complete)
 - Full trip content renderers (shared multi-trip placeholder shell is proven)
-- Complete V1 UI parity (shared responsive baseline only is complete)
+- Complete V1 UI parity across trip pages (shared responsive shell and Home parity are complete)
 - weather engine
 - suitability engine
 - checklists implementation
@@ -54,10 +54,10 @@ Next: **Step 8/16 — Home Page Parity**
 - A real trip must use its own representative researched destination/journey image; the TravelPilot brand banner is never a real-trip cover fallback.
 - Example decision: a Nagoya / Shirakawa-go / Takayama trip may use Shirakawa-go as its representative image when it best defines the journey.
 - Fictional demo trips may use a generic non-destination fallback.
-- Step 8 implementation remains unstarted by this documentation release.
+- Step 8 implementation was unstarted at this documentation release; the implementation release below is `v2.0.0-poc.9`.
 
 ## Next step
-Step 7 passed the multi-trip architecture gate. Next is **Step 8/16 — Home Page Parity**, only when explicitly authorized. No Step 8 implementation has begun. Real trip migration and feature engines remain outside this foundation.
+Step 8 passed the Home parity gate while preserving the Step 7 multi-trip architecture. Next is **Step 9/16 — Detailed Itinerary Engine**, only when explicitly authorized. Step 9 has not begun. Real trip migration remains outside this release.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -209,17 +209,40 @@ All Step 3 acceptance criteria passed:
 - Source audit forbids fixture slugs/destination names outside data fixtures and checks obvious trip/country/day/place branches. Protected core files, SQL baseline, workflow, styles and canonical branding assets have no diff. Original asset hash/served-byte tests pass. Only POC files changed; production, live Supabase schema, V1 tables and data remain untouched. All network tests use fake sessions; no real password or live test writes.
 - `git diff --check` passed. The unchanged POC-only workflow requires npm ci → build/typecheck → complete Playwright → Pages deployment; GitHub Actions records the pushed release's CI/deployment result. No new architectural decision was necessary; V2_DECISIONS.md is unchanged.
 
+## Step 8 completed Home parity
+**STEP 8 HOME PARITY GATE: PASS**
+
+- App Version `v2.0.0-poc.9` from canonical package.json, with consistent lockfile and automated expectations. Trip Data Versions and Trip Schema Version 1 remain unchanged.
+- Production V1 `index.html`, `assets/travelpilot-home.css` and `trips/registry.json` inspected read-only as the Golden Visual Reference. Reimplemented its sticky white header, blue/deep-blue/cyan palette, pale background, prominent hero, MY TRIPS / 我的旅程 / trip count, rounded white panel, cover cards, compact typography, grouped actions and subtle interaction states in React/TypeScript. No legacy scripts or production changes.
+- The shared header retains the canonical icon and Home/Settings navigation. Home has no Back button; non-Home Back history and accessible label are unchanged.
+- The unchanged canonical `travelpilot_banner.PNG` is Home hero artwork only, with its natural aspect ratio and supporting copy. It is never a trip cover or fallback. The canonical icon/banner source and served bytes remain unchanged.
+- Reusable `TripCard` consumes generic snapshots and derived status. One cover resolver selects heroImageId, then bannerImageId against snapshot.images, preserves source/attribution/licence metadata, rejects brand-banner misuse and falls back safely for missing/unresolvable/broken images. The fictional demos use abstract blue/cyan compass artwork explicitly labelled 非目的地示意設計, not destination photography.
+- Existing timezone-aware temporal helper and non-mutating date sorting are reused. The nearest date-sorted upcoming trip receives 下一趟旅程; additional future trips use 未出發. Current/completed labels remain 旅程進行中 / 旅程已完成. Covers and recent usage do not influence ordering.
+- One guarded localStorage preference records a generic slug when a Home card or shortcut opens. Only its matching card receives 最近使用, alongside temporal/demo badges. Reload restores it; blocked storage does not crash the app. No Supabase preference sync.
+- Shortcuts derive from shared page definitions: 詳細行程 / 旅程資料 / 今日模式 always, 景點 when places exist, Live Cam only when liveCams is non-empty. City has no Live Cam action; road has one. All actions use the same hash routes and placeholder trip views.
+- Card surfaces are real links with Enter/Space support; shortcut links are siblings, avoiding nested links and duplicate navigation. Focus styles, visible status text, image alt, 44px touch targets, wrapping dates/actions/badges and status-footer clearance are retained.
+- One/many-card layout is generic: two columns where width permits, one on mobile. Only the requested dummy-data typo 都會车站 → 都會車站 was corrected. No schema, loader, cache, auth, Settings, database, service worker or trip renderer behavior changed; no new architecture decision was necessary.
+
+## Step 8 verification
+- `npm ci` succeeded (90 packages). No dependency additions or changes.
+- `npm run build` passed, including strict application/tool/test TypeScript checks.
+- Complete Playwright suite against the production build: **450 passed** at 320px, 390px, 430px, 1024px and 1440px. All prior **395** cases retained, with only release/approved Home action and badge expectations adjusted; **55** additional cases cover Home behavior across all five widths.
+- Covers, hero/icon separation, hierarchy/count, date formatting/status, nearest upcoming, recent-use persistence/replacement/blocked storage, every shared shortcut, keyboard/focus behavior, broken-image fallback, one/five-card layouts, all font sizes, no overflow, badge spacing, touch targets and footer clearance verified. The source audit additionally checks Bangkok/Hokkaido branches.
+- Existing local/remote multi-trip isolation, authenticated owner filters, GET-only V2 access, IndexedDB version/cache isolation and fallback, logout retention, auth and shared Back regressions remain passing. All Supabase test boundaries are mocked; no real account credentials or live test writes.
+- Visual QA screenshots generated across all five widths. Reviewed 390px Home, 1440px Home, 320px Home with Large font and the 1024px desktop layout, including hero/header, MY TRIPS, next/completed/recent badges, abstract covers, wrapped actions and differing Live Cam capability. Compared hierarchy/density with V1's reference HTML/CSS. Screenshot capture now waits for canonical images to decode; its final five-width rerun passed **5/5**, and the TypeScript recheck passed.
+- `git diff --check` passed. Canonical asset hashes/served bytes, no trip-specific branches and protected POC-only workflow checks pass. Production, live Supabase/V1 tables and protected trip/auth/history code remain untouched. The existing workflow gates deployment on npm ci → build/typecheck → complete Playwright suite.
+
 ## Known limitations
 - No real published V2 trip data is seeded by this task, and no real account password was used. Remote loader/auth behavior is tested with the actual SDK and mocked network responses. No live DDL or advisor remediation is performed.
 - Cached private trip snapshots remain readable signed out in the same browser profile until cleared/evicted. Clear Offline Data UI, image caching, service worker and cold offline app-shell startup are later steps.
-- Home lists the two local fictional demos only. Real remote Home listing, final Home parity and full itinerary/other trip content renderers are not implemented. No weather scoring/API, playback, Today Mode, checklist sync or Supabase preference sync. Home temporal statuses recalculate on render/visit; no continuous midnight update timer is added.
+- Home lists the two local fictional demos only. Real remote Home listing, real representative photo research/content migration and full itinerary/other trip content renderers are not implemented. Trip pages remain shared placeholders. No weather scoring/API, playback, Today Mode, checklist sync or Supabase preference sync. Home temporal statuses recalculate on render/visit; no continuous midnight update timer is added. Recent-use persistence is device/browser-local and cannot survive blocked storage.
 - Auth uses standard browser storage and default global logout scope; a failed server logout may still clear the local session, as documented in Step 5.
-- Build has non-blocking upstream Zod comment-annotation warnings and a ~620kB minified JS chunk (~182kB gzip). No warning threshold or test requirement was weakened.
-- Chromium viewport tests are not physical iPhone/Safari certification or final V1 parity. App-managed Back relies on session storage for reload continuity; blocked storage safely falls back Home after reload.
+- Build has non-blocking upstream Zod comment-annotation warnings and a ~623kB minified JS chunk (~183kB gzip). No warning threshold or test requirement was weakened.
+- Chromium viewport tests and Home visual review are not physical iPhone/Safari certification or parity for the still-unimplemented trip renderers. App-managed Back relies on session storage for reload continuity; blocked storage safely falls back Home after reload.
 
 ## Next bounded task
-**Step 8/16 — Home Page Parity** (not started)
+**Step 9/16 — Detailed Itinerary Engine** (not started)
 
-Only when explicitly authorized: refine Home presentation to the Golden Visual Reference while retaining the proven generic trip/date architecture.
+Only when explicitly authorized: implement the generic Detailed Itinerary renderer using the existing validated snapshots and shared shell.
 
-Do not begin Step 8. Production must not be modified.
+Do not begin Step 9 in this release. Production must not be modified.

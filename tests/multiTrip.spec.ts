@@ -95,11 +95,11 @@ for (const now of ['2025-02-06', '2026-10-07', '2030-04-12', '2030-04-14', '2030
     for (let i = 0; i < ordered.length; i++) {
       const { trip, status } = ordered[i], card = cards.nth(i)
       await expect(card).toContainText(trip.destinationLabel)
-      await expect(card.getByTestId('trip-status')).toHaveText(tripStatusLabels[status])
+      await expect(card.getByTestId('trip-status')).toHaveText(status === 'upcoming' ? '下一趟旅程' : tripStatusLabels[status])
       await expect(card.locator('time')).toHaveText([formatTripDate(trip.startDate), formatTripDate(trip.endDate)])
       await expect(card.locator('time').first()).toHaveAttribute('datetime', trip.startDate)
       await expect(card).toContainText('示範資料')
-      await expect(card.getByRole('link', { name: '開啟旅程' })).toHaveAttribute('href', `#/trip/${trip.slug}/itinerary`)
+      await expect(card.getByRole('link', { name: '詳細行程', exact: true })).toHaveAttribute('href', `#/trip/${trip.slug}/itinerary`)
     }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
     await expect(page.getByRole('button', { name: '返回上一頁' })).toHaveCount(0)
@@ -110,7 +110,7 @@ for (const record of localTrips) {
   test(`all five shared routes, reloads and Settings Back work for ${record.payload.trip.slug}`, async ({ page }) => {
     const other = localTrips.find((trip) => trip !== record)!
     await page.goto('#/')
-    await page.getByRole('article').filter({ hasText: record.payload.trip.title }).getByRole('link', { name: '開啟旅程' }).click()
+    await page.getByRole('article').filter({ hasText: record.payload.trip.title }).getByRole('link', { name: '詳細行程', exact: true }).click()
     for (const view of tripPages) {
       await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: view.title, exact: true }).click()
       await checkTrip(page, record.payload, record.dataVersion, 'demo')
@@ -278,7 +278,7 @@ test('core application contains no fixture identities or destination-specific br
   for (const path of files('src').filter((path) => /\.(tsx?|css)$/.test(path) && !path.startsWith('src/data/demoTrips/'))) {
     const source = readFileSync(path, 'utf8')
     expect(source, path).not.toMatch(/demo-road-trip|demo-trip|城市週末示範旅程|山區自駕示範旅程|虛構都會|虛構山區/)
-    expect(source, path).not.toMatch(/(?:if\s*\(|case\s+)[^\n]*(?:japan|shirakawa|country\s*===|dayNumber\s*===|placeId\s*===)/i)
+    expect(source, path).not.toMatch(/(?:if\s*\(|case\s+)[^\n]*(?:japan|shirakawa|bangkok|hokkaido|country\s*===|dayNumber\s*===|placeId\s*===)/i)
   }
   const workflow = readFileSync('.github/workflows/pages.yml', 'utf8')
   expect(workflow.match(/github\.repository == 'yfgary\/travelpilot-poc'/g)).toHaveLength(2)

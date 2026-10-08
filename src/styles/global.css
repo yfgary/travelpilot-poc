@@ -31,12 +31,13 @@ h2 { font-size: 1.35rem; }
 h3 { font-size: 1.2rem; }
 p { margin: 0.65rem 0; }
 .app-shell { height: 100dvh; display: flex; flex-direction: column; padding-bottom: calc(var(--status-space) + env(safe-area-inset-bottom)); }
-.app-header { flex-shrink: 0; background: rgba(255, 255, 255, 0.96); border-bottom: 1px solid var(--tp-line); box-shadow: 0 3px 18px rgb(22 65 97 / 7%); }
+.app-header { position: sticky; top: 0; z-index: 30; backdrop-filter: blur(18px); flex-shrink: 0; background: rgba(255, 255, 255, 0.96); border-bottom: 1px solid var(--tp-line); box-shadow: 0 3px 18px rgb(22 65 97 / 7%); }
 .header-inner, .content-shell { width: min(1240px, 100%); margin: auto; padding-inline: 1.25rem; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; flex-wrap: wrap; padding-block: 0.65rem; }
 .brand { display: flex; min-width: 0; align-items: center; gap: 0.65rem; font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--tp-deep); }
 .brand img { border-radius: 12px; flex-shrink: 0; }
-.brand-subtitle { font-size: 0.75em; }
+.brand-text { display: flex; align-items: baseline; gap: 0.45rem; }
+.brand-subtitle { font-size: 0.7em; color: #325b7f; }
 .content-shell { flex: 1; min-height: 0; overflow-y: auto; padding-top: 1.4rem; padding-bottom: 1.5rem; scroll-padding-block: 1rem; }
 .page-navigation { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .page-navigation a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0.55rem 0.9rem; border-radius: 11px; font-weight: 700; font-size: 0.9rem; text-decoration: none; }
@@ -52,9 +53,6 @@ p { margin: 0.65rem 0; }
 .section-heading h2 { margin: 0; }
 .muted, .page-heading p { color: var(--tp-muted); }
 .trip-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-.trip-card { padding: 1.25rem; border: 1px solid var(--tp-line); border-radius: 18px; background: linear-gradient(135deg, #f6fbff, white); }
-.trip-card h3 { margin: 0.8rem 0 0.5rem; }
-.trip-card p { color: var(--tp-muted); }
 .badge { display: inline-block; color: #174f7d; background: #e8f3fb; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 999px; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; min-height: 44px; margin-top: 0.7rem; border: 0; border-radius: 11px; padding: 0.6rem 1rem; color: white; background: linear-gradient(135deg, #1266ad, #0b94e7); font-weight: 700; text-decoration: none; }
 .trip-heading { border-radius: 22px; border: 1px solid #cbdfea; padding: 1.25rem; background: linear-gradient(135deg, #eaf5ff, #f8fcff); }
@@ -93,7 +91,7 @@ p { margin: 0.65rem 0; }
 }
 @media (max-width: 430px) {
   .brand { font-size: 1.05rem; }
-  .brand-subtitle { display: block; line-height: 1.2; }
+  .brand-text { flex-direction: column; align-items: flex-start; gap: 0; line-height: 1.2; }
   .page-navigation a { padding-inline: 0.75rem; }
 }
 .auth-panel { align-self: start; }

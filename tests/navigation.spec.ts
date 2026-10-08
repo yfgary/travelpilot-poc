@@ -56,7 +56,7 @@ test('Home has no Back button and blocked storage still supports safe navigation
   await page.addInitScript(() => { Storage.prototype.setItem = () => { throw new Error('Blocked') } })
   await page.goto('#/')
   await expect(page.getByRole('button', { name: '返回上一頁' })).toHaveCount(0)
-  await page.getByRole('article').filter({ hasText: '城市週末示範旅程' }).getByRole('link', { name: '開啟旅程' }).click()
+  await page.getByRole('article').filter({ hasText: '城市週末示範旅程' }).getByRole('link', { name: '詳細行程', exact: true }).click()
   await page.getByRole('button', { name: '返回上一頁' }).click()
   await expect(page).toHaveURL(/#\/$/)
 })
