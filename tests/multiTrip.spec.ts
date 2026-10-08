@@ -278,7 +278,7 @@ test('core application contains no fixture identities or destination-specific br
   for (const path of files('src').filter((path) => /\.(tsx?|css)$/.test(path) && !path.startsWith('src/data/demoTrips/'))) {
     const source = readFileSync(path, 'utf8')
     expect(source, path).not.toMatch(/demo-road-trip|demo-trip|城市週末示範旅程|山區自駕示範旅程|虛構都會|虛構山區/)
-    expect(source, path).not.toMatch(/(?:if\s*\(|case\s+)[^\n]*(?:japan|shirakawa|bangkok|hokkaido|country\s*===|dayNumber\s*===|placeId\s*===)/i)
+    expect(source, path).not.toMatch(/(?:if\s*\(|case\s+)[^\n]*(?:japan|shirakawa|takayama|nagoya|bangkok|hokkaido|country\s*===|dayNumber\s*===|placeId\s*===)/i)
   }
   const workflow = readFileSync('.github/workflows/pages.yml', 'utf8')
   expect(workflow.match(/github\.repository == 'yfgary\/travelpilot-poc'/g)).toHaveLength(2)

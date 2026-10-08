@@ -3,9 +3,9 @@
 Last updated: 08/10/2026
 
 ## Progress
-**Step 8/16 — Home Page Parity: COMPLETE**
+**Step 9/16 — Detailed Itinerary Engine: COMPLETE**
 
-Next: **Step 9/16 — Detailed Itinerary Engine**
+Next: **Step 10/16 — Trip Information**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -32,7 +32,7 @@ Next: **Step 9/16 — Detailed Itinerary Engine**
 ## Not started
 - Full V2 feature implementation (foundation and shared visual shell complete)
 - Complete PWA/offline implementation (manifest and versioned snapshot cache foundations are complete)
-- Full trip content renderers (shared multi-trip placeholder shell is proven)
+- Remaining trip content renderers (the generic Detailed Itinerary renderer is complete; the other four trip views remain placeholders)
 - Complete V1 UI parity across trip pages (shared responsive shell and Home parity are complete)
 - weather engine
 - suitability engine
@@ -57,7 +57,7 @@ Next: **Step 9/16 — Detailed Itinerary Engine**
 - Step 8 implementation was unstarted at this documentation release; the implementation release below is `v2.0.0-poc.9`.
 
 ## Next step
-Step 8 passed the Home parity gate while preserving the Step 7 multi-trip architecture. Next is **Step 9/16 — Detailed Itinerary Engine**, only when explicitly authorized. Step 9 has not begun. Real trip migration remains outside this release.
+Step 9 passed the Detailed Itinerary gate while preserving the Step 7 multi-trip architecture and Step 8 Home. Next is **Step 10/16 — Trip Information**, only when explicitly authorized. Step 10 has not begun. Real trip migration remains outside this release.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -232,17 +232,41 @@ All Step 3 acceptance criteria passed:
 - Visual QA screenshots generated across all five widths. Reviewed 390px Home, 1440px Home, 320px Home with Large font and the 1024px desktop layout, including hero/header, MY TRIPS, next/completed/recent badges, abstract covers, wrapped actions and differing Live Cam capability. Compared hierarchy/density with V1's reference HTML/CSS. Screenshot capture now waits for canonical images to decode; its final five-width rerun passed **5/5**, and the TypeScript recheck passed.
 - `git diff --check` passed. Canonical asset hashes/served bytes, no trip-specific branches and protected POC-only workflow checks pass. Production, live Supabase/V1 tables and protected trip/auth/history code remain untouched. The existing workflow gates deployment on npm ci → build/typecheck → complete Playwright suite.
 
+## Step 9 completed Detailed Itinerary engine
+**STEP 9 DETAILED ITINERARY GATE: PASS**
+
+- App Version `v2.0.0-poc.10` comes from canonical package.json, with consistent lockfile and automated expectations. The enriched fictional fixtures use independent Trip Data Versions `demo.city.2` and `demo.road.2`. Trip Schema Version remains **1**; its canonical implementation was not changed or weakened.
+- Production V1 `itinerary.html`, `assets/multi-trip-itinerary-renderer-v1.js`, `assets/attraction-info.css`, `assets/itinerary-hotel-detail-v1.js`, and the reference trip's `itinerary.json`, `hotels.json` and `attractions.json` were inspected read-only. Reimplemented the visual concepts in React/TypeScript: day navigation, rounded day accordions, warm highlights/warnings, large-plus-two-small gallery, timeline, place detail dialog and grouped accommodation facts. No legacy JavaScript, hydration/storage keys or real itinerary content was copied.
+- Dedicated `DetailedItinerary` route consumes the full validated snapshot from a typed shared Outlet context. TripLayout remains the single asynchronous loading boundary. Its keyed outlet resets child state when the trip/data version changes; other trip views remain placeholders. No duplicate loadTrip, Supabase or IndexedDB calls were added to child components.
+- Shared components render data-driven, independently expandable days, timeline items in stored order, highlights, constraints/warnings, linked hard cuts, galleries, canonical places, transport/navigation targets, accommodation and collapsible optional/backup references. All six generic timeline types and all schema entity-reference kinds are supported without fixture/destination/day/place branches.
+- The default open day matches today's calendar date in the trip timezone, otherwise the first day by day number. Day shortcuts open/focus the corresponding summary and scroll within the shared shell. Dates retain DD/MM/YYYY 星期X and times retain HH:MM.
+- One generic content-image resolver is reused by Home covers and day galleries. It excludes the Home brand banner; missing/broken/unresolvable gallery images disappear safely. Galleries show up to three referenced images with meaningful alt, source/attribution/licence metadata and responsive one/two/three-image layouts. Three original abstract SVG test assets in `assets/demo/` are explicitly non-destination artwork; build copies them without altering the canonical banner/icon. Neither fixture assigns the Home banner as trip content or cover.
+- Place summary/facts and the accessible native detail dialog read the same canonical record, including rating /10, duration, opening/last-entry/closing, currency/fee, rich context, maps, official link and resolved sources. Escape/close restore focus. Shared maps resolution uses explicit URL, query, then coordinates; external actions have accessible names, safe protocols, new-tab behavior and noopener/noreferrer. No map SDK or invented location/payment facts.
+- Accommodation facts show available room/meal/booking/payment/check-in/out/cancellation/parking/notes and navigation data; missing values are hidden. Currency and duration formatting are generic. Hard cuts appear both in highlights and their related timeline item intentionally, with time, severity, title and description.
+- City/public-transport and mountain/road-trip fixtures were enriched with fictional content only. Optional feature absence remains valid. Home, Settings/auth, shared Back behavior, schema validation, remote loader, version-aware cache, Supabase baseline, live database and V1 tables remain unchanged. No new architectural/product decision was required.
+
+## Step 9 verification
+- `npm ci` succeeded (90 packages); no new dependencies.
+- `npm run build` and the final `npm run typecheck` passed, including strict application/tool/test TypeScript checks.
+- Complete Playwright suite against the final production build: **580 passed** at 320px, 390px, 430px, 1024px and 1440px. All prior **450** regression cases remain, with release/data-version expectations and the dedicated itinerary route assertion updated. **130** additional cases cover the generic renderer and architecture. Footer reachability now checks visible controls because collapsed native details retain hidden descendants; new assertions also verify collapsed controls are not visible.
+- Tests cover both fixtures/schema/data versions, default day/timezone behavior, independent accordion/jump controls, ordered timelines and all six types, highlights/hard cuts, zero/one/two/three-image layouts and real broken-image recovery, shared maps precedence, place facts/dialog/source/focus/Escape, hotel facts/payment omissions, optional/backup references, empty/minimal content and all supported entity-reference kinds.
+- All three global font sizes remain usable at all five widths, including **320px + Large**. No body horizontal overflow; gallery captions fit, touch targets remain usable, dialogs stay within the viewport and bottom actions clear the persistent status footer.
+- Actual SDK requests are mocked. Remote and cached itinerary tests verify exactly one v2_trips/v2_trip_versions read at the shared boundary, no child reloads/cache reads from view interactions, unchanged persisted snapshots and no live writes. Existing remote multi-trip/cache isolation, offline fallback, logout retention, auth and exact-trip Settings/Back regression tests pass.
+- Visual QA screenshots generated for both trips across all five widths. Inspected 390px city/road, 1440px city/road and 320px Large-font road, including intro/header, day controls/summaries, warnings/hard cuts, full galleries, timeline/maps/rating, detail dialog and sources, accommodation, backup/bonus content and bottom/footer clearance. Compared hierarchy and density with the read-only V1 reference. Supplementary full-gallery/accommodation/source screenshots and measured day-control bounds confirm responsive layouts.
+- Source audit found no trip/country/day/place-specific application branches, V1 table access, privileged browser credentials or legacy architecture. Canonical image hashes and served bytes remain unchanged. Protected schema, loader/cache, auth/history, SQL baseline and workflow have no diff; only POC files changed. Production and live Supabase remain untouched.
+- `git diff --check` passed. The unchanged POC-only workflow gates deployment on npm ci → build/typecheck → complete Playwright suite → Pages deployment. Its release CI/deployment result is verified after push. Step 10 is not started.
+
 ## Known limitations
 - No real published V2 trip data is seeded by this task, and no real account password was used. Remote loader/auth behavior is tested with the actual SDK and mocked network responses. No live DDL or advisor remediation is performed.
 - Cached private trip snapshots remain readable signed out in the same browser profile until cleared/evicted. Clear Offline Data UI, image caching, service worker and cold offline app-shell startup are later steps.
-- Home lists the two local fictional demos only. Real remote Home listing, real representative photo research/content migration and full itinerary/other trip content renderers are not implemented. Trip pages remain shared placeholders. No weather scoring/API, playback, Today Mode, checklist sync or Supabase preference sync. Home temporal statuses recalculate on render/visit; no continuous midnight update timer is added. Recent-use persistence is device/browser-local and cannot survive blocked storage.
+- Home lists the two local fictional demos only. Real remote Home listing and representative photo research/content migration are not implemented. Detailed Itinerary renders validated local/remote/cached snapshots; Trip Information, Attractions, Live Cam and Today remain shared placeholders. Demo maps/fees/bookings/sources are fictional testing data. No weather scoring/API, playback, Today Mode logic, checklist sync or Supabase preference sync. Home temporal statuses recalculate on render/visit; no continuous midnight update timer is added. Recent-use persistence is device/browser-local and cannot survive blocked storage.
 - Auth uses standard browser storage and default global logout scope; a failed server logout may still clear the local session, as documented in Step 5.
-- Build has non-blocking upstream Zod comment-annotation warnings and a ~623kB minified JS chunk (~183kB gzip). No warning threshold or test requirement was weakened.
-- Chromium viewport tests and Home visual review are not physical iPhone/Safari certification or parity for the still-unimplemented trip renderers. App-managed Back relies on session storage for reload continuity; blocked storage safely falls back Home after reload.
+- Build has non-blocking upstream Zod comment-annotation warnings and a ~646kB minified JS chunk (~190kB gzip). No warning threshold or test requirement was weakened.
+- Chromium viewport tests and Home/itinerary visual review are not physical iPhone/Safari certification or parity for the still-unimplemented trip renderers. App-managed Back relies on session storage for reload continuity; blocked storage safely falls back Home after reload.
 
 ## Next bounded task
-**Step 9/16 — Detailed Itinerary Engine** (not started)
+**Step 10/16 — Trip Information** (not started)
 
-Only when explicitly authorized: implement the generic Detailed Itinerary renderer using the existing validated snapshots and shared shell.
+Only when explicitly authorized: implement the generic Trip Information renderer using the existing validated snapshots and shared shell.
 
-Do not begin Step 9 in this release. Production must not be modified.
+Do not begin Step 10 in this release. Production must not be modified.

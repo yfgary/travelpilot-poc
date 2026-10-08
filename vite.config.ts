@@ -1,4 +1,4 @@
-import { copyFileSync, mkdirSync } from 'node:fs'
+import { copyFileSync, cpSync, mkdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -20,6 +20,7 @@ export default defineConfig({
             `${destination}/${filename}`,
           )
         }
+        cpSync(fileURLToPath(new URL('./assets/demo', import.meta.url)), `${options.dir}/assets/demo`, { recursive: true })
       },
     },
   ],

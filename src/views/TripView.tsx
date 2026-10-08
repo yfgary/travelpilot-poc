@@ -1,11 +1,11 @@
-import { useOutletContext, useParams } from 'react-router-dom'
-import type { TripSummary } from '../data/schema/trip'
+import { useParams } from 'react-router-dom'
+import { useLoadedTrip } from '../app/TripContext'
 import { PageHeading } from '../components/PageHeading'
 import { EmptyState } from '../components/ViewState'
 
 export function TripView({ title }: { title: string }) {
   const { tripSlug } = useParams<{ tripSlug: string }>()
-  const trip = useOutletContext<TripSummary>()
+  const { snapshot: { trip } } = useLoadedTrip()
   return (
     <section className="panel">
       <PageHeading title={title} description={`${trip.title}（${tripSlug}）`} />

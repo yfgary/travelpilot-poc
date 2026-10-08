@@ -12,7 +12,8 @@ export const roadTrip: TripSnapshot = {
     "summary": "純 POC 虛構資料：四天自駕連接山麓與高地，含自然步道、停車目標及備選活動。",
     "startDate": "2025-02-05",
     "endDate": "2025-02-08",
-    "timezone": "Etc/UTC"
+    "timezone": "Etc/UTC",
+    "introduction": "所有地點、時間、費用與預訂均為虛構 POC 測試資料；抽象圖片不代表任何真實目的地。"
   },
   "regions": [
     {
@@ -44,7 +45,11 @@ export const roadTrip: TripSnapshot = {
       "highlights": [
         "山麓集合"
       ],
-      "imageIds": [],
+      "imageIds": [
+        "road-image-1",
+        "road-image-2",
+        "road-image-3"
+      ],
       "accommodationId": "road-stay-low",
       "primaryWeatherRegionId": "road-weather-low",
       "constraints": [],
@@ -56,14 +61,20 @@ export const roadTrip: TripSnapshot = {
           "title": "自駕前往山麓",
           "optional": false,
           "transportId": "road-car",
-          "durationMinutes": 90
+          "durationMinutes": 90,
+          "startTime": "09:00",
+          "endTime": "10:30",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         },
         {
           "id": "road-stay-1",
           "type": "stay",
           "title": "入住山麓旅舍",
           "optional": false,
-          "accommodationId": "road-stay-low"
+          "accommodationId": "road-stay-low",
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         }
       ],
       "optionalContent": [],
@@ -78,11 +89,17 @@ export const roadTrip: TripSnapshot = {
       "highlights": [
         "自然步道"
       ],
-      "imageIds": [],
+      "imageIds": [
+        "road-image-1"
+      ],
       "accommodationId": "road-stay-low",
       "primaryWeatherRegionId": "road-weather-high",
-      "constraints": [],
-      "warnings": [],
+      "constraints": [
+        "示範限制：在標示時間前完成步道活動。"
+      ],
+      "warnings": [
+        "示範警告：活動前確認路況，這並非真實安全建議。"
+      ],
       "timeline": [
         {
           "id": "road-drive-2",
@@ -91,7 +108,10 @@ export const roadTrip: TripSnapshot = {
           "optional": false,
           "transportId": "road-car",
           "navigationTargetId": "road-parking",
-          "durationMinutes": 40
+          "durationMinutes": 40,
+          "startTime": "09:00",
+          "endTime": "09:40",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         },
         {
           "id": "road-trail-item",
@@ -101,10 +121,26 @@ export const roadTrip: TripSnapshot = {
           "placeId": "road-trail",
           "hardCutId": "road-return-cut",
           "durationMinutes": 120,
-          "warning": "示範：留意步道狀態。"
+          "warning": "示範：留意步道狀態。",
+          "startTime": "11:00",
+          "endTime": "13:00",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         }
       ],
-      "optionalContent": [],
+      "optionalContent": [
+        {
+          "type": "navigationTarget",
+          "id": "road-parking"
+        },
+        {
+          "type": "transport",
+          "id": "road-car"
+        },
+        {
+          "type": "hardCut",
+          "id": "road-return-cut"
+        }
+      ],
       "backupContent": [
         {
           "type": "place",
@@ -121,7 +157,10 @@ export const roadTrip: TripSnapshot = {
       "highlights": [
         "高地休息"
       ],
-      "imageIds": [],
+      "imageIds": [
+        "road-image-2",
+        "road-image-3"
+      ],
       "accommodationId": "road-stay-high",
       "primaryWeatherRegionId": "road-weather-high",
       "constraints": [],
@@ -133,7 +172,10 @@ export const roadTrip: TripSnapshot = {
           "title": "開車到高地",
           "optional": false,
           "transportId": "road-car",
-          "durationMinutes": 60
+          "durationMinutes": 60,
+          "startTime": "09:00",
+          "endTime": "10:00",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         },
         {
           "id": "road-backup-item",
@@ -141,14 +183,20 @@ export const roadTrip: TripSnapshot = {
           "title": "可選訪客中心",
           "placeId": "road-backup",
           "optional": true,
-          "bonus": true
+          "bonus": true,
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         },
         {
           "id": "road-break",
           "type": "break",
           "title": "休息及整理資料",
           "optional": false,
-          "durationMinutes": 30
+          "durationMinutes": 30,
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         }
       ],
       "optionalContent": [
@@ -179,7 +227,10 @@ export const roadTrip: TripSnapshot = {
           "type": "stay",
           "title": "退房",
           "optional": false,
-          "accommodationId": "road-stay-high"
+          "accommodationId": "road-stay-high",
+          "startTime": "09:00",
+          "endTime": "09:30",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         },
         {
           "id": "road-drive-4",
@@ -187,7 +238,16 @@ export const roadTrip: TripSnapshot = {
           "title": "自駕回程",
           "optional": false,
           "transportId": "road-car",
-          "durationMinutes": 90
+          "durationMinutes": 90,
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
+        },
+        {
+          "id": "road-review-item",
+          "type": "other",
+          "title": "整理示範旅程筆記",
+          "description": "記錄虛構旅程的體驗。",
+          "optional": false,
+          "durationMinutes": 15
         }
       ],
       "optionalContent": [],
@@ -205,7 +265,34 @@ export const roadTrip: TripSnapshot = {
       "activityProfileIds": [
         "road-outdoor"
       ],
-      "sourceIds": []
+      "sourceIds": [
+        "road-source"
+      ],
+      "longDescription": "這是為測試旅程管家內容呈現而設的虛構場所；不代表真實營運資訊。",
+      "whyVisit": "透過示範內容了解如何安排一段有節奏的旅程。",
+      "history": "虛構背景：由社區創作小組構思的測試展示。",
+      "localImportance": "示範如何呈現場所與周邊社區的關係。",
+      "whatToSee": [
+        "留意抽象展示的色彩與線條。",
+        "閱讀虛構內容的說明。"
+      ],
+      "takeaway": "旅程資訊應由同一份結構化資料提供。",
+      "suggestedDurationMinutes": 120,
+      "opening": "09:00",
+      "lastEntry": "16:30",
+      "closing": "17:00",
+      "fee": {
+        "amount": 12,
+        "currency": "USD",
+        "notes": "虛構 POC 費用"
+      },
+      "feeNotes": "此金額並非真實門票。",
+      "rating": 8.6,
+      "coordinates": {
+        "latitude": 11,
+        "longitude": 11
+      },
+      "officialURL": "https://example.invalid/road-place"
     },
     {
       "id": "road-backup",
@@ -217,7 +304,11 @@ export const roadTrip: TripSnapshot = {
       "activityProfileIds": [
         "road-sheltered"
       ],
-      "sourceIds": []
+      "sourceIds": [],
+      "rating": 7.8,
+      "suggestedDurationMinutes": 60,
+      "whyVisit": "虛構備用活動，適合示範替代方案。",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=10%2C10"
     }
   ],
   "accommodations": [
@@ -231,8 +322,31 @@ export const roadTrip: TripSnapshot = {
       "mealPlan": "示範早餐",
       "bookingState": "示範已確認",
       "notes": [
-        "純 POC 虛構資料，並非真實預訂。"
-      ]
+        "純 POC 虛構資料，並非真實預訂。",
+        "示範入住時間與地圖僅供介面測試。"
+      ],
+      "address": "虛構示範地址（非真實住宿）",
+      "phone": "+000 000 0000",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=11%2C11",
+      "checkIn": "15:00",
+      "checkOut": "11:00",
+      "paymentState": "示範部分已付",
+      "total": {
+        "amount": 240,
+        "currency": "EUR",
+        "notes": "虛構房費"
+      },
+      "paid": {
+        "amount": 100,
+        "currency": "EUR"
+      },
+      "arrivalPayment": {
+        "amount": 140,
+        "currency": "EUR",
+        "notes": "示範到店支付"
+      },
+      "cancellation": "示範入住日前三天可取消；非真實條款。",
+      "parking": "示範住宿停車位，請先查詢虛構預約安排。"
     },
     {
       "id": "road-stay-high",
@@ -244,8 +358,31 @@ export const roadTrip: TripSnapshot = {
       "mealPlan": "示範早餐",
       "bookingState": "示範已確認",
       "notes": [
-        "純 POC 虛構資料，並非真實預訂。"
-      ]
+        "純 POC 虛構資料，並非真實預訂。",
+        "示範入住時間與地圖僅供介面測試。"
+      ],
+      "address": "虛構示範地址（非真實住宿）",
+      "phone": "+000 000 0000",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=11%2C11",
+      "checkIn": "15:00",
+      "checkOut": "11:00",
+      "paymentState": "示範部分已付",
+      "total": {
+        "amount": 300,
+        "currency": "EUR",
+        "notes": "虛構房費"
+      },
+      "paid": {
+        "amount": 100,
+        "currency": "EUR"
+      },
+      "arrivalPayment": {
+        "amount": 200,
+        "currency": "EUR",
+        "notes": "示範到店支付"
+      },
+      "cancellation": "示範入住日前三天可取消；非真實條款。",
+      "parking": "示範住宿停車位，請先查詢虛構預約安排。"
     }
   ],
   "transport": [
@@ -257,8 +394,15 @@ export const roadTrip: TripSnapshot = {
       "navigationTargetIds": [
         "road-parking"
       ],
-      "notes": [],
-      "warnings": []
+      "notes": [
+        "此為虛構交通資料。"
+      ],
+      "warnings": [
+        "示範：出發前確認路線。"
+      ],
+      "provider": "虛構自駕示範服務",
+      "service": "示範車輛",
+      "bookingState": "示範已確認"
     }
   ],
   "navigationTargets": [
@@ -270,7 +414,10 @@ export const roadTrip: TripSnapshot = {
       "coordinates": {
         "latitude": 11,
         "longitude": 11
-      }
+      },
+      "mapQuery": "POC fictional parking",
+      "description": "虛構停車導航目標。",
+      "warning": "測試地點，並非真實停車資訊。"
     }
   ],
   "hardCuts": [
@@ -408,6 +555,40 @@ export const roadTrip: TripSnapshot = {
       "sourceURL": "https://example.invalid/road-cam"
     }
   ],
-  "images": [],
-  "sources": []
+  "images": [
+    {
+      "id": "road-image-1",
+      "url": "assets/demo/flow.svg",
+      "alt": "非目的地 POC 抽象插圖：流動線條",
+      "attribution": "TravelPilot POC 原創抽象示意",
+      "licenseNote": "本專案測試插圖"
+    },
+    {
+      "id": "road-image-2",
+      "url": "assets/demo/forms.svg",
+      "alt": "非目的地 POC 抽象插圖：幾何形狀",
+      "attribution": "TravelPilot POC 原創抽象示意",
+      "licenseNote": "本專案測試插圖"
+    },
+    {
+      "id": "road-image-3",
+      "url": "assets/demo/orbit.svg",
+      "alt": "非目的地 POC 抽象插圖：環形軌跡",
+      "attribution": "TravelPilot POC 原創抽象示意",
+      "licenseNote": "本專案測試插圖"
+    }
+  ],
+  "sources": [
+    {
+      "id": "road-source",
+      "title": "虛構 POC 資料來源",
+      "url": "https://example.invalid/road-source",
+      "type": "test",
+      "checkedAt": "2026-10-08T00:00:00Z",
+      "entity": {
+        "type": "place",
+        "id": "road-trail"
+      }
+    }
+  ]
 }

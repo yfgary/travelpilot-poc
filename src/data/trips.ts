@@ -4,7 +4,7 @@ import { roadTrip } from './demoTrips/roadTrip'
 // Deliberately completed-before-upcoming: Home must sort instead of using fixture order.
 // Adding a fixture means adding a data record; the shared loader validates each by slug.
 export const localTrips = [
-  { payload: roadTrip, dataVersion: 'demo.road.1' },
-  { payload: cityTrip, dataVersion: 'demo.city.1' },
+  { payload: roadTrip, dataVersion: 'demo.road.2' },
+  { payload: cityTrip, dataVersion: 'demo.city.2' },
 ]
 export const trips = localTrips.map(({ payload }) => payload.trip)

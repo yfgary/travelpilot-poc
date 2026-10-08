@@ -44,6 +44,6 @@ export function TripLayout() {
       {result.source === 'cache' && <p className="muted">正在使用此裝置已儲存的旅程資料。</p>}
       <PageNavigation tripSlug={trip.slug} />
     </section>
-    <Outlet context={trip} />
+    <Outlet key={`${trip.id}:${result.dataVersion}`} context={result} />
   </>
 }

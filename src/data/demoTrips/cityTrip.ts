@@ -12,7 +12,8 @@ export const cityTrip: TripSnapshot = {
     "summary": "純 POC 虛構資料：三天以步行及公共交通探索室內展館、餐廳與商店。",
     "startDate": "2030-04-12",
     "endDate": "2030-04-14",
-    "timezone": "Etc/UTC"
+    "timezone": "Etc/UTC",
+    "introduction": "所有地點、時間、費用與預訂均為虛構 POC 測試資料；抽象圖片不代表任何真實目的地。"
   },
   "regions": [
     {
@@ -35,7 +36,11 @@ export const cityTrip: TripSnapshot = {
       "highlights": [
         "展館與街區"
       ],
-      "imageIds": [],
+      "imageIds": [
+        "city-image-1",
+        "city-image-2",
+        "city-image-3"
+      ],
       "accommodationId": "city-stay",
       "primaryWeatherRegionId": "city-weather",
       "constraints": [],
@@ -47,7 +52,10 @@ export const cityTrip: TripSnapshot = {
           "title": "搭乘示範列車",
           "optional": false,
           "transportId": "city-train",
-          "durationMinutes": 20
+          "durationMinutes": 20,
+          "startTime": "09:00",
+          "endTime": "09:20",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         },
         {
           "id": "city-gallery-item",
@@ -55,14 +63,20 @@ export const cityTrip: TripSnapshot = {
           "title": "探索室內展館",
           "optional": false,
           "placeId": "city-gallery",
-          "durationMinutes": 90
+          "durationMinutes": 90,
+          "startTime": "11:00",
+          "endTime": "12:30",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         },
         {
           "id": "city-checkin-item",
           "type": "stay",
           "title": "入住都會旅館",
           "optional": false,
-          "accommodationId": "city-stay"
+          "accommodationId": "city-stay",
+          "startTime": "13:00",
+          "endTime": "13:30",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         }
       ],
       "optionalContent": [],
@@ -77,7 +91,9 @@ export const cityTrip: TripSnapshot = {
       "highlights": [
         "餐飲與購物"
       ],
-      "imageIds": [],
+      "imageIds": [
+        "city-image-1"
+      ],
       "accommodationId": "city-stay",
       "primaryWeatherRegionId": "city-weather",
       "constraints": [],
@@ -89,7 +105,10 @@ export const cityTrip: TripSnapshot = {
           "title": "街區步行",
           "optional": false,
           "transportId": "city-walk",
-          "durationMinutes": 15
+          "durationMinutes": 15,
+          "startTime": "09:00",
+          "endTime": "09:15",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         },
         {
           "id": "city-meal-item",
@@ -97,7 +116,10 @@ export const cityTrip: TripSnapshot = {
           "title": "示範午餐",
           "optional": false,
           "placeId": "city-food",
-          "durationMinutes": 60
+          "durationMinutes": 60,
+          "startTime": "11:00",
+          "endTime": "12:00",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         },
         {
           "id": "city-shopping-item",
@@ -105,7 +127,10 @@ export const cityTrip: TripSnapshot = {
           "title": "探索商店",
           "optional": false,
           "placeId": "city-shop",
-          "durationMinutes": 45
+          "durationMinutes": 45,
+          "startTime": "13:00",
+          "endTime": "13:45",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         }
       ],
       "optionalContent": [],
@@ -131,7 +156,10 @@ export const cityTrip: TripSnapshot = {
           "type": "stay",
           "title": "退房",
           "optional": false,
-          "accommodationId": "city-stay"
+          "accommodationId": "city-stay",
+          "startTime": "09:00",
+          "endTime": "09:30",
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
         },
         {
           "id": "city-return-item",
@@ -139,7 +167,16 @@ export const cityTrip: TripSnapshot = {
           "title": "公共交通回程",
           "optional": false,
           "transportId": "city-train",
-          "durationMinutes": 20
+          "durationMinutes": 20,
+          "description": "虛構示範安排，請勿作為真實旅程指引。"
+        },
+        {
+          "id": "city-review-item",
+          "type": "other",
+          "title": "整理示範旅程筆記",
+          "description": "記錄虛構旅程的體驗。",
+          "optional": false,
+          "durationMinutes": 15
         }
       ],
       "optionalContent": [],
@@ -157,7 +194,35 @@ export const cityTrip: TripSnapshot = {
       "activityProfileIds": [
         "city-indoor"
       ],
-      "sourceIds": []
+      "sourceIds": [
+        "city-source"
+      ],
+      "longDescription": "這是為測試旅程管家內容呈現而設的虛構場所；不代表真實營運資訊。",
+      "whyVisit": "透過示範內容了解如何安排一段有節奏的旅程。",
+      "history": "虛構背景：由社區創作小組構思的測試展示。",
+      "localImportance": "示範如何呈現場所與周邊社區的關係。",
+      "whatToSee": [
+        "留意抽象展示的色彩與線條。",
+        "閱讀虛構內容的說明。"
+      ],
+      "takeaway": "旅程資訊應由同一份結構化資料提供。",
+      "suggestedDurationMinutes": 90,
+      "opening": "09:00",
+      "lastEntry": "16:30",
+      "closing": "17:00",
+      "fee": {
+        "amount": 40,
+        "currency": "HKD",
+        "notes": "虛構 POC 費用"
+      },
+      "feeNotes": "此金額並非真實門票。",
+      "rating": 9.2,
+      "coordinates": {
+        "latitude": 0,
+        "longitude": 0
+      },
+      "officialURL": "https://example.invalid/city-place",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=0%2C0"
     },
     {
       "id": "city-food",
@@ -169,7 +234,12 @@ export const cityTrip: TripSnapshot = {
       "activityProfileIds": [
         "city-indoor"
       ],
-      "sourceIds": []
+      "sourceIds": [],
+      "coordinates": {
+        "latitude": 0,
+        "longitude": 0
+      },
+      "suggestedDurationMinutes": 60
     },
     {
       "id": "city-shop",
@@ -195,8 +265,14 @@ export const cityTrip: TripSnapshot = {
       "mealPlan": "示範早餐",
       "bookingState": "示範已確認",
       "notes": [
-        "純 POC 虛構資料，並非真實預訂。"
-      ]
+        "純 POC 虛構資料，並非真實預訂。",
+        "示範入住時間與地圖僅供介面測試。"
+      ],
+      "address": "虛構示範地址（非真實住宿）",
+      "phone": "+000 000 0000",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=0%2C0",
+      "checkIn": "15:00",
+      "checkOut": "11:00"
     }
   ],
   "transport": [
@@ -288,6 +364,40 @@ export const cityTrip: TripSnapshot = {
     "operationNotes": []
   },
   "liveCams": [],
-  "images": [],
-  "sources": []
+  "images": [
+    {
+      "id": "city-image-1",
+      "url": "assets/demo/flow.svg",
+      "alt": "非目的地 POC 抽象插圖：流動線條",
+      "attribution": "TravelPilot POC 原創抽象示意",
+      "licenseNote": "本專案測試插圖"
+    },
+    {
+      "id": "city-image-2",
+      "url": "assets/demo/forms.svg",
+      "alt": "非目的地 POC 抽象插圖：幾何形狀",
+      "attribution": "TravelPilot POC 原創抽象示意",
+      "licenseNote": "本專案測試插圖"
+    },
+    {
+      "id": "city-image-3",
+      "url": "assets/demo/orbit.svg",
+      "alt": "非目的地 POC 抽象插圖：環形軌跡",
+      "attribution": "TravelPilot POC 原創抽象示意",
+      "licenseNote": "本專案測試插圖"
+    }
+  ],
+  "sources": [
+    {
+      "id": "city-source",
+      "title": "虛構 POC 資料來源",
+      "url": "https://example.invalid/city-source",
+      "type": "test",
+      "checkedAt": "2026-10-08T00:00:00Z",
+      "entity": {
+        "type": "place",
+        "id": "city-gallery"
+      }
+    }
+  ]
 }

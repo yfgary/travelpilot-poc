@@ -38,7 +38,7 @@ test('authenticated remote read is owner-scoped and requires current published v
   await expect(dataSource(page)).toHaveText('POC 資料來源：remote')
   await expect(page.locator('.trip-heading h2')).toHaveText('通用遠端測試旅程')
   await expect(page.getByTestId('trip-versions')).toHaveText('Trip Data Version：content.1 · Trip Schema Version：1')
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.9')
+  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.10')
   expect(requests).toEqual(['/rest/v1/v2_trips', '/rest/v1/v2_trip_versions'])
   const cached = await cacheContents(page)
   expect(cached.versions).toHaveLength(1)
@@ -188,7 +188,7 @@ test('signed-out uncached trip requests authentication, while demo requires no S
   await expect(page.getByText('請先登入，以讀取帳戶旅程。此裝置尚未儲存這個旅程。')).toBeVisible()
   await page.goto('#/trip/demo-trip/itinerary')
   await expect(dataSource(page)).toContainText('demo')
-  await expect(page.getByTestId('trip-versions')).toContainText('demo.city.1')
+  await expect(page.getByTestId('trip-versions')).toContainText('demo.city.2')
   expect(requests).toBe(0)
 })
 

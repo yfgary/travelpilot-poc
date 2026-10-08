@@ -4,6 +4,7 @@ import { Home } from '../views/Home'
 import { Settings } from '../views/Settings'
 import { TripLayout } from '../views/TripLayout'
 import { TripView } from '../views/TripView'
+import { DetailedItinerary } from '../views/DetailedItinerary'
 import { pages, tripPages } from './pages'
 import { PreferencesProvider } from './Preferences'
 import { AuthProvider } from '../auth/AuthProvider'
@@ -22,7 +23,7 @@ export function App() {
                 <Route path={pages.find((page) => page.id === 'settings')!.path} element={<Settings />} />
                 <Route path="trip/:tripSlug" element={<TripLayout />}>
                   {tripPages.map((view) => (
-                    <Route key={view.path} path={view.path} element={<TripView title={view.title} />} />
+                    <Route key={view.path} path={view.path} element={view.id === 'itinerary' ? <DetailedItinerary /> : <TripView title={view.title} />} />
                   ))}
                 </Route>
                 <Route path="*" element={<NotFound />} />
