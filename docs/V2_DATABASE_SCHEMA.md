@@ -61,7 +61,7 @@ Illustrative top-level shape:
 
 ```json
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "trip": {},
   "regions": [],
   "days": [],
@@ -74,11 +74,14 @@ Illustrative top-level shape:
   "weather": {},
   "liveCams": [],
   "images": [],
-  "sources": []
+  "sources": [],
+  "emergency": { "contacts": [], "notes": [] }
 }
 ```
 
-The canonical Step 6 contract is `src/data/schema/trip.ts`, with `TRIP_SCHEMA_VERSION = 1`. Types are inferred from the Zod runtime schema; there is no separate snapshot interface. Dates use ISO calendar dates, times use HH:MM and datetimes include a UTC/offset zone. Durations are minutes, monetary values carry a three-letter currency, and all entity IDs (including timeline/checklist groups/items) are unique across a snapshot. Live Cam route relationships use routeDayId; group is a display label. Arrays preserve timeline order; checklist groups/items additionally carry order values.
+The canonical runtime contract is `src/data/schema/trip.ts`. Step 10 sets `CURRENT_TRIP_SCHEMA_VERSION = 2` (also `TRIP_SCHEMA_VERSION`) and supports versions 1 and 2. Types are inferred from the shared Zod runtime definitions; there is no separate snapshot interface. Schema 1's original strict contract remains readable and omits emergency; Schema 2 adds generic emergency information. Dates use ISO calendar dates, times use HH:MM and datetimes include a UTC/offset zone. Durations are minutes, monetary values carry a three-letter currency, and all entity IDs (including emergency contacts, timeline/checklist groups/items) are unique across a snapshot. Live Cam route relationships use routeDayId; group is a display label. Arrays preserve timeline order; checklist groups/items additionally carry order values.
+
+Schema 2 emergency contacts include category, title, optional phone/HTTP(S) URL/region/context, availability, description, notes and canonical source IDs. `emergencyContact` is a supported Schema 2 entity reference. The existing JSONB payload and positive integer schema_version need **no live DDL or data changes**. Remote row/payload versions must match. IndexedDB retains storage version 1 and its existing stores/keys; Schema 1 and 2 snapshots retain their actual metadata and are never rewritten/deleted merely on read. Invalid updates cannot overwrite a valid cache. All V1 tables and the unapplied SQL baseline remain unchanged.
 
 ## Required generic content concepts
 

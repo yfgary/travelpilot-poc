@@ -1,10 +1,11 @@
 import type { Page } from '@playwright/test'
-import { localTrips } from '../src/data/trips'
+import { legacyRoad } from './legacySnapshots'
+import type { TripSnapshot } from '../src/data/schema/trip'
 import { storageKey, fakeSession, testUser, supabaseOrigin } from './fixtures'
 export const remoteId = '00000000-0000-4000-8000-000000000002'
 export const remoteSlug = 'sample-journey'
-export function remoteSnapshot() {
-  const snapshot = structuredClone(localTrips[0].payload)
+export function remoteSnapshot(): TripSnapshot {
+  const snapshot = structuredClone(legacyRoad)
   snapshot.trip = { ...snapshot.trip, id: remoteId, slug: remoteSlug, title: '通用遠端測試旅程' }
   return snapshot
 }
@@ -19,7 +20,7 @@ export async function seedAuth(page: Page) {
     }
   }, { key: storageKey, session: fakeSession() })
 }
-export async function mockRemote(page: Page, getVersion = remoteVersion) {
+export async function mockRemote(page: Page, getVersion: () => Omit<ReturnType<typeof remoteVersion>, 'payload'> & { payload: unknown } = remoteVersion) {
   await page.route(`${supabaseOrigin}/rest/v1/v2_trips**`, (route) => route.fulfill({ json: [{ id: remoteId, slug: remoteSlug, owner_id: testUser.id }] }))
   await page.route(`${supabaseOrigin}/rest/v1/v2_trip_versions**`, (route) => route.fulfill({ json: [getVersion()] }))
 }

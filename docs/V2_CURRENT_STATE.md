@@ -3,9 +3,15 @@
 Last updated: 08/10/2026
 
 ## Progress
-**Step 9/16 — Detailed Itinerary Engine: COMPLETE**
+**Step 10/16 — Trip Information: COMPLETE**
 
-Next: **Step 10/16 — Trip Information**
+Current App Version: **v2.0.0-poc.11** (canonical source: package.json)
+
+Current Trip Schema Version: **2**; supported readers: **1 and 2**.
+
+Local Trip Data Versions: **demo.city.3** / **demo.road.3**.
+
+Next: **Step 11/16 — Settings + Checklist Local-First Sync**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -32,7 +38,7 @@ Next: **Step 10/16 — Trip Information**
 ## Not started
 - Full V2 feature implementation (foundation and shared visual shell complete)
 - Complete PWA/offline implementation (manifest and versioned snapshot cache foundations are complete)
-- Remaining trip content renderers (the generic Detailed Itinerary renderer is complete; the other four trip views remain placeholders)
+- Remaining trip content renderers (generic Detailed Itinerary and Trip Information are complete; Attractions, Live Cam and Today remain placeholders)
 - Complete V1 UI parity across trip pages (shared responsive shell and Home parity are complete)
 - weather engine
 - suitability engine
@@ -57,7 +63,7 @@ Next: **Step 10/16 — Trip Information**
 - Step 8 implementation was unstarted at this documentation release; the implementation release below is `v2.0.0-poc.9`.
 
 ## Next step
-Step 9 passed the Detailed Itinerary gate while preserving the Step 7 multi-trip architecture and Step 8 Home. Next is **Step 10/16 — Trip Information**, only when explicitly authorized. Step 10 has not begun. Real trip migration remains outside this release.
+Step 10 passed the Trip Information gate while preserving Step 9 Detailed Itinerary, the Step 7 multi-trip architecture and Step 8 Home. Next is **Step 11/16 — Settings + Checklist Local-First Sync**, only when explicitly authorized. Step 11 has not begun. Real trip migration remains outside this release.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -256,17 +262,43 @@ All Step 3 acceptance criteria passed:
 - Source audit found no trip/country/day/place-specific application branches, V1 table access, privileged browser credentials or legacy architecture. Canonical image hashes and served bytes remain unchanged. Protected schema, loader/cache, auth/history, SQL baseline and workflow have no diff; only POC files changed. Production and live Supabase remain untouched.
 - `git diff --check` passed. The unchanged POC-only workflow gates deployment on npm ci → build/typecheck → complete Playwright suite → Pages deployment. Its release CI/deployment result is verified after push. Step 10 is not started.
 
+## Step 10 completed Trip Information / compatible Schema 2
+**STEP 10 TRIP INFORMATION GATE: PASS**
+
+- App Version **v2.0.0-poc.11** comes from canonical package.json with consistent lockfile/test expectations. Fictional city/road Trip Data Versions are **demo.city.3** / **demo.road.3**. Current Trip Schema Version is **2**, with supported versions **1 and 2**; the three version concepts remain separate.
+- Production V1 `trip-info.html`, `assets/multi-trip-trip-info-renderer-v1.js`, `trips/_template/trip-info.example.json`, and the reference trip's `trip-info.json`, `hotels.json` and `departure-checklist.json` were inspected read-only. Reimplemented its section hierarchy, sticky quick navigation, compact practical cards, hotel fact groups, parking warnings, Hard Cut overview, checklist grouping and prominent emergency phones in React/TypeScript. No legacy JavaScript/storage keys, destination behavior or real trip content was copied.
+- Dedicated `TripInformation` consumes the full typed snapshot from the existing Outlet context. TripLayout remains the sole loadTrip boundary; child sections perform no Supabase/IndexedDB reads. Other three trip views remain placeholders. Home, Settings/Auth, Back/history and Detailed Itinerary behavior/styles remain unchanged; shared entity cards gain opt-in timing/heading presentation only.
+- Available canonical records drive both sections and quick navigation: non-car **主要交通**, car **租車／自駕**, all **住宿酒店**, grouped **導航／泊車**, chronological **全程重要 Hard Cut**, read-only **Checklist 定義**, and **當地緊急資料**. Missing sections are absent. Shared accommodation/transport/navigation/hard-cut cards, facts, notes, Maps, safe external links and money/duration formatters are reused without parallel datasets.
+- Transport departure/arrival use DD/MM/YYYY 星期X HH:MM in the trip timezone. Accommodation exposes available room/stay/payment/practical facts. Navigation groups distinguish parking/entrance/station/pickup/dropoff/other and show the related place separately from the actual target. Hard Cuts sort actual datetimes and linked day/date/time, with deterministic ID fallback and canonical source links.
+- Checklist lists/groups/items sort copied arrays by order with stable ID ties. Their labels/notes are read-only definitions: no functional checkboxes, saved/ticked states, reset controls, checklist localStorage/IndexedDB state or v2_checklist_state calls. Functional state/sync remains Step 11; weather remains Step 12.
+- Schema 1 retains the strict Step 9 contract. Schema 2 extends shared Zod definitions and the single cross-reference validator with generic emergency contacts and emergencyContact entity references. IDs remain globally unique; regions/sources/entities and HTTP(S) URLs are validated. Central getEmergencyInfo handles version access; Schema 1 simply omits emergency. Remote row/payload schemas must match; actual source versions are retained, and future formats are rejected cleanly.
+- Both Schema 2 fictional demos exercise generic emergency categories/regions/availability/notes/source links. Prominent phones and optional safe tel actions come only from data. Dummy contacts/numbers are explicitly marked fictional, not real emergency information. City retains its optional car/navigation/Hard Cut absence; road exercises self-drive, parking, rich accommodations, Hard Cut, multiple checklist definitions and roadside support. No trip/country/day/place branches.
+- IndexedDB remains **travelpilot-v2-trips**, physical storage version **1**, with unchanged stores/keys/pointers. Existing Schema 1 records read without rewriting, deleting or migration. Schema 1/2 versions coexist; invalid or unavailable updates retain/fall back to valid cache. Logout retention and owner/device scopes are unchanged.
+- No live Supabase DDL/data changes are required or performed: v2_trip_versions already stores JSONB and a positive integer schema_version. V1 tables, source-controlled SQL baseline, POC workflow and canonical banner/icon are untouched. Production was read-only; no real trip migration, checklist state/sync, weather or Step 11 implementation.
+
+## Step 10 verification
+- `npm ci --cache work/npm-cache` succeeded (**90 packages**), using the ignored workspace cache because the sandbox cannot write the default home cache. No dependencies were added or changed.
+- `npm run build` passed, including strict application/tool/test TypeScript checks.
+- Complete Playwright suite against the final production build: **740 passed** at **320px, 390px, 430px, 1024px and 1440px**. All **580** previous cases are retained with release/data/schema expectations and the dedicated info-route assertion updated; **160** additional cases cover Schema 1/2 compatibility and Trip Information across five widths. Existing remote/cache regression fixtures retain the exact archived Schema 1 payloads rather than silently becoming Schema 2.
+- Frozen city/road payloads in tests/fixtures/schema1-*.json match the Step 9 commit **71a603e** exactly. A manually seeded pre-Step-10 IndexedDB record uses the original physical format, renders itinerary/info signed out/offline, retains Schema 1, omits emergency and remains unchanged after reload. Tests verify zero writes on cache read, physical DB version 1, Schema 1/2 coexistence, actual source metadata, invalid-update fallback and mismatch rejection without deletion.
+- Actual SDK network boundaries are mocked for Schema 1 and 2 remote responses, both row/payload mismatches and future version 3. No real password, live test writes or child data loads. Existing owner-scoped multi-trip isolation, current/published queries, offline fallback, logout retention, Home, Settings/auth and exact-trip Settings/Back regression tests pass.
+- Tests cover both data-driven renderers; all generic transport types/zoned times; conditional payment/Maps/warnings; rich/minimal hotels; all six navigation-target categories and place distinction; Hard Cut chronology/context/sources; non-mutating ordered checklist definitions with no state writes; generic emergency categories/optional fields/safe phones/regions/sources; and section absence for minimal content.
+- All three font settings work across all five widths, including **320px + Large**. No horizontal body/main/card overflow; long operator names/warnings/contact data wrap; actions retain practical 44px targets, quick-nav jumps keep headings below the sticky nav, and bottom content clears the persistent ONLINE/OFFLINE + App Version footer.
+- Responsive screenshots generated and visually inspected for **390px city/road**, **1440px city/road** and **320px Large-font road**. Reviewed headings/quick nav, transport/self-drive, accommodation facts/payment, navigation/parking and Maps, Hard Cuts, read-only checklist groups, emergency contacts/phones/sources, long-warning stress data and bottom/status clearance. Hierarchy/density follows the read-only V1 reference and existing TravelPilot family; no pixel-perfect or physical Safari claim.
+- Source/build audits verify no destination-specific branches, V1 table access, privileged credentials, legacy patch architecture, default emergency numbers or checklist-state storage. Canonical branding source/served bytes remain identical. Protected Home/Settings/auth/history/itinerary stylesheet/view, SQL baseline and workflow have no diff.
+- `git diff --check` passed. The unchanged POC-only workflow gates npm ci → build/typecheck → complete Playwright → Pages deployment. The pushed release's CI/deployment result is verified after push. Step 11 is not started.
+
 ## Known limitations
 - No real published V2 trip data is seeded by this task, and no real account password was used. Remote loader/auth behavior is tested with the actual SDK and mocked network responses. No live DDL or advisor remediation is performed.
 - Cached private trip snapshots remain readable signed out in the same browser profile until cleared/evicted. Clear Offline Data UI, image caching, service worker and cold offline app-shell startup are later steps.
-- Home lists the two local fictional demos only. Real remote Home listing and representative photo research/content migration are not implemented. Detailed Itinerary renders validated local/remote/cached snapshots; Trip Information, Attractions, Live Cam and Today remain shared placeholders. Demo maps/fees/bookings/sources are fictional testing data. No weather scoring/API, playback, Today Mode logic, checklist sync or Supabase preference sync. Home temporal statuses recalculate on render/visit; no continuous midnight update timer is added. Recent-use persistence is device/browser-local and cannot survive blocked storage.
+- Home lists the two local fictional demos only. Real remote Home listing and representative photo research/content migration are not implemented. Detailed Itinerary and Trip Information render validated local/remote/cached snapshots; Attractions, Live Cam and Today remain shared placeholders. Demo maps/fees/bookings/emergency phones/services/sources are fictional testing data, not real travel or emergency guidance. Checklist definitions are read-only; functional checklist state/sync starts in Step 11. No weather scoring/API, playback, Today Mode logic or Supabase preference sync. Home temporal statuses recalculate on render/visit; no continuous midnight update timer is added. Recent-use persistence is device/browser-local and cannot survive blocked storage.
 - Auth uses standard browser storage and default global logout scope; a failed server logout may still clear the local session, as documented in Step 5.
-- Build has non-blocking upstream Zod comment-annotation warnings and a ~646kB minified JS chunk (~190kB gzip). No warning threshold or test requirement was weakened.
-- Chromium viewport tests and Home/itinerary visual review are not physical iPhone/Safari certification or parity for the still-unimplemented trip renderers. App-managed Back relies on session storage for reload continuity; blocked storage safely falls back Home after reload.
+- Build has non-blocking upstream Zod comment-annotation warnings and a ~660kB minified JS chunk (~193kB gzip). No warning threshold or test requirement was weakened.
+- Chromium viewport tests and Home/itinerary/Trip Information visual review are not physical iPhone/Safari certification or parity for the still-unimplemented trip renderers. App-managed Back relies on session storage for reload continuity; blocked storage safely falls back Home after reload.
 
 ## Next bounded task
-**Step 10/16 — Trip Information** (not started)
+**Step 11/16 — Settings + Checklist Local-First Sync** (not started)
 
-Only when explicitly authorized: implement the generic Trip Information renderer using the existing validated snapshots and shared shell.
+Only when explicitly authorized: implement generic Settings improvements and local-first checklist state with Supabase sync, using the existing validated definitions and shared shell.
 
-Do not begin Step 10 in this release. Production must not be modified.
+Do not begin Step 11 in this release. Production must not be modified.

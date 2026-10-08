@@ -107,3 +107,12 @@ Repository-relative canonical paths:
 
 ## 2026-10-08 — Retain offline snapshots after logout
 **Decision:** Validated offline trip snapshots remain local device data after logout and are readable signed out/offline in that browser profile. Clearing is explicit in a future Settings control; browser storage removal/eviction may also remove them. Signed-in fallback uses owner-scoped pointers so switching accounts does not silently return another account's cached trip. Remote ownership remains enforced by Supabase RLS. App Version, Trip Data Version and Trip Schema Version remain separate.
+
+## 2026-10-08 — Schema 2 emergency information with Schema 1 compatibility
+**Decision:** Current Trip Schema Version is 2; supported versions are 1 and 2. Schema 1 retains its original strict contract. Schema 2 adds one generic emergency-information model with globally stable contact IDs, generic categories, optional phone/HTTP(S) URL/region/context and canonical source references. Shared common definitions and cross-reference validation avoid competing contracts.
+
+**Compatibility:** Remote row/payload versions must match. LoadedTrip and cached records retain their actual source schema version. Existing Schema 1 IndexedDB snapshots remain readable without rewriting, migration, deletion or a database-name/storage-version change; Schema 2 records may coexist safely. Unsupported future formats remain clean errors and cannot replace valid offline data.
+
+**Database:** No live schema change is required because published trip payloads remain JSONB. No Supabase DDL, V1 table changes or browser publishing is performed.
+
+**Step boundary:** Trip Information reuses canonical transport/accommodation/navigation/hard-cut/checklist/source data. Step 10 renders checklist definitions only; local-first state/sync belongs to Step 11 and weather belongs to Step 12.

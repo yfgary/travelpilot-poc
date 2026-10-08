@@ -38,7 +38,7 @@ test('authenticated remote read is owner-scoped and requires current published v
   await expect(dataSource(page)).toHaveText('POC 資料來源：remote')
   await expect(page.locator('.trip-heading h2')).toHaveText('通用遠端測試旅程')
   await expect(page.getByTestId('trip-versions')).toHaveText('Trip Data Version：content.1 · Trip Schema Version：1')
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.10')
+  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.11')
   expect(requests).toEqual(['/rest/v1/v2_trips', '/rest/v1/v2_trip_versions'])
   const cached = await cacheContents(page)
   expect(cached.versions).toHaveLength(1)
@@ -150,8 +150,8 @@ test('unavailable remote with no cache gives generic state, still showing shared
 })
 
 const invalidCases: [string, (version: ReturnType<typeof remoteVersion>) => void, string][] = [
-  ['unsupported row schema', (v) => { v.schema_version = 2 }, '未支援此旅程資料格式'],
-  ['unsupported payload schema', (v) => { v.payload.schemaVersion = 2 as 1 }, '未支援此旅程資料格式'],
+  ['unsupported row schema', (v) => { v.schema_version = 3 }, '未支援此旅程資料格式'],
+  ['unsupported payload schema', (v) => { v.payload.schemaVersion = 3 as 1 }, '未支援此旅程資料格式'],
   ['slug mismatch', (v) => { v.payload.trip.slug = 'wrong-slug' }, '旅程資料未能通過驗證'],
   ['trip ID mismatch', (v) => { v.payload.trip.id = 'wrong-id' }, '旅程資料未能通過驗證'],
   ['version trip ID mismatch', (v) => { v.trip_id = '00000000-0000-4000-8000-000000000004' }, '旅程資料未能通過驗證'],
@@ -188,7 +188,7 @@ test('signed-out uncached trip requests authentication, while demo requires no S
   await expect(page.getByText('請先登入，以讀取帳戶旅程。此裝置尚未儲存這個旅程。')).toBeVisible()
   await page.goto('#/trip/demo-trip/itinerary')
   await expect(dataSource(page)).toContainText('demo')
-  await expect(page.getByTestId('trip-versions')).toContainText('demo.city.2')
+  await expect(page.getByTestId('trip-versions')).toContainText('demo.city.3')
   expect(requests).toBe(0)
 })
 
@@ -215,7 +215,7 @@ test('late remote response cannot replace another route or its metadata', async 
 test('unsupported remote update falls back without changing any cached version or pointer', async ({ page }) => {
   await loadRemote(page)
   const before = await cacheContents(page)
-  const next = { ...remoteVersion(), schema_version: 2, data_version: 'content.future' }
+  const next = { ...remoteVersion(), schema_version: 3, data_version: 'content.future' }
   await page.route(`${supabaseOrigin}/rest/v1/v2_trip_versions**`, (route) => route.fulfill({ json: [next] }))
   await page.reload()
   await expect(dataSource(page)).toContainText('cache')

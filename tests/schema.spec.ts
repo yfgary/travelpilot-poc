@@ -1,18 +1,18 @@
 import { test, expect } from './fixtures'
 import { minimalSnapshot } from './minimalSnapshot'
 import { validateTripSnapshot, TRIP_SCHEMA_VERSION } from '../src/data/schema/trip'
-import type { TripSnapshot } from '../src/data/schema/trip'
+import type { Schema1Snapshot as TripSnapshot } from '../src/data/schema/trip'
 const sample = () => structuredClone(minimalSnapshot)
 
 test('canonical version-1 demo validates with structured issues for malformed input', () => {
-  expect(TRIP_SCHEMA_VERSION).toBe(1)
+  expect(TRIP_SCHEMA_VERSION).toBe(2)
   expect(validateTripSnapshot(sample()).valid).toBe(true)
   for (const bad of [null, {}, [], 'not json']) {
     const result = validateTripSnapshot(bad)
     expect(result.valid).toBe(false)
     if (!result.valid) expect(result.issues[0]).toHaveProperty('path')
   }
-  expect(validateTripSnapshot({ ...sample(), schemaVersion: 2 })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
+  expect(validateTripSnapshot({ ...sample(), schemaVersion: 3 })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
 })
 const cases: [string, (snapshot: TripSnapshot) => void][] = [
   ['duplicate region ID', (s) => { s.regions.push({ ...s.regions[0] }) }],

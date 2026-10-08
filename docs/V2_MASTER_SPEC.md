@@ -146,6 +146,10 @@ Includes shared header/navigation/trip introduction/weather area plus:
 Checklist definitions may differ by trip.
 Checklist state must sync across iPhone/other iPhone/desktop via Supabase and remain usable offline.
 
+Step 10 implements the practical information renderer and **read-only checklist definitions**. Functional checklist state/sync belongs to Step 11; weather belongs to Step 12.
+
+Trip snapshots currently use **Schema Version 2**, adding generic local emergency contacts (category, title, phone/HTTP(S) URL, optional region, availability, description, notes and canonical source references). **Schema Version 1 remains supported** with its original strict contract and no emergency section. Source schema versions remain distinct from App Version and Trip Data Version; existing offline snapshots are not rewritten or deleted on read. Trip content remains JSONB, so this evolution requires no live database schema change.
+
 ## 8. Attractions Overview
 - automatically derives attractions/places referenced by the itinerary
 - grouped by location/region

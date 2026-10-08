@@ -1,6 +1,11 @@
 import { z } from 'zod'
 
-export const TRIP_SCHEMA_VERSION = 1
+export const CURRENT_TRIP_SCHEMA_VERSION = 2
+export const TRIP_SCHEMA_VERSION = CURRENT_TRIP_SCHEMA_VERSION
+export const SUPPORTED_TRIP_SCHEMA_VERSIONS = [1, 2] as const
+export function isSupportedTripSchemaVersion(value: unknown): value is typeof SUPPORTED_TRIP_SCHEMA_VERSIONS[number] {
+  return SUPPORTED_TRIP_SCHEMA_VERSIONS.some((version) => version === value)
+}
 const id = z.string().regex(/^[A-Za-z0-9][A-Za-z0-9._:-]*$/)
 const text = z.string().min(1)
 const date = z.iso.date()
@@ -22,9 +27,9 @@ const timeline = z.strictObject({
   optional: z.boolean(), bonus: z.boolean().optional(), warning: text.optional(),
 })
 
-// Canonical runtime contract. All TypeScript snapshot types are inferred here.
-export const tripSnapshotSchema = z.strictObject({
-  schemaVersion: z.literal(TRIP_SCHEMA_VERSION),
+// Schema 1's strict common contract is retained. Schema 2 extends only emergency
+// content and entity references; both versions use the same relationship validator.
+const commonShape = {
   trip: z.strictObject({
     id, slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), title: text, shortTitle: text.optional(),
     destinationLabel: text, summary: text, introduction: text.optional(), startDate: date, endDate: date, timezone,
@@ -84,9 +89,26 @@ export const tripSnapshotSchema = z.strictObject({
     alt: text, sourceURL: httpURL.optional(), attribution: text.optional(), licenseNote: text.optional(),
   })),
   sources: z.array(z.strictObject({ id, title: text, url: httpURL, type: text, checkedAt: datetime.optional(), entity: entityReference.optional() })),
-}).superRefine((snapshot, ctx) => {
+}
+const emergencyEntityReference = z.strictObject({ type: z.enum([...entityKinds, 'emergencyContact']), id })
+const emergencySchema = z.strictObject({
+  title: text.optional(), description: text.optional(), notes,
+  contacts: z.array(z.strictObject({
+    id, type: z.enum(['police', 'ambulance', 'fire', 'medical', 'roadside', 'embassy', 'consulate', 'insurance', 'accommodation', 'other']),
+    title: text, phone: text.optional(), url: httpURL.optional(), regionId: id.optional(),
+    description: text.optional(), availability: text.optional(), notes, sourceIds: ids,
+  })),
+})
+const versionedSnapshotSchema = z.discriminatedUnion('schemaVersion', [
+  z.strictObject({ ...commonShape, schemaVersion: z.literal(1) }),
+  z.strictObject({ ...commonShape, schemaVersion: z.literal(2), emergency: emergencySchema,
+    days: z.array(commonShape.days.element.extend({ optionalContent: z.array(emergencyEntityReference), backupContent: z.array(emergencyEntityReference) })),
+    sources: z.array(commonShape.sources.element.extend({ entity: emergencyEntityReference.optional() })),
+  }),
+])
+export const tripSnapshotSchema = versionedSnapshotSchema.superRefine((snapshot, ctx) => {
   const issue = (path: (string | number)[], message: string) => ctx.addIssue({ code: 'custom', path, message })
-  const sets = new Map<string, Set<string>>(entityKinds.map((kind) => [kind, new Set<string>()]))
+  const sets = new Map<string, Set<string>>([...entityKinds, 'emergencyContact'].map((kind) => [kind, new Set<string>()]))
   const seen = new Set<string>()
   function register(kind: string, records: { id: string }[], path: (string | number)[]) {
     records.forEach((record, index) => {
@@ -103,6 +125,8 @@ export const tripSnapshotSchema = z.strictObject({
   ] as const) register(kind, records, [path])
   register('weatherRegion', snapshot.weather.weatherRegions, ['weather', 'weatherRegions'])
   register('activityProfile', snapshot.weather.activityProfiles, ['weather', 'activityProfiles'])
+  const emergency = getEmergencyInfo(snapshot)
+  if (emergency) register('emergencyContact', emergency.contacts, ['emergency', 'contacts'])
   snapshot.days.forEach((day, i) => register('timeline', day.timeline, ['days', i, 'timeline']))
   snapshot.checklists.forEach((list, i) => {
     register('checklistGroup', list.groups, ['checklists', i, 'groups'])
@@ -112,7 +136,7 @@ export const tripSnapshotSchema = z.strictObject({
     if (value !== undefined && !sets.get(kind)!.has(value)) issue(path, `Broken ${kind} reference`)
   }
   function refs(kind: string, values: string[], path: (string | number)[]) { values.forEach((value, i) => ref(kind, value, [...path, i])) }
-  function relation(value: z.infer<typeof entityReference>, path: (string | number)[]) { ref(value.type, value.id, [...path, 'id']) }
+  function relation(value: z.infer<typeof emergencyEntityReference>, path: (string | number)[]) { ref(value.type, value.id, [...path, 'id']) }
   const trip = snapshot.trip
   if (trip.startDate > trip.endDate) issue(['trip', 'endDate'], 'Trip date order is invalid')
   ref('image', trip.heroImageId, ['trip', 'heroImageId']); ref('image', trip.bannerImageId, ['trip', 'bannerImageId'])
@@ -150,14 +174,23 @@ export const tripSnapshotSchema = z.strictObject({
     ref('region', cam.regionId, ['liveCams', i, 'regionId']); ref('place', cam.placeId, ['liveCams', i, 'placeId']); ref('day', cam.routeDayId, ['liveCams', i, 'routeDayId'])
   })
   snapshot.sources.forEach((source, i) => { if (source.entity) relation(source.entity, ['sources', i, 'entity']) })
+  emergency?.contacts.forEach((contact, i) => {
+    ref('region', contact.regionId, ['emergency', 'contacts', i, 'regionId'])
+    refs('source', contact.sourceIds, ['emergency', 'contacts', i, 'sourceIds'])
+  })
 })
 
-export type TripSnapshot = z.infer<typeof tripSnapshotSchema>
+export type TripSnapshot = z.infer<typeof versionedSnapshotSchema>
+export type Schema1Snapshot = Extract<TripSnapshot, { schemaVersion: 1 }>
+export type Schema2Snapshot = Extract<TripSnapshot, { schemaVersion: 2 }>
+export function getEmergencyInfo(snapshot: TripSnapshot) {
+  return snapshot.schemaVersion === 2 ? snapshot.emergency : undefined
+}
 export type TripSummary = TripSnapshot['trip']
 export type ValidationIssue = { path: (string | number)[]; code: string; message: string }
 export type SnapshotValidation = { valid: true; snapshot: TripSnapshot } | { valid: false; reason: 'invalid-data' | 'unsupported-schema'; issues: ValidationIssue[] }
 export function validateTripSnapshot(payload: unknown): SnapshotValidation {
-  if (payload && typeof payload === 'object' && 'schemaVersion' in payload && payload.schemaVersion !== TRIP_SCHEMA_VERSION) {
+  if (payload && typeof payload === 'object' && 'schemaVersion' in payload && !isSupportedTripSchemaVersion(payload.schemaVersion)) {
     return { valid: false, reason: 'unsupported-schema', issues: [{ path: ['schemaVersion'], code: 'unsupported_schema', message: 'Unsupported trip schema version' }] }
   }
   const result = tripSnapshotSchema.safeParse(payload)

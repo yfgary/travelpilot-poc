@@ -1,7 +1,7 @@
-import type { TripSnapshot } from '../src/data/schema/trip'
+import type { Schema1Snapshot } from '../src/data/schema/trip'
 
 // Stable minimal schema test data, independent of the Home demonstration fixtures.
-export const minimalSnapshot: TripSnapshot = {
+export const minimalSnapshot: Schema1Snapshot = {
   schemaVersion: 1,
   trip: { id: 'demo-trip-id', slug: 'demo-trip', title: '示範旅程', destinationLabel: '示範目的地', summary: '用於驗證共用頁面及導覽的通用示範資料。', startDate: '2030-06-01', endDate: '2030-06-01', timezone: 'Etc/UTC' },
   regions: [{ id: 'demo-region', name: '示範區域', coordinates: { latitude: 0, longitude: 0 } }],

@@ -1,6 +1,5 @@
 import type { Page } from '@playwright/test'
-import { cityTrip } from '../src/data/demoTrips/cityTrip'
-import { roadTrip } from '../src/data/demoTrips/roadTrip'
+import { legacyCity as cityTrip, legacyRoad as roadTrip } from './legacySnapshots'
 import { supabaseOrigin, testUser } from './fixtures'
 
 export function remoteTrips() {

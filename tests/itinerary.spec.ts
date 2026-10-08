@@ -24,16 +24,16 @@ async function loadCustom(page: Page, original: TripSnapshot) {
   payload.trip = { ...payload.trip, id: remoteId, slug: remoteSlug, title: '通用測試行程' }
   expect(validateTripSnapshot(payload).valid).toBe(true)
   await seedAuth(page)
-  await mockRemote(page, () => ({ ...remoteVersion(), payload }))
+  await mockRemote(page, () => ({ ...remoteVersion(), schema_version: payload.schemaVersion, payload }))
   await page.goto(`#/trip/${remoteSlug}/itinerary`)
   await expect(page.getByTestId('detailed-itinerary')).toBeVisible()
   return payload
 }
 
-test('Schema Version 1 and independent App/Data Versions remain canonical', () => {
-  expect(packageMetadata.version).toBe('2.0.0-poc.10')
-  expect(cityRecord.dataVersion).toBe('demo.city.2'); expect(roadRecord.dataVersion).toBe('demo.road.2')
-  for (const record of localTrips) expect(validateTripSnapshot(record.payload)).toMatchObject({ valid: true, snapshot: { schemaVersion: 1 } })
+test('current Schema Version and independent App/Data Versions remain canonical', () => {
+  expect(packageMetadata.version).toBe('2.0.0-poc.11')
+  expect(cityRecord.dataVersion).toBe('demo.city.3'); expect(roadRecord.dataVersion).toBe('demo.road.3')
+  for (const record of localTrips) expect(validateTripSnapshot(record.payload)).toMatchObject({ valid: true, snapshot: { schemaVersion: 2 } })
   expect(city.hardCuts).toEqual([]); expect(city.liveCams).toEqual([]); expect(city.navigationTargets).toEqual([])
 })
 
@@ -62,8 +62,8 @@ for (const record of [cityRecord, roadRecord]) {
     await expect(page.getByTestId('detailed-itinerary')).toBeVisible()
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('詳細行程')
     await expect(page.getByText('內容準備中', { exact: true })).toHaveCount(0)
-    await expect(page.getByTestId('trip-versions')).toHaveText(`Trip Data Version：${record.dataVersion} · Trip Schema Version：1`)
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.10')
+    await expect(page.getByTestId('trip-versions')).toHaveText(`Trip Data Version：${record.dataVersion} · Trip Schema Version：2`)
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.11')
     await expect(page.locator('.itinerary-intro')).toContainText(`${snapshot.days.length} 天行程`)
     await expect(page.locator('.itinerary-day')).toHaveCount(snapshot.days.length)
     await expect(page.getByRole('navigation', { name: '行程日期' }).getByRole('button')).toHaveText(snapshot.days.map((day) => `D${day.dayNumber}`))
@@ -303,7 +303,8 @@ test('one shared remote load survives itinerary interactions and other view plac
   await page.getByRole('button', { name: `詳細介紹：${road.places[0].name}` }).click(); await page.keyboard.press('Escape')
   for (const title of ['旅程資料', '景點總覽', 'Live Cam', '今日模式']) {
     await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: title, exact: true }).click()
-    await expect(page.getByRole('heading', { name: '內容準備中' })).toBeVisible()
+    if (title === '旅程資料') await expect(page.getByTestId('trip-information')).toBeVisible()
+    else await expect(page.getByRole('heading', { name: '內容準備中' })).toBeVisible()
     await expect(page.getByTestId('detailed-itinerary')).toHaveCount(0)
   }
   await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '詳細行程', exact: true }).click()
@@ -342,7 +343,7 @@ test('switching trips resets open day/place state and does not leak itinerary me
   await expect(page.getByTestId('detailed-itinerary')).not.toContainText(city.days[0].title)
   await expect(page.getByTestId('detailed-itinerary')).not.toContainText(city.places[0].name)
   await expect(page.locator('.itinerary-day[open]')).toHaveCount(1)
-  await expect(page.getByTestId('trip-versions')).toContainText('demo.road.2')
+  await expect(page.getByTestId('trip-versions')).toContainText('demo.road.3')
   await page.getByRole('navigation', { name: '主導覽' }).getByRole('link', { name: '設定', exact: true }).click()
   await page.getByRole('button', { name: '返回上一頁' }).click()
   await expect(page).toHaveURL(/#\/trip\/demo-road-trip\/itinerary$/)

@@ -137,6 +137,15 @@ Before a trip snapshot is published:
 
 Schema evolution is controlled with `schema_version`.
 
+### Step 10 backward-compatible snapshot reader
+- Current Trip Schema Version is **2**; supported versions are **1 and 2**. `TRIP_SCHEMA_VERSION` aliases `CURRENT_TRIP_SCHEMA_VERSION`; supported-version checks are centralized.
+- Schema 1 retains its strict Step 9 contract. Schema 2 shares the common shape and cross-reference validator, adds required top-level `emergency` (empty contacts/notes allowed), and permits generic `emergencyContact` entity references. No duplicate complete schema/validator or destination-specific fields.
+- Emergency contacts have globally unique stable IDs, generic categories, optional phone/HTTP(S) URL/region/availability/description, notes and source IDs. Region/source/entity references and safe URLs are validated. `getEmergencyInfo()` centralizes the version-specific UI access; Schema 1 has no emergency data.
+- Remote row/payload schema versions must match and both be supported. `LoadedTrip.schemaVersion` reports the actual source version, never the current app's preferred format.
+- IndexedDB remains `travelpilot-v2-trips`, database storage version **1**, with the same stores/keys/pointers. Existing Schema 1 records validate/read unchanged; Schema 2 records coexist. Metadata/payload mismatches are rejected. Reading never rewrites, migrates, clears or deletes records; invalid updates preserve the valid cache.
+- TripLayout remains the sole asynchronous loading boundary. Its typed Outlet context supplies both Detailed Itinerary and Trip Information; children do not access Supabase or IndexedDB. Shared canonical accommodation/transport/navigation/hard-cut records are reused. Trip Information's data-driven quick navigation, read-only checklist definitions and emergency presentation require no mutable checklist storage.
+- No live Supabase DDL/data change is needed: `v2_trip_versions.payload` already stores JSONB and `schema_version` is a positive integer. Existing V1 tables and source-control SQL baseline remain untouched. Checklist state and weather remain Steps 11 and 12.
+
 ## No trip-specific logic
 Application code may contain generic reusable rules and enums.
 

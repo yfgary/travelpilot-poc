@@ -119,8 +119,10 @@ normal reload persistence.
 
 ## Schema, loader and offline trip cache
 
-`src/data/schema/trip.ts` defines Trip Schema Version 1 and infers all snapshot
-TypeScript types from one Zod runtime contract. Validation returns structured
+`src/data/schema/trip.ts` defines current Trip Schema Version 2 while preserving
+the original strict Schema 1 contract. It infers all snapshot TypeScript types
+from shared Zod definitions and one cross-reference validator. Schema 2 adds
+generic emergency contacts; Schema 1 simply omits that section. Validation returns structured
 issues for malformed content, unsupported versions, duplicates, broken references
 and invalid dates/numbers. Generic weather/Live Cam structures define data only.
 
@@ -134,6 +136,13 @@ updates current pointers without deleting prior versions. Invalid/unavailable
 remote data falls back to a revalidated cache. Signed-in pointers are scoped to
 the owner; signed-out reads use the last downloaded device pointer. Storage
 failure leaves valid remote data usable with a cache notice.
+
+The database name, storage version and record keys remain unchanged. Schema 1
+and Schema 2 offline records coexist, retain their actual source versions and
+are not rewritten/deleted on read. This payload evolution requires no live DDL.
+Trip Information consumes the shared loaded snapshot and presents practical
+records plus read-only checklist definitions; functional checklist state belongs
+to Step 11.
 
 **Device privacy:** logout does not remove downloaded trip snapshots. Anyone
 using the same browser profile while signed out can read those cached routes.

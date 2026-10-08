@@ -23,7 +23,7 @@ async function checkTrip(page: Page, payload: (typeof localTrips)[number]['paylo
   await expect(page.locator('.trip-heading h2')).toHaveText(payload.trip.title)
   await expect(page.locator('.trip-heading')).toContainText(payload.trip.summary)
   await expect(page.locator('code')).toHaveText(payload.trip.slug)
-  await expect(page.getByTestId('trip-versions')).toHaveText(`Trip Data Version：${version} · Trip Schema Version：1`)
+  await expect(page.getByTestId('trip-versions')).toHaveText(`Trip Data Version：${version} · Trip Schema Version：${payload.schemaVersion}`)
   await expect(page.getByTestId('trip-source')).toHaveText(`POC 資料來源：${source}`)
 }
 
@@ -57,7 +57,7 @@ test('two structurally different snapshots validate and load without shared muta
   for (const record of localTrips) {
     expect(validateTripSnapshot(record.payload).valid).toBe(true)
     const result = await loadTrip(record.payload.trip.slug, { userId: null, signal: new AbortController().signal, online: false })
-    expect(result).toMatchObject({ state: 'loaded', source: 'demo', schemaVersion: 1, dataVersion: record.dataVersion, snapshot: record.payload })
+    expect(result).toMatchObject({ state: 'loaded', source: 'demo', schemaVersion: 2, dataVersion: record.dataVersion, snapshot: record.payload })
     if (result.state === 'loaded') { result.snapshot.trip.title = 'mutated'; result.snapshot.days[0].timeline[0].title = 'mutated' }
   }
   expect(localTrips).toEqual(before)

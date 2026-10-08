@@ -1,12 +1,12 @@
 import { z } from 'zod'
 import { localTrips } from '../data/trips'
-import { TRIP_SCHEMA_VERSION, validateTripSnapshot } from '../data/schema/trip'
+import { isSupportedTripSchemaVersion, validateTripSnapshot } from '../data/schema/trip'
 import type { TripSnapshot, ValidationIssue } from '../data/schema/trip'
 import { cacheTrip, readCachedTrip } from '../offline/tripCache'
 import { supabase } from './supabase'
 
 export type TripFailure = 'not-found' | 'auth-required' | 'unavailable' | 'invalid-data' | 'unsupported-schema'
-export type LoadedTrip = { state: 'loaded'; source: 'remote' | 'cache' | 'demo'; snapshot: TripSnapshot; dataVersion: string; schemaVersion: number; cacheSaved?: boolean; fallbackReason?: TripFailure }
+export type LoadedTrip = { state: 'loaded'; source: 'remote' | 'cache' | 'demo'; snapshot: TripSnapshot; dataVersion: string; schemaVersion: TripSnapshot['schemaVersion']; cacheSaved?: boolean; fallbackReason?: TripFailure }
 export type TripLoadResult = LoadedTrip | { state: 'loading' } | { state: TripFailure; issues?: ValidationIssue[] }
 const tripRowSchema = z.object({ id: z.uuid(), slug: z.string(), owner_id: z.uuid() })
 // Data Version is an opaque database identity; normalization could merge distinct versions.
@@ -24,7 +24,7 @@ export async function loadTrip(slug: string, options: { userId: string | null; s
   let cached = null
   try { cached = await readCachedTrip(slug, userId) } catch { /* Storage failures must not block remote reads. */ }
   const fallback = (state: TripFailure, issues?: ValidationIssue[]): TripLoadResult => cached
-    ? { state: 'loaded', source: 'cache', snapshot: cached.payload, dataVersion: cached.dataVersion, schemaVersion: cached.schemaVersion, fallbackReason: state }
+    ? { state: 'loaded', source: 'cache', snapshot: cached.payload, dataVersion: cached.dataVersion, schemaVersion: cached.payload.schemaVersion, fallbackReason: state }
     : { state, issues }
   if (options.online === false) return fallback('unavailable')
   if (!userId) return fallback('auth-required')
@@ -40,7 +40,7 @@ export async function loadTrip(slug: string, options: { userId: string | null; s
     if (!version.data) return fallback('not-found')
     const parsed = versionRowSchema.safeParse(version.data)
     if (!parsed.success || parsed.data.trip_id !== row.data.id) return fallback('invalid-data')
-    if (parsed.data.schema_version !== TRIP_SCHEMA_VERSION) return fallback('unsupported-schema')
+    if (!isSupportedTripSchemaVersion(parsed.data.schema_version)) return fallback('unsupported-schema')
     const validation = validateTripSnapshot(parsed.data.payload)
     if (!validation.valid) return fallback(validation.reason, validation.issues)
     const snapshot = validation.snapshot

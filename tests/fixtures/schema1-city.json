@@ -1,8 +1,5 @@
-import type { TripSnapshot } from '../schema/trip'
-
-// Fictional POC data only. No destination-specific application behavior.
-export const cityTrip: TripSnapshot = {
-  "schemaVersion": 2,
+{
+  "schemaVersion": 1,
   "trip": {
     "id": "demo-trip-id",
     "slug": "demo-trip",
@@ -282,25 +279,8 @@ export const cityTrip: TripSnapshot = {
       "origin": "都會車站",
       "destination": "街區中心",
       "navigationTargetIds": [],
-      "notes": [
-        "純 POC 虛構交通安排。"
-      ],
-      "warnings": [
-        "示範：出發前核對虛構交通班次。"
-      ],
-      "provider": "虛構公共交通示範服務",
-      "service": "示範都會列車",
-      "departure": "2030-04-12T09:00:00Z",
-      "arrival": "2030-04-12T09:20:00Z",
-      "durationMinutes": 20,
-      "bookingState": "示範已確認",
-      "paymentState": "示範已付",
-      "price": {
-        "amount": 10,
-        "currency": "USD",
-        "notes": "虛構 POC 交通費"
-      },
-      "mapURL": "https://www.google.com/maps/search/?api=1&query=0%2C0"
+      "notes": [],
+      "warnings": []
     },
     {
       "id": "city-walk",
@@ -415,67 +395,6 @@ export const cityTrip: TripSnapshot = {
         "type": "place",
         "id": "city-gallery"
       }
-    },
-    {
-      "id": "city-emergency-police-source",
-      "title": "虛構police聯絡資料來源",
-      "url": "https://example.invalid/city-emergency-police-source",
-      "type": "test",
-      "entity": {
-        "type": "emergencyContact",
-        "id": "city-emergency-police"
-      }
-    },
-    {
-      "id": "city-emergency-medical-source",
-      "title": "虛構medical聯絡資料來源",
-      "url": "https://example.invalid/city-emergency-medical-source",
-      "type": "test",
-      "entity": {
-        "type": "emergencyContact",
-        "id": "city-emergency-medical"
-      }
     }
-  ],
-  "emergency": {
-    "title": "虛構 POC 聯絡資料",
-    "description": "以下電話、服務、地區及網址全為測試資料，不是真實求助資訊。",
-    "contacts": [
-      {
-        "id": "city-emergency-police",
-        "type": "police",
-        "title": "虛構保安服務",
-        "phone": "+000 000 0001",
-        "url": "https://example.invalid/city-police",
-        "regionId": "city-region",
-        "description": "僅供 POC 介面測試，並非真實緊急聯絡資料。",
-        "availability": "虛構服務時段：全日測試",
-        "notes": [
-          "請勿使用此虛構號碼求助。"
-        ],
-        "sourceIds": [
-          "city-emergency-police-source"
-        ]
-      },
-      {
-        "id": "city-emergency-medical",
-        "type": "medical",
-        "title": "虛構醫療支援",
-        "phone": "+000 000 0002",
-        "url": "https://example.invalid/city-medical",
-        "regionId": "city-region",
-        "description": "僅供 POC 介面測試，並非真實緊急聯絡資料。",
-        "availability": "虛構服務時段：全日測試",
-        "notes": [
-          "請勿使用此虛構號碼求助。"
-        ],
-        "sourceIds": [
-          "city-emergency-medical-source"
-        ]
-      }
-    ],
-    "notes": [
-      "所有緊急聯絡資料只供介面測試；並非真實緊急號碼。"
-    ]
-  }
+  ]
 }

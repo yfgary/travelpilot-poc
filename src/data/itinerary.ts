@@ -1,4 +1,5 @@
 import type { TripSnapshot } from './schema/trip'
+import { getEmergencyInfo } from './schema/trip'
 import { calendarDate, formatTripDate } from './tripDates'
 
 export type TripDay = TripSnapshot['days'][number]
@@ -64,6 +65,7 @@ export function entityLabel(snapshot: TripSnapshot, ref: EntityReference): strin
     checklistGroup: snapshot.checklists.flatMap((list) => list.groups), checklistItem: snapshot.checklists.flatMap((list) => list.groups.flatMap((group) => group.items)),
     weatherRegion: snapshot.weather.weatherRegions, activityProfile: snapshot.weather.activityProfiles,
     liveCam: snapshot.liveCams, image: snapshot.images, source: snapshot.sources,
+    emergencyContact: getEmergencyInfo(snapshot)?.contacts ?? [],
   }
   const entity = collections[ref.type].find((entity) => entity.id === ref.id)
   if (entity) for (const key of ['name', 'title', 'label', 'alt'] as const) {

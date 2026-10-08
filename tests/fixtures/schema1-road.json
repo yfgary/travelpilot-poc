@@ -1,8 +1,5 @@
-import type { TripSnapshot } from '../schema/trip'
-
-// Fictional POC data only. No destination-specific application behavior.
-export const roadTrip: TripSnapshot = {
-  "schemaVersion": 2,
+{
+  "schemaVersion": 1,
   "trip": {
     "id": "demo-road-trip-id",
     "slug": "demo-road-trip",
@@ -395,24 +392,14 @@ export const roadTrip: TripSnapshot = {
         "road-parking"
       ],
       "notes": [
-        "此為虛構交通資料。",
-        "示範車型／裝備：依虛構預訂文件核對；不是實際租車資訊。"
+        "此為虛構交通資料。"
       ],
       "warnings": [
         "示範：出發前確認路線。"
       ],
       "provider": "虛構自駕示範服務",
       "service": "示範車輛",
-      "bookingState": "示範已確認",
-      "departure": "2025-02-05T09:00:00Z",
-      "arrival": "2025-02-05T09:30:00Z",
-      "durationMinutes": 30,
-      "paymentState": "示範已付",
-      "price": {
-        "amount": 75,
-        "currency": "EUR",
-        "notes": "虛構 POC 交通費"
-      }
+      "bookingState": "示範已確認"
     }
   ],
   "navigationTargets": [
@@ -440,8 +427,7 @@ export const roadTrip: TripSnapshot = {
       "priority": 1,
       "category": "return",
       "icon": "clock",
-      "description": "純示範時間限制，並非真實營運規則。",
-      "sourceId": "road-source"
+      "description": "純示範時間限制，並非真實營運規則。"
     }
   ],
   "checklists": [
@@ -490,34 +476,6 @@ export const roadTrip: TripSnapshot = {
               "label": "準備飲水",
               "order": 1,
               "notes": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "road-daily-list",
-      "type": "daily",
-      "title": "每日出車準備",
-      "description": "虛構每日清單定義",
-      "order": 1,
-      "notes": [
-        "此頁只供閱覽。"
-      ],
-      "groups": [
-        {
-          "id": "road-daily-group",
-          "title": "出發前",
-          "order": 0,
-          "notes": [],
-          "items": [
-            {
-              "id": "road-daily-contact",
-              "label": "確認虛構支援聯絡方式",
-              "order": 0,
-              "notes": [
-                "純介面測試"
-              ]
             }
           ]
         }
@@ -628,93 +586,6 @@ export const roadTrip: TripSnapshot = {
         "type": "place",
         "id": "road-trail"
       }
-    },
-    {
-      "id": "road-emergency-ambulance-source",
-      "title": "虛構ambulance聯絡資料來源",
-      "url": "https://example.invalid/road-emergency-ambulance-source",
-      "type": "test",
-      "entity": {
-        "type": "emergencyContact",
-        "id": "road-emergency-ambulance"
-      }
-    },
-    {
-      "id": "road-emergency-roadside-source",
-      "title": "虛構roadside聯絡資料來源",
-      "url": "https://example.invalid/road-emergency-roadside-source",
-      "type": "test",
-      "entity": {
-        "type": "emergencyContact",
-        "id": "road-emergency-roadside"
-      }
-    },
-    {
-      "id": "road-emergency-medical-source",
-      "title": "虛構medical聯絡資料來源",
-      "url": "https://example.invalid/road-emergency-medical-source",
-      "type": "test",
-      "entity": {
-        "type": "emergencyContact",
-        "id": "road-emergency-medical"
-      }
     }
-  ],
-  "emergency": {
-    "title": "虛構 POC 聯絡資料",
-    "description": "以下電話、服務、地區及網址全為測試資料，不是真實求助資訊。",
-    "contacts": [
-      {
-        "id": "road-emergency-ambulance",
-        "type": "ambulance",
-        "title": "虛構緊急支援",
-        "phone": "+000 000 0001",
-        "url": "https://example.invalid/road-ambulance",
-        "regionId": "road-foothill",
-        "description": "僅供 POC 介面測試，並非真實緊急聯絡資料。",
-        "availability": "虛構服務時段：全日測試",
-        "notes": [
-          "請勿使用此虛構號碼求助。"
-        ],
-        "sourceIds": [
-          "road-emergency-ambulance-source"
-        ]
-      },
-      {
-        "id": "road-emergency-roadside",
-        "type": "roadside",
-        "title": "虛構道路支援",
-        "phone": "+000 000 0002",
-        "url": "https://example.invalid/road-roadside",
-        "regionId": "road-foothill",
-        "description": "僅供 POC 介面測試，並非真實緊急聯絡資料。",
-        "availability": "虛構服務時段：全日測試",
-        "notes": [
-          "請勿使用此虛構號碼求助。"
-        ],
-        "sourceIds": [
-          "road-emergency-roadside-source"
-        ]
-      },
-      {
-        "id": "road-emergency-medical",
-        "type": "medical",
-        "title": "虛構醫療支援",
-        "phone": "+000 000 0003",
-        "url": "https://example.invalid/road-medical",
-        "regionId": "road-highland",
-        "description": "僅供 POC 介面測試，並非真實緊急聯絡資料。",
-        "availability": "虛構服務時段：全日測試",
-        "notes": [
-          "請勿使用此虛構號碼求助。"
-        ],
-        "sourceIds": [
-          "road-emergency-medical-source"
-        ]
-      }
-    ],
-    "notes": [
-      "所有緊急聯絡資料只供介面測試；並非真實緊急號碼。"
-    ]
-  }
+  ]
 }
