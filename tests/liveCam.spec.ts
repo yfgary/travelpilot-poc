@@ -214,7 +214,7 @@ for (const size of ['small', 'medium', 'large']) test(`Live Cam ${size} font has
   expect(await dayNav(page).getByRole('button').nth(1).evaluate((node) => getComputedStyle(node).outlineStyle)).not.toBe('none')
   await page.locator('main').evaluate((node) => { node.scrollTop = node.scrollHeight })
   const last = (await cards(page).last().boundingBox())!, dock = (await page.locator('.status-dock').boundingBox())!
-  expect(last.y + last.height).toBeLessThanOrEqual(dock.y); await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.15')
+  expect(last.y + last.height).toBeLessThanOrEqual(dock.y); await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.16')
 })
 test('cross-trip switch resets camera filter and Settings Back returns exact origin for both trips', async ({ page }) => {
   await page.goto('#/trip/demo-road-trip/live'); await dayNav(page).getByRole('button', { name: 'D2', exact: true }).click()

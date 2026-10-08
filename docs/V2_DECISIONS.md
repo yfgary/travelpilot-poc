@@ -146,3 +146,16 @@ Repository-relative canonical paths:
 **Media boundary:** Generic sourceType plus HTTPS capability determines lazy embedded/image/external presentation. HTTP inline sources stay external without rewriting. Conservative iframe sandbox, image failure panels and permanent safe external actions avoid provider-specific hacks. Status URLs are links only; availability is never inferred from camera loading, weather or a status link. No discovery, scraping, polling or automatic still-image refresh.
 
 **Scope:** Shared loader/routes/navigation/weather/Place detail remain the single sources. Production and live Supabase are untouched; Today Mode is not implemented here.
+
+
+## 2026-10-09 — Today Mode is derived planned state, with explicit preview/manual focus
+
+**Decision:** Step 14 uses existing Schema 4 relationships and strict readers 1/2/3/4. Day/time/focus, next required mapped stop, canonical Hard Cuts and final accommodation/destination are runtime derivations, not new snapshot fields. No Schema 5 or live Supabase migration is necessary; Data Versions remain unchanged.
+
+**Timing/state:** Trip-local matching date takes initial precedence over a valid remembered preview and canonical first dayNumber. Planned intervals preserve timeline order, handle overnight/untimed content safely and never imply GPS completion. Non-today preview stays explicitly labelled and uses no live progress countdown. Manual focus uses stable item IDs in guarded sessionStorage with unambiguous trip/day tuple keys; blocked storage remains usable in React memory. State is device/session local, never synced or treated as real arrival.
+
+**Structured operations:** Required mapped destination is distinct from optional timeline progression. Navigation, car context, cuts and accommodation/final fallback use explicit canonical relationships/types only. No semantic regex, named-place/day/timezone rule or duplicated trip data.
+
+**Weather/Wake Lock:** Reuse shared normalized weather/cache/scoring/alerts via dayRegions without changing global remembered region. Actual today uses current metrics, preview requires matching daily forecast and no fake horizon score. Suitability, alerts and official operation status remain separate. Wake Lock is optional, off-default and explicit-user-action only, with feature detection/cleanup and no persistence or automatic reacquisition.
+
+**Compatibility/scope:** Physical cached Schema 1/2/3/4 snapshots remain readable offline without rewriting or trip-cache writes from Today. No Supabase operational-state writes, V1/production changes, GPS/background tracking, automatic arrival or service-worker expansion. Full cold-start offline QA remains Step 16; Step 15 migration has not begun.

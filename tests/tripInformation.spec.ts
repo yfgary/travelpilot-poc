@@ -70,7 +70,7 @@ test('current 4 supports frozen 1 and 2 and new 4 without changing source versio
   }
   expect(getEmergencyInfo(legacyCity)).toBeUndefined(); expect(getEmergencyInfo(city)).toEqual(city.emergency)
   for (const schemaVersion of [0, 5, 6, '2', null]) expect(validateTripSnapshot({ ...city, schemaVersion })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
-  expect(packageMetadata.version).toBe('2.0.0-poc.15')
+  expect(packageMetadata.version).toBe('2.0.0-poc.16')
   expect(cityRecord.dataVersion).toBe('demo.city.5'); expect(roadRecord.dataVersion).toBe('demo.road.5')
 })
 
@@ -219,7 +219,7 @@ for (const snapshot of [city, road]) {
     }
     await expect(page.getByTestId('trip-versions')).toContainText(snapshot === city ? 'demo.city.5' : 'demo.road.5')
     await expect(page.getByTestId('trip-versions')).toContainText('Trip Schema Version：4')
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.15')
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.16')
   })
 }
 
@@ -385,7 +385,7 @@ test('only the shared boundary loads across info, itinerary and the remaining pl
     await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name, exact: true }).click()
     if (name === '景點總覽') await expect(page.getByTestId('attractions-overview')).toBeVisible()
     else if (name === 'Live Cam') await expect(page.getByTestId('live-cam')).toBeVisible()
-    else await expect(page.getByRole('heading', { name: '內容準備中' })).toBeVisible()
+    else await expect(page.getByTestId('today-mode')).toBeVisible()
   }
   await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '旅程資料', exact: true }).click()
   await expect(page.getByTestId('trip-information')).toBeVisible()

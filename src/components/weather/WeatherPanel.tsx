@@ -21,8 +21,8 @@ export function weatherCondition(code?: number): { icon: string; label: string }
   if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return { icon: '🌧', label: '降雨' }
   return { icon: '◌', label: '其他天氣狀況' }
 }
-const severityLabels = { info: '資訊', minor: '輕微', moderate: '中等', severe: '嚴重', extreme: '極端' }
-const typeLabels = { wind: '強風', heavy_rain: '大雨', snow: '降雪', flood: '水浸', thunderstorm: '雷暴', earthquake: '地震', tsunami: '海嘯', volcano: '火山', heat: '高溫', cold: '低溫', other: '其他' }
+export const severityLabels = { info: '資訊', minor: '輕微', moderate: '中等', severe: '嚴重', extreme: '極端' }
+export const typeLabels = { wind: '強風', heavy_rain: '大雨', snow: '降雪', flood: '水浸', thunderstorm: '雷暴', earthquake: '地震', tsunami: '海嘯', volcano: '火山', heat: '高溫', cold: '低溫', other: '其他' }
 export function WeatherPanel() {
   const { snapshot, selected, select, results, load, alerts, alertsUnavailable } = useTripWeather()
   const scroller = useRef<HTMLDivElement>(null)

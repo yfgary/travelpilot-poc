@@ -3,7 +3,7 @@ import { AppShell } from './AppShell'
 import { Home } from '../views/Home'
 import { Settings } from '../views/Settings'
 import { TripLayout } from '../views/TripLayout'
-import { TripView } from '../views/TripView'
+import { TodayMode } from '../views/TodayMode'
 import { DetailedItinerary } from '../views/DetailedItinerary'
 import { TripInformation } from '../views/TripInformation'
 import { AttractionsOverview } from '../views/AttractionsOverview'
@@ -28,7 +28,7 @@ export function App() {
                 <Route path={pages.find((page) => page.id === 'settings')!.path} element={<Settings />} />
                 <Route path="trip/:tripSlug" element={<TripLayout />}>
                   {tripPages.map((view) => (
-                    <Route key={view.path} path={view.path} element={view.id === 'itinerary' ? <DetailedItinerary /> : view.id === 'info' ? <TripInformation /> : view.id === 'attractions' ? <AttractionsOverview /> : view.id === 'live' ? <LiveCam /> : <TripView title={view.title} />} />
+                    <Route key={view.path} path={view.path} element={view.id === 'itinerary' ? <DetailedItinerary /> : view.id === 'info' ? <TripInformation /> : view.id === 'attractions' ? <AttractionsOverview /> : view.id === 'live' ? <LiveCam /> : <TodayMode />} />
                   ))}
                 </Route>
                 <Route path="*" element={<NotFound />} />

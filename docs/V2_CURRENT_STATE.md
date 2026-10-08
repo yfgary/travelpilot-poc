@@ -3,15 +3,15 @@
 Last updated: 09/10/2026 (Hong Kong)
 
 ## Progress
-**Step 13/16 — Attractions Overview + Live Cam: COMPLETE**
+**Step 14/16 — Today Mode: COMPLETE**
 
-Current App Version: **v2.0.0-poc.15** (canonical source: package.json)
+Current App Version: **v2.0.0-poc.16** (canonical source: package.json)
 
 Current Trip Schema Version: **4**; supported readers: **1 / 2 / 3 / 4**.
 
 Local Trip Data Versions: **demo.city.5** / **demo.road.5**.
 
-Next: **Step 14/16 — Today Mode**
+Next: **Step 15/16 — Real Trip Migration + ChatGPT Content Pipeline**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -36,11 +36,8 @@ Next: **Step 14/16 — Today Mode**
 - Phase 1 schema validation result: PASS.
 
 ## Not started
-- Full V2 feature implementation (foundation and shared visual shell complete)
 - Complete PWA/offline implementation (manifest and versioned snapshot cache foundations are complete)
-- Remaining trip content renderer: Today Mode (Detailed Itinerary, Trip Information, Attractions Overview and Live Cam are complete)
 - Complete V1 UI parity across trip pages (shared responsive shell and Home parity are complete)
-- Today Mode implementation
 - real trip data migration
 
 ## Repository cleanup
@@ -59,7 +56,7 @@ Next: **Step 14/16 — Today Mode**
 - Step 8 implementation was unstarted at this documentation release; the implementation release below is `v2.0.0-poc.9`.
 
 ## Next step
-Step 13 implements canonical Attractions Overview and generic Live Cam presentation with Schema 4 and strict backward compatibility. Next is **Step 14/16 — Today Mode**, only when explicitly authorized. Step 14 has not begun; real trip migration remains outside this release.
+Step 14 implements derived Today Mode using the existing Schema 4 contract and strict readers 1/2/3/4. Next is **Step 15/16 — Real Trip Migration + ChatGPT Content Pipeline**, only when explicitly authorized. Step 15 has not begun; real trip migration remains outside this release.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -407,4 +404,39 @@ Historical Step 12 next task was Step 13; its implementation record follows.
 - Existing device privacy remains: cached trips/weather survive logout, and signed-out users in the same browser profile can access previously downloaded routes. Explicit Settings trip/checklist clearing is unchanged; dedicated weather clearing remains deferred. Storage blocking/eviction can prevent durable offline use.
 - Visual QA uses Chromium viewport screenshots, not physical iPhone/Safari certification. Existing nonfatal Vite bundle-size/Zod annotation notices remain.
 
-Next: **Step 14/16 — Today Mode**. **Not started.**
+Historical Step 13 next task was Step 14; its implementation record follows.
+
+
+## Step 14/16 — Today Mode
+
+**STEP 14 TODAY MODE GATE: PASS.** Release **v2.0.0-poc.16** uses canonical package.json. Trip Schema remains **4**, strict supported readers remain **1 / 2 / 3 / 4**, and Trip Data Versions remain **demo.city.5 / demo.road.5**. Schema implementation, archived payloads and both local fixtures are unchanged.
+
+### Implementation
+- The six requested Production V1 driving/travel/today-mode reference files were inspected read-only. Operational hierarchy, clear current/next information, practical Maps actions and previous/advance/reset controls were reimplemented in React/TypeScript. No legacy scripts, DOM scraping, fixed trip/day/timezone assumptions, semantic parking/hotel/deadline detection, overlay or duplicate weather fetcher was copied. Complexity is Medium: pure generic derivation keeps planned, manual and preview states explicit rather than persisting UI fields in snapshots.
+- Dedicated TodayMode replaces the final routed placeholder and consumes useLoadedTrip(). TripLayout remains the sole load boundary; all five trip views share the existing shell, page definitions, navigation and safe Back behavior. No Schema 5 or convenience snapshot fields were needed.
+- The live clock uses the validated trip timezone, DD/MM/YYYY 星期X and HH:MM:SS. Its one-second interval cleans up on unmount and does not announce every second. Heavy timeline derivation is memoized by minute/day/snapshot/progress; alert expiry uses the live instant. No per-second weather refetch.
+- Initial day selection prefers the trip-local matching date, then a valid session preview, then the smallest actual canonical dayNumber. Accessible horizontal day controls show actual numbers and 今日. Non-today days are explicitly 預覽模式 / 預覽焦點, with no current-day countdown or fake current weather.
+- Pure helpers derive previous/current/next from canonical order and planned times. Explicit intervals, missing-end next-later-start boundaries, gaps, open-ended final activities, cross-midnight ranges and untimed items are handled safely. Untimed items remain visible/manual but never become clock-current. Planned focus never asserts GPS arrival or completion.
+- Previous/advance/reset override focus using stable item IDs. Session preview is trip-scoped; progress uses unambiguous trip/day tuple keys, avoiding punctuation collisions. Invalid IDs are ignored; blocked sessionStorage falls back to usable React state. No permanent progress preference or Supabase state.
+- The next mapped destination is separate from optional activity progression and prefers nonoptional/nonbonus stops. Maps resolves structured navigation target → Place → accommodation → transport URL/referenced target with existing safe links. Optional-only fallback is labelled. Explicit next navigation type/label/warning remains visible without semantic regex inference. Car-linked days alone show the approved passenger/safe-stop notice.
+- Canonical day/timeline-linked Hard Cuts use trip-local instants and chronological ordering, then deterministic priority/severity/ID ties. Actual-day relative labels compare planned time only; previews do not claim missed/late cuts. Final destination prefers day accommodation, last timeline accommodation, then the final mapped entity. Missing concepts hide cleanly. The complete compact activity list retains time/type/optional/bonus/warnings/current markers; end state preserves weather, cuts, final destination and activities without claiming completion.
+- Compact TodayWeather reuses TripWeatherProvider, provider registry, normalized forecasts, existing cache, suitability engine and active-alert filtering. dayRegions selects context without changing the global remembered weather region. Actual today uses current normalized metrics; preview uses matching DailyWeather or the honest five-day out-of-range note without a fake score. Final/Experience/Access, operation notes, timestamps, source/stale/offline state and fictional-alert provenance remain separate from real road/service operating status.
+- Optional Screen Wake Lock is off by default, feature-detected and requested only after user action. Unsupported/rejected/released states are truthful. Unmount releases a held or late-arriving lock; no automatic reacquisition or persistence.
+- Previously downloaded physical Schema 1/2/3/4 real-trip snapshots remain usable signed out/offline, with zero trip-store writes, upgrades, conversion or deletion merely from Today rendering. Core operational data does not need weather network. No GPS/background tracking, auto-arrival, real migration, service-worker expansion or live Supabase migration was added.
+
+### Verification
+- `npm ci`: PASS (91 packages). `npm run build`: PASS, including strict application/tool/test TypeScript checks. Complete Playwright suite: **2,065 passed** in **27.8m**, two workers, across **320 / 390 / 430 / 1024 / 1440px**. All **1,700** previous cases retained plus **365** new Step 14 cases. `git diff --check`: PASS.
+- Final focused Today suite: **365 passed** in **3.9 minutes** across all five widths. Local preflight corrected a synthetic broken-reference fixture, deterministic mocked clock/alert timing and two old placeholder expectations, preserving validation, assertions and timeouts. Final audit fixed punctuation ambiguity in session keys and compact desktop card alignment. Interrupted intermediate full runs were not counted as successful verification; the completed green run above is the release evidence. No failed candidate was pushed.
+- Required screenshots were generated and actually inspected: **390px city preview**, **390px road actual day**, **1440px road actual day**, **320px Large road**, and **mocked end-of-day**. Final captures use the real scrollable viewport layout. Reviewed heading/clock/day controls, 今日 versus preview, previous/current/next/manual controls, primary Maps, structured target/warnings, driving notice, compact weather/alerts/scores, Hard Cuts, accommodation/final, full activities, Wake Lock and footer/status clearance. All three fonts and five widths pass no-overflow/touch/focus checks.
+- Mocked tests cover trip-timezone clocks, selection precedence, arbitrary day numbers, timed/untimed/overnight positioning, manual persistence/reset/blocked storage, trip/day/punctuation isolation, required versus optional stops, Maps precedence/safety, canonical cuts/final fallback, current/daily/out-of-range weather, shared scoring/cache/deduplication/alerts, Wake Lock cleanup including pending release, and real physical cached Schema 1/2/3/4 reads without writes. No real password or live test data is required.
+- Canonical banner/icon are byte-for-byte unchanged. Schema/data/archives, Home, Settings/Auth/checklist sync, Back/router history, shared WeatherPanel behavior, trip/checklist/weather stores, loader, approved Step 11 SQL and source-controlled baseline remain unchanged. No V1 table access, live Supabase administration/migration/test writes or production repository modifications.
+- Existing POC-only gated workflow remains npm ci → typecheck/build → complete Playwright → deploy only after success. CI/Pages outcome is verified after this release commit is pushed and reported in the release handoff; production workflow is untouched.
+
+### Known limitations
+- Today follows planned itinerary timing and does not know the user's real GPS location. Manual progress is device/browser-session local. No GPS/background tracking or automatic arrival detection.
+- Google Maps availability depends on the device, network and offline Maps settings. Forecasts may be stale/offline; suitability does not prove road, attraction or service operating status. Official announcements remain separate.
+- Wake Lock support varies by browser and may be revoked by the browser/device. It is optional and never automatically reacquired.
+- Downloaded trip/weather caches retain the existing device privacy behavior after logout. Blocked/evicted storage can prevent durable offline use. Full cold-start PWA/service-worker offline QA remains Step 16.
+- Visual QA uses Chromium viewport screenshots, not physical iPhone/Safari certification. Existing nonfatal Vite bundle-size/Zod annotation notices remain.
+
+Next: **Step 15/16 — Real Trip Migration + ChatGPT Content Pipeline**. **Not started.**

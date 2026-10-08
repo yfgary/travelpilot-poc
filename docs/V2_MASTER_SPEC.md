@@ -180,6 +180,15 @@ Must:
 - show next stop and planned start time
 - show today's accommodation/final destination
 
+Step 14 operational contract:
+
+- Derive the initial Day from trip-local date, valid remembered session preview, then canonical dayNumber order. Preserve explicit preview focus rather than pretending another date is currently happening.
+- Use canonical ordered timing for planned previous/current/next, including missing end, gaps, overnight and untimed items. Stable-ID manual previous/advance/reset is trip/day-session scoped and never claims GPS arrival/completion.
+- Resolve the next required mapped stop, explicit navigation target, car safety notice, chronological canonical Hard Cuts and final accommodation/destination from structured relationships only; no semantic title/description regex.
+- Reuse the existing shared weather/cache/scoring/alert pipeline. Actual today uses current metrics; preview requires exact daily forecast or shows honest horizon absence. Day weather does not mutate global region preference.
+- Optional off-default Screen Wake Lock requires explicit user action, feature detection, truthful status and cleanup without automatic reacquisition.
+- Keep all physical cached Schema 1/2/3/4 snapshots readable offline without payload rewrites or operational-state Supabase writes. Clock tick is cleaned up and never refetches weather every second.
+
 ## 11. Settings
 Must include:
 - Supabase login/logout and login state
@@ -255,3 +264,13 @@ Any function assessed as Complex or High-risk must be discussed with the user be
 - Live Cam shares WeatherPanel, with honest zero-camera state, canonical region/place/global grouping, optional data group labels, linked-day filters and a non-filtering trip-timezone today hint. Multi-day cameras appear once per view. Data-derived priority/tags/context do not imply operating status.
 - HTTPS source capability drives lazy embed/image; external sources may use HTTPS preview. HTTP-only inline sources stay external; failed/blocked media always retains safe deduplicated source/official/status/maps actions. Embed sandbox may limit third-party functionality. No scraping, automatic refresh, source discovery, provider-specific rendering or parsing status pages.
 - Camera availability, weather suitability and Official Alerts remain separate. All content children use the sole shared loaded-trip boundary. Shared routes/header/Back, Home and Settings are unchanged. Today Mode remains Step 14, not begun.
+
+
+## Step 14 Today Mode delivery contract
+
+- App **v2.0.0-poc.16** delivers dedicated Today Mode; current Schema **4**, readers **1/2/3/4** and Data Versions **demo.city.5 / demo.road.5** remain unchanged. No schema convenience fields or live Supabase migration.
+- All trip pages consume the sole TripLayout loaded context and share navigation/Back. Today combines operational focus, complete daily activities, structured safe Maps, canonical cuts/final destination, shared normalized weather/three-part suitability/Official Alerts and optional Wake Lock.
+- Preview, planned auto focus and session-local manual focus are explicit. Clock uses the trip timezone and HH:MM:SS without every-second screen-reader announcements. Trip/day session keys are unambiguous even with punctuation in stable IDs.
+- Responsive screenshots and all-font checks cover 320/390/430/1024/1440px, including 320px Large and end-of-day. The completed regression result is recorded in V2_CURRENT_STATE.md.
+- Planned timing is not GPS; Maps and live weather depend on device/network; suitability is not operating status; Wake Lock may be unsupported/revoked. Full cold-start PWA/service-worker offline QA remains Step 16. No production changes, real-trip migration, background tracking or auto-arrival.
+- Next is Step 15/16 — Real Trip Migration + ChatGPT Content Pipeline, not begun.

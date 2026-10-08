@@ -23,10 +23,8 @@ for (const [route, title] of pages) {
     await expect(page.getByRole('heading', { level: 1, name: title, exact: true })).toBeVisible()
     if (route.includes('/trip/')) {
       await expect(page.locator('code')).toHaveText('demo-trip')
-      if (!route.endsWith('/today')) {
-        await expect(page.locator('.trip-heading')).toContainText('demo-trip')
-        await expect(page.getByTestId(route.endsWith('/info') ? 'trip-information' : route.endsWith('/attractions') ? 'attractions-overview' : route.endsWith('/live') ? 'live-cam' : 'detailed-itinerary')).toBeVisible()
-      } else await expect(page.locator('main > .panel:not(.weather-panel)')).toContainText('demo-trip')
+      await expect(page.locator('.trip-heading')).toContainText('demo-trip')
+      await expect(page.getByTestId(route.endsWith('/info') ? 'trip-information' : route.endsWith('/attractions') ? 'attractions-overview' : route.endsWith('/live') ? 'live-cam' : route.endsWith('/today') ? 'today-mode' : 'detailed-itinerary')).toBeVisible()
       await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveCount(5)
     }
     await page.reload()
@@ -98,11 +96,11 @@ test('unmatched page retains the shell and offers home navigation', async ({ pag
 })
 
 test('approved labels and release version are shown', async ({ page }) => {
-  expect(packageMetadata.version).toBe('2.0.0-poc.15')
+  expect(packageMetadata.version).toBe('2.0.0-poc.16')
   await page.goto('#/trip/demo-trip/itinerary')
   await expect(page.getByRole('navigation', { name: '主導覽' }).getByRole('link')).toHaveText(['首頁', '設定'])
   await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveText(tripPages.map(([, title]) => title))
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.15')
+  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.16')
   await expect(page.getByText('旅程資訊', { exact: true })).toHaveCount(0)
   await expect(page.getByText('即時影像', { exact: true })).toHaveCount(0)
 })

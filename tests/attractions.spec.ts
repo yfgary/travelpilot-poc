@@ -146,6 +146,6 @@ test('trip switches clear old attraction metadata/filter/detail and Settings Bac
   await page.getByRole('navigation', { name: '主導覽' }).getByRole('link', { name: '設定', exact: true }).click(); await page.getByRole('button', { name: '返回上一頁' }).click()
   await expect(page).toHaveURL(/demo-trip\/attractions$/); await expect(page.getByTestId('trip-versions')).toContainText('demo.city.5')
   await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '今日模式', exact: true }).click()
-  await expect(page.getByRole('heading', { name: '內容準備中' })).toBeVisible(); await expect(page.getByTestId('attractions-overview')).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: '今日模式', level: 1, exact: true })).toBeVisible(); await expect(page.getByTestId('today-mode')).toBeVisible(); await expect(page.getByTestId('attractions-overview')).toHaveCount(0)
   expect(remoteSlug).not.toBe(cityContent.trip.slug)
 })

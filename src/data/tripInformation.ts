@@ -1,6 +1,7 @@
 import type { TripSnapshot } from './schema/trip'
 import { calendarDate, formatTripDate } from './tripDates'
-import type { HardCut, NavigationTarget } from './itinerary'
+import type { HardCut, NavigationTarget, TripDay } from './itinerary'
+import { calendarInstant, tripTime } from './tripTime'
 
 export const navigationTypes: Record<NavigationTarget['type'], string> = {
   parking: '🅿 泊車', entrance: '入口', station: '車站', pickup: '接載', dropoff: '落客', other: '其他導航',
@@ -11,7 +12,7 @@ export const emergencyTypes: Record<EmergencyContact['type'], string> = {
   embassy: '大使館', consulate: '領事館', insurance: '保險', accommodation: '住宿支援', other: '其他支援',
 }
 function timeInZone(date: Date, timezone: string) {
-  return new Intl.DateTimeFormat('en-GB', { timeZone: timezone, hour: '2-digit', minute: '2-digit', hour12: false }).format(date)
+  return tripTime(date, timezone)
 }
 export function formatTransportDateTime(value: string | undefined, timezone: string) {
   if (!value) return undefined
@@ -28,20 +29,11 @@ export function orderedDefinitions<T extends { id: string; order: number }>(reco
 
 // Resolve a day/time in the trip's IANA timezone, rather than assuming UTC.
 // Datetime hard cuts already contain their offset and are compared as instants.
-function hardCutInstant(cut: HardCut, snapshot: TripSnapshot): number | undefined {
+export function hardCutInstant(cut: HardCut, snapshot: TripSnapshot, linkedDay?: TripDay): number | undefined {
   if (cut.datetime) return Date.parse(cut.datetime)
-  const day = snapshot.days.find((day) => day.id === cut.dayId)
+  const day = snapshot.days.find((day) => day.id === cut.dayId) ?? linkedDay
   if (!day || !cut.time) return undefined
-  const wallTime = Date.parse(`${day.date}T${cut.time}:00Z`)
-  let instant = wallTime
-  for (let i = 0; i < 3; i++) {
-    const date = new Date(instant)
-    const rendered = Date.parse(`${calendarDate(date, snapshot.trip.timezone)}T${timeInZone(date, snapshot.trip.timezone)}:00Z`)
-    const adjustment = wallTime - rendered
-    if (!adjustment) break
-    instant += adjustment
-  }
-  return instant
+  return calendarInstant(day.date, cut.time, snapshot.trip.timezone)
 }
 export function sortedHardCuts(snapshot: TripSnapshot): HardCut[] {
   return [...snapshot.hardCuts].sort((a, b) => {

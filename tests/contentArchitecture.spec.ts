@@ -24,7 +24,7 @@ test('one canonical loading boundary, PlaceDetail and WeatherPanel serve both vi
   const sourceFiles = walk('src')
   expect(sourceFiles.filter((path) => path.endsWith('PlaceDetail.tsx'))).toHaveLength(1)
   for (const path of sourceFiles.filter((path) => !path.includes('demoTrips'))) expect(readFileSync(path, 'utf8')).not.toMatch(/\b(?:catalogPlaces|overviewPlaces)\b|attractions\s*:\s*\[/)
-  expect(readFileSync('src/views/TripView.tsx', 'utf8')).toContain('內容準備中')
+  expect(readFileSync('src/app/App.tsx', 'utf8')).toContain('<TodayMode />'); expect(readFileSync('src/app/App.tsx', 'utf8')).not.toContain('<TripView')
 })
 test('Step 13 retains original trip/checklist cache, history, Home, Settings, weather/scoring, SQL and canonical assets', () => {
   const protectedPaths = ['supabase', '.github/workflows', 'src/offline', 'src/services/trips.ts', 'src/services/checklists.ts', 'src/services/checklistSync.ts', 'src/data/schema/weather.ts', 'src/data/weather/suitability.ts', 'src/services/weather/alerts.ts', 'src/services/weather/providers', 'src/auth', 'src/app/NavigationHistory.tsx', 'src/views/Home.tsx', 'src/components/TripCard.tsx', 'src/views/Settings.tsx', 'src/components/itinerary/PlaceDetail.tsx', 'assets']
