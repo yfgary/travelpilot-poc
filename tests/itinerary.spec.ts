@@ -32,9 +32,9 @@ async function loadCustom(page: Page, original: TripSnapshot) {
 }
 
 test('current Schema Version and independent App/Data Versions remain canonical', () => {
-  expect(packageMetadata.version).toBe('2.0.0-poc.14')
-  expect(cityRecord.dataVersion).toBe('demo.city.4'); expect(roadRecord.dataVersion).toBe('demo.road.4')
-  for (const record of localTrips) expect(validateTripSnapshot(record.payload)).toMatchObject({ valid: true, snapshot: { schemaVersion: 3 } })
+  expect(packageMetadata.version).toBe('2.0.0-poc.15')
+  expect(cityRecord.dataVersion).toBe('demo.city.5'); expect(roadRecord.dataVersion).toBe('demo.road.5')
+  for (const record of localTrips) expect(validateTripSnapshot(record.payload)).toMatchObject({ valid: true, snapshot: { schemaVersion: 4 } })
   expect(city.hardCuts).toEqual([]); expect(city.liveCams).toEqual([]); expect(city.navigationTargets).toEqual([])
 })
 
@@ -63,8 +63,8 @@ for (const record of [cityRecord, roadRecord]) {
     await expect(page.getByTestId('detailed-itinerary')).toBeVisible()
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('詳細行程')
     await expect(page.getByText('內容準備中', { exact: true })).toHaveCount(0)
-    await expect(page.getByTestId('trip-versions')).toHaveText(`Trip Data Version：${record.dataVersion} · Trip Schema Version：3`)
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.14')
+    await expect(page.getByTestId('trip-versions')).toHaveText(`Trip Data Version：${record.dataVersion} · Trip Schema Version：4`)
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.15')
     await expect(page.locator('.itinerary-intro')).toContainText(`${snapshot.days.length} 天行程`)
     await expect(page.locator('.itinerary-day')).toHaveCount(snapshot.days.length)
     await expect(page.getByRole('navigation', { name: '行程日期' }).getByRole('button')).toHaveText(snapshot.days.map((day) => `D${day.dayNumber}`))
@@ -252,7 +252,7 @@ test('minimal place and absent accommodation/hints/images hide optional UI clean
   const snapshot = structuredClone(city)
   snapshot.days = [snapshot.days[0]]
   snapshot.weather.weighting = snapshot.weather.weighting.filter((entry) => !entry.dayId || entry.dayId === snapshot.days[0].id)
-  if (snapshot.schemaVersion === 3) snapshot.weather.dayRegions = snapshot.weather.dayRegions.filter((entry) => entry.dayId === snapshot.days[0].id)
+  if (snapshot.schemaVersion === 3 || snapshot.schemaVersion === 4) snapshot.weather.dayRegions = snapshot.weather.dayRegions.filter((entry) => entry.dayId === snapshot.days[0].id)
   const day = snapshot.days[0]; delete day.accommodationId; day.highlights = []; day.imageIds = []
   day.timeline = [{ id: 'minimal-event', type: 'activity', title: '簡單活動', placeId: city.places[2].id, optional: false }]
   await loadCustom(page, snapshot)
@@ -293,7 +293,7 @@ test('all generic entity kinds, not destination IDs, can appear in optional refe
 test('empty validated trip has a generic itinerary empty state', async ({ page }) => {
   const snapshot = structuredClone(city); snapshot.days = []
   snapshot.weather.weighting = snapshot.weather.weighting.filter((entry) => !entry.dayId)
-  if (snapshot.schemaVersion === 3) snapshot.weather.dayRegions = []
+  if (snapshot.schemaVersion === 3 || snapshot.schemaVersion === 4) snapshot.weather.dayRegions = []
   await loadCustom(page, snapshot)
   await expect(page.getByRole('heading', { name: '未有行程' })).toBeVisible()
   await expect(page.locator('.day-jump')).toHaveCount(0)
@@ -313,6 +313,8 @@ test('one shared remote load survives itinerary interactions and other view plac
   for (const title of ['旅程資料', '景點總覽', 'Live Cam', '今日模式']) {
     await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: title, exact: true }).click()
     if (title === '旅程資料') await expect(page.getByTestId('trip-information')).toBeVisible()
+    else if (title === '景點總覽') await expect(page.getByTestId('attractions-overview')).toBeVisible()
+    else if (title === 'Live Cam') await expect(page.getByTestId('live-cam')).toBeVisible()
     else await expect(page.getByRole('heading', { name: '內容準備中' })).toBeVisible()
     await expect(page.getByTestId('detailed-itinerary')).toHaveCount(0)
   }
@@ -352,7 +354,7 @@ test('switching trips resets open day/place state and does not leak itinerary me
   await expect(page.getByTestId('detailed-itinerary')).not.toContainText(city.days[0].title)
   await expect(page.getByTestId('detailed-itinerary')).not.toContainText(city.places[0].name)
   await expect(page.locator('.itinerary-day[open]')).toHaveCount(1)
-  await expect(page.getByTestId('trip-versions')).toContainText('demo.road.4')
+  await expect(page.getByTestId('trip-versions')).toContainText('demo.road.5')
   await page.getByRole('navigation', { name: '主導覽' }).getByRole('link', { name: '設定', exact: true }).click()
   await page.getByRole('button', { name: '返回上一頁' }).click()
   await expect(page).toHaveURL(/#\/trip\/demo-road-trip\/itinerary$/)

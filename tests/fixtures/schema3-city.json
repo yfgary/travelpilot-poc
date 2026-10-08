@@ -1,7 +1,5 @@
-import type { TripSnapshot } from '../schema/trip'
-
-export const cityTrip: TripSnapshot = {
-  "schemaVersion": 4,
+{
+  "schemaVersion": 3,
   "trip": {
     "id": "demo-trip-id",
     "slug": "demo-trip",

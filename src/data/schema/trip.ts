@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import { weatherConfigurationSchema } from './weather'
 
-export const CURRENT_TRIP_SCHEMA_VERSION = 3
+export const CURRENT_TRIP_SCHEMA_VERSION = 4
 export const TRIP_SCHEMA_VERSION = CURRENT_TRIP_SCHEMA_VERSION
-export const SUPPORTED_TRIP_SCHEMA_VERSIONS = [1, 2, 3] as const
+export const SUPPORTED_TRIP_SCHEMA_VERSIONS = [1, 2, 3, 4] as const
 export function isSupportedTripSchemaVersion(value: unknown): value is typeof SUPPORTED_TRIP_SCHEMA_VERSIONS[number] {
   return SUPPORTED_TRIP_SCHEMA_VERSIONS.some((version) => version === value)
 }
@@ -100,6 +100,13 @@ const emergencySchema = z.strictObject({
     description: text.optional(), availability: text.optional(), notes, sourceIds: ids,
   })),
 })
+const liveCamV4 = z.strictObject({
+  id, label: text, description: text.optional(), regionId: id.optional(), placeId: id.optional(),
+  routeDayIds: ids, group: text.optional(), priority: z.enum(['primary', 'reference', 'backup']).optional(),
+  tags: z.array(text.refine((value) => value.trim().length > 0, 'Empty camera tag')),
+  sourceType: z.enum(['embed', 'image', 'external']), sourceURL: httpURL,
+  previewURL: httpURL.optional(), officialURL: httpURL.optional(), statusURL: httpURL.optional(), sourceLabel: text.optional(),
+})
 const versionedSnapshotSchema = z.discriminatedUnion('schemaVersion', [
   z.strictObject({ ...commonShape, schemaVersion: z.literal(1) }),
   z.strictObject({ ...commonShape, schemaVersion: z.literal(2), emergency: emergencySchema,
@@ -107,6 +114,10 @@ const versionedSnapshotSchema = z.discriminatedUnion('schemaVersion', [
     sources: z.array(commonShape.sources.element.extend({ entity: emergencyEntityReference.optional() })),
   }),
   z.strictObject({ ...commonShape, schemaVersion: z.literal(3), weather: weatherConfigurationSchema, emergency: emergencySchema,
+    days: z.array(commonShape.days.element.extend({ optionalContent: z.array(emergencyEntityReference), backupContent: z.array(emergencyEntityReference) })),
+    sources: z.array(commonShape.sources.element.extend({ entity: emergencyEntityReference.optional() })),
+  }),
+  z.strictObject({ ...commonShape, schemaVersion: z.literal(4), liveCams: z.array(liveCamV4), weather: weatherConfigurationSchema, emergency: emergencySchema,
     days: z.array(commonShape.days.element.extend({ optionalContent: z.array(emergencyEntityReference), backupContent: z.array(emergencyEntityReference) })),
     sources: z.array(commonShape.sources.element.extend({ entity: emergencyEntityReference.optional() })),
   }),
@@ -175,7 +186,7 @@ export const tripSnapshotSchema = versionedSnapshotSchema.superRefine((snapshot,
   snapshot.weather.weighting.forEach((weight, i) => {
     ref('region', weight.regionId, ['weather', 'weighting', i, 'regionId']); ref('day', weight.dayId, ['weather', 'weighting', i, 'dayId']); ref('activityProfile', weight.activityProfileId, ['weather', 'weighting', i, 'activityProfileId'])
   })
-  if (snapshot.schemaVersion === 3) {
+  if (hasWeatherConfiguration(snapshot)) {
     const weather = snapshot.weather
     register('forecastProvider', weather.forecastProviders, ['weather', 'forecastProviders'])
     register('alertProvider', weather.alertProviders, ['weather', 'alertProviders'])
@@ -193,7 +204,13 @@ export const tripSnapshotSchema = versionedSnapshotSchema.superRefine((snapshot,
     weather.alertProviders.forEach((provider, i) => refs('weatherRegion', provider.weatherRegionIds ?? [], ['weather', 'alertProviders', i, 'weatherRegionIds']))
   }
   snapshot.liveCams.forEach((cam, i) => {
-    ref('region', cam.regionId, ['liveCams', i, 'regionId']); ref('place', cam.placeId, ['liveCams', i, 'placeId']); ref('day', cam.routeDayId, ['liveCams', i, 'routeDayId'])
+    ref('region', cam.regionId, ['liveCams', i, 'regionId']); ref('place', cam.placeId, ['liveCams', i, 'placeId'])
+    if ('routeDayIds' in cam) {
+      refs('day', cam.routeDayIds, ['liveCams', i, 'routeDayIds'])
+      if (new Set(cam.routeDayIds).size !== cam.routeDayIds.length) issue(['liveCams', i, 'routeDayIds'], 'Duplicate camera day reference')
+      const place = snapshot.places.find((place) => place.id === cam.placeId)
+      if (cam.regionId && place && place.regionId !== cam.regionId) issue(['liveCams', i, 'regionId'], 'Camera region and place are inconsistent')
+    } else ref('day', cam.routeDayId, ['liveCams', i, 'routeDayId'])
   })
   snapshot.sources.forEach((source, i) => { if (source.entity) relation(source.entity, ['sources', i, 'entity']) })
   emergency?.contacts.forEach((contact, i) => {
@@ -206,6 +223,11 @@ export type TripSnapshot = z.infer<typeof versionedSnapshotSchema>
 export type Schema1Snapshot = Extract<TripSnapshot, { schemaVersion: 1 }>
 export type Schema2Snapshot = Extract<TripSnapshot, { schemaVersion: 2 }>
 export type Schema3Snapshot = Extract<TripSnapshot, { schemaVersion: 3 }>
+export type Schema4Snapshot = Extract<TripSnapshot, { schemaVersion: 4 }>
+export type WeatherSnapshot = Schema3Snapshot | Schema4Snapshot
+export function hasWeatherConfiguration(snapshot: TripSnapshot): snapshot is WeatherSnapshot {
+  return snapshot.schemaVersion === 3 || snapshot.schemaVersion === 4
+}
 export function getEmergencyInfo(snapshot: TripSnapshot) {
   return 'emergency' in snapshot ? snapshot.emergency : undefined
 }

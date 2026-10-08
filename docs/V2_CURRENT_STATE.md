@@ -1,17 +1,17 @@
 # TravelPilot V2 — Current State
 
-Last updated: 08/10/2026
+Last updated: 09/10/2026 (Hong Kong)
 
 ## Progress
-**Step 12/16 — Weather + Suitability + Official Alerts Framework: COMPLETE**
+**Step 13/16 — Attractions Overview + Live Cam: COMPLETE**
 
-Current App Version: **v2.0.0-poc.14** (canonical source: package.json)
+Current App Version: **v2.0.0-poc.15** (canonical source: package.json)
 
-Current Trip Schema Version: **3**; supported readers: **1 / 2 / 3**.
+Current Trip Schema Version: **4**; supported readers: **1 / 2 / 3 / 4**.
 
-Local Trip Data Versions: **demo.city.4** / **demo.road.4**.
+Local Trip Data Versions: **demo.city.5** / **demo.road.5**.
 
-Next: **Step 13/16 — Attractions Overview + Live Cam**
+Next: **Step 14/16 — Today Mode**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -38,9 +38,8 @@ Next: **Step 13/16 — Attractions Overview + Live Cam**
 ## Not started
 - Full V2 feature implementation (foundation and shared visual shell complete)
 - Complete PWA/offline implementation (manifest and versioned snapshot cache foundations are complete)
-- Remaining trip content renderers (generic Detailed Itinerary and Trip Information are complete; Attractions, Live Cam and Today remain placeholders)
+- Remaining trip content renderer: Today Mode (Detailed Itinerary, Trip Information, Attractions Overview and Live Cam are complete)
 - Complete V1 UI parity across trip pages (shared responsive shell and Home parity are complete)
-- Live Cam implementation
 - Today Mode implementation
 - real trip data migration
 
@@ -60,7 +59,7 @@ Next: **Step 13/16 — Attractions Overview + Live Cam**
 - Step 8 implementation was unstarted at this documentation release; the implementation release below is `v2.0.0-poc.9`.
 
 ## Next step
-Step 12 implements the generic weather/suitability engine and fictional Official Alerts framework. After the Step 12 gate passes, next is **Step 13/16 — Attractions Overview + Live Cam**, only when explicitly authorized. Step 13 has not begun; real trip migration remains outside this release.
+Step 13 implements canonical Attractions Overview and generic Live Cam presentation with Schema 4 and strict backward compatibility. Next is **Step 14/16 — Today Mode**, only when explicitly authorized. Step 14 has not begun; real trip migration remains outside this release.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -377,4 +376,35 @@ Historical Step 11 next task was Step 12; its implementation record follows.
 - Weather cache is separate device data and survives logout. The unchanged Step 11 Settings clear control manages trip/checklist stores; dedicated weather-cache clearing is not added in Step 12. Browser site-data clearing/eviction removes weather cache; blocked storage permits session-only use without durable offline guarantees.
 - No background weather polling, Today integration, camera playback, real alert provider, Supabase weather storage, migrations or service-worker expansion. Existing nonfatal Vite bundle-size/Zod notices remain.
 
-Next: **Step 13/16 — Attractions Overview + Live Cam**. **Not started.**
+Historical Step 12 next task was Step 13; its implementation record follows.
+
+## Step 13/16 — Attractions Overview + Live Cam
+
+**STEP 13 ATTRACTIONS + LIVE CAM GATE: PASS.** Release **v2.0.0-poc.15** uses canonical package.json, current Trip Schema **4**, supported strict readers **1 / 2 / 3 / 4**, and separate fictional Data Versions **demo.city.5 / demo.road.5**.
+
+### Implementation
+- All twelve requested Production V1 Attractions/Live Cam markup, renderer, detail/style, template and trip-data references were inspected read-only. `assets/live-v9-2-sync.js` was also inspected as an architecture example to avoid. No legacy JavaScript, default-trip/hydrate logic, fixed/dynamic day bindings, provider hostname patches or real trip content was copied.
+- Schema 4 extends camera JSON only: required `routeDayIds` and `tags` arrays (empty allowed), optional description, primary/reference/backup priority and sourceLabel. All day references, duplicate relationships, safe HTTP(S) URLs and explicit region/place consistency validate. Canonical Zod definitions infer types. Strict Schema 1/2/3 contracts retain singular `routeDayId`; one `getLiveCamDayIds()` helper supplies compatible UI relationships without rewriting old snapshots. Rich weather config applies unchanged to Schema 3/4 through one guard.
+- Dedicated Attractions Overview derives canonical Place usage from normal/optional/bonus timelines and day optional/backup Place references. Places can have several statuses/days; All is unique Places, category counts overlap honestly, and day badges deduplicate. Unreferenced Places are omitted. Canonical Region ordering, earliest day/status/name/ID sorting, category filters and keyboard/horizontal region navigation require no second dataset or Place.status field.
+- Cards use shared canonical image resolution (first valid record, next valid on failure, clean text-only absence), PlaceFacts, MapsAction, ExternalLink and the exact existing PlaceDetail dialog. Ratings, durations, opening/last entry/closing, fees, descriptions, source/official actions and image attribution remain canonical. No Home brand banner appears in content cards.
+- Dedicated Live Cam reuses WeatherPanel/context and the sole TripLayout loading boundary. Explicit region then Place region then Other/Whole Trip drives grouping, with optional data group labels. Only linked days become filters; multi-day cameras appear once per view. Trip-timezone today hint does not automatically filter. Description, priority, tags, source labels and context come from data; missing metadata is not fabricated.
+- HTTPS source capability selects lazy titled/fullscreen-capable sandboxed iframe or lazy image; external sources can show a safe HTTPS preview. Failed media retains clean panels/actions; HTTP embed/image stays external without HTTPS rewriting. Source/official/status/maps actions are safe and deduplicated. Embed always retains an external fallback. Status links do not imply operation; weather suitability, alerts and camera availability remain separate. No scraper, automatic source discovery, hostname/camera-name branches, polling or still-image auto-refresh.
+- City retains zero cameras; road has three clearly fictional POC records exercising multiple regions/days and global scope. Existing non-camera fixture content is unchanged. Synthetic embed/image resources exist only in mocked tests/QA, not as claimed working real cameras.
+- Home, Settings/Auth, Back history, checklist behavior, original trip/checklist/weather stores and loader remain unchanged. Today remains a placeholder; Step 14 is not begun. No live Supabase calls were used for database administration, schema changes, publishing or test writes. V1 tables and production remain untouched.
+
+### Verification
+- `npm ci`: PASS. `npm run build` (both TypeScript checks + production Vite build): PASS. Complete Playwright suite: **1,700 passed** in **24.5 minutes**, two workers, across **320 / 390 / 430 / 1024 / 1440px**. All **1,355** prior cases retained and **345** new Step 13 cases added. `git diff --check`: PASS.
+- New five-width focused suite: **345 passed** in **4.0 minutes**. Initial local test-fixture issues (image IDs absent from original Places, demo fixture shadowing a cached archive slug and legitimate online cachedAt refresh) were corrected in tests without weakening schema, assertions or time limits. The first complete run passed 1,698 cases and exposed two existing test sequencing assumptions. For batching, auto-scrolling between checkbox actions could exceed the unchanged 500ms debounce. The test now issues both changes in one browser turn and additionally asserts both checkboxes; all original two-row batch, timestamp and clean-queue assertions remain. Checklist implementation, assertions/time limits and SQL are unchanged. The frozen-clock reload test also attempted to uncheck before persisted checked state restored; it now explicitly waits for that state before acting, preserving all durable-value/device-clock assertions. Both corrected cases passed three repetitions at every width (30 focused passes), followed by the full green rerun above. No failed implementation candidate was pushed.
+- Frozen actual Schema 1/2 archives and pre-Step13 Schema 3 city/road payloads validate unchanged. Physical Schema 1/2/3 cache tests verify rendering/source versions and zero trip-store writes/deletes/upgrades. Schema 4 remote/reload/signed-out/offline tests preserve metadata and valid cache. Existing weather tests still exercise actual frozen Schema 3 alongside current Schema 4; all preceding local-first checklist, multi-trip, owner isolation, Home/Auth/Back/version/asset tests pass.
+- Required screenshots generated and visually inspected: **390px city/road Attractions**, **1440px road Attractions**, **320px Large road Attractions**, **390px city zero-camera/road Live Cam**, **1440px road Live Cam**, **320px Large road Live Cam**. Additional synthetic 390px canonical image, embed and still-image views were reviewed. Filters/counts, region navigation, multi-status/day badges, facts/maps/detail, weather/empty states, group/priority/tags, day filtering, wrapped actions, media fallback and footer clearance were checked. Every captured scenario measured zero body/main horizontal overflow. All three fonts pass automated responsive checks at all five widths.
+- Source audits verify a single load boundary, canonical datasets/detail/weather reuse, immutable fixture content, unchanged archived payload hashes, no trip/country/day/place/camera/provider-site branches, no V1 data access and no privileged credentials. Browser Auth/Supabase/forecast/media boundaries are mocked; no real password or live test rows.
+- Canonical banner/icon remain byte-for-byte unchanged. Approved Step 11 SQL and historical baseline remain unchanged and unapplied in this step. No production repository modifications or live Supabase migration/writes. The POC-only gated workflow is unchanged; CI and Pages outcome is verified after this commit is pushed and reported in the release handoff.
+
+### Known limitations
+- Real camera sources may refuse embedding through CSP/X-Frame-Options or require permissions unavailable in the conservative iframe sandbox. A working third-party stream is not guaranteed; permanent external actions are the fallback. Image failures are handled, but cross-origin framing failures cannot always be detected automatically.
+- No camera discovery, scraping, provider-specific behavior, parsed operation status or automatic still-image refresh. Source/status links and loaded media do not establish road/attraction operating status. Weather scores and Official Alerts remain advisory and separate.
+- Only fictional camera/alert examples and mocked media resources are included. No real trip migration, live JMA/other official provider, Today Mode, service-worker expansion, Supabase Home listing or checklist/cache redesign.
+- Existing device privacy remains: cached trips/weather survive logout, and signed-out users in the same browser profile can access previously downloaded routes. Explicit Settings trip/checklist clearing is unchanged; dedicated weather clearing remains deferred. Storage blocking/eviction can prevent durable offline use.
+- Visual QA uses Chromium viewport screenshots, not physical iPhone/Safari certification. Existing nonfatal Vite bundle-size/Zod annotation notices remain.
+
+Next: **Step 14/16 — Today Mode**. **Not started.**

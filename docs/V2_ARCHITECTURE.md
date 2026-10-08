@@ -137,14 +137,14 @@ Before a trip snapshot is published:
 
 Schema evolution is controlled with `schema_version`.
 
-### Backward-compatible snapshot reader (Steps 10 and 12)
-- Current Trip Schema Version is **3**; supported versions are **1 / 2 / 3**. `TRIP_SCHEMA_VERSION` aliases `CURRENT_TRIP_SCHEMA_VERSION`; supported-version checks are centralized.
+### Backward-compatible snapshot reader (Steps 10, 12 and 13)
+- Current Trip Schema Version is **4**; supported versions are **1 / 2 / 3 / 4**. `TRIP_SCHEMA_VERSION` aliases `CURRENT_TRIP_SCHEMA_VERSION`; supported-version checks are centralized.
 - Schema 1 retains its strict Step 9 contract. Schema 2 shares the common shape and cross-reference validator, adds required top-level `emergency` (empty contacts/notes allowed), and permits generic `emergencyContact` entity references. No duplicate complete schema/validator or destination-specific fields.
 - Emergency contacts have globally unique stable IDs, generic categories, optional phone/HTTP(S) URL/region/availability/description, notes and source IDs. Region/source/entity references and safe URLs are validated. `getEmergencyInfo()` centralizes the version-specific UI access; Schema 1 has no emergency data.
 - Remote row/payload schema versions must match and both be supported. `LoadedTrip.schemaVersion` reports the actual source version, never the current app's preferred format.
-- IndexedDB remains `travelpilot-v2-trips`, database storage version **1**, with the same stores/keys/pointers. Existing Schema 1 records validate/read unchanged; Schema 2 records coexist. Metadata/payload mismatches are rejected. Reading never rewrites, migrates, clears or deletes records; invalid updates preserve the valid cache.
-- TripLayout remains the sole asynchronous loading boundary. Its typed Outlet context supplies both Detailed Itinerary and Trip Information; children do not access Supabase or IndexedDB. Shared canonical accommodation/transport/navigation/hard-cut records are reused. Trip Information's data-driven quick navigation, read-only checklist definitions and emergency presentation require no mutable checklist storage.
-- No live Supabase DDL/data change is needed: `v2_trip_versions.payload` already stores JSONB and `schema_version` is a positive integer. Existing V1 tables and source-control SQL baseline remain untouched. Checklist state and weather remain Steps 11 and 12.
+- IndexedDB remains `travelpilot-v2-trips`, database storage version **1**, with the same stores/keys/pointers. Existing Schema 1/2/3 records validate/read unchanged; Schema 4 records coexist. Metadata/payload mismatches are rejected. Reading never rewrites, migrates, clears or deletes records; invalid updates preserve the valid cache.
+- TripLayout remains the sole asynchronous loading boundary. Its typed Outlet context supplies Detailed Itinerary, Trip Information, Attractions Overview and Live Cam; content children do not load trips or access Supabase/IndexedDB directly. Shared canonical accommodation/transport/navigation/hard-cut records are reused. Trip Information's data-driven quick navigation, read-only checklist definitions and emergency presentation require no mutable checklist storage.
+- No live Supabase DDL/data change is needed: `v2_trip_versions.payload` already stores JSONB and `schema_version` is a positive integer. Existing V1 tables and source-control SQL baseline remain untouched. Checklist state and weather were implemented separately in Steps 11 and 12.
 
 ## No trip-specific logic
 Application code may contain generic reusable rules and enums.
@@ -306,7 +306,7 @@ Remaining boundaries: cold offline app/static-image caching, real trip migration
 
 ## Step 12 — Generic weather and Official Alerts foundation
 
-Current App Version is v2.0.0-poc.14; current Trip Schema is 3 with strict readers 1/2/3. Local Data Versions are demo.city.4/demo.road.4. Schema 3 extends the weather payload only; Schema 2 emergency content remains available. Original Schema 1/2 contracts, actual source-version metadata and trip-cache physical storage remain unchanged; reads do not rewrite old data.
+At the Step 12 release, App Version was v2.0.0-poc.14 and current Trip Schema was 3 with strict readers 1/2/3. Local Data Versions are demo.city.4/demo.road.4. Schema 3 extends the weather payload only; Schema 2 emergency content remains available. Original Schema 1/2 contracts, actual source-version metadata and trip-cache physical storage remain unchanged; reads do not rewrite old data.
 
 ```
 Validated Schema 3 snapshot configuration
@@ -334,3 +334,15 @@ One shared WeatherPanel is used on itinerary, information and the Live Cam place
 Official alerts are independent of forecasts and suitability. `alertProviders` choose adapter IDs through data; provider-specific service adapters are permitted, while country/slug/place/timezone selection branches are forbidden. Only `demo-alerts` exists here, always normalized with isTest=true and both visible fictional-warning labels. Provider region scope, active dates and deterministic severity/time/id sorting protect UI isolation. A future JMA adapter is planned for real-trip migration and must be selected by trip data; no live JMA/TMD/AEMET/global adapter or automatic score override is implemented. No Today weather integration or Live Cam playback in Step 12.
 
 Weather cache is local device data and is not deleted by logout. Step 11 Settings clearing remains unchanged and does not clear this new dedicated weather store; site-data clearing/eviction can remove it. App shell/image service-worker expansion and dedicated weather management remain later work.
+
+## Step 13 — Canonical Attractions and capability-driven Live Cam
+
+Release v2.0.0-poc.15 uses Trip Schema 4, readers 1/2/3/4 and separate Data Versions demo.city.5/demo.road.5. Schema 4 changes only camera JSON: required routeDayIds/tags arrays, optional description/priority/sourceLabel, and region/place consistency validation. Empty relationship/tag arrays are valid. Strict Schema 1/2/3 contracts retain singular routeDayId. One getLiveCamDayIds helper bridges both without rewriting snapshots. Shared common Zod definitions and cross-reference validation remain canonical; rich weather configuration applies unchanged to Schema 3/4 through one type guard.
+
+Attractions Overview derives Place usage from canonical ordered timelines, optional/bonus flags and day optionalContent/backupContent references. It does not introduce Place.status or another attractions dataset. One Place may have multiple statuses/days; All contains each referenced Place once, category counts can overlap, and badges deduplicate days. Groups follow canonical Region order; cards sort by earliest referenced day, main/optional/backup priority, name and stable ID without mutating source arrays. Shared PlaceFacts, PlaceDetail, MapsAction, ExternalLink and canonical image resolution are reused; missing/broken images degrade to text-only cards and never use Home branding.
+
+Live Cam resolves explicit region, then canonical Place region, then Other/Whole Trip; optional group labels are data. Filters contain only linked canonical days; a multi-day camera appears once in each matching view. Description, priority, tags and source labels come from camera data, not host/provider/trip branches. HTTPS embed uses a lazy titled fullscreen-capable iframe with conservative sandbox/referrer policy and permanent external fallback. HTTPS image/preview is lazy with a failure panel; HTTP inline sources remain external and are never rewritten. Safe source/official/status/maps links deduplicate. Status is a link, not parsed availability; no scraping, discovery, provider hacks, polling or image refresh.
+
+Both views consume TripLayout's loaded context only. Live Cam reuses the existing WeatherPanel/context; camera filters do not change weather selection, scores or Official Alerts. City has no cameras; road has three explicitly fictional records. Today remains a placeholder. Home, Auth, Settings, Back history, trip/checklist/weather storage, approved Step 11 SQL, Supabase policies and production remain unchanged. Old physical Schema 1/2/3 cache reads are tested without trip-record writes, migration or deletion.
+
+Third-party CSP/X-Frame-Options and sandbox requirements may prevent playback; external actions remain the reliable fallback. No source operational status is inferred from a successful image, a status URL or weather score.

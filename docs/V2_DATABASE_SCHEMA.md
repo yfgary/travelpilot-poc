@@ -61,7 +61,7 @@ Illustrative top-level shape:
 
 ```json
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "trip": {},
   "regions": [],
   "days": [],
@@ -79,7 +79,7 @@ Illustrative top-level shape:
 }
 ```
 
-The canonical runtime contract is `src/data/schema/trip.ts`. Step 12 sets `CURRENT_TRIP_SCHEMA_VERSION = 3` (also `TRIP_SCHEMA_VERSION`) and supports strict versions 1, 2 and 3. Step 10 introduced emergency content in version 2. Types are inferred from the shared Zod runtime definitions; there is no separate snapshot interface. Schema 1's original strict contract remains readable and omits emergency; Schema 2 adds generic emergency information. Dates use ISO calendar dates, times use HH:MM and datetimes include a UTC/offset zone. Durations are minutes, monetary values carry a three-letter currency, and all entity IDs (including emergency contacts, timeline/checklist groups/items) are unique across a snapshot. Live Cam route relationships use routeDayId; group is a display label. Arrays preserve timeline order; checklist groups/items additionally carry order values.
+The canonical runtime contract is `src/data/schema/trip.ts`. Step 13 sets `CURRENT_TRIP_SCHEMA_VERSION = 4` (also `TRIP_SCHEMA_VERSION`) and supports strict versions 1, 2, 3 and 4. Step 10 introduced emergency content in version 2. Types are inferred from the shared Zod runtime definitions; there is no separate snapshot interface. Schema 1's original strict contract remains readable and omits emergency; Schema 2 adds generic emergency information. Dates use ISO calendar dates, times use HH:MM and datetimes include a UTC/offset zone. Durations are minutes, monetary values carry a three-letter currency, and all entity IDs (including emergency contacts, timeline/checklist groups/items) are unique across a snapshot. Live Cam route relationships use required routeDayIds in Schema 4; strict Schemas 1/2/3 retain optional singular routeDayId. Group is a display label. Arrays preserve timeline order; checklist groups/items additionally carry order values.
 
 Schema 2 emergency contacts include category, title, optional phone/HTTP(S) URL/region/context, availability, description, notes and canonical source IDs. `emergencyContact` is a supported Schema 2 entity reference. The existing JSONB payload and positive integer schema_version need **no live DDL or data changes**. Remote row/payload versions must match. IndexedDB retains storage version 1 and its existing stores/keys; Schema 1 and 2 snapshots retain their actual metadata and are never rewritten/deleted merely on read. Invalid updates cannot overwrite a valid cache. All V1 tables and the unapplied SQL baseline remain unchanged.
 
@@ -236,12 +236,12 @@ Do not encode a named attraction in scoring code.
 Must support:
 - stable ID
 - label
-- region/place/route/group references
+- optional region/place/group references; Schema 4 required routeDayIds array, old readers retain routeDayId
 - generic source capability type
 - source URL
 - preview/snapshot URL where relevant
 - official/status URL
-- sort/display metadata
+- Schema 4 description, priority (primary/reference/backup), required tags array and optional sourceLabel; empty tags/day relationships allowed
 
 ### images
 Must support:
@@ -335,10 +335,16 @@ Definitions stay exclusively in validated trip snapshots; state does not change 
 
 ## Step 12 — JSON payload evolution only; no live database change
 
-Trip Schema 3 adds forecastProviders/weatherRegion.providerId/optional location elevation, dayRegions, richer activityProfiles with Experience/Access metric curves and weights, accessShare/safetyCaps/minimumCoverage/operationRequired, and alertProviders. The canonical trip/weather Zod schemas infer TypeScript types and validate shape/references/safe configuration. Schema 1 and 2 remain unchanged/readable and cached row metadata retains its actual version; schemas 4+ are unsupported. `v2_trip_versions.schema_version` must equal `payload.schemaVersion` for all supported versions.
+Trip Schema 3 adds forecastProviders/weatherRegion.providerId/optional location elevation, dayRegions, richer activityProfiles with Experience/Access metric curves and weights, accessShare/safetyCaps/minimumCoverage/operationRequired, and alertProviders. The canonical trip/weather Zod schemas infer TypeScript types and validate shape/references/safe configuration. Schema 1 and 2 remain unchanged/readable and cached row metadata retains its actual version; schemas 4+ were unsupported at the Step 12 release (Step 13 adds Schema 4 below). `v2_trip_versions.schema_version` must equal `payload.schemaVersion` for all supported versions.
 
 Existing JSONB/positive schema_version columns already accommodate this payload; **no Step 12 DDL, migration, grants/policies, live rows or V1 tables are modified**. The approved Step 11 checklist migration and unapplied baseline SQL remain byte-for-byte unchanged. Browser trip content remains read-only. Dynamic provider forecasts and alerts are not written into v2_trips/v2_trip_versions/checklist tables or immutable snapshots.
 
 Normalized WeatherForecast and OfficialAlert contracts are runtime data, distinct from the published trip config. Forecasts are stored only in local `travelpilot-v2-weather-cache` IndexedDB, keyed by trip/region/provider with a configuration signature and fetchedAt. Ten-minute TTL, stale/offline fallback and validation protect valid cache records. The original trip-cache name/version/stores/keys are untouched; original Schema 1/2 physical records need no migration/rewrite/deletion.
 
 Local weather cache remains after logout, subject to browser eviction/site-data clearing. The unchanged Step 11 Settings clear action handles trip/checklist state and does not add dedicated weather-cache clearing. App Version v2.0.0-poc.14, Data Versions demo.city.4/demo.road.4 and Trip Schema 3 remain separate. All automated Supabase/Auth/forecast network tests are mocked; no real user credentials or live test writes.
+
+## Step 13 — Camera JSON evolution; live database untouched
+
+Schema 4 extends camera JSON only with multi-day routeDayIds and descriptive priority/tags/source-label metadata. All references are validated, including duplicate/missing day IDs and inconsistent explicit region versus canonical Place region. Schema 1/2/3 readers preserve their original strict contracts and source-version metadata. The existing positive schema_version/JSONB payload columns already support this version; no DDL, grants, policies, migrations, publishing or live test writes were performed.
+
+Trip cache database name/storage version/stores/keys and owner/device pointers remain unchanged. Cached old payloads are read without writes, conversion or deletion; validated Schema 4 records coexist and retain distinct data/schema versions. Logout/privacy and explicit Settings clearing behavior are unchanged. The approved Step 11 migration and historical foundation baseline remain byte-for-byte unchanged. V1 tables and production remain untouched.

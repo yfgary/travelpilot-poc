@@ -136,3 +136,13 @@ Repository-relative canonical paths:
 **Alerts:** Provider-specific external adapters are permitted, while country/slug/place/timezone provider selection is forbidden. Step 12 implements only fictional `demo-alerts`, always visibly labelled POC測試警告 / 非真實官方警告. JMA is planned for later real Japan-trip migration and must be selected through Trip Data configuration; no live JMA/TMD/AEMET/global aggregation exists here. Alerts remain separate and do not automatically override suitability until structured safety impact has product review.
 
 **Device privacy/scope:** Weather cache survives logout, as other downloaded local data does. The existing Step 11 Settings clearing behavior stays unchanged; dedicated weather-cache controls are deferred and browser site-data clearing can remove this store. Step 12 does not change live Supabase, V1, Home/Settings/Back, Today or camera playback; next is Step 13 only after separate authorization.
+
+## 2026-10-09 — Schema 4 multi-day camera relationships and canonical content views
+
+**Decision:** Extend camera JSON in Schema 4 with required routeDayIds/tags arrays and optional description, priority and sourceLabel; retain strict Schema 1/2/3 contracts and centralize legacy singular relationships in one compatibility helper. No stored snapshot conversion, cache redesign or live Supabase schema change is needed.
+
+**Canonical data:** Attractions status is derived per occurrence from day timeline/optional/backup content, never stored as a global Place.status. Category counts may overlap while each filtered view shows a Place once. Region grouping/order, metadata and detail content reuse canonical snapshot records. Camera grouping/filtering similarly uses canonical region/place/day relationships.
+
+**Media boundary:** Generic sourceType plus HTTPS capability determines lazy embedded/image/external presentation. HTTP inline sources stay external without rewriting. Conservative iframe sandbox, image failure panels and permanent safe external actions avoid provider-specific hacks. Status URLs are links only; availability is never inferred from camera loading, weather or a status link. No discovery, scraping, polling or automatic still-image refresh.
+
+**Scope:** Shared loader/routes/navigation/weather/Place detail remain the single sources. Production and live Supabase are untouched; Today Mode is not implemented here.

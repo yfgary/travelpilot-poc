@@ -1,4 +1,4 @@
-import type { Schema3Snapshot } from '../../data/schema/trip'
+import type { WeatherSnapshot } from '../../data/schema/trip'
 import { weatherForecastSchema, type WeatherForecast } from '../../data/schema/weather'
 import { readWeatherCache, writeWeatherCache } from '../../offline/weatherCache'
 import { openMeteoAdapter, type ForecastAdapter, type ForecastRequest } from './providers/openMeteo'
@@ -7,7 +7,7 @@ const adapters: Readonly<Record<string, ForecastAdapter>> = { 'open-meteo': open
 export type ForecastResult = { state: 'ready'; forecast: WeatherForecast; source: 'remote' | 'cache'; stale: boolean; cacheSaved: boolean } | { state: 'unavailable' } | { state: 'unconfigured' } | { state: 'loading' }
 const pending = new Map<string, Promise<ForecastResult>>()
 const memory = new Map<string, { forecast: WeatherForecast; saved: boolean }>()
-export function forecastRequest(snapshot: Schema3Snapshot, weatherRegionId: string): { request: ForecastRequest; adapter: string; signature: string } | null {
+export function forecastRequest(snapshot: WeatherSnapshot, weatherRegionId: string): { request: ForecastRequest; adapter: string; signature: string } | null {
   const region = snapshot.weather.weatherRegions.find((region) => region.id === weatherRegionId)
   const provider = snapshot.weather.forecastProviders.find((provider) => provider.id === region?.providerId)
   const canonical = snapshot.regions.find((item) => item.id === region?.regionId)
@@ -16,7 +16,7 @@ export function forecastRequest(snapshot: Schema3Snapshot, weatherRegionId: stri
   const request = { tripId: snapshot.trip.id, weatherRegionId, providerId: provider.id, timezone: canonical?.timezone ?? snapshot.trip.timezone, location, config: provider.config }
   return { request, adapter: provider.adapter, signature: JSON.stringify([provider.adapter, location, request.timezone, provider.config ?? {}]) }
 }
-export async function loadForecast(snapshot: Schema3Snapshot, weatherRegionId: string, options: { online: boolean; force?: boolean; now?: number }): Promise<ForecastResult> {
+export async function loadForecast(snapshot: WeatherSnapshot, weatherRegionId: string, options: { online: boolean; force?: boolean; now?: number }): Promise<ForecastResult> {
   const context = forecastRequest(snapshot, weatherRegionId)
   if (!context || !Object.hasOwn(adapters, context.adapter)) return { state: 'unconfigured' }
   const { request, signature } = context, key: [string, string, string] = [request.tripId, request.weatherRegionId, request.providerId], token = JSON.stringify([key, signature])

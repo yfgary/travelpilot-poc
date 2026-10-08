@@ -1,6 +1,8 @@
 import { test, expect } from './fixtures'
 import { localTrips } from '../src/data/trips'
 import { CURRENT_TRIP_SCHEMA_VERSION, SUPPORTED_TRIP_SCHEMA_VERSIONS, validateTripSnapshot, type Schema3Snapshot } from '../src/data/schema/trip'
+import schema3City from './fixtures/schema3-city.json' with { type: 'json' }
+import schema3Road from './fixtures/schema3-road.json' with { type: 'json' }
 import { legacyCity, legacyRoad } from './legacySnapshots'
 import schema2City from './fixtures/schema2-city.json' with { type: 'json' }
 import schema2Road from './fixtures/schema2-road.json' with { type: 'json' }
@@ -8,15 +10,15 @@ import { forecastRequest } from '../src/services/weather/forecasts'
 import { forecastURL, normalizeOpenMeteo, localDate } from '../src/services/weather/providers/openMeteo'
 import { openMeteoResponse } from './weatherFixtures'
 import { defaultWeatherRegion } from '../src/data/weather/regions'
-const city = localTrips[1].payload as Schema3Snapshot, road = localTrips[0].payload as Schema3Snapshot
+const city = schema3City as Schema3Snapshot, road = schema3Road as Schema3Snapshot
 const request = forecastRequest(road, 'road-weather-high')!.request
 
-test('three strict contracts remain readable without changing any source snapshot version', () => {
-  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(3); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3])
-  for (const snapshot of [legacyCity, legacyRoad, schema2City, schema2Road, city, road]) expect(validateTripSnapshot(snapshot)).toMatchObject({ valid: true, snapshot })
-  for (const version of [4, 0, '3', null]) expect(validateTripSnapshot({ ...road, schemaVersion: version })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
+test('four strict contracts remain readable without changing any source snapshot version', () => {
+  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(4); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4])
+  for (const snapshot of [legacyCity, legacyRoad, schema2City, schema2Road, city, road, ...localTrips.map((record) => record.payload)]) expect(validateTripSnapshot(snapshot)).toMatchObject({ valid: true, snapshot })
+  for (const version of [5, 0, '3', null]) expect(validateTripSnapshot({ ...road, schemaVersion: version })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
   expect(city.schemaVersion).toBe(3); expect(road.schemaVersion).toBe(3)
-  expect(localTrips.map((record) => record.dataVersion)).toEqual(['demo.road.4', 'demo.city.4'])
+  expect(localTrips.map((record) => record.dataVersion)).toEqual(['demo.road.5', 'demo.city.5'])
 })
 const mutations: [string, (snapshot: Schema3Snapshot) => void][] = [
   ['missing provider', (s) => { s.weather.weatherRegions[0].providerId = 'absent' }],

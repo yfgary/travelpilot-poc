@@ -57,7 +57,7 @@ test('two structurally different snapshots validate and load without shared muta
   for (const record of localTrips) {
     expect(validateTripSnapshot(record.payload).valid).toBe(true)
     const result = await loadTrip(record.payload.trip.slug, { userId: null, signal: new AbortController().signal, online: false })
-    expect(result).toMatchObject({ state: 'loaded', source: 'demo', schemaVersion: 3, dataVersion: record.dataVersion, snapshot: record.payload })
+    expect(result).toMatchObject({ state: 'loaded', source: 'demo', schemaVersion: 4, dataVersion: record.dataVersion, snapshot: record.payload })
     if (result.state === 'loaded') { result.snapshot.trip.title = 'mutated'; result.snapshot.days[0].timeline[0].title = 'mutated' }
   }
   expect(localTrips).toEqual(before)

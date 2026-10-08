@@ -1,0 +1,23 @@
+.live-cam-page { min-width: 0; }
+.camera-note { color: var(--tp-muted); font-size: .8rem; }
+.camera-region { margin: 1rem 0 1.5rem; }
+.camera-region-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; }
+.camera-region-heading h2 { margin: 0; }
+.camera-region-heading > span { font-size: .8rem; color: var(--tp-muted); }
+.camera-subgroup { margin: 1rem 0; }
+.camera-subgroup > h3 { font-size: .95rem; margin: 0 0 .6rem; }
+.camera-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.camera-card { min-width: 0; padding: 1rem; overflow-wrap: anywhere; border: 1px solid var(--tp-line); border-radius: 16px; background: #fff; box-shadow: 0 5px 18px rgb(22 65 97 / 7%); }
+.camera-card h3 { font-size: 1.05rem; margin: 0 0 .5rem; }
+.camera-card > p { font-size: .85rem; }
+.camera-badges { display: flex; flex-wrap: wrap; gap: .35rem; margin: .6rem 0; }
+.camera-badges span { background: #edf4fb; color: #245b80; border-radius: 8px; padding: .2rem .45rem; font-size: .7rem; font-weight: 700; }
+.camera-badges .camera-priority-primary { background: #ffecea; color: #913b31; }
+.camera-badges .camera-priority-backup { background: #f0f1f3; color: #505d69; }
+.camera-context { color: var(--tp-muted); }
+.camera-media { width: 100%; aspect-ratio: 16 / 9; border-radius: 11px; background: #eaf3f9; border: 1px solid #cee0ec; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.camera-media p { text-align: center; color: #315971; padding: .75rem; font-size: .85rem; }
+.camera-media iframe, .camera-media img { display: block; width: 100%; height: 100%; border: 0; }
+.camera-media img { object-fit: cover; }
+@media (max-width: 700px) { .camera-grid { grid-template-columns: 1fr; } .camera-card { padding: .85rem; } }
+@media (max-width: 360px) { .camera-media { aspect-ratio: auto; min-height: 9rem; } .camera-media:has(iframe), .camera-media:has(img) { aspect-ratio: 16 / 9; min-height: 0; } }

@@ -1,3 +1,4 @@
+import { hasWeatherConfiguration } from '../../data/schema/trip'
 import { useEffect, useRef } from 'react'
 import { useTripWeather } from '../../app/TripWeather'
 import { activeAlerts } from '../../services/weather/alerts'
@@ -26,7 +27,7 @@ export function WeatherPanel() {
   const { snapshot, selected, select, results, load, alerts, alertsUnavailable } = useTripWeather()
   const scroller = useRef<HTMLDivElement>(null)
   useEffect(() => { if (selected) load(selected) }, [selected, load])
-  if (snapshot.schemaVersion !== 3) return <section className="panel weather-panel" data-testid="weather-panel"><h2>天氣與活動適宜度</h2><p className="weather-note">此旅程資料格式未提供天氣供應商及評分設定。</p></section>
+  if (!hasWeatherConfiguration(snapshot)) return <section className="panel weather-panel" data-testid="weather-panel"><h2>天氣與活動適宜度</h2><p className="weather-note">此旅程資料格式未提供天氣供應商及評分設定。</p></section>
   const config = snapshot.weather, region = config.weatherRegions.find((region) => region.id === selected), result = results[selected]
   const active = activeAlerts(alerts, selected)
   const forecast = result?.state === 'ready' ? result.forecast : null

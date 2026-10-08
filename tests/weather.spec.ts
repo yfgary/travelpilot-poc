@@ -4,14 +4,15 @@ import { join } from 'node:path'
 import type { Page } from '@playwright/test'
 import { test, expect, supabaseOrigin } from './fixtures'
 import { localTrips } from '../src/data/trips'
-import { validateTripSnapshot, type Schema3Snapshot, type TripSnapshot } from '../src/data/schema/trip'
+import { validateTripSnapshot, type Schema4Snapshot, type TripSnapshot } from '../src/data/schema/trip'
 import { legacyRoad } from './legacySnapshots'
+import schema3Road from './fixtures/schema3-road.json' with { type: 'json' }
 import schema2Road from './fixtures/schema2-road.json' with { type: 'json' }
 import { openMeteoResponse, weatherCacheContents } from './weatherFixtures'
 import { mockRemote, seedAuth, remoteVersion, remoteId, remoteSlug, cacheContents } from './tripFixtures'
 import { regionPreferenceKey } from '../src/data/weather/regions'
 import { forecastRequest, loadForecast } from '../src/services/weather/forecasts'
-const city = localTrips[1].payload as Schema3Snapshot, road = localTrips[0].payload as Schema3Snapshot
+const city = localTrips[1].payload as Schema4Snapshot, road = localTrips[0].payload as Schema4Snapshot
 const panel = (page: Page) => page.getByTestId('weather-panel')
 async function open(page: Page, slug = city.trip.slug, view = 'info') {
   await page.goto(`#/trip/${slug}/${view}`)
@@ -46,8 +47,8 @@ for (const view of ['itinerary', 'info', 'live']) test(`${view} uses shared norm
   await expect(panel(page).locator('.weather-trend')).toHaveCount(2)
   await expect(panel(page).getByRole('link', { name: 'Open-Meteo', exact: true })).toHaveAttribute('href', 'https://open-meteo.com/')
   await expect(panel(page).getByRole('region', { name: '官方警告', exact: true })).toHaveCount(0)
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.14')
-  if (view === 'live') await expect(page.getByRole('heading', { name: '內容準備中' })).toBeVisible()
+  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.15')
+  if (view === 'live') { await expect(page.getByTestId('live-cam')).toBeVisible(); await expect(page.getByRole('heading', { name: '此旅程未設定 Live Cam' })).toBeVisible() }
 })
 test('weather is absent from Home, Settings, Attractions and Today placeholders', async ({ page }) => {
   for (const route of ['#/', '#/settings', '#/trip/demo-trip/attractions', '#/trip/demo-trip/today']) {
@@ -245,7 +246,7 @@ test('weather/alerts boundaries prohibit trip branches, Supabase writes, migrati
 test('Schema 2 and Schema 3 remote trip versions coexist and retain separate source contracts offline', async ({ page }) => {
   await remote(page, schema2Road as TripSnapshot, 'before-weather.1')
   await expect(page.getByTestId('trip-source')).toContainText('remote'); const old = (await cacheContents(page)).versions[0]
-  await remote(page, road, 'weather.3'); await expect(panel(page).locator('.weather-forecast-day')).toHaveCount(5)
+  await remote(page, schema3Road as TripSnapshot, 'weather.3'); await expect(panel(page).locator('.weather-forecast-day')).toHaveCount(5)
   const versions = await cacheContents(page); expect(versions.versions).toHaveLength(2); expect(versions.versions).toContainEqual(old)
   await page.addInitScript(() => Object.defineProperty(navigator, 'onLine', { configurable: true, get: () => false }))
   await page.reload(); await expect(page.getByTestId('trip-source')).toContainText('cache'); await expect(page.getByTestId('trip-versions')).toContainText('Trip Schema Version：3')

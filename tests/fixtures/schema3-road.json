@@ -1,7 +1,5 @@
-import type { TripSnapshot } from '../schema/trip'
-
-export const roadTrip: TripSnapshot = {
-  "schemaVersion": 4,
+{
+  "schemaVersion": 3,
   "trip": {
     "id": "demo-road-trip-id",
     "slug": "demo-road-trip",
@@ -1216,54 +1214,10 @@ export const roadTrip: TripSnapshot = {
       "label": "示範高地鏡頭",
       "regionId": "road-highland",
       "placeId": "road-trail",
-      "routeDayIds": [
-        "road-day-2",
-        "road-day-3"
-      ],
+      "routeDayId": "road-day-2",
       "group": "示範路線",
-      "description": "虛構 POC 多日鏡頭資料；網址僅供測試，不是真實即時來源。",
-      "priority": "primary",
-      "tags": [
-        "道路",
-        "能見度",
-        "POC 測試"
-      ],
       "sourceType": "external",
-      "sourceURL": "https://example.invalid/road-cam",
-      "officialURL": "https://example.invalid/road-cam",
-      "statusURL": "https://example.invalid/road-cam-status",
-      "sourceLabel": "POC 測試來源"
-    },
-    {
-      "id": "road-foothill-cam",
-      "label": "示範山麓參考鏡頭",
-      "regionId": "road-foothill",
-      "routeDayIds": [
-        "road-day-1",
-        "road-day-4"
-      ],
-      "group": "出發與返回",
-      "description": "虛構 POC 參考記錄，用於測試地區與不同日期分組。",
-      "priority": "reference",
-      "tags": [
-        "交通",
-        "POC 測試"
-      ],
-      "sourceType": "external",
-      "sourceURL": "https://example.invalid/foothill-cam",
-      "sourceLabel": "POC 外部來源"
-    },
-    {
-      "id": "road-global-cam",
-      "label": "示範全程備用來源",
-      "routeDayIds": [],
-      "description": "虛構 POC 全程備用記錄；沒有指定地區或行程日期。",
-      "priority": "backup",
-      "tags": [
-        "POC 測試"
-      ],
-      "sourceType": "external",
-      "sourceURL": "https://example.invalid/global-cam"
+      "sourceURL": "https://example.invalid/road-cam"
     }
   ],
   "images": [

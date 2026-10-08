@@ -1,12 +1,13 @@
+import { hasWeatherConfiguration } from '../../data/schema/trip'
 import { useEffect } from 'react'
 import { useTripWeather } from '../../app/TripWeather'
 import { scoreSuitability } from '../../data/weather/suitability'
 import { ScoreSummary } from './ScoreSummary'
 export function DaySuitability({ dayId, date }: { dayId: string; date: string }) {
   const { snapshot, results, load } = useTripWeather()
-  const mapping = snapshot.schemaVersion === 3 ? snapshot.weather.dayRegions.find((mapping) => mapping.dayId === dayId) : undefined
+  const mapping = hasWeatherConfiguration(snapshot) ? snapshot.weather.dayRegions.find((mapping) => mapping.dayId === dayId) : undefined
   useEffect(() => { if (mapping) load(mapping.weatherRegionId) }, [mapping, load])
-  if (snapshot.schemaVersion !== 3 || !mapping) return null
+  if (!hasWeatherConfiguration(snapshot) || !mapping) return null
   const result = results[mapping.weatherRegionId]
   if (!result || result.state === 'loading') return <p className="weather-note">正在核對行程日期的天氣預測…</p>
   if (result.state !== 'ready') return <p className="weather-note">此行程日期暫未有可用天氣預測。</p>

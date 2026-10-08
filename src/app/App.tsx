@@ -6,6 +6,8 @@ import { TripLayout } from '../views/TripLayout'
 import { TripView } from '../views/TripView'
 import { DetailedItinerary } from '../views/DetailedItinerary'
 import { TripInformation } from '../views/TripInformation'
+import { AttractionsOverview } from '../views/AttractionsOverview'
+import { LiveCam } from '../views/LiveCam'
 import { pages, tripPages } from './pages'
 import { PreferencesProvider } from './Preferences'
 import { AuthProvider } from '../auth/AuthProvider'
@@ -26,7 +28,7 @@ export function App() {
                 <Route path={pages.find((page) => page.id === 'settings')!.path} element={<Settings />} />
                 <Route path="trip/:tripSlug" element={<TripLayout />}>
                   {tripPages.map((view) => (
-                    <Route key={view.path} path={view.path} element={view.id === 'itinerary' ? <DetailedItinerary /> : view.id === 'info' ? <TripInformation /> : <TripView title={view.title} showWeather={view.id === 'live'} />} />
+                    <Route key={view.path} path={view.path} element={view.id === 'itinerary' ? <DetailedItinerary /> : view.id === 'info' ? <TripInformation /> : view.id === 'attractions' ? <AttractionsOverview /> : view.id === 'live' ? <LiveCam /> : <TripView title={view.title} />} />
                   ))}
                 </Route>
                 <Route path="*" element={<NotFound />} />

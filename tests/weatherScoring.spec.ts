@@ -1,10 +1,11 @@
 import { test, expect } from './fixtures'
-import { localTrips } from '../src/data/trips'
+import schema3City from './fixtures/schema3-city.json' with { type: 'json' }
+import schema3Road from './fixtures/schema3-road.json' with { type: 'json' }
 import type { Schema3Snapshot } from '../src/data/schema/trip'
 import type { ActivityProfile, OfficialAlert } from '../src/data/schema/weather'
 import { scoreProfile, scoreSuitability, suitabilityLabel } from '../src/data/weather/suitability'
 import { activeAlerts, demoAlertAdapter, loadAlerts } from '../src/services/weather/alerts'
-const road = localTrips[0].payload as Schema3Snapshot, city = localTrips[1].payload as Schema3Snapshot
+const road = schema3Road as Schema3Snapshot, city = schema3City as Schema3Snapshot
 const baseline = (score: number) => ({ baseline: { score, weight: 1 }, metrics: [] })
 const profile = (): ActivityProfile => ({ id: 'generic-profile', label: '通用活動', weights: {}, experience: baseline(10), access: baseline(2), accessShare: .4, minimumCoverage: .6, operationNotes: [], safetyCaps: [{ accessBelow: 2.5, maximumFinal: 3.5 }] })
 test('Experience and Access combine independently, then safety caps constrain excellent experience', () => {

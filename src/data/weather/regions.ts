@@ -1,7 +1,7 @@
-import type { Schema3Snapshot } from '../schema/trip'
+import type { WeatherSnapshot } from '../schema/trip'
 import { localDate } from '../../services/weather/providers/openMeteo'
 export const regionPreferenceKey = (tripId: string) => `travelpilot.weather-region.${tripId}`
-export function defaultWeatherRegion(snapshot: Schema3Snapshot, now = Date.now(), remembered?: string | null) {
+export function defaultWeatherRegion(snapshot: WeatherSnapshot, now = Date.now(), remembered?: string | null) {
   const ids = snapshot.weather.weatherRegions.map((region) => region.id)
   if (remembered && ids.includes(remembered)) return remembered
   const today = localDate(now / 1000, snapshot.trip.timezone)
