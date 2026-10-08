@@ -68,7 +68,7 @@ test('current 2 supports frozen 1 and new 2 without changing source versions', (
   }
   expect(getEmergencyInfo(legacyCity)).toBeUndefined(); expect(getEmergencyInfo(city)).toEqual(city.emergency)
   for (const schemaVersion of [0, 3, 4, '2', null]) expect(validateTripSnapshot({ ...city, schemaVersion })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
-  expect(packageMetadata.version).toBe('2.0.0-poc.12')
+  expect(packageMetadata.version).toBe('2.0.0-poc.13')
   expect(cityRecord.dataVersion).toBe('demo.city.3'); expect(roadRecord.dataVersion).toBe('demo.road.3')
 })
 
@@ -217,7 +217,7 @@ for (const snapshot of [city, road]) {
     }
     await expect(page.getByTestId('trip-versions')).toContainText(snapshot === city ? 'demo.city.3' : 'demo.road.3')
     await expect(page.getByTestId('trip-versions')).toContainText('Trip Schema Version：2')
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.12')
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.13')
   })
 }
 

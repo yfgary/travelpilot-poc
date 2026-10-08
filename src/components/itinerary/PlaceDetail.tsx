@@ -15,9 +15,11 @@ export function PlaceDetail({ place, sources, onClose }: { place: Place; sources
     return () => { node.close(); if (previous instanceof HTMLElement && previous.isConnected) previous.focus({ preventScroll: true }) }
   }, [])
   const resolvedSources = place.sourceIds.flatMap((id) => { const source = sources.find((s) => s.id === id); return source ? [source] : [] })
-  return <dialog ref={dialog} className="place-dialog" aria-labelledby={titleId} onClose={() => { if (!dialog.current?.open) onClose() }}>
+  return <dialog ref={dialog} className="place-dialog" aria-labelledby={titleId}
+    onCancel={(event) => { event.preventDefault(); onClose() }}
+    onClose={(event) => { if (event.currentTarget === dialog.current && !event.currentTarget.open) onClose() }}>
     <header className="place-dialog-head"><div><p className="entity-kicker">{placeTypes[place.type]}</p><h2 id={titleId}>{place.name}</h2></div>
-      <button className="itinerary-action dialog-close" autoFocus onClick={() => dialog.current?.close()} aria-label="關閉詳細介紹">×</button></header>
+      <button className="itinerary-action dialog-close" autoFocus onClick={onClose} aria-label="關閉詳細介紹">×</button></header>
     <div className="place-dialog-body"><p>{place.summary}</p>{place.longDescription && <p>{place.longDescription}</p>}<PlaceFacts place={place} />
       {([{ title: '為何值得到訪', value: place.whyVisit }, { title: '歷史／背景', value: place.history },
         { title: '在地重要性', value: place.localImportance }, { title: '到訪後的收穫', value: place.takeaway }]).map(({ title, value }) => value &&

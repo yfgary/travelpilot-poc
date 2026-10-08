@@ -5,7 +5,7 @@ Last updated: 08/10/2026
 ## Progress
 **Step 11/16 — Settings + Checklist Local-First Sync: COMPLETE**
 
-Current App Version: **v2.0.0-poc.12** (canonical source: package.json)
+Current App Version: **v2.0.0-poc.13** (canonical source: package.json)
 
 Current Trip Schema Version: **2**; supported readers: **1 and 2**.
 
@@ -287,7 +287,7 @@ All Step 3 acceptance criteria passed:
 - Source/build audits verify no destination-specific branches, V1 table access, privileged credentials, legacy patch architecture, default emergency numbers or checklist-state storage. Canonical branding source/served bytes remain identical. Protected Home/Settings/auth/history/itinerary stylesheet/view, SQL baseline and workflow have no diff.
 - `git diff --check` passed. The unchanged POC-only workflow gates npm ci → build/typecheck → complete Playwright → Pages deployment. The pushed release's CI/deployment result is verified after push. Step 11 is not started.
 
-## Known limitations
+## Step 10 historical limitations
 - No real published V2 trip data is seeded by this task, and no real account password was used. Remote loader/auth behavior is tested with the actual SDK and mocked network responses. No live DDL or advisor remediation is performed.
 - Cached private trip snapshots remain readable signed out in the same browser profile until cleared/evicted. Clear Offline Data UI, image caching, service worker and cold offline app-shell startup are later steps.
 - Home lists the two local fictional demos only. Real remote Home listing and representative photo research/content migration are not implemented. Detailed Itinerary and Trip Information render validated local/remote/cached snapshots; Attractions, Live Cam and Today remain shared placeholders. Demo maps/fees/bookings/emergency phones/services/sources are fictional testing data, not real travel or emergency guidance. Checklist definitions are read-only; functional checklist state/sync starts in Step 11. No weather scoring/API, playback, Today Mode logic or Supabase preference sync. Home temporal statuses recalculate on render/visit; no continuous midnight update timer is added. Recent-use persistence is device/browser-local and cannot survive blocked storage.
@@ -295,7 +295,7 @@ All Step 3 acceptance criteria passed:
 - Build has non-blocking upstream Zod comment-annotation warnings and a ~660kB minified JS chunk (~193kB gzip). No warning threshold or test requirement was weakened.
 - Chromium viewport tests and Home/itinerary/Trip Information visual review are not physical iPhone/Safari certification or parity for the still-unimplemented trip renderers. App-managed Back relies on session storage for reload continuity; blocked storage safely falls back Home after reload.
 
-## Next bounded task
+## Step 10 historical handoff (superseded below)
 **Step 11/16 — Settings + Checklist Local-First Sync** (not started)
 
 Only when explicitly authorized: implement generic Settings improvements and local-first checklist state with Supabase sync, using the existing validated definitions and shared shell.
@@ -306,7 +306,7 @@ Do not begin Step 11 in this release. Production must not be modified.
 
 **STEP 11 SETTINGS + CHECKLIST SYNC GATE: PASS**
 
-Release App Version: **v2.0.0-poc.12**, canonical package.json; lockfile and automated expectations match. Current Trip Schema Version remains **2**, supported readers **1 and 2**; local Trip Data Versions remain **demo.city.3** / **demo.road.3**. Checklist changes are user state and do not change snapshot versions.
+Release App Version: **v2.0.0-poc.13**, canonical package.json; lockfile and automated expectations match. Current Trip Schema Version remains **2**, supported readers **1 and 2**; local Trip Data Versions remain **demo.city.3** / **demo.road.3**. Checklist changes are user state and do not change snapshot versions.
 
 ### Implemented
 - Real accessible native checkboxes in canonical checklist/group/item order, immediate optimistic values, completion counts/percentages, local/sync status and confirmed per-checklist reset through ordinary mutations. No daily/title/destination-specific behavior.
@@ -325,17 +325,21 @@ Release App Version: **v2.0.0-poc.12**, canonical package.json; lockfile and aut
 - Security/performance advisor findings matched preflight exactly after ignoring observation timestamps; **no new V2 security warnings**. Existing V1/global Auth warnings remain untouched and were not fixed. Details/remediation links: `supabase/verification/step11.md`.
 - Historical `supabase/schema/v2_foundation.sql` remains unchanged and unapplied. No additional live schema changes or V1 modifications.
 
+### Release history
+- Initial Step 11 candidate `v2.0.0-poc.12` (`bb16d99`) passed all 990 tests locally. Its first CI run [37795474685](https://github.com/yfgary/travelpilot-poc/actions/runs/37795474685) failed two itinerary interaction checks and skipped deployment. A second run of the same candidate [37795476061](https://github.com/yfgary/travelpilot-poc/actions/runs/37795476061) passed and deployed; both results are retained here.
+- Gary approved `v2.0.0-poc.13` for the repair commit, satisfying the per-implementation-commit version rule. Generic place-dialog Escape/close actions now clear React state directly rather than waiting for a delayed native close event. Day-jump tests wait for the intended focused summary; caption/figure containment is measured atomically within one frame. Existing assertions and time limits remain intact; no trip-specific fix or further database change was made.
+
 ### Verification
 - `npm ci`: PASS.
 - `npm run build` (both TypeScript checks + production Vite build): PASS.
-- Complete Playwright suite: **990 passed** across 320 / 390 / 430 / 1024 / 1440px, retaining all 740 prior cases and adding 250 Step 11 cases. Final local run used two workers to match the two-CPU environment. An earlier four-worker run exceeded one unchanged foundation test's existing 30-second limit; assertions/time limits were not weakened.
+- Complete Playwright suite: **990 passed** across 320 / 390 / 430 / 1024 / 1440px, retaining all 740 prior cases and adding 250 Step 11 cases. Final `v2.0.0-poc.13` local run passed all 990 cases in **17.6 minutes**, using two workers to match the two-CPU environment. An earlier four-worker run exceeded one unchanged foundation test's existing 30-second limit; assertions/time limits were not weakened.
 - Coverage includes local/offline/reload/rapid mutation clocks, storage failures, immutable definitions, owner isolation/local-read ranges, mock remote batches/final-pull conflicts, two-device convergence, orphan handling/stable IDs across content versions, confirmed reset/clear, actual sync timestamps, update metadata and unchanged prior multi-trip/Auth/cache/schema/Home/Back/asset behavior.
 - Actual approved SQL executed in a pinned dev-only PGlite PostgreSQL engine: stale/equal rejection, newer/tied-device acceptance, server timestamp ownership, authenticated ownership/RLS and restricted private function. Browser Auth/REST always mocked; no real passwords or live test writes.
 - Required screenshot QA inspected: 390px city/road checked checklists, 1440px road checklist, 390px/1440px Settings and 320px Large Settings/checklists; checked styling, group order, completion/reset controls, cache/version/clearing details, fonts/account/language/status reviewed. Responsive body/card/touch/footer checks pass at all five widths.
-- `git diff --check`: PASS. Canonical assets remain byte-for-byte unchanged. Trip schema, fixtures/data versions, Home, Detailed Itinerary, Back history and historical baseline remain unchanged; production repository untouched.
+- `git diff --check`: PASS. Canonical assets remain byte-for-byte unchanged. Trip schema, fixtures/data versions, Home, Back history and historical SQL baseline remain unchanged; the shared place-dialog lifecycle repair is documented above. Production repository untouched.
 - POC-only push-to-main workflow remains build/test gated; CI and Pages results must be checked after this release commit is pushed; deployment still requires a successful complete suite.
 
-### Known limitations
+### Step 10 historical limitations
 - Sync is item-level device-clock LWW with focus/reconnect/visible polling, not Realtime or a collaborative merge model. Demo fixtures never sync; no real trip migration or Home Supabase list was added.
 - App/static-image cold offline caching, cloud font/auto-check preferences, automatic daily resets, selective offline clearing and localization remain deferred. Storage blocking/eviction prevents guaranteed persistence.
 - Logout intentionally retains device-private data; anyone using the same signed-out browser profile can access previously downloaded routes. Use confirmed local clearing before sharing a browser profile.

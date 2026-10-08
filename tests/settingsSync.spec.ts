@@ -7,9 +7,9 @@ import { cacheContents } from './tripFixtures'
 const published = (app_version: string) => ({app_version,published:true,released_at:'2026-10-08T00:00:00Z'})
 for (const [name, versions, expected] of [
   ['current plus older', [published(APP_VERSION),published('v2.0.0-poc.9')], '已是最新版本'],
-  ['current and newer', [published(APP_VERSION),published('v2.0.0-poc.13')], '有較新版本：v2.0.0-poc.13'],
+  ['current and newer', [published(APP_VERSION),published('v2.0.0-poc.14')], '有較新版本：v2.0.0-poc.14'],
   ['missing current but older', [published('v2.0.0-poc.11')], '版本資料尚未同步'],
-  ['missing current even with newer', [published('v2.0.0-poc.13')], '版本資料尚未同步'],
+  ['missing current even with newer', [published('v2.0.0-poc.14')], '版本資料尚未同步'],
   ['empty metadata', [], '版本資料尚未同步'],
   ['invalid published response', [{app_version:'v3.0.0',published:false}], '版本資料暫時未能確認'],
 ] as const) {
@@ -25,7 +25,7 @@ for (const [name, versions, expected] of [
     await expect(page.getByTestId('update-status')).toHaveText(expected)
     expect(requests.every(request=>request.method==='GET'&&request.path==='/rest/v1/v2_app_versions')).toBe(true)
     expect(loads).toBe(0); await expect(page).toHaveURL(/#\/settings$/)
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.12')
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.13')
     await expect(page.getByText('上次清單同步：',{exact:false})).toHaveCount(0)
   })
 }

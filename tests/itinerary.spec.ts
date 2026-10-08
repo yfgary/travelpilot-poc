@@ -18,6 +18,7 @@ const city = cityRecord.payload, road = roadRecord.payload
 const dayFor = (page: Page, id: string) => page.locator(`details[data-day-id="${id}"]`)
 async function openDay(page: Page, number: number) {
   await page.getByRole('button', { name: `跳至 DAY ${number}`, exact: true }).click()
+  await expect(page.locator('.itinerary-day > summary').filter({ hasText: `DAY ${number}` })).toBeFocused()
 }
 async function loadCustom(page: Page, original: TripSnapshot) {
   const payload = structuredClone(original)
@@ -31,7 +32,7 @@ async function loadCustom(page: Page, original: TripSnapshot) {
 }
 
 test('current Schema Version and independent App/Data Versions remain canonical', () => {
-  expect(packageMetadata.version).toBe('2.0.0-poc.12')
+  expect(packageMetadata.version).toBe('2.0.0-poc.13')
   expect(cityRecord.dataVersion).toBe('demo.city.3'); expect(roadRecord.dataVersion).toBe('demo.road.3')
   for (const record of localTrips) expect(validateTripSnapshot(record.payload)).toMatchObject({ valid: true, snapshot: { schemaVersion: 2 } })
   expect(city.hardCuts).toEqual([]); expect(city.liveCams).toEqual([]); expect(city.navigationTargets).toEqual([])
@@ -63,7 +64,7 @@ for (const record of [cityRecord, roadRecord]) {
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('詳細行程')
     await expect(page.getByText('內容準備中', { exact: true })).toHaveCount(0)
     await expect(page.getByTestId('trip-versions')).toHaveText(`Trip Data Version：${record.dataVersion} · Trip Schema Version：2`)
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.12')
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.13')
     await expect(page.locator('.itinerary-intro')).toContainText(`${snapshot.days.length} 天行程`)
     await expect(page.locator('.itinerary-day')).toHaveCount(snapshot.days.length)
     await expect(page.getByRole('navigation', { name: '行程日期' }).getByRole('button')).toHaveText(snapshot.days.map((day) => `D${day.dayNumber}`))
@@ -116,7 +117,8 @@ for (const record of [cityRecord, roadRecord]) {
       await expect(dialog.getByRole('link', { name: `${source.title} ↗`, exact: true })).toHaveAttribute('href', source.url)
     }
     await expect(dialog.getByRole('button', { name: '關閉詳細介紹' })).toBeFocused()
-    await page.keyboard.press('Escape'); await expect(dialog).toHaveCount(0); await expect(trigger).toBeFocused()
+    await page.keyboard.press('Escape'); await expect(dialog).toHaveCount(0)
+    await expect(page.locator('.place-dialog')).toHaveCount(0); await expect(trigger).toBeFocused()
     await trigger.press('Enter'); await expect(dialog).toBeVisible()
     await dialog.getByRole('button', { name: '關閉詳細介紹' }).click(); await expect(dialog).toHaveCount(0)
   })
@@ -130,7 +132,10 @@ for (const record of [cityRecord, roadRecord]) {
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
       expect(await page.locator('main').evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true)
       for (const figure of await page.locator('.day-gallery figure').all()) {
-        const imageBox = (await figure.boundingBox())!, caption = (await figure.locator('figcaption').boundingBox())!
+        const { imageBox, caption } = await figure.evaluate((el) => {
+          const box = el.getBoundingClientRect(), label = el.querySelector('figcaption')!.getBoundingClientRect()
+          return { imageBox: { y: box.y, height: box.height }, caption: { y: label.y, height: label.height } }
+        })
         expect(caption.y).toBeGreaterThanOrEqual(imageBox.y - 1)
         expect(caption.y + caption.height).toBeLessThanOrEqual(imageBox.y + imageBox.height + 1)
       }
