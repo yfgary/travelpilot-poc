@@ -3,7 +3,7 @@ import type { Accommodation, NavigationTarget, TimelineItem, TripDay } from './i
 import { dayHardCuts, resolveMaps } from './itinerary'
 import { calendarDate } from './tripDates'
 import { hardCutInstant } from './tripInformation'
-import { timeMinutes, tripTime } from './tripTime'
+import { timelineTiming, timelineStartInstant, timelineEndInstant, timeMinutes, tripTime } from './tripTime'
 
 export type TodayStop = { item: TimelineItem; name: string; maps: string; target?: NavigationTarget }
 export type TodayPosition = { previous: TimelineItem | null; current: TimelineItem | null; next: TimelineItem | null; index: number }
@@ -11,22 +11,31 @@ export function selectTodayDay(snapshot: TripSnapshot, now: Date, remembered?: s
   const today = calendarDate(now, snapshot.trip.timezone)
   return snapshot.days.find((day) => day.date === today) ?? snapshot.days.find((day) => day.id === remembered) ?? [...snapshot.days].sort((a, b) => a.dayNumber - b.dayNumber)[0]
 }
-export function automaticPosition(items: readonly TimelineItem[], minute: number): TodayPosition {
-  const timed = items.flatMap((item, index) => item.startTime ? [{ item, index, start: timeMinutes(item.startTime) }] : [])
+type TimingContext = { date: string; timezone: string; now: Date }
+export function automaticPosition(items: readonly TimelineItem[], time: number | TimingContext): TodayPosition {
+  const exact = items.some((item) => timelineTiming(item))
+  if (exact && typeof time === 'number') throw new Error('Exact timeline timing requires a date, timezone and instant')
+  const context = typeof time === 'number' ? undefined : time
+  const minute = typeof time === 'number' ? time : timeMinutes(tripTime(time.now, time.timezone))
+  const clockValue = exact ? context!.now.getTime() : minute
+  const timed = items.flatMap((item, index) => {
+    const start = exact ? timelineStartInstant(item, context!.date, context!.timezone) : item.startTime ? timeMinutes(item.startTime) : undefined
+    return start === undefined ? [] : [{ item, index, start }]
+  })
   let current: typeof timed[number] | undefined, previous: typeof timed[number] | undefined
   for (const entry of timed) {
-    const explicitEnd = entry.item.endTime ? timeMinutes(entry.item.endTime) : undefined
-    const crossing = explicitEnd !== undefined && explicitEnd < entry.start
+    const explicitEnd = exact ? timelineEndInstant(entry.item, context!.date, context!.timezone) : entry.item.endTime ? timeMinutes(entry.item.endTime) : undefined
+    const crossing = !exact && explicitEnd !== undefined && explicitEnd < entry.start
     const end = explicitEnd === undefined ? timed.find((later) => later.index > entry.index && later.start > entry.start)?.start ?? Infinity : explicitEnd + (crossing ? 1440 : 0)
-    const clock = crossing && minute < explicitEnd! ? minute + 1440 : minute
+    const clock = crossing && minute < explicitEnd! ? minute + 1440 : clockValue
     if (clock >= entry.start && clock < end) current = entry
-    if (minute >= end) previous = entry
+    if (clockValue >= end) previous = entry
   }
   if (current) {
     const before = timed.filter((entry) => entry.index < current!.index).at(-1)
     return { previous: before?.item ?? null, current: current.item, next: items[current.index + 1] ?? null, index: current.index }
   }
-  const next = timed.find((entry) => entry.start > minute && (!previous || entry.index > previous.index))
+  const next = timed.find((entry) => entry.start > clockValue && (!previous || entry.index > previous.index))
   return { previous: previous?.item ?? null, current: null, next: previous ? items[previous.index + 1] ?? null : next?.item ?? null, index: previous?.index ?? -1 }
 }
 export function resolveTodayStop(snapshot: TripSnapshot, item: TimelineItem): TodayStop | undefined {
@@ -60,7 +69,7 @@ export function deriveToday(snapshot: TripSnapshot, day: TripDay, now: Date, man
   const position: TodayPosition = manual || !actualToday ? (() => {
     const index = manual ? manualIndex : 0
     return { index: day.timeline.length ? index : -1, previous: day.timeline[index - 1] ?? null, current: day.timeline[index] ?? null, next: day.timeline[index + 1] ?? null }
-  })() : automaticPosition(day.timeline, timeMinutes(tripTime(now, snapshot.trip.timezone)))
+  })() : automaticPosition(day.timeline, { date: day.date, timezone: snapshot.trip.timezone, now })
   const activities = day.timeline.map((item) => ({ item, stop: resolveTodayStop(snapshot, item), navigation: resolveTodayNavigation(snapshot, item) }))
   // Schedule focus and the next required mapped destination are separate concepts.
   const forward = activities.slice(Math.max(0, position.current ? position.index : position.index + 1))

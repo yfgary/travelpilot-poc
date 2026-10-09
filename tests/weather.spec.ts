@@ -47,7 +47,7 @@ for (const view of ['itinerary', 'info', 'live']) test(`${view} uses shared norm
   await expect(panel(page).locator('.weather-trend')).toHaveCount(2)
   await expect(panel(page).getByRole('link', { name: 'Open-Meteo', exact: true })).toHaveAttribute('href', 'https://open-meteo.com/')
   await expect(panel(page).getByRole('region', { name: '官方警告', exact: true })).toHaveCount(0)
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.16')
+  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.17')
   if (view === 'live') { await expect(page.getByTestId('live-cam')).toBeVisible(); await expect(page.getByRole('heading', { name: '此旅程未設定 Live Cam' })).toBeVisible() }
 })
 test('full WeatherPanel is absent from Home, Settings, Attractions and compact Today view', async ({ page }) => {

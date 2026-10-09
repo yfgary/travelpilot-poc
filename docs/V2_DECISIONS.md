@@ -159,3 +159,12 @@ Repository-relative canonical paths:
 **Weather/Wake Lock:** Reuse shared normalized weather/cache/scoring/alerts via dayRegions without changing global remembered region. Actual today uses current metrics, preview requires matching daily forecast and no fake horizon score. Suitability, alerts and official operation status remain separate. Wake Lock is optional, off-default and explicit-user-action only, with feature detection/cleanup and no persistence or automatic reacquisition.
 
 **Compatibility/scope:** Physical cached Schema 1/2/3/4 snapshots remain readable offline without rewriting or trip-cache writes from Today. No Supabase operational-state writes, V1/production changes, GPS/background tracking, automatic arrival or service-worker expansion. Full cold-start offline QA remains Step 16; Step 15 migration has not begun.
+
+
+## 2026-10-09 — Schema 5 optional exact cross-timezone timeline endpoints
+
+**Decision:** The bounded Step 15B.1 patch adds optional strict `timing.start/end` objects containing offset ISO datetime and IANA timezone to Schema 5 only. End must be later as an absolute instant. Different dates/zones are valid, and timing takes precedence over optional legacy clocks. The offset defines the instant; the declared timezone formats the endpoint using generic Intl/24-hour/date presentation. No geography, transport-type or trip-specific branch.
+
+**Compatibility:** Current schema is 5; strict readers 1/2/3/4/5 share canonical validation. Schema 1–4 definitions and all runtime fixtures/data versions stay unchanged. Exact timelines normalize adjacent legacy clocks in the selected day/trip zone for timestamp comparisons; timelines without timing retain the original algorithm. Existing date-based day selection, manual preview/progress/reset and other Today operations are unchanged. No old cache rewrite, IndexedDB redesign or live Supabase change.
+
+**Scope:** App v2.0.0-poc.17, test-only Schema 5 proof snapshots, and timing helpers/UI labels only. Step 15B is **not complete** and Step 15C **has not started**. No real-trip migration, production changes, live database access, weather adapter/configuration, camera/checklist data or service-worker expansion.

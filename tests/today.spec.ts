@@ -23,7 +23,7 @@ test('dedicated route and all local canonical activity data are usable signed ou
     await expect(page.getByTestId('trip-versions')).toContainText(snapshot === cityContent ? 'demo.city.5' : 'demo.road.5')
     await expect(page.getByTestId('trip-versions')).toContainText('Trip Schema Version：4')
     await expect(page.locator('.today-activities li h3')).toHaveText(snapshot.days[0].timeline.map((item) => item.title))
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.16')
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.17')
   }
 })
 test('trip timezone drives live date and seconds independently of browser timezone', async ({ page }) => {

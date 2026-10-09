@@ -267,10 +267,10 @@ test('LWW helper matches SQL ordering including microseconds and monotonic clock
   expect(compareChanges(tuple('2026-01-01T00:00:00Z'),tuple('2026-01-01T00:00:00Z'))).toBe(0)
 })
 test('safe version comparator treats prerelease numbers numerically and missing metadata neutrally', () => {
-  expect(compareAppVersions('v2.0.0-poc.16','v2.0.0-poc.9')).toBe(1)
-  expect(compareAppVersions('v2.0.0','v2.0.0-poc.16')).toBe(1)
-  expect(compareAppVersions('garbage','v2.0.0-poc.16')).toBeUndefined()
-  expect(resolveAppUpdate('v2.0.0-poc.16',['v2.0.0-poc.11'])).toEqual({state:'unsynced'})
+  expect(compareAppVersions('v2.0.0-poc.17','v2.0.0-poc.9')).toBe(1)
+  expect(compareAppVersions('v2.0.0','v2.0.0-poc.17')).toBe(1)
+  expect(compareAppVersions('garbage','v2.0.0-poc.17')).toBeUndefined()
+  expect(resolveAppUpdate('v2.0.0-poc.17',['v2.0.0-poc.11'])).toEqual({state:'unsynced'})
 })
 test('source boundaries protect trip definitions, credentials, V1, navigation and server timestamps', () => {
   const files=(dir:string):string[]=>readdirSync(dir,{withFileTypes:true}).flatMap((entry)=>entry.isDirectory()?files(join(dir,entry.name)):[join(dir,entry.name)])

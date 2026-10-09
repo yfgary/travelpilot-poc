@@ -60,17 +60,17 @@ async function seedOldCache(page: Page) {
   return record
 }
 
-test('current 4 supports frozen 1 and 2 and new 4 without changing source versions', () => {
-  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(4); expect(TRIP_SCHEMA_VERSION).toBe(4)
-  expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4])
+test('current 5 supports frozen 1 and 2 and existing 4 without changing source versions', () => {
+  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(5); expect(TRIP_SCHEMA_VERSION).toBe(5)
+  expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5])
   for (const snapshot of [legacyCity, legacyRoad, city, road, cityRecord.payload, roadRecord.payload]) {
     const result = validateTripSnapshot(snapshot)
     expect(result).toMatchObject({ valid: true, snapshot: { schemaVersion: snapshot.schemaVersion } })
     if (result.valid) expect(result.snapshot).toEqual(snapshot)
   }
   expect(getEmergencyInfo(legacyCity)).toBeUndefined(); expect(getEmergencyInfo(city)).toEqual(city.emergency)
-  for (const schemaVersion of [0, 5, 6, '2', null]) expect(validateTripSnapshot({ ...city, schemaVersion })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
-  expect(packageMetadata.version).toBe('2.0.0-poc.16')
+  for (const schemaVersion of [0, 6, 7, '2', null]) expect(validateTripSnapshot({ ...city, schemaVersion })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
+  expect(packageMetadata.version).toBe('2.0.0-poc.17')
   expect(cityRecord.dataVersion).toBe('demo.city.5'); expect(roadRecord.dataVersion).toBe('demo.road.5')
 })
 
@@ -128,10 +128,10 @@ for (const [snapshot, rowVersion] of [[city, 1], [legacyCity, 2]] as const) {
     expect((await cacheContents(page)).versions).toEqual([])
   })
 }
-test('future Schema 5 remote row/payload is rejected cleanly', async ({ page }) => {
+test('future Schema 6 remote row/payload is rejected cleanly', async ({ page }) => {
   await seedAuth(page)
-  const version = versionFor(city, 'future.5', 5)
-  await mockRemote(page, () => ({ ...version, payload: { ...version.payload, schemaVersion: 5 } }))
+  const version = versionFor(city, 'future.6', 6)
+  await mockRemote(page, () => ({ ...version, payload: { ...version.payload, schemaVersion: 6 } }))
   await page.goto(info); await expect(page.getByRole('heading', { name: '未支援此旅程資料格式' })).toBeVisible()
   expect((await cacheContents(page)).versions).toEqual([])
 })
@@ -219,7 +219,7 @@ for (const snapshot of [city, road]) {
     }
     await expect(page.getByTestId('trip-versions')).toContainText(snapshot === city ? 'demo.city.5' : 'demo.road.5')
     await expect(page.getByTestId('trip-versions')).toContainText('Trip Schema Version：4')
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.16')
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.17')
   })
 }
 

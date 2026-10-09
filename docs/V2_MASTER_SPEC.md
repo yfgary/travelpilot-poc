@@ -274,3 +274,10 @@ Any function assessed as Complex or High-risk must be discussed with the user be
 - Responsive screenshots and all-font checks cover 320/390/430/1024/1440px, including 320px Large and end-of-day. The completed regression result is recorded in V2_CURRENT_STATE.md.
 - Planned timing is not GPS; Maps and live weather depend on device/network; suitability is not operating status; Wake Lock may be unsupported/revoked. Full cold-start PWA/service-worker offline QA remains Step 16. No production changes, real-trip migration, background tracking or auto-arrival.
 - Next is Step 15/16 — Real Trip Migration + ChatGPT Content Pipeline, not begun.
+
+
+## Step 15B.1 bounded timing patch
+
+- App v2.0.0-poc.17; current Trip Schema 5; strict readers 1/2/3/4/5. Local Schema 4 fixtures and demo.city.5/demo.road.5 Data Versions remain unchanged.
+- Schema 5 optionally supplies strict start/end offset datetimes plus IANA zones on timeline items. Validate end > start as instants; different endpoint dates/zones are allowed. Today uses absolute timing when supplied and endpoint-local 24-hour/date/zone labels; absent timing keeps legacy behavior. Manual preview/progress/reset remain unchanged.
+- No cached snapshot conversion, live Supabase/schema/data changes, production edits or real-trip migration. Step 15B is not complete; Step 15C has not started.

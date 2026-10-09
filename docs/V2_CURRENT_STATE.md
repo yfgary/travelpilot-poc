@@ -5,13 +5,15 @@ Last updated: 09/10/2026 (Hong Kong)
 ## Progress
 **Step 14/16 — Today Mode: COMPLETE**
 
-Current App Version: **v2.0.0-poc.16** (canonical source: package.json)
+**Step 15B.1/16 — Schema 5 Cross-Timezone Timeline Timing Patch: implementation COMPLETE.** Step 15B remains incomplete overall; Step 15C has NOT started.
 
-Current Trip Schema Version: **4**; supported readers: **1 / 2 / 3 / 4**.
+Current App Version: **v2.0.0-poc.17** (canonical source: package.json)
+
+Current Trip Schema Version: **5**; supported readers: **1 / 2 / 3 / 4 / 5**.
 
 Local Trip Data Versions: **demo.city.5** / **demo.road.5**.
 
-Next: **Step 15/16 — Real Trip Migration + ChatGPT Content Pipeline**
+Next: **Remaining Step 15B work only when separately authorized. Step 15C has NOT started.**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -56,7 +58,7 @@ Next: **Step 15/16 — Real Trip Migration + ChatGPT Content Pipeline**
 - Step 8 implementation was unstarted at this documentation release; the implementation release below is `v2.0.0-poc.9`.
 
 ## Next step
-Step 14 implements derived Today Mode using the existing Schema 4 contract and strict readers 1/2/3/4. Next is **Step 15/16 — Real Trip Migration + ChatGPT Content Pipeline**, only when explicitly authorized. Step 15 has not begun; real trip migration remains outside this release.
+Step 14 is complete. Step 15B.1 implements only optional exact cross-timezone timeline timing with Schema 5 and strict readers 1/2/3/4/5. Step 15B is NOT complete overall; Step 15C has NOT started. Remaining Step 15B work requires separate authorization; no real-trip migration is included.
 
 ## Handoff instruction
 In a new conversation/session:
@@ -439,4 +441,31 @@ Historical Step 13 next task was Step 14; its implementation record follows.
 - Downloaded trip/weather caches retain the existing device privacy behavior after logout. Blocked/evicted storage can prevent durable offline use. Full cold-start PWA/service-worker offline QA remains Step 16.
 - Visual QA uses Chromium viewport screenshots, not physical iPhone/Safari certification. Existing nonfatal Vite bundle-size/Zod annotation notices remain.
 
-Next: **Step 15/16 — Real Trip Migration + ChatGPT Content Pipeline**. **Not started.**
+Historical Step 14 next task was Step 15; only the bounded Step 15B.1 patch is recorded below.
+
+
+## Step 15B.1/16 — Schema 5 cross-timezone timeline timing patch
+
+App Version **v2.0.0-poc.17**, canonical package.json; package-lock/test expectations match. Current Trip Schema **5**; strict supported versions **1 / 2 / 3 / 4 / 5**. Local fixtures remain Schema 4 and Trip Data Versions **demo.city.5 / demo.road.5**. Step 14 remains complete. **Step 15B remains incomplete overall; Step 15C has NOT started.**
+
+### Implementation
+- Schema 5 adds only optional strict timeline `timing.start/end`, each containing offset-bearing ISO datetime and IANA timezone. Both endpoints are required when timing exists; invalid zones/fixed numeric offsets/missing offsets and end <= start are rejected with structured issues. Different zones/dates, overnight and date-line travel are supported. Offset defines the instant; declared IANA zone defines endpoint display.
+- Schema 1–4 definitions remain strict and unchanged, reject timing and retain their original source versions. Types remain inferred from the canonical Zod schema. Existing runtime fixtures and archived snapshot data were not rewritten; Schema 5 proof fixtures exist only in tests.
+- Shared Today timing helpers compare exact timestamps when timing is supplied, taking precedence over optional/conflicting local-clock fields. Adjacent legacy items resolve in the selected day/trip timezone, including implicit-end boundaries and overnight end dates. Timelines without exact timing keep the existing clock/minute algorithm. Exact intervals use the existing one-second clock, including second-level boundaries; legacy memoization remains minute-based.
+- Start/end labels use their own declared IANA timezone, 24-hour time and existing DD/MM/YYYY 星期X date format. Long exact labels wrap in current/neighbour/full-activity cards; the exact-only row rule leaves legacy layout unchanged. No timezone abbreviations or geography-specific runtime branches.
+- Initial date-based day selection, explicit manual day preview, stable-ID progress override/reset, session keys, Maps/cuts/accommodation, weather and Wake Lock are unchanged. Exact intervals do not override manual preview or imply real GPS completion.
+- Existing loader/cache supports Schema 5 through centralized supported-version validation without modifications to its code, IndexedDB storage version/stores/pointers or old records. Cached Schema 1–4 remains readable without migration; mocked Schema 5 remote/cache/offline/reload metadata is preserved. No live Supabase access/schema/data change, V1-table access, production edits, real-trip migration, adapter/configuration additions, checklist changes or canonical asset changes.
+
+### Verification and release evidence
+- `npm ci --cache work/npm-cache`: PASS (91 packages; dependencies unchanged). `npm run build`: PASS, including both strict TypeScript checks. After the final test-only correction, `npm run typecheck`: PASS. `git diff --check`: PASS.
+- Focused coverage: **695 cases verified green** across all five widths: **620 existing Schema/Today regression cases** plus **75 new timing cases**. The initial new cache-source assertion used the version label by mistake; its selector was corrected to the existing source label, then the complete 75-case timing file passed. No application repair or weakened assertion/timeout was needed.
+- The **single local complete Playwright run** exercised **2,140 cases** at 320 / 390 / 430 / 1024 / 1440px: **2,130 passed / 10 failed** in **27.8m**. All 10 failures were two old loader rejection fixtures repeated at five widths that still called now-supported Schema 5 unsupported. Only those test inputs were changed to unsupported Schema 6, retaining rejection/no-cache assertions. Their targeted five-width rerun passed **10/10**. Thus every local regression case is verified; the original failed run is not represented as an uninterrupted green run. No second local full regression was run, honoring the once-only quota rule. CI runs the final complete suite after push; its exact result and Pages deployment are verified in the release handoff.
+- Schema/Today/cache tests verify old strict contracts, physical Schema 1/2/3/4 offline rendering with no rewrites, Schema 5 same-zone/cross-zone/overnight/date-line intervals, end-exclusive current/previous/next, mixed legacy/exact boundaries, no-timing fallback, precise-second progress, endpoint-local labels, manual/reset/preview and mocked Schema 5 cache reload while signed out/offline. Machine-local timezone is never used for timing assertions. Existing multi-trip/owner/Back/auth/checklist/weather/attractions/camera/asset/responsive regressions passed.
+- Source/diff audits confirm the timing patch has no trip/country/day/place-specific branches or runtime fixture/timezone identities. Canonical source banner/icon SHA-256 values match prior releases. No diff in live-database SQL/baseline, existing fixtures, loader/stores, auth, router history, Home/Settings, other trip views or the protected POC-only workflow.
+- Endpoint presentation is checked with Large font/no overflow at all five widths. Supplementary scrolled-view screenshots inspect actual exact progress and activity labels at 320px Large, 390px and 1440px, preserving the TravelPilot shell/status/control layout. This is Chromium viewport QA, not physical iPhone/Safari certification.
+- POC main is the only authorized release target. The existing guarded workflow runs npm ci → typecheck/build → complete Playwright → Pages only after success. Final CI/Pages status and commit SHA are supplied in the release handoff; no experimental/failed candidate has been pushed.
+
+### Known limitations and next scope
+- Today remains planned state. Day selection and non-today manual preview retain their existing date-based semantics; exact intervals do not silently choose a different day or assert physical arrival. Manual progress remains session/device local.
+- Old cached snapshots need no migration. Cache retention/privacy and storage blocking/eviction behavior are unchanged. Browser/Intl timezone support applies; full cold-start offline QA remains Step 16. Existing nonfatal Vite bundle-size/Zod annotation notices remain.
+- **Step 15B is NOT complete overall. Step 15C has NOT started.** No Japan 2027 or other real-trip data has been migrated. Stop after this bounded timing patch; do not begin Step 15C.

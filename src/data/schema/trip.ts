@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import { weatherConfigurationSchema } from './weather'
 
-export const CURRENT_TRIP_SCHEMA_VERSION = 4
+export const CURRENT_TRIP_SCHEMA_VERSION = 5
 export const TRIP_SCHEMA_VERSION = CURRENT_TRIP_SCHEMA_VERSION
-export const SUPPORTED_TRIP_SCHEMA_VERSIONS = [1, 2, 3, 4] as const
+export const SUPPORTED_TRIP_SCHEMA_VERSIONS = [1, 2, 3, 4, 5] as const
 export function isSupportedTripSchemaVersion(value: unknown): value is typeof SUPPORTED_TRIP_SCHEMA_VERSIONS[number] {
   return SUPPORTED_TRIP_SCHEMA_VERSIONS.some((version) => version === value)
 }
@@ -27,6 +27,15 @@ const timeline = z.strictObject({
   placeId: id.optional(), accommodationId: id.optional(), transportId: id.optional(), navigationTargetId: id.optional(), hardCutId: id.optional(),
   optional: z.boolean(), bonus: z.boolean().optional(), warning: text.optional(),
 })
+// Exact endpoints belong to Schema 5 only; legacy strict timeline contracts stay unchanged.
+const timingEndpoint = z.strictObject({
+  dateTime: datetime,
+  timeZone: timezone.refine((value) => !/^[+-]/.test(value), 'Expected IANA timezone'),
+})
+const exactTiming = z.strictObject({ start: timingEndpoint, end: timingEndpoint })
+  .refine((value) => Date.parse(value.start.dateTime) < Date.parse(value.end.dateTime), {
+    message: 'Timing end must be later than start', path: ['end', 'dateTime'],
+  })
 
 // Schema 1's strict common contract is retained. Schema 2 extends only emergency
 // content and entity references; both versions use the same relationship validator.
@@ -119,6 +128,13 @@ const versionedSnapshotSchema = z.discriminatedUnion('schemaVersion', [
   }),
   z.strictObject({ ...commonShape, schemaVersion: z.literal(4), liveCams: z.array(liveCamV4), weather: weatherConfigurationSchema, emergency: emergencySchema,
     days: z.array(commonShape.days.element.extend({ optionalContent: z.array(emergencyEntityReference), backupContent: z.array(emergencyEntityReference) })),
+    sources: z.array(commonShape.sources.element.extend({ entity: emergencyEntityReference.optional() })),
+  }),
+  z.strictObject({ ...commonShape, schemaVersion: z.literal(5), liveCams: z.array(liveCamV4), weather: weatherConfigurationSchema, emergency: emergencySchema,
+    days: z.array(commonShape.days.element.extend({
+      timeline: z.array(timeline.extend({ timing: exactTiming.optional() })),
+      optionalContent: z.array(emergencyEntityReference), backupContent: z.array(emergencyEntityReference),
+    })),
     sources: z.array(commonShape.sources.element.extend({ entity: emergencyEntityReference.optional() })),
   }),
 ])
@@ -224,9 +240,10 @@ export type Schema1Snapshot = Extract<TripSnapshot, { schemaVersion: 1 }>
 export type Schema2Snapshot = Extract<TripSnapshot, { schemaVersion: 2 }>
 export type Schema3Snapshot = Extract<TripSnapshot, { schemaVersion: 3 }>
 export type Schema4Snapshot = Extract<TripSnapshot, { schemaVersion: 4 }>
-export type WeatherSnapshot = Schema3Snapshot | Schema4Snapshot
+export type Schema5Snapshot = Extract<TripSnapshot, { schemaVersion: 5 }>
+export type WeatherSnapshot = Schema3Snapshot | Schema4Snapshot | Schema5Snapshot
 export function hasWeatherConfiguration(snapshot: TripSnapshot): snapshot is WeatherSnapshot {
-  return snapshot.schemaVersion === 3 || snapshot.schemaVersion === 4
+  return snapshot.schemaVersion === 3 || snapshot.schemaVersion === 4 || snapshot.schemaVersion === 5
 }
 export function getEmergencyInfo(snapshot: TripSnapshot) {
   return 'emergency' in snapshot ? snapshot.emergency : undefined

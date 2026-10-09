@@ -13,12 +13,12 @@ import { forecastRequest } from '../src/services/weather/forecasts'
 import packageMetadata from '../package.json' with { type: 'json' }
 
 test('four strict snapshot readers retain actual source versions and separate release/data versions', () => {
-  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(4); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4])
+  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(5); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5])
   for (const snapshot of [legacyCity, legacyRoad, schema2City, schema2Road, schema3City, schema3Road, cityContent, roadContent]) {
     expect(validateTripSnapshot(snapshot)).toMatchObject({ valid: true, snapshot })
   }
-  expect(validateTripSnapshot({ ...roadContent, schemaVersion: 5 })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
-  expect(packageMetadata.version).toBe('2.0.0-poc.16')
+  expect(validateTripSnapshot({ ...roadContent, schemaVersion: 6 })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
+  expect(packageMetadata.version).toBe('2.0.0-poc.17')
 })
 const invalid: [string, (snapshot: Schema4Snapshot) => void][] = [
   ['missing day array', (s) => { delete (s.liveCams[0] as Partial<typeof s.liveCams[0]>).routeDayIds }],

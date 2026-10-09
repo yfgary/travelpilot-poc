@@ -61,7 +61,7 @@ Illustrative top-level shape:
 
 ```json
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "trip": {},
   "regions": [],
   "days": [],
@@ -79,7 +79,7 @@ Illustrative top-level shape:
 }
 ```
 
-The canonical runtime contract is `src/data/schema/trip.ts`. Step 13 sets `CURRENT_TRIP_SCHEMA_VERSION = 4` (also `TRIP_SCHEMA_VERSION`) and supports strict versions 1, 2, 3 and 4. Step 10 introduced emergency content in version 2. Types are inferred from the shared Zod runtime definitions; there is no separate snapshot interface. Schema 1's original strict contract remains readable and omits emergency; Schema 2 adds generic emergency information. Dates use ISO calendar dates, times use HH:MM and datetimes include a UTC/offset zone. Durations are minutes, monetary values carry a three-letter currency, and all entity IDs (including emergency contacts, timeline/checklist groups/items) are unique across a snapshot. Live Cam route relationships use required routeDayIds in Schema 4; strict Schemas 1/2/3 retain optional singular routeDayId. Group is a display label. Arrays preserve timeline order; checklist groups/items additionally carry order values.
+The canonical runtime contract is `src/data/schema/trip.ts`. Step 15B.1 sets `CURRENT_TRIP_SCHEMA_VERSION = 5` (also `TRIP_SCHEMA_VERSION`) and supports strict versions 1, 2, 3, 4 and 5. Step 10 introduced emergency content in version 2. Types are inferred from the shared Zod runtime definitions; there is no separate snapshot interface. Schema 1's original strict contract remains readable and omits emergency; Schema 2 adds generic emergency information. Dates use ISO calendar dates, times use HH:MM and datetimes include a UTC/offset zone. Durations are minutes, monetary values carry a three-letter currency, and all entity IDs (including emergency contacts, timeline/checklist groups/items) are unique across a snapshot. Live Cam route relationships use required routeDayIds in Schema 4; strict Schemas 1/2/3 retain optional singular routeDayId. Group is a display label. Arrays preserve timeline order; checklist groups/items additionally carry order values.
 
 Schema 2 emergency contacts include category, title, optional phone/HTTP(S) URL/region/context, availability, description, notes and canonical source IDs. `emergencyContact` is a supported Schema 2 entity reference. The existing JSONB payload and positive integer schema_version need **no live DDL or data changes**. Remote row/payload versions must match. IndexedDB retains storage version 1 and its existing stores/keys; Schema 1 and 2 snapshots retain their actual metadata and are never rewritten/deleted merely on read. Invalid updates cannot overwrite a valid cache. All V1 tables and the unapplied SQL baseline remain unchanged.
 
@@ -124,7 +124,7 @@ Must support:
 Must support:
 - stable ID
 - generic item type
-- start/end time
+- start/end local time; Schema 5 optionally adds exact offset datetime/IANA timezone endpoints
 - title/description
 - place/accommodation/transport references
 - duration
@@ -348,3 +348,12 @@ Local weather cache remains after logout, subject to browser eviction/site-data 
 Schema 4 extends camera JSON only with multi-day routeDayIds and descriptive priority/tags/source-label metadata. All references are validated, including duplicate/missing day IDs and inconsistent explicit region versus canonical Place region. Schema 1/2/3 readers preserve their original strict contracts and source-version metadata. The existing positive schema_version/JSONB payload columns already support this version; no DDL, grants, policies, migrations, publishing or live test writes were performed.
 
 Trip cache database name/storage version/stores/keys and owner/device pointers remain unchanged. Cached old payloads are read without writes, conversion or deletion; validated Schema 4 records coexist and retain distinct data/schema versions. Logout/privacy and explicit Settings clearing behavior are unchanged. The approved Step 11 migration and historical foundation baseline remain byte-for-byte unchanged. V1 tables and production remain untouched.
+
+
+## Step 15B.1 — Schema 5 timeline JSON only
+
+Optional timeline `timing` has two required strict endpoint objects: `start` and `end`, each with offset-bearing ISO datetime `dateTime` and valid IANA `timeZone`. End must be strictly later than start as an absolute instant. Different endpoint zones/calendar dates are valid; existing optional startTime/endTime remain supported. Exact timing takes precedence in Today Mode. Without it, the old local-clock behavior stays unchanged. Schema 1–4 contracts remain strict and readable; they do not accept the new field.
+
+Current Trip Schema is 5; supported readers are 1/2/3/4/5. This changes JSON validation only: the existing positive `schema_version` and JSONB `payload` already support version 5. **No live Supabase DDL, table/data changes, grants/policies or migration were performed.** The approved Step 11 SQL and baseline remain unchanged; V1 and production remain untouched. Tests use synthetic mocked remote Schema 5 payloads only. Existing cache storage/keys/pointers stay unchanged; cached Schema 1–4 remains readable without conversion, and Schema 5 retains its own data/schema metadata.
+
+App v2.0.0-poc.17 is separate from Trip Schema 5 and unchanged demo.city.5/demo.road.5 Data Versions. Step 15B is **not complete**; Step 15C **has not started**; real-trip migration has not begun.
