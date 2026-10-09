@@ -107,16 +107,16 @@ for (const now of ['2025-02-06', '2026-10-07', '2030-04-12', '2030-04-14', '2030
 }
 
 for (const record of localTrips) {
-  test(`all five shared routes, reloads and Settings Back work for ${record.payload.trip.slug}`, async ({ page }) => {
+  test(`all available shared routes, reloads and Settings Back work for ${record.payload.trip.slug}`, async ({ page }) => {
     const other = localTrips.find((trip) => trip !== record)!
     await page.goto('#/')
     await page.getByRole('article').filter({ hasText: record.payload.trip.title }).getByRole('link', { name: '詳細行程', exact: true }).click()
-    for (const view of tripPages) {
+    for (const view of tripShortcuts(record.payload)) {
       await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: view.title, exact: true }).click()
       await checkTrip(page, record.payload, record.dataVersion, 'demo')
       await expect(page.getByRole('heading', { level: 1 })).toHaveText(view.title)
       await expect(page.getByText(other.payload.trip.title, { exact: true })).toHaveCount(0)
-      await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveText(tripPages.map((view) => view.title))
+      await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveText(tripShortcuts(record.payload).map((view) => view.title))
       await page.reload()
       await checkTrip(page, record.payload, record.dataVersion, 'demo')
       await expect(page.getByRole('status')).toBeVisible()

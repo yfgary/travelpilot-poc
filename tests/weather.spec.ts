@@ -48,7 +48,8 @@ for (const view of ['itinerary', 'info', 'live']) test(`${view} uses shared norm
   await expect(panel(page).locator('.weather-operation').first()).toContainText('官方運行狀態優先於天氣分數')
   await expect(panel(page).locator('.weather-trend')).toHaveCount(2)
   await expect(panel(page).getByRole('link', { name: 'Open-Meteo', exact: true })).toHaveAttribute('href', 'https://open-meteo.com/')
-  await expect(panel(page).getByRole('region', { name: '官方警告', exact: true })).toHaveCount(0)
+  if (view === 'live') { await expect(panel(page).getByRole('region', { name: '官方警告', exact: true })).toBeVisible(); await expect(panel(page)).toContainText('POC測試警告') }
+  else await expect(panel(page).getByRole('region', { name: '官方警告', exact: true })).toHaveCount(0)
   await expect(page.getByRole('status')).toContainText(`App Version v${packageMetadata.version}`)
   if (view === 'live') await expect(page.getByTestId('live-cam')).toBeVisible()
 })
@@ -159,7 +160,7 @@ test('quick page navigation deduplicates the shared pending request', async ({ p
   await page.goto('#/trip/demo-trip/info'); await expect(panel(page)).toBeVisible()
   await expect.poll(() => calls).toBe(1)
   await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '詳細行程', exact: true }).click()
-  await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '詳細行程', exact: true }).click()
+  await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '旅程資料', exact: true }).click()
   release(); await expect(panel(page).locator('.weather-forecast-day')).toHaveCount(5); expect(calls).toBe(1)
 })
 test('service in-flight registry deduplicates separate simultaneous consumers without browser storage', async () => {

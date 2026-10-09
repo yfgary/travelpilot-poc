@@ -30,7 +30,7 @@ test('preview uses matching DailyWeather rather than current conditions and neve
   await expect(weather.locator('.today-weather-main')).toContainText('13 °C – 21 °C')
   await expect(weather).not.toContainText('目前觀測／模型資料'); await expect(weather).not.toContainText('觀測／模型時間')
   await expect(weather.locator('.weather-score')).toBeVisible(); expect(await page.evaluate((key) => localStorage.getItem(key), key)).toBe(preferred)
-  await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: 'Live Cam', exact: true }).click()
+  await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '旅程資料', exact: true }).click()
   await expect(page.getByTestId('weather-panel')).toHaveAttribute('data-weather-region', preferred)
 })
 test('outside five-day preview has no fabricated weather metric or suitability score', async ({ page }) => {
@@ -45,7 +45,7 @@ test('shared forecast request is deduplicated across tick updates and reused aft
   await page.route('https://api.open-meteo.com/**', (route) => { calls++; return route.fulfill({ json: openMeteoResponse('2025-02-05') }) })
   await openToday(page); await expect(page.getByTestId('today-weather')).toContainText('天氣資料已更新'); expect(calls).toBe(1)
   await page.clock.runFor(12000); expect(calls).toBe(1)
-  await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: 'Live Cam', exact: true }).click()
+  await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '旅程資料', exact: true }).click()
   await expect(page.getByTestId('weather-panel').locator('.weather-current')).toBeVisible(); expect(calls).toBe(1)
 })
 test('shared weather cache retains truthful stale/offline conditions and core progress remains usable', async ({ page }) => {
