@@ -579,3 +579,20 @@ F. Japan content-fidelity corrections (D1 Bonus/繩手通, Chinese Projection Ma
 G. Responsive regression at 320/390/430/1024/1440 and compare against V1 before release.
 
 Do not implement these as trip/country/day hardcoded UI branches. Where a requirement needs richer data, extend the generic schema/data model only after impact is reviewed.
+
+## Pre-15D QA — Implementation R1/8 Shared UI (10/10/2026)
+
+Release candidate: **v2.0.0-poc.27** (App Version only). User authorized the bounded eight-round plan and specifically began R1, covering **Round-1 issues 1, 3, 4, 5, 21 and 28**. POC branch: `qa/pre15d-r1-shared-shell`.
+
+### R1 changes
+- Added a conditional Back-to-Top control bound to the real main scroll container (not the window). Changing app routes restores the initial scroll position.
+- Moved shared trip navigation outside the hero/title section to make it genuinely sticky; it remains capability-filtered. Each page tab has a recognizable shared SVG icon; mobile tabs have native horizontal scrolling and retain minimum 44px targets.
+- Shared navigation publishes its measured sticky height for pre-existing itinerary and information quick-nav offsets; no country/trip/day-specific layout assumptions.
+- Trip identifiers, Trip Data/Schema Versions and POC source remain precise and testable in a discreet bottom technical footer, not the opening hero. Offline/cache/source warnings remain visible.
+- Reduced generic panel spacing and checklist vertical margins/padding without reducing tap target sizes or deleting notes, checklist groups or content.
+- Lower-left connection state retains readable ONLINE/OFFLINE and App Version text, with green online/red offline visual dots.
+- New `tests/sharedShellQA.spec.ts` regression tests verify sticky behavior, page changes, Back-to-Top, technical footer, indicator colors and minimum checklist control size. Existing foundation tests account for deliberately horizontal mobile trip tabs and footer relocation without weakening tap-target assertions.
+- Trip Schema 5, existing Schema 1–5 readers, all trip snapshots and their versions, exact published `jp2027.1`, trip/cache state, Weather/Today engines, JMA, Supabase, SQL, branding images, V1 and Production remain unchanged. **Step 15D is still blocked**.
+
+### R1 verification gate
+GitHub POC workflow is unchanged and runs `npm ci` → TypeScript/Vite build → complete Playwright regression → Pages deployment only after success. **This repository write environment has no local npm/browser runner wired to this checkout; GitHub CI completion and on-device visual review must be verified separately.** Do not claim full regression PASS or final visual parity until those outcomes are observed. Next bounded implementation scope is R2 Weather + Today, where the user explicitly requested clearly-labelled *POC simulated* weather using currently available real five-day forecast data to exercise January 2027 UI (never present it as a real 2027 forecast).

@@ -60,3 +60,11 @@ Recommended new-chat first action:
 4. Inspect V1 production read-only where fidelity is questioned.
 5. Do not modify production. Do not start Step 15D.
 6. Before code changes, propose a bounded implementation order/release split so the 28 items are not patched as one uncontrolled rewrite.
+
+## Approved Pre-15D R1 implementation handoff — 10/10/2026
+
+- User approved **8 bounded QA rounds** and authorized only R1 now (items 1/3/4/5/21/28). POC App Version candidate **v2.0.0-poc.27**.
+- Branch `qa/pre15d-r1-shared-shell`: shared sticky icon trip navigation; computed spacing for existing sticky selectors; scroll-aware Back-to-Top; technical trip identifiers/source/versions moved to quiet footer; global + checklist density; green/red connection indicator. Focused browser tests added.
+- Confirm full POC CI suite and Pages deployment before declaring R1 verified; no local npm runner is available in this connector-driven session.
+- Original `jp2027.1` data stays published/current and immutable for this change. Trip Schema 5 and all older readers unchanged. Production and live Supabase remain untouched. **Do not begin Step 15D.**
+- Next implementation only after R1 gate: R2 Weather + Today, with user-requested **today's actual five-day data shown as explicitly-labelled simulated POC weather** for layout/score testing in out-of-horizon January 2027 dates. No claim of actual 2027 meteorological forecast.

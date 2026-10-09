@@ -41,13 +41,15 @@ export function TripLayout() {
   return <>
     <section className="trip-heading">
       <p className="eyebrow">你的旅程</p><h2>{trip.title}</h2><p>{trip.summary}</p>
+      {result.source === 'remote' && !result.cacheSaved && <p className="muted">此裝置暫時未能儲存離線旅程。</p>}
+      {result.source === 'cache' && <p className="muted">正在使用此裝置已儲存的旅程資料。</p>}
+    </section>
+    <PageNavigation tripSlug={trip.slug} snapshot={result.snapshot} />
+    <TripWeatherProvider key={`${trip.id}:${result.dataVersion}`} snapshot={result.snapshot}><Outlet context={result} /></TripWeatherProvider>
+    <footer className="trip-technical" aria-label="旅程技術詳情">
       <p className="trip-identifier">旅程識別碼：<code>{trip.slug}</code></p>
       <p className="trip-identifier" data-testid="trip-versions">Trip Data Version：{result.dataVersion} · Trip Schema Version：{result.schemaVersion}</p>
       <p className="trip-identifier" data-testid="trip-source">POC 資料來源：{result.source}</p>
-      {result.source === 'remote' && !result.cacheSaved && <p className="muted">此裝置暫時未能儲存離線旅程。</p>}
-      {result.source === 'cache' && <p className="muted">正在使用此裝置已儲存的旅程資料。</p>}
-      <PageNavigation tripSlug={trip.slug} snapshot={result.snapshot} />
-    </section>
-    <TripWeatherProvider key={`${trip.id}:${result.dataVersion}`} snapshot={result.snapshot}><Outlet context={result} /></TripWeatherProvider>
+    </footer>
   </>
 }
