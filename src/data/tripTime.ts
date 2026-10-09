@@ -1,5 +1,7 @@
 import { calendarDate, formatTripDate } from './tripDates'
 import type { TimelineItem } from './itinerary'
+import { timelineTiming } from './operationalTiming'
+export { timelineTiming } from './operationalTiming'
 
 export function tripTime(now: Date, timezone: string, seconds = false): string {
   return new Intl.DateTimeFormat('en-GB', { timeZone: timezone, hour: '2-digit', minute: '2-digit', ...(seconds ? { second: '2-digit' as const } : {}), hourCycle: 'h23' }).format(now)
@@ -25,9 +27,6 @@ export function plannedDelta(instant: number, now: number): string {
   return minutes > 0 ? `距原定時間 ${minutes}分鐘` : minutes < 0 ? `原定時間已過 ${Math.abs(minutes)}分鐘` : '正值原定時間'
 }
 
-export function timelineTiming(item: TimelineItem) {
-  return 'timing' in item ? item.timing : undefined
-}
 export function timelineStartInstant(item: TimelineItem, date: string, timezone: string): number | undefined {
   const timing = timelineTiming(item)
   return timing ? Date.parse(timing.start.dateTime) : item.startTime ? calendarInstant(date, item.startTime, timezone) : undefined

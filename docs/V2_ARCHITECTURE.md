@@ -376,3 +376,14 @@ Schema 5 extends the strict Schema 4 timeline item with optional `timing: { star
 Initial day selection, explicit non-today preview, manual stable-ID focus/reset, session keys, Maps/cuts/final destination, weather, Wake Lock and global navigation are unchanged. Cross-midnight intervals do not silently select another day or turn manual preview into live progress. No GPS/arrival inference. IndexedDB storage version/stores/pointers and the remote loader are unchanged; validated Schema 5 coexists with old versions and reads never migrate Schema 1–4 payloads.
 
 Release App Version is v2.0.0-poc.17, independent of Trip Schema and Data Versions. Production, live Supabase, SQL and assets remain untouched. This is only the bounded Step 15B.1 timing patch: Step 15B is **not complete**, Step 15C **has not started**, and no real-trip data is migrated.
+
+
+## Step 15B.2 — operational Day and exact Timeline display
+
+Schema remains 5; strict readers 1–5 and demo Data Versions remain unchanged. `operationalTiming.ts` is a pure, type-only snapshot dependency: it exposes exact timing access and half-open active interval checks shared by Today and tripDates. `tripTime.ts` keeps its existing public timing API and endpoint formatter; there is no runtime import cycle or second timezone formatter.
+
+Active Schema-5 intervals outrank calendar matching and remembered preview in automatic Today Day selection. Overlap resolution uses the latest absolute start, then canonical day number. `isOperationalDay` admits either canonical date match or an active owned exact interval. The existing one-second clock re-evaluates automatic exact-enabled selection and restores calendar matching at end; explicit day previews and stable-ID manual item focus/reset remain independent. Schema 1–4 and Schema 5 without timing retain the previous selection/HH:MM semantics.
+
+`operationalTripStatus(snapshot, now)` supplies a current exception while an exact interval is active. `orderTrips` accepts optional snapshot-aware records, which Home already supplies; the simple `tripStatus(trip, today)` API and deterministic status/date/slug sorting stay intact. No date-range mutation or permanent extension is stored.
+
+Timeline uses shared `timelineTimeLabel` per declared endpoint zone, retaining full date/24-hour time/IANA labels and original offset strings in `time.dateTime`. Exact rows wrap timing above event content; legacy time ranges keep their previous rendering. No transport-title/type, trip, place or geography inference. No schema/cache/loader/database/asset changes. App v2.0.0-poc.18; Step 15B is incomplete overall and Step 15C has NOT started.

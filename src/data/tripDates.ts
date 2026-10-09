@@ -1,4 +1,5 @@
-import type { TripSummary } from './schema/trip'
+import type { TripSnapshot, TripSummary } from './schema/trip'
+import { activeExactDay } from './operationalTiming'
 
 export type TripStatus = 'current' | 'upcoming' | 'completed'
 type DatedTrip = Pick<TripSummary, 'slug' | 'startDate' | 'endDate' | 'timezone'>
@@ -15,10 +16,13 @@ export function calendarDate(now: Date, timezone: string): string {
 export function tripStatus(trip: Pick<DatedTrip, 'startDate' | 'endDate'>, today: string): TripStatus {
   return today < trip.startDate ? 'upcoming' : today > trip.endDate ? 'completed' : 'current'
 }
-export function orderTrips<T extends DatedTrip>(trips: readonly T[], now: Date = new Date()): { trip: T; status: TripStatus }[] {
+export function operationalTripStatus(snapshot: TripSnapshot, now: Date): TripStatus {
+  return activeExactDay(snapshot, now) ? 'current' : tripStatus(snapshot.trip, calendarDate(now, snapshot.trip.timezone))
+}
+export function orderTrips<T extends DatedTrip & { snapshot?: TripSnapshot }>(trips: readonly T[], now: Date = new Date()): { trip: T; status: TripStatus }[] {
   const rank: Record<TripStatus, number> = { current: 0, upcoming: 1, completed: 2 }
   const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0
-  return trips.map((trip) => ({ trip, status: tripStatus(trip, calendarDate(now, trip.timezone)) }))
+  return trips.map((trip) => ({ trip, status: trip.snapshot ? operationalTripStatus(trip.snapshot, now) : tripStatus(trip, calendarDate(now, trip.timezone)) }))
     .sort((a, b) => rank[a.status] - rank[b.status] ||
       (a.status === 'completed' ? compare(b.trip.endDate, a.trip.endDate) : compare(a.trip.startDate, b.trip.startDate)) ||
       compare(a.trip.slug, b.trip.slug))

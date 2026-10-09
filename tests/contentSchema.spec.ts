@@ -18,7 +18,7 @@ test('four strict snapshot readers retain actual source versions and separate re
     expect(validateTripSnapshot(snapshot)).toMatchObject({ valid: true, snapshot })
   }
   expect(validateTripSnapshot({ ...roadContent, schemaVersion: 6 })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
-  expect(packageMetadata.version).toBe('2.0.0-poc.17')
+  expect(packageMetadata.version).toBe('2.0.0-poc.18')
 })
 const invalid: [string, (snapshot: Schema4Snapshot) => void][] = [
   ['missing day array', (s) => { delete (s.liveCams[0] as Partial<typeof s.liveCams[0]>).routeDayIds }],

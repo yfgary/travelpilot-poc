@@ -32,7 +32,7 @@ async function loadCustom(page: Page, original: TripSnapshot) {
 }
 
 test('current Schema Version and independent App/Data Versions remain canonical', () => {
-  expect(packageMetadata.version).toBe('2.0.0-poc.17')
+  expect(packageMetadata.version).toBe('2.0.0-poc.18')
   expect(cityRecord.dataVersion).toBe('demo.city.5'); expect(roadRecord.dataVersion).toBe('demo.road.5')
   for (const record of localTrips) expect(validateTripSnapshot(record.payload)).toMatchObject({ valid: true, snapshot: { schemaVersion: 4 } })
   expect(city.hardCuts).toEqual([]); expect(city.liveCams).toEqual([]); expect(city.navigationTargets).toEqual([])
@@ -64,7 +64,7 @@ for (const record of [cityRecord, roadRecord]) {
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('詳細行程')
     await expect(page.getByText('內容準備中', { exact: true })).toHaveCount(0)
     await expect(page.getByTestId('trip-versions')).toHaveText(`Trip Data Version：${record.dataVersion} · Trip Schema Version：4`)
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.17')
+    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.18')
     await expect(page.locator('.itinerary-intro')).toContainText(`${snapshot.days.length} 天行程`)
     await expect(page.locator('.itinerary-day')).toHaveCount(snapshot.days.length)
     await expect(page.getByRole('navigation', { name: '行程日期' }).getByRole('button')).toHaveText(snapshot.days.map((day) => `D${day.dayNumber}`))

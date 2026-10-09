@@ -168,3 +168,12 @@ Repository-relative canonical paths:
 **Compatibility:** Current schema is 5; strict readers 1/2/3/4/5 share canonical validation. Schema 1–4 definitions and all runtime fixtures/data versions stay unchanged. Exact timelines normalize adjacent legacy clocks in the selected day/trip zone for timestamp comparisons; timelines without timing retain the original algorithm. Existing date-based day selection, manual preview/progress/reset and other Today operations are unchanged. No old cache rewrite, IndexedDB redesign or live Supabase change.
 
 **Scope:** App v2.0.0-poc.17, test-only Schema 5 proof snapshots, and timing helpers/UI labels only. Step 15B is **not complete** and Step 15C **has not started**. No real-trip migration, production changes, live database access, weather adapter/configuration, camera/checklist data or service-worker expansion.
+
+
+## 2026-10-09 — Schema 5 operational Day and shared exact endpoint display
+
+**Decision:** In Step 15B.2, a valid Schema-5 exact interval is active when `start <= now < end`. Its owning Day is operational Today even beyond the canonical trip-local calendar date. Initial/automatic selection prioritizes active exact intervals (latest absolute start, then canonical day number), then today's canonical date, remembered valid preview, and canonical first Day. An explicitly selected preview remains manual; stable-ID manual progress/reset is unchanged. The existing one-second Today clock hands automatic selection back to calendar rules at the exact end.
+
+**Home/display:** Snapshot-aware Home status is current during any active exact interval, including before startDate or after endDate. Existing status ordering and displayed date range remain unchanged; the simple calendar-only tripStatus API stays available. Detailed Itinerary reuses the shared endpoint formatter, preserving offset datetimes in semantic time elements and displaying each declared IANA zone/date. Exact labels wrap above event content; legacy HH:MM layout and old-schema cross-midnight semantics are unchanged.
+
+**Scope:** App v2.0.0-poc.18. Schema remains 5 with strict readers 1/2/3/4/5, unchanged demo.city.5/demo.road.5 data and no old-cache rewrite. This runtime/display patch does not modify production, live Supabase, SQL, loaders, storage, assets or real trip content. Step 15B remains incomplete overall; Step 15C has NOT started.

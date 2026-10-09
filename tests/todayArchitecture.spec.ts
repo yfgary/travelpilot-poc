@@ -6,7 +6,7 @@ import { localTrips } from '../src/data/trips'
 import metadata from '../package.json' with { type: 'json' }
 import { todayPreviewKey, todayProgressKey } from '../src/app/useTodaySession'
 
-const files = ['src/data/today.ts', 'src/data/tripTime.ts', 'src/views/TodayMode.tsx', 'src/app/useTodaySession.ts', 'src/app/useTripClock.ts', 'src/components/today/ScreenAwake.tsx', 'src/components/weather/TodayWeather.tsx']
+const files = ['src/data/operationalTiming.ts', 'src/data/today.ts', 'src/data/tripTime.ts', 'src/views/TodayMode.tsx', 'src/app/useTodaySession.ts', 'src/app/useTripClock.ts', 'src/components/today/ScreenAwake.tsx', 'src/components/weather/TodayWeather.tsx']
 test('session identities remain isolated even when valid stable IDs contain punctuation', () => {
   expect(todayProgressKey('trip.part', 'day')).not.toBe(todayProgressKey('trip', 'part.day'))
   expect(todayProgressKey('trip:part', 'day')).not.toBe(todayProgressKey('trip', 'part:day'))
@@ -28,9 +28,9 @@ test('Today is generic derived state with one trip boundary, shared weather/scor
   expect(weather).not.toContain('select('); expect(readFileSync('src/app/App.tsx', 'utf8')).not.toContain('TripView')
 })
 test('Timing patch keeps immutable Data Versions, SQL, stores, Home, auth, Back and production boundary unchanged', () => {
-  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(5); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5]); expect(metadata.version).toBe('2.0.0-poc.17')
+  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(5); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5]); expect(metadata.version).toBe('2.0.0-poc.18')
   expect(localTrips.map((trip) => trip.dataVersion).sort()).toEqual(['demo.city.5', 'demo.road.5'])
-  const paths = ['src/data/schema/weather.ts', 'src/data/demoTrips', 'src/data/trips.ts', 'src/offline', 'src/services', 'src/auth', 'src/app/NavigationHistory.tsx', 'src/app/TripWeather.tsx', 'src/views/TripLayout.tsx', 'src/views/Home.tsx', 'src/views/Settings.tsx', 'src/views/DetailedItinerary.tsx', 'src/views/TripInformation.tsx', 'src/views/AttractionsOverview.tsx', 'src/views/LiveCam.tsx', 'src/data/weather', 'supabase', 'assets', '.github/workflows']
+  const paths = ['src/data/schema/trip.ts', 'src/data/schema/weather.ts', 'src/data/demoTrips', 'src/data/trips.ts', 'src/offline', 'src/services', 'src/auth', 'src/app/NavigationHistory.tsx', 'src/app/TripWeather.tsx', 'src/views/TripLayout.tsx', 'src/views/Home.tsx', 'src/views/Settings.tsx', 'src/views/DetailedItinerary.tsx', 'src/views/TripInformation.tsx', 'src/views/AttractionsOverview.tsx', 'src/views/LiveCam.tsx', 'src/data/weather', 'supabase', 'assets', '.github/workflows']
   expect(execFileSync('git', ['diff', 'HEAD', '--', ...paths], { encoding: 'utf8' })).toBe('')
   expect(execFileSync('git', ['remote', 'get-url', 'origin'], { encoding: 'utf8' }).trim()).toMatch(/^https:\/\/github\.com\/yfgary\/travelpilot-poc(?:\.git)?$/)
   const source = files.map((path) => readFileSync(path, 'utf8')).join('\n')

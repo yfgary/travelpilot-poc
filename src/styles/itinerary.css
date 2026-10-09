@@ -104,3 +104,9 @@
   .place-dialog { width: calc(100vw - 1rem); max-height: calc(100dvh - 1rem); }
 }
 @media (max-width: 360px) { .itinerary-facts { grid-template-columns: 1fr; } }
+
+/* Exact endpoint labels retain dates/zones without squeezing event content. */
+.timeline-row[data-exact-timing] { grid-template-columns: minmax(0, 1fr); padding-left: 0.8rem; gap: 0.35rem; }
+.timeline-row[data-exact-timing]::before { left: 0; }
+.timeline-row[data-exact-timing] .timeline-time { display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; text-align: left; padding-top: 0; min-width: 0; }
+.timeline-row[data-exact-timing] .timeline-time time { white-space: normal; overflow-wrap: anywhere; }

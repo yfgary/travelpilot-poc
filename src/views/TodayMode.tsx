@@ -8,7 +8,7 @@ import { ContentNavigation } from '../components/ContentNavigation'
 import { ExternalLink, MapsAction } from '../components/itinerary/ContentActions'
 import { TodayWeather } from '../components/weather/TodayWeather'
 import { ScreenAwake } from '../components/today/ScreenAwake'
-import { deriveToday, type TodayStop } from '../data/today'
+import { deriveToday, isOperationalDay, type TodayStop } from '../data/today'
 import { calendarDate, formatTripDate } from '../data/tripDates'
 import { timelineTiming, timelineStartInstant, timelineTimeLabel, plannedDelta, tripTime } from '../data/tripTime'
 import { hardCutTime, severityLabels, timelineTypes, type TimelineItem } from '../data/itinerary'
@@ -27,7 +27,7 @@ function Activity({ item, stop, label }: { item: TimelineItem | null; stop?: Tod
 export function TodayMode() {
   const { snapshot } = useLoadedTrip()
   const now = useTripClock(), minute = Math.floor(now.getTime() / 60000)
-  const { dayId, selectDay, progress, focusItem } = useTodaySession(snapshot)
+  const { dayId, selectDay, progress, focusItem } = useTodaySession(snapshot, now)
   const day = snapshot.days.find((day) => day.id === dayId)
   const positionTime = day?.timeline.some((item) => timelineTiming(item)) ? now.getTime() : minute * 60000
   const model = useMemo(() => day ? deriveToday(snapshot, day, new Date(positionTime), progress[day.id]) : undefined, [snapshot, day, positionTime, progress])
@@ -49,7 +49,7 @@ export function TodayMode() {
     <section className="today-card today-intro"><div><PageHeading title="今日模式" description="隨手查閱計劃、導航與重要時間。" /><p className="today-mode-label" aria-live="polite">{!actualToday ? `預覽模式${manual ? ' · 手動進度' : ''}` : manual ? '手動進度' : '今日 · 按時間自動'}</p></div>{clock}
       {!actualToday && <p className="today-preview-note">正在預覽所選行程日；焦點不代表目前實際活動，不使用今日時鐘推算此日進度。</p>}
     </section>
-    <ContentNavigation label="今日模式行程日期">{days.map((entry) => <button key={entry.id} className="itinerary-action" aria-pressed={entry.id === day.id} onClick={() => selectDay(entry.id)} title={entry.title}>D{entry.dayNumber}{entry.date === date && ' · 今日'}</button>)}</ContentNavigation>
+    <ContentNavigation label="今日模式行程日期">{days.map((entry) => <button key={entry.id} className="itinerary-action" aria-pressed={entry.id === day.id} onClick={() => selectDay(entry.id)} title={entry.title}>D{entry.dayNumber}{isOperationalDay(snapshot, entry, now) && ' · 今日'}</button>)}</ContentNavigation>
     <section className="today-card today-day-summary"><p className="today-kicker">D{day.dayNumber} · <time dateTime={day.date}>{formatTripDate(day.date)}</time></p><h2>{day.title}</h2><p>{day.routeSummary}</p>
       {day.highlights.length > 0 && <ul className="today-highlights">{day.highlights.map((highlight, i) => <li key={i}>✦ {highlight}</li>)}</ul>}
       {day.warnings.map((warning, i) => <p className="content-warning" key={`warning-${i}`}>⚠ 注意：{warning}</p>)}{day.constraints.map((constraint, i) => <p className="content-warning" key={`constraint-${i}`}>⚑ 限制：{constraint}</p>)}

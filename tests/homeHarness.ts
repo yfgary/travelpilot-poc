@@ -16,13 +16,14 @@ function componentBundle() {
       import { createRoot } from 'react-dom/client';
       import { MemoryRouter } from 'react-router-dom';
       import { TripCard } from ${JSON.stringify(resolve('src/components/TripCard.tsx'))};
+      import { orderTrips } from ${JSON.stringify(resolve('src/data/tripDates.ts'))};
       import ${JSON.stringify(resolve('src/styles/global.css'))};
       import ${JSON.stringify(resolve('src/styles/home.css'))};
       window.openedSlugs = [];
       createRoot(document.getElementById('fixture')).render(h(MemoryRouter, null,
         h('div', { className: 'home-page' }, h('div', { className: 'trip-list' },
-          window.snapshots.map(snapshot => h(TripCard, { key: snapshot.trip.slug,
-            snapshot, status: 'upcoming', demo: true,
+          (window.statusNow ? orderTrips(window.snapshots.map(snapshot => ({ ...snapshot.trip, snapshot })), new Date(window.statusNow)) : window.snapshots.map(snapshot => ({ trip: { snapshot }, status: 'upcoming' }))).map(({ trip: { snapshot }, status }) => h(TripCard, { key: snapshot.trip.slug,
+            snapshot, status, demo: true,
             onOpen: slug => window.openedSlugs.push(slug) }))))));
     `)
     const result = await build({ configFile: false, base: '/travelpilot-poc/', logLevel: 'silent',
@@ -37,9 +38,9 @@ function componentBundle() {
     }
   })()
 }
-export async function renderCards(page: Page, snapshots: TripSnapshot[]) {
+export async function renderCards(page: Page, snapshots: TripSnapshot[], now?: string) {
   const { js, css } = await componentBundle()
   await page.route('**/home-component-fixture', (route) => route.fulfill({ contentType: 'text/html; charset=utf-8', body:
-    `<html lang="zh-HK"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>${css}</style><div id="fixture"></div><script>window.snapshots=${JSON.stringify(snapshots).replace(/</g, '\\u003c')};</script><script>${js.replace(/<\/script/gi, '<\\/script')}</script></html>` }))
+    `<html lang="zh-HK"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>${css}</style><div id="fixture"></div><script>window.statusNow=${JSON.stringify(now ?? null)};window.snapshots=${JSON.stringify(snapshots).replace(/</g, '\\u003c')};</script><script>${js.replace(/<\/script/gi, '<\\/script')}</script></html>` }))
   await page.goto('http://127.0.0.1:4173/travelpilot-poc/home-component-fixture')
 }

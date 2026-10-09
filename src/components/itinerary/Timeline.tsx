@@ -1,6 +1,7 @@
 import type { TripSnapshot } from '../../data/schema/trip'
 import type { TimelineItem } from '../../data/itinerary'
 import { formatDuration, timelineTypes } from '../../data/itinerary'
+import { timelineTiming, timelineTimeLabel } from '../../data/tripTime'
 import { AccommodationCard, HardCutCard, NavigationCard, PlaceCard, TransportCard } from './EntityCards'
 
 export function Timeline({ items, snapshot, onDetail }: { items: TimelineItem[]; snapshot: TripSnapshot; onDetail: (id: string) => void }) {
@@ -12,9 +13,12 @@ export function Timeline({ items, snapshot, onDetail }: { items: TimelineItem[];
       const transport = snapshot.transport.find((t) => t.id === item.transportId)
       const target = snapshot.navigationTargets.find((t) => t.id === item.navigationTargetId)
       const cut = snapshot.hardCuts.find((c) => c.id === item.hardCutId)
-      const meta = timelineTypes[item.type]
-      return <li key={item.id} className="timeline-row" data-item-id={item.id} data-item-type={item.type}>
-        <div className="timeline-time">{item.startTime && <time>{item.startTime}</time>}{item.startTime && item.endTime && <span aria-hidden="true"> – </span>}{item.endTime && <time>{item.endTime}</time>}</div>
+      const meta = timelineTypes[item.type], timing = timelineTiming(item)
+      return <li key={item.id} className="timeline-row" data-item-id={item.id} data-item-type={item.type} data-exact-timing={timing ? true : undefined}>
+        <div className="timeline-time">{timing ? <>
+          <time dateTime={timing.start.dateTime}>{timelineTimeLabel(item, 'start')}</time><span aria-hidden="true"> → </span>
+          <time dateTime={timing.end.dateTime}>{timelineTimeLabel(item, 'end')}</time>
+        </> : <>{item.startTime && <time>{item.startTime}</time>}{item.startTime && item.endTime && <span aria-hidden="true"> – </span>}{item.endTime && <time>{item.endTime}</time>}</>}</div>
         <div className={`timeline-event${cut ? ' has-hard-cut' : ''}`}>
           <div className="timeline-badges"><span>{meta.icon} {meta.label}</span>
             {item.durationMinutes !== undefined && <span>◷ {formatDuration(item.durationMinutes)}</span>}

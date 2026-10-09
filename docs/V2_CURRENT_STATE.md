@@ -5,9 +5,11 @@ Last updated: 09/10/2026 (Hong Kong)
 ## Progress
 **Step 14/16 — Today Mode: COMPLETE**
 
-**Step 15B.1/16 — Schema 5 Cross-Timezone Timeline Timing Patch: implementation COMPLETE.** Step 15B remains incomplete overall; Step 15C has NOT started.
+**Step 15B.1/16 — Schema 5 Cross-Timezone Timeline Timing Patch: COMPLETE.**
 
-Current App Version: **v2.0.0-poc.17** (canonical source: package.json)
+**Step 15B.2/16 — Operational-Day + Exact Timing Display Patch: implementation COMPLETE.** Step 15B remains incomplete overall; Step 15C has NOT started.
+
+Current App Version: **v2.0.0-poc.18** (canonical source: package.json)
 
 Current Trip Schema Version: **5**; supported readers: **1 / 2 / 3 / 4 / 5**.
 
@@ -441,7 +443,7 @@ Historical Step 13 next task was Step 14; its implementation record follows.
 - Downloaded trip/weather caches retain the existing device privacy behavior after logout. Blocked/evicted storage can prevent durable offline use. Full cold-start PWA/service-worker offline QA remains Step 16.
 - Visual QA uses Chromium viewport screenshots, not physical iPhone/Safari certification. Existing nonfatal Vite bundle-size/Zod annotation notices remain.
 
-Historical Step 14 next task was Step 15; only the bounded Step 15B.1 patch is recorded below.
+Historical Step 14 next task was Step 15; only bounded Step 15B timing patches are recorded below.
 
 
 ## Step 15B.1/16 — Schema 5 cross-timezone timeline timing patch
@@ -469,3 +471,26 @@ App Version **v2.0.0-poc.17**, canonical package.json; package-lock/test expecta
 - Today remains planned state. Day selection and non-today manual preview retain their existing date-based semantics; exact intervals do not silently choose a different day or assert physical arrival. Manual progress remains session/device local.
 - Old cached snapshots need no migration. Cache retention/privacy and storage blocking/eviction behavior are unchanged. Browser/Intl timezone support applies; full cold-start offline QA remains Step 16. Existing nonfatal Vite bundle-size/Zod annotation notices remain.
 - **Step 15B is NOT complete overall. Step 15C has NOT started.** No Japan 2027 or other real-trip data has been migrated. Stop after this bounded timing patch; do not begin Step 15C.
+
+## Step 15B.2/16 — Schema 5 Operational-Day + Exact Timing Display Patch
+
+App Version **v2.0.0-poc.18** (canonical package.json; lockfile/test expectations match). Current Trip Schema remains **5**, strict supported readers **1 / 2 / 3 / 4 / 5**. Demo snapshots/Data Versions remain unchanged: **demo.city.5 / demo.road.5**. Step 15B.1 is complete; **Step 15B remains incomplete overall and Step 15C has NOT started.**
+
+### Implementation
+- Pure shared `operationalTiming.ts` checks Schema-5 exact intervals using absolute instants and half-open boundaries (`start <= now < end`). No transport/geography/title inference; invalid bypassed intervals cannot extend a Day. Exact interval ownership, rather than the arrival calendar date, can keep a Day operationally current after midnight.
+- Automatic Today selection prefers the active exact interval with latest absolute start, then canonical dayNumber for overlaps, then trip-local matching date, valid remembered preview and canonical first Day. `deriveToday` recognizes canonical matching or active owned exact timing. The existing one-second clock returns automatic selection to calendar rules at the exact end. Explicit manual Day previews, stable-ID progress/reset, storage keys, preview truthfulness and minute-based legacy behavior are retained.
+- Snapshot-aware Home status is current during an active exact interval even outside startDate/endDate. Existing simple calendar-only `tripStatus`, deterministic status/date/slug ordering and source registry immutability remain intact. The displayed Trip date range is unchanged; no permanent date extension is stored. Existing Home supplies snapshots to the shared sorter; Home/TripCard implementation requires no changes.
+- Detailed Itinerary Timeline reuses `tripTime.ts` endpoint formatting for each declared IANA timezone and full date/24-hour clock. Semantic time elements retain the exact original offset datetime. Exact labels wrap above event content; legacy HH:MM ranges remain unchanged. Today exact label presentation is unchanged.
+- No Schema 6, old-cache rewrite, fixture conversion, real-trip data, JMA, live cameras, checklist changes, Supabase access/migrations, production modification, canonical asset changes or Step 15C functionality.
+
+### Verification
+- `npm ci`: PASS (91 packages). Focused tripDates/Home/Today/Timeline timing tests: **605 passed** across 320/390/430/1024/1440px. `npm run build`: PASS, including strict application/tool/test TypeScript checks. Complete Playwright regression: **2245 passed (28.4m)**, two workers across all five widths, run once after the focused gate passed. All **2,140** previous cases retained plus **105** new cases; no failures or test weakening. `git diff --check`: PASS. No failed candidate pushed.
+- Required responsive timing screenshots generated; **320px Large**, **390px Large**, **430px Large** and **1440px Large** actually inspected. Date/IANA endpoints wrap cleanly, event content is not squeezed, shared header/navigation remain usable and the persistent status dock has clearance. Automated no-overflow checks cover all five widths.
+- New focused coverage proves overnight operational ownership, fresh selection/remembered-preview priority, absolute current/previous/next, half-open end and live return to calendar selection, deterministic overlaps, manual/reset/explicit preview, unchanged Schema 1–4 and Schema 5-without-timing behavior, Home before-start/after-end exceptions, unchanged displayed dates/sorting, exact/legacy Timeline labels and offset datetime semantics, and generic source audit.
+- Source-control boundaries verify unchanged Schema definitions, demo data/version registry, loader, IndexedDB/checklist/weather caches, auth/settings, Back history, live Supabase/V1 SQL and canonical assets. Tests intercept backend/network requests; no real account or live test writes. Production repository is untouched.
+- Existing POC-only CI remains npm ci → typecheck/build → complete Playwright → Pages deployment only after success. CI/Pages result is verified after the green local release is pushed and recorded in the release handoff.
+
+### Known limitations / next scope
+- Operational ownership uses structured exact Schema-5 timing only. Old HH:MM cross-midnight semantics remain unchanged. Planned timing is not GPS or actual arrival detection; manual progress remains browser-session local. Home status is derived on rendering, as before.
+- Overlapping active Days use deterministic latest-start/canonical-Day precedence; this does not repair itinerary content. No cache migration or real trip migration is included.
+- **Step 15B remains incomplete overall. Next: remaining Step 15B work only when separately authorized. Step 15C has NOT started.**

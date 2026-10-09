@@ -2,6 +2,7 @@ import type { TripSnapshot } from './schema/trip'
 import type { Accommodation, NavigationTarget, TimelineItem, TripDay } from './itinerary'
 import { dayHardCuts, resolveMaps } from './itinerary'
 import { calendarDate } from './tripDates'
+import { activeExactDay, dayHasActiveExactTiming } from './operationalTiming'
 import { hardCutInstant } from './tripInformation'
 import { timelineTiming, timelineStartInstant, timelineEndInstant, timeMinutes, tripTime } from './tripTime'
 
@@ -9,7 +10,10 @@ export type TodayStop = { item: TimelineItem; name: string; maps: string; target
 export type TodayPosition = { previous: TimelineItem | null; current: TimelineItem | null; next: TimelineItem | null; index: number }
 export function selectTodayDay(snapshot: TripSnapshot, now: Date, remembered?: string | null): TripDay | undefined {
   const today = calendarDate(now, snapshot.trip.timezone)
-  return snapshot.days.find((day) => day.date === today) ?? snapshot.days.find((day) => day.id === remembered) ?? [...snapshot.days].sort((a, b) => a.dayNumber - b.dayNumber)[0]
+  return activeExactDay(snapshot, now) ?? snapshot.days.find((day) => day.date === today) ?? snapshot.days.find((day) => day.id === remembered) ?? [...snapshot.days].sort((a, b) => a.dayNumber - b.dayNumber)[0]
+}
+export function isOperationalDay(snapshot: TripSnapshot, day: TripDay, now: Date): boolean {
+  return day.date === calendarDate(now, snapshot.trip.timezone) || dayHasActiveExactTiming(snapshot, day, now)
 }
 type TimingContext = { date: string; timezone: string; now: Date }
 export function automaticPosition(items: readonly TimelineItem[], time: number | TimingContext): TodayPosition {
@@ -63,7 +67,7 @@ export function resolveTodayNavigation(snapshot: TripSnapshot, item: TimelineIte
   return transport?.navigationTargetIds.flatMap((id) => { const target = snapshot.navigationTargets.find((target) => target.id === id); return target ? [target] : [] })[0]
 }
 export function deriveToday(snapshot: TripSnapshot, day: TripDay, now: Date, manualId?: string | null) {
-  const actualToday = day.date === calendarDate(now, snapshot.trip.timezone)
+  const actualToday = isOperationalDay(snapshot, day, now)
   const manualIndex = day.timeline.findIndex((item) => item.id === manualId)
   const manual = manualIndex >= 0
   const position: TodayPosition = manual || !actualToday ? (() => {
