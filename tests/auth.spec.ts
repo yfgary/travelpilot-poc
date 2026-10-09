@@ -2,6 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import { test, expect, supabaseOrigin, storageKey, testUser, fakeSession } from './fixtures'
 import { supabaseConfig } from '../src/services/supabaseConfig'
+import packageMetadata from '../package.json' with { type: 'json' }
 
 async function fillLogin(page: import('@playwright/test').Page) {
   await page.getByLabel('電郵', { exact: true }).fill(testUser.email)
@@ -13,7 +14,7 @@ test('signed-out Settings offers password login only, with the release version',
   await expect(page.getByRole('button', { name: '登入', exact: true })).toBeVisible()
   await expect(page.getByLabel('電郵', { exact: true })).toHaveAttribute('type', 'email')
   await expect(page.getByLabel('密碼', { exact: true })).toHaveAttribute('type', 'password')
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.18')
+  await expect(page.getByRole('status')).toContainText(`App Version v${packageMetadata.version}`)
   await expect(page.getByRole('button', { name: /Sign Up|Create Account|註冊|建立帳戶|重設密碼|Magic Link/i })).toHaveCount(0)
   await expect(page.getByRole('link', { name: /Sign Up|Create Account|註冊|建立帳戶|重設密碼/i })).toHaveCount(0)
   await page.goto('#/trip/demo-trip/info')

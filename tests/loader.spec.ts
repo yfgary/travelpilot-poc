@@ -1,6 +1,7 @@
 import { test, expect, supabaseOrigin, testUser, storageKey, fakeSession } from './fixtures'
 import { seedAuth, mockRemote, remoteVersion, remoteId, remoteSlug, cacheContents } from './tripFixtures'
 import type { Page } from '@playwright/test'
+import packageMetadata from '../package.json' with { type: 'json' }
 const itinerary = `#/trip/${remoteSlug}/itinerary`
 const dataSource = (page: Page) => page.getByTestId('trip-source')
 
@@ -43,7 +44,7 @@ test('authenticated remote read is owner-scoped and requires current published v
   await expect(dataSource(page)).toHaveText('POC 資料來源：remote')
   await expect(page.locator('.trip-heading h2')).toHaveText('通用遠端測試旅程')
   await expect(page.getByTestId('trip-versions')).toHaveText('Trip Data Version：content.1 · Trip Schema Version：1')
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.18')
+  await expect(page.getByRole('status')).toContainText(`App Version v${packageMetadata.version}`)
   expect(requests).toEqual(['/rest/v1/v2_trips', '/rest/v1/v2_trip_versions'])
   const cached = await cacheContents(page)
   expect(cached.versions).toHaveLength(1)
