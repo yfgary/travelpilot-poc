@@ -68,3 +68,9 @@ Recommended new-chat first action:
 - Confirm full POC CI suite and Pages deployment before declaring R1 verified; no local npm runner is available in this connector-driven session.
 - Original `jp2027.1` data stays published/current and immutable for this change. Trip Schema 5 and all older readers unchanged. Production and live Supabase remain untouched. **Do not begin Step 15D.**
 - Next implementation only after R1 gate: R2 Weather + Today, with user-requested **today's actual five-day data shown as explicitly-labelled simulated POC weather** for layout/score testing in out-of-horizon January 2027 dates. No claim of actual 2027 meteorological forecast.
+
+## R1 CI repair handoff
+
+- First R1 CI run [37992256506](https://github.com/yfgary/travelpilot-poc/actions/runs/37992256506): 2,465 PASS / 20 FAIL across five viewports; build green, deployment skipped. Only four unique failure causes (stale hardcoded version test; sticky test not accounting for main padding; two trip-information quick-nav headings short of sticky offset).
+- Candidate R1 hotfix version **v2.0.0-poc.28**; wait for full CI & Pages green. Fixes test semantics precisely and increases info heading scroll clearance. No production/Trip Data/Supabase change.
+- R2 staged Draft PR #9 currently also uses `poc.28` from the pre-hotfix parent. **Before merging R2, rebase/update it onto the new R1 main and advance R2 to the next unique App Version (at least poc.29).** Do not merge until R1 is verified.

@@ -9,7 +9,11 @@ test('the shared trip tabs remain sticky and new routes begin at the top', async
   await expect.poll(async () => main.evaluate((el) => el.scrollTop)).toBeGreaterThan(320)
   const mainTop = (await main.boundingBox())!.y
   const navTop = (await nav.boundingBox())!.y
-  expect(Math.abs(navTop - mainTop)).toBeLessThan(4)
+  // The scroll container deliberately retains its responsive top padding.
+  // Verify sticky position is inside that top strip, not stranded in the hero.
+  const padding = await main.evaluate((el) => parseFloat(getComputedStyle(el).paddingTop))
+  expect(navTop - mainTop).toBeGreaterThanOrEqual(-1)
+  expect(navTop - mainTop).toBeLessThanOrEqual(padding + 2)
   await nav.getByRole('link', { name: '旅程資料' }).click()
   await expect(page.getByRole('heading', { level: 1, name: '旅程資料' })).toBeVisible()
   await expect.poll(async () => main.evaluate((el) => el.scrollTop)).toBeLessThan(3)

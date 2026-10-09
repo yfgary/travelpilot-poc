@@ -4,8 +4,8 @@
 .info-section-note { font-size: 0.8rem; }
 .info-quick-nav { display: flex; gap: 0.45rem; overflow-x: auto; max-width: 100%; padding: 0.65rem 0.3rem; position: sticky; top: var(--tp-trip-nav-height, 0px); z-index: 10; background: rgba(246, 251, 254, 0.97); border-bottom: 1px solid var(--tp-line); border-radius: 12px; margin-bottom: 0.8rem; scrollbar-width: thin; }
 .info-quick-nav button { flex: 0 0 auto; white-space: nowrap; }
-.info-section { min-width: 0; background: #fff; border: 1px solid var(--tp-line); border-radius: 16px; margin-bottom: 1rem; box-shadow: 0 6px 20px rgb(22 65 97 / 7%); scroll-margin-top: 3.5rem; }
-.info-section > h2 { margin: 0; padding: 0.8rem 1rem; font-size: 1.2rem; color: #174f7d; background: linear-gradient(135deg, #edf6fc, #fff); border-radius: 15px 15px 0 0; border-bottom: 1px solid var(--tp-line); scroll-margin-top: 3.5rem; }
+.info-section { min-width: 0; background: #fff; border: 1px solid var(--tp-line); border-radius: 16px; margin-bottom: 1rem; box-shadow: 0 6px 20px rgb(22 65 97 / 7%); scroll-margin-top: 4.5rem; }
+.info-section > h2 { margin: 0; padding: 0.8rem 1rem; font-size: 1.2rem; color: #174f7d; background: linear-gradient(135deg, #edf6fc, #fff); border-radius: 15px 15px 0 0; border-bottom: 1px solid var(--tp-line); scroll-margin-top: 4.5rem; }
 .info-section > h2:focus-visible { outline: 3px solid var(--tp-blue); outline-offset: -3px; }
 .info-section-body { padding: 0.85rem 1rem; }
 .info-section-body h3 { color: #174f7d; font-size: 1rem; margin: 0.5rem 0; }
