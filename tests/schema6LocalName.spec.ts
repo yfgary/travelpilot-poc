@@ -3,6 +3,7 @@ import { roadTrip } from '../src/data/demoTrips/roadTrip'
 import { validateTripSnapshot, hasWeatherConfiguration, CURRENT_TRIP_SCHEMA_VERSION, SUPPORTED_TRIP_SCHEMA_VERSIONS } from '../src/data/schema/trip'
 import type { Schema6Snapshot } from '../src/data/schema/trip'
 import { timingFixture } from './timelineTimingFixtures'
+import { dayHasActiveExactTiming, activeExactDay } from '../src/data/operationalTiming'
 import { seedAuth, mockRemote, remoteId, remoteSlug, cacheContents } from './tripFixtures'
 import { localNameOf } from '../src/data/localNames'
 
@@ -87,4 +88,12 @@ test('legacy Schema 4 UI stays text-only when no localName has been authored', a
   await page.goto('#/trip/demo-road-trip/itinerary')
   await expect(page.getByTestId('detailed-itinerary')).toBeVisible()
   await expect(page.getByTestId('native-name')).toHaveCount(0)
+})
+
+test('Schema 6 retains Schema 5 exact-time activation and cross-day selection', () => {
+  const v6 = { ...timingFixture(), schemaVersion: 6 } as Schema6Snapshot
+  const now = new Date('2025-02-05T03:00:00Z')
+  expect(validateTripSnapshot(v6).valid).toBe(true)
+  expect(dayHasActiveExactTiming(v6, v6.days[0], now)).toBe(true)
+  expect(activeExactDay(v6, now)?.id).toBe(v6.days[0].id)
 })

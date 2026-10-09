@@ -28,7 +28,7 @@ test('Today is generic derived state with one trip boundary, shared weather/scor
   expect(weather).not.toContain('select('); expect(readFileSync('src/app/App.tsx', 'utf8')).not.toContain('TripView')
 })
 test('Step 15C keeps immutable Data Versions, trip engines, SQL, stores, auth, Back and production boundary unchanged', () => {
-  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(5); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5]); expect(metadata.version).toMatch(/^2\.0\.0-poc\.\d+$/)
+  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(6); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5, 6]); expect(metadata.version).toMatch(/^2\.0\.0-poc\.\d+$/)
   expect(localTrips.map((trip) => trip.dataVersion).sort()).toEqual(['demo.city.5', 'demo.road.5'])
   const paths = ['src/data/schema/trip.ts', 'src/data/demoTrips', 'src/data/trips.ts', 'src/offline', 'src/services/checklists.ts', 'src/services/checklistSync.ts', 'src/services/weather/providers', 'src/auth', 'src/app/NavigationHistory.tsx', 'src/app/TripWeather.tsx', 'src/views/TripLayout.tsx', 'src/views/Settings.tsx', 'src/views/DetailedItinerary.tsx', 'src/views/TripInformation.tsx', 'src/views/AttractionsOverview.tsx', 'src/views/LiveCam.tsx', 'src/data/weather', 'supabase', 'assets/images', 'assets/demo', '.github/workflows']
   expect(execFileSync('git', ['diff', 'HEAD', '--', ...paths], { encoding: 'utf8' })).toBe('')

@@ -662,3 +662,6 @@ User explicitly approved **Schema 6 in the POC only**, optional local-language n
 
 ### R4 Schema 6 focused QA robustness correction (10/10/2026)
 App Version candidate raised to **v2.0.0-poc.34**. Fictional road-trip Day 1 has no Place item; the Schema6 browser integration test now explicitly opens Day 2 before asserting native-language Place display, and scopes the shared lodging card to avoid multiple matches. This corrects test intent without changing the source data or UI behavior. Previous pending PR QA for poc.33 is superseded; do not merge before fresh complete PR QA PASS and R3 main deployment PASS.
+
+### R4 final static test sweep before full PR QA (10/10/2026)
+Additional audit found one legacy Today Architecture test still hardcoding current Schema 5; revised the *current supported reader* assertion to 6 while preserving its immutable demo versions and source-boundary checks. Added a focused Schema6 inherited exact-timing regression. Candidate App Version increases to **v2.0.0-poc.35**. Older PR QA attempts are superseded; the latest complete PR run is the release gate.

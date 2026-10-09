@@ -109,3 +109,5 @@ Recommended new-chat first action:
 - R3 main CI Pages gate must be verified. V1/Production untouched; Step 15D remains on hold.
 
 - R4 QA fixture correction: v2.0.0-poc.34; Day 2 explicitly opened for Place native-name display, Day 1 lodging scoped. Prior PR CI was superseded; latest run must pass.
+
+- Final R4 premerge audit: v2.0.0-poc.35, updated last stale TodayArchitecture schema assertion and added exact timing inheritance test; only latest PR QA counts.
