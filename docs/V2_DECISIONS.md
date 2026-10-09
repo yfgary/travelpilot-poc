@@ -207,3 +207,9 @@ Repository-relative canonical paths:
 **Presentation:** Preserve full trip ID, source, data/schema version metadata but move it to a small page-end technical footer. Add a scroll-aware Back-to-Top and accessible green ONLINE/red OFFLINE status symbols. Reduce generic/list/checklist spacing while preserving notes, content and interactive target sizes.
 
 **Boundary:** This is shared UI only. No trip-specific rendering, live content publishing, JMA/weather behavior changes, V1 or production modifications. R2 is separately scoped. For R2, the user explicitly approved using today's available actual five-day weather as **visibly marked simulated POC QA data**, never as a factual forecast for future itinerary dates.
+
+## 2026-10-10 — R2 POC-only simulated weather for distant travel-date visual QA
+
+**Decision:** On the dedicated POC deployment only, when a chosen itinerary date is outside the actual 5-day horizon, current actual forecast model metrics may be explicitly reused for UI presentation and a clearly-marked *simulated* day-profile score. Original forecast timestamps/dates/provider/cache/snapshot remain authoritative and unchanged; these numbers are NEVER described as actual trip-date weather. Non-POC deployments retain the truthful out-of-range informational state.
+
+**Layout/Today:** Five forecast cards use the desktop width when feasible and align metric values. The same suitability calculation has more visible color bands. Today Mode labels main mapped destinations by current/future/preview focus, and supplementary parking/entrance guidance is grouped into the same compact card. No GPS inference or official operation assertion is introduced.

@@ -33,12 +33,16 @@ test('preview uses matching DailyWeather rather than current conditions and neve
   await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '旅程資料', exact: true }).click()
   await expect(page.getByTestId('weather-panel')).toHaveAttribute('data-weather-region', preferred)
 })
-test('outside five-day preview has no fabricated weather metric or suitability score', async ({ page }) => {
+test('outside five-day preview is explicitly simulated in POC without claiming a trip-date forecast', async ({ page }) => {
   await page.route('https://api.open-meteo.com/**', (route) => route.fulfill({ json: openMeteoResponse('2026-10-09') }))
   await openToday(page, todayFixture(), '2026-10-09T10:30:00Z')
   const weather = page.getByTestId('today-weather')
-  await expect(weather.getByTestId('today-weather-outside')).toHaveText('目前5日預測未涵蓋所選行程日。')
-  await expect(weather.locator('.weather-score,.today-weather-main,.today-weather-metrics')).toHaveCount(0)
+  await expect(weather.getByTestId('today-weather-simulation')).toContainText('POC 模擬天氣（畫面測試）')
+  await expect(weather.getByTestId('today-weather-simulation')).toContainText('並非該行程日期的預測')
+  await expect(weather.locator('.today-weather-main')).toBeVisible()
+  await expect(weather.locator('.today-weather-metrics')).toBeVisible()
+  await expect(weather.locator('.weather-score')).toBeVisible()
+  await expect(weather).toContainText('現時天氣樣本')
 })
 test('shared forecast request is deduplicated across tick updates and reused after switching to WeatherPanel', async ({ page }) => {
   let calls = 0
@@ -55,14 +59,14 @@ test('shared weather cache retains truthful stale/offline conditions and core pr
   await expect(page.getByTestId('today-weather')).toContainText('離線，顯示已儲存天氣資料')
   await expect(page.getByTestId('today-weather').locator('.today-weather-main')).toContainText('18 °C')
   await page.getByRole('button', { name: '已到達／下一項 →', exact: true }).click(); await expect(page.locator('.today-current')).toContainText('主要計劃目的地')
-  await expect(page.getByRole('region', { name: '下一站', exact: true })).toContainText('Maps 為外部操作')
+  await expect(page.getByRole('region', { name: '主要導航目的地', exact: true })).toContainText('Maps 為外部操作')
 })
 test('weather network failure never blocks day/manual/Maps/Hard Cut/住宿 content', async ({ page }) => {
   await page.route('https://api.open-meteo.com/**', (route) => route.abort())
   await openToday(page)
   await expect(page.getByTestId('today-weather')).toContainText('暫時未能取得天氣資料')
   await expect(page.locator('.today-hard-cut')).toHaveCount(3); await expect(page.locator('.today-final')).toBeVisible()
-  await expect(page.getByRole('region', { name: '下一站', exact: true }).getByRole('link', { name: /Google Maps/ })).toBeVisible()
+  await expect(page.getByRole('region', { name: '主要導航目的地', exact: true }).getByRole('link', { name: /Google Maps/ })).toBeVisible()
   await page.getByRole('button', { name: '已到達／下一項 →', exact: true }).click(); await expect(page.locator('.today-current')).toContainText('手動焦點')
 })
 test('active official alerts reuse normalized state, filter selected region and do not override progress or scores', async ({ page }) => {

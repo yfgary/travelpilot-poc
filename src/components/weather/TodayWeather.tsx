@@ -8,6 +8,7 @@ import type { TripDay } from '../../data/itinerary'
 import { activeAlerts } from '../../services/weather/alerts'
 import { ExternalLink } from '../itinerary/ContentActions'
 import { ScoreSummary } from './ScoreSummary'
+import { POC_WEATHER_PREVIEW, simulatedWeatherNotice } from '../../data/weather/qaPreview'
 import { weatherCondition, severityLabels, typeLabels } from './WeatherPanel'
 import '../../styles/weather.css'
 
@@ -27,7 +28,8 @@ export function TodayWeather({ day, actualToday, now }: { day: TripDay; actualTo
   const region = snapshot.weather.weatherRegions.find((region) => region.id === regionId)
   const result = results[regionId], forecast = result?.state === 'ready' ? result.forecast : undefined
   const daily = forecast?.daily.find((forecastDay) => forecastDay.date === day.date)
-  const metrics = actualToday ? forecast?.current.metrics : daily?.metrics
+  const simulated = Boolean(forecast && !actualToday && !daily && POC_WEATHER_PREVIEW)
+  const metrics = actualToday ? forecast?.current.metrics : daily?.metrics ?? (simulated ? forecast?.current.metrics : undefined)
   const score = useMemo(() => configured && metrics ? scoreSuitability(snapshot.weather, metrics, { dayId: day.id }) : undefined, [configured, snapshot.weather, metrics, day.id])
   const active = useMemo(() => activeAlerts(alerts, regionId, now), [alerts, regionId, now])
   const time = (value: string) => { const date = new Date(value), timezone = forecast?.timezone ?? snapshot.trip.timezone; return `${formatTripDate(calendarDate(date, timezone))} ${tripTime(date, timezone)}` }
@@ -44,10 +46,11 @@ export function TodayWeather({ day, actualToday, now }: { day: TripDay; actualTo
       </article>)}</section>}
       {alertsUnavailable && <p className="weather-note">暫時未能取得警告資料；請自行查閱官方公告。</p>}
       <p className="weather-state" aria-live="polite">{!result || result.state === 'loading' ? '載入天氣資料…' : result.state === 'unconfigured' ? '此地區尚未有可用天氣供應商設定。' : result.state === 'unavailable' ? (navigator.onLine ? '暫時未能取得天氣資料' : '離線，尚未有已儲存天氣資料') : result.stale ? (navigator.onLine ? '正在使用較早前快取資料' : '離線，顯示已儲存天氣資料') : result.source === 'cache' ? '顯示已儲存天氣資料' : '天氣資料已更新'}</p>
-      {forecast && !actualToday && !daily && <p data-testid="today-weather-outside">目前5日預測未涵蓋所選行程日。</p>}
+      {forecast && !actualToday && !daily && !simulated && <p data-testid="today-weather-outside">所選行程日期未進入未來5日預測範圍；接近出發時才有對應預報。</p>}
+      {simulated && <p className="weather-simulation" data-testid="today-weather-simulation">{simulatedWeatherNotice}</p>}
       {forecast && metrics && <>
-        <p className="today-weather-period">{actualToday ? '目前觀測／模型資料' : `該日預測 · ${formatTripDate(day.date)}`}</p>
-        <p className="today-weather-main">{condition.icon} {condition.label} · {actualToday ? display(metrics.temperatureC, '°C') : `${display(daily?.temperatureMinC, '°C')} – ${display(daily?.temperatureMaxC, '°C')}`}</p>
+        <p className="today-weather-period">{simulated ? `現時天氣樣本 · 非 ${formatTripDate(day.date)} 預報` : actualToday ? '目前觀測／模型資料' : `該日預測 · ${formatTripDate(day.date)}`}</p>
+        <p className="today-weather-main">{condition.icon} {condition.label} · {actualToday || simulated ? display(metrics.temperatureC, '°C') : `${display(daily?.temperatureMinC, '°C')} – ${display(daily?.temperatureMaxC, '°C')}`}</p>
         <dl className="today-weather-metrics">
           <div><dt>體感</dt><dd>{display(metrics.apparentC, '°C')}</dd></div><div><dt>能見度</dt><dd>{display(metrics.visibilityKm, 'km')}</dd></div>
           <div><dt>陣風</dt><dd>{display(metrics.gustKmh, 'km/h')}</dd></div><div><dt>降水</dt><dd>{display(metrics.precipitationMm, 'mm')}</dd></div>

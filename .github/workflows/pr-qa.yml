@@ -1,0 +1,39 @@
+name: POC Pull Request QA
+
+# Validate proposed POC work before it reaches main; this workflow never deploys.
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: poc-pr-qa-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    if: github.repository == 'yfgary/travelpilot-poc' && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+      - name: Upload QA report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-pr-${{ github.run_id }}
+          path: |
+            test-results
+            playwright-report
+          if-no-files-found: ignore

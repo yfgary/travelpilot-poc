@@ -108,9 +108,9 @@ for (const [time, current, previous, next, end] of [
 })
 test('required next stop, canonical parking target, optional/bonus labels, warnings, Maps safety and driving notice render', async ({ page }) => {
   const snapshot = await openToday(page)
-  const stop = page.getByRole('region', { name: '下一站', exact: true })
+  const stop = page.getByRole('region', { name: '主要導航目的地', exact: true })
   await expect(stop).toContainText(snapshot.navigationTargets[0].title)
-  const maps = stop.getByRole('link', { name: /Google Maps：下一站/ })
+  const maps = stop.getByRole('link', { name: /Google Maps：主要目的地/ })
   await expect(maps).toHaveAttribute('href', resolveMaps(snapshot.navigationTargets[0])!); await expect(maps).toHaveAttribute('target', '_blank'); await expect(maps).toHaveAttribute('rel', 'noopener noreferrer')
   await expect(page.locator('.today-navigation')).toContainText('泊車'); await expect(page.locator('.today-navigation')).toContainText(snapshot.navigationTargets[0].warning!)
   await expect(focus(page)).toContainText('可選'); await expect(focus(page)).toContainText('Bonus'); await expect(focus(page)).toContainText('虛構可選活動注意事項')

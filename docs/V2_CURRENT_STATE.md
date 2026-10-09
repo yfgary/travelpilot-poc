@@ -602,3 +602,22 @@ GitHub POC workflow is unchanged and runs `npm ci` → TypeScript/Vite build →
 The first R1 main commit `75d6612` built successfully but its complete GitHub Playwright run [37992256506](https://github.com/yfgary/travelpilot-poc/actions/runs/37992256506) returned **2,465 passed / 20 failed** from **2,485** tests. Deployment was correctly skipped. There were four deterministic failures repeated at the five viewport widths: an old Step 15C test hard-coded the now-outdated App Version `poc.26`; the new sticky nav test incorrectly demanded zero inset despite intentional responsive main padding; and the two demo info quick-nav tests measured headings roughly 6–9px beneath the necessary sticky clearance.
 
 Repair release candidate `v2.0.0-poc.28` retains all original data/behavior assertions. The archived Japan test now requires a valid monotonically non-regressed POC App Version >=26 while retaining Schema, old fixture, loader/source and SHA audits; the sticky test asserts the actual padded scroller boundary; and the info section heading scroll margin increases by 1rem to clear stacked navigation. No app content, trip data or production changes. **Do not claim the gate passed until a new full CI run passes and Pages deploys.**
+
+## Pre-15D QA R2 — weather + Today Draft candidate (10/10/2026)
+
+**R2 staged separately on `qa/pre15d-r2-weather-today` with candidate `v2.0.0-poc.29`. NOT deployed and NOT merged; R1 v2.0.0-poc.28 full GitHub CI gate remains the prerequisite.**
+
+This bounded Round-2 candidate addresses user issues #2/#6/#8/#16/#26/#27:
+- Denser shared WeatherPanel/forecast metrics, stable aligned comparison rows and a five-column desktop forecast that reuses available width; phone view preserves horizontal navigation.
+- ScoreSummary gets stronger semantic green/amber/red band accents without changing its existing suitability math, coverage, or official operation caveats.
+- Only on the explicit POC deployment base, an out-of-range itinerary day may display **current actual model weather as clearly marked POC simulation**, including a planned-day profile score for UI testing. The forecast-date range, sources and timestamps stay unchanged and visible. Production-style builds retain honest out-of-range fallback. Nothing claims that today represents the January 2027 trip-date weather.
+- Today Mode primary mapped destination label distinguishes current/planned later/preview and combines supplemental parking/entrance metadata into one compact navigation section rather than duplicative tall cards. TodayWeather shows the same clearly labelled UI-only simulation if selected day is beyond the five-day forecast.
+- Matching-date forecast tests retain real daily data; outside-date tests are strengthened to require explicit simulation provenance. New focused desktop/mobile layout, score-band and Today navigation regression cases added.
+- No Supabase publishing or schema/reader/cache mutation, no production/V1 modification, no itinerary payload rewrite. R1 fixes remain present via rebase; Step 15D not started.
+**R2 full build/Playwright/visual checks still required before merge or declaring completion.**
+
+### R2 PR QA run #37996092829 failure repair (10/10/2026)
+
+R2 candidate `poc.29` pre-merge PR QA: **2,495 Passed / 5 Failed**, npm ci and TypeScript/Vite build PASS. All five failures were the same outdated `tests/todayVisual.spec.ts` assertion replicated across viewport widths 320/390/430/1024/1440: it expected `today-weather-outside` when the new, user-approved POC-only simulation deliberately displays weather metrics with a prominent simulation notice. No other test failure was reported.
+
+Repair candidate **v2.0.0-poc.30** updates the visual scenario to test the *new requirement*: out-of-horizon dates visibly state that this is simulated POC data and **not the itinerary-day forecast**, include the real current sample metrics/score, and don't show the old empty-data UI. Same-day weather must remain factual and **not** show the simulation notice. Actual score/provider/forecast/date/cache logic is unchanged. **Full PR QA is required again; no merge until green.**

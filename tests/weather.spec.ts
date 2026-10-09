@@ -177,14 +177,16 @@ test('late old-trip response cannot leak into another trip after navigation', as
   await open(page, road.trip.slug); release(); await expect.poll(async () => (await weatherCacheContents(page)).length).toBe(2)
   await expect(panel(page).locator('.weather-temperature')).toHaveText('5 °C'); await expect(page.locator('.trip-heading')).toContainText(road.trip.title); await expect(panel(page)).not.toContainText('33 °C')
 })
-test('mapped itinerary date receives its own forecast score; other dates get no fabricated score', async ({ page }) => {
+test('mapped itinerary date uses the matching forecast; outside dates use visibly simulated POC metrics', async ({ page }) => {
   await page.route('https://api.open-meteo.com/**', (route) => route.fulfill({ json: openMeteoResponse('2025-02-05') }))
   await open(page, road.trip.slug, 'itinerary')
   await expect(page.locator('.itinerary-day').first().getByTestId('day-suitability')).toBeVisible()
   await expect(page.locator('.itinerary-day').first().getByTestId('day-suitability')).toContainText('體驗')
   await expect(page.locator('.itinerary-day').first().getByTestId('day-suitability')).toContainText('到達／安全')
-  await open(page, city.trip.slug, 'itinerary'); await expect(page.getByTestId('day-suitability')).toHaveCount(0); await expect(page.getByTestId('day-weather-outside').first()).toBeVisible()
-  await expect(panel(page)).toContainText('未代表實際行程日天氣')
+  await open(page, city.trip.slug, 'itinerary')
+  await expect(page.getByTestId('day-suitability').first()).toBeVisible()
+  await expect(page.getByTestId('day-weather-simulation').first()).toContainText('POC 模擬天氣（畫面測試）')
+  await expect(panel(page).getByTestId('weather-panel-simulation')).toContainText('並非該行程日期的預測')
 })
 test('day mapping selects its configured region metrics, independent of current selector', async ({ page }) => {
   await page.route('https://api.open-meteo.com/**', (route) => { const high = new URL(route.request().url()).searchParams.get('latitude') === '11.1'; const raw = openMeteoResponse('2025-02-05'); if (high) raw.daily.wind_gusts_10m_max = Array(5).fill(80); return route.fulfill({ json: raw }) })

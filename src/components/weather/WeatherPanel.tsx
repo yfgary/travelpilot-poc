@@ -6,6 +6,7 @@ import { scoreSuitability } from '../../data/weather/suitability'
 import type { WeatherMetrics } from '../../data/schema/weather'
 import { formatTripDate } from '../../data/tripDates'
 import { ScoreSummary } from './ScoreSummary'
+import { POC_WEATHER_PREVIEW, simulatedWeatherNotice } from '../../data/weather/qaPreview'
 import '../../styles/weather.css'
 const metricLabels: [keyof WeatherMetrics, string, string][] = [
   ['visibilityKm', '👁 能見度', 'km'], ['cloudPct', '☁ 雲量', '%'], ['humidityPct', '💧 濕度', '%'], ['windKmh', '🌬 風速', 'km/h'], ['gustKmh', '💨 陣風', 'km/h'], ['precipitationMm', '🌧 降水', 'mm'], ['precipitationProbabilityPct', '☂ 降水機率', '%'], ['snowfallCm', '❄ 新降雪', 'cm'], ['snowDepthCm', '🏔 地面積雪', 'cm'],
@@ -50,7 +51,7 @@ export function WeatherPanel() {
       <div className="weather-current"><div><p className="weather-condition"><span aria-hidden="true">{condition.icon}</span> {condition.label}</p><p className="weather-temperature">{display(current.temperatureC, '°C')}</p><p>體感 {display(current.apparentC, '°C')}</p></div><div className="weather-update"><p>觀測／模型時間：{time(forecast.current.observedAt)}</p><p>更新時間：{time(forecast.fetchedAt)}</p><p>時區：{forecast.timezone}</p></div></div>
       <dl className="weather-metrics">{metricLabels.map(([key, label, unit]) => <div key={key}><dt>{label}</dt><dd>{display(current[key], unit)}</dd></div>)}</dl>
       <ScoreSummary score={scoreSuitability(config, current, { regionId: region.regionId })} />
-      <h3>未來5日預測</h3><p className="weather-note">{forecast.daily[0].date <= snapshot.trip.startDate && snapshot.trip.endDate <= forecast.daily[4].date ? '預測會隨時間更新；請在出行前再次確認。' : '5日預測由目前日期起計，未代表實際行程日天氣。接近出發日期時先具有行程決策價值。'}</p>
+      <h3>未來5日預測</h3>{POC_WEATHER_PREVIEW && !(forecast.daily[0].date <= snapshot.trip.startDate && snapshot.trip.endDate <= forecast.daily[4].date) ? <p className="weather-simulation" data-testid="weather-panel-simulation">{simulatedWeatherNotice}</p> : <p className="weather-note">{forecast.daily[0].date <= snapshot.trip.startDate && snapshot.trip.endDate <= forecast.daily[4].date ? '預測會隨時間更新；請在出行前再次確認。' : '5日預測由目前日期起計，未代表實際行程日天氣。接近出發日期時先具有行程決策價值。'}</p>}
       <div ref={scroller} className="weather-forecast" tabIndex={0} role="region" aria-label="未來5日預測，可橫向捲動" onKeyDown={(event) => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); scroller.current?.scrollBy({ left: event.key === 'ArrowRight' ? 240 : -240, behavior: 'auto' }) } }}>
         {forecast.daily.map((day, i) => { const condition = weatherCondition(day.metrics.weatherCode); return <article className="weather-forecast-day" key={day.date}>
           <p className="weather-forecast-date"><time dateTime={day.date}>{formatTripDate(day.date)}</time>{i >= 3 && <span className="weather-trend">趨勢參考</span>}</p>

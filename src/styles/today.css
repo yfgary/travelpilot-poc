@@ -69,3 +69,18 @@
 
 /* Exact endpoint dates/zones wrap without squeezing the activity title. */
 .today-activities li[data-exact-timing] { grid-template-columns:minmax(0,1fr); }
+
+/* R2: the two navigation concepts are distinct, compact operational cards. */
+.today-operational-grid { gap: .7rem; }
+.today-operational-grid .today-card { padding: .85rem; }
+.today-next-stop h2 { font-size: 1.2rem; margin: .25rem 0; }
+.today-next-stop > .itinerary-action { margin: .55rem 0 .3rem; }
+.today-navigation h2 { font-size: 1.05rem; margin-bottom: .3rem; }
+.today-navigation h3 { font-size: 1rem; margin: .25rem 0; }
+.today-operational-grid .today-planned-time { font-size: 1.1rem; }
+.today-operational-grid .today-note { margin-top: .3rem; }
+.today-weather-metrics { gap: .35rem; }
+.today-weather-metrics div { padding: .4rem; }
+
+/* Place supplemental parking/entrance guidance inside the same primary navigation card. */
+.today-navigation { margin-top: .6rem; padding-top: .6rem; border-top: 1px solid var(--tp-line); }
