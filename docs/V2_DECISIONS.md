@@ -30,7 +30,7 @@
 **Decision:** Track application release version separately from each trip's data version.
 
 ## 2026-10-08 — Update without disruptive reload
-**Decision:** Online version checks may download updates, but the active page must not suddenly reload. Apply on reopen/reload or explicit user action as appropriate.
+**Decision:** Online version checks must not suddenly reload the active page. When a newer version is detected, Settings may expose an explicit `立即更新` action; only that user action may reload the current route to load the deployed app. Automatic checks never reload by themselves.
 
 ## 2026-10-08 — Global display conventions
 **Decision:** Dates use `DD/MM/YYYY 星期X`. Times use 24-hour `HH:MM`; Today Mode live clock uses `HH:MM:SS`. Font size is a global Small/Medium/Large preference.
@@ -125,7 +125,7 @@ Repository-relative canonical paths:
 
 **Sync/controls:** Debounced mutation/sign-in/reconnect, visible focus/visibility, conservative visible 30-second polling and manual Settings sync; no Realtime. Confirmed per-list reset uses normal state changes. Orphans are retained without rendering/upload/deletion. Explicit confirmed Settings clearing removes local trip/checklist/queue/sync data only, warns about pending loss, retains Auth/fonts/non-secret device clock, and never issues server DELETE.
 
-**Update checks:** Settings reads published App Version metadata only. Missing current metadata is neutral, numeric prereleases compare semantically, and older rows are never offered as upgrades. Optional persisted automatic checking defaults off and controls checking only; neither manual nor automatic checks reload or replace the current app. Language remains Traditional Chinese and cloud preference sync is deferred.
+**Update checks:** Settings reads published App Version metadata only. Missing current metadata is neutral, numeric prereleases compare semantically, and older rows are never offered as upgrades. Optional persisted automatic checking defaults off and controls checking only. Manual/automatic checks themselves never reload or replace the current app; when a newer version is found, an explicit `立即更新` action may reload the current route. Language remains Traditional Chinese and cloud preference sync is deferred.
 
 
 ## 2026-10-08 — Schema 3 data-driven weather and separate Official Alerts

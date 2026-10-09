@@ -23,12 +23,27 @@ for (const [name, versions, expected] of [
     let loads=0; page.on('load',()=>loads++)
     await page.getByRole('button',{name:'檢查更新',exact:true}).click()
     await expect(page.getByTestId('update-status')).toHaveText(expected)
+    if (expected.startsWith('有較新版本')) await expect(page.getByRole('button',{name:'立即更新',exact:true})).toBeVisible()
+    else await expect(page.getByRole('button',{name:'立即更新',exact:true})).toHaveCount(0)
     expect(requests.every(request=>request.method==='GET'&&request.path==='/rest/v1/v2_app_versions')).toBe(true)
     expect(loads).toBe(0); await expect(page).toHaveURL(/#\/settings$/)
     await expect(page.getByRole('status')).toContainText(`App Version ${APP_VERSION}`)
     await expect(page.getByText('上次清單同步：',{exact:false})).toHaveCount(0)
   })
 }
+test('available update reloads only after explicit immediate-update action and preserves Settings route',async({page})=>{
+  await page.route(`${supabaseOrigin}/rest/v1/v2_app_versions**`,route=>route.fulfill({json:[published(APP_VERSION),published('v9.0.0')]}))
+  await page.goto('#/settings')
+  await page.getByRole('button',{name:'檢查更新',exact:true}).click()
+  await expect(page.getByTestId('update-status')).toHaveText('有較新版本：v9.0.0')
+  const update=page.getByRole('button',{name:'立即更新',exact:true})
+  await expect(update).toBeVisible()
+  const loaded=page.waitForEvent('load')
+  await update.click()
+  await loaded
+  await expect(page).toHaveURL(/#\/settings$/)
+  await expect(page.getByRole('status')).toContainText(`App Version ${APP_VERSION}`)
+})
 test('update failure displays generic unavailable and never shows raw backend text',async({page})=>{
   await page.route(`${supabaseOrigin}/rest/v1/v2_app_versions**`,route=>route.fulfill({status:503,json:{message:'RAW_PRIVATE_ERROR'}}))
   await page.goto('#/settings'); await page.getByRole('button',{name:'檢查更新',exact:true}).click()

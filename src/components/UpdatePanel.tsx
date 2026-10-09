@@ -25,11 +25,12 @@ export function UpdatePanel() {
   return <section className="panel" aria-labelledby="updates-title"><h2 id="updates-title">更新</h2>
     <p aria-live="polite" data-testid="update-status">{labels[result.state]}{result.state === 'available' && `：${result.version}`}</p>
     <button className="button" onClick={() => void check()} disabled={result.state === 'loading'}>檢查更新</button>
+    {result.state === 'available' && <button className="button" onClick={() => window.location.reload()}>立即更新</button>}
     <label className="setting-checkbox"><input type="checkbox" checked={automatic} onChange={(event) => {
       const enabled = event.currentTarget.checked; setAutomatic(enabled)
       try { localStorage.setItem(key, String(enabled)); setStorageUnavailable(false) } catch { setStorageUnavailable(true) }
     }} /><span>自動檢查更新</span></label>
-    <p className="muted">只檢查版本資料；不會自動重新載入或替換正在使用的程式。</p>
+    <p className="muted">檢查更新只讀取版本資料；如有新版，可按「立即更新」重新載入。自動檢查不會自行重新載入。</p>
     {storageUnavailable && <p className="muted">自動檢查偏好只適用於本次使用。</p>}
   </section>
 }
