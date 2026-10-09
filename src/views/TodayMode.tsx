@@ -66,13 +66,21 @@ export function TodayMode() {
       </div><p className="today-note">按計劃時間顯示，並非 GPS 定位或自動到達偵測。手動焦點只儲存於此裝置的瀏覽器工作階段。</p>
     </section>
     <div className="today-operational-grid">
-      {nextStop && <section className="today-card today-next-stop" aria-label="下一站"><p className="today-kicker">下一站 · 導航目的地</p><p className="today-planned-time">{timelineTimeLabel(nextStop.item, 'start')}</p><h2>{nextStop.name}</h2><p>{nextStop.item.title}</p>
-        {(nextStop.item.optional || nextStop.item.bonus) && <p className="today-tag">可選{nextStop.item.bonus && '／Bonus'}</p>}
-        <ExternalLink href={nextStop.maps} label={`Google Maps：下一站 ${nextStop.name}`}>↗ 開啟 Google Maps</ExternalLink>
-        <p className="today-note">Maps 為外部操作；離線可用程度視乎裝置、網絡及離線地圖設定。</p>
+      {(nextStop || navigation) && <section className="today-card today-next-stop" aria-label={nextStop ? '主要導航目的地' : '泊車／入口等導航補充'}>
+        {nextStop && <>
+          <p className="today-kicker">{!actualToday ? '預覽行程主要目的地' : nextStop.item.id === position.current?.id ? '目前計劃目的地' : '後續計劃目的地'}</p>
+          <p className="today-planned-time">{timelineTimeLabel(nextStop.item, 'start')}</p><h2>{nextStop.name}</h2><p>{nextStop.item.title}</p>
+          {(nextStop.item.optional || nextStop.item.bonus) && <p className="today-tag">可選{nextStop.item.bonus && '／Bonus'}</p>}
+          <ExternalLink href={nextStop.maps} label={`Google Maps：主要目的地 ${nextStop.name}`}>↗ 開啟 Google Maps</ExternalLink>
+          <p className="today-note">Maps 為外部操作；離線可用程度視乎裝置、網絡及離線地圖設定。</p>
+        </>}
+        {navigation && <div className="today-navigation"><h2>泊車／入口等導航補充</h2>
+          <p className="today-kicker">{navigationTypes[navigation.type]}</p><h3>{navigation.title}</h3>
+          {navigation.description && <p>{navigation.description}</p>}{navigation.warning && <p className="content-warning">⚠ 注意：{navigation.warning}</p>}
+          {navigation.id !== nextStop?.target?.id && <MapsAction entity={navigation} name={navigation.title} />}
+        </div>}
       </section>}
       <TodayWeather day={day} actualToday={actualToday} now={now.getTime()} />
-      {navigation && <section className="today-card today-navigation" aria-label="下一導航點"><h2>下一導航點</h2><p className="today-kicker">{navigationTypes[navigation.type]}</p><h3>{navigation.title}</h3>{navigation.description && <p>{navigation.description}</p>}{navigation.warning && <p className="content-warning">⚠ 注意：{navigation.warning}</p>}<MapsAction entity={navigation} name={navigation.title} /></section>}
       {(accommodation || finalStop) && <section className="today-card today-final" aria-label="住宿及終點"><h2>{accommodation ? (actualToday ? '今日住宿／終點' : '所選日住宿／終點') : (actualToday ? '今日終點' : '所選日終點')}</h2><h3>{accommodation?.name ?? finalStop?.name}</h3>
         {accommodation ? <>{accommodation.checkIn && <p>入住時間：{accommodation.checkIn}</p>}{accommodation.address && <p>{accommodation.address}</p>}<MapsAction entity={accommodation} name={accommodation.name} /></> : finalStop && <MapsAction entity={{ mapURL: finalStop.maps }} name={finalStop.name} />}
       </section>}

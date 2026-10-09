@@ -58,3 +58,33 @@
   .weather-refresh { padding-inline: .6rem; flex-shrink: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .weather-panel * { scroll-behavior: auto; transition: none; } }
+
+/* R2: weather information density, stable comparison rows and score bands. */
+.weather-panel { margin-block: .75rem; }
+.weather-panel h3 { margin-top: .8rem; }
+.weather-metrics { margin: .55rem 0; gap: .4rem; }
+.weather-metrics > div { padding: .4rem .55rem; }
+.weather-metrics dd { margin-top: .1rem; }
+.weather-forecast { gap: .45rem; padding-bottom: .45rem; }
+.weather-forecast-day { padding: .6rem; }
+.weather-forecast-day p { margin: .25rem 0; }
+.weather-daily-metrics { margin: .4rem 0; }
+.weather-daily-metrics > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: .25rem;
+  min-height: 2rem;
+  padding: .2rem 0;
+  border-bottom: 1px solid #e3edf3;
+}
+.weather-daily-metrics dt { overflow-wrap: anywhere; line-height: 1.35; }
+.weather-daily-metrics dd { margin: 0; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.weather-score[data-score-state=good] .weather-score-main { color: #1f7141; }
+.weather-score[data-score-state=fair] .weather-score-main { color: #895c0f; }
+.weather-score[data-score-state=poor] .weather-score-main { color: #a3352b; }
+.weather-simulation { margin: .45rem 0; padding: .55rem .7rem; border: 1px solid #d9b770; border-left: 4px solid #b88124; background: #fff7df; color: #674b13; font-size: .8rem; line-height: 1.5; border-radius: .5rem; }
+@media (min-width: 900px) {
+  .weather-forecast { grid-auto-flow: row; grid-auto-columns: initial; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow-x: visible; scroll-snap-type: none; }
+  .weather-forecast-day { scroll-snap-align: none; }
+}

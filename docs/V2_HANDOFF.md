@@ -74,3 +74,10 @@ Recommended new-chat first action:
 - First R1 CI run [37992256506](https://github.com/yfgary/travelpilot-poc/actions/runs/37992256506): 2,465 PASS / 20 FAIL across five viewports; build green, deployment skipped. Only four unique failure causes (stale hardcoded version test; sticky test not accounting for main padding; two trip-information quick-nav headings short of sticky offset).
 - Candidate R1 hotfix version **v2.0.0-poc.28**; wait for full CI & Pages green. Fixes test semantics precisely and increases info heading scroll clearance. No production/Trip Data/Supabase change.
 - R2 staged Draft PR #9 currently also uses `poc.28` from the pre-hotfix parent. **Before merging R2, rebase/update it onto the new R1 main and advance R2 to the next unique App Version (at least poc.29).** Do not merge until R1 is verified.
+
+## R2 Draft rebased after R1 hotfix (10/10/2026)
+
+- R1 first suite 2,465 pass / 20 fail; corrective POC v2.0.0-poc.28 merged as `1474036`. Its new full CI run is the release gate; do not merge R2 while pending/failing.
+- R2 is Draft PR #9 from `qa/pre15d-r2-weather-today`, rebased onto the R1 hotfix main, and separately versioned `v2.0.0-poc.29`.
+- R2 has weather density/alignment/five-column desktop, colored score, clearly-labelled POC-only current-weather simulation for out-of-horizon planned days, Today navigation consolidation, and focused tests. Build/full suite and visual checks must still be completed before R2 merge.
+- No production/Supabase/jp2027.1 changes. Do not start Step 15D.
