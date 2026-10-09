@@ -13,7 +13,8 @@ import { PreferencesProvider } from './Preferences'
 import { AuthProvider } from '../auth/AuthProvider'
 import { NotFound } from '../views/NotFound'
 import { NavigationHistory } from './NavigationHistory'
-import { ChecklistSyncProvider } from './ChecklistSync'\nimport { TripPageGate } from '../components/TripPageGate'
+import { ChecklistSyncProvider } from './ChecklistSync'
+import { TripPageGate } from '../components/TripPageGate'
 
 export function App() {
   return (

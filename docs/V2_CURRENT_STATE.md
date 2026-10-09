@@ -7,9 +7,11 @@ Last updated: 09/10/2026 (Hong Kong)
 
 **Step 15B.1/16 — Schema 5 Cross-Timezone Timeline Timing Patch: COMPLETE.**
 
-**Step 15B.2/16 — Operational-Day + Exact Timing Display Patch: COMPLETE.**\n\n**Step 15B.3/16 — Capability-driven trip navigation guard: COMPLETE.** Repair release v2.0.0-poc.20 corrects source formatting from the failed v2.0.0-poc.19 candidate. Optional trip pages now use the same snapshot capability rules on Home and inside a trip; unavailable direct routes redirect to Detailed Itinerary. Step 15C has NOT started.
+**Step 15B.2/16 — Operational-Day + Exact Timing Display Patch: COMPLETE.**
 
-Current App Version: **v2.0.0-poc.20** (canonical source: package.json)
+**Step 15B.3/16 — Capability-driven trip navigation guard: COMPLETE.** Repair release v2.0.0-poc.21 corrects source formatting from the failed v2.0.0-poc.19 and v2.0.0-poc.20 candidates. Optional trip pages now use the same snapshot capability rules on Home and inside a trip; unavailable direct routes redirect to Detailed Itinerary. Step 15C has NOT started.
+
+Current App Version: **v2.0.0-poc.21** (canonical source: package.json)
 
 Current Trip Schema Version: **5**; supported readers: **1 / 2 / 3 / 4 / 5**.
 

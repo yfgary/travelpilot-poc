@@ -1,7 +1,8 @@
 import type { TripSnapshot } from './schema/trip'
 import type { TripStatus } from './tripDates'
 import { tripStatusLabels } from './tripDates'
-import { tripPages } from '../app/pages'\nimport type { PageDefinition } from '../app/pages'
+import { tripPages } from '../app/pages'
+import type { PageDefinition } from '../app/pages'
 import { resolveContentImage } from './images'
 
 export function tripBadgeLabel(status: TripStatus, isNext: boolean): string {
