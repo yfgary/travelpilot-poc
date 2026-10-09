@@ -23,7 +23,7 @@ for (const [route, title] of pages) {
     await expect(page.getByRole('heading', { level: 1, name: title, exact: true })).toBeVisible()
     if (route.includes('/trip/')) {
       await expect(page.locator('code')).toHaveText('demo-trip')
-      await expect(page.locator('.trip-heading')).toContainText('demo-trip')
+      await expect(page.locator('.trip-technical')).toContainText('demo-trip')
       await expect(page.getByTestId(route.endsWith('/info') ? 'trip-information' : route.endsWith('/attractions') ? 'attractions-overview' : route.endsWith('/live') ? 'live-cam' : route.endsWith('/today') ? 'today-mode' : 'detailed-itinerary')).toBeVisible()
       await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveCount(4)
     }
@@ -129,8 +129,12 @@ test('all font sizes scale the global UI, persist and fit every route', async ({
         const box = (await link.boundingBox())!
         expect(box.height).toBeGreaterThanOrEqual(44)
         expect(box.width).toBeGreaterThanOrEqual(44)
-        expect(box.x).toBeGreaterThanOrEqual(0)
-        expect(box.x + box.width).toBeLessThanOrEqual(page.viewportSize()!.width)
+        // Narrow-screen trip tabs intentionally scroll sideways; tap targets remain 44px.
+        const inScrollableTripTabs = await link.evaluate((el) => Boolean(el.closest('.trip-navigation')))
+        if (!inScrollableTripTabs) {
+          expect(box.x).toBeGreaterThanOrEqual(0)
+          expect(box.x + box.width).toBeLessThanOrEqual(page.viewportSize()!.width)
+        }
       }
       // At the end of scrolling, every actionable control can clear the status dock.
       await page.locator('main').evaluate((element) => { element.scrollTop = element.scrollHeight })

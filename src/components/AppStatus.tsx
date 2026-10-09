@@ -17,7 +17,7 @@ export function AppStatus() {
 
   return (
     <aside className="app-status" aria-label="連線狀態與應用程式版本" role="status">
-      <span>{online ? 'ONLINE' : 'OFFLINE'}</span>
+      <span className="connection-indicator"><span className={online ? 'connection-dot online' : 'connection-dot offline'} aria-hidden="true" /><span>{online ? 'ONLINE' : 'OFFLINE'}</span></span>
       <span>App Version {APP_VERSION}</span>
     </aside>
   )

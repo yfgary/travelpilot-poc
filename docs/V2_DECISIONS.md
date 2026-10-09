@@ -199,3 +199,11 @@ Repository-relative canonical paths:
 **Network limitation:** This execution environment blocks direct official JMA requests (HTTP 403 / browser ERR_TUNNEL_CONNECTION_FAILED). Live feed/report verification is paused; browser CORS at deployed Pages cannot be established here. Parser/registry behavior is tested with intercepted XML fixtures only. No proxy, Edge Function, Worker or third-party CORS service is introduced; formats lacking supported configured area-code relationships are not broadcast to unrelated regions.
 
 **Publishing:** The exact approved Japan Schema-5 payload is archived as a test/integration input, not bundled local-trip data. This repository task never inserts/publishes v2_trip_versions or modifies live schema, V1 tables or production. ChatGPT's separate publication step follows the repository/CI gate. Schema remains 5 with readers 1/2/3/4/5; no real itinerary rewriting or weather-based day switching. Step 15D is not started.
+
+## 2026-10-10 — Pre-15D R1 sticky shared shell and compact information density
+
+**Decision:** Place the shared capability-aware trip page selector outside the trip heading, sticky within the actual main scroller. Use recognizable page icons and horizontal mobile scrolling with keyboard focus and 44px minimum targets. Measure navigation height for stacking pre-existing itinerary/info sticky selectors rather than assuming fixed dimensions.
+
+**Presentation:** Preserve full trip ID, source, data/schema version metadata but move it to a small page-end technical footer. Add a scroll-aware Back-to-Top and accessible green ONLINE/red OFFLINE status symbols. Reduce generic/list/checklist spacing while preserving notes, content and interactive target sizes.
+
+**Boundary:** This is shared UI only. No trip-specific rendering, live content publishing, JMA/weather behavior changes, V1 or production modifications. R2 is separately scoped. For R2, the user explicitly approved using today's available actual five-day weather as **visibly marked simulated POC QA data**, never as a factual forecast for future itinerary dates.

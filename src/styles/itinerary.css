@@ -2,13 +2,13 @@
 .itinerary-intro { margin-bottom: 0.8rem; }
 .itinerary-intro p { font-size: 0.9rem; color: var(--tp-muted); }
 .itinerary-date-range { font-weight: 700; }
-.day-jump { display: flex; gap: 0.45rem; max-width: 100%; overflow-x: auto; padding: 0.65rem 0.3rem; margin-bottom: 0.8rem; position: sticky; top: 0; z-index: 10; background: rgba(246, 251, 254, 0.97); border-bottom: 1px solid var(--tp-line); border-radius: 12px; scrollbar-width: thin; }
+.day-jump { display: flex; gap: 0.45rem; max-width: 100%; overflow-x: auto; padding: 0.65rem 0.3rem; margin-bottom: 0.8rem; position: sticky; top: var(--tp-trip-nav-height, 0px); z-index: 10; background: rgba(246, 251, 254, 0.97); border-bottom: 1px solid var(--tp-line); border-radius: 12px; scrollbar-width: thin; }
 .day-jump button { flex: 0 0 auto; }
 .itinerary-action { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; max-width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #c6dceb; border-radius: 10px; background: #edf6fc; color: #174f7d; font-size: 0.8rem; font-weight: 700; text-decoration: none; cursor: pointer; overflow-wrap: anywhere; }
 .itinerary-action:hover { background: #dceffc; border-color: #80b5d9; }
 .itinerary-action:active { background: #cde5f5; box-shadow: inset 0 2px 4px rgb(20 71 111 / 15%); }
 .itinerary-action:focus-visible, .itinerary-day > summary:focus-visible, .extra-content > summary:focus-visible { outline: 3px solid var(--tp-blue); outline-offset: 2px; }
-.itinerary-day { margin-bottom: 1rem; border: 1px solid var(--tp-line); border-radius: 16px; background: #fff; box-shadow: 0 6px 20px rgb(22 65 97 / 7%); scroll-margin-top: 5.5rem; }
+.itinerary-day { margin-bottom: 1rem; border: 1px solid var(--tp-line); border-radius: 16px; background: #fff; box-shadow: 0 6px 20px rgb(22 65 97 / 7%); scroll-margin-top: 3.5rem; }
 .itinerary-day > summary { list-style: none; display: flex; align-items: center; gap: 0.8rem; min-height: 44px; padding: 1rem 1.15rem; border-radius: 15px; background: linear-gradient(135deg, #edf6fc, #fff); cursor: pointer; }
 .itinerary-day > summary::-webkit-details-marker { display: none; }
 .day-summary { flex: 1; min-width: 0; overflow-wrap: anywhere; }
