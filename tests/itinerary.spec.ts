@@ -67,7 +67,7 @@ for (const record of [cityRecord, roadRecord]) {
     await expect(page.getByRole('status')).toContainText(`App Version v${packageMetadata.version}`)
     await expect(page.locator('.itinerary-intro')).toContainText(`${snapshot.days.length} 天行程`)
     await expect(page.locator('.itinerary-day')).toHaveCount(snapshot.days.length)
-    await expect(page.getByRole('navigation', { name: '行程日期' }).getByRole('button')).toHaveText(snapshot.days.map((day) => `D${day.dayNumber}`))
+    await expect(page.getByRole('navigation', { name: '行程日期' }).getByRole('button')).toHaveText(snapshot.days.map((day) => `D${day.dayNumber}${day.title}`))
     for (const day of snapshot.days) {
       const section = dayFor(page, day.id)
       await expect(section.locator(':scope > summary')).toContainText(`DAY ${day.dayNumber}`)
