@@ -1,6 +1,6 @@
 # TravelPilot V2 — Current State
 
-Last updated: 09/10/2026 (Hong Kong)
+Last updated: 10/10/2026 (Hong Kong)
 
 ## Progress
 **Step 14/16 — Today Mode: COMPLETE**
@@ -19,7 +19,7 @@ Current Trip Schema Version: **5**; supported readers: **1 / 2 / 3 / 4 / 5**.
 
 Local Trip Data Versions: **demo.city.5** / **demo.road.5**.
 
-**Step 15C — Japan 2027 Integration: repository/frontend test gate COMPLETE.** Exact Supabase trip-version publication remains a separate ChatGPT action after CI. Live JMA verification is paused by the execution environment network block. **Step 15D has NOT started.**
+**Step 15C — Japan 2027 Integration: COMPLETE.** POC v2.0.0-poc.26 passed CI/Pages with 2,465 tests. The exact validated jp2027.1 Schema-5 snapshot is published/current in Supabase for the Japan trip. Live JMA verification remains limited by the execution-environment network block. **Step 15D has NOT started.**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -46,7 +46,7 @@ Local Trip Data Versions: **demo.city.5** / **demo.road.5**.
 ## Not started
 - Complete PWA/offline implementation (manifest and versioned snapshot cache foundations are complete)
 - Complete V1 UI parity across trip pages (shared responsive shell and Home parity are complete)
-- live real-trip version publication (Step 15C repository inputs/assets and mocked integration are complete)
+- Step 15D Bangkok + Hokkaido data-only migration (blocked until the current UI/presentation QA gate is resolved)
 
 ## Repository cleanup
 - Legacy V1/previous POC implementation files have been removed from this repository by user request.
@@ -524,6 +524,58 @@ Release **v2.0.0-poc.26**; starting POC main **831616d6543aa5f775999998523be3c7c
 
 ### Known limitations and next boundary
 - **Live JMA feed/report verification is paused:** direct official HTTPS requests return HTTP 403 through the environment network boundary; browser probe fails **ERR_TUNNEL_CONNECTION_FAILED** before CORS can be assessed. Deployed browser CORS is unverified. Fixture-tested parsing does not certify every live JMA report variant; unsupported area-code relationships are not broadcast to unrelated regions. No proxy, Edge Function, Worker, third-party CORS service or HTML scraper was added. Network failure uses the existing unavailable alert state and does not claim all-clear or change weather scores.
-- **No jp2027.1 version row has been created/published.** ChatGPT must publish only the exact validated canonical payload after the POC repository/CI gate. Home will then discover it generically for its authenticated owner. Optional legacy checklist continuity is not authorized/executed.
+- **jp2027.1 has now been published/current in Supabase** from the exact validated canonical payload, checksum 09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e. Japan is visible through the generic authenticated remote-trip loader. Optional legacy checklist continuity was not migrated.
 - Existing device-cache privacy/storage limits, independent weather cache, external camera/operation availability and nonfatal Vite bundle/Zod notices remain. Full cold-start offline app/static-image/service-worker QA remains Step 16; no expansion in this task.
 - **Stop after Step 15C. Step 15D has NOT started.** Next action is separate exact-payload publication/review; further integration requires its own authorization.
+
+## Pre-15D UI / Presentation / Function QA — Round 1 (user review, 10/10/2026)
+
+Status: **PENDING — do not start Step 15D yet.** Baseline remains POC **v2.0.0-poc.26**. This is a real-trip UI/fidelity refinement gate, not a production change. Production stays untouched.
+
+User-reported Round-1 requirements:
+1. Add a clear Back-to-Top control.
+2. Weather section is too tall/empty; redesign density. Five-day forecast rows (visibility/cloud/humidity etc.) are misaligned and too loose.
+3. Trip header exposes low-value technical metadata (trip id, Trip Data Version, POC source). If retained, move to small footer/debug-style presentation.
+4. Shared trip page selector (詳細行程 / 旅程資料 / 景點總覽 / Live Cam / 今日模式) must be sticky/top-fixed so it remains usable after scrolling.
+5. Those shared page-selector items need clear recognisable icons, not text-only pseudo-icons.
+6. Weather content should use available desktop width; avoid unnecessary horizontal scrolling.
+7. Day selector D1–D9 should also show that day's main destination/location so the user need not remember day numbers.
+8. Explain/fix the user-facing message 目前5日預測未涵蓋此行程日期。; it is currently unclear.
+9. 今日重點 lost V1 fidelity. Restore meaningful actionable copy, not bare identifiers such as a flight number. Example V1 wording: ✈️ 06:45 左右到香港機場 T2，唔好壓縮出發 Buffer。
+10. Day hero/gallery layout looks irregular. Standardise to one large + two small images, aligned cleanly; handle days with only two images gracefully.
+11. Put map/navigation icons inline immediately after the itinerary item/place name, not below the whole description.
+12. ⌂ 今日住宿 card is too tall/empty; compact it.
+13. D1 Optional/Bonus was expected to include 松本・繩手通; investigate why it became 松本城 Projection Mapping rather than silently accepting the content drift.
+14. 松本城 Projection Mapping should use Chinese presentation wording.
+15. Every itinerary place/hotel/location should show the local-language name underneath for asking directions/showing locals.
+16. Suitability/itinerary score should use colour bands by score.
+17. Itinerary place cards are too vertically sparse; compact them.
+18. Transport records need prices.
+19. Hotel/accommodation type labels should be Chinese, not English where a Chinese label exists.
+20. Driving description lost V1 details such as whether the route passes/uses SA/PA and related explanation; restore equivalent useful detail.
+21. Checklist layout is too sparse. More broadly, many sections use excessive vertical whitespace and make pages unnecessarily long.
+22. 國寶・松本城 daytime entry must use a daytime image; do not use a night image for daytime content.
+23. Attraction content was shortened too aggressively. User requires very detailed multi-paragraph content for: introduction, why worth visiting, history/background, local significance, takeaways, and points to notice. One or two sentences is explicitly insufficient.
+24. Attractions Overview location/day selector must also remain sticky while scrolling.
+25. Live Cam has fewer cameras than V1 and current entries only show 此來源請在官方／來源頁面開啟。; restore V1-equivalent camera coverage/embeddable behaviour where technically possible and investigate source restrictions rather than treating this as accepted parity.
+26. Today Mode labels 下一站 · 導航目的地 and 下一導航點 are confusing/redundant; first card may not actually mean next. Both cards are also too vertically sparse.
+27. Today Mode is missing today's weather presentation.
+28. Lower-left connection status: online icon green, offline icon red.
+
+Cross-cutting user direction:
+- Excessive blank space/vertical padding is a major app-wide usability issue. Optimise information density without making the interface cramped.
+- Preserve V1 visual/functional/content fidelity where V1 had useful detail; do not shorten or substitute content casually.
+- Fix shared/generic components, not Japan-specific branches.
+- Do not begin Step 15D until this QA round is reviewed and accepted.
+- This is Round 1; the user explicitly expects another review round.
+
+Recommended execution order:
+A. Shared navigation/sticky controls/back-to-top/status colours + global density primitives.
+B. Weather layout + Today Mode layout/weather.
+C. Detailed Itinerary day selector/gallery/cards/inline navigation/accommodation/checklist/transport price/local-language names/score colours.
+D. Attraction Overview sticky navigation + long-form content fidelity.
+E. Live Cam parity/investigation.
+F. Japan content-fidelity corrections (D1 Bonus/繩手通, Chinese Projection Mapping naming, daytime Matsumoto Castle image, SA/PA descriptions).
+G. Responsive regression at 320/390/430/1024/1440 and compare against V1 before release.
+
+Do not implement these as trip/country/day hardcoded UI branches. Where a requirement needs richer data, extend the generic schema/data model only after impact is reviewed.

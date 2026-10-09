@@ -39,3 +39,24 @@ A recommendation discussed in chat is not a final project decision until it is e
 
 ## Minimal restart prompt
 > 繼續 TravelPilot V2。先讀 travelpilot-poc 入面 AGENTS.md 同所有 docs/V2_*.md，尤其 V2_CURRENT_STATE.md、V2_DECISIONS.md 同 V2_SCHEMA_VALIDATION.md。先總結 Current Phase、已完成、Pending Review、Known Issues 同下一個 bounded task。未確認之前唔好改 code；Production 唔准改。
+
+## Current immediate handoff — 10/10/2026
+
+- POC baseline: **v2.0.0-poc.26**.
+- POC main before this documentation-only handoff update: 6c8737fb09699de684b3eddb9058a86c520efcb8.
+- Step 15C Japan repository/frontend integration is complete and CI/Pages passed **2,465 tests**.
+- Exact Japan jp2027.1 Schema-5 payload is published/current in Supabase.
+- Production remains untouched.
+- **Do NOT start Step 15D yet.**
+- The active task is **Pre-15D UI / Presentation / Function QA Round 1**, containing 28 user-reported items recorded in docs/V2_CURRENT_STATE.md.
+- Highest-level theme: shared UI is too vertically sparse; sticky navigation, weather layout, Today Mode, itinerary presentation, attraction detail, Live Cam parity and V1 content fidelity need refinement.
+- Treat this as a generic shared-component/data-model task. No Japan/day/country-specific UI branching.
+- User has said there will be another QA round after this one.
+
+Recommended new-chat first action:
+1. Read AGENTS.md and all docs/V2_*.md.
+2. Read the full Pre-15D Round-1 section in V2_CURRENT_STATE.md.
+3. Summarize the 28 items grouped by shared UI, weather/Today, itinerary/data, attractions, Live Cam and content fidelity.
+4. Inspect V1 production read-only where fidelity is questioned.
+5. Do not modify production. Do not start Step 15D.
+6. Before code changes, propose a bounded implementation order/release split so the 28 items are not patched as one uncontrolled rewrite.
