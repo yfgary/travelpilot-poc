@@ -9,9 +9,9 @@ Last updated: 09/10/2026 (Hong Kong)
 
 **Step 15B.2/16 — Operational-Day + Exact Timing Display Patch: COMPLETE.**
 
-**Step 15B.3/16 — Capability-driven trip navigation guard: COMPLETE.** Release v2.0.0-poc.23 finalizes the capability guard and regression tests; failed candidates v2.0.0-poc.19–22 were never deployed. Optional trip pages now use the same snapshot capability rules on Home and inside a trip; unavailable direct routes redirect to Detailed Itinerary. Step 15C has NOT started.
+**Step 15B.3/16 — Capability-driven trip navigation guard: COMPLETE.** Release v2.0.0-poc.24 finalizes the capability guard and regression tests; failed candidates v2.0.0-poc.19–23 were never deployed. Optional trip pages now use the same snapshot capability rules on Home and inside a trip; unavailable direct routes redirect to Detailed Itinerary. Step 15C has NOT started.
 
-Current App Version: **v2.0.0-poc.23** (canonical source: package.json)
+Current App Version: **v2.0.0-poc.24** (canonical source: package.json)
 
 Current Trip Schema Version: **5**; supported readers: **1 / 2 / 3 / 4 / 5**.
 
