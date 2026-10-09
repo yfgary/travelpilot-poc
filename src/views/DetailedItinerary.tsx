@@ -36,7 +36,10 @@ export function DetailedItinerary() {
     </section>
     <WeatherPanel />
     {days.length ? <><nav className="day-jump" aria-label="行程日期">{days.map((day) => <button key={day.id} className="itinerary-action" aria-controls={dayElementId(day.id)}
-      aria-label={`跳至 DAY ${day.dayNumber}`} onClick={() => jump(day.id)}>D{day.dayNumber}</button>)}</nav>
+      aria-label={`跳至 DAY ${day.dayNumber}`} title={day.title} onClick={() => jump(day.id)}>
+        <span className="day-jump-number">D{day.dayNumber}</span>
+        <span className="day-jump-destination">{day.title}</span>
+      </button>)}</nav>
       {days.map((day) => <DayAccordion key={day.id} day={day} snapshot={snapshot} open={openDays.has(day.id)} onToggle={toggle} onDetail={setPlaceId} />)}
     </> : <EmptyState title="未有行程" description="此旅程尚未加入每日行程。" />}
     {place && <PlaceDetail key={place.id} place={place} sources={snapshot.sources} onClose={() => setPlaceId(null)} />}

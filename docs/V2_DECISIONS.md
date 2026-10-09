@@ -213,3 +213,7 @@ Repository-relative canonical paths:
 **Decision:** On the dedicated POC deployment only, when a chosen itinerary date is outside the actual 5-day horizon, current actual forecast model metrics may be explicitly reused for UI presentation and a clearly-marked *simulated* day-profile score. Original forecast timestamps/dates/provider/cache/snapshot remain authoritative and unchanged; these numbers are NEVER described as actual trip-date weather. Non-POC deployments retain the truthful out-of-range informational state.
 
 **Layout/Today:** Five forecast cards use the desktop width when feasible and align metric values. The same suitability calculation has more visible color bands. Today Mode labels main mapped destinations by current/future/preview focus, and supplementary parking/entrance guidance is grouped into the same compact card. No GPS inference or official operation assertion is introduced.
+
+## 2026-10-10 — R3 day/itinerary presentation remains canonical and generic
+
+**Decision:** Populate itinerary D1–D9 jump tabs from existing `TripDay.title`, not a Japan/destination-specific mapping. Present navigation map actions next to entity titles (safe external links) and preserve separate entity card facts. Use grid density adjustments to compact the full day-level lodging record rather than deleting details. Style galleries from the count of resolved images: one featured image plus two smaller when 3, a balanced large/small pair when 2, and full-width single when 1. No schema extension or image data rewrite.

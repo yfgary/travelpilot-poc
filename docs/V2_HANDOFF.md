@@ -87,3 +87,9 @@ Recommended new-chat first action:
 - Initial PR QA run `37996092829`: Build PASS, **2,495 passed / 5 failed**. Sole distinct failure: old Today visual test expects the removed out-of-range blank view for all five widths.
 - R2 candidate corrected to **v2.0.0-poc.30**; test now verifies POC-only simulation warning, actual sample metrics/score and that matching-date real forecasts remain unsimulated. No UI/source payload change in the correction.
 - Rerun full PR CI and keep PR #9 Draft until PASS. Production/jp2027.1 and Step 15D remain untouched.
+
+## R3 Detailed Itinerary layout candidate — 10/10/2026
+
+- User said go next after R2 PR QA. R2 `poc.30` complete pre-merge QA PASS and was squash-merged to POC `main` (`d20b341`); the R2 main CI+Pages gate must be checked before declaring deployed.
+- R3 candidate v2.0.0-poc.31 on `qa/pre15d-r3-itinerary-layout`: day-jump D number + `day.title`, 3/2/1 image gallery geometry, inline mapped title action, compact timeline/cards and full-information accommodation presentation. Covers #7, #10, #11, #12, #17 only.
+- R3 has new Playwright assertions and existing day jump snapshot expectations updated. Run entire PR QA before merge. Production repo, Supabase and published/current `jp2027.1` unchanged, Step 15D on hold.

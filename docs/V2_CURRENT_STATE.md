@@ -621,3 +621,16 @@ This bounded Round-2 candidate addresses user issues #2/#6/#8/#16/#26/#27:
 R2 candidate `poc.29` pre-merge PR QA: **2,495 Passed / 5 Failed**, npm ci and TypeScript/Vite build PASS. All five failures were the same outdated `tests/todayVisual.spec.ts` assertion replicated across viewport widths 320/390/430/1024/1440: it expected `today-weather-outside` when the new, user-approved POC-only simulation deliberately displays weather metrics with a prominent simulation notice. No other test failure was reported.
 
 Repair candidate **v2.0.0-poc.30** updates the visual scenario to test the *new requirement*: out-of-horizon dates visibly state that this is simulated POC data and **not the itinerary-day forecast**, include the real current sample metrics/score, and don't show the old empty-data UI. Same-day weather must remain factual and **not** show the simulation notice. Actual score/provider/forecast/date/cache logic is unchanged. **Full PR QA is required again; no merge until green.**
+
+## Pre-15D QA — R3 Detailed Itinerary Layout candidate (10/10/2026)
+
+**Candidate v2.0.0-poc.31**, isolated POC branch `qa/pre15d-r3-itinerary-layout`. This is bounded R3 of the approved 8-round QA plan, addressing original items **7, 10, 11, 12 and 17**. R2 `poc.30` passed PR QA and merged to POC main; do not release R3 until full PR QA and R2 main deployment gate finish.
+
+- Reusable day-jump tabs now render both D-number and the canonical `day.title`, using the title attribute for full text and keeping stable existing accessible DAY-jump labels and keyboard navigation. This is trip-agnostic.
+- Gallery presentation explicitly handles 3 images (one larger + two aligned smaller), 2 images (larger and smaller at desktop widths, balanced pair on mobile), and 1 image without adding/fabricating/cropping source data beyond existing object-fit behavior; captions and source credits remain.
+- Maps icon/action moves immediately beside each available itinerary place, accommodation, transport or navigation-target heading; no duplicate action at the card bottom. Link URLs remain resolved and filtered through existing safety utilities. Places without Maps retain no fake links.
+- Compacts day summary, timeline rows, cards, highlights, action spacing and the day-level full accommodation facts grid, without deleting price/booking/date/address/cancellation/parking/notes or breaking 44px interactive targets.
+- New `tests/r3ItineraryLayout.spec.ts` covers canonical day titles, accessible jump controls, mapped heading actions, preservation of lodging details and both gallery layouts at every configured viewport. Original itinerary tests adjusted solely for extra visible day title text.
+- No canonical Trip Data (including published/current `jp2027.1`), Schema 1–5, weather provider, Supabase, protected images, V1 or Production changes. Remaining item #15 local-language names and #18 transport price presentation belong to R4. **Step 15D remains blocked.**
+
+**QA status:** R3 is staged only, with full pre-merge PR workflow and visual review still required; do not claim R3 PASS until verified.
