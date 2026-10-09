@@ -60,8 +60,13 @@ test('Schema 6 remote source, UI local name, offline cache and truthful data ver
   await page.goto(`#/trip/${remoteSlug}/itinerary`)
   await expect(page.getByTestId('detailed-itinerary')).toBeVisible()
   await expect(page.getByTestId('trip-versions')).toContainText('Trip Data Version：schema6.localname.qa.1 · Trip Schema Version：6')
-  await expect(page.locator('.place-card').first().getByTestId('native-name')).toContainText('架空の場所')
-  await expect(page.locator('.day-accommodation').getByTestId('native-name')).toContainText('架空の宿泊')
+  await expect(page.locator('.day-accommodation').first().getByTestId('native-name')).toContainText('架空の宿泊')
+  // Road Day 1 has transport and hotel but no Place. Jump to Day 2 to
+  // confirm the Japanese name is visibly rendered in an opened Place card.
+  await page.getByRole('button', { name: '跳至 DAY 2' }).click()
+  const dayTwo = page.locator('.itinerary-day[data-day-id="road-day-2"]')
+  await expect(dayTwo).toHaveAttribute('open', '')
+  await expect(dayTwo.locator('.place-card').first().getByTestId('native-name')).toContainText('架空の場所')
   const initial = await cacheContents(page)
   expect(initial.versions).toHaveLength(1)
   expect(initial.versions[0]).toMatchObject({ dataVersion: 'schema6.localname.qa.1', schemaVersion: 6, payload: v6 })

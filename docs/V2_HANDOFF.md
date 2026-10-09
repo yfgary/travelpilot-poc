@@ -107,3 +107,5 @@ Recommended new-chat first action:
 - Schema6 has Weather and exact-timing feature parity; readers/schema validation/remote/cache tests updated. POC Test fixture only, not a new Japan snapshot. Published `jp2027.1` remains byte-identical Schema 5; no Supabase requests made to publish/mutate.
 - R4 #18 & #19 were already staged, retained in this PR. Complete GitHub PR QA and review before Merge. Follow-on to reach actual native names in Japan trip is a **separate content authoring + verified-source + new Trip Data Version + publication approval** decision.
 - R3 main CI Pages gate must be verified. V1/Production untouched; Step 15D remains on hold.
+
+- R4 QA fixture correction: v2.0.0-poc.34; Day 2 explicitly opened for Place native-name display, Day 1 lodging scoped. Prior PR CI was superseded; latest run must pass.
