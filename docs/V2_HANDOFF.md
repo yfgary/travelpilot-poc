@@ -81,3 +81,9 @@ Recommended new-chat first action:
 - R2 is Draft PR #9 from `qa/pre15d-r2-weather-today`, rebased onto the R1 hotfix main, and separately versioned `v2.0.0-poc.29`.
 - R2 has weather density/alignment/five-column desktop, colored score, clearly-labelled POC-only current-weather simulation for out-of-horizon planned days, Today navigation consolidation, and focused tests. Build/full suite and visual checks must still be completed before R2 merge.
 - No production/Supabase/jp2027.1 changes. Do not start Step 15D.
+
+### R2 validation correction (10/10/2026)
+
+- Initial PR QA run `37996092829`: Build PASS, **2,495 passed / 5 failed**. Sole distinct failure: old Today visual test expects the removed out-of-range blank view for all five widths.
+- R2 candidate corrected to **v2.0.0-poc.30**; test now verifies POC-only simulation warning, actual sample metrics/score and that matching-date real forecasts remain unsimulated. No UI/source payload change in the correction.
+- Rerun full PR CI and keep PR #9 Draft until PASS. Production/jp2027.1 and Step 15D remain untouched.

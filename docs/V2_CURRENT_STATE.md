@@ -615,3 +615,9 @@ This bounded Round-2 candidate addresses user issues #2/#6/#8/#16/#26/#27:
 - Matching-date forecast tests retain real daily data; outside-date tests are strengthened to require explicit simulation provenance. New focused desktop/mobile layout, score-band and Today navigation regression cases added.
 - No Supabase publishing or schema/reader/cache mutation, no production/V1 modification, no itinerary payload rewrite. R1 fixes remain present via rebase; Step 15D not started.
 **R2 full build/Playwright/visual checks still required before merge or declaring completion.**
+
+### R2 PR QA run #37996092829 failure repair (10/10/2026)
+
+R2 candidate `poc.29` pre-merge PR QA: **2,495 Passed / 5 Failed**, npm ci and TypeScript/Vite build PASS. All five failures were the same outdated `tests/todayVisual.spec.ts` assertion replicated across viewport widths 320/390/430/1024/1440: it expected `today-weather-outside` when the new, user-approved POC-only simulation deliberately displays weather metrics with a prominent simulation notice. No other test failure was reported.
+
+Repair candidate **v2.0.0-poc.30** updates the visual scenario to test the *new requirement*: out-of-horizon dates visibly state that this is simulated POC data and **not the itinerary-day forecast**, include the real current sample metrics/score, and don't show the old empty-data UI. Same-day weather must remain factual and **not** show the simulation notice. Actual score/provider/forecast/date/cache logic is unchanged. **Full PR QA is required again; no merge until green.**
