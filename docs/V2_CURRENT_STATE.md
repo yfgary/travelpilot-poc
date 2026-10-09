@@ -7,15 +7,15 @@ Last updated: 09/10/2026 (Hong Kong)
 
 **Step 15B.1/16 — Schema 5 Cross-Timezone Timeline Timing Patch: COMPLETE.**
 
-**Step 15B.2/16 — Operational-Day + Exact Timing Display Patch: implementation COMPLETE.** Step 15B remains incomplete overall; Step 15C has NOT started.
+**Step 15B.2/16 — Operational-Day + Exact Timing Display Patch: COMPLETE.**\n\n**Step 15B.3/16 — Capability-driven trip navigation guard: COMPLETE.** Optional trip pages now use the same snapshot capability rules on Home and inside a trip; unavailable direct routes redirect to Detailed Itinerary. Step 15C has NOT started.
 
-Current App Version: **v2.0.0-poc.18** (canonical source: package.json)
+Current App Version: **v2.0.0-poc.19** (canonical source: package.json)
 
 Current Trip Schema Version: **5**; supported readers: **1 / 2 / 3 / 4 / 5**.
 
 Local Trip Data Versions: **demo.city.5** / **demo.road.5**.
 
-Next: **Remaining Step 15B work only when separately authorized. Step 15C has NOT started.**
+Next: **Step 15C — Japan 2027 Integration. Step 15C has NOT started.**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.

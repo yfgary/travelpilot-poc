@@ -177,3 +177,12 @@ Repository-relative canonical paths:
 **Home/display:** Snapshot-aware Home status is current during any active exact interval, including before startDate or after endDate. Existing status ordering and displayed date range remain unchanged; the simple calendar-only tripStatus API stays available. Detailed Itinerary reuses the shared endpoint formatter, preserving offset datetimes in semantic time elements and displaying each declared IANA zone/date. Exact labels wrap above event content; legacy HH:MM layout and old-schema cross-midnight semantics are unchanged.
 
 **Scope:** App v2.0.0-poc.18. Schema remains 5 with strict readers 1/2/3/4/5, unchanged demo.city.5/demo.road.5 data and no old-cache rewrite. This runtime/display patch does not modify production, live Supabase, SQL, loaders, storage, assets or real trip content. Step 15B remains incomplete overall; Step 15C has NOT started.
+
+
+## 2026-10-09 — Trip page availability is capability-driven everywhere
+
+**Decision:** Home shortcuts, in-trip navigation and direct trip routes use the same generic snapshot capability rule. `Live Cam` is available only when `snapshot.liveCams.length > 0`; `景點總覽` is available only when `snapshot.places.length > 0`. Detailed Itinerary, Trip Information and Today Mode remain generally available for a loaded trip.
+
+**Direct-route rule:** A bookmarked/manual URL for an unavailable optional trip page redirects with history replacement to that trip's Detailed Itinerary rather than rendering an empty feature page. The rule is snapshot-driven and contains no trip slug, country, day or destination branches.
+
+**Reason:** A trip must not advertise or expose a feature page that its canonical data does not support. Home and in-trip navigation must never disagree about feature availability.

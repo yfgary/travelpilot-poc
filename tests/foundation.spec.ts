@@ -12,7 +12,7 @@ const tripPages = [
 const pages = [
   ['#/', '每一段旅程，都準備妥當。'],
   ['#/settings', '設定'],
-  ...tripPages.map(([path, title]) => [`#/trip/demo-trip/${path}`, title]),
+  ...tripPages.filter(([path]) => path !== 'live').map(([path, title]) => [`#/trip/demo-trip/${path}`, title]),
 ]
 
 for (const [route, title] of pages) {
@@ -25,7 +25,7 @@ for (const [route, title] of pages) {
       await expect(page.locator('code')).toHaveText('demo-trip')
       await expect(page.locator('.trip-heading')).toContainText('demo-trip')
       await expect(page.getByTestId(route.endsWith('/info') ? 'trip-information' : route.endsWith('/attractions') ? 'attractions-overview' : route.endsWith('/live') ? 'live-cam' : route.endsWith('/today') ? 'today-mode' : 'detailed-itinerary')).toBeVisible()
-      await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveCount(5)
+      await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveCount(4)
     }
     await page.reload()
     await expect(page.getByRole('heading', { level: 1, name: title, exact: true })).toBeVisible()

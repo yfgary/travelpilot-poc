@@ -13,7 +13,7 @@ import { PreferencesProvider } from './Preferences'
 import { AuthProvider } from '../auth/AuthProvider'
 import { NotFound } from '../views/NotFound'
 import { NavigationHistory } from './NavigationHistory'
-import { ChecklistSyncProvider } from './ChecklistSync'
+import { ChecklistSyncProvider } from './ChecklistSync'\nimport { TripPageGate } from '../components/TripPageGate'
 
 export function App() {
   return (
@@ -28,7 +28,7 @@ export function App() {
                 <Route path={pages.find((page) => page.id === 'settings')!.path} element={<Settings />} />
                 <Route path="trip/:tripSlug" element={<TripLayout />}>
                   {tripPages.map((view) => (
-                    <Route key={view.path} path={view.path} element={view.id === 'itinerary' ? <DetailedItinerary /> : view.id === 'info' ? <TripInformation /> : view.id === 'attractions' ? <AttractionsOverview /> : view.id === 'live' ? <LiveCam /> : <TodayMode />} />
+                    <Route key={view.path} path={view.path} element={<TripPageGate page={view}>{view.id === 'itinerary' ? <DetailedItinerary /> : view.id === 'info' ? <TripInformation /> : view.id === 'attractions' ? <AttractionsOverview /> : view.id === 'live' ? <LiveCam /> : <TodayMode />}</TripPageGate>} />
                   ))}
                 </Route>
                 <Route path="*" element={<NotFound />} />

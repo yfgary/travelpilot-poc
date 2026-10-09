@@ -1,7 +1,7 @@
 {
   "name": "travelpilot-poc",
   "private": true,
-  "version": "2.0.0-poc.18",
+  "version": "2.0.0-poc.19",
   "type": "module",
   "engines": {
     "node": ">=22.12.0"

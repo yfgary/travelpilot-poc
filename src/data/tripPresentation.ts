@@ -1,7 +1,7 @@
 import type { TripSnapshot } from './schema/trip'
 import type { TripStatus } from './tripDates'
 import { tripStatusLabels } from './tripDates'
-import { tripPages } from '../app/pages'
+import { tripPages } from '../app/pages'\nimport type { PageDefinition } from '../app/pages'
 import { resolveContentImage } from './images'
 
 export function tripBadgeLabel(status: TripStatus, isNext: boolean): string {
@@ -13,10 +13,15 @@ export function nextUpcomingSlug(ordered: { trip: { slug: string }; status: Trip
   return ordered.find(({ status }) => status === 'upcoming')?.trip.slug
 }
 
+export function isTripPageAvailable(snapshot: TripSnapshot, page: PageDefinition): boolean {
+  if (page.scope !== 'trip') return true
+  if (page.id === 'live') return snapshot.liveCams.length > 0
+  if (page.id === 'attractions') return snapshot.places.length > 0
+  return true
+}
+
 export function tripShortcuts(snapshot: TripSnapshot) {
-  return tripPages.filter((page) =>
-    (page.id !== 'live' || snapshot.liveCams.length > 0) &&
-    (page.id !== 'attractions' || snapshot.places.length > 0))
+  return tripPages.filter((page) => isTripPageAvailable(snapshot, page))
 }
 
 export function resolveTripCover(snapshot: TripSnapshot, baseURL = '/') {
