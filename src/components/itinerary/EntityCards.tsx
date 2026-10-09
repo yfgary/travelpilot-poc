@@ -1,6 +1,6 @@
 import type { Accommodation, Transport, Place, NavigationTarget, HardCut, EntityReference } from '../../data/itinerary'
 import type { TripSnapshot } from '../../data/schema/trip'
-import { entityLabel, formatDuration, formatMoney, hardCutTime, placeTypes, severityLabels, transportTypes } from '../../data/itinerary'
+import { accommodationTypeLabel, entityLabel, formatDuration, formatMoney, hardCutTime, placeTypes, severityLabels, transportTypes } from '../../data/itinerary'
 import { formatTripDate } from '../../data/tripDates'
 import { ExternalLink, Facts, MapsAction, Notes } from './ContentActions'
 import { formatTransportDateTime } from '../../data/tripInformation'
@@ -26,7 +26,7 @@ export function AccommodationCard({ stay, compact = false, heading = '今日住�
   return <section className="entity-card accommodation-card" data-testid="accommodation-card" data-entity-id={stay.id}>
     <p className="entity-kicker">⌂ {compact ? '住宿' : heading}</p><h4 className="entity-inline-title"><span>{stay.name}</span><MapsAction entity={stay} name={stay.name} /></h4>
     <div className={compact ? '' : 'accommodation-grid'}>
-      <Facts entries={[{ label: '類型', value: stay.type }, { label: '房型', value: stay.room }, { label: '餐飲', value: stay.mealPlan },
+      <Facts entries={[{ label: '類型', value: accommodationTypeLabel(stay.type) }, { label: '房型', value: stay.room }, { label: '餐飲', value: stay.mealPlan },
         { label: '預訂狀態', value: stay.bookingState }, { label: '入住時間', value: stay.checkIn }, { label: '退房時間', value: stay.checkOut },
         { label: '住宿日期', value: compact ? undefined : `${formatTripDate(stay.stayStartDate)} – ${formatTripDate(stay.stayEndDate)}` }]} />
       {!compact && <><Facts entries={[{ label: '付款狀態', value: stay.paymentState }, { label: '總價', value: formatMoney(stay.total) },
@@ -39,13 +39,15 @@ export function AccommodationCard({ stay, compact = false, heading = '今日住�
 }
 export function TransportCard({ transport, snapshot, showTiming = false }: { transport: Transport; snapshot: TripSnapshot; showTiming?: boolean }) {
   const target = transport.navigationTargetIds.map((id) => snapshot.navigationTargets.find((target) => target.id === id)).find(Boolean)
+  const price = formatMoney(transport.price)
   return <section className="entity-card transport-card">
     <p className="entity-kicker">↗ {transportTypes[transport.type]}</p><h4 className="entity-inline-title"><span>{transport.service ?? transport.provider ?? transportTypes[transport.type]}</span><MapsAction entity={transport.mapURL ? transport : target} name={transport.service ?? transportTypes[transport.type]} /></h4>
+    {price ? <p className="transport-price" data-testid="transport-price">費用：<strong>{price}</strong></p> : transport.type !== 'walk' && <p className="transport-price-unknown" data-testid="transport-price-unknown">費用：未提供，請核實</p>}
     <p>{transport.origin} → {transport.destination}</p>
     <Facts entries={[{ label: '出發', value: showTiming ? formatTransportDateTime(transport.departure, snapshot.trip.timezone) : undefined },
       { label: '抵達', value: showTiming ? formatTransportDateTime(transport.arrival, snapshot.trip.timezone) : undefined },
       { label: '服務商', value: transport.provider }, { label: '車程／航程', value: formatDuration(transport.durationMinutes) },
-      { label: '預訂', value: transport.bookingState }, { label: '付款', value: transport.paymentState }, { label: '價格', value: formatMoney(transport.price) }]} />
+      { label: '預訂', value: transport.bookingState }, { label: '付款', value: transport.paymentState }]} />
     <Notes notes={transport.notes} />{transport.warnings.map((warning, i) => <p className="content-warning" key={i}>⚠ 注意：{warning}</p>)}
   </section>
 }

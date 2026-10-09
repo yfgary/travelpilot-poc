@@ -93,3 +93,9 @@ Recommended new-chat first action:
 - User said go next after R2 PR QA. R2 `poc.30` complete pre-merge QA PASS and was squash-merged to POC `main` (`d20b341`); the R2 main CI+Pages gate must be checked before declaring deployed.
 - R3 candidate v2.0.0-poc.31 on `qa/pre15d-r3-itinerary-layout`: day-jump D number + `day.title`, 3/2/1 image gallery geometry, inline mapped title action, compact timeline/cards and full-information accommodation presentation. Covers #7, #10, #11, #12, #17 only.
 - R3 has new Playwright assertions and existing day jump snapshot expectations updated. Run entire PR QA before merge. Production repo, Supabase and published/current `jp2027.1` unchanged, Step 15D on hold.
+
+## R4 metadata presentation stage A — 10/10/2026
+
+- POC-only `qa/pre15d-r4-metadata`, candidate `v2.0.0-poc.32`; stage A code for #18 visible truthful transport prices and #19 Chinese accommodation type codes with unchanged original data, plus regression coverage.
+- #15 requires user approval of an optional versioned **native-language name** field and verified content-authoring plan because strict Schema 5 has no such field. Do not pretend a Chinese name is a verified Japanese name, and do not change the already published `jp2027.1` snapshot.
+- Check the R3 `poc.31` main CI+Pages gate; run R4 independent PR QA; do not merge an incomplete R4 or start Step 15D.

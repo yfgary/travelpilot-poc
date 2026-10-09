@@ -9,7 +9,7 @@ import schema2City from './fixtures/schema2-city.json' with { type: 'json' }
 import schema2Road from './fixtures/schema2-road.json' with { type: 'json' }
 import type { TripSnapshot, Schema2Snapshot } from '../src/data/schema/trip'
 import { emergencyTypes, navigationTypes, formatTransportDateTime, phoneAction, sortedHardCuts, orderedDefinitions } from '../src/data/tripInformation'
-import { formatMoney, resolveMaps } from '../src/data/itinerary'
+import { accommodationTypeLabel, formatMoney, resolveMaps } from '../src/data/itinerary'
 import { legacyCity, legacyRoad } from './legacySnapshots'
 import { seedAuth, mockRemote, remoteVersion, remoteId, remoteSlug, cacheContents } from './tripFixtures'
 import packageMetadata from '../package.json' with { type: 'json' }
@@ -257,7 +257,7 @@ test('self-drive and rich accommodations reuse canonical cards; city omits unsup
   await expect(hotels.getByTestId('accommodation-card')).toHaveCount(road.accommodations.length)
   for (const stay of road.accommodations) {
     const card = hotels.locator(`[data-entity-id="${stay.id}"]`)
-    for (const text of [stay.name, stay.type, stay.room, stay.mealPlan, stay.address, stay.phone, stay.paymentState, formatMoney(stay.total), formatMoney(stay.paid), formatMoney(stay.arrivalPayment), stay.cancellation, stay.parking, stay.checkIn, stay.checkOut]) if (text) await expect(card).toContainText(text)
+    for (const text of [stay.name, accommodationTypeLabel(stay.type), stay.room, stay.mealPlan, stay.address, stay.phone, stay.paymentState, formatMoney(stay.total), formatMoney(stay.paid), formatMoney(stay.arrivalPayment), stay.cancellation, stay.parking, stay.checkIn, stay.checkOut]) if (text) await expect(card).toContainText(text)
     await expect(card.getByRole('link')).toHaveAttribute('href', stay.mapURL!)
   }
   await openLocal(page, city)

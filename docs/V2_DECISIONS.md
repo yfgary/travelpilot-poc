@@ -217,3 +217,9 @@ Repository-relative canonical paths:
 ## 2026-10-10 — R3 day/itinerary presentation remains canonical and generic
 
 **Decision:** Populate itinerary D1–D9 jump tabs from existing `TripDay.title`, not a Japan/destination-specific mapping. Present navigation map actions next to entity titles (safe external links) and preserve separate entity card facts. Use grid density adjustments to compact the full day-level lodging record rather than deleting details. Style galleries from the count of resolved images: one featured image plus two smaller when 3, a balanced large/small pair when 2, and full-width single when 1. No schema extension or image data rewrite.
+
+## 2026-10-10 — R4 metadata presentation and schema boundary
+
+**Implemented phase A:** Render known lodging type codes in Traditional Chinese using an unmapped-type-preserving formatter. Show factual recorded transport fares near titles with original currency and notes; when non-walk costs are absent, explicitly mark them unprovided rather than fabricate figures. None of these alter the saved snapshot.
+
+**Pending user decision:** Fully authentic local/native-language names for places, hotels and other locations require source-verified values and a versioned data contract because Schema 5 strict objects have no such fields. Do not add ad hoc trip-specific UI logic or silently edit immutable `jp2027.1`; approval of schema migration, validation and new Trip Data Version is required.

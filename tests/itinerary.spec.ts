@@ -5,7 +5,7 @@ import { test, expect, supabaseOrigin } from './fixtures'
 import { localTrips } from '../src/data/trips'
 import { validateTripSnapshot } from '../src/data/schema/trip'
 import type { TripSnapshot } from '../src/data/schema/trip'
-import { formatDuration, formatMoney, resolveMaps, initialDayId, hardCutTime, entityLabel, dayHardCuts } from '../src/data/itinerary'
+import { formatDuration, formatMoney, resolveMaps, initialDayId, hardCutTime, entityLabel, dayHardCuts, accommodationTypeLabel } from '../src/data/itinerary'
 import { formatTripDate } from '../src/data/tripDates'
 import { resolveContentImage } from '../src/data/images'
 import { seedAuth, mockRemote, remoteVersion, remoteId, remoteSlug, cacheContents } from './tripFixtures'
@@ -426,3 +426,13 @@ for (const record of [cityRecord, roadRecord]) {
     await page.screenshot({ path: test.info().outputPath('bottom.png') })
   })
 }
+
+test('accommodation type codes are translated, unknown and localized values stay intact', () => {
+  expect(accommodationTypeLabel('hotel')).toBe('酒店')
+  expect(accommodationTypeLabel('Ryokan')).toBe('日式旅館')
+  expect(accommodationTypeLabel('onsen-ryokan')).toBe('溫泉旅館')
+  expect(accommodationTypeLabel('lodge')).toBe('山莊／旅舍')
+  expect(accommodationTypeLabel('cabin')).toBe('小屋')
+  expect(accommodationTypeLabel('商務旅館')).toBe('商務旅館')
+  expect(accommodationTypeLabel('unknown-place-type')).toBe('unknown-place-type')
+})

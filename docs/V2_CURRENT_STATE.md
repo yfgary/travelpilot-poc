@@ -634,3 +634,15 @@ Repair candidate **v2.0.0-poc.30** updates the visual scenario to test the *new 
 - No canonical Trip Data (including published/current `jp2027.1`), Schema 1–5, weather provider, Supabase, protected images, V1 or Production changes. Remaining item #15 local-language names and #18 transport price presentation belong to R4. **Step 15D remains blocked.**
 
 **QA status:** R3 is staged only, with full pre-merge PR workflow and visual review still required; do not claim R3 PASS until verified.
+
+## Pre-15D QA — R4 Metadata Presentation phase A (10/10/2026)
+
+Candidate POC App Version **v2.0.0-poc.32**, staged on `qa/pre15d-r4-metadata`. R3 PR #11 passed complete PR QA and merged to POC main (commit `5df7fcc`); the main build/Pages gate must be green before merging R4.
+
+R4 original issue grouping: #15 local-language name under every place/hotel/location; #18 transport prices; #19 accommodation categories in Chinese.
+
+- **#18 phase A complete in reusable renderer:** known transport prices now visibly display near the service heading with original amount, currency and notes from the existing safe formatter. Non-walking transport with absent price explicitly shows `費用：未提供，請核實`; walking is not silently assumed free. No fares are guessed or written into Trip Data.
+- **#19 implemented:** recognized accommodation type codes (hotel, lodge, cabin, ryokan, guesthouse, etc.) are shown in Traditional Chinese via one data-agnostic formatter; unknown/native-script descriptive types are shown unchanged. Snapshot type values remain immutable.
+- **#15 not implemented pending data-contract authorization:** strict Schema 5 has no local/native language name field on Place, Accommodation, Transport or NavigationTarget. We cannot reliably infer verified Japanese names from display names, map URLs or addresses. Completing #15 correctly means planning an optional localized name field in a versioned schema/reader update, supporting authored values validated against real sources, and publishing a **new** Trip Data Version after user approval. Existing published `jp2027.1` must not be silently changed. Report tradeoffs before any schema migration; do not claim R4 complete without #15.
+- New metadata-specific Playwright tests cover factual and missing transport price and common Chinese lodging categories; existing display expectations are updated without changing fixture data. All trip renderers remain generic.
+- **QA status:** stage A branch/PR not yet verified. No POC main, Production, Supabase, published snapshot or Step 15D changes for R4.
