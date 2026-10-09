@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { localTrips } from '../data/trips'
 import { isSupportedTripSchemaVersion, validateTripSnapshot } from '../data/schema/trip'
 import type { TripSnapshot, ValidationIssue } from '../data/schema/trip'
-import { cacheTrip, readCachedTrip } from '../offline/tripCache'
+import { cacheTrip, readCachedTrip, listCachedTrips } from '../offline/tripCache'
 import { supabase } from './supabase'
 
 export type TripFailure = 'not-found' | 'auth-required' | 'unavailable' | 'invalid-data' | 'unsupported-schema'
@@ -38,19 +38,78 @@ export async function loadTrip(slug: string, options: { userId: string | null; s
       .eq('trip_id', row.data.id).eq('status', 'published').eq('is_current', true).retry(false).abortSignal(signal).maybeSingle()
     if (version.error) return fallback(version.status === 401 || version.status === 403 ? 'auth-required' : 'unavailable')
     if (!version.data) return fallback('not-found')
-    const parsed = versionRowSchema.safeParse(version.data)
-    if (!parsed.success || parsed.data.trip_id !== row.data.id) return fallback('invalid-data')
-    if (!isSupportedTripSchemaVersion(parsed.data.schema_version)) return fallback('unsupported-schema')
-    const validation = validateTripSnapshot(parsed.data.payload)
-    if (!validation.valid) return fallback(validation.reason, validation.issues)
-    const snapshot = validation.snapshot
-    if (snapshot.schemaVersion !== parsed.data.schema_version || snapshot.trip.slug !== slug || snapshot.trip.id !== row.data.id) return fallback('invalid-data')
+    const validated = validateRemoteTrip(row.data, version.data, userId)
+    if (validated.state !== 'loaded') return fallback(validated.state, validated.issues)
+    const { snapshot, dataVersion } = validated
     if (signal.aborted) return fallback('unavailable')
     let cacheSaved = false
     try {
-      await cacheTrip({ tripId: row.data.id, slug, ownerId: userId, dataVersion: parsed.data.data_version, schemaVersion: snapshot.schemaVersion, payload: snapshot, cachedAt: new Date().toISOString() })
+      await cacheTrip({ tripId: row.data.id, slug, ownerId: userId, dataVersion, schemaVersion: snapshot.schemaVersion, payload: snapshot, cachedAt: new Date().toISOString() })
       cacheSaved = true
     } catch { /* A valid remote trip remains readable when device storage is unavailable. */ }
-    return { state: 'loaded', source: 'remote', ownerId: userId, snapshot, dataVersion: parsed.data.data_version, schemaVersion: snapshot.schemaVersion, cacheSaved }
+    return { state: 'loaded', source: 'remote', ownerId: userId, snapshot, dataVersion, schemaVersion: snapshot.schemaVersion, cacheSaved }
   } catch { return fallback('unavailable') }
+}
+
+// Both the route loader and Home listing share row, ownership and payload validation.
+export function validateRemoteTrip(tripRow: unknown, versionRow: unknown, ownerId: string): LoadedTrip | { state: TripFailure; issues?: ValidationIssue[] } {
+  const trip = tripRowSchema.safeParse(tripRow), version = versionRowSchema.safeParse(versionRow)
+  if (!trip.success || trip.data.owner_id !== ownerId || !version.success || version.data.trip_id !== trip.data.id) return { state: 'invalid-data' }
+  if (!isSupportedTripSchemaVersion(version.data.schema_version)) return { state: 'unsupported-schema' }
+  const result = validateTripSnapshot(version.data.payload)
+  if (!result.valid) return { state: result.reason, issues: result.issues }
+  if (result.snapshot.schemaVersion !== version.data.schema_version || result.snapshot.trip.id !== trip.data.id || result.snapshot.trip.slug !== trip.data.slug) return { state: 'invalid-data' }
+  return { state: 'loaded', source: 'remote', ownerId, snapshot: result.snapshot, dataVersion: version.data.data_version, schemaVersion: result.snapshot.schemaVersion }
+}
+
+export type TripListResult = { trips: LoadedTrip[]; unavailable: boolean; rejected: number; storageUnavailable: boolean }
+export async function listTrips(options: { userId: string | null; online: boolean; signal: AbortSignal }): Promise<TripListResult> {
+  const { userId, signal } = options
+  const records = new Map<string, LoadedTrip>()
+  let storageUnavailable = false, unavailable = false, rejected = 0
+  try {
+    for (const record of await listCachedTrips(userId)) records.set(record.slug, { state: 'loaded', source: 'cache', ownerId: record.ownerId, snapshot: record.payload, dataVersion: record.dataVersion, schemaVersion: record.payload.schemaVersion })
+  } catch { storageUnavailable = true }
+  if (userId && options.online && !signal.aborted) {
+    try {
+      // Stable pagination avoids the server's row limit; versions are fetched in batches, not per trip.
+      const rows: z.infer<typeof tripRowSchema>[] = []
+      for (let offset = 0; ; offset += 100) {
+        const response = await supabase.from('v2_trips').select('id,slug,owner_id').eq('owner_id', userId).order('id').range(offset, offset + 99).retry(false).abortSignal(signal)
+        if (response.error || !Array.isArray(response.data)) throw new Error('Trip listing unavailable')
+        for (const raw of response.data) {
+          const row = tripRowSchema.safeParse(raw)
+          if (!row.success || row.data.owner_id !== userId || rows.some((other) => other.id === row.data.id || other.slug === row.data.slug)) { rejected++; continue }
+          rows.push(row.data)
+        }
+        if (response.data.length < 100) break
+      }
+      for (let index = 0; index < rows.length; index += 100) {
+        const batch = rows.slice(index, index + 100), versions: unknown[] = []
+        for (let offset = 0; ; offset += 100) {
+          const response = await supabase.from('v2_trip_versions').select('trip_id,data_version,schema_version,status,is_current,payload').in('trip_id', batch.map((row) => row.id)).eq('status', 'published').eq('is_current', true).order('trip_id').range(offset, offset + 99).retry(false).abortSignal(signal)
+          if (response.error || !Array.isArray(response.data)) throw new Error('Version listing unavailable')
+          versions.push(...response.data)
+          if (response.data.length < 100) break
+        }
+        for (const row of batch) {
+          const matches = versions.filter((raw) => raw !== null && typeof raw === 'object' && 'trip_id' in raw && raw.trip_id === row.id)
+          if (!matches.length) continue
+          const result = matches.length === 1 ? validateRemoteTrip(row, matches[0], userId) : { state: 'invalid-data' as const }
+          if (result.state !== 'loaded') { rejected++; continue }
+          if (signal.aborted) throw new Error('Listing cancelled')
+          try {
+            await cacheTrip({ tripId: row.id, slug: row.slug, ownerId: userId, dataVersion: result.dataVersion, schemaVersion: result.schemaVersion, payload: result.snapshot, cachedAt: new Date().toISOString() })
+          } catch { storageUnavailable = true }
+          records.set(row.slug, result)
+        }
+      }
+    } catch { unavailable = true }
+  }
+  // Local fixture slugs retain their route identity; adding real trips never changes this registry.
+  for (const record of localTrips) {
+    const result = validateTripSnapshot(record.payload)
+    if (result.valid) records.set(result.snapshot.trip.slug, { state: 'loaded', source: 'demo', ownerId: null, snapshot: result.snapshot, dataVersion: record.dataVersion, schemaVersion: result.snapshot.schemaVersion })
+  }
+  return { trips: [...records.values()], unavailable, rejected, storageUnavailable }
 }

@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { jmaAlertAdapter } from './jma'
 import { alertSeverities, demoAlertConfigurationSchema, officialAlertSchema, type OfficialAlert, type WeatherConfiguration } from '../../data/schema/weather'
 type Provider = WeatherConfiguration['alertProviders'][number]
 export type AlertAdapter = (provider: Provider, now: number) => Promise<OfficialAlert[]>
@@ -10,7 +11,7 @@ export const demoAlertAdapter: AlertAdapter = async (provider, now) => {
     issuedAt: new Date(now).toISOString(), effectiveAt: new Date(now).toISOString(), expiresAt: new Date(now + seed.durationHours * 3600000).toISOString(), isTest: true,
   }))
 }
-const registry: Readonly<Record<string, AlertAdapter>> = { 'demo-alerts': demoAlertAdapter }
+const registry: Readonly<Record<string, AlertAdapter>> = { 'demo-alerts': demoAlertAdapter, jma: jmaAlertAdapter }
 export function activeAlerts(alerts: OfficialAlert[], weatherRegionId: string, now = Date.now()): OfficialAlert[] {
   return alerts.filter((alert) => alert.weatherRegionIds.includes(weatherRegionId) && Date.parse(alert.issuedAt) <= now && (!alert.effectiveAt || Date.parse(alert.effectiveAt) <= now) && (!alert.expiresAt || Date.parse(alert.expiresAt) > now)).sort((a, b) => alertSeverities.indexOf(b.severity) - alertSeverities.indexOf(a.severity) || Date.parse(b.issuedAt) - Date.parse(a.issuedAt) || a.id.localeCompare(b.id))
 }

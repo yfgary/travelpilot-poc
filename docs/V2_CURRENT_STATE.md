@@ -9,15 +9,17 @@ Last updated: 09/10/2026 (Hong Kong)
 
 **Step 15B.2/16 — Operational-Day + Exact Timing Display Patch: COMPLETE.**
 
-**Step 15B.3/16 — Capability-driven trip navigation guard: COMPLETE.** Release v2.0.0-poc.24 finalized the capability guard and regression tests; failed candidates v2.0.0-poc.19–23 were never deployed.\n\n**Pre-15C update UX repair:** v2.0.0-poc.25 adds an explicit `立即更新` action after a newer App Version is detected. Version checks themselves remain non-disruptive; reload occurs only after explicit user action. Optional trip pages now use the same snapshot capability rules on Home and inside a trip; unavailable direct routes redirect to Detailed Itinerary. Step 15C has NOT started.
+**Step 15B.3/16 — Capability-driven trip navigation guard: COMPLETE.** Release v2.0.0-poc.24 finalized the capability guard and regression tests; failed candidates v2.0.0-poc.19–23 were never deployed.
 
-Current App Version: **v2.0.0-poc.25** (canonical source: package.json)
+**Pre-15C update UX repair:** v2.0.0-poc.25 adds an explicit `立即更新` action after a newer App Version is detected. Version checks themselves remain non-disruptive; reload occurs only after explicit user action. Optional trip pages now use the same snapshot capability rules on Home and inside a trip; unavailable direct routes redirect to Detailed Itinerary. At that preflight release, Step 15C had not started.
+
+Release App Version: **v2.0.0-poc.26** (canonical source: package.json; lockfile and tests agree). CI/Pages outcome is verified after main push in the release handoff.
 
 Current Trip Schema Version: **5**; supported readers: **1 / 2 / 3 / 4 / 5**.
 
 Local Trip Data Versions: **demo.city.5** / **demo.road.5**.
 
-Next: **Step 15C — Japan 2027 Integration. Step 15C has NOT started.**
+**Step 15C — Japan 2027 Integration: repository/frontend test gate COMPLETE.** Exact Supabase trip-version publication remains a separate ChatGPT action after CI. Live JMA verification is paused by the execution environment network block. **Step 15D has NOT started.**
 
 ## Completed
 - V2 direction agreed: rebuild architecture, preserve V1 interface/experience.
@@ -44,7 +46,7 @@ Next: **Step 15C — Japan 2027 Integration. Step 15C has NOT started.**
 ## Not started
 - Complete PWA/offline implementation (manifest and versioned snapshot cache foundations are complete)
 - Complete V1 UI parity across trip pages (shared responsive shell and Home parity are complete)
-- real trip data migration
+- live real-trip version publication (Step 15C repository inputs/assets and mocked integration are complete)
 
 ## Repository cleanup
 - Legacy V1/previous POC implementation files have been removed from this repository by user request.
@@ -496,3 +498,32 @@ App Version **v2.0.0-poc.18** (canonical package.json; lockfile/test expectation
 - Operational ownership uses structured exact Schema-5 timing only. Old HH:MM cross-midnight semantics remain unchanged. Planned timing is not GPS or actual arrival detection; manual progress remains browser-session local. Home status is derived on rendering, as before.
 - Overlapping active Days use deterministic latest-start/canonical-Day precedence; this does not repair itinerary content. No cache migration or real trip migration is included.
 - **Step 15B remains incomplete overall. Next: remaining Step 15B work only when separately authorized. Step 15C has NOT started.**
+
+
+## Step 15C — Japan 2027 repository/frontend integration
+
+Release **v2.0.0-poc.26**; starting POC main **831616d6543aa5f775999998523be3c7c5a61ef5** / v2.0.0-poc.25. Current Trip Schema remains **5**, supported readers **1 / 2 / 3 / 4 / 5**; fictional Data Versions remain **demo.city.5 / demo.road.5**. The only local demo fixtures remain the original two fictional trips. **Japan has not been added to localTrips, and no Supabase version has been written or published.**
+
+### Canonical input and assets
+- Exact approved payload archived at `tests/fixtures/japan2027-schema5.json`, with SHA-256 **09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e**. Full canonical Schema-5 and cross-reference validation passes without editing any itinerary content. Existing UUID **349442d2-7bf3-426b-9f57-163e2272e909**, slug **shirakawago-shinhotaka-2027**, integration Data Version **jp2027.1**, nine days and fixed D6 白川鄉 / D7 新穗高 / D8 飛驒大鐘乳洞 → 松本 are retained. D1 UO680 cross-zone and D9 UO685 cross-date/cross-zone exact endpoints are unchanged. Manifest is archived separately as provenance; its publishing suggestions do not authorize writes in this task.
+- Copied only the 24 manifest-approved existing images from read-only production SHA **8b5129b381d6ace94030b51c7b8de5c4e3d5f533** into semantic filenames under `assets/trips/shirakawago-shinhotaka-2027/`. The approved cover is copied exactly from POC branch **step15c-input-assets**, never re-fetched from Wikimedia or substituted. JPEG SHA-256 **54d609bca9f3bcc2c958b1ea05c5e3e92b8ee3a409b3631a2a8dff578fb5d121**. **Raita Futo / Wikimedia Commons / CC BY 2.0** attribution/source metadata is retained. `provenance.json` records source commit/branch and byte hashes; all 25 canonical image records resolve and served bytes match. Canonical Home brand banner/icon remain unchanged; neither is used as a real-trip cover.
+
+### Generic frontend changes
+- Home now merges validated current published owner-scoped remote snapshots and existing validated cached trips with local demos. Stable ordered pagination and ID-batched version requests avoid a per-card N+1 design. `validateRemoteTrip` is shared with `loadTrip`; row ownership, UUID/slug, row/payload schema agreement and full canonical validation are mandatory before display/cache. Invalid/unsupported records do not replace valid cache or break other cards. No content-table writes.
+- Auth-aware Home initialization/account switches hide previous-account results immediately and cancel obsolete effects; connectivity changes reload the list without continuous polling. Signed-in cache listing is owner-scoped. Signed-out/offline device cache remains available consistently with the existing logout-retention policy. Cache stores, pointers, storage version and explicit Settings clearing are unchanged.
+- Real cards omit 示範資料. Existing shared temporal/operational status, deterministic non-mutating sorting, nearest upcoming, recently used, covers, capability-driven shortcuts, routes, PageNavigation, Back and all five renderers are reused. Future real trips can be added through validated remote data/assets without a new route or destination branch.
+- Added `jma` to the generic Official Alert adapter registry and a strict shared provider configuration contract. Configured official area codes **200000 / 210000** route to configured weather regions; matchNames are descriptive, not selection logic. Official HTTPS XML only, safe DOMParser with DTD/entity/HTML/malformed rejection, bounded XML/report counts, timeouts and request concurrency. Configured product codes, report normalization, area scope, training exclusions and latest matched update/cancellation behavior are fixture-tested. Alerts remain independent of suitability/operation status; demo-alerts behavior remains unchanged.
+
+### Verification
+- `npm ci --cache work/npm-cache`: PASS (**91 packages**, dependencies unchanged). Final `npm run build`: PASS, including both strict TypeScript projects and production Vite output. `git diff --check`: PASS.
+- Focused canonical Japan/JMA, Home, loader, multi-trip, schema/weather-schema, timing and source checks were verified before the full run. Local test setup fixes retained assertions/timeouts: scoped shortcut selection, native accordion selection, future fake-session expiry and truthful loaded-shell offline testing. Initial visual decoding waited on off-screen lazy images; QA now explicitly loads fixture images and captures each view separately. The repaired visual/scope run passed **35/35**; final exact-timing/scrolled visual run passed **35/35**. A test-title edit during an earlier worker run caused one collection mismatch; its unchanged assertion passed targeted re-verification.
+- Complete local Playwright regression was run **once**, across **320 / 390 / 430 / 1024 / 1440px**: **2,455 passed / 5 failed** out of **2,460** in **33.6 minutes**. The five failures were one old source assertion repeated at every width, expecting Home's snapshot mapping inline. The authorized hook now supplies that mapping. The assertion was strengthened to check Home's sorter input plus both remote/demo snapshot projections, and an authenticated real-trip Home test proves operational current status until exact arrival without changing displayed dates. The post-regression focused run passed **310/310** (125 Japan, 80 JMA and 105 operational timing cases). It also verifies configured product-token parsing with optional filename sequence markers. All final local cases are therefore verified; this is not presented as an uninterrupted green full run. The final complete suite contains **2,465 cases** (all **2,260** baseline cases retained plus **205** new Japan/JMA integration cases) and runs afresh in CI after push. Its exact outcome and Pages deployment are reported in the release handoff.
+- Mocked tests verify canonical hash/UUID/version/fixed days/endpoints, all image references/served hashes, real Home card/capabilities, owner/current/published query filters, batched multi-trip listing, account isolation, malformed/unsupported isolation, good-cache preservation, signed-out/offline reads, all five route reloads/Back, operational timing and legacy readers. No real password or live test writes. Supplementary mocked DOM QA passed **10/10** at 390/1440px: nine days, seven accommodation records/names, 36 attractions, five cameras/labels and selected-day Today content.
+- Large-font visual screenshots at all five widths cover Home and all five Japan views, including scrolled content/bottom controls and exact D1/D9 endpoints. Actual inspection included 320px Large Home/Trip Information/exact arrival labels, 390px Home/Attractions/camera cards/Today, 1440px Home/accommodations/Today, and status clearance. No body horizontal overflow; shared header/Back, cards, dates/IANA endpoints, actions and optional features remain in the existing TravelPilot family. Chromium viewport QA is not physical iPhone/Safari certification.
+- Source/diff audits preserve Schema 1–5, local fixture data/versions, all trip engines, IndexedDB/checklist/weather stores, Auth/Settings/Back, SQL and protected POC-only workflow. No trip/country/day/place branches, privileged credentials or V1 table access were introduced. Production was read-only for the approved asset copies. No live Supabase DDL, version publishing, checklist migration or V1 write occurred.
+
+### Known limitations and next boundary
+- **Live JMA feed/report verification is paused:** direct official HTTPS requests return HTTP 403 through the environment network boundary; browser probe fails **ERR_TUNNEL_CONNECTION_FAILED** before CORS can be assessed. Deployed browser CORS is unverified. Fixture-tested parsing does not certify every live JMA report variant; unsupported area-code relationships are not broadcast to unrelated regions. No proxy, Edge Function, Worker, third-party CORS service or HTML scraper was added. Network failure uses the existing unavailable alert state and does not claim all-clear or change weather scores.
+- **No jp2027.1 version row has been created/published.** ChatGPT must publish only the exact validated canonical payload after the POC repository/CI gate. Home will then discover it generically for its authenticated owner. Optional legacy checklist continuity is not authorized/executed.
+- Existing device-cache privacy/storage limits, independent weather cache, external camera/operation availability and nonfatal Vite bundle/Zod notices remain. Full cold-start offline app/static-image/service-worker QA remains Step 16; no expansion in this task.
+- **Stop after Step 15C. Step 15D has NOT started.** Next action is separate exact-payload publication/review; further integration requires its own authorization.

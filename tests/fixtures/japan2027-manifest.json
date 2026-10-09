@@ -1,0 +1,210 @@
+{
+  "manifestVersion": 1,
+  "step": "15C-preflight",
+  "generatedAt": "2026-10-09T16:45:00+08:00",
+  "trip": {
+    "slug": "shirakawago-shinhotaka-2027",
+    "schemaVersion": 5,
+    "dataVersion": "jp2027.1",
+    "payloadTemplateFile": "TravelPilot_V2_Japan_2027_Schema5_Final.json",
+    "templateTripId": "349442d2-7bf3-426b-9f57-163e2272e909",
+    "remoteIdentityRule": "payload.trip.id is now the exact owner-scoped v2_trips.id UUID. Keep it unchanged for jp2027.1.",
+    "sha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e"
+  },
+  "releaseRecommendation": {
+    "nextAppVersion": "v2.0.0-poc.26",
+    "schemaVersionRemains": 5
+  },
+  "assets": {
+    "targetRoot": "assets/trips/shirakawago-shinhotaka-2027",
+    "copyFromProductionRepo": [
+      {
+        "source": "assets/images/d1-centrair.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/centrair.jpg"
+      },
+      {
+        "source": "assets/images/d1-matsumoto-castle.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/matsumoto-castle.jpg"
+      },
+      {
+        "source": "assets/images/d1-shinano.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/shinano.jpg"
+      },
+      {
+        "source": "assets/images/d2-karuizawa-outlet.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/karuizawa-outlet.jpg"
+      },
+      {
+        "source": "assets/images/d2-onioshidashi.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/onioshidashi.jpg"
+      },
+      {
+        "source": "assets/images/d2-shiraito.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/shiraito-falls.jpg"
+      },
+      {
+        "source": "assets/images/d3-obuse.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/obuse.jpg"
+      },
+      {
+        "source": "assets/images/d3-shibu-onsen-day.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/shibu-onsen-day.jpg"
+      },
+      {
+        "source": "assets/images/d3-shibu-onsen.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/shibu-onsen-night.jpg"
+      },
+      {
+        "source": "assets/images/d4-aeon-suzaka.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/aeon-mall-suzaka.jpg"
+      },
+      {
+        "source": "assets/images/d4-monkey-trail.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/jigokudani-winter-trail.jpg"
+      },
+      {
+        "source": "assets/images/d4-snow-monkey.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/jigokudani-snow-monkey.jpg"
+      },
+      {
+        "source": "assets/images/d5-hakuba-iwatake.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/hakuba-iwatake.jpg"
+      },
+      {
+        "source": "assets/images/d5-mountain-harbor.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/hakuba-mountain-harbor.jpg"
+      },
+      {
+        "source": "assets/images/d5-white-park.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/hakuba-white-park.jpg"
+      },
+      {
+        "source": "assets/images/d6-hida-cave.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/hida-great-limestone-cave.jpg"
+      },
+      {
+        "source": "assets/images/d6-shinhotaka.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/shinhotaka-ropeway.jpg"
+      },
+      {
+        "source": "assets/images/d6-takayama.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/takayama-old-town.jpg"
+      },
+      {
+        "source": "assets/images/d7-hida-furukawa.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/hida-furukawa.jpg"
+      },
+      {
+        "source": "assets/images/d7-shirakawago-view.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/shirakawago-viewpoint.jpg"
+      },
+      {
+        "source": "assets/images/d7-shirakawago.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/shirakawago-ogimachi.jpg"
+      },
+      {
+        "source": "assets/images/d8-daio-wasabi.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/daio-wasabi-farm.jpg"
+      },
+      {
+        "source": "assets/images/d9-aeon-matsumoto.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/aeon-mall-matsumoto.jpg"
+      },
+      {
+        "source": "assets/images/d9-matsumoto-station.jpg",
+        "target": "assets/trips/shirakawago-shinhotaka-2027/matsumoto-station.jpg"
+      }
+    ],
+    "download": [
+      {
+        "target": "assets/trips/shirakawago-shinhotaka-2027/banner-shirakawago-winter.jpg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Shirakawa-go_winter_(51815452116).jpg",
+        "attribution": "Raita Futo / Wikimedia Commons",
+        "license": "CC BY 2.0",
+        "requireAttributionRetention": true
+      }
+    ],
+    "rule": "TravelPilot brand banner is homepage-only and MUST NOT be used as the trip cover or content fallback."
+  },
+  "providers": {
+    "forecast": [
+      {
+        "adapter": "open-meteo",
+        "selection": "trip-data-driven"
+      }
+    ],
+    "officialAlerts": [
+      {
+        "adapter": "jma",
+        "selection": "trip-data-driven",
+        "feedMode": "pull",
+        "feeds": {
+          "weather": "https://www.data.jma.go.jp/developer/xml/feed/extra.xml",
+          "earthquakeVolcano": "https://www.data.jma.go.jp/developer/xml/feed/eqvol.xml"
+        },
+        "productCodes": {
+          "weatherWarnings": [
+            "VPWW55",
+            "VPWW56",
+            "VPWW57",
+            "VPWW58",
+            "VPWW59",
+            "VPWW60",
+            "VPWW61",
+            "VPWS50"
+          ],
+          "earthquake": [
+            "VXSE51",
+            "VXSE52",
+            "VXSE53"
+          ],
+          "tsunami": [
+            "VTSE41",
+            "VTSE51",
+            "VTSE52"
+          ],
+          "volcano": [
+            "VFVO50",
+            "VFVO56"
+          ]
+        },
+        "rule": "Core/provider selection must never branch on Japan, timezone, slug or place name.",
+        "regionCodes": {
+          "長野県": [
+            "200000"
+          ],
+          "岐阜県": [
+            "210000"
+          ]
+        }
+      }
+    ]
+  },
+  "legacyChecklistContinuity": {
+    "definitionsPreserveV1ItemIds": true,
+    "sourceTable": "public.trip_checklist_state",
+    "targetTable": "public.v2_checklist_state",
+    "migrationIsOptionalAndSeparateFromTripPublishing": true,
+    "requiresExplicitApprovalBeforeWrite": true,
+    "preferredLegacyLookupOrder": [
+      "shirakawago-shinhotaka-2027::<item_id>",
+      "<item_id>"
+    ],
+    "note": "Do not mutate or delete V1 rows. If state migration is approved, copy resolved values into the new V2 trip UUID scope only."
+  },
+  "publishingOrder": [
+    "Validate injected payload statically and against current Schema 5.",
+    "Use the existing owner-scoped v2_trips row for slug shirakawago-shinhotaka-2027.",
+    "Assert payload.trip.slug and payload.trip.id match the DB row exactly.",
+    "Create v2_trip_versions row data_version=jp2027.1 schema_version=5 as draft only after repository validation.",
+    "Run integration/UI tests against the exact payload and integrated assets.",
+    "Publish only after all Step 15C gates pass; ensure only one current published version.",
+    "Do not touch V1 content/checklist tables."
+  ],
+  "fixedItineraryAssertions": {
+    "D6": "白川鄉",
+    "D7": "新穗高",
+    "D8": "飛驒大鐘乳洞 → 松本",
+    "dynamicD6D8Switching": "forbidden"
+  }
+}

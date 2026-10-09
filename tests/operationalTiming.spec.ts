@@ -184,5 +184,8 @@ test('runtime patch is schema/data-neutral and contains no geography or activity
     expect(source).not.toMatch(/Japan|Hong Kong|Nagoya|UO680|UO685|Asia\/(?:Tokyo|Hong_Kong)|\bD9\b|\bflight\b/i)
     expect(source).not.toMatch(/(?:trip\.slug|country|dayNumber|placeId|item\.title)\s*===\s*['"\d]/)
   }
-  expect(readFileSync('src/views/Home.tsx', 'utf8')).toContain('snapshot: payload')
+  expect(readFileSync('src/views/Home.tsx', 'utf8')).toContain('orderTrips(listing.trips)')
+  const listing = readFileSync('src/app/useHomeTrips.ts', 'utf8')
+  expect(listing).toContain('snapshot: record.snapshot')
+  expect(listing).toContain('snapshot: payload')
 })

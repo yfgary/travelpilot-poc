@@ -44,6 +44,15 @@ export const demoAlertConfigurationSchema = z.strictObject({ alerts: z.array(z.s
   description: text.optional(), instruction: text.optional(), weatherRegionIds: z.array(id).min(1),
   officialUrl: url.optional(), durationHours: z.number().positive().max(168),
 })) })
+const jmaURL = z.url().refine((value) => { try { const url = new URL(value); return url.protocol === 'https:' && url.hostname === 'www.data.jma.go.jp' && !url.username && !url.password } catch { return false } }, 'Expected an official HTTPS JMA URL')
+export const jmaConfigurationSchema = z.strictObject({
+  feedMode: z.literal('pull'), products: z.array(z.enum(['weather-warning', 'earthquake', 'tsunami', 'volcano'])).min(1),
+  regionGroups: z.array(z.strictObject({ label: text, matchNames: z.array(text), weatherRegionIds: z.array(id).min(1), jmaAreaCodes: z.array(z.string().regex(/^\d{6}$/)).min(1) })).min(1),
+  feedURLs: z.strictObject({ weatherExtra: jmaURL, earthquakeVolcano: jmaURL }),
+  productCodes: z.strictObject({ weatherWarnings: z.array(z.string().regex(/^[A-Z]{4}\d{2}$/)).min(1), earthquake: z.array(z.string().regex(/^[A-Z]{4}\d{2}$/)).min(1), tsunami: z.array(z.string().regex(/^[A-Z]{4}\d{2}$/)).min(1), volcano: z.array(z.string().regex(/^[A-Z]{4}\d{2}$/)).min(1) }),
+  note: text.optional(), multilingualDictionaryURL: jmaURL.optional(), gisURL: jmaURL.optional(),
+})
+export type JmaConfiguration = z.infer<typeof jmaConfigurationSchema>
 export const weatherConfigurationSchema = z.strictObject({
   forecastProviders: z.array(z.strictObject({ id, adapter: text, label: text.optional(), config: config.optional() })),
   weatherRegions: z.array(z.strictObject({ id, regionId: id, label: text, providerId: id, coordinates: z.strictObject({ latitude: z.number().min(-90).max(90), longitude: z.number().min(-180).max(180) }).optional(), provider: text.optional(), location: z.strictObject({ latitude: z.number().min(-90).max(90), longitude: z.number().min(-180).max(180), elevationM: z.number().finite().optional() }).optional(), operationNotes: notes })),
@@ -54,13 +63,18 @@ export const weatherConfigurationSchema = z.strictObject({
   alertProviders: z.array(z.strictObject({ id, adapter: text, label: text.optional(), weatherRegionIds: z.array(id).optional(), config: config.optional() })),
 }).superRefine((weather, ctx) => {
   // Known adapter contracts are selected by adapter ID, never geography.
-  const contracts = { 'demo-alerts': demoAlertConfigurationSchema }
+  const contracts = { 'demo-alerts': demoAlertConfigurationSchema, jma: jmaConfigurationSchema }
   weather.alertProviders.forEach((provider, index) => {
     if (!Object.hasOwn(contracts, provider.adapter)) return
     const result = contracts[provider.adapter as keyof typeof contracts].safeParse(provider.config ?? { alerts: [] })
     if (!result.success) { ctx.addIssue({ code: 'custom', path: ['alertProviders', index, 'config'], message: 'Invalid adapter configuration' }); return }
     const allowed = provider.weatherRegionIds ?? weather.weatherRegions.map((region) => region.id)
-    if (new Set(result.data.alerts.map((alert) => alert.id)).size !== result.data.alerts.length || result.data.alerts.some((alert) => alert.weatherRegionIds.some((id) => !allowed.includes(id)))) ctx.addIssue({ code: 'custom', path: ['alertProviders', index, 'config'], message: 'Invalid alert identity or region scope' })
+    if ('alerts' in result.data) {
+      if (new Set(result.data.alerts.map((alert) => alert.id)).size !== result.data.alerts.length || result.data.alerts.some((alert) => alert.weatherRegionIds.some((id) => !allowed.includes(id)))) ctx.addIssue({ code: 'custom', path: ['alertProviders', index, 'config'], message: 'Invalid alert identity or region scope' })
+    } else {
+      const groups = result.data.regionGroups, codes = groups.flatMap((group) => group.jmaAreaCodes)
+      if (new Set(codes).size !== codes.length || groups.some((group) => group.weatherRegionIds.some((id) => !allowed.includes(id)))) ctx.addIssue({ code: 'custom', path: ['alertProviders', index, 'config'], message: 'Invalid JMA area-code or region scope' })
+    }
   })
 })
 export type WeatherConfiguration = z.infer<typeof weatherConfigurationSchema>

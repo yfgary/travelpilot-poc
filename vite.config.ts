@@ -20,6 +20,7 @@ export default defineConfig({
             `${destination}/${filename}`,
           )
         }
+        cpSync(fileURLToPath(new URL('./assets/trips', import.meta.url)), `${options.dir}/assets/trips`, { recursive: true })
         cpSync(fileURLToPath(new URL('./assets/demo', import.meta.url)), `${options.dir}/assets/demo`, { recursive: true })
       },
     },

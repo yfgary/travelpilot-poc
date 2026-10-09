@@ -1,0 +1,133 @@
+{
+  "productionSourceCommit": "8b5129b381d6ace94030b51c7b8de5c4e3d5f533",
+  "assets": [
+    {
+      "source": "assets/images/d1-centrair.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/centrair.jpg",
+      "sha256": "cc167a619d56811b367fb7b87f8e5c25e10c012f8a3614fc7635ef59d5a802cb"
+    },
+    {
+      "source": "assets/images/d1-matsumoto-castle.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/matsumoto-castle.jpg",
+      "sha256": "dbb9e5672a646a101d9427cb95866ca950cdf064aa6a8a95ce9979b88c7afdfa"
+    },
+    {
+      "source": "assets/images/d1-shinano.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/shinano.jpg",
+      "sha256": "1bf7d5dd64622b924830636e58b053bde00f39571c0c6d94611f728d3ef8a772"
+    },
+    {
+      "source": "assets/images/d2-karuizawa-outlet.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/karuizawa-outlet.jpg",
+      "sha256": "f0431ccdb301304c8491789c52501fbb1d7349dab0b896a18e648fcea1bd80e1"
+    },
+    {
+      "source": "assets/images/d2-onioshidashi.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/onioshidashi.jpg",
+      "sha256": "ba15a2398a09805c53be891f7d8b930fef6b6ffc4d43628dec5d5625351f4b67"
+    },
+    {
+      "source": "assets/images/d2-shiraito.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/shiraito-falls.jpg",
+      "sha256": "ed7fa6d7bfffa857981b2da179c384989b8754153e64904304b7785e431d4e9e"
+    },
+    {
+      "source": "assets/images/d3-obuse.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/obuse.jpg",
+      "sha256": "103a39ff1c6cdf8a0034f950281eeab728063f7a9d07f742f161cb877bfc4b0b"
+    },
+    {
+      "source": "assets/images/d3-shibu-onsen-day.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/shibu-onsen-day.jpg",
+      "sha256": "9de0af3aa79d57e7660d9ea8ece70861e2439b5ff1e2cafda40f469b8f65297f"
+    },
+    {
+      "source": "assets/images/d3-shibu-onsen.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/shibu-onsen-night.jpg",
+      "sha256": "2749c4c699242d153adaf811835e48ff47eb37859040cbe23a3f0cef26530152"
+    },
+    {
+      "source": "assets/images/d4-aeon-suzaka.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/aeon-mall-suzaka.jpg",
+      "sha256": "4c4b6bb0bc9b82f482de5bd813c66c70b9a97ae600a3bbe0c3447f759f074b6d"
+    },
+    {
+      "source": "assets/images/d4-monkey-trail.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/jigokudani-winter-trail.jpg",
+      "sha256": "3b403414356499102273ef27d7a1b927ab00c08d18f07f5df9af518f03147c3a"
+    },
+    {
+      "source": "assets/images/d4-snow-monkey.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/jigokudani-snow-monkey.jpg",
+      "sha256": "b972c05676df9c18b998437f11a8aea13b1646ab2af8c4cb830dea12a01a6005"
+    },
+    {
+      "source": "assets/images/d5-hakuba-iwatake.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/hakuba-iwatake.jpg",
+      "sha256": "0f00a02dccb40b5858a7964bd550a55d4c15256a1bca3144287378d939e36c99"
+    },
+    {
+      "source": "assets/images/d5-mountain-harbor.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/hakuba-mountain-harbor.jpg",
+      "sha256": "25205782b141b18c1a297960610da4274c6c97da6f7c28e294ba6bfb51f7b225"
+    },
+    {
+      "source": "assets/images/d5-white-park.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/hakuba-white-park.jpg",
+      "sha256": "8359a46d7a47868360adca639517ba78ca5cd908f0529766099d852c5a6669dc"
+    },
+    {
+      "source": "assets/images/d6-hida-cave.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/hida-great-limestone-cave.jpg",
+      "sha256": "dbe742a39705a1427a3e83bb1d1a568a77df9f44aa72cef03ad654bcb175ea35"
+    },
+    {
+      "source": "assets/images/d6-shinhotaka.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/shinhotaka-ropeway.jpg",
+      "sha256": "ca2509a26db480e7d5c61976d523cbf6ee1b67f67ee1fabeb5a625ee6d696ebf"
+    },
+    {
+      "source": "assets/images/d6-takayama.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/takayama-old-town.jpg",
+      "sha256": "e0d8c1d1717a6bd78d9ee3b835d340ae23ebf2fd34f41a6adc93435a790d29fd"
+    },
+    {
+      "source": "assets/images/d7-hida-furukawa.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/hida-furukawa.jpg",
+      "sha256": "db51de886cf60176a67458077e8015c467ba81b47c3dee3a083d9cf4815d3a0c"
+    },
+    {
+      "source": "assets/images/d7-shirakawago-view.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/shirakawago-viewpoint.jpg",
+      "sha256": "7292617d8bb51c0ad4195acf393de866937fea53032e5fc70ba1b7ecbbd3eec8"
+    },
+    {
+      "source": "assets/images/d7-shirakawago.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/shirakawago-ogimachi.jpg",
+      "sha256": "1f74c6168f2b861ab822599cb7690b5eaae61a506321d7d31d934a5797e7255a"
+    },
+    {
+      "source": "assets/images/d8-daio-wasabi.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/daio-wasabi-farm.jpg",
+      "sha256": "90f5af451596c23314a4fd2ce4dd5348717c11b80d6210a7954e0f3a85de6062"
+    },
+    {
+      "source": "assets/images/d9-aeon-matsumoto.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/aeon-mall-matsumoto.jpg",
+      "sha256": "2b002e25cc47765a1dc4c6d60b15581c11e510282bdbfbee4ed63c871d8d7fea"
+    },
+    {
+      "source": "assets/images/d9-matsumoto-station.jpg",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/matsumoto-station.jpg",
+      "sha256": "fac1ce50cff436409edcac72ad764fd24b9afe1821f65770864467546516d943"
+    },
+    {
+      "sourceBranch": "step15c-input-assets",
+      "sourceCommit": "6ac153216dd4f68de02bd0d310b6e34d67563a53",
+      "target": "assets/trips/shirakawago-shinhotaka-2027/banner-shirakawago-winter.jpg",
+      "sha256": "54d609bca9f3bcc2c958b1ea05c5e3e92b8ee3a409b3631a2a8dff578fb5d121",
+      "author": "Raita Futo",
+      "license": "CC BY 2.0"
+    }
+  ]
+}

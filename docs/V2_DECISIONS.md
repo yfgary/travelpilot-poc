@@ -186,3 +186,16 @@ Repository-relative canonical paths:
 **Direct-route rule:** A bookmarked/manual URL for an unavailable optional trip page redirects with history replacement to that trip's Detailed Itinerary rather than rendering an empty feature page. The rule is snapshot-driven and contains no trip slug, country, day or destination branches.
 
 **Reason:** A trip must not advertise or expose a feature page that its canonical data does not support. Home and in-trip navigation must never disagree about feature availability.
+
+
+## 2026-10-09 — Generic owner-scoped Home listing and official JMA boundary
+
+**Decision:** Home merges its two local fictional fixtures with validated current published remote snapshots and existing validated cached snapshots. Owner-filtered trip rows and batched, ordered/paginated version reads share the route loader's canonical row/payload/schema/identity validator. Invalid or unsupported records are isolated and cannot overwrite valid cache. Local fixture slug identities take precedence generically; real content is never registered as a local demo. Sorting, operational status, next/recent badges and shortcuts reuse the existing snapshot-driven helpers without mutating stored data.
+
+**Privacy:** Signed-in lists use only that owner's cache pointers. Auth initialization/account changes hide stale account results synchronously, cancel pending requests and reload the appropriate scope. Signed-out/offline Home may list previously downloaded device data, consistent with the existing logout-retention policy. Explicit Settings clearing remains unchanged. RLS is still the remote authorization boundary; content tables are read-only in browser code.
+
+**Official Alerts:** The `jma` adapter is selected only by provider.adapter. Its validated configuration supplies official HTTPS XML feed URLs, product codes and area-code-to-weather-region groups. Structured configured area codes route reports; matchNames remain descriptive metadata and never select an adapter. Bounded XML rejects DTD/entities/HTML/malformed input; official-host-only report URLs, timeouts and request concurrency bounds prevent arbitrary HTML scraping or uncontrolled requests. Normalized alerts remain separate from suitability and operator status. Newer matched report updates/cancellations supersede older reports; training reports are excluded. Existing demo-alerts behavior remains unchanged.
+
+**Network limitation:** This execution environment blocks direct official JMA requests (HTTP 403 / browser ERR_TUNNEL_CONNECTION_FAILED). Live feed/report verification is paused; browser CORS at deployed Pages cannot be established here. Parser/registry behavior is tested with intercepted XML fixtures only. No proxy, Edge Function, Worker or third-party CORS service is introduced; formats lacking supported configured area-code relationships are not broadcast to unrelated regions.
+
+**Publishing:** The exact approved Japan Schema-5 payload is archived as a test/integration input, not bundled local-trip data. This repository task never inserts/publishes v2_trip_versions or modifies live schema, V1 tables or production. ChatGPT's separate publication step follows the repository/CI gate. Schema remains 5 with readers 1/2/3/4/5; no real itinerary rewriting or weather-based day switching. Step 15D is not started.

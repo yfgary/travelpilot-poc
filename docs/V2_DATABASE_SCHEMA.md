@@ -357,3 +357,10 @@ Optional timeline `timing` has two required strict endpoint objects: `start` and
 Current Trip Schema is 5; supported readers are 1/2/3/4/5. This changes JSON validation only: the existing positive `schema_version` and JSONB `payload` already support version 5. **No live Supabase DDL, table/data changes, grants/policies or migration were performed.** The approved Step 11 SQL and baseline remain unchanged; V1 and production remain untouched. Tests use synthetic mocked remote Schema 5 payloads only. Existing cache storage/keys/pointers stay unchanged; cached Schema 1–4 remains readable without conversion, and Schema 5 retains its own data/schema metadata.
 
 App v2.0.0-poc.17 is separate from Trip Schema 5 and unchanged demo.city.5/demo.road.5 Data Versions. Step 15B is **not complete**; Step 15C **has not started**; real-trip migration has not begun.
+
+
+## Step 15C frontend read boundary (no database change)
+
+Home now reads authenticated own `v2_trips` rows and batches current published `v2_trip_versions` reads for those IDs. The same canonical validation as individual routes checks ownership/UUID/slug/schema identity before a snapshot can be displayed or cached. Existing RLS remains authoritative; there are no browser content writes, new grants/policies/migrations or V1 access. Existing version-aware IndexedDB owner/device privacy semantics are retained for Home listing.
+
+The supplied Japan payload uses the existing trip UUID `349442d2-7bf3-426b-9f57-163e2272e909`, Schema 5 and integration Data Version `jp2027.1`. It is archived/validated locally only; this task has NOT created or published a version row. Publication of exact validated bytes is a separate ChatGPT action after repository/CI verification. No live database administration or data writes occur here.
