@@ -8,6 +8,7 @@ import { legacyRoad } from './legacySnapshots'
 import schema2Road from './fixtures/schema2-road.json' with { type: 'json' }
 import schema3Road from './fixtures/schema3-road.json' with { type: 'json' }
 import type { TripSnapshot } from '../src/data/schema/trip'
+import packageMetadata from '../package.json' with { type: 'json' }
 const cards = (page: Page) => page.getByTestId('camera-card')
 const dayNav = (page: Page) => page.getByRole('navigation', { name: 'Live Cam 行程日期' })
 const cardById = (page: Page, id: string) => page.locator(`[data-camera-id="${id}"]`)
@@ -22,13 +23,11 @@ async function mockMedia(page: Page, fail = false) {
   return requests
 }
 
-test('city empty Live Cam retains shared weather without road leakage or Home shortcut', async ({ page }) => {
+test('city without Live Cam redirects direct route and Home does not expose the capability', async ({ page }) => {
   await page.goto('#/trip/demo-trip/live')
-  await expect(page.getByTestId('live-cam')).toBeVisible(); await expect(page.getByRole('heading', { level: 1 })).toHaveText('Live Cam')
-  await expect(page.getByTestId('weather-panel').locator('.weather-forecast-day')).toHaveCount(5)
-  await expect(page.getByRole('heading', { name: '此旅程未設定 Live Cam' })).toBeVisible()
-  await expect(cards(page)).toHaveCount(0); await expect(dayNav(page)).toHaveCount(0)
-  await expect(page.getByTestId('live-cam')).not.toContainText(roadContent.liveCams[0].label)
+  await expect(page).toHaveURL(/#\/trip\/demo-trip\/itinerary$/)
+  await expect(page.getByTestId('detailed-itinerary')).toBeVisible()
+  await expect(page.getByTestId('live-cam')).toHaveCount(0)
   await page.getByRole('navigation', { name: '主導覽' }).getByRole('link', { name: '首頁', exact: true }).click()
   const city = page.getByRole('article').filter({ hasText: cityContent.trip.title })
   const road = page.getByRole('article').filter({ hasText: roadContent.trip.title })
@@ -214,15 +213,16 @@ for (const size of ['small', 'medium', 'large']) test(`Live Cam ${size} font has
   expect(await dayNav(page).getByRole('button').nth(1).evaluate((node) => getComputedStyle(node).outlineStyle)).not.toBe('none')
   await page.locator('main').evaluate((node) => { node.scrollTop = node.scrollHeight })
   const last = (await cards(page).last().boundingBox())!, dock = (await page.locator('.status-dock').boundingBox())!
-  expect(last.y + last.height).toBeLessThanOrEqual(dock.y); await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.18')
+  expect(last.y + last.height).toBeLessThanOrEqual(dock.y); await expect(page.getByRole('status')).toContainText(`App Version v${packageMetadata.version}`)
 })
 test('cross-trip switch resets camera filter and Settings Back returns exact origin for both trips', async ({ page }) => {
   await page.goto('#/trip/demo-road-trip/live'); await dayNav(page).getByRole('button', { name: 'D2', exact: true }).click()
   await page.getByRole('navigation', { name: '主導覽' }).getByRole('link', { name: '設定', exact: true }).click(); await page.getByRole('button', { name: '返回上一頁' }).click()
   await expect(page).toHaveURL(/demo-road-trip\/live$/); await expect(cards(page)).toHaveCount(3)
   await page.evaluate(() => { history.pushState({ key: crypto.randomUUID(), idx: history.state.idx + 1 }, '', '#/trip/demo-trip/live'); dispatchEvent(new PopStateEvent('popstate')) })
-  await expect(page.getByRole('heading', { name: '此旅程未設定 Live Cam' })).toBeVisible(); await expect(cards(page)).toHaveCount(0)
+  await expect(page).toHaveURL(/#\/trip\/demo-trip\/itinerary$/)
+  await expect(page.getByTestId('detailed-itinerary')).toBeVisible()
   await expect(page.locator('.trip-heading h2')).toHaveText(cityContent.trip.title)
   await page.getByRole('navigation', { name: '主導覽' }).getByRole('link', { name: '設定', exact: true }).click(); await page.getByRole('button', { name: '返回上一頁' }).click()
-  await expect(page).toHaveURL(/demo-trip\/live$/); await expect(cards(page)).toHaveCount(0)
+  await expect(page).toHaveURL(/demo-trip\/itinerary$/); await expect(page.getByTestId('detailed-itinerary')).toBeVisible()
 })

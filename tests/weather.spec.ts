@@ -12,6 +12,7 @@ import { openMeteoResponse, weatherCacheContents } from './weatherFixtures'
 import { mockRemote, seedAuth, remoteVersion, remoteId, remoteSlug, cacheContents } from './tripFixtures'
 import { regionPreferenceKey } from '../src/data/weather/regions'
 import { forecastRequest, loadForecast } from '../src/services/weather/forecasts'
+import packageMetadata from '../package.json' with { type: 'json' }
 const city = localTrips[1].payload as Schema4Snapshot, road = localTrips[0].payload as Schema4Snapshot
 const panel = (page: Page) => page.getByTestId('weather-panel')
 async function open(page: Page, slug = city.trip.slug, view = 'info') {
@@ -37,7 +38,8 @@ async function expire(page: Page) {
   })
 }
 for (const view of ['itinerary', 'info', 'live']) test(`${view} uses shared normalized weather, score, attribution and five forecast cards`, async ({ page }) => {
-  await open(page, city.trip.slug, view)
+  const snapshot = view === 'live' ? road : city
+  await open(page, snapshot.trip.slug, view)
   await expect(panel(page).getByRole('heading', { name: '天氣與活動適宜度', exact: true })).toBeVisible()
   await expect(panel(page).locator('.weather-metrics')).toContainText('12 km')
   await expect(panel(page).locator('.weather-metrics')).toContainText('15 cm')
@@ -47,8 +49,8 @@ for (const view of ['itinerary', 'info', 'live']) test(`${view} uses shared norm
   await expect(panel(page).locator('.weather-trend')).toHaveCount(2)
   await expect(panel(page).getByRole('link', { name: 'Open-Meteo', exact: true })).toHaveAttribute('href', 'https://open-meteo.com/')
   await expect(panel(page).getByRole('region', { name: '官方警告', exact: true })).toHaveCount(0)
-  await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.18')
-  if (view === 'live') { await expect(page.getByTestId('live-cam')).toBeVisible(); await expect(page.getByRole('heading', { name: '此旅程未設定 Live Cam' })).toBeVisible() }
+  await expect(page.getByRole('status')).toContainText(`App Version v${packageMetadata.version}`)
+  if (view === 'live') await expect(page.getByTestId('live-cam')).toBeVisible()
 })
 test('full WeatherPanel is absent from Home, Settings, Attractions and compact Today view', async ({ page }) => {
   for (const route of ['#/', '#/settings', '#/trip/demo-trip/attractions', '#/trip/demo-trip/today']) {
@@ -157,7 +159,7 @@ test('quick page navigation deduplicates the shared pending request', async ({ p
   await page.goto('#/trip/demo-trip/info'); await expect(panel(page)).toBeVisible()
   await expect.poll(() => calls).toBe(1)
   await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '詳細行程', exact: true }).click()
-  await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: 'Live Cam', exact: true }).click()
+  await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '詳細行程', exact: true }).click()
   release(); await expect(panel(page).locator('.weather-forecast-day')).toHaveCount(5); expect(calls).toBe(1)
 })
 test('service in-flight registry deduplicates separate simultaneous consumers without browser storage', async () => {

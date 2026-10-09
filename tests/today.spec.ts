@@ -11,6 +11,7 @@ import schema2Road from './fixtures/schema2-road.json' with { type: 'json' }
 import schema3Road from './fixtures/schema3-road.json' with { type: 'json' }
 import type { TripSnapshot } from '../src/data/schema/trip'
 import { minimalSnapshot } from './minimalSnapshot'
+import packageMetadata from '../package.json' with { type: 'json' }
 
 const view = (page: Page) => page.getByTestId('today-mode')
 const dayNav = (page: Page) => page.getByRole('navigation', { name: '今日模式行程日期' })
@@ -23,7 +24,7 @@ test('dedicated route and all local canonical activity data are usable signed ou
     await expect(page.getByTestId('trip-versions')).toContainText(snapshot === cityContent ? 'demo.city.5' : 'demo.road.5')
     await expect(page.getByTestId('trip-versions')).toContainText('Trip Schema Version：4')
     await expect(page.locator('.today-activities li h3')).toHaveText(snapshot.days[0].timeline.map((item) => item.title))
-    await expect(page.getByRole('status')).toContainText('App Version v2.0.0-poc.18')
+    await expect(page.getByRole('status')).toContainText(`App Version v${packageMetadata.version}`)
   }
 })
 test('trip timezone drives live date and seconds independently of browser timezone', async ({ page }) => {

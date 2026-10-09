@@ -46,6 +46,6 @@ for (const mode of ['unsupported', 'reject'] as const) test(`Wake Lock ${mode} i
 test('pending Wake Lock response after unmount is released rather than leaked', async ({ page }) => {
   await mockWake(page, 'pending'); await page.goto('#/trip/demo-trip/today')
   await page.getByRole('button', { name: '保持螢幕常亮', exact: true }).click(); await expect(page.getByRole('button', { name: '保持螢幕常亮', exact: true })).toBeDisabled()
-  await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: 'Live Cam', exact: true }).click(); await expect(page.getByTestId('live-cam')).toBeVisible()
+  await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: '旅程資料', exact: true }).click(); await expect(page.getByTestId('trip-information')).toBeVisible()
   await page.evaluate(() => (window as unknown as { resolveWakeTest: () => void }).resolveWakeTest()); await expect.poll(() => counts(page)).toEqual({ requested: 1, released: 1 })
 })
