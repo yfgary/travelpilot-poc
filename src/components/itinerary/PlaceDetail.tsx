@@ -4,6 +4,7 @@ import type { TripSnapshot } from '../../data/schema/trip'
 import { placeTypes } from '../../data/itinerary'
 import { PlaceFacts } from './EntityCards'
 import { ExternalLink, MapsAction } from './ContentActions'
+import { NativeName } from './NativeName'
 
 export function PlaceDetail({ place, sources, onClose }: { place: Place; sources: TripSnapshot['sources']; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null)
@@ -18,7 +19,7 @@ export function PlaceDetail({ place, sources, onClose }: { place: Place; sources
   return <dialog ref={dialog} className="place-dialog" aria-labelledby={titleId}
     onCancel={(event) => { event.preventDefault(); onClose() }}
     onClose={(event) => { if (event.currentTarget === dialog.current && !event.currentTarget.open) onClose() }}>
-    <header className="place-dialog-head"><div><p className="entity-kicker">{placeTypes[place.type]}</p><h2 id={titleId}>{place.name}</h2></div>
+    <header className="place-dialog-head"><div><p className="entity-kicker">{placeTypes[place.type]}</p><h2 id={titleId}>{place.name}</h2><NativeName entity={place} /></div>
       <button className="itinerary-action dialog-close" autoFocus onClick={onClose} aria-label="關閉詳細介紹">×</button></header>
     <div className="place-dialog-body"><p>{place.summary}</p>{place.longDescription && <p>{place.longDescription}</p>}<PlaceFacts place={place} />
       {([{ title: '為何值得到訪', value: place.whyVisit }, { title: '歷史／背景', value: place.history },

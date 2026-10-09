@@ -5,6 +5,7 @@ import { pages } from '../app/pages'
 import { PageHeading } from '../components/PageHeading'
 import { AccommodationCard, TransportCard, NavigationCard, HardCutCard } from '../components/itinerary/EntityCards'
 import { ChecklistDefinitions } from '../components/tripInfo/ChecklistDefinitions'
+import { NativeName } from '../components/itinerary/NativeName'
 import { EmergencyInformation } from '../components/tripInfo/EmergencyInformation'
 import { getEmergencyInfo } from '../data/schema/trip'
 import { formatTripDate } from '../data/tripDates'
@@ -30,7 +31,7 @@ export function TripInformation() {
         const targets = snapshot.navigationTargets.filter((target) => target.type === type)
         return targets.length > 0 && <div key={type}><h3>{label}</h3>{targets.map((target) => <div key={target.id}>
           <NavigationCard target={target} />
-          {target.placeId && <p className="info-related-place">相關場所：{snapshot.places.find((place) => place.id === target.placeId)?.name} · 導航使用以上指定目標</p>}
+          {target.placeId && <div className="info-related-place">相關場所：{snapshot.places.find((place) => place.id === target.placeId)?.name} · 導航使用以上指定目標<NativeName entity={snapshot.places.find((place) => place.id === target.placeId)} /></div>}
         </div>)}</div>
       })}</div> },
     { id: 'hard-cuts', title: '全程重要 Hard Cut', shortcut: 'Hard Cut', show: snapshot.hardCuts.length > 0,

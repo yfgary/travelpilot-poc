@@ -99,3 +99,11 @@ Recommended new-chat first action:
 - POC-only `qa/pre15d-r4-metadata`, candidate `v2.0.0-poc.32`; stage A code for #18 visible truthful transport prices and #19 Chinese accommodation type codes with unchanged original data, plus regression coverage.
 - #15 requires user approval of an optional versioned **native-language name** field and verified content-authoring plan because strict Schema 5 has no such field. Do not pretend a Chinese name is a verified Japanese name, and do not change the already published `jp2027.1` snapshot.
 - Check the R3 `poc.31` main CI+Pages gate; run R4 independent PR QA; do not merge an incomplete R4 or start Step 15D.
+
+## R4 Schema 6 approved continuation — 10/10/2026
+
+- User authorized POC Schema 6 + optional local/native name field while preserving Schema 1–5 and explicitly **prohibited publishing or editing Supabase trip data**. Current candidate App Version **v2.0.0-poc.33** on existing Draft PR #12.
+- Schema6 extends Schema5 without rewriting older readers. Only optional `localName` on Place/Accommodation/Transport/NavigationTarget; generic UI renders a second line only when populated.
+- Schema6 has Weather and exact-timing feature parity; readers/schema validation/remote/cache tests updated. POC Test fixture only, not a new Japan snapshot. Published `jp2027.1` remains byte-identical Schema 5; no Supabase requests made to publish/mutate.
+- R4 #18 & #19 were already staged, retained in this PR. Complete GitHub PR QA and review before Merge. Follow-on to reach actual native names in Japan trip is a **separate content authoring + verified-source + new Trip Data Version + publication approval** decision.
+- R3 main CI Pages gate must be verified. V1/Production untouched; Step 15D remains on hold.

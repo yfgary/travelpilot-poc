@@ -4,6 +4,7 @@ import { accommodationTypeLabel, entityLabel, formatDuration, formatMoney, hardC
 import { formatTripDate } from '../../data/tripDates'
 import { ExternalLink, Facts, MapsAction, Notes } from './ContentActions'
 import { formatTransportDateTime } from '../../data/tripInformation'
+import { NativeName } from './NativeName'
 
 export function PlaceFacts({ place }: { place: Place }) {
   return <Facts entries={[
@@ -15,7 +16,7 @@ export function PlaceFacts({ place }: { place: Place }) {
 }
 export function PlaceCard({ place, onDetail }: { place: Place; onDetail: (id: string) => void }) {
   return <section className="entity-card place-card" data-testid="place-card">
-    <p className="entity-kicker">{placeTypes[place.type]}</p><h4 className="entity-inline-title"><span>{place.name}</span><MapsAction entity={place} name={place.name} /></h4><p>{place.summary}</p>
+    <p className="entity-kicker">{placeTypes[place.type]}</p><h4 className="entity-inline-title"><span>{place.name}</span><MapsAction entity={place} name={place.name} /></h4><NativeName entity={place} /><p>{place.summary}</p>
     <PlaceFacts place={place} />
     <div className="itinerary-actions"><button className="itinerary-action" onClick={() => onDetail(place.id)} aria-label={`詳細介紹：${place.name}`}>ⓘ 詳細介紹</button>
       <ExternalLink href={place.officialURL} label={`官方網站：${place.name}`}>官方網站 ↗</ExternalLink>
@@ -24,7 +25,7 @@ export function PlaceCard({ place, onDetail }: { place: Place; onDetail: (id: st
 }
 export function AccommodationCard({ stay, compact = false, heading = '今日住宿' }: { stay: Accommodation; compact?: boolean; heading?: string }) {
   return <section className="entity-card accommodation-card" data-testid="accommodation-card" data-entity-id={stay.id}>
-    <p className="entity-kicker">⌂ {compact ? '住宿' : heading}</p><h4 className="entity-inline-title"><span>{stay.name}</span><MapsAction entity={stay} name={stay.name} /></h4>
+    <p className="entity-kicker">⌂ {compact ? '住宿' : heading}</p><h4 className="entity-inline-title"><span>{stay.name}</span><MapsAction entity={stay} name={stay.name} /></h4><NativeName entity={stay} />
     <div className={compact ? '' : 'accommodation-grid'}>
       <Facts entries={[{ label: '類型', value: accommodationTypeLabel(stay.type) }, { label: '房型', value: stay.room }, { label: '餐飲', value: stay.mealPlan },
         { label: '預訂狀態', value: stay.bookingState }, { label: '入住時間', value: stay.checkIn }, { label: '退房時間', value: stay.checkOut },
@@ -41,7 +42,7 @@ export function TransportCard({ transport, snapshot, showTiming = false }: { tra
   const target = transport.navigationTargetIds.map((id) => snapshot.navigationTargets.find((target) => target.id === id)).find(Boolean)
   const price = formatMoney(transport.price)
   return <section className="entity-card transport-card">
-    <p className="entity-kicker">↗ {transportTypes[transport.type]}</p><h4 className="entity-inline-title"><span>{transport.service ?? transport.provider ?? transportTypes[transport.type]}</span><MapsAction entity={transport.mapURL ? transport : target} name={transport.service ?? transportTypes[transport.type]} /></h4>
+    <p className="entity-kicker">↗ {transportTypes[transport.type]}</p><h4 className="entity-inline-title"><span>{transport.service ?? transport.provider ?? transportTypes[transport.type]}</span><MapsAction entity={transport.mapURL ? transport : target} name={transport.service ?? transportTypes[transport.type]} /></h4><NativeName entity={transport} />
     {price ? <p className="transport-price" data-testid="transport-price">費用：<strong>{price}</strong></p> : transport.type !== 'walk' && <p className="transport-price-unknown" data-testid="transport-price-unknown">費用：未提供，請核實</p>}
     <p>{transport.origin} → {transport.destination}</p>
     <Facts entries={[{ label: '出發', value: showTiming ? formatTransportDateTime(transport.departure, snapshot.trip.timezone) : undefined },
@@ -52,7 +53,7 @@ export function TransportCard({ transport, snapshot, showTiming = false }: { tra
   </section>
 }
 export function NavigationCard({ target }: { target: NavigationTarget }) {
-  return <section className="entity-card navigation-card"><p className="entity-kicker">↗ 導航目標</p><h4 className="entity-inline-title"><span>{target.title}</span><MapsAction entity={target} name={target.title} /></h4>
+  return <section className="entity-card navigation-card"><p className="entity-kicker">↗ 導航目標</p><h4 className="entity-inline-title"><span>{target.title}</span><MapsAction entity={target} name={target.title} /></h4><NativeName entity={target} />
     {target.description && <p>{target.description}</p>}{target.warning && <p className="content-warning">⚠ 注意：{target.warning}</p>}
   </section>
 }

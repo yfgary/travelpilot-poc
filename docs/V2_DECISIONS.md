@@ -223,3 +223,13 @@ Repository-relative canonical paths:
 **Implemented phase A:** Render known lodging type codes in Traditional Chinese using an unmapped-type-preserving formatter. Show factual recorded transport fares near titles with original currency and notes; when non-walk costs are absent, explicitly mark them unprovided rather than fabricate figures. None of these alter the saved snapshot.
 
 **Pending user decision:** Fully authentic local/native-language names for places, hotels and other locations require source-verified values and a versioned data contract because Schema 5 strict objects have no such fields. Do not add ad hoc trip-specific UI logic or silently edit immutable `jp2027.1`; approval of schema migration, validation and new Trip Data Version is required.
+
+## 2026-10-10 — Approved POC-only Schema 6 optional local/native names
+
+**User authorization:** Upgrade the POC reader/contract to Schema 6, add optional `localName`, retain historical readers, no Supabase Trip Data edit or publication.
+
+**Data contract:** New strict Schema6 branch extends the existing Schema5 timing, camera, emergency and weather contract; optional nonblank `localName` belongs to canonical Places, Accommodations, Transport and NavigationTargets. The strict legacy 1–5 contracts remain intact, including rejection of any newly introduced Schema6-only fields.
+
+**UI rule:** Text is authored and rendered only if present; existing display/Chinese name stays primary, source-provided native name is visually secondary. No locale inference or automated transliteration. Client does not convert cached schema or silently publish.
+
+**Publishing boundary:** The Japan `jp2027.1` published Schema5 snapshot remains untouched. Adding genuine Japanese native names later requires verified source review, a separately validated future immutable trip version and explicit user permission to publish. No production SQL, snapshots or V1/Production repo work now.

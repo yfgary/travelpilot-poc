@@ -12,10 +12,10 @@ export function activeExactStart(item: TimelineItem, now: Date): number | undefi
   return Number.isFinite(start) && Number.isFinite(end) && start < end && start <= instant && instant < end ? start : undefined
 }
 export function dayHasActiveExactTiming(snapshot: TripSnapshot, day: TripDay, now: Date): boolean {
-  return snapshot.schemaVersion === 5 && day.timeline.some((item) => activeExactStart(item, now) !== undefined)
+  return snapshot.schemaVersion >= 5 && day.timeline.some((item) => activeExactStart(item, now) !== undefined)
 }
 export function activeExactDay(snapshot: TripSnapshot, now: Date): TripDay | undefined {
-  if (snapshot.schemaVersion !== 5) return undefined
+  if (snapshot.schemaVersion < 5) return undefined
   // Latest absolute start wins; canonical day number resolves cross-day ties.
   return snapshot.days.flatMap((day) => day.timeline.flatMap((item) => {
     const start = activeExactStart(item, now)

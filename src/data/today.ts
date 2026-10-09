@@ -1,12 +1,13 @@
 import type { TripSnapshot } from './schema/trip'
 import type { Accommodation, NavigationTarget, TimelineItem, TripDay } from './itinerary'
 import { dayHardCuts, resolveMaps } from './itinerary'
+import { localNameOf } from './localNames'
 import { calendarDate } from './tripDates'
 import { activeExactDay, dayHasActiveExactTiming } from './operationalTiming'
 import { hardCutInstant } from './tripInformation'
 import { timelineTiming, timelineStartInstant, timelineEndInstant, timeMinutes, tripTime } from './tripTime'
 
-export type TodayStop = { item: TimelineItem; name: string; maps: string; target?: NavigationTarget }
+export type TodayStop = { item: TimelineItem; name: string; maps: string; target?: NavigationTarget; localName?: string }
 export type TodayPosition = { previous: TimelineItem | null; current: TimelineItem | null; next: TimelineItem | null; index: number }
 export function selectTodayDay(snapshot: TripSnapshot, now: Date, remembered?: string | null): TripDay | undefined {
   const today = calendarDate(now, snapshot.trip.timezone)
@@ -56,7 +57,7 @@ export function resolveTodayStop(snapshot: TripSnapshot, item: TimelineItem): To
   ]
   for (const candidate of candidates) {
     const maps = resolveMaps(candidate.entity)
-    if (maps) return { item, name: candidate.name, maps, target: 'target' in candidate ? candidate.target : undefined }
+    if (maps) return { item, name: candidate.name, maps, localName: localNameOf(candidate.entity), target: 'target' in candidate ? candidate.target : undefined }
   }
   return undefined
 }
