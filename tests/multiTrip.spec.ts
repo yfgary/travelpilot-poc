@@ -7,6 +7,7 @@ import { validateTripSnapshot } from '../src/data/schema/trip'
 import { loadTrip } from '../src/services/trips'
 import { calendarDate, tripStatus, tripStatusLabels, orderTrips, formatTripDate } from '../src/data/tripDates'
 import { tripPages } from '../src/app/pages'
+import { tripShortcuts } from '../src/data/tripPresentation'
 import { seedAuth, cacheContents } from './tripFixtures'
 import { remoteTrips, mockRemoteTrips } from './multiTripFixtures'
 
