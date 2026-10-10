@@ -22,10 +22,12 @@ export const transportTypes: Record<Transport['type'], string> = { flight: '航�
 /** Known accommodation category codes mapped into Chinese without altering source data. */
 const accommodationTypeNames: Readonly<Record<string,string>> = {
   hotel: '酒店', 'business hotel': '商務酒店', 'business-hotel': '商務酒店',
+  'onsen hotel': '溫泉酒店', 'onsen-hotel': '溫泉酒店',
   ryokan: '日式旅館', 'onsen ryokan': '溫泉旅館', 'onsen-ryokan': '溫泉旅館',
   lodge: '山莊／旅舍', cabin: '小屋', chalet: '山區木屋', resort: '度假酒店',
   hostel: '青年旅舍', guesthouse: '民宿', 'guest house': '民宿',
   minshuku: '日式民宿', apartment: '公寓', aparthotel: '服務式公寓',
+  'apartment hotel': '公寓式酒店', 'apartment-hotel': '公寓式酒店',
   'serviced apartment': '服務式公寓', 'vacation rental': '度假出租住宿',
   inn: '旅館', motel: '汽車旅館', homestay: '民宿', villa: '別墅',
 }

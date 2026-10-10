@@ -1,0 +1,1820 @@
+{
+  "scope": "POC baseline poc.42; mocked providers; disposable browser state; not real weather/camera verification",
+  "scenarios": [
+    {
+      "width": 320,
+      "font": "small",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 320,
+      "font": "small",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 269,
+            "scroll": 1219,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "font": "small",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 269,
+            "scroll": 1219,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "font": "small",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 184.078125,
+        "tabsBottom": 183.265625
+      }
+    },
+    {
+      "width": 320,
+      "font": "small",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 269,
+            "scroll": 1219,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "font": "small",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 320,
+      "font": "small",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 320,
+      "font": "medium",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 320,
+      "font": "medium",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 262,
+            "scroll": 1314,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "font": "medium",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 262,
+            "scroll": 1314,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "font": "medium",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 190.375,
+        "tabsBottom": 190.15625
+      }
+    },
+    {
+      "width": 320,
+      "font": "medium",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 262,
+            "scroll": 1314,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "font": "medium",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 320,
+      "font": "medium",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 320,
+      "font": "large",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 320,
+      "font": "large",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 255,
+            "scroll": 1278,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "font": "large",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 255,
+            "scroll": 1278,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "font": "large",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 201.375,
+        "tabsBottom": 200.453125
+      }
+    },
+    {
+      "width": 320,
+      "font": "large",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 255,
+            "scroll": 1278,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "font": "large",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 320,
+      "font": "large",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 390,
+      "font": "small",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 390,
+      "font": "small",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 339,
+            "scroll": 1219,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "font": "small",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 339,
+            "scroll": 1219,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "font": "small",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 133.078125,
+        "tabsBottom": 132.265625
+      }
+    },
+    {
+      "width": 390,
+      "font": "small",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 339,
+            "scroll": 1219,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "font": "small",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 390,
+      "font": "small",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 390,
+      "font": "medium",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 390,
+      "font": "medium",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 332,
+            "scroll": 1394,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "font": "medium",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 332,
+            "scroll": 1394,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "font": "medium",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 190.375,
+        "tabsBottom": 190.15625
+      }
+    },
+    {
+      "width": 390,
+      "font": "medium",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 332,
+            "scroll": 1394,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "font": "medium",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 390,
+      "font": "medium",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 390,
+      "font": "large",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 390,
+      "font": "large",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 325,
+            "scroll": 1568,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "font": "large",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 325,
+            "scroll": 1568,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "font": "large",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 201.375,
+        "tabsBottom": 200.453125
+      }
+    },
+    {
+      "width": 390,
+      "font": "large",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 325,
+            "scroll": 1568,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "font": "large",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 390,
+      "font": "large",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 430,
+      "font": "small",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 430,
+      "font": "small",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 379,
+            "scroll": 1219,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "font": "small",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 379,
+            "scroll": 1219,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "font": "small",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 133.078125,
+        "tabsBottom": 132.265625
+      }
+    },
+    {
+      "width": 430,
+      "font": "small",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 379,
+            "scroll": 1219,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "font": "small",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 430,
+      "font": "small",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 430,
+      "font": "medium",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 430,
+      "font": "medium",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 372,
+            "scroll": 1394,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "font": "medium",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 372,
+            "scroll": 1394,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "font": "medium",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 138.375,
+        "tabsBottom": 138.15625
+      }
+    },
+    {
+      "width": 430,
+      "font": "medium",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 372,
+            "scroll": 1394,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "font": "medium",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 430,
+      "font": "medium",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 430,
+      "font": "large",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 430,
+      "font": "large",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 365,
+            "scroll": 1568,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "font": "large",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 365,
+            "scroll": 1568,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "font": "large",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 201.375,
+        "tabsBottom": 200.453125
+      }
+    },
+    {
+      "width": 430,
+      "font": "large",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 365,
+            "scroll": 1568,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 430,
+      "font": "large",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 430,
+      "font": "large",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1024,
+      "font": "small",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1024,
+      "font": "small",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 959,
+            "scroll": 959,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "font": "small",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 959,
+            "scroll": 959,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "font": "small",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 135.1875,
+        "tabsBottom": 134.375
+      }
+    },
+    {
+      "width": 1024,
+      "font": "small",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 959,
+            "scroll": 959,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "font": "small",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1024,
+      "font": "small",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1024,
+      "font": "medium",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1024,
+      "font": "medium",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 950,
+            "scroll": 950,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "font": "medium",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 950,
+            "scroll": 950,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "font": "medium",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 140.78125,
+        "tabsBottom": 140.5625
+      }
+    },
+    {
+      "width": 1024,
+      "font": "medium",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 950,
+            "scroll": 950,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "font": "medium",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1024,
+      "font": "medium",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1024,
+      "font": "large",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1024,
+      "font": "large",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 941,
+            "scroll": 941,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "font": "large",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 941,
+            "scroll": 941,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "font": "large",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 151.078125,
+        "tabsBottom": 150.15625
+      }
+    },
+    {
+      "width": 1024,
+      "font": "large",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 941,
+            "scroll": 941,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "font": "large",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1024,
+      "font": "large",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1440,
+      "font": "small",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1440,
+      "font": "small",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 1175,
+            "scroll": 1175,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "font": "small",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 1175,
+            "scroll": 1175,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "font": "small",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 135.1875,
+        "tabsBottom": 134.375
+      }
+    },
+    {
+      "width": 1440,
+      "font": "small",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": [
+          {
+            "client": 1175,
+            "scroll": 1175,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "font": "small",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1440,
+      "font": "small",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "small",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1440,
+      "font": "medium",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1440,
+      "font": "medium",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 1166,
+            "scroll": 1166,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "font": "medium",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 1166,
+            "scroll": 1166,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "font": "medium",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 140.78125,
+        "tabsBottom": 140.5625
+      }
+    },
+    {
+      "width": 1440,
+      "font": "medium",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": [
+          {
+            "client": 1166,
+            "scroll": 1166,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "font": "medium",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1440,
+      "font": "medium",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "medium",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1440,
+      "font": "large",
+      "view": "home",
+      "route": "#/",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1440,
+      "font": "large",
+      "view": "itinerary",
+      "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 1157,
+            "scroll": 1157,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "font": "large",
+      "view": "info",
+      "route": "#/trip/shirakawago-shinhotaka-2027/info",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 1157,
+            "scroll": 1157,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "font": "large",
+      "view": "attractions",
+      "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      },
+      "sticky": {
+        "position": "sticky",
+        "y": 151.078125,
+        "tabsBottom": 150.15625
+      }
+    },
+    {
+      "width": 1440,
+      "font": "large",
+      "view": "live",
+      "route": "#/trip/shirakawago-shinhotaka-2027/live",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": [
+          {
+            "client": 1157,
+            "scroll": 1157,
+            "count": 5
+          }
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "font": "large",
+      "view": "today",
+      "route": "#/trip/shirakawago-shinhotaka-2027/today",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    },
+    {
+      "width": 1440,
+      "font": "large",
+      "view": "settings",
+      "route": "#/settings",
+      "errors": [],
+      "layout": {
+        "bodyOverflow": false,
+        "mainOverflow": false,
+        "statusClearance": true,
+        "font": "large",
+        "forecast": []
+      }
+    }
+  ]
+}
