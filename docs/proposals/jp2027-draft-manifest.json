@@ -1,0 +1,102 @@
+{
+  "status": "UNPUBLISHED_REVIEW_ONLY",
+  "candidateLabel": "jp2027-schema6-review-draft-02",
+  "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
+  "published": false,
+  "isCurrent": false,
+  "authorizedForSupabaseWrite": false,
+  "parentDataVersion": "jp2027.1",
+  "parentSchemaVersion": 5,
+  "draftSchemaVersion": 6,
+  "publishedArchiveSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+  "approvedDecision": "D1 Projection Mapping retained; Nawate Street separately in backupContent with no fixed timeline slot",
+  "sourcedChanges": [
+    {
+      "area": "D1 Nawate",
+      "official": [
+        "https://visitmatsumoto.com/zh-hant/spot/detail_1083.html",
+        "https://visitmatsumoto.com/spot/detail_1083.html"
+      ],
+      "confidence": "official location and Japanese name; night shop hours NOT verified"
+    },
+    {
+      "area": "D1 projection",
+      "official": [
+        "https://visitmatsumoto.com/en/event/detail_3003.html"
+      ],
+      "confidence": "official 2026-12-12–2027-02-14; 18:00–22:00; free; recheck before travel"
+    },
+    {
+      "area": "D1 highlights",
+      "confidence": "reworded from immutable canonical times; no timing data edited",
+      "oldHighlights": [
+        "UO680",
+        "μSKY＋JR轉乘",
+        "松本第一晚"
+      ]
+    }
+  ],
+  "photoCandidate": {
+    "url": "https://commons.wikimedia.org/wiki/File:Matsumoto-Castle-day-view-2019-Luka-Peternel.jpg",
+    "author": "Luka Peternel",
+    "license": "CC BY-SA 4.0",
+    "status": "file-page licence checked; original download HTTP 403; no asset installed"
+  },
+  "unresolved": [
+    {
+      "issue": 15,
+      "description": "Target-specific navigation names and remaining transport native labels not fully sourced"
+    },
+    {
+      "issue": 18,
+      "description": "Two Meitetsu reference fares qualified; four fares unknown and all six actual booking costs unconfirmed"
+    },
+    {
+      "issue": 20,
+      "description": "General winter advice sourced; direction/IC ordering and winter facility services per leg unverified"
+    },
+    {
+      "issue": 22,
+      "description": "Daytime photo licence verified but original-file HTTP 403 blocks byte/visual review"
+    },
+    {
+      "issue": 23,
+      "description": "New sourced prose for 36 original Places; inherited detailed history/fees/hours not fully reverified"
+    },
+    {
+      "issue": 25,
+      "description": "No camera playback or embedding guarantee; new official Panomax link tunnel-blocked"
+    }
+  ],
+  "invariants": {
+    "placesOriginal": 36,
+    "placesDraft": 37,
+    "days": 9,
+    "cameras": 5,
+    "transport": 7,
+    "publishedFixtureUntouched": true,
+    "protectedAssetsUntouched": true
+  },
+  "remainingGates": [
+    "Outstanding source/media fields remain explicitly unresolved",
+    "Separate user authorization before any Supabase write/publication",
+    "Step15D stays blocked"
+  ],
+  "draftSha256": "ae0f451910beb960b4974003e518f5ad59f088f57aaaee36be9530ec8c7ad3d4",
+  "sourceReview": "jp2027-source-review.json",
+  "validation": {
+    "initialStrictCases": 1,
+    "focusedCases": 55,
+    "fullRegressionCases": 2800,
+    "fullRegressionDuration": "38.0m",
+    "result": "PASS",
+    "typecheckBuild": "PASS",
+    "npmCi": "PASS",
+    "visualQA": [
+      "320 Large",
+      "390 Medium",
+      "1440 Medium"
+    ],
+    "publicationApproval": false
+  }
+}
