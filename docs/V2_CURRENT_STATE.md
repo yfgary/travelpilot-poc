@@ -1,6 +1,6 @@
 # TravelPilot V2 — Current State
 
-Last updated: 10/10/2026 (Hong Kong)
+Last updated: 11/10/2026 (Hong Kong)
 
 ## Progress
 **Step 14/16 — Today Mode: COMPLETE**
@@ -13,9 +13,9 @@ Last updated: 10/10/2026 (Hong Kong)
 
 **Pre-15C update UX repair:** v2.0.0-poc.25 adds an explicit `立即更新` action after a newer App Version is detected. Version checks themselves remain non-disruptive; reload occurs only after explicit user action. Optional trip pages now use the same snapshot capability rules on Home and inside a trip; unavailable direct routes redirect to Detailed Itinerary. At that preflight release, Step 15C had not started.
 
-Release App Version: **v2.0.0-poc.26** (canonical source: package.json; lockfile and tests agree). CI/Pages outcome is verified after main push in the release handoff.
+Deployed R4 main baseline: **v2.0.0-poc.36**. Active R5 Draft PR #13 repair candidate: **v2.0.0-poc.40**, based on R5 head 7b1481d9296d8dd934e17a127a17491f4c73f977 (poc.39). package.json is canonical; lockfile matches. PR CI must pass before any merge.
 
-Current Trip Schema Version: **5**; supported readers: **1 / 2 / 3 / 4 / 5**.
+Current Trip Schema Version: **6**; supported readers: **1 / 2 / 3 / 4 / 5 / 6** (R4). Published Japan jp2027.1 remains immutable Schema 5.
 
 Local Trip Data Versions: **demo.city.5** / **demo.road.5**.
 
@@ -671,3 +671,47 @@ Additional audit found one legacy Today Architecture test still hardcoding curre
 Run [38005282470](https://github.com/yfgary/travelpilot-poc/actions/runs/38005282470): **2,540 passed / 10 failed**, Build PASS. The 10 failures consist of two outdated unknown-schema Loader cases × five viewport widths, hardcoded to reject Schema6 even though it is now explicitly supported. All other cases, including the new Schema6 remote/cache/local-name/old-schema/exact-timing tests, passed.
 
 Candidate App Version **v2.0.0-poc.36** changes only `tests/loader.spec.ts` to derive the **first unsupported version as CURRENT_TRIP_SCHEMA_VERSION + 1**, rather than hardcoding 6. The tests still require a rejected remote row/payload, the proper unsupported-schema message, **and absolutely no IndexedDB version/pointer/device cache writes**. No security validation is relaxed, and no production/Supabase/Trip Data changes. Latest full PR QA must pass before R4 Merge.
+
+## Pre-15D QA — R5 Attractions Navigation and Long-form Content (POC-only, 10/10/2026)
+
+R4 Schema6/metadata `v2.0.0-poc.36` PR QA succeeded and was merged to POC main, commit `1914295`. Full R4 main CI/Pages deployment must be verified separately.
+
+R5 staged candidate `v2.0.0-poc.37` on `qa/pre15d-r5-attractions` handles original #23 (do not shorten detailed attraction introductions/reasons/history/local importance/takeaways/notice details) and #24 (sticky location/day selectors).
+- **#24 shared UI implementation:** sticky, stacked day + region shortcuts immediately under shared trip navigation. Days are sourced from canonical referenced PlaceUsage occurrences and sorted by dayNumber, not hardcoded to Japan/D1–D9. Day selection intersects with the main/optional/backup status **on the same day**, and region groups/counts derive from matching Places only; no duplicate entity/payload rewriting. Horizontal navigation remains scrollable for narrow screens and button targets retain >=44px. Sticky offset is measured via ResizeObserver for accurate in-page region heading jumps.
+- **#23 shared renderer implementation:** rich authored Place descriptions are rendered as full paragraph groups under labelled "景點介紹", "為何值得到訪", "歷史／背景", "在地重要性", "到訪後的收穫" plus the original "值得留意" list; do not collapse multiline paragraphs into one long run-on block, truncate source, fetch translation, or fabricate missing histories. The Place Detail dialog is still shared between Attractions and Itinerary and preserves sources/links/keyboard-focus return.
+- This is **presentation capability only**. The immutable published/current Japan `jp2027.1` Schema5 snapshot may still have short content; #23 content-authoring parity remains open until authentic, verified long-form Japan content is prepared as a **new immutable Trip Data Version** and separately approved for publication. V1 Golden Content Reference must be compared before claiming full data-fidelity parity.
+- Focused R5 automated tests added for full multi-paragraph preservation, same-day status/date intersection, sticky selectors and responsive horizontal overflow. Cross-trip checks use synthetic demo data. R5 must not merge before full PR CI/visual review; release candidate only.
+- Production repo/V1, Supabase, current Trip Data, Schema6 contract and Step15D remain untouched.
+
+### R5 initial PR QA build repair (10/10/2026)
+
+R5 `poc.37` PR QA failed **at TypeScript build** (Playwright not run): TypeScript tests imported the `.tsx` RichText presentation module under a test tsconfig without JSX. Candidate **v2.0.0-poc.38** moves the pure paragraph splitter into `src/data/richText.ts` and reuses it from the UI React `.tsx` wrapper and tests. This preserves exact content output and adds no schema/data change. Await fresh Build and complete Playwright before merge.
+
+### R5 complete PR QA correction (10/10/2026)
+
+CI [38063368198](https://github.com/yfgary/travelpilot-poc/actions/runs/38063368198) on poc.38: **Build PASS, 2552 Passed / 13 Failed**. Three distinct issues occurred across the five responsive widths: (1) Old minimal-Place view test expects no optional h3 while the new RichText UI introduced an unnecessary heading even without extended content (5 failures), (2) R5 test scoped its inner heading Locator from the outer dialog, which did not match as a relative Playwright `has` selector (5 failures), and (3) R5 mobile sticky test's fixed 420px scroll never passed the actual sticky threshold when title/intro wrap (3 failures).
+
+**Candidate poc.39:** Hide the optional "景點介紹" heading when no longDescription exists (keep summary verbatim), fixing real minimal UI density and old regression. Test authored rich sections through direct heading parent locator, and scroll by the actual measured difference to the sticky threshold plus margin across widths (not fixed pixels). No data, schema, supplier or business logic changes. Full R5 PR QA required before Merge. R4 main CI/Pages already PASS.
+
+
+### R5 browser-diagnosed sticky QA repair — poc.40 (11/10/2026)
+
+Existing Draft PR #13, branch `qa/pre15d-r5-attractions`; retains all R1–R4 and existing R5 implementation. Complexity: **Simple** test initialization correction, no runtime maintenance change.
+
+**Root cause:** the old test used the shared trip tabs’ *unscrolled* bottom as the sticky threshold. Those tabs themselves move upward before sticking inside the padded `main.content-shell` scrollport. Thus the computed scroll was insufficient to pin the attraction selectors. This was not a wrong overflow ancestor, broken sticky positioning, smooth-scroll delay or exhausted scroll range. Native Chromium diagnostics measured main scrollTop/scrollHeight/clientHeight, selector/tab coordinates, computed top/position, nav-height variable and every ancestor overflow. Waiting two animation frames did not alter the failing coordinates; extra scrolling immediately aligned both sticky layers.
+
+Medium-font measurements (pixels, original failing scroll → diagnostic extra scroll):
+
+| Width | Original main scrollTop | Original selector gap below tabs | After extra scrollTop | Aligned gap |
+| --- | ---: | ---: | ---: | ---: |
+| 320 | 460 | 69.531 | 760 | 0.219 |
+| 390 | 460 | 43.938 | 760 | 0.219 |
+| 430 | 408 | 43.938 | 708 | 0.219 |
+| 1024 | 367 | 18.484 | 667 | 0.219 |
+| 1440 | 367 | 18.484 | 667 | 0.219 |
+
+**Correction:** derive the eventual tabs bottom from main’s bounding box, border/padding, computed sticky top and measured tab height. Assert the requested threshold is reachable and the browser actually reaches it. Retain the original strict selector alignment limits (-3/+9px); test a further real mouse-wheel scroll and reassert alignment/visibility. Expand the same test to Small/Medium/Large at all five widths; retain region jump/focus/heading clearance and day/status filter checks, add body overflow and 44px control checks. No test skip, relaxed tolerance, destination branching or CSS workaround.
+
+**Verification:** unchanged failing test reproduced 5/5 failures; instrumented extra-scroll experiment passed all five. Corrected complete focused R5 suite: **25/25 PASS (30.2s)**. `npm ci` and `npm run build` (strict TypeScript plus Vite) PASS. Inspected 320px Large and 1440px Medium screenshots; all 15 width/font screenshots captured. Complete local Playwright regression: **2,575/2,575 PASS (34.8m)**, two workers across all five widths, run once after the focused gate. `git diff --check` PASS. Fresh PR CI result is verified and reported in the release handoff after pushing this branch; it remains a required pre-merge gate. Draft status remains; no merge or deployment authorized/performed by this repair.
+
+**Scope:** only R5 QA, release package/lock metadata and this status document change. Runtime CSS/components, trip schema/readers, local fixtures, published Japan jp2027.1 bytes, image assets, Supabase/SQL and Production are untouched. Step 15D has NOT started. Existing nonfatal Vite bundle-size warning remains.
