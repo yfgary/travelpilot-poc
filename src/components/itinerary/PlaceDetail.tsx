@@ -24,7 +24,7 @@ export function PlaceDetail({ place, sources, onClose }: { place: Place; sources
       <button className="itinerary-action dialog-close" autoFocus onClick={onClose} aria-label="關閉詳細介紹">×</button></header>
     <div className="place-dialog-body">
       <section className="place-detail-section" aria-label="景點介紹" data-testid="place-detail-introduction">
-        <h3>景點介紹</h3><RichText value={place.summary} />
+        {place.longDescription && <h3>景點介紹</h3>}<RichText value={place.summary} />
         {place.longDescription && <RichText value={place.longDescription} />}
       </section>
       <PlaceFacts place={place} />

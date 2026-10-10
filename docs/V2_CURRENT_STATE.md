@@ -686,3 +686,9 @@ R5 staged candidate `v2.0.0-poc.37` on `qa/pre15d-r5-attractions` handles origin
 ### R5 initial PR QA build repair (10/10/2026)
 
 R5 `poc.37` PR QA failed **at TypeScript build** (Playwright not run): TypeScript tests imported the `.tsx` RichText presentation module under a test tsconfig without JSX. Candidate **v2.0.0-poc.38** moves the pure paragraph splitter into `src/data/richText.ts` and reuses it from the UI React `.tsx` wrapper and tests. This preserves exact content output and adds no schema/data change. Await fresh Build and complete Playwright before merge.
+
+### R5 complete PR QA correction (10/10/2026)
+
+CI [38063368198](https://github.com/yfgary/travelpilot-poc/actions/runs/38063368198) on poc.38: **Build PASS, 2552 Passed / 13 Failed**. Three distinct issues occurred across the five responsive widths: (1) Old minimal-Place view test expects no optional h3 while the new RichText UI introduced an unnecessary heading even without extended content (5 failures), (2) R5 test scoped its inner heading Locator from the outer dialog, which did not match as a relative Playwright `has` selector (5 failures), and (3) R5 mobile sticky test's fixed 420px scroll never passed the actual sticky threshold when title/intro wrap (3 failures).
+
+**Candidate poc.39:** Hide the optional "景點介紹" heading when no longDescription exists (keep summary verbatim), fixing real minimal UI density and old regression. Test authored rich sections through direct heading parent locator, and scroll by the actual measured difference to the sticky threshold plus margin across widths (not fixed pixels). No data, schema, supplier or business logic changes. Full R5 PR QA required before Merge. R4 main CI/Pages already PASS.

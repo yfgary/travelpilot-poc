@@ -121,3 +121,5 @@ Recommended new-chat first action:
 - New `tests/r5AttractionsQA.spec.ts` runs across five widths. Run R4 main deployment + R5 PR full tests, review mobile/desktop/fontrender, then merge POC only when green. Production/Supabase/jp2027.1 untouched; Step 15D blocked.
 
 - R5 first QA Build failed due to importing a TSX renderer into Node tests; fixed by moving pure paragraph splitting to `src/data/richText.ts`. Candidate App Version v2.0.0-poc.38; rerun full PR CI before merge.
+
+- R5 CI 38063368198: Build PASS, 2,552 Pass / 13 Fail; 5 minimal view excess h3, 5 incorrectly scoped test locator, 3 phone scroll not at sticky threshold. UI omits extra heading without rich detail; test scopes by section parent and computes viewport-specific scroll. Candidate v2.0.0-poc.39; full PR QA rerun required. R4 main CI/Pages PASS.

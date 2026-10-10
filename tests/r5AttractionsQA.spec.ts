@@ -21,7 +21,7 @@ test('R5 retains every authored paragraph without shortening or inventing missin
     '虛構中文總覽', '完整介紹第一段。', '完整介紹第二段。', '完整介紹第三段。',
   ])
   for (const label of ['為何值得到訪', '歷史／背景', '在地重要性', '到訪後的收穫']) {
-    const section = dialog.locator('.place-detail-section').filter({ has: dialog.getByRole('heading', { name: label }) })
+    const section = dialog.getByRole('heading', { name: label, exact: true }).locator('..')
     await expect(section.locator('.place-rich-text p')).toHaveCount(2)
   }
   await expect(dialog).toContainText('留意入口標示')
@@ -67,8 +67,14 @@ test('R5 day and region selectors remain sticky below shared trip navigation at 
   const selectors = page.getByTestId('attraction-sticky-selectors')
   await expect(selectors.getByRole('navigation', { name: '景點日期' })).toBeVisible()
   await expect(selectors.getByRole('navigation', { name: '景點地區' })).toBeVisible()
-  await page.locator('main').evaluate((node) => { node.scrollTop += 420 })
-  const nav = (await selectors.boundingBox())!, tripNav = (await page.getByRole('navigation', { name: '旅程頁面' }).boundingBox())!
+  // Scroll beyond the exact sticky threshold; a fixed 420px is too short
+  // for phone widths whose header, trip title and intro naturally wrap.
+  const tripTabs = page.getByRole('navigation', { name: '旅程頁面' })
+  const before = (await selectors.boundingBox())!
+  const tabsBefore = (await tripTabs.boundingBox())!
+  const delta = Math.max(0, before.y - (tabsBefore.y + tabsBefore.height) + 140)
+  await page.locator('main').evaluate((node, amount) => { node.scrollTop += amount }, delta)
+  const nav = (await selectors.boundingBox())!, tripNav = (await tripTabs.boundingBox())!
   expect(nav.y).toBeGreaterThanOrEqual(tripNav.y + tripNav.height - 3)
   expect(nav.y).toBeLessThanOrEqual(tripNav.y + tripNav.height + 9)
   const region = selectors.getByRole('navigation', { name: '景點地區' }).getByRole('button').last()
