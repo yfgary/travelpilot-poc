@@ -56,7 +56,10 @@ test('R5 day filter intersects status on the same day; region groups derive from
   await expect(page.getByTestId('attraction-card')).toHaveCount(use.length)
 })
 
-test('R5 day and region selectors remain sticky below shared trip navigation at every width', async ({ page }) => {
+for (const fontSize of ['medium', 'small', 'large'] as const) {
+const suffix = fontSize === 'medium' ? '' : ` (${fontSize} font)`
+test(`R5 day and region selectors remain sticky below shared trip navigation at every width${suffix}`, async ({ page }, testInfo) => {
+  await page.addInitScript((size) => localStorage.setItem('travelpilot.font-size', size), fontSize)
   const snapshot = structuredClone(roadContent)
   for (let i = 0; i < 8; i++) {
     const id = `r5-extra-place-${i}`
@@ -67,21 +70,53 @@ test('R5 day and region selectors remain sticky below shared trip navigation at 
   const selectors = page.getByTestId('attraction-sticky-selectors')
   await expect(selectors.getByRole('navigation', { name: '景點日期' })).toBeVisible()
   await expect(selectors.getByRole('navigation', { name: '景點地區' })).toBeVisible()
-  // Scroll beyond the exact sticky threshold; a fixed 420px is too short
-  // for phone widths whose header, trip title and intro naturally wrap.
   const tripTabs = page.getByRole('navigation', { name: '旅程頁面' })
-  const before = (await selectors.boundingBox())!
-  const tabsBefore = (await tripTabs.boundingBox())!
-  const delta = Math.max(0, before.y - (tabsBefore.y + tabsBefore.height) + 140)
-  await page.locator('main').evaluate((node, amount) => { node.scrollTop += amount }, delta)
-  const nav = (await selectors.boundingBox())!, tripNav = (await tripTabs.boundingBox())!
-  expect(nav.y).toBeGreaterThanOrEqual(tripNav.y + tripNav.height - 3)
-  expect(nav.y).toBeLessThanOrEqual(tripNav.y + tripNav.height + 9)
+  const main = page.locator('main')
+  // Tabs are still in normal flow initially. Their current bottom is not the
+  // eventual sticky boundary: both elements stick inside main's padded scrollport.
+  const measurement = await selectors.evaluate((node) => {
+    const main = node.closest('main')!, tabs = main.querySelector<HTMLElement>('.trip-navigation')!
+    const rect = main.getBoundingClientRect(), css = getComputedStyle(main)
+    const pinnedTabsBottom = rect.top + main.clientTop + parseFloat(css.paddingTop)
+      + parseFloat(getComputedStyle(tabs).top) + tabs.getBoundingClientRect().height
+    return { scrollTop: main.scrollTop, scrollHeight: main.scrollHeight, clientHeight: main.clientHeight,
+      selectorY: node.getBoundingClientRect().top, pinnedTabsBottom,
+      position: getComputedStyle(node).position, top: getComputedStyle(node).top }
+  })
+  expect(measurement.position).toBe('sticky')
+  const target = measurement.scrollTop + Math.max(0, measurement.selectorY - measurement.pinnedTabsBottom) + 140
+  expect(target).toBeLessThan(measurement.scrollHeight - measurement.clientHeight)
+  await main.evaluate((node, top) => { node.scrollTop = top }, target)
+  await expect.poll(() => main.evaluate((node) => node.scrollTop)).toBeCloseTo(target, 0)
+  async function assertAligned() {
+    await expect.poll(async () => {
+      const nav = (await selectors.boundingBox())!, tabs = (await tripTabs.boundingBox())!
+      return nav.y - (tabs.y + tabs.height)
+    }).toBeGreaterThanOrEqual(-3)
+    await expect.poll(async () => {
+      const nav = (await selectors.boundingBox())!, tabs = (await tripTabs.boundingBox())!
+      return nav.y - (tabs.y + tabs.height)
+    }).toBeLessThanOrEqual(9)
+    await expect(selectors).toBeInViewport()
+  }
+  await assertAligned()
+  // Genuine wheel scrolling must keep both sticky layers aligned, not just hit one coordinate.
+  const bounds = (await main.boundingBox())!
+  await page.mouse.move(bounds.x + bounds.width / 2, bounds.y + bounds.height - 30)
+  const previousScrollTop = await main.evaluate((node) => node.scrollTop)
+  await page.mouse.wheel(0, 180)
+  await expect.poll(() => main.evaluate((node) => node.scrollTop)).toBeGreaterThan(previousScrollTop + 100)
+  await assertAligned()
+  expect(await selectors.getByRole('button').evaluateAll((buttons) => buttons.every((button) => button.getBoundingClientRect().height >= 44))).toBe(true)
+  await testInfo.attach('sticky-measurement', { body: JSON.stringify({ fontSize, ...measurement, target }), contentType: 'application/json' })
+  await page.screenshot({ path: `work/r5-sticky-${testInfo.project.name}-${fontSize}.png` })
   const region = selectors.getByRole('navigation', { name: '景點地區' }).getByRole('button').last()
   await region.click()
   const id = await region.getAttribute('aria-controls')
   await expect(page.locator(`#${id}`)).toBeFocused()
   const heading = (await page.locator(`#${id}`).boundingBox())!, after = (await selectors.boundingBox())!
   expect(heading.y).toBeGreaterThanOrEqual(after.y + after.height - 4)
-  expect(await page.locator('main').evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true)
+  expect(await main.evaluate((node) => node.scrollWidth <= node.clientWidth)).toBe(true)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
+}

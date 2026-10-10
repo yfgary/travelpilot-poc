@@ -1,6 +1,6 @@
 # TravelPilot V2 — Current State
 
-Last updated: 10/10/2026 (Hong Kong)
+Last updated: 11/10/2026 (Hong Kong)
 
 ## Progress
 **Step 14/16 — Today Mode: COMPLETE**
@@ -13,9 +13,9 @@ Last updated: 10/10/2026 (Hong Kong)
 
 **Pre-15C update UX repair:** v2.0.0-poc.25 adds an explicit `立即更新` action after a newer App Version is detected. Version checks themselves remain non-disruptive; reload occurs only after explicit user action. Optional trip pages now use the same snapshot capability rules on Home and inside a trip; unavailable direct routes redirect to Detailed Itinerary. At that preflight release, Step 15C had not started.
 
-Release App Version: **v2.0.0-poc.26** (canonical source: package.json; lockfile and tests agree). CI/Pages outcome is verified after main push in the release handoff.
+Deployed R4 main baseline: **v2.0.0-poc.36**. Active R5 Draft PR #13 repair candidate: **v2.0.0-poc.40**, based on R5 head 7b1481d9296d8dd934e17a127a17491f4c73f977 (poc.39). package.json is canonical; lockfile matches. PR CI must pass before any merge.
 
-Current Trip Schema Version: **5**; supported readers: **1 / 2 / 3 / 4 / 5**.
+Current Trip Schema Version: **6**; supported readers: **1 / 2 / 3 / 4 / 5 / 6** (R4). Published Japan jp2027.1 remains immutable Schema 5.
 
 Local Trip Data Versions: **demo.city.5** / **demo.road.5**.
 
@@ -692,3 +692,26 @@ R5 `poc.37` PR QA failed **at TypeScript build** (Playwright not run): TypeScrip
 CI [38063368198](https://github.com/yfgary/travelpilot-poc/actions/runs/38063368198) on poc.38: **Build PASS, 2552 Passed / 13 Failed**. Three distinct issues occurred across the five responsive widths: (1) Old minimal-Place view test expects no optional h3 while the new RichText UI introduced an unnecessary heading even without extended content (5 failures), (2) R5 test scoped its inner heading Locator from the outer dialog, which did not match as a relative Playwright `has` selector (5 failures), and (3) R5 mobile sticky test's fixed 420px scroll never passed the actual sticky threshold when title/intro wrap (3 failures).
 
 **Candidate poc.39:** Hide the optional "景點介紹" heading when no longDescription exists (keep summary verbatim), fixing real minimal UI density and old regression. Test authored rich sections through direct heading parent locator, and scroll by the actual measured difference to the sticky threshold plus margin across widths (not fixed pixels). No data, schema, supplier or business logic changes. Full R5 PR QA required before Merge. R4 main CI/Pages already PASS.
+
+
+### R5 browser-diagnosed sticky QA repair — poc.40 (11/10/2026)
+
+Existing Draft PR #13, branch `qa/pre15d-r5-attractions`; retains all R1–R4 and existing R5 implementation. Complexity: **Simple** test initialization correction, no runtime maintenance change.
+
+**Root cause:** the old test used the shared trip tabs’ *unscrolled* bottom as the sticky threshold. Those tabs themselves move upward before sticking inside the padded `main.content-shell` scrollport. Thus the computed scroll was insufficient to pin the attraction selectors. This was not a wrong overflow ancestor, broken sticky positioning, smooth-scroll delay or exhausted scroll range. Native Chromium diagnostics measured main scrollTop/scrollHeight/clientHeight, selector/tab coordinates, computed top/position, nav-height variable and every ancestor overflow. Waiting two animation frames did not alter the failing coordinates; extra scrolling immediately aligned both sticky layers.
+
+Medium-font measurements (pixels, original failing scroll → diagnostic extra scroll):
+
+| Width | Original main scrollTop | Original selector gap below tabs | After extra scrollTop | Aligned gap |
+| --- | ---: | ---: | ---: | ---: |
+| 320 | 460 | 69.531 | 760 | 0.219 |
+| 390 | 460 | 43.938 | 760 | 0.219 |
+| 430 | 408 | 43.938 | 708 | 0.219 |
+| 1024 | 367 | 18.484 | 667 | 0.219 |
+| 1440 | 367 | 18.484 | 667 | 0.219 |
+
+**Correction:** derive the eventual tabs bottom from main’s bounding box, border/padding, computed sticky top and measured tab height. Assert the requested threshold is reachable and the browser actually reaches it. Retain the original strict selector alignment limits (-3/+9px); test a further real mouse-wheel scroll and reassert alignment/visibility. Expand the same test to Small/Medium/Large at all five widths; retain region jump/focus/heading clearance and day/status filter checks, add body overflow and 44px control checks. No test skip, relaxed tolerance, destination branching or CSS workaround.
+
+**Verification:** unchanged failing test reproduced 5/5 failures; instrumented extra-scroll experiment passed all five. Corrected complete focused R5 suite: **25/25 PASS (30.2s)**. `npm ci` and `npm run build` (strict TypeScript plus Vite) PASS. Inspected 320px Large and 1440px Medium screenshots; all 15 width/font screenshots captured. Complete local Playwright regression: **2,575/2,575 PASS (34.8m)**, two workers across all five widths, run once after the focused gate. `git diff --check` PASS. Fresh PR CI result is verified and reported in the release handoff after pushing this branch; it remains a required pre-merge gate. Draft status remains; no merge or deployment authorized/performed by this repair.
+
+**Scope:** only R5 QA, release package/lock metadata and this status document change. Runtime CSS/components, trip schema/readers, local fixtures, published Japan jp2027.1 bytes, image assets, Supabase/SQL and Production are untouched. Step 15D has NOT started. Existing nonfatal Vite bundle-size warning remains.
