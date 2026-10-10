@@ -14,11 +14,14 @@ export function LiveCam() {
   const { snapshot } = useLoadedTrip()
   const [dayId, setDayId] = useState<string | undefined>()
   const days = useMemo(() => cameraFilterDays(snapshot), [snapshot])
-  const groups = useMemo(() => groupLiveCams(snapshot, dayId), [snapshot, dayId])
+  const allGroups = useMemo(() => groupLiveCams(snapshot), [snapshot])
+  const groups = useMemo(() => dayId ? groupLiveCams(snapshot, dayId) : allGroups, [snapshot, dayId, allGroups])
+  const sourceCount = allGroups.reduce((count, group) => count + group.cameras.length, 0)
   const today = calendarDate(new Date(), snapshot.trip.timezone)
   return <div className="live-cam-page" data-testid="live-cam">
     <section className="panel"><PageHeading title="Live Cam" description="按地區與行程日期查閱畫面及來源；天氣預測、即時畫面與官方狀態應分開確認。" />
-      <p className="camera-note">共 {snapshot.liveCams.length} 個鏡頭 · 狀態連結只供查閱，不代表服務或道路正在運作。</p>
+      <p className="camera-note">共 {sourceCount} 個鏡頭來源 · 狀態連結只供查閱，不代表服務或道路正在運作。</p>
+      {sourceCount < snapshot.liveCams.length && <p className="camera-note">相同來源已合併，保留全部行程日期及相關場所。</p>}
     </section>
     <WeatherPanel />
     {!snapshot.liveCams.length ? <EmptyState title="此旅程未設定 Live Cam" description="此旅程未有鏡頭來源，仍可參考上方天氣資料。" /> : <>

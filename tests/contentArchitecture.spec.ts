@@ -11,7 +11,17 @@ test('one canonical loading boundary, PlaceDetail and WeatherPanel serve both vi
   for (const path of files) {
     const code = readFileSync(path, 'utf8')
     expect(code).not.toMatch(/loadTrip\s*\(|supabase|\.from\s*\(|indexedDB|tripCache|fetch\s*\(/)
-    expect(code).not.toMatch(/DEFAULT_TRIP|hydrate|Japan2027Core|dynamicBindings|fixedDayBindings|DOMParser|setInterval|setTimeout|\.hostname|youtube|hakuba|gifu/i)
+    expect(code).not.toMatch(/DEFAULT_TRIP|hydrate|Japan2027Core|dynamicBindings|fixedDayBindings|DOMParser|setInterval|\.hostname|youtube|hakuba|gifu/i)
+    // R6 permits one visible-frame load deadline, not media polling. All other
+    // content modules retain the original no-timeout restriction.
+    if (path !== 'src/components/liveCam/CameraCard.tsx') expect(code).not.toMatch(/setTimeout/)
+    else {
+      expect(code.match(/window\.setTimeout\(/g)).toHaveLength(1)
+      expect(code).toContain('15000)')
+      expect(code).toContain('window.clearTimeout(timer)')
+      expect(code).toContain('new IntersectionObserver(')
+      expect(code).toContain('observer.disconnect()')
+    }
     expect(code).not.toMatch(/demo-trip|demo-road-trip|shirakawa|hokkaido|bangkok|japan/i)
     expect(code).not.toMatch(/(?:trip\.slug|country|dayNumber|placeId|cam\.label)\s*===\s*['"\d]/)
   }
