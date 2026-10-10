@@ -8,6 +8,7 @@ import { ContentNavigation } from '../components/ContentNavigation'
 import { ExternalLink, MapsAction } from '../components/itinerary/ContentActions'
 import { TodayWeather } from '../components/weather/TodayWeather'
 import { ScreenAwake } from '../components/today/ScreenAwake'
+import { NativeName } from '../components/itinerary/NativeName'
 import { deriveToday, isOperationalDay, type TodayStop } from '../data/today'
 import { calendarDate, formatTripDate } from '../data/tripDates'
 import { timelineTiming, timelineStartInstant, timelineTimeLabel, plannedDelta, tripTime } from '../data/tripTime'
@@ -69,19 +70,19 @@ export function TodayMode() {
       {(nextStop || navigation) && <section className="today-card today-next-stop" aria-label={nextStop ? '主要導航目的地' : '泊車／入口等導航補充'}>
         {nextStop && <>
           <p className="today-kicker">{!actualToday ? '預覽行程主要目的地' : nextStop.item.id === position.current?.id ? '目前計劃目的地' : '後續計劃目的地'}</p>
-          <p className="today-planned-time">{timelineTimeLabel(nextStop.item, 'start')}</p><h2>{nextStop.name}</h2><p>{nextStop.item.title}</p>
+          <p className="today-planned-time">{timelineTimeLabel(nextStop.item, 'start')}</p><h2>{nextStop.name}</h2>{nextStop.localName && <p className="entity-native-name" data-testid="native-name">{nextStop.localName}</p>}<p>{nextStop.item.title}</p>
           {(nextStop.item.optional || nextStop.item.bonus) && <p className="today-tag">可選{nextStop.item.bonus && '／Bonus'}</p>}
           <ExternalLink href={nextStop.maps} label={`Google Maps：主要目的地 ${nextStop.name}`}>↗ 開啟 Google Maps</ExternalLink>
           <p className="today-note">Maps 為外部操作；離線可用程度視乎裝置、網絡及離線地圖設定。</p>
         </>}
         {navigation && <div className="today-navigation"><h2>泊車／入口等導航補充</h2>
-          <p className="today-kicker">{navigationTypes[navigation.type]}</p><h3>{navigation.title}</h3>
+          <p className="today-kicker">{navigationTypes[navigation.type]}</p><h3>{navigation.title}</h3><NativeName entity={navigation} />
           {navigation.description && <p>{navigation.description}</p>}{navigation.warning && <p className="content-warning">⚠ 注意：{navigation.warning}</p>}
           {navigation.id !== nextStop?.target?.id && <MapsAction entity={navigation} name={navigation.title} />}
         </div>}
       </section>}
       <TodayWeather day={day} actualToday={actualToday} now={now.getTime()} />
-      {(accommodation || finalStop) && <section className="today-card today-final" aria-label="住宿及終點"><h2>{accommodation ? (actualToday ? '今日住宿／終點' : '所選日住宿／終點') : (actualToday ? '今日終點' : '所選日終點')}</h2><h3>{accommodation?.name ?? finalStop?.name}</h3>
+      {(accommodation || finalStop) && <section className="today-card today-final" aria-label="住宿及終點"><h2>{accommodation ? (actualToday ? '今日住宿／終點' : '所選日住宿／終點') : (actualToday ? '今日終點' : '所選日終點')}</h2><h3>{accommodation?.name ?? finalStop?.name}</h3>{accommodation ? <NativeName entity={accommodation} /> : finalStop?.localName && <p className="entity-native-name" data-testid="native-name">{finalStop.localName}</p>}
         {accommodation ? <>{accommodation.checkIn && <p>入住時間：{accommodation.checkIn}</p>}{accommodation.address && <p>{accommodation.address}</p>}<MapsAction entity={accommodation} name={accommodation.name} /></> : finalStop && <MapsAction entity={{ mapURL: finalStop.maps }} name={finalStop.name} />}
       </section>}
     </div>

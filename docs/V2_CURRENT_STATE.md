@@ -634,3 +634,40 @@ Repair candidate **v2.0.0-poc.30** updates the visual scenario to test the *new 
 - No canonical Trip Data (including published/current `jp2027.1`), Schema 1–5, weather provider, Supabase, protected images, V1 or Production changes. Remaining item #15 local-language names and #18 transport price presentation belong to R4. **Step 15D remains blocked.**
 
 **QA status:** R3 is staged only, with full pre-merge PR workflow and visual review still required; do not claim R3 PASS until verified.
+
+## Pre-15D QA — R4 Metadata Presentation phase A (10/10/2026)
+
+Candidate POC App Version **v2.0.0-poc.32**, staged on `qa/pre15d-r4-metadata`. R3 PR #11 passed complete PR QA and merged to POC main (commit `5df7fcc`); the main build/Pages gate must be green before merging R4.
+
+R4 original issue grouping: #15 local-language name under every place/hotel/location; #18 transport prices; #19 accommodation categories in Chinese.
+
+- **#18 phase A complete in reusable renderer:** known transport prices now visibly display near the service heading with original amount, currency and notes from the existing safe formatter. Non-walking transport with absent price explicitly shows `費用：未提供，請核實`; walking is not silently assumed free. No fares are guessed or written into Trip Data.
+- **#19 implemented:** recognized accommodation type codes (hotel, lodge, cabin, ryokan, guesthouse, etc.) are shown in Traditional Chinese via one data-agnostic formatter; unknown/native-script descriptive types are shown unchanged. Snapshot type values remain immutable.
+- **#15 not implemented pending data-contract authorization:** strict Schema 5 has no local/native language name field on Place, Accommodation, Transport or NavigationTarget. We cannot reliably infer verified Japanese names from display names, map URLs or addresses. Completing #15 correctly means planning an optional localized name field in a versioned schema/reader update, supporting authored values validated against real sources, and publishing a **new** Trip Data Version after user approval. Existing published `jp2027.1` must not be silently changed. Report tradeoffs before any schema migration; do not claim R4 complete without #15.
+- New metadata-specific Playwright tests cover factual and missing transport price and common Chinese lodging categories; existing display expectations are updated without changing fixture data. All trip renderers remain generic.
+- **QA status:** stage A branch/PR not yet verified. No POC main, Production, Supabase, published snapshot or Step 15D changes for R4.
+
+## R4 authorized Schema 6 local-name contract — POC-only candidate v2.0.0-poc.33 (10/10/2026)
+
+User explicitly approved **Schema 6 in the POC only**, optional local-language name fields and preservation of all older readers; user explicitly **did NOT approve Supabase data changes or publication**.
+
+- Add strict Schema 6 as the successor to Schema 5 exact timing, Weather/JMA, V4 camera and emergency contracts. The only added data fields are optional nonblank `localName` on canonical Places, Accommodations, Transport and NavigationTargets. Schemas 1–5 keep their own unchanged strict object contracts and reject those fields. No implicit upgrade or cache rewrite of older records.
+- `CURRENT_TRIP_SCHEMA_VERSION` = 6; supported reader set = [1,2,3,4,5,6]. Remote version/payload match, validation and IndexedDB remain the same; WeatherSnapshot and exact timing/day selectors are extended to 6 so feature parity is not lost.
+- Generic optional native-name row now appears below the canonical Chinese/display name in Detailed Itinerary, Place Detail dialog, Attractions Overview, Trip Information and Today Mode wherever canonical name data is present. No fabricated translations or locale-/trip-specific branches. Legacy records without `localName` render the old layout unchanged.
+- Rendered names are plain text (React escaped) and source-authored; do not infer from maps, URLs or other display text. Synthetic tests use *explicitly fictional* Japanese-looking values to confirm mechanics, not an authentic location-name dictionary.
+- R4 prior #18 factual/missing transport prices and #19 Chinese lodging-type presentation remain in the branch. App Version candidate increases to **poc.33**.
+- POC-only synthetic Schema 6 validation, strict old-version rejection, remote/cached read, out-of-range version, rendered labels and no-label compatibility regressions added; updated current-version assertions retain the original known Schema 1–5 fixture/data-version and published Japan byte identity checks.
+- **No change to published/current `jp2027.1`** (remains Schema 5), local demo city/road fixtures, production/V1, SQL, Supabase or its trip version rows. Real Japan native-name population remains a separate sourced content work item requiring a validated **new** Trip Data Version and explicit publication authorization. Step 15D remains blocked.
+- Gate: R3 POC main CI+Pages; then complete R4 pull-request QA full Playwright (320/390/430/1024/1440); only merge when verified. Do not claim real January 2027 local names have been populated by this schema change.
+
+### R4 Schema 6 focused QA robustness correction (10/10/2026)
+App Version candidate raised to **v2.0.0-poc.34**. Fictional road-trip Day 1 has no Place item; the Schema6 browser integration test now explicitly opens Day 2 before asserting native-language Place display, and scopes the shared lodging card to avoid multiple matches. This corrects test intent without changing the source data or UI behavior. Previous pending PR QA for poc.33 is superseded; do not merge before fresh complete PR QA PASS and R3 main deployment PASS.
+
+### R4 final static test sweep before full PR QA (10/10/2026)
+Additional audit found one legacy Today Architecture test still hardcoding current Schema 5; revised the *current supported reader* assertion to 6 while preserving its immutable demo versions and source-boundary checks. Added a focused Schema6 inherited exact-timing regression. Candidate App Version increases to **v2.0.0-poc.35**. Older PR QA attempts are superseded; the latest complete PR run is the release gate.
+
+### R4 v2.0.0-poc.35 pre-merge QA failure and correction (10/10/2026)
+
+Run [38005282470](https://github.com/yfgary/travelpilot-poc/actions/runs/38005282470): **2,540 passed / 10 failed**, Build PASS. The 10 failures consist of two outdated unknown-schema Loader cases × five viewport widths, hardcoded to reject Schema6 even though it is now explicitly supported. All other cases, including the new Schema6 remote/cache/local-name/old-schema/exact-timing tests, passed.
+
+Candidate App Version **v2.0.0-poc.36** changes only `tests/loader.spec.ts` to derive the **first unsupported version as CURRENT_TRIP_SCHEMA_VERSION + 1**, rather than hardcoding 6. The tests still require a rejected remote row/payload, the proper unsupported-schema message, **and absolutely no IndexedDB version/pointer/device cache writes**. No security validation is relaxed, and no production/Supabase/Trip Data changes. Latest full PR QA must pass before R4 Merge.

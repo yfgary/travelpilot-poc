@@ -19,6 +19,20 @@ export const timelineTypes: Record<TimelineItem['type'], { icon: string; label: 
 }
 export const placeTypes: Record<Place['type'], string> = { attraction: '景點', nature: '自然', shopping: '購物', food: '餐飲', other: '其他' }
 export const transportTypes: Record<Transport['type'], string> = { flight: '航班', train: '鐵路', bus: '巴士', car: '自駕', ferry: '渡輪', walk: '步行', taxi: '的士', other: '交通' }
+/** Known accommodation category codes mapped into Chinese without altering source data. */
+const accommodationTypeNames: Readonly<Record<string,string>> = {
+  hotel: '酒店', 'business hotel': '商務酒店', 'business-hotel': '商務酒店',
+  ryokan: '日式旅館', 'onsen ryokan': '溫泉旅館', 'onsen-ryokan': '溫泉旅館',
+  lodge: '山莊／旅舍', cabin: '小屋', chalet: '山區木屋', resort: '度假酒店',
+  hostel: '青年旅舍', guesthouse: '民宿', 'guest house': '民宿',
+  minshuku: '日式民宿', apartment: '公寓', aparthotel: '服務式公寓',
+  'serviced apartment': '服務式公寓', 'vacation rental': '度假出租住宿',
+  inn: '旅館', motel: '汽車旅館', homestay: '民宿', villa: '別墅',
+}
+export function accommodationTypeLabel(value: string): string {
+  const type = value.trim()
+  return accommodationTypeNames[type.toLocaleLowerCase('en')] ?? type
+}
 export const severityLabels: Record<HardCut['severity'], string> = { info: '提示', warning: '注意', critical: '嚴重' }
 
 export function formatDuration(minutes: number | undefined): string | undefined {

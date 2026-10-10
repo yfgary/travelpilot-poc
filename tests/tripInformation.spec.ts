@@ -9,7 +9,7 @@ import schema2City from './fixtures/schema2-city.json' with { type: 'json' }
 import schema2Road from './fixtures/schema2-road.json' with { type: 'json' }
 import type { TripSnapshot, Schema2Snapshot } from '../src/data/schema/trip'
 import { emergencyTypes, navigationTypes, formatTransportDateTime, phoneAction, sortedHardCuts, orderedDefinitions } from '../src/data/tripInformation'
-import { formatMoney, resolveMaps } from '../src/data/itinerary'
+import { accommodationTypeLabel, formatMoney, resolveMaps } from '../src/data/itinerary'
 import { legacyCity, legacyRoad } from './legacySnapshots'
 import { seedAuth, mockRemote, remoteVersion, remoteId, remoteSlug, cacheContents } from './tripFixtures'
 import packageMetadata from '../package.json' with { type: 'json' }
@@ -60,16 +60,16 @@ async function seedOldCache(page: Page) {
   return record
 }
 
-test('current 5 supports frozen 1 and 2 and existing 4 without changing source versions', () => {
-  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(5); expect(TRIP_SCHEMA_VERSION).toBe(5)
-  expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5])
+test('current 6 supports frozen 1 and 2 and existing 4 without changing source versions', () => {
+  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(6); expect(TRIP_SCHEMA_VERSION).toBe(6)
+  expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5, 6])
   for (const snapshot of [legacyCity, legacyRoad, city, road, cityRecord.payload, roadRecord.payload]) {
     const result = validateTripSnapshot(snapshot)
     expect(result).toMatchObject({ valid: true, snapshot: { schemaVersion: snapshot.schemaVersion } })
     if (result.valid) expect(result.snapshot).toEqual(snapshot)
   }
   expect(getEmergencyInfo(legacyCity)).toBeUndefined(); expect(getEmergencyInfo(city)).toEqual(city.emergency)
-  for (const schemaVersion of [0, 6, 7, '2', null]) expect(validateTripSnapshot({ ...city, schemaVersion })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
+  for (const schemaVersion of [0, 7, 8, '2', null]) expect(validateTripSnapshot({ ...city, schemaVersion })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
   expect(packageMetadata.version).toMatch(/^2\.0\.0-poc\.\d+$/)
   expect(cityRecord.dataVersion).toBe('demo.city.5'); expect(roadRecord.dataVersion).toBe('demo.road.5')
 })
@@ -128,10 +128,10 @@ for (const [snapshot, rowVersion] of [[city, 1], [legacyCity, 2]] as const) {
     expect((await cacheContents(page)).versions).toEqual([])
   })
 }
-test('future Schema 6 remote row/payload is rejected cleanly', async ({ page }) => {
+test('future Schema 7 remote row/payload is rejected cleanly', async ({ page }) => {
   await seedAuth(page)
-  const version = versionFor(city, 'future.6', 6)
-  await mockRemote(page, () => ({ ...version, payload: { ...version.payload, schemaVersion: 6 } }))
+  const version = versionFor(city, 'future.7', 7)
+  await mockRemote(page, () => ({ ...version, payload: { ...version.payload, schemaVersion: 7 } }))
   await page.goto(info); await expect(page.getByRole('heading', { name: '未支援此旅程資料格式' })).toBeVisible()
   expect((await cacheContents(page)).versions).toEqual([])
 })
@@ -257,7 +257,7 @@ test('self-drive and rich accommodations reuse canonical cards; city omits unsup
   await expect(hotels.getByTestId('accommodation-card')).toHaveCount(road.accommodations.length)
   for (const stay of road.accommodations) {
     const card = hotels.locator(`[data-entity-id="${stay.id}"]`)
-    for (const text of [stay.name, stay.type, stay.room, stay.mealPlan, stay.address, stay.phone, stay.paymentState, formatMoney(stay.total), formatMoney(stay.paid), formatMoney(stay.arrivalPayment), stay.cancellation, stay.parking, stay.checkIn, stay.checkOut]) if (text) await expect(card).toContainText(text)
+    for (const text of [stay.name, accommodationTypeLabel(stay.type), stay.room, stay.mealPlan, stay.address, stay.phone, stay.paymentState, formatMoney(stay.total), formatMoney(stay.paid), formatMoney(stay.arrivalPayment), stay.cancellation, stay.parking, stay.checkIn, stay.checkOut]) if (text) await expect(card).toContainText(text)
     await expect(card.getByRole('link')).toHaveAttribute('href', stay.mapURL!)
   }
   await openLocal(page, city)

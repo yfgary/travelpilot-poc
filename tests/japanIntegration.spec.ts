@@ -135,7 +135,7 @@ test('invalid remote update leaves valid Home/route cache byte-equivalent and ve
 test('Step 15C version/readers/source audit preserves production, database and local fixture boundaries', () => {
   const candidate = /^2\.0\.0-poc\.(\d+)$/.exec(metadata.version)
   expect(candidate).not.toBeNull()
-  expect(Number(candidate![1])).toBeGreaterThanOrEqual(26); expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(5); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1,2,3,4,5])
+  expect(Number(candidate![1])).toBeGreaterThanOrEqual(26); expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(6); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1,2,3,4,5,6])
   expect(localTrips.map((r) => r.dataVersion).sort()).toEqual(['demo.city.5','demo.road.5'])
   const walk = (path: string): string[] => readdirSync(path, { withFileTypes: true }).flatMap((entry) => entry.isDirectory() ? walk(join(path, entry.name)) : [join(path, entry.name)])
   for (const path of walk('src').filter((path) => !path.includes('/demoTrips/'))) {

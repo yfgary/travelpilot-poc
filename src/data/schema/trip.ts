@@ -1,14 +1,15 @@
 import { z } from 'zod'
 import { weatherConfigurationSchema } from './weather'
 
-export const CURRENT_TRIP_SCHEMA_VERSION = 5
+export const CURRENT_TRIP_SCHEMA_VERSION = 6
 export const TRIP_SCHEMA_VERSION = CURRENT_TRIP_SCHEMA_VERSION
-export const SUPPORTED_TRIP_SCHEMA_VERSIONS = [1, 2, 3, 4, 5] as const
+export const SUPPORTED_TRIP_SCHEMA_VERSIONS = [1, 2, 3, 4, 5, 6] as const
 export function isSupportedTripSchemaVersion(value: unknown): value is typeof SUPPORTED_TRIP_SCHEMA_VERSIONS[number] {
   return SUPPORTED_TRIP_SCHEMA_VERSIONS.some((version) => version === value)
 }
 const id = z.string().regex(/^[A-Za-z0-9][A-Za-z0-9._:-]*$/)
 const text = z.string().min(1)
+const nativeName = z.string().trim().min(1, 'Local name must not be empty')
 const date = z.iso.date()
 const time = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/)
 const datetime = z.iso.datetime({ offset: true })
@@ -137,6 +138,20 @@ const versionedSnapshotSchema = z.discriminatedUnion('schemaVersion', [
     })),
     sources: z.array(commonShape.sources.element.extend({ entity: emergencyEntityReference.optional() })),
   }),
+  // Schema 6 adds optional verified local-language names only on these four
+  // entity kinds. Schemas 1–5 stay strict: the new field is NOT accepted there.
+  z.strictObject({ ...commonShape, schemaVersion: z.literal(6), liveCams: z.array(liveCamV4),
+    weather: weatherConfigurationSchema, emergency: emergencySchema,
+    places: z.array(commonShape.places.element.extend({ localName: nativeName.optional() })),
+    accommodations: z.array(commonShape.accommodations.element.extend({ localName: nativeName.optional() })),
+    transport: z.array(commonShape.transport.element.extend({ localName: nativeName.optional() })),
+    navigationTargets: z.array(commonShape.navigationTargets.element.extend({ localName: nativeName.optional() })),
+    days: z.array(commonShape.days.element.extend({
+      timeline: z.array(timeline.extend({ timing: exactTiming.optional() })),
+      optionalContent: z.array(emergencyEntityReference), backupContent: z.array(emergencyEntityReference),
+    })),
+    sources: z.array(commonShape.sources.element.extend({ entity: emergencyEntityReference.optional() })),
+  }),
 ])
 export const tripSnapshotSchema = versionedSnapshotSchema.superRefine((snapshot, ctx) => {
   const issue = (path: (string | number)[], message: string) => ctx.addIssue({ code: 'custom', path, message })
@@ -241,9 +256,10 @@ export type Schema2Snapshot = Extract<TripSnapshot, { schemaVersion: 2 }>
 export type Schema3Snapshot = Extract<TripSnapshot, { schemaVersion: 3 }>
 export type Schema4Snapshot = Extract<TripSnapshot, { schemaVersion: 4 }>
 export type Schema5Snapshot = Extract<TripSnapshot, { schemaVersion: 5 }>
-export type WeatherSnapshot = Schema3Snapshot | Schema4Snapshot | Schema5Snapshot
+export type Schema6Snapshot = Extract<TripSnapshot, { schemaVersion: 6 }>
+export type WeatherSnapshot = Schema3Snapshot | Schema4Snapshot | Schema5Snapshot | Schema6Snapshot
 export function hasWeatherConfiguration(snapshot: TripSnapshot): snapshot is WeatherSnapshot {
-  return snapshot.schemaVersion === 3 || snapshot.schemaVersion === 4 || snapshot.schemaVersion === 5
+  return snapshot.schemaVersion === 3 || snapshot.schemaVersion === 4 || snapshot.schemaVersion === 5 || snapshot.schemaVersion === 6
 }
 export function getEmergencyInfo(snapshot: TripSnapshot) {
   return 'emergency' in snapshot ? snapshot.emergency : undefined

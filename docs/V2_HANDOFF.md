@@ -93,3 +93,23 @@ Recommended new-chat first action:
 - User said go next after R2 PR QA. R2 `poc.30` complete pre-merge QA PASS and was squash-merged to POC `main` (`d20b341`); the R2 main CI+Pages gate must be checked before declaring deployed.
 - R3 candidate v2.0.0-poc.31 on `qa/pre15d-r3-itinerary-layout`: day-jump D number + `day.title`, 3/2/1 image gallery geometry, inline mapped title action, compact timeline/cards and full-information accommodation presentation. Covers #7, #10, #11, #12, #17 only.
 - R3 has new Playwright assertions and existing day jump snapshot expectations updated. Run entire PR QA before merge. Production repo, Supabase and published/current `jp2027.1` unchanged, Step 15D on hold.
+
+## R4 metadata presentation stage A — 10/10/2026
+
+- POC-only `qa/pre15d-r4-metadata`, candidate `v2.0.0-poc.32`; stage A code for #18 visible truthful transport prices and #19 Chinese accommodation type codes with unchanged original data, plus regression coverage.
+- #15 requires user approval of an optional versioned **native-language name** field and verified content-authoring plan because strict Schema 5 has no such field. Do not pretend a Chinese name is a verified Japanese name, and do not change the already published `jp2027.1` snapshot.
+- Check the R3 `poc.31` main CI+Pages gate; run R4 independent PR QA; do not merge an incomplete R4 or start Step 15D.
+
+## R4 Schema 6 approved continuation — 10/10/2026
+
+- User authorized POC Schema 6 + optional local/native name field while preserving Schema 1–5 and explicitly **prohibited publishing or editing Supabase trip data**. Current candidate App Version **v2.0.0-poc.33** on existing Draft PR #12.
+- Schema6 extends Schema5 without rewriting older readers. Only optional `localName` on Place/Accommodation/Transport/NavigationTarget; generic UI renders a second line only when populated.
+- Schema6 has Weather and exact-timing feature parity; readers/schema validation/remote/cache tests updated. POC Test fixture only, not a new Japan snapshot. Published `jp2027.1` remains byte-identical Schema 5; no Supabase requests made to publish/mutate.
+- R4 #18 & #19 were already staged, retained in this PR. Complete GitHub PR QA and review before Merge. Follow-on to reach actual native names in Japan trip is a **separate content authoring + verified-source + new Trip Data Version + publication approval** decision.
+- R3 main CI Pages gate must be verified. V1/Production untouched; Step 15D remains on hold.
+
+- R4 QA fixture correction: v2.0.0-poc.34; Day 2 explicitly opened for Place native-name display, Day 1 lodging scoped. Prior PR CI was superseded; latest run must pass.
+
+- Final R4 premerge audit: v2.0.0-poc.35, updated last stale TodayArchitecture schema assertion and added exact timing inheritance test; only latest PR QA counts.
+
+- R4 pre-merge CI [38005282470](https://github.com/yfgary/travelpilot-poc/actions/runs/38005282470) failed 10 of 2,550 Playwright tests (only two outdated hardcoded Schema6-as-unsupported Loader cases repeated at all five widths). Updated both to CURRENT_TRIP_SCHEMA_VERSION+1 while retaining no-cache assertions; release candidate **v2.0.0-poc.36**. Need new full PR QA green before R4 Merge.

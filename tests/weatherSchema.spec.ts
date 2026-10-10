@@ -14,9 +14,9 @@ const city = schema3City as Schema3Snapshot, road = schema3Road as Schema3Snapsh
 const request = forecastRequest(road, 'road-weather-high')!.request
 
 test('four strict contracts remain readable without changing any source snapshot version', () => {
-  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(5); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5])
+  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(6); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5, 6])
   for (const snapshot of [legacyCity, legacyRoad, schema2City, schema2Road, city, road, ...localTrips.map((record) => record.payload)]) expect(validateTripSnapshot(snapshot)).toMatchObject({ valid: true, snapshot })
-  for (const version of [6, 0, '3', null]) expect(validateTripSnapshot({ ...road, schemaVersion: version })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
+  for (const version of [7, 0, '3', null]) expect(validateTripSnapshot({ ...road, schemaVersion: version })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
   expect(city.schemaVersion).toBe(3); expect(road.schemaVersion).toBe(3)
   expect(localTrips.map((record) => record.dataVersion)).toEqual(['demo.road.5', 'demo.city.5'])
 })

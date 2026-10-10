@@ -12,7 +12,7 @@ export function useTodaySession(snapshot: TripSnapshot, now: Date) {
   const [remembered] = useState(() => read(todayPreviewKey(snapshot.trip.id)))
   const [selection, setSelection] = useState(() => ({ id: selectTodayDay(snapshot, now, remembered)?.id, manual: false }))
   // Re-evaluate exact operational selection on the existing clock; explicit day previews stay put.
-  const followsExactTiming = snapshot.schemaVersion === 5 && snapshot.days.some((day) => day.timeline.some((item) => timelineTiming(item)))
+  const followsExactTiming = snapshot.schemaVersion >= 5 && snapshot.days.some((day) => day.timeline.some((item) => timelineTiming(item)))
   const dayId = followsExactTiming && !selection.manual ? selectTodayDay(snapshot, now, remembered)?.id : selection.id
   const [progress, setProgress] = useState<Record<string, string | null>>(() => Object.fromEntries(snapshot.days.map((day) => {
     const saved = read(todayProgressKey(snapshot.trip.id, day.id))

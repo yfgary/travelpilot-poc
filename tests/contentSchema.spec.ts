@@ -13,11 +13,11 @@ import { forecastRequest } from '../src/services/weather/forecasts'
 import packageMetadata from '../package.json' with { type: 'json' }
 
 test('four strict snapshot readers retain actual source versions and separate release/data versions', () => {
-  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(5); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5])
+  expect(CURRENT_TRIP_SCHEMA_VERSION).toBe(6); expect(SUPPORTED_TRIP_SCHEMA_VERSIONS).toEqual([1, 2, 3, 4, 5, 6])
   for (const snapshot of [legacyCity, legacyRoad, schema2City, schema2Road, schema3City, schema3Road, cityContent, roadContent]) {
     expect(validateTripSnapshot(snapshot)).toMatchObject({ valid: true, snapshot })
   }
-  expect(validateTripSnapshot({ ...roadContent, schemaVersion: 6 })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
+  expect(validateTripSnapshot({ ...roadContent, schemaVersion: 7 })).toMatchObject({ valid: false, reason: 'unsupported-schema' })
   expect(packageMetadata.version).toMatch(/^2\.0\.0-poc\.\d+$/)
 })
 const invalid: [string, (snapshot: Schema4Snapshot) => void][] = [
