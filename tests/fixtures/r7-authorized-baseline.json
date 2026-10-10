@@ -1,0 +1,7 @@
+{
+  "baseCommit": "718b19d06fa779d9a343bebc480de6ceffa7113d",
+  "reason": "Issue #16 authorizes only shared Today full-activity description presentation. All R6 protected hashes stay pinned otherwise.",
+  "hashes": {
+    "src/views/TodayMode.tsx": "97a019bf991a4554d0e51625397d77d6e8727617c819a6142dc1c7725c1220b3"
+  }
+}
