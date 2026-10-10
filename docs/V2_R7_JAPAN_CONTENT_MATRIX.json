@@ -1,0 +1,4792 @@
+{
+  "status": "READ-ONLY AUDIT; NOT A SNAPSHOT OR PUBLISHABLE PATCH",
+  "productionCommit": "8b5129b381d6ace94030b51c7b8de5c4e3d5f533",
+  "pocBaseline": "718b19d06fa779d9a343bebc480de6ceffa7113d",
+  "canonicalPayloadSHA256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+  "version": "jp2027.1",
+  "schemaVersion": 5,
+  "fieldMapping": {
+    "summary/longDescription/whyVisit": "V1 whyLong or why (V1 has no separate introduction contract); compare all three V2 fields, not equivalent fields blindly",
+    "history": "V1 history or background",
+    "localImportance": "V1 importance",
+    "whatToSee": "V1 visit or look",
+    "takeaway": "V1 understand",
+    "winter/fit/time": "V1 notices and itinerary assumptions; no 1:1 Place notice field in Schema5, do not create new schema or inject route logic"
+  },
+  "sources": [
+    {
+      "path": "itinerary.html",
+      "sha256": "ba22545f6c387f45c4156888e1568caf60a822d3cb9d1c383163517dd4e22303"
+    },
+    {
+      "path": "trips/shirakawago-shinhotaka-2027/itinerary.json",
+      "sha256": "b465a11699569f3bbde18a2345f0468e673a536bf9944053fce4e810d97c5944"
+    },
+    {
+      "path": "trips/shirakawago-shinhotaka-2027/attractions.json",
+      "sha256": "417959e0a72fe4dec2232c9fc481356b52b45aaa23c017733d71145fe68b895a"
+    },
+    {
+      "path": "trips/shirakawago-shinhotaka-2027/trip-info.json",
+      "sha256": "6b54f88dba3695793746f2b2f832d5b1a252a83aef46d1f68c6f41737fc36f3c"
+    },
+    {
+      "path": "trips/shirakawago-shinhotaka-2027/hotels.json",
+      "sha256": "20e94d70a158789606e225f6ac958a9e7648bf34de8b0b8274bf38838fa0a120"
+    },
+    {
+      "path": "assets/attraction-info.js",
+      "sha256": "9481683f99139453cb72e0b856d393e30413fa22b714292334a4cfdf5c763531"
+    },
+    {
+      "path": "assets/driving-mode-v1.js",
+      "sha256": "2661f15020d654cce2e7b100f46eb29f7d63a1b948e8e341a9f6edc7ee53ddf7"
+    },
+    {
+      "path": "assets/japan2027-attraction-core-v1.js",
+      "sha256": "7a5dc03cf80dc1d200386f6d97c4b50fbf87990c39823e364d124b9172732a43"
+    },
+    {
+      "path": "assets/travel-mode-v1.js",
+      "sha256": "baf1064bb2223c8729ecc4488ff250a813c9578f93496b1d3a13e83c2eb69d1d"
+    },
+    {
+      "path": "assets/trip-core-v1.js",
+      "sha256": "02f7705ce3b738440a8fcf964c4518e76992f3ddd3c30c902415b4abf8799dde"
+    },
+    {
+      "path": "assets/trip-deep-info-backups.js",
+      "sha256": "ecafb19715f9679baa118a68f80c7cab7ae5f84e3a58c9baf3e21cc2aea1082c"
+    },
+    {
+      "path": "assets/trip-deep-info-d1-d4.js",
+      "sha256": "c2084ef4003df18ce72e2e0861e1017fe887564fddcfe7f5ea478693ddc94020"
+    },
+    {
+      "path": "assets/trip-deep-info-d5-d9.js",
+      "sha256": "5bdf0d131a45db1a72fabf1fdb69cf178d5e55a3221e969f26ad6751447e1270"
+    },
+    {
+      "path": "assets/trip-enhancement-data.js",
+      "sha256": "4f68b969d210c960a93c631cb2242b28f12273b0326ca491603f0d76325902e4"
+    },
+    {
+      "path": "assets/trip-enhancements-v3.js",
+      "sha256": "17a47877ffa8711711410de342126309c042c97f671fa1d125cbc60b82d6b0be"
+    },
+    {
+      "path": "assets/trip-user-overrides.js",
+      "sha256": "b1eb7651c8691d5855900033c6d6f89832f65c51b712648ffad524c9b3ae06d6"
+    },
+    {
+      "path": "assets/trip-v8-7-user-plan.js",
+      "sha256": "8ba11154a1c8da6206a37b752b057ad719719931fc220bf76cdeb0d4604675a1"
+    },
+    {
+      "path": "assets/trip-v8-8-d2-plan.js",
+      "sha256": "a39f8f791efda66a3034cb2bd385cf2c629ec51603f2604613a1d36ce84a8db6"
+    },
+    {
+      "path": "assets/trip-v8-data.js",
+      "sha256": "2f524a0132eccf30a5db5365898708d720d1bb839f1cf06690aa6cf8ec622962"
+    },
+    {
+      "path": "assets/trip-v8-ui.js",
+      "sha256": "4062bf2b0787e84e23e55aa816ca7efc5239c318310e479fb69604e100076156"
+    },
+    {
+      "path": "assets/trip-v9-1-routing.js",
+      "sha256": "c4c1aaf10c55416ad48af87acb8a5ae4630a44bf91e1db21fdb73d7fae439de4"
+    },
+    {
+      "path": "assets/trip-v9-1-visit-fix.js",
+      "sha256": "3f7ffb9613fbca35ecbe487def14201dac27773634c22829635c566dab9e73fe"
+    },
+    {
+      "path": "assets/trip-v9-final-fixes.js",
+      "sha256": "bb5e2eeed2043b6dd61f4c5af81c4c39dbffab82903f0baf2c620cf897971a7a"
+    },
+    {
+      "path": "assets/trip-v8-1-overrides.js",
+      "sha256": "4079c4e424b47f772b856599ef613fbddffccd73850d79ec83fe6140e5a55c38"
+    },
+    {
+      "path": "assets/trip-v8-9-user-fixes.js",
+      "sha256": "dc7cf90fec361e3a1003dbb9955f083782a70fa764902976f4040a91c536b7b5"
+    },
+    {
+      "path": "assets/trip-v9-hotfix.js",
+      "sha256": "d94989e5233d831f6fb1fb41fa5839a347286b06c91b0a1f0643f6bbaf6b02b1"
+    }
+  ],
+  "places": [
+    {
+      "entityId": "jp27-place-matsumoto-castle",
+      "v1Identity": "matsumoto-castle",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 2,
+          "date": "2027-01-10",
+          "title": "國寶松本城",
+          "startTime": "09:15",
+          "endTime": "10:45",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 8,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L8"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 4,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L4"
+        },
+        {
+          "path": "assets/trip-v8-7-user-plan.js",
+          "line": 26,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-7-user-plan.js#L26"
+        },
+        {
+          "path": "assets/trip-v8-8-d2-plan.js",
+          "line": 41,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-8-d2-plan.js#L41"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 85,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L85"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "matsumoto-castle",
+        "aliases": [
+          "松本城"
+        ],
+        "title": "🏯 國寶・松本城",
+        "why": "松本城唔係後世重建嘅外殼，而係日本少數真正保存至今嘅木造現存天守。去到現場最值得感受嘅係：眼前木柱、石垣、護城河同陡梯，真係由戰國末期一路留到今日。",
+        "background": "松本城前身係深志城，現存大天守、乾小天守同渡櫓主要建於16世紀末。外觀五重、內部實際六階；黑色下見板令佢有「烏城」形象。戰國部分有射擊孔、石落等防禦設計，其後太平年代再加月見櫓，所以同一組建築可以同時睇到「打仗」同「賞月」兩種完全唔同用途。",
+        "look": [
+          "由護城河睇黑色天守＋水面倒影；天清時背景可見北阿爾卑斯。",
+          "入天守要留意原有木柱、粗樑、槍炮展示同非常陡嘅木梯，唔係普通現代博物館。",
+          "月見櫓窗面開揚，風格同防禦性強嘅大天守差異好大。"
+        ],
+        "fit": "D1只將 Projection Mapping 當夜間 Bonus；D2主線只安排外圍25–30分鐘，係因為10:00要取4WD。真係想入天守就要接受提早起身／壓縮後面時間，唔應該為咗入城破壞冬季自駕安全Buffer。",
+        "winter": "1月護城河旁、石路、木梯有機會結冰；入天守要除鞋，木地板非常凍，而且樓梯又陡又窄。厚襪、防滑鞋同慢行比趕行程重要。",
+        "time": "外圍25–45分鐘；正式入天守建議60–90分鐘。",
+        "source": "https://www.matsumoto-castle.jp/about/history",
+        "jp": "国宝 松本城（こくほう まつもとじょう）",
+        "whyLong": [
+          "松本城重要嘅地方，唔只係「外表好靚」或者「日本其中一座古城」。日本好多城今日見到嘅天守，其實係戰後用鋼筋混凝土重建；松本城就唔同，佢嘅天守群係由戰國末期一路真正保存落嚟嘅木造建築。你入到去摸到嘅木柱、見到嘅樑架、狹窄樓梯、防禦孔位，唔係現代複製品，而係幾百年前軍事建築本身。",
+          "所以去松本城，重點唔應該只係「影黑色城堡」。你其實係睇緊日本由戰國戰亂走向江戶太平時代嘅轉折：大天守、乾小天守、渡櫓以防守為中心；其後加建嘅辰巳附櫓、月見櫓就明顯冇咁軍事化，甚至有賞月用途。同一組建築同時保存「打仗用」同「和平時期用」兩種性格，呢點非常少見。"
+        ],
+        "history": [
+          "松本城前身叫深志城。16世紀中期武田氏進入信濃後曾控制呢一帶；1582年前後小笠原貞慶重返深志，並將地名由「深志」改稱「松本」。1590年豐臣秀吉把小笠原氏移封，石川數正成為松本城主，之後由石川氏大規模整備城郭、城下町同天守。官方年表記載，1593年石川康長開始天守築造，1590年代中期大致形成今日核心天守群。",
+          "去到江戶初期，松本城再經唔同城主整備。特別係松平直政時代，辰巳附櫓同月見櫓加入原本戰國式天守群，令整體變成「連結複合式天守」。月見櫓窗面開揚、欄杆感強，防禦用途遠低過大天守，正好反映天下逐漸穩定之後，城堡用途開始由純軍事向政治、接待同文化生活轉變。",
+          "明治維新後，日本好多城因廢城令而拆毀。松本城亦曾被拍賣並面臨拆除危機，地方人士市川量造等透過舉辦博覽會、籌款將天守買回；到明治後期天守又因地基同結構問題出現傾斜，再由小林有也等人成立保存組織修理。換句話講，今日可以見到松本城，唔係「自然咁留低」，而係幾代當地人主動保住。"
+        ],
+        "importance": [
+          "點解叫「國寶」？松本城嘅大天守、乾小天守、渡櫓、辰巳附櫓、月見櫓五棟，1936年已按當時《國寶保存法》指定為國寶；戰後新《文化財保護法》成立後，1952年再按現行制度指定為國寶。國寶唔係旅遊宣傳稱號，而係日本文化財制度中對「重要文化財」之中具有極高文化史價值者嘅最高級別指定。",
+          "官方資料特別指出，松本城天守群係罕有嘅連結複合式例子，而且保存咗16世紀末木造天守核心。今日日本只有極少數現存天守，而被指定為國寶嘅城郭天守更加少，所以松本城喺日本城郭史上唔係「其中一座」，而係研究戰國末期天守發展非常關鍵嘅實物。"
+        ],
+        "visit": [
+          "先喺護城河外圍睇黑色下見板、白漆牆、石垣同水面倒影；天氣清時北阿爾卑斯會變成遠景，先理解點解松本城外觀咁有代表性。",
+          "如果入天守，刻意留意木柱、粗樑、樓層高度、火繩槍射擊孔、石落同約60度級陡梯；呢啲全部反映「要打仗」而唔係「方便遊客」嘅設計。",
+          "比較大天守同月見櫓：一邊封閉、防守感強；另一邊窗面開揚、可以賞月。呢個對比係松本城最值得理解嘅建築故事。",
+          "留意城下町方向：松本城唔係孤立建築，周邊繩手通、中町通就係昔日城下町生活延伸。"
+        ],
+        "understand": "睇完最好記住：松本城真正價值係「原物保存」。佢同大阪城、名古屋城等現代重建天守嘅旅遊體驗根本唔同；你係進入一件400年以上歷史嘅大型木造文化財，而唔係一座仿古博物館。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-matsumoto-castle",
+        "name": "國寶・松本城",
+        "regionId": "jp27-region-matsumoto",
+        "type": "attraction",
+        "summary": "現存木造國寶天守；黑色外觀、護城河與北阿爾卑斯背景係松本最具代表性的歷史景觀。",
+        "imageIds": [
+          "jp27-image-matsumoto"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-historic-outdoor"
+        ],
+        "sourceIds": [
+          "jp27-source-matsumoto-castle"
+        ],
+        "longDescription": "松本城核心價值唔係「古風外觀」，而係16世紀末保存至今的真正木造天守群。大天守、乾小天守、渡櫓保留戰國防禦性；辰巳附櫓、月見櫓則反映進入和平時代後的用途轉變。",
+        "whyVisit": "今程難得去松本，值得用約90分鐘正式入天守；比只看外圍更能理解現存木柱、梁架、狹窄陡梯與防禦設計。",
+        "history": "1590年代石川氏大規模整備城郭與天守。明治後曾面臨拆除及傾斜危機，靠地方保存運動及修復才保留至今；五棟天守建築1952年按現行制度指定為國寶。",
+        "localImportance": "係日本少數現存天守之一，也是研究戰國末期城郭發展的重要實物。",
+        "whatToSee": [
+          "護城河外黑色天守與水面倒影",
+          "原有木柱、粗樑、槍眼與石落",
+          "約60度級陡梯",
+          "比較大天守與月見櫓的軍事／和平用途差異"
+        ],
+        "takeaway": "松本城係400年以上大型木造文化財，不是戰後仿古重建。",
+        "suggestedDurationMinutes": 90,
+        "opening": "08:30",
+        "lastEntry": "16:30",
+        "closing": "17:00",
+        "fee": {
+          "amount": 1200,
+          "currency": "JPY"
+        },
+        "feeNotes": "成人電子日時指定票¥1,200；紙票¥1,300。",
+        "rating": 9.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Matsumoto%20Castle",
+        "officialURL": "https://www.matsumoto-castle.jp/info"
+      },
+      "v1VisitMetadata": {
+        "open": "08:30",
+        "last": "16:30",
+        "close": "17:00",
+        "fee": "成人：電子票 ¥1,200／當日紙票 ¥1,300；小童 ¥400；學齡前免費（現行）",
+        "note": "2027年1月正式票價如有調整，以出發前官方公告為準。12/29–12/31休館。",
+        "source": "https://www.matsumoto-castle.jp/info",
+        "photo": {
+          "show": false,
+          "status": "官方公開頁未見自拍棍全面禁止；天守內樓梯狹窄，現場指示優先。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-matsumoto-projection",
+      "v1Identity": "matsumoto-projection",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 1,
+          "date": "2027-01-09",
+          "title": "松本城 Projection Mapping",
+          "startTime": "20:20",
+          "endTime": "21:00",
+          "optional": true,
+          "bonus": true,
+          "surface": "timeline"
+        },
+        {
+          "dayNumber": 1,
+          "date": "2027-01-09",
+          "surface": "optionalContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 33,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L33"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "matsumoto-projection",
+        "aliases": [
+          "松本城 Projection Mapping",
+          "松本城投影",
+          "Projection Mapping"
+        ],
+        "title": "✨ 松本城冬季光影投影",
+        "jp": "国宝松本城天守 プロジェクションマッピング",
+        "whyLong": [
+          "呢個活動唔係取代日間松本城，而係用夜晚燈光令黑色天守、石垣同城牆變成一個大型光影舞台。對D1嚟講最大價值係：你19:46左右先到松本，正常開城時間已過，但仍然可以用短時間感受到「到咗松本」而唔需要再安排一個長景點。",
+          "如果你已經了解松本城本身係真正現存木造國寶，夜間投影會更加有意思：眼前並唔係普通投影幕，而係400年以上文化財外觀，所以活動本身會刻意只做外部觀賞，唔代表天守夜間開放。"
+        ],
+        "history": [
+          "松本冬季近年持續利用天守、石垣等做大型Projection Mapping活動，內容每年會更新。你呢次2026–27冬季版本已公布於旅程期間舉行，但最終時間、場次仍應出發前再核對。"
+        ],
+        "importance": [
+          "佢嘅價值係「到埗夜晚低體力Bonus」，而唔係歷史理解主體。真正想理解城堡，仍然係日間睇原木結構、城防設計同國寶五棟。"
+        ],
+        "visit": [
+          "先由護城河一帶睇完整天守投影，再慢慢行到角度較側位置睇石垣同月見櫓。",
+          "唔好因為光影效果誤會夜晚可以入天守；正常開城時間結束後只係外觀活動。"
+        ],
+        "understand": "將佢當作第一晚「城市開場」最合理：短、免費、唔需要開車，但航班或者JR一延誤就即Cut。",
+        "fit": "D1酒店Check-in後先決定；如果攰或者JR延誤，直接返酒店休息。D8若非常早到松本亦可以作補看。",
+        "winter": "夜晚體感溫度低，護城河旁更凍；路面結冰時慢行。",
+        "time": "30–45分鐘。",
+        "source": "https://visitmatsumoto.com/"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-matsumoto-projection",
+        "name": "松本城 Projection Mapping 2026-2027",
+        "regionId": "jp27-region-matsumoto",
+        "type": "attraction",
+        "summary": "旅程期間舉行的免費冬季夜間光影活動，將天守與石垣變成短時間、低體力的D1 Bonus。",
+        "imageIds": [
+          "jp27-image-matsumoto"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-historic-outdoor"
+        ],
+        "sourceIds": [
+          "jp27-source-matsumoto-projection"
+        ],
+        "whyVisit": "D1約19:46到松本後正常天守已關，但18:00–22:00仍可看投影；航班或JR延誤就即時取消。",
+        "whatToSee": [
+          "天守外牆與石垣投影",
+          "護城河附近完整視角"
+        ],
+        "takeaway": "夜間活動只補充城市氣氛，真正建築體驗留D2日間。",
+        "suggestedDurationMinutes": 40,
+        "opening": "18:00",
+        "closing": "22:00",
+        "fee": {
+          "amount": 0,
+          "currency": "JPY"
+        },
+        "rating": 8,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Matsumoto%20Castle",
+        "officialURL": "https://visitmatsumoto.com/en/event/detail_3003.html"
+      },
+      "v1VisitMetadata": null
+    },
+    {
+      "entityId": "jp27-place-karuizawa-outlet",
+      "v1Identity": "karuizawa-outlet",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 2,
+          "date": "2027-01-10",
+          "title": "輕井澤王子購物廣場＋午餐",
+          "startTime": "13:15",
+          "endTime": "15:15",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 57,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L57"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 25,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L25"
+        },
+        {
+          "path": "assets/trip-v8-7-user-plan.js",
+          "line": 38,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-7-user-plan.js#L38"
+        },
+        {
+          "path": "assets/trip-v8-8-d2-plan.js",
+          "line": 56,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-8-d2-plan.js#L56"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 101,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L101"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "karuizawa-outlet",
+        "aliases": [
+          "Prince Shopping Plaza",
+          "プリンスショッピングプラザ",
+          "輕井澤 Outlet",
+          "Karuizawa Prince Shopping Plaza"
+        ],
+        "title": "🛍️ 輕井澤王子購物廣場",
+        "why": "佢係站前大型度假型 Outlet，唔係密封式商場；品牌散落喺水池、草地同高原戶外空間。對你最實際價值係將 Shopping 集中一次完成，再直接去千曲。",
+        "background": "輕井澤由避暑別墅區發展成高原度假地，Prince Shopping Plaza 就係車站南口大型商業區，分成多個區域，戶外、運動、服飾、生活品牌集中。",
+        "look": [
+          "先按購物清單睇品牌位置，唔好由一端漫無目的行到另一端。",
+          "冬季戶外空間本身有雪地度假氣氛，但主角仍然係 Shopping。",
+          "食飯最好同購物區域一齊規劃，減少來回。"
+        ],
+        "fit": "D2最後一站，之後直接去戶倉上山田溫泉千曲館。",
+        "winter": "戶外型商場風大，外套唔好留車上。積雪時由停車場去各區亦可能濕滑。",
+        "time": "主線約90分鐘；Backup日可延長。",
+        "source": "https://www.karuizawa-psp.jp/",
+        "jp": "軽井沢・プリンスショッピングプラザ",
+        "whyLong": [
+          "呢度唔係歷史景點，價值係將你想買嘅品牌、戶外用品、生活雜貨同餐飲集中喺一個大型高原式Outlet完成。佢同一般密封式商場唔同，商店沿湖泊、草地同開放空間分散，冬天會有真正高原度假區氣氛。",
+          "你今次安排佢唔係「Shopping越耐越好」，而係當作D2山區景點後嘅集中購物站。因為之後要由輕井澤開去千曲，日落後冬季道路風險增加，所以Outlet時間本身係可以縮、但夜間山路Buffer唔應該縮。"
+        ],
+        "history": [
+          "輕井澤由明治時代開始發展成避暑別墅地，其後鐵路、酒店同滑雪度假設施逐步形成今日高原Resort形象。Prince Shopping Plaza就喺輕井澤站南口，係現代度假商業區一部分。"
+        ],
+        "importance": [
+          "對你行程嘅「重要」係實用性，而唔係文化財價值：一次過Shopping、食飯、暖身，再直接上車去千曲，避免晚晚再搵商場。"
+        ],
+        "visit": [
+          "入場前先睇品牌Map，按「一定要買／有時間先睇」分區。",
+          "戶外品牌、運動品牌同冬季用品可以優先；唔好由一端開始無目標逐間行。",
+          "記住16:30左右離開係Hard Cut，前面景點延誤就縮Outlet。"
+        ],
+        "understand": "將佢當作「行程物流站」會比當一個無限時Shopping Day更合理。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-karuizawa-outlet",
+        "name": "輕井澤王子購物廣場",
+        "regionId": "jp27-region-karuizawa",
+        "type": "shopping",
+        "summary": "輕井澤站南口大型開放式Outlet；D2集中Shopping兼午餐，之後直接去千曲。",
+        "imageIds": [
+          "jp27-image-outlet"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-indoor"
+        ],
+        "sourceIds": [
+          "jp27-source-karuizawa-outlet"
+        ],
+        "whyVisit": "一次過處理品牌、戶外用品、生活雜貨同餐飲，避免後面晚晚搵商場。",
+        "whatToSee": [
+          "先攻最想買品牌",
+          "留意開放式商場冬季保暖"
+        ],
+        "takeaway": "呢站係行程物流站，15:30離開Hard Cut比逛完整個Mall重要。",
+        "suggestedDurationMinutes": 120,
+        "rating": 7.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Karuizawa%20Prince%20Shopping%20Plaza",
+        "officialURL": "https://www.karuizawa-psp.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "2027/1未公布；冬季多數日參考 10:00",
+        "last": "商場無統一最後入場",
+        "close": "2027/1未公布；2026/1多數日參考 19:00（部分日20:00）",
+        "fee": "免費入場",
+        "note": "店舖／餐廳營業時間各有不同；2027年1月官方Calendar推出後再更新。",
+        "source": "https://www.karuizawa-psp.jp/time",
+        "photo": {
+          "show": false,
+          "status": "未見商場一般遊客自拍棍全面禁令；活動區另有規則。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-shiraito",
+      "v1Identity": "shiraito",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 2,
+          "date": "2027-01-10",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 40,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L40"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 11,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L11"
+        },
+        {
+          "path": "assets/trip-v8-7-user-plan.js",
+          "line": 30,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-7-user-plan.js#L30"
+        },
+        {
+          "path": "assets/trip-v8-8-d2-plan.js",
+          "line": 46,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-8-d2-plan.js#L46"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 91,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L91"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "shiraito",
+        "aliases": [
+          "白糸の滝",
+          "白絲瀑布",
+          "白糸瀑布"
+        ],
+        "title": "💧 輕井澤・白絲瀑布",
+        "why": "佢唔係靠巨大落差，而係成幅岩壁有數百條幼細水線滲出，好似一幅白絲簾。冬季仍有地下水流出，雪、綠苔、流水同冰柱會同時出現，質感同普通瀑布完全唔同。",
+        "background": "白絲瀑布約高3米、闊約70米。水主要由地下水經火山地層滲出，因此水量相對穩定，唔係單靠上游河水沖落。呢個成因正正解釋點解佢係一幅橫向水簾，而唔係一條大水柱。",
+        "look": [
+          "企正面先睇完整70米水簾，唔好只影中間一小段。",
+          "行近岩壁留意水由苔蘚、石縫滲出，先最容易理解「地下水瀑布」。",
+          "如果有雪，特別睇白雪、綠苔、流水同冰柱四種層次。"
+        ],
+        "fit": "D2由松本開去白絲，之後經山路直接接鬼押出園，再落輕井澤Outlet，路線連貫。若Highland Way封閉／結冰嚴重，白絲同鬼押要一齊Cut，改用上田線。",
+        "winter": "真正風險係Highland Way山岳道路而唔係瀑布本身；雪軚必要，路況差就唔硬闖。瀑布步道亦可結冰。",
+        "time": "30–45分鐘。",
+        "source": "https://karuizawa-kankokyokai.jp/spot/23206/",
+        "jp": "白糸の滝（しらいとのたき）",
+        "whyLong": [
+          "白絲瀑布值得去，唔係因為佢「高」或者「水量大」，而係因為成個瀑布形成方式同一般河川瀑布完全唔同。你會見到一幅約70米闊嘅岩壁上，地下水由無數石縫滲出，變成一排幼細水線，好似成幅白色絲簾。",
+          "冬季更加容易理解佢特色：周圍可能有白雪、冰柱，但地下水仍然持續流動。即係你同一個畫面會見到「流動嘅水」同「被凍結嘅環境」並存，呢種對比係白絲瀑布1月最值得睇嘅地方。"
+        ],
+        "history": [
+          "白絲瀑布位於輕井澤北部高原，水主要來自火山地層滲透後嘅地下水。雨雪落到地面之後滲入地層，再由岩壁中間滲出，因此唔係靠一條明顯上游河流直接跌落。亦因為地下水供應相對穩定，瀑布全年都有水。",
+          "呢種地質背景同附近淺間山火山活動有關：輕井澤、北輕井澤一帶地貌本身就係火山高原。D2之後再去鬼押出園，實際上係由「火山地下水景觀」一路睇到「火山噴發熔岩景觀」，兩個景點有地質上嘅連貫性。"
+        ],
+        "importance": [
+          "佢唔係日本最大瀑布，但係輕井澤最具代表性自然景點之一，最大特色就係橫向、幼細、地下水型瀑布。對今次行程而言，佢提供咗古城、溫泉、雪山以外另一種冬季自然景觀。"
+        ],
+        "visit": [
+          "到瀑布唔好只企中間影一張相，先由較遠位置睇完整70米水簾，再行近睇水點樣由苔蘚同石縫滲出。",
+          "如果有積雪，留意白雪、綠苔、流動水線同冰柱四層質感；有時細節比大景更靚。",
+          "停車後步行距離短，所以真正需要留意唔係體力，而係停車位、步道路面同Highland Way冬季路況。"
+        ],
+        "understand": "睇完最好知道：白絲瀑布其實係一個「地下水出口」，唔係普通河流跌落山崖。明白呢點之後，成個瀑布會由「一個細瀑布」變成一個幾有地質特色嘅地方。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-shiraito",
+        "name": "輕井澤・白絲瀑布",
+        "regionId": "jp27-region-karuizawa",
+        "type": "nature",
+        "summary": "地下水由約70米闊岩壁滲出形成幼細水簾；冬季雪、冰柱與流動水並存。",
+        "imageIds": [
+          "jp27-image-shiraito"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-snow-walk",
+          "jp27-profile-winter-driving"
+        ],
+        "sourceIds": [
+          "jp27-source-shiraito"
+        ],
+        "longDescription": "白絲瀑布唔係一般河川由高處跌落，而係淺間山火山地層保存的地下水由岩壁大量滲出。冬季畫面會同時見到流動水與結冰環境。",
+        "whyVisit": "自然景觀回報高而停留短，但現已降為D2 Backup；只有Highland Way路況安全、時間非常鬆先考慮。",
+        "whatToSee": [
+          "完整橫向水簾",
+          "岩縫滲水與冰柱",
+          "雪地、綠苔與流水層次"
+        ],
+        "takeaway": "白絲瀑布本質係一個大型地下水出口。",
+        "suggestedDurationMinutes": 40,
+        "rating": 7.8,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=%E7%99%BD%E7%B3%B8%E3%81%AE%E6%BB%9D%20%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E8%BB%BD%E4%BA%95%E6%B2%A2",
+        "officialURL": "https://karuizawa-kankokyokai.jp/spot/23206/"
+      },
+      "v1VisitMetadata": {
+        "open": "戶外公共景點・全天可到",
+        "last": "不適用",
+        "close": "無閘門",
+        "fee": "免費",
+        "note": "冬季建議只在日照時間前往；真正限制係Highland Way路況、積雪與結冰。",
+        "source": "https://karuizawa-kankokyokai.jp/spot/23206/",
+        "photo": {
+          "show": false,
+          "status": "未見官方自拍棍禁令；勿阻塞步道。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-onioshidashi",
+      "v1Identity": "onioshidashi",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 2,
+          "date": "2027-01-10",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 49,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L49"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 18,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L18"
+        },
+        {
+          "path": "assets/trip-v8-7-user-plan.js",
+          "line": 34,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-7-user-plan.js#L34"
+        },
+        {
+          "path": "assets/trip-v8-8-d2-plan.js",
+          "line": 51,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-8-d2-plan.js#L51"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 96,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L96"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "onioshidashi",
+        "aliases": [
+          "鬼押出し園",
+          "鬼押出園"
+        ],
+        "title": "🌋 鬼押出園・淺間山熔岩地貌",
+        "why": "今次行程少數可以直接行喺火山災害留下嘅真實地形上。冬季黑色熔岩被白雪包住，火山荒原同森林反差非常強，亦可以直觀看到淺間山曾經有幾大破壞力。",
+        "background": "1783年淺間山天明大噴發造成大量熔岩及火山碎屑，冷卻後留下今日崎嶇熔岩原。「鬼押出」名稱來自昔日人覺得巨石好似被鬼由山上推出。園內其後設淺間山觀音堂，亦有追悼火山災害死者嘅意義。",
+        "look": [
+          "唔好只望遠山，先睇腳下熔岩孔洞、扭曲形狀同裂縫。",
+          "回望淺間山，將火山方向同腳下熔岩連埋理解。",
+          "觀音堂附近係自然災害同人文記憶交會位置。"
+        ],
+        "fit": "D2白絲之後直接接鬼押，再落輕井澤Outlet最順。若山區道路差，就整段白絲＋鬼押Cut走，改安全Backup。",
+        "winter": "風可以非常大；積雪會遮住熔岩高低差同石縫，行步道要慢。",
+        "time": "50–90分鐘。",
+        "source": "https://www.princehotels.co.jp/amuse/onioshidashi/",
+        "jp": "鬼押出し園（おにおしだしえん）",
+        "whyLong": [
+          "鬼押出園最值得去嘅原因係：你唔係睇一個「整出嚟嘅石頭公園」，而係直接行入1783年淺間山天明大噴發留下嘅真實火山地貌。黑色、扭曲、鋸齒狀嘅熔岩一路鋪開，冬天再被白雪蓋住，會形成今次旅程幾乎獨一無二嘅黑白火山荒原。",
+          "如果白絲瀑布係睇火山地層點樣保存同放出地下水，鬼押出園就係睇火山爆發瞬間點樣改變地表。兩個景點連埋一齊，其實係一堂幾直觀嘅淺間山地質課。"
+        ],
+        "history": [
+          "1783年淺間山「天明噴發」係日本歷史上非常嚴重嘅火山災害之一，大量熔岩、火山碎屑同泥流影響上野、信濃一帶村落。今日鬼押出園所在地保存咗巨大熔岩流冷卻後形成嘅奇岩地貌。",
+          "「鬼押出」呢個名來自民間對巨大岩石來源嘅想像：以前人見到成片難以理解嘅黑色巨岩，形容好似由鬼從火山口推落嚟。園內後來亦建立淺間山觀音堂，帶有祈願同追悼火山災害死者嘅宗教意味。"
+        ],
+        "importance": [
+          "佢重要唔係因為某一件單獨建築，而係因為災害地貌本身保存得非常直接。你可以由腳下熔岩形狀，聯想到火山噴發、熔岩流動、冷卻同人類災害記憶，係自然史同人文史交會嘅地方。"
+        ],
+        "visit": [
+          "先睇腳下熔岩孔洞、裂縫同扭曲形狀，唔好一開始只望遠山。",
+          "再抬頭對返淺間山方向，將火山源頭同腳下熔岩連起來。",
+          "去到觀音堂附近，理解點解自然災害之後人會建立祈願、追悼場所。",
+          "冬天如果有積雪，特別留意黑色熔岩露出位同白雪形成嘅層次。"
+        ],
+        "understand": "睇完最好唔只記得「好多石頭」，而係明白成個園區其實係1783年災害留低嘅地表記錄。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-onioshidashi",
+        "name": "鬼押出園",
+        "regionId": "jp27-region-karuizawa",
+        "type": "nature",
+        "summary": "1783年淺間山天明大噴發留下的熔岩荒原；冬季黑色熔岩與白雪對比強烈。",
+        "imageIds": [
+          "jp27-image-onioshidashi"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-snow-walk",
+          "jp27-profile-winter-driving"
+        ],
+        "sourceIds": [
+          "jp27-source-onioshidashi"
+        ],
+        "longDescription": "園內地貌係歷史噴發真正留下的熔岩流冷卻結果，亦保留火山災害與觀音堂追悼故事。",
+        "whyVisit": "景觀類型同古城、雪村、溫泉完全不同，但現只做D2 Backup，唔應該為佢壓縮Outlet或千曲入住時間。",
+        "whatToSee": [
+          "熔岩裂縫與扭曲形狀",
+          "淺間山方向",
+          "雪覆熔岩黑白對比"
+        ],
+        "takeaway": "成個園區係1783年火山災害留低的地表記錄。",
+        "suggestedDurationMinutes": 60,
+        "fee": {
+          "amount": 700,
+          "currency": "JPY"
+        },
+        "feeNotes": "成人票參考；道路通行費另計，2027出發前再確認。",
+        "rating": 7.6,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=%E9%AC%BC%E6%8A%BC%E5%87%BA%E3%81%97%E5%9C%92",
+        "officialURL": "https://www.princehotels.co.jp/amuse/onioshidashi/"
+      },
+      "v1VisitMetadata": {
+        "open": "08:00",
+        "last": "16:30",
+        "close": "17:00",
+        "fee": "成人 ¥700／小童 ¥500／學齡前免費",
+        "note": "全年營業；天氣或積雪可能影響部分步道。",
+        "source": "https://www.princehotels.co.jp/amuse/onioshidashi/",
+        "photo": {
+          "show": false,
+          "status": "未見官方自拍棍禁令；積雪步道以安全為先。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-obuse",
+      "v1Identity": "obuse",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 3,
+          "date": "2027-01-11",
+          "title": "小布施舊街＋栗之小徑",
+          "startTime": "10:00",
+          "endTime": "11:15",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 89,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L89"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 32,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L32"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 106,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L106"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "obuse",
+        "aliases": [
+          "栗の小径",
+          "栗徑",
+          "栗之小徑",
+          "小布施舊街",
+          "小布施"
+        ],
+        "title": "🌰 小布施舊街・栗之小徑",
+        "why": "你去小布施唔係只為一間美術館，而係睇「栗子＋北齋＋町屋」點樣變成一個完整小鎮。你偏好街景同食物，所以栗菓子、栗飯、老店同細巷會比長時間睇畫更啱你。",
+        "background": "小布施自江戶時代已以栗聞名，後來形成多間栗菓子老店。葛飾北齋晚年亦多次到小布施創作。栗之小徑以栗木鋪路，連接北齋館、老店同傳統町屋，將兩種地方特色放埋一齊。",
+        "look": [
+          "栗木路面、土牆、瓦屋同庭園先係街景核心。",
+          "試栗おこわ、栗羊羹或栗甜品，季節供應以當日為準。",
+          "留意老店包裝、地方食品同細巷，唔需要打卡式趕點。"
+        ],
+        "fit": "D3由千曲去澀溫泉途中先到小布施，再去JA Oranche，最後15:00前入溫泉旅館。",
+        "winter": "成人の日部分店舖營業需再查；石／木路遇雪會滑。",
+        "time": "主線約75分鐘；加北齋館另30–45分鐘。",
+        "source": "https://www.obusekanko.jp/",
+        "jp": "小布施・栗の小径（おぶせ・くりのこみち）",
+        "whyLong": [
+          "小布施值得去唔係因為「有一條古街」咁簡單，而係呢個細鎮將三樣嘢放得非常集中：栗子飲食文化、葛飾北齋晚年創作、傳統町家街景。你行一個細範圍已經可以同時食、買、睇建築同理解地方文化。",
+          "對你嚟講，主角應該係街景＋栗菓子＋地方食物，而唔係硬性將北齋館變成長時間美術館行程。咁樣會更符合你偏好風景、食物、實際地方生活嘅旅行方式。"
+        ],
+        "history": [
+          "小布施自江戶時代已以栗聞名。栗子作為地方農產逐步發展出栗羊羹、栗鹿之子、栗おこわ等老舖文化。另一方面，葛飾北齋晚年受小布施豪商高井鴻山邀請，多次到訪並留下重要作品。",
+          "今日栗之小徑用栗木鋪路，連接北齋館、老店、庭園同町家。佢其實係一條將地方產業同文化記憶串起嘅短巷，而唔只係一條「好影相」嘅路。"
+        ],
+        "importance": [
+          "小布施本身唔係大城市，價值正正在「小而完整」。你可以喺一兩個鐘內明白一個長野小鎮點用農產、藝術同老街塑造自己。"
+        ],
+        "visit": [
+          "留意栗木鋪路、土牆、瓦屋同庭園，而唔係淨係睇商店招牌。",
+          "食栗おこわ、栗羊羹或栗甜品；1月季節產品同秋季會唔同。",
+          "如果對北齋有興趣，再加北齋館；如果只想街景同食物，舊街本身已經完整。"
+        ],
+        "understand": "睇完應該記住「小布施＝栗子＋北齋＋町家」，而唔係只記得買咗一盒手信。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-obuse",
+        "name": "小布施舊街＋栗之小徑",
+        "regionId": "jp27-region-obuse",
+        "type": "attraction",
+        "summary": "栗子文化、葛飾北齋晚年創作與町家街景集中於細小步行區。",
+        "imageIds": [
+          "jp27-image-obuse"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-city-walk"
+        ],
+        "sourceIds": [
+          "jp27-source-obuse"
+        ],
+        "longDescription": "小布施由栗子農產、老店與北齋晚年創作共同塑造地方身份；栗之小徑以栗木鋪路，連接町家、庭園、老店與北齋館。",
+        "whyVisit": "主角係街景、栗菓子同地方食物；唔需要為美術館犧牲溫泉旅館節奏。",
+        "whatToSee": [
+          "栗之小徑",
+          "町屋與庭園",
+          "栗おこわ／栗菓子"
+        ],
+        "takeaway": "小布施可以用「栗子＋北齋＋町家」去理解。",
+        "suggestedDurationMinutes": 75,
+        "rating": 8.2,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Obuse%20Nagano",
+        "officialURL": "https://www.obusekanko.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "栗之小徑／舊街屬公共街道・全天可行",
+        "last": "不適用",
+        "close": "無統一關門時間",
+        "fee": "免費",
+        "note": "栗菓子店、餐廳及個別設施各自有營業時間。",
+        "source": "https://www.obusekanko.jp/",
+        "photo": {
+          "show": false,
+          "status": "公共街道未見自拍棍禁令；勿阻塞行人。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-hokusai",
+      "v1Identity": "hokusai",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 3,
+          "date": "2027-01-11",
+          "title": "北齋館 Optional",
+          "startTime": "11:15",
+          "endTime": "11:55",
+          "optional": true,
+          "bonus": true,
+          "surface": "timeline"
+        },
+        {
+          "dayNumber": 3,
+          "date": "2027-01-11",
+          "surface": "optionalContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 97,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L97"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 39,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L39"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 111,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L111"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "hokusai",
+        "aliases": [
+          "北斎館",
+          "北齋館"
+        ],
+        "title": "🎨 小布施・北齋館",
+        "why": "如果你想明白「北齋點解同小布施有關」，呢度先有答案。重點唔只係《神奈川沖浪裏》，而係北齋80幾歲後喺小布施留下嘅肉筆畫同祭屋台天井畫。",
+        "background": "北齋晚年受小布施豪商高井鴻山邀請，多次由江戶到小布施創作。館內有版畫、肉筆畫同兩座祭屋台，天井嘅龍、鳳凰、男浪、女浪等畫作可直接睇到佢晚年風格。",
+        "look": [
+          "祭屋台天井畫係最值得睇，因為作品同小布施本地祭禮直接連結。",
+          "比較早期浮世繪同晚年肉筆畫，睇畫風點變。",
+          "如果對畫興趣一般，集中最代表性展品即可。"
+        ],
+        "fit": "栗之小徑附近Optional，唔需要另駕車。",
+        "winter": "室內景點，天氣差時特別好用。",
+        "time": "30–45分鐘，真係有興趣可60分鐘。",
+        "source": "https://hokusai-kan.com/",
+        "jp": "北斎館（ほくさいかん）",
+        "whyLong": [
+          "如果你只知道北齋《神奈川沖浪裏》，北齋館最大價值就係話你知：北齋去到80幾歲仍然創作，而且佢同小布施有非常具體嘅關係。你會見到晚年肉筆畫、祭屋台天井畫，唔係單純再睇一批浮世繪複製品。",
+          "所以就算你本身對畫唔算特別有興趣，入30–45分鐘睇代表作，都可以解釋點解小布施會將北齋放喺城市文化中心位置。"
+        ],
+        "history": [
+          "北齋晚年受小布施豪商高井鴻山邀請，多次由江戶前往小布施。館內重要內容包括兩座祭屋台同上面嘅「龍／鳳凰」「男浪／女浪」等天井畫，反映北齋晚年仍然挑戰大型構圖。",
+          "你去嗰日正值大型回歸展期，展品量可能比平時多；但行程仍然以小布施整體體驗為主，唔需要為咗睇晒每件作品拖長時間。"
+        ],
+        "importance": [
+          "北齋係日本藝術史最具國際知名度人物之一；北齋館重要之處係將「世界名畫家」同「小布施本地晚年創作」直接連起來。"
+        ],
+        "visit": [
+          "先睇祭屋台天井畫，因為最有小布施在地性。",
+          "再比較版畫同晚年肉筆畫，睇佢風格點變。",
+          "如果對美術一般，集中幾件核心作品即可。"
+        ],
+        "understand": "你唔需要成為藝術迷；只要睇完知道北齋晚年點解會喺小布施留低作品，已經達到目的。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-hokusai",
+        "name": "北齋館",
+        "regionId": "jp27-region-obuse",
+        "type": "attraction",
+        "summary": "展示葛飾北齋晚年與小布施關係、祭屋台天井畫等；今程只作Optional。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-indoor"
+        ],
+        "sourceIds": [
+          "jp27-source-hokusai"
+        ],
+        "whyVisit": "如果想理解點解小布施將北齋放在地方文化中心位置，用30–45分鐘看代表作已足夠。",
+        "history": "北齋晚年多次受高井鴻山邀請到小布施，留下肉筆畫及祭屋台天井畫。",
+        "whatToSee": [
+          "祭屋台天井畫",
+          "晚年肉筆作品"
+        ],
+        "takeaway": "北齋與小布施係真實晚年創作關係，不只是觀光品牌。",
+        "suggestedDurationMinutes": 40,
+        "opening": "09:00",
+        "lastEntry": "16:30",
+        "closing": "17:00",
+        "fee": {
+          "amount": 1200,
+          "currency": "JPY"
+        },
+        "feeNotes": "2027/1/11展覽期成人¥1,200；出發前再核對。",
+        "rating": 7.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E6%96%8E%E9%A4%A8%20%E5%B0%8F%E5%B8%83%E6%96%BD",
+        "officialURL": "https://hokusai-kan.com/"
+      },
+      "v1VisitMetadata": {
+        "open": "09:00",
+        "last": "16:30",
+        "close": "17:00",
+        "fee": "成人 ¥1,200／高中・大學生 ¥500／小・中學生 ¥300／學齡前免費（行程日期特展票價）",
+        "note": "2026/10/24–2027/1/17特展期間票價；D3 1/11正正在展期內。",
+        "source": "https://50th.hokusai-kan.com/event/event-291/",
+        "photo": {
+          "show": true,
+          "level": "ban",
+          "text": "🚫 北齋館展示室禁止使用自拍神棍、三腳架及一腳架；可拍照範圍亦不可使用。",
+          "source": "https://hokusai-kan.com/rules/"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-oranche",
+      "v1Identity": "oranche",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 3,
+          "date": "2027-01-11",
+          "title": "JA中野市 Oranche",
+          "startTime": "13:05",
+          "endTime": "13:40",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 113,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L113"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 46,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L46"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 116,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L116"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "oranche",
+        "aliases": [
+          "オランチェ",
+          "Oranche",
+          "農産物産館",
+          "JA Oranche"
+        ],
+        "title": "🍎 JA中野市・農產物產館 Oranche",
+        "why": "值得去唔係因為景觀，而係睇到長野產地真正賣乜。JA直賣所同旅客手信店最大分別係更貼近農戶、季節同日常價錢。",
+        "background": "中野市係日本重要菇菌同果樹產區，JA系直賣所將農戶蔬果、菇類、蘋果及加工食品集中出售。冬季水果種類會少過秋季，但菇類、果汁、味噌、米同地方食品仍然有睇頭。",
+        "look": [
+          "先睇當日農產區，有咩就代表當季。",
+          "比較菇類、果汁、果醬、味噌同旅遊區手信價差。",
+          "買少量車上食物／翌日補給，比純買禮盒更實用。"
+        ],
+        "fit": "D3小布施之後往澀溫泉順路，短停35分鐘。",
+        "winter": "1月新鮮水果種類少過秋季；供應每日不同。",
+        "time": "25–35分鐘。",
+        "source": "https://www.nakanokanko.jp/spots/196/",
+        "jp": "農産物産館オランチェ（のうさんぶっさんかん オランチェ）",
+        "whyLong": [
+          "Oranche值得去嘅原因唔係「有景睇」，而係你可以直接見到長野農業產地真正賣乜。旅遊區手信店多數賣包裝產品；JA直賣所更貼近農戶、季節、日常食材同在地價錢。",
+          "中野市係日本重要菇菌同果樹產區，所以你去到唔好只搵「名牌手信」，反而應該睇當日菇類、蘋果、蔬菜、果汁、味噌、米同加工食品，先最有地方感。"
+        ],
+        "history": [
+          "JA系直賣所本身係將農戶產品直接帶去消費者嘅通路。Oranche位於信州中野地區，配合當地果樹同菇菌農業形成地元農產購物點。"
+        ],
+        "importance": [
+          "佢提供嘅係「生活層面」地方理解：你前面睇古街、之後浸溫泉，Oranche就畀你睇當地人食材供應同農業。"
+        ],
+        "visit": [
+          "先睇當日農產區，當日有咩就最能代表季節。",
+          "比較菇類、果汁、果醬、味噌同旅遊區價錢。",
+          "只買車上／酒店實際會食嘅量，唔需要為買而買。"
+        ],
+        "understand": "將佢當作地元超市＋農產直賣體驗，而唔係景點打卡。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-oranche",
+        "name": "JA中野市 農産物産館 Oranche",
+        "regionId": "jp27-region-obuse",
+        "type": "shopping",
+        "summary": "JA系地元農產直賣所，重點係蔬果、菇菌、蘋果與地方加工品。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-indoor"
+        ],
+        "sourceIds": [
+          "jp27-source-oranche"
+        ],
+        "whyVisit": "比純旅客手信店更接近地方日常價錢與農產；順路去澀溫泉前補貨。",
+        "whatToSee": [
+          "菇菌與蘋果",
+          "地元加工品",
+          "當日100円市／新鮮農產（如有）"
+        ],
+        "takeaway": "中野係長野重要水果與菇菌產地，Oranche係最直接的地方農產窗口。",
+        "suggestedDurationMinutes": 35,
+        "rating": 6.8,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=JA%E4%B8%AD%E9%87%8E%E5%B8%82%20%E8%BE%B2%E7%94%A3%E7%89%A9%E7%94%A3%E9%A4%A8%20%E3%82%AA%E3%83%A9%E3%83%B3%E3%83%81%E3%82%A7",
+        "officialURL": "https://www.nakanokanko.jp/spots/196/"
+      },
+      "v1VisitMetadata": {
+        "open": "09:00",
+        "last": "不適用（農產直賣店）",
+        "close": "17:00（官方頁面另有18:00記載，出發前再核對）",
+        "fee": "免費入場",
+        "note": "1/1休息；你D3係1/11。商品售罄時間每日不同。",
+        "source": "https://www.nakanokanko.jp/spots/196/",
+        "photo": {
+          "show": false,
+          "status": "未見官方自拍棍禁令；店內繁忙時收起。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-shibu-onsen",
+      "v1Identity": "shibu-onsen",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 3,
+          "date": "2027-01-11",
+          "title": "澀溫泉街散步",
+          "startTime": "14:20",
+          "endTime": "15:00",
+          "optional": false,
+          "surface": "timeline"
+        },
+        {
+          "dayNumber": 3,
+          "date": "2027-01-11",
+          "title": "一乃湯果亭＋九湯巡禮",
+          "startTime": "15:00",
+          "endTime": "17:30",
+          "optional": false,
+          "surface": "timeline"
+        },
+        {
+          "dayNumber": 3,
+          "date": "2027-01-11",
+          "title": "澀溫泉夜行／再浸外湯",
+          "startTime": "20:00",
+          "endTime": "21:30",
+          "optional": true,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 121,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L121"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 53,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L53"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 121,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L121"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "shibu-onsen",
+        "aliases": [
+          "九湯巡",
+          "九湯めぐり",
+          "澀溫泉",
+          "渋温泉"
+        ],
+        "title": "♨️ 澀溫泉・九湯巡禮",
+        "why": "真正特別係「住客先有鎖匙」嘅九個公共外湯。你唔係去一間 Spa，而係穿浴衣行一條仍有居民生活嘅溫泉街，逐間開門、浸湯、蓋印，成條街就係體驗。",
+        "background": "九個外湯本來主要供居民共同使用，入住溫泉街旅館嘅旅客可借專用鎖匙免費巡湯。各浴場泉源、溫度同傳統說法略有不同，形成澀溫泉最獨特嘅住宿文化。",
+        "look": [
+          "唔需要九個都浸足，揀3–5個已經有完整體驗。",
+          "留意木門、細浴槽、石板街同旅館外觀，呢啲先係傳統溫泉鄉氣氛。",
+          "一乃湯果亭本身亦係溫泉旅館，可先旅館浸，再出街巡湯。"
+        ],
+        "fit": "D3刻意14:20左右到溫泉街、15:00入住，就係為咗唔趕九湯；晚飯前後都可以浸。",
+        "winter": "出浴後體感會突然凍；石板路結冰，防滑比「穿足全套浴衣木屐」重要。",
+        "time": "下午＋晚飯後合計2–3小時最舒服。",
+        "source": "https://shibuonsen.net/",
+        "jp": "渋温泉・九湯めぐり（しぶおんせん・きゅうとうめぐり）",
+        "whyLong": [
+          "澀溫泉真正特別嘅地方，唔係「酒店有溫泉」；而係成條街本身就係溫泉設施。九個外湯原本主要俾居民共同使用，入住溫泉街旅館嘅住客先可以借專用鎖匙逐間入。你穿浴衣、攞住鎖匙、行石板街、開一扇扇細木門，呢個過程先係九湯巡禮核心。",
+          "所以唔需要執着「一定浸晒九個」。九個浴場通常細、源泉溫度高，每間氣氛同泉質略有差別。慢慢揀3–5個、沿路蓋印、睇夜晚溫泉街，反而比趕住完成九個更有意思。"
+        ],
+        "history": [
+          "澀溫泉係山之內町歷史溫泉街，居民外湯制度保留至今。九個外湯分布喺狹長溫泉街，傳統上各自有唔同名稱、泉源同民間療效說法。入住街內旅館旅客可借鎖匙巡湯，形成「住宿＝進入整個溫泉街」嘅文化。",
+          "你住一乃湯果亭，本身已係溫泉旅館，亦因此獲得九湯巡禮資格。即係住宿選擇唔只係一張床，而係直接決定你可唔可以參與呢個地方傳統。"
+        ],
+        "importance": [
+          "澀溫泉價值係「仍然運作緊嘅共同浴場文化」，唔係重建觀光街。你會見到旅館住客、居民、浴衣、木屐、細浴場共同構成一個生活型溫泉鄉。"
+        ],
+        "visit": [
+          "Check-in後先問旅館鎖匙、浴巾同巡湯規則。",
+          "唔好一落水就坐到底；先試溫，源泉可以非常熱。",
+          "街上影相、蓋印、食旅館晚餐後再夜巡，氣氛會比一次過連浸九間好。",
+          "浴衣外面記得加羽織／外套，雪地唔好勉強著滑底木屐。"
+        ],
+        "understand": "睇完最好記住：你住嘅唔係一間「有溫泉嘅酒店」，而係一個以居民共同浴場為核心嘅歷史溫泉社區。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-shibu-onsen",
+        "name": "澀溫泉・九湯巡禮",
+        "regionId": "jp27-region-yamanouchi",
+        "type": "attraction",
+        "summary": "石板溫泉街＋住客限定九個共同浴場；住區內旅館可借專用鎖匙巡湯。",
+        "imageIds": [
+          "jp27-image-shibu-day",
+          "jp27-image-shibu-night"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-onsen",
+          "jp27-profile-city-walk"
+        ],
+        "sourceIds": [
+          "jp27-source-shibu"
+        ],
+        "longDescription": "九湯巡禮唔係公共遊客通票；官方規則係住澀溫泉指定旅館的住宿客才可借鎖匙進入九個外湯。",
+        "whyVisit": "今程唯一真正「住在溫泉街入面」的傳統體驗，日落前後穿浴衣慢行最有氣氛。",
+        "whatToSee": [
+          "石板街與木造旅館",
+          "九個外湯不同泉源",
+          "祈願印章"
+        ],
+        "takeaway": "澀溫泉重點係住客身份帶來的溫泉街生活體驗。",
+        "suggestedDurationMinutes": 150,
+        "opening": "06:00",
+        "closing": "22:00",
+        "fee": {
+          "amount": 0,
+          "currency": "JPY"
+        },
+        "feeNotes": "九湯巡禮對住宿客免費；以旅館鎖匙及現場規則為準。",
+        "rating": 9,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Shibu%20Onsen",
+        "officialURL": "https://shibuonsen.net/"
+      },
+      "v1VisitMetadata": {
+        "open": "06:00",
+        "last": "無獨立最後入場時間",
+        "close": "22:00",
+        "fee": "入住澀溫泉街旅館住客持專用鎖匙可免費使用九個外湯",
+        "note": "部分外湯清潔時會短暫關閉；非住宿客一般不可自由使用九湯。",
+        "source": "https://shibuonsen.net/onsen/",
+        "photo": {
+          "show": false,
+          "status": "溫泉街公共範圍未見全面禁令；浴場內涉及私隱，唔好使用攝影器材。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-ganshoin",
+      "v1Identity": "ganshoin",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 3,
+          "date": "2027-01-11",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 105,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L105"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 155,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L155"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 211,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L211"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "ganshoin",
+        "aliases": [
+          "岩松院"
+        ],
+        "title": "🦚 小布施・岩松院",
+        "why": "如果北齋館只係「睇畫」，岩松院就係將北齋作品放返真正寺院空間入面睇。抬頭見到晚年巨型鳳凰天井畫，比例同氣氛同美術館完全唔同。",
+        "background": "岩松院創建於1472年，位於小布施雁田山麓。最有名係北齋晚年大型天井畫「八方睨み鳳凰図」，另外亦有福島正則靈廟同小林一茶相關故事。",
+        "look": [
+          "入本堂第一重點係抬頭睇鳳凰天井畫尺寸、用色同位置。",
+          "寺院山邊環境令佢比純室內美術館多一層地方感。"
+        ],
+        "fit": "D3小布施主行程快咗先去，之後直接JA Oranche→澀溫泉。",
+        "winter": "冬季參拜時間較短；14:15前要離開小布施。",
+        "time": "35–45分鐘。",
+        "source": "https://www.gansho-in.or.jp/",
+        "jp": "岩松院（がんしょういん）",
+        "whyLong": [
+          "岩松院最有意思嘅地方係：你可以喺真正寺院本堂抬頭睇北齋晚年巨型天井畫，而唔係喺白牆美術館入面睇。畫同寺院空間、木結構、香火氣氛一齊出現，比例感會完全唔同。",
+          "如果北齋館係「作品收藏」，岩松院就係「作品仍然留喺原本宗教空間」。對想理解北齋同小布施關係，兩者係互補。"
+        ],
+        "history": [
+          "岩松院創建於1472年，位於小布施雁田山麓。最著名係北齋晚年「八方睨み鳳凰図」，巨大鳳凰畫喺本堂天井；寺院亦同福島正則、小林一茶等歷史人物有關。"
+        ],
+        "importance": [
+          "佢唔係今程核心，但文化密度非常高：一間寺院同時串起戰國武將、俳句、北齋晚年藝術。"
+        ],
+        "visit": [
+          "入本堂第一件事就係抬頭睇鳳凰圖尺寸同位置。",
+          "留意寺院山邊環境，理解點解呢度氣氛同小布施商店街不同。"
+        ],
+        "understand": "如果時間不足，唔去唔會破壞主線；但有45分鐘時，係比「再逛多幾間手信店」更有文化背景嘅Bonus。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-ganshoin",
+        "name": "岩松院",
+        "regionId": "jp27-region-obuse",
+        "type": "attraction",
+        "summary": "小布施寺院；北齋晚年巨型鳳凰天井畫、福島正則靈廟及小林一茶故事集中於一處。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-indoor",
+          "jp27-profile-historic-outdoor"
+        ],
+        "sourceIds": [
+          "jp27-source-obuse"
+        ],
+        "whyVisit": "文化型Backup；如果小布施主線快完成而又想補北齋脈絡先去。",
+        "suggestedDurationMinutes": 40,
+        "fee": {
+          "amount": 500,
+          "currency": "JPY"
+        },
+        "feeNotes": "參考價；冬季參拜時間與費用出發前再查。",
+        "rating": 7.2,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Ganshoin%20Temple%20Obuse",
+        "officialURL": "https://www.gansho-in.or.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "冬季12–3月 09:30",
+        "last": "官方未列獨立最後入場；建議15:00前入",
+        "close": "15:30",
+        "fee": "成人 ¥600／小童 ¥300／學齡前免費",
+        "note": "法事／寺院活動有機會臨時限制參觀。",
+        "source": "https://www.gansho-in.or.jp/",
+        "photo": {
+          "show": true,
+          "level": "ban",
+          "text": "🚫 岩松院本堂內全面禁止以手機／相機攝影，所以本堂內亦唔可以用自拍神棍；戶外境內則以不影響其他參拜者為原則。",
+          "source": "https://ganshoin.com/first/"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-snow-monkey",
+      "v1Identity": "snow-monkey",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 4,
+          "date": "2027-01-12",
+          "title": "地獄谷野猿公苑",
+          "startTime": "10:15",
+          "endTime": "11:30",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 129,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L129"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 60,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L60"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 126,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L126"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "snow-monkey",
+        "aliases": [
+          "地獄谷野猿公苑",
+          "Snow Monkey"
+        ],
+        "title": "🐒 地獄谷野猿公苑・雪猴",
+        "why": "唔係動物園睇猴子，而係近距離睇野生日本獼猴點樣喺豪雪山谷生活。浸溫泉只係其中一個行為；就算當日冇猴子落水，猴群社交、理毛、幼猴活動本身仍然值得睇。",
+        "background": "公苑1964年開苑，位於標高約850米橫湯川山谷。日本獼猴原本就生活喺附近山林，公苑以不設籠舍方式觀察。雪猴浸溫泉因嚴寒環境而聞名，但是否入水完全視氣溫、猴群位置同個體狀態。",
+        "look": [
+          "由上林停車後約30–35分鐘雪路先到，路程本身已係雪谷體驗。",
+          "到場先睇猴群社交、理毛、幼猴同階級互動，唔好只等一張浸湯相。",
+          "保持距離，唔餵、唔摸。"
+        ],
+        "fit": "D4由澀溫泉退房後朝早去，行完雪路再落須坂／AEON；避免夜晚先行山徑。",
+        "winter": "防水防滑鞋／冰爪比相機更重要。導航用「地獄谷野猿公苑専用駐車場」，唔好走冬季關閉林道。",
+        "time": "連來回步行約2.5–3小時。",
+        "source": "https://jigokudani-yaenkoen.co.jp/",
+        "jp": "地獄谷野猿公苑（じごくだにやえんこうえん）",
+        "whyLong": [
+          "地獄谷野猿公苑唔係動物園。猴子並冇被關喺籠入面，而係本身就生活喺附近山林嘅野生日本獼猴；公苑只係提供一個可以長期觀察佢哋活動嘅位置。呢點令你睇到嘅行為——理毛、爭位、幼猴玩耍、母子互動、落溫泉——都唔係訓練表演。",
+          "世界最出名畫面係「雪猴浸溫泉」，但要有正確預期：猴子會唔會落水完全冇保證。氣溫、猴群位置、食物來源、個體行為都會影響。就算當日冇猴子浸湯，近距離睇一群野生獼猴喺深雪環境活動，仍然係公苑真正價值。"
+        ],
+        "history": [
+          "公苑1964年開苑，位於橫湯川山谷、海拔約850米。呢區冬季積雪深、氣溫低，地形又有陡峭山坡同地熱溫泉，所以「地獄谷」名稱本身就來自嚴酷地貌。",
+          "日本獼猴原本喺附近生活，後來有猴子開始利用溫泉，逐步形成今日全球知名「Snow Monkey」形象。公苑長期研究同觀察猴群，亦因攝影同紀錄片而國際知名。"
+        ],
+        "importance": [
+          "地獄谷重要嘅唔係「世界唯一猴子識浸熱水」呢種簡化講法，而係一個長期野生靈長類觀察場所。你可以近距離睇群體結構同冬季適應行為，呢樣係普通動物園好難提供。"
+        ],
+        "visit": [
+          "由「地獄谷野猿公苑専用駐車場」附近出發，先行約30–35分鐘雪地林道；呢段路本身已經係體驗一部分。",
+          "到場先睇整個猴群行為，唔好只霸住溫泉池等相。理毛、階級互動、幼猴同母猴往往更加有趣。",
+          "保持距離，唔餵、唔摸、唔直望挑釁；跟現場規則。",
+          "回程係同一路，但結冰落斜通常比上斜更易跣。"
+        ],
+        "understand": "睇完最好記住：佢係「野生猴群觀察」先行，浸溫泉係bonus行為。咁即使冇最經典畫面都唔會覺得白去。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-snow-monkey",
+        "name": "地獄谷野猿公苑",
+        "regionId": "jp27-region-yamanouchi",
+        "type": "nature",
+        "summary": "冬季雪谷內觀察野生日本獼猴；由上林入口需步行約30–35分鐘雪地林道。",
+        "imageIds": [
+          "jp27-image-snow-monkey",
+          "jp27-image-monkey-trail"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-snow-walk"
+        ],
+        "sourceIds": [
+          "jp27-source-snow-monkey"
+        ],
+        "longDescription": "地獄谷的猴子並非動物園圈養；牠們在周邊山林生活，公苑透過管理餵食吸引猴群到場，因此當日未必一定出現或浸溫泉。",
+        "whyVisit": "雪地步行＋野生動物觀察係今程獨特體驗；真正限制係結冰步道、猴群行動及官方臨時開閉園。",
+        "whatToSee": [
+          "雪地林道",
+          "猴群自然互動",
+          "溫泉邊活動（不保證入浴）"
+        ],
+        "takeaway": "這是野生動物觀察，不是保證「雪猴浸溫泉」表演。",
+        "suggestedDurationMinutes": 75,
+        "opening": "09:00",
+        "lastEntry": "15:30",
+        "closing": "16:00",
+        "feeNotes": "官方已公告2026/12/1起調整入苑費；2027實際成人票價出發前再核對，不沿用舊¥800。",
+        "rating": 9,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Jigokudani%20Yaen%20Koen",
+        "officialURL": "https://en.jigokudani-yaenkoen.co.jp/guide/"
+      },
+      "v1VisitMetadata": {
+        "open": "09:00（11月–3月冬季）",
+        "last": "建議最遲15:30到公苑入口",
+        "close": "16:00",
+        "fee": "現行：成人 ¥800／小童 ¥400／6歲以下免費；官方已公告票價將調整，2027價錢待確認",
+        "note": "由專用停車場行雪路約30–35分鐘先到入口，所以唔好用16:00倒推停車時間。",
+        "source": "https://jigokudani-yaenkoen.co.jp/",
+        "photo": {
+          "show": true,
+          "level": "ban",
+          "text": "🚫 地獄谷野猿公苑官方明確禁止使用自拍神棍；亦禁止 Drone 及其他特殊攝影。",
+          "source": "https://jigokudani-yaenkoen.co.jp/caution/"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-aeon-suzaka",
+      "v1Identity": "aeon-suzaka",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 4,
+          "date": "2027-01-12",
+          "title": "AEON Mall 須坂",
+          "startTime": "13:30",
+          "endTime": "17:00",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 145,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L145"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 67,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L67"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 131,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L131"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "aeon-suzaka",
+        "aliases": [
+          "AEON Mall 須坂",
+          "AEON MALL SUZAKA",
+          "AEON 須坂"
+        ],
+        "title": "🛍️ 須坂 AEON MALL・生活補給",
+        "why": "佢唔係文化景點，而係D4最穩定嘅休息＋Shopping Block。行完地獄谷雪路後可以暖身、食嘢、買超市／日用品，亦為之後白馬同高山補給。",
+        "background": "AEON Mall須坂係北信地區大型商場，將AEON STYLE、服飾、家電、戶外用品、生活雜貨同餐飲集中。自駕最大優點係泊車容易、功能集中。",
+        "look": [
+          "AEON STYLE食品區補水果、牛奶、零食同飲品。",
+          "先睇樓層圖再攻目標店，避免大型Mall漫行。",
+          "晚餐同購物可一次完成，減少到長野後再搵地方。"
+        ],
+        "fit": "D4地獄谷之後去須坂方向完全順路，最後再落長野酒店。",
+        "winter": "室內為主，最穩定。",
+        "time": "2.5–3.5小時。",
+        "source": "https://suzaka.aeonmall.com/",
+        "jp": "イオンモール須坂",
+        "whyLong": [
+          "AEON唔係文化景點，但係你成個旅程好重要嘅「生活補給站」。前幾日都係古街、溫泉街、小鎮，超市選擇零散；D4一次過留長時間畀大型Mall，可以買生果、牛奶、零食、日用品、藥妝、衣物，同時行完地獄谷雪路之後暖身休息。",
+          "對冬季自駕嚟講，呢類室內Block亦係好重要嘅安全設計：如果戶外天氣一般，你唔需要勉強再加景點，直接將時間變成Shopping同食飯，唔會令一日「空咗」。"
+        ],
+        "history": [
+          "イオンモール係日本大型郊外商場形式，須坂店服務北信地區，自駕泊車、超市、餐飲同專門店集中，功能性比景觀性重要。"
+        ],
+        "importance": [
+          "對旅程重要係物流同恢復體力，而唔係歷史。你可以喺呢度將之後白馬、高山幾日需要嘅小食、飲品、日用品一次補齊。"
+        ],
+        "visit": [
+          "先AEON STYLE食品區，再按購物清單去專門店。",
+          "有特定日本品牌就先睇Floor Guide，唔好無目的行3小時。",
+          "如果Snow Monkey拖延，至少保留2.5小時先有實際購物價值。"
+        ],
+        "understand": "呢個點係「旅行維持系統」，唔係為打卡。安排得好，後面幾日會舒服好多。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-aeon-suzaka",
+        "name": "AEON Mall 須坂",
+        "regionId": "jp27-region-nagano",
+        "type": "shopping",
+        "summary": "D4大型生活Shopping時段，可一次處理食品、生果、日用品、服裝、藥妝與補給。",
+        "imageIds": [
+          "jp27-image-aeon-suzaka"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-indoor"
+        ],
+        "sourceIds": [
+          "jp27-source-aeon-suzaka"
+        ],
+        "whyVisit": "前幾日多是旅遊小鎮與溫泉街，留長一點Mall時間可用較貼近當地的價格補貨，也避開傍晚戶外低溫。",
+        "suggestedDurationMinutes": 210,
+        "rating": 6.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=AEON%20MALL%20Suzaka",
+        "officialURL": "https://suzaka.aeonmall.com/"
+      },
+      "v1VisitMetadata": {
+        "open": "專門店／Food Forest 10:00；AEON STYLE食品 08:00；餐廳 11:00",
+        "last": "無統一最後入場",
+        "close": "專門店／餐廳 21:00；AEON STYLE食品 22:00",
+        "fee": "免費入場",
+        "note": "個別店舖營業時間可能不同。",
+        "source": "https://suzaka.aeonmall.com/",
+        "photo": {
+          "show": false,
+          "status": "未見商場一般遊客自拍棍全面禁令；店舖／活動區另有規則。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-suzaka-kura",
+      "v1Identity": "suzaka-kura",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 4,
+          "date": "2027-01-12",
+          "surface": "optionalContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 137,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L137"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 156,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L156"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 216,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L216"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "suzaka-kura",
+        "aliases": [
+          "須坂 蔵之町並み",
+          "須坂蔵之町",
+          "蔵の町並み"
+        ],
+        "title": "🏘️ 須坂・藏之町歷史街區",
+        "why": "如果Snow Monkey早完，呢個係比「再加一個自然景點」更順路嘅文化Bonus。白壁土藏同商家建築背後係須坂昔日製絲業繁盛留下嘅城市記憶。",
+        "background": "須坂喺明治至昭和初期因製絲業興盛，商家、土藏同町屋集中。今日市中心仍保留白壁倉庫、舊商家同相關文化設施。",
+        "look": [
+          "白壁土藏、瓦頂同舊商家街景。",
+          "同AEON新商場形成「舊須坂／新須坂」直接對比。"
+        ],
+        "fit": "地獄谷早完 → 須坂藏之町 → AEON Mall須坂 → 長野，最順。",
+        "winter": "唔好令AEON主Shopping少過約2.5小時。",
+        "time": "30–45分鐘。",
+        "source": "https://www.suzaka-kankokyokai.jp/",
+        "jp": "須坂・蔵の町並み（すざか・くらのまちなみ）",
+        "whyLong": [
+          "須坂Bonus價值係睇「一個地方點因製絲業發達而留下倉庫同商家街」。佢唔似熱門古城咁觀光化，白壁土藏、舊商家同普通城市生活混埋一齊，反而容易見到明治至昭和早期地方產業痕跡。",
+          "你D4本身已經要去須坂AEON，所以如果Snow Monkey早完，呢度係非常順路嘅文化補充，唔需要為加景點再翻山越嶺。"
+        ],
+        "history": [
+          "須坂喺近代曾因製絲業繁榮，蠶絲商、倉庫同相關商業帶動市街發展。今日市中心仍可見白壁土藏、舊商家建築，部分成為文化設施或商店。"
+        ],
+        "importance": [
+          "佢代表嘅係長野北部近代產業史，而唔係戰國史。對整個行程可以補一段你其他景點較少接觸嘅「近代地方工業」背景。"
+        ],
+        "visit": [
+          "睇白壁倉、瓦頂、舊商家門面。",
+          "唔需要逐間設施入，30–45分鐘行主要街段已足夠。"
+        ],
+        "understand": "呢度係「順路文化Bonus」，唔係要取代AEON或者Snow Monkey主線。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-suzaka-kura",
+        "name": "須坂・蔵之町並み",
+        "regionId": "jp27-region-nagano",
+        "type": "attraction",
+        "summary": "白壁土藏、舊商家與製絲業時代街景；Snow Monkey早完先加。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-city-walk"
+        ],
+        "sourceIds": [
+          "jp27-source-suzaka"
+        ],
+        "whyVisit": "同AEON同市，繞路少；用30–45分鐘補一個生活化舊街，而唔壓縮主Shopping。",
+        "suggestedDurationMinutes": 40,
+        "rating": 7,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Suzaka%20Nagano",
+        "officialURL": "https://www.suzaka-kankokyokai.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "歷史街道全天可行；觀光交流中心參考09:00",
+        "last": "街道不適用",
+        "close": "交流中心參考17:00",
+        "fee": "街區免費",
+        "note": "交流中心通常星期三休息，另有年末年始休館；你D4係星期二。",
+        "source": "https://www.suzaka-kankokyokai.jp/",
+        "photo": {
+          "show": false,
+          "status": "公共歷史街區未見自拍棍禁令；室內設施依現場指示。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-hakuba-iwatake",
+      "v1Identity": "hakuba-iwatake",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 5,
+          "date": "2027-01-13",
+          "title": "白馬岩岳 Mountain Resort",
+          "startTime": "10:20",
+          "endTime": "12:20",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 8,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L8"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 74,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L74"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 136,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L136"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "hakuba-iwatake",
+        "aliases": [
+          "白馬岩岳",
+          "HAKUBA MOUNTAIN HARBOR",
+          "IWATAKE WHITE PARK",
+          "Mountain Harbor",
+          "White Park"
+        ],
+        "title": "🏔️ 白馬岩岳山岳度假村",
+        "why": "你唔滑雪都值得去，因為坐Gondola就可以上開揚山頂，正面睇白馬三山同北阿爾卑斯。Mountain Harbor係「坐住飲咖啡都睇到大雪山」嘅非滑雪玩法。",
+        "background": "白馬岩岳標高約1,289米，冬季係滑雪場，但山頂近年將觀景、餐飲同雪地休閒做成非滑雪客都可用嘅Resort。HAKUBA MOUNTAIN HARBOR同WHITE PARK其實都係同一個岩岳山頂範圍。",
+        "look": [
+          "Mountain Harbor望白馬三山方向係核心，唔好誤以為要再開車去第二度。",
+          "天清時先值得慢慢留；低雲時山頂景觀價值會大跌。",
+          "WHITE PARK以玩雪／雪景為主，唔需要滑雪裝備。"
+        ],
+        "fit": "D5由長野去高山途中只留呢個大型主景點。13:20左右必須離開，因為之後白馬→高山係長途冬季山路。",
+        "winter": "山頂風大、體感溫度可以比山腳低好多；Gondola因強風有機會慢／停。",
+        "time": "整個岩岳約2.5–3小時。",
+        "source": "https://iwatake-mountain-resort.com/winter",
+        "jp": "白馬岩岳マウンテンリゾート（はくばいわたけ）",
+        "whyLong": [
+          "白馬岩岳對你最特別嘅地方係：你完全唔需要滑雪，都可以坐Gondola直接上山頂，近距離睇白馬三山同北阿爾卑斯。好多滑雪場對非滑雪客嚟講其實「冇乜做」，但岩岳刻意將觀景、咖啡、雪地休閒同山頂散步做成非滑雪客都可以享受嘅體驗。",
+          "岩岳本身係一座獨立山體，唔係單純某條雪道。正因為位置較開揚，山頂向西望白馬三山時視野非常完整。天氣好嗰刻，你會好清楚見到山脊、雪線、谷地高低差，呢種立體感係相片好難表達。"
+        ],
+        "history": [
+          "白馬村自20世紀逐步發展成日本代表性山岳滑雪區。1998年長野冬季奧運令整個白馬谷國際知名，而岩岳後來再由傳統滑雪場向「全年山岳度假村」發展，加入HAKUBA MOUNTAIN HARBOR等觀景設施，令非滑雪客都可以上山。",
+          "你今次唔滑雪，所以岩岳唔應該用「滑雪場」思維去睇。真正主線係Gondola上山→Mountain Harbor→WHITE PARK／雪地散步→落山，而唔係買雪票再研究雪道。"
+        ],
+        "importance": [
+          "白馬岩岳本身唔係文化財，重要性在於佢係白馬谷非常代表性嘅「北阿爾卑斯觀景平台」。對今次旅程而言，佢係第一次真正高位近距離睇大雪山，亦為後面新穗高建立對北阿爾卑斯山景嘅比較。"
+        ],
+        "visit": [
+          "上山前先睇Live Cam；低雲時山腳天氣好，山頂都可能一片白。",
+          "山頂第一重點係望白馬三山方向，再去Mountain Harbor；唔好將時間平均分畀所有設施。",
+          "WHITE PARK只做輕量玩雪／影相即可，唔需要為「玩齊活動」拖過13:20 Hard Cut。",
+          "落山前預留Gondola排隊時間，唔好最後一刻先排。"
+        ],
+        "understand": "睇完最好知道：白馬岩岳＝整個山岳Resort；Mountain Harbor同White Park都係同一個山頂區域入面嘅不同體驗，唔係要再駕車去兩個地方。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-hakuba-iwatake",
+        "name": "白馬岩岳 Mountain Resort",
+        "regionId": "jp27-region-hakuba",
+        "type": "nature",
+        "summary": "不滑雪亦可用觀光Gondola上山，看白馬三山、HAKUBA MOUNTAIN HARBOR及雪地活動區。",
+        "imageIds": [
+          "jp27-image-iwatake",
+          "jp27-image-harbor",
+          "jp27-image-whitepark"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-mountain-operated",
+          "jp27-profile-winter-driving"
+        ],
+        "sourceIds": [
+          "jp27-source-iwatake",
+          "jp27-source-iwatake-rates"
+        ],
+        "longDescription": "白馬岩岳係整個山區Resort，而MOUNTAIN HARBOR及WHITE PARK係山頂內不同體驗。今程定位係純雪景、攝影與輕量玩雪，不是滑雪。",
+        "whyVisit": "北阿爾卑斯視野回報極高；但風、雲量與Gondola運行會直接影響價值，所以Weather Score同官方運行狀態要一齊看。",
+        "whatToSee": [
+          "Gondola上山視野",
+          "白馬三山全景",
+          "MOUNTAIN HARBOR",
+          "WHITE PARK雪地活動"
+        ],
+        "takeaway": "「岩岳＝整個Resort；MOUNTAIN HARBOR＝山頂其中一個觀景點」。",
+        "suggestedDurationMinutes": 120,
+        "fee": {
+          "amount": 2900,
+          "currency": "JPY"
+        },
+        "feeNotes": "官方觀光用Gondola往返成人¥2,900；2026–27當季如有改價，以官方為準。",
+        "rating": 9,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Hakuba%20Iwatake%20Mountain%20Resort",
+        "officialURL": "https://iwatake-mountain-resort.com/winter"
+      },
+      "v1VisitMetadata": {
+        "open": "2026–27 Gondola正式首班待公布；Mountain Harbor參考 08:15；White Park參考 09:00",
+        "last": "2026–27 Gondola最後乘車時間待公布",
+        "close": "Mountain Harbor參考16:00；White Park參考15:00",
+        "fee": "非滑雪觀光票現行參考：成人 ¥2,900／小童 ¥1,600（Gondola來回及山頂區域；2026–27再核對）",
+        "note": "你唔滑雪，唔需要買1日滑雪Lift Pass。2026–27冬季預計12月中至3月尾營業。",
+        "source": "https://iwatake-mountain-resort.com/winter",
+        "photo": {
+          "show": false,
+          "status": "未見官方自拍棍全面禁令；Gondola／觀景位繁忙時勿伸長阻人。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-hida-no-sato",
+      "v1Identity": "hida-no-sato",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 5,
+          "date": "2027-01-13",
+          "surface": "backupContent"
+        },
+        {
+          "dayNumber": 8,
+          "date": "2027-01-16",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 35,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L35"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 157,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L157"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 221,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L221"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "hida-no-sato",
+        "aliases": [
+          "飛驒之里",
+          "飛騨の里"
+        ],
+        "title": "🏡 飛驒之里・古民家戶外博物館",
+        "why": "如果白川鄉係「仍有人住嘅真村」，飛驒之里就係可以集中近距離睇飛驒古民家結構嘅戶外博物館。雪落喺合掌造同茅葺屋上，畫面非常適合冬季。",
+        "background": "飛驒之里係高山市郊民俗村，移築保存多座飛驒地區古民家，包括合掌造、茅葺屋同農村生活設施，目的係保存因水庫、人口變遷等可能消失嘅傳統建築與生活文化。",
+        "look": [
+          "比較合掌造同其他飛驒民家屋頂結構。",
+          "入屋睇圍爐、農具同生活空間，理解唔同於白川鄉「現役村落」嘅保存方式。"
+        ],
+        "fit": "D5 16:00前已到高山先加；或者D6高山市區日早完先補。",
+        "winter": "戶外步道積雪，天黑後就唔值得趕。",
+        "time": "45–75分鐘。",
+        "source": "https://www.hidanosato-tpo.jp/top_lang-ja.html",
+        "jp": "飛騨の里（ひだのさと）",
+        "whyLong": [
+          "飛驒之里最大價值係可以一次過近距離比較多種飛驒古民家，而唔係只睇一間。白川鄉係「仍然有人生活嘅真聚落」；飛驒之里就係「將可能消失嘅傳統建築集中移築保存」嘅戶外民俗博物館。兩者唔係重覆，而係保存方式完全唔同。",
+          "冬季積雪會令茅葺屋頂、池塘、農村小徑特別有層次。你如果D5非常早到高山，呢度比再加一間室內館更符合你偏好風景嘅玩法。"
+        ],
+        "history": [
+          "飛驒地區山多、村落分散，傳統民家因水庫建設、人口變遷同現代化面臨消失。飛驒之里將合掌造、榑葺屋等古民家移築到高山市郊，連同農具、圍爐、生活設施保存，形成一個戶外民俗村。"
+        ],
+        "importance": [
+          "重要性在於「保存生活方式」，唔只係保存屋殼。入屋睇圍爐、農具、空間分配，可以理解飛驒山區以前點樣過冬、工作同生活。"
+        ],
+        "visit": [
+          "比較合掌造同其他屋頂形式，留意點樣應付雪。",
+          "入屋睇圍爐、木樑、農具，唔好只影外觀。",
+          "池塘對面望成組古民家係代表景。"
+        ],
+        "understand": "去過白川鄉再去飛驒之里唔係重覆；一個係活聚落，一個係移築保存教育。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-hida-no-sato",
+        "name": "飛驒之里",
+        "regionId": "jp27-region-takayama",
+        "type": "attraction",
+        "summary": "移築飛驒古民家與合掌造的戶外民家博物館；冬季積雪畫面適合攝影。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-historic-outdoor",
+          "jp27-profile-snow-walk"
+        ],
+        "sourceIds": [
+          "jp27-source-takayama-tourism"
+        ],
+        "whyVisit": "D5很早到高山先加；唔為呢個Backup變成夜間長途駕駛。",
+        "suggestedDurationMinutes": 60,
+        "rating": 8,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida%20no%20Sato",
+        "officialURL": "https://www.hidatakayama.or.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "08:30",
+        "last": "官方未列獨立最後入場；建議16:30前入",
+        "close": "17:00",
+        "fee": "成人 ¥700／小・中學生 ¥200",
+        "note": "全年營業；冬季步道積雪時要預多啲行路時間。",
+        "source": "https://www.hidatakayama.or.jp/spot/detail_1063.html",
+        "photo": {
+          "show": false,
+          "status": "未見官方自拍棍全面禁令；古民家室內狹窄，現場指示優先。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-yatai-kaikan",
+      "v1Identity": "yatai-kaikan",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 5,
+          "date": "2027-01-13",
+          "surface": "backupContent"
+        },
+        {
+          "dayNumber": 8,
+          "date": "2027-01-16",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 44,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L44"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 158,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L158"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 226,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L226"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "yatai-kaikan",
+        "aliases": [
+          "高山祭屋台會館",
+          "祭屋台會館"
+        ],
+        "title": "🎎 高山祭屋台會館",
+        "why": "高山祭本身你1月睇唔到，但屋台會館可以近距離睇真正祭屋台，先明白點解高山祭被視為日本代表性祭禮之一。華麗木雕、金具同巨大車體近睇比相片震撼。",
+        "background": "高山祭由春季山王祭、秋季八幡祭組成，華麗屋台由町眾保存。屋台會館輪流展示真正祭屋台，等非祭期旅客都可理解工藝同祭禮文化。",
+        "look": [
+          "近距離睇木雕、漆、金具同車輪比例。",
+          "留意屋台點樣由整個町共同保存，而唔係單純博物館收藏品。"
+        ],
+        "fit": "D5早到或D6高山市區早完先加，同飛驒之里二選一即可。",
+        "winter": "室內穩定，最適合天氣差時使用。",
+        "time": "40–50分鐘。",
+        "source": "https://www.hidatakayama.or.jp/",
+        "jp": "高山祭屋台会館（たかやままつりやたいかいかん）",
+        "whyLong": [
+          "你1月睇唔到真正高山祭，但屋台會館可以俾你近距離睇到祭典真正使用嘅巨大屋台。相片睇只覺得「華麗」，去到實物面前先會見到木雕、漆、金具、車輪、幾層高結構嘅尺度，先理解點解高山祭係日本代表性祭禮。",
+          "所以佢最適合做文化Backup：如果戶外景點早完，而你又想補一段高山歷史，40–50分鐘已經可以有完整得着。"
+        ],
+        "history": [
+          "高山祭分春季山王祭同秋季八幡祭，由高山各町保存屋台、祭禮儀式同相關工藝。屋台會館輪流展示真實祭屋台，唔係比例模型。高山屋台工藝亦反映飛驒木匠技術、雕刻、漆藝同金工。"
+        ],
+        "importance": [
+          "高山祭係日本非常重要傳統祭禮之一；屋台會館提供非祭期唯一較集中理解屋台工藝同町眾保存文化嘅方法。"
+        ],
+        "visit": [
+          "先由遠處睇整台屋台比例，再行近睇雕刻、金具同漆面。",
+          "留意「町」點樣共同擁有同保存屋台，唔係某個大名私人收藏。"
+        ],
+        "understand": "重點唔係「有幾架靚車」，而係高山地方社區點樣幾百年維持祭禮同工藝。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-yatai-kaikan",
+        "name": "高山祭屋台會館",
+        "regionId": "jp27-region-takayama",
+        "type": "attraction",
+        "summary": "近距離看高山祭華麗祭屋台；天氣差或早到時的室內文化Backup。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-indoor"
+        ],
+        "sourceIds": [
+          "jp27-source-takayama-tourism"
+        ],
+        "whyVisit": "補完整高山祭文化，適合作D5/D8時間鬆時Backup。",
+        "suggestedDurationMinutes": 45,
+        "rating": 8,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Takayama%20Festival%20Floats%20Exhibition%20Hall",
+        "officialURL": "https://www.hidatakayama.or.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "冬季12–2月 09:00",
+        "last": "官方未列獨立最後入場；建議16:00前入",
+        "close": "16:30",
+        "fee": "成人 ¥1,000／高中生 ¥600／小童 ¥500",
+        "note": "全年營業；如果關門前不足40分鐘就唔值得硬加。",
+        "source": "https://www.hidatakayama.or.jp/",
+        "photo": {
+          "show": false,
+          "status": "未見官方自拍棍全面禁令；展示館內避免伸長阻礙其他人。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-shirakawago",
+      "v1Identity": "shirakawago",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 6,
+          "date": "2027-01-14",
+          "title": "白川鄉・荻町合掌村",
+          "startTime": "10:15",
+          "endTime": "11:20",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-core-v1.js",
+          "line": 18,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-core-v1.js#L18"
+        },
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 98,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L98"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 116,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L116"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 166,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L166"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "shirakawago",
+        "aliases": [
+          "荻町合掌村",
+          "白川鄉合掌村",
+          "白川郷合掌村",
+          "白川鄉",
+          "白川郷"
+        ],
+        "title": "🏘️ 世界遺產・白川鄉荻町合掌村",
+        "why": "合掌造唔係造型噱頭，而係一整套為豪雪、養蠶同山村生活而發展出嚟嘅建築。冬天厚雪一鋪上屋頂，你會即刻明白點解屋頂要咁斜、村落要咁排。",
+        "background": "白川鄉荻町同五箇山1995年列入世界文化遺產。陡斜茅葺屋頂有利豪雪滑落，巨大屋頂內部可分多層，過去亦用作養蠶。村內至今仍有人生活，所以唔係主題公園。",
+        "look": [
+          "先村內近距離睇屋頂，再入和田家睇內部，最後展望台睇全村，三個尺度先完整。",
+          "留意好多屋脊方向相近，反映風向、日照同雪地生活經驗。",
+          "農田、水渠、寺社同民居一齊睇，唔好只搵最出名一間屋。"
+        ],
+        "fit": "D6–D8同新穗高互換。新穗高大霧時，白川鄉對能見度依賴較低，所以可以先做。",
+        "winter": "道路、停車場、村內小路都可能有雪；真正暴雪／封路就唔硬去。",
+        "time": "3–4小時，包括午餐、和田家、展望台。",
+        "source": "https://shirakawa-go.gr.jp/",
+        "jp": "白川郷・荻町合掌造り集落（しらかわごう・おぎまち）",
+        "whyLong": [
+          "白川鄉真正值得去唔係因為「啲屋個屋頂好似雙手合十」，而係成個聚落本身就係一套為豪雪山區生存而發展出嚟嘅生活系統。陡斜茅葺屋頂、屋內多層空間、農田、水渠、房屋朝向同山谷地形互相配合，先形成今日世界遺產價值。",
+          "冬天尤其容易一眼睇明建築原因：厚雪壓喺屋頂時，你自然會明白點解屋頂要咁斜；雪地將農田、道路、屋同山谷輪廓變得更清楚，聚落結構反而比夏天更容易理解。"
+        ],
+        "history": [
+          "白川鄉荻町同五箇山合掌造聚落於1995年列入UNESCO世界文化遺產。合掌造係山區豪雪環境下發展嘅大型茅葺民家，屋頂斜度高，內部屋架唔用一般釘固方式，而以傳統木構、繩結等技術形成。",
+          "巨大屋頂下嘅上層空間過去可用作養蠶等生產活動，所以合掌屋唔係單純「為雪而整個三角形」，而係住屋、農業生產同氣候適應結合。",
+          "最重要係：荻町今日仍然有人生活。佢唔係將舊屋搬入主題公園，而係真實村落持續保存，所以遊客要尊重私人物業、農地同居民生活。"
+        ],
+        "importance": [
+          "白川鄉被列世界遺產唔係因為單獨一間屋，而係「聚落整體景觀＋傳統建築＋生活方式」共同保存。你由村內、和田家內部、展望台三個尺度去睇，先真正接近世界遺產價值。"
+        ],
+        "visit": [
+          "先喺村內近距離行，睇唔同合掌屋、農田、水渠同道路。",
+          "入和田家，理解屋內木架、圍爐同上層空間。",
+          "最後去荻町城跡展望台，由高位睇全村房屋方向同山谷關係。",
+          "唔好將車亂駛入住宅區；泊官方村營停車場後步行入村。"
+        ],
+        "understand": "如果只影展望台一張全景，你會錯過一半。白川鄉係「建築點樣配合氣候同生活」嘅世界遺產。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-shirakawago",
+        "name": "世界遺產・白川鄉荻町合掌村",
+        "regionId": "jp27-region-shirakawago",
+        "type": "attraction",
+        "summary": "豪雪山區合掌造聚落；建築、農田、水渠與山谷地形共同構成世界遺產價值。",
+        "imageIds": [
+          "jp27-image-banner",
+          "jp27-image-shirakawago",
+          "jp27-image-shirakawago-view"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-village-scenic",
+          "jp27-profile-winter-driving"
+        ],
+        "sourceIds": [
+          "jp27-source-shirakawago",
+          "jp27-source-shirakawago-access"
+        ],
+        "longDescription": "白川鄉不是主題公園，而是仍有人生活的活聚落。陡斜茅葺屋頂、屋內多層空間、農田、水渠與房屋朝向，全部係對豪雪環境及過往生產方式的回應。",
+        "whyVisit": "冬季厚雪令合掌屋結構原因一眼可見；配合和田家內部與荻町展望台三個尺度，先真正理解聚落。",
+        "history": "荻町與五箇山合掌造聚落1995年列入UNESCO世界文化遺產。大型茅葺屋頂上層過去亦支援養蠶等生產活動。",
+        "localImportance": "世界遺產重點係「聚落整體＋傳統建築＋持續生活」，不是單獨一間打卡屋。",
+        "whatToSee": [
+          "村內近距離合掌屋與水渠",
+          "和田家內部木架",
+          "荻町展望台全村構圖",
+          "尊重私人物業與居民生活"
+        ],
+        "takeaway": "白川鄉係建築點樣配合氣候、農業與生活的完整系統。",
+        "suggestedDurationMinutes": 210,
+        "rating": 10,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Shirakawa-go",
+        "officialURL": "https://shirakawa-go.gr.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "荻町聚落屬公共生活村落・全天可到",
+        "last": "不適用",
+        "close": "無統一關門時間",
+        "fee": "村落步行免費；停車、個別民家／設施另收費",
+        "note": "唔建議夜晚當景點行；冬季停車場、交通管制及設施時間要按當日官方安排。",
+        "source": "https://shirakawa-go.gr.jp/",
+        "photo": {
+          "show": true,
+          "level": "caution",
+          "text": "⚠️ 白川村官方有專頁提醒「使用自拍神棍要小心」；唔係全面禁止，但村內係生活道路，唔好伸出車道、阻塞行人或影響居民。",
+          "source": "https://www.vill.shirakawa.lg.jp/2228.htm"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-wada-house",
+      "v1Identity": "wada-house",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 6,
+          "date": "2027-01-14",
+          "title": "和田家",
+          "startTime": "11:20",
+          "endTime": "11:55",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 107,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L107"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 123,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L123"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 171,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L171"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "wada-house",
+        "aliases": [
+          "和田家"
+        ],
+        "title": "🏠 白川鄉・和田家",
+        "why": "如果只揀一間合掌造入內，和田家最能解釋「屋頂下面其實點生活」。你會由外面嘅雪屋景，轉為睇粗大木樑、圍爐、樓層同養蠶空間。",
+        "background": "和田家係荻町最大級合掌造民家之一，獲指定為國家重要文化財。和田家過去曾擔任名主、番所役人，亦參與焔硝交易，反映佢唔只係普通農家。",
+        "look": [
+          "一樓圍爐、生活器具同接待空間。",
+          "上層粗木樑同合掌屋頂骨架，睇清楚茅葺屋頂點樣被撐起。",
+          "由屋內窗位望返村景，會更明白建築同聚落關係。"
+        ],
+        "fit": "白川鄉村內主線，荻町散步後入屋，再去展望台。",
+        "winter": "鞋底雪水要清乾淨；木梯陡，慢行。",
+        "time": "30–40分鐘。",
+        "source": "https://shirakawa-go.gr.jp/active/13/",
+        "jp": "和田家（わだけ）",
+        "whyLong": [
+          "和田家係你由「外面睇合掌屋」進入「屋入面理解合掌造」最重要一步。外面只會見到一個巨大三角屋頂；入到去先會見到粗大木樑、圍爐、樓層、生活空間，明白成間屋其實係一部適應豪雪同生產活動嘅立體機器。",
+          "如果白川鄉只揀一間合掌屋入內，和田家係最代表性選擇之一，因為建築規模大、歷史身份高，而且係區內國家重要文化財。"
+        ],
+        "history": [
+          "和田家係荻町最大級合掌造民家之一，和田家族過去曾任名主、番所役人，亦參與焔硝（火藥原料）等交易，反映佢唔係普通農家，而係地方上有一定經濟、行政地位嘅家族。",
+          "建築今日仍有人居住，但部分樓層開放參觀。呢種「仍然係住宅，同時係文化財」正正體現白川鄉活聚落特色。"
+        ],
+        "importance": [
+          "被指定為國家重要文化財，原因係建築規模、保存狀態、歷史價值同合掌造代表性。佢係理解白川鄉生活史非常實在嘅例子。"
+        ],
+        "visit": [
+          "一樓先睇圍爐、生活器具同房間用途。",
+          "上層重點睇合掌屋架：木樑點交叉、點撐起巨大茅葺屋頂。",
+          "由屋內窗位望出去，將室內生活同外面聚落連起來。"
+        ],
+        "understand": "睇完和田家之後再望其他合掌屋，你會唔再只見「靚屋頂」，而會想像入面有幾層、點過冬、點工作。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-wada-house",
+        "name": "白川鄉・和田家",
+        "regionId": "jp27-region-shirakawago",
+        "type": "attraction",
+        "summary": "荻町大型合掌造民家及國家重要文化財；最適合由屋內理解木架、圍爐與多層生活空間。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-indoor",
+          "jp27-profile-village-scenic"
+        ],
+        "sourceIds": [
+          "jp27-source-wada"
+        ],
+        "whyVisit": "如果白川鄉只入一間合掌屋，和田家係最具代表性的選擇之一。",
+        "history": "和田家族過去曾任名主、番所役人並參與焔硝交易，反映其地方行政及經濟地位。",
+        "whatToSee": [
+          "一樓圍爐與生活空間",
+          "上層合掌屋架",
+          "由室內窗位理解聚落關係"
+        ],
+        "takeaway": "入屋後再看其他合掌屋，就會由「靚屋頂」變成理解如何過冬和生產。",
+        "suggestedDurationMinutes": 35,
+        "opening": "09:00",
+        "closing": "17:00",
+        "fee": {
+          "amount": 400,
+          "currency": "JPY"
+        },
+        "rating": 8.8,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Wada%20House%20Shirakawa-go",
+        "officialURL": "https://shirakawa-go.gr.jp/active/13/"
+      },
+      "v1VisitMetadata": {
+        "open": "09:00",
+        "last": "官方未列獨立最後入場；建議16:30前入",
+        "close": "17:00",
+        "fee": "成人 ¥400／小學生 ¥200／學齡前免費",
+        "note": "不定休；冬季可能因天候／維護調整。",
+        "source": "https://shirakawa-go.gr.jp/active/13/",
+        "photo": {
+          "show": true,
+          "level": "caution",
+          "text": "⚠️ 和田家位於白川鄉生活村落；白川村官方提醒使用自拍神棍要小心。入屋後空間及樓梯較窄，現場標示／職員指示優先。",
+          "source": "https://www.vill.shirakawa.lg.jp/2228.htm"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-ogimachi-view",
+      "v1Identity": "ogimachi-view",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 6,
+          "date": "2027-01-14",
+          "title": "荻町城跡展望台",
+          "startTime": "13:00",
+          "endTime": "13:50",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 116,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L116"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 130,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L130"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 176,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L176"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "ogimachi-view",
+        "aliases": [
+          "荻町城跡展望台",
+          "城跡展望台",
+          "展望台"
+        ],
+        "title": "📷 白川鄉・荻町城跡展望台",
+        "why": "村內只會見一間間屋；上展望台先可以一眼睇晒成個聚落，理解屋嘅方向、農田、道路同山谷點樣組成一個生活系統。亦係白川鄉最經典全景角度。",
+        "background": "展望台位於舊荻町城跡高地，天然高度俯瞰整個荻町。從高位可見合掌屋並唔係隨便散落，而係同地形、日照、風雪互相配合。",
+        "look": [
+          "先搵和田家、主要道路同河流位置，再睇屋脊方向。",
+          "大雪時唔好只顧影相，要留意平台同步道結冰。",
+          "交通管制／Shuttle安排以當日官方指示為準。"
+        ],
+        "fit": "白川鄉行程最後做最合理，之後直接離村。",
+        "winter": "Shuttle／步行安排可能受雪影響。",
+        "time": "30–50分鐘。",
+        "source": "https://shirakawa-go.gr.jp/",
+        "jp": "荻町城跡展望台（おぎまちじょうせきてんぼうだい）",
+        "whyLong": [
+          "喺村入面行，你只能一間間睇屋；上展望台先可以一眼睇清楚「成條村點擺」。你會見到合掌屋、農田、道路、河谷、山坡之間嘅比例，呢個全景先最容易理解白川鄉係一個完整聚落而唔係一堆散落景點。",
+          "最經典白川鄉全景相就係由呢個方向拍，但如果只為相片上去會可惜。最好係先行村、入和田家，最後由高位「總結」你啱啱睇過嘅地方。"
+        ],
+        "history": [
+          "展望台位於舊荻町城跡高地，天然高度俯瞰聚落。從呢度可以睇到合掌屋屋脊方向、田地分布同山谷空間。"
+        ],
+        "importance": [
+          "佢本身唔係世界遺產核心建築，但係理解世界遺產「聚落整體」最好嘅觀察點。"
+        ],
+        "visit": [
+          "上到去先搵和田家、主道路、河流位置，再睇成村方向。",
+          "雪大時平台同步道可滑，唔好為相片走出安全範圍。",
+          "Shuttle同冬季交通安排按當日官方規則，普通私家車唔好亂駛上去。"
+        ],
+        "understand": "展望台係「把白川鄉由一間屋變成一個系統」嘅地方。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-ogimachi-view",
+        "name": "荻町城跡展望台",
+        "regionId": "jp27-region-shirakawago",
+        "type": "nature",
+        "summary": "由高位俯瞰整個荻町合掌村、田地、道路與山谷，是理解聚落整體最直接的觀察點。",
+        "imageIds": [
+          "jp27-image-shirakawago-view"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-village-scenic"
+        ],
+        "sourceIds": [
+          "jp27-source-shirakawago",
+          "jp27-source-shirakawago-access"
+        ],
+        "whyVisit": "先在村內步行、入和田家，最後上展望台由高位總結整個聚落，會比只影一張全景有意思。",
+        "whatToSee": [
+          "合掌屋屋脊方向",
+          "村內道路與田地",
+          "山谷與聚落尺度"
+        ],
+        "takeaway": "展望台把「一間屋」變成「一個聚落系統」。",
+        "suggestedDurationMinutes": 45,
+        "rating": 9.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Ogimachi%20Castle%20Observation%20Deck",
+        "officialURL": "https://shirakawa-go.gr.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "展望台公共空間；Shuttle參考09:00開始",
+        "last": "Shuttle尾班參考15:40（每20分鐘；12時段通常停駛）",
+        "close": "展望台無統一關門；冬季交通管制優先",
+        "fee": "展望台免費；交通／Shuttle按現場安排",
+        "note": "冬季唔好假設可以自己駕車上展望台；以白川鄉官方當日交通指示為準。",
+        "source": "https://shirakawa-go.gr.jp/faq/",
+        "photo": {
+          "show": true,
+          "level": "caution",
+          "text": "⚠️ 展望台屬白川鄉範圍；白川村官方提醒使用自拍神棍要小心。人多／雪地時尤其唔好伸長阻路。",
+          "source": "https://www.vill.shirakawa.lg.jp/2228.htm"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-shinhotaka",
+      "v1Identity": "shinhotaka",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 7,
+          "date": "2027-01-15",
+          "title": "新穗高纜車／西穗高口",
+          "startTime": "10:35",
+          "endTime": "13:15",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-core-v1.js",
+          "line": 17,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-core-v1.js#L17"
+        },
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 89,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L89"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 81,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L81"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 141,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L141"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "shinhotaka",
+        "aliases": [
+          "新穗高纜車",
+          "新穂高ロープウェイ",
+          "新穗高"
+        ],
+        "title": "🚡 新穗高纜車・北阿爾卑斯高山景",
+        "why": "全程「好天回報最高」景點：唔使行山就上到海拔2,156米，近距離睇北阿爾卑斯雪峰。亦因為低雲時可以乜都睇唔到，所以先值得用D6–D8彈性去等最好嗰日。",
+        "background": "新穗高纜車分兩段上山，第二段使用雙層車廂。西穗高口站位於2,000米以上，已經係真正冬季高山環境；展望台可望西穗高岳、笠岳等北阿爾卑斯群峰。",
+        "look": [
+          "第一件事係上展望台睇四周能見度，唔係先影纜車。",
+          "留意雪線、山脊同深谷高差，清天時立體感遠超相片。",
+          "山頂Live Cam如果已經一片白，唔好因為「車仍然開」就勉強買票。"
+        ],
+        "fit": "D6極好天即去；如果唔夠好，留D7／D8。去完之後其餘日子自動分白川鄉同高山市區。",
+        "winter": "強風可停駛；1月部分停車區安排同夏天不同，導航以新穗高溫泉站冬季可用泊位為準。",
+        "time": "現場2.5–3小時，另加高山來回車程。",
+        "source": "https://shinhotaka-ropeway.jp/",
+        "jp": "新穂高ロープウェイ（しんほたかロープウェイ）",
+        "whyLong": [
+          "新穗高係成個9日行程最「食天氣」亦最值得等好天嘅景點。原因好簡單：你唔需要登山，就可以由奧飛驒山谷一路上到海拔2,156米西穗高口，直接進入真正北阿爾卑斯高山環境。晴天時雪峰、山脊、深谷同遠景層次非常震撼；大霧時就真係可以乜都睇唔到。",
+          "所以你而家D6／D7／D8揀一日去新穗高，唔係「行程不確定」，反而係專門為呢個景點特性設計。固定死某一日，遇大霧照買票上去先係最浪費。"
+        ],
+        "history": [
+          "新穗高纜車由兩段纜車構成，第一段由新穗高溫泉站上鍋平高原，第二段再上西穗高口。第二段使用雙層車廂，係日本非常具代表性纜車設計之一。",
+          "西穗高口位於2,000米以上，已經非常接近高山氣候。展望台可望西穗高岳、笠岳等北阿爾卑斯群峰；你見到嘅唔係「遠處雪山背景」，而係被山脈包圍。"
+        ],
+        "importance": [
+          "對非登山客嚟講，新穗高最大價值就係將本來要專業裝備、體力先容易接近嘅高山視野，變成一般旅客可安全到達。呢點係佢喺日本山岳觀光入面好重要嘅原因。"
+        ],
+        "visit": [
+          "07:45–08:00先睇官方Operation、Live Cam、山頂能見度、風。Live Cam一片白就算纜車開都未必值得。",
+          "上到西穗高口第一時間去展望台，先睇360度山景，再慢慢行其他設施。",
+          "留意山脊同谷地高差，而唔係只影一座山；晴天會見到非常立體嘅地形。",
+          "如果山頂突然入雲，等一陣有時會開，但唔需要無限等。"
+        ],
+        "understand": "新穗高係「用天氣換回報」嘅景點。你網站D6–D8選擇器就係為咗將呢個風險管理好。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-shinhotaka",
+        "name": "新穗高纜車",
+        "regionId": "jp27-region-okuhida",
+        "type": "nature",
+        "summary": "兩段纜車上到海拔2,156米西穗高口，近距離看北阿爾卑斯雪峰；今程最食能見度與風況的景點。",
+        "imageIds": [
+          "jp27-image-shinhotaka"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-mountain-operated",
+          "jp27-profile-winter-driving"
+        ],
+        "sourceIds": [
+          "jp27-source-shinhotaka"
+        ],
+        "longDescription": "第一、第二纜車由新穗高溫泉一路上高山展望位置，第二段使用雙層車廂。山頂回報很高，但強風、雲霧或維修可直接停駛。",
+        "whyVisit": "非登山客亦可以安全接近2,000米以上高地視野；D7固定去，但仍以官方Operation Status及Live Cam決定是否值得上山。",
+        "whatToSee": [
+          "西穗高口展望台360度山景",
+          "雙層纜車",
+          "山脊與谷地高差",
+          "出發前先看官方Live Cam"
+        ],
+        "takeaway": "Weather Score只評估天氣；官方運行狀態永遠優先。",
+        "suggestedDurationMinutes": 160,
+        "fee": {
+          "amount": 3800,
+          "currency": "JPY"
+        },
+        "feeNotes": "第1+第2纜車成人往返¥3,800。",
+        "rating": 9.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Shinhotaka%20Ropeway",
+        "officialURL": "https://shinhotaka-ropeway.jp/en/price/"
+      },
+      "v1VisitMetadata": {
+        "open": "冬季：第1纜車 09:00／第2纜車 09:15",
+        "last": "上山最後：第1纜車 15:30／第2纜車 15:45",
+        "close": "最後下山約16:15",
+        "fee": "來回成人 ¥3,800／小童 ¥1,900",
+        "note": "強風、惡劣天氣或維修可停駛；D6–D8仍以當日官方運行資訊＋Live Cam為準。",
+        "source": "https://shinhotaka-ropeway.jp/",
+        "photo": {
+          "show": false,
+          "status": "未見官方自拍棍全面禁令；纜車車廂內及擠迫位置勿伸長使用。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-hirayu-no-mori",
+      "v1Identity": "hirayu-no-mori",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 7,
+          "date": "2027-01-15",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-backups.js",
+          "line": 7,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-backups.js#L7"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 159,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L159"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 231,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L231"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "hirayu-no-mori",
+        "aliases": [
+          "平湯之森",
+          "ひらゆの森"
+        ],
+        "title": "♨️ 奧飛驒・平湯之森雪見露天溫泉",
+        "why": "如果新穗高早完又想真正感受奧飛驒「雪見露天風呂」，平湯之森比再加一個普通景點更有地域特色。多個露天風呂散落林木之間，冬季雪景先係最強季節。",
+        "background": "平湯係奧飛驒五大溫泉鄉之一，歷史上亦係山岳交通節點。平湯之森係大型日歸溫泉設施，利用當地溫泉設多個內外湯，適合非住宿客短時間體驗奧飛驒溫泉。",
+        "look": [
+          "主角係戶外露天風呂同雪景，唔係建築打卡。",
+          "由新穗高返高山方向會經平湯一帶，唔需要反方向折返。"
+        ],
+        "fit": "D6／D7／D8任何新穗高日都可考慮：新穗高→平湯之森→高山／松本最順。",
+        "winter": "雪地出入浴場溫差大；浸完駕車前一定休息。",
+        "time": "1.5–2小時。",
+        "source": "https://www.hirayunomori.co.jp/",
+        "jp": "ひらゆの森（ひらゆのもり）",
+        "whyLong": [
+          "平湯之森最值得加嘅情況，唔係「仲有時間所以搵樣嘢做」，而係你啱啱完成新穗高、天氣好、返程又有足夠Buffer，而你想將奧飛驒由「睇雪山」延伸成「浸雪見露天風呂」。新穗高係高山景；平湯之森就係用溫泉感受同一個山區。",
+          "奧飛驒溫泉鄉本身就係日本著名山岳溫泉區，平湯係其中交通最方便、歷史亦較深嘅溫泉地。冬天露天風呂旁積雪時，體感同高山市區酒店溫泉完全唔同：你真係喺山谷雪地環境浸。"
+        ],
+        "history": [
+          "平湯位於乘鞍岳、穗高連峰附近，自古已有溫泉利用傳說，後來成為奧飛驒五大溫泉鄉之一。由於位置正處高山往上高地、松本、新穗高等山岳交通節點，亦長期係旅人停留休息地方。",
+          "ひらゆの森係大型日歸溫泉設施，以多個露天風呂同森林環境為特色。佢唔係高級旅館式體驗，而係比較直接、地方化嘅山區溫泉。"
+        ],
+        "importance": [
+          "如果你今次旅行主題有「雪見溫泉」，平湯之森其實比普通市區Spa更能代表奧飛驒。",
+          "但因為你已經住高山櫻庵同澀溫泉，所以佢只能係有時間先加，唔應該搶新穗高主景或者令夜駕疲勞。"
+        ],
+        "visit": [
+          "主角係露天風呂，唔需要追求浸晒每一池。",
+          "浸完至少休息、補水，唔好一上車就立即長途駕駛。",
+          "如果當日已經好攰，寧願返酒店再浸，唔好為「雪見」勉強。"
+        ],
+        "understand": "平湯之森係「山岳溫泉體驗」而唔係另一個觀光打卡點。加唔加取決於體力同時間，而唔係FOMO。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-hirayu-no-mori",
+        "name": "平湯之森",
+        "regionId": "jp27-region-okuhida",
+        "type": "attraction",
+        "summary": "奧飛驒日歸溫泉；雪地露天風呂可作新穗高日有時間先加的山岳溫泉Backup。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-onsen"
+        ],
+        "sourceIds": [
+          "jp27-source-takayama-tourism"
+        ],
+        "whyVisit": "如果新穗高完成得早、道路與體力都好，可將雪山觀景延伸成真正雪見露天溫泉。",
+        "suggestedDurationMinutes": 90,
+        "rating": 8.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Hirayu%20no%20Mori",
+        "officialURL": "https://www.hirayunomori.co.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "10:00",
+        "last": "20:30（最後受付）",
+        "close": "21:00",
+        "fee": "成人 ¥700／小童 ¥500",
+        "note": "日歸溫泉；新穗高日有足夠時間同體力先加，浸完休息先再駕車。",
+        "source": "https://www.hirayunomori.co.jp/",
+        "photo": {
+          "show": false,
+          "status": "官方網站公開頁未見自拍棍條文；浴場屬高度私隱空間，攝影器材應收起並以現場禁攝標示為準。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-bear-park",
+      "v1Identity": "bear-park",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 7,
+          "date": "2027-01-15",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-backups.js",
+          "line": 22,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-backups.js#L22"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 160,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L160"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 236,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L236"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "bear-park",
+        "aliases": [
+          "奧飛驒熊牧場",
+          "奥飛騨クマ牧場"
+        ],
+        "title": "🐻 奧飛驒熊牧場",
+        "why": "如果想睇日本黑熊但又唔會喺冬季野外刻意搵熊，呢度係一個有控制環境嘅Optional。價值主要係近距離觀察熊體型、行為同餵食互動。",
+        "background": "奧飛驒熊牧場係奧飛驒地區長年營運嘅熊展示設施，飼養多隻熊，提供觀察同餵食體驗。佢唔係自然保育區，所以定位應該係輕鬆Optional，而唔係行程核心。",
+        "look": [
+          "留意熊站立、取食同個體體型差異。",
+          "如果對動物園式設施興趣一般，可以直接Skip。"
+        ],
+        "fit": "只適合新穗高日時間非常鬆；高山↔新穗高路線中途順便，唔專程折返。",
+        "winter": "營業時間同道路情況出發前再核對。",
+        "time": "約60分鐘。",
+        "source": "https://www.nande.com/kuma/",
+        "jp": "奥飛騨クマ牧場（おくひだクマぼくじょう）",
+        "whyLong": [
+          "奧飛驒熊牧場係一個非常明確嘅Optional：如果你對日本黑熊有興趣，又想近距離睇體型、動作同餵食反應，可以加；如果你唔鍾意動物園式展示，就完全可以Skip。佢唔係今次路線核心自然景觀，亦唔應該因為「既然順路」就硬塞。",
+          "佢同Snow Monkey性質亦完全唔同。地獄谷係野生獼猴自然觀察；熊牧場係人工飼養展示。呢個分別值得知道，避免將兩個地方都理解成同類型動物景點。"
+        ],
+        "history": [
+          "奧飛驒熊牧場長期展示多隻熊，設有近距離觀察同部分餵食體驗。位置喺高山往新穗高／平湯方向，所以交通上可以順路。"
+        ],
+        "importance": [
+          "旅遊價值主要係動物觀察同家庭式體驗，唔係保育研究區或世界級自然景觀。",
+          "因此優先級必須低過新穗高能見度窗口、冬季路況同返酒店時間。"
+        ],
+        "visit": [
+          "留意熊站立、取食、步態同個體體型差異。",
+          "如果現場人多、時間緊，就唔需要勉強完成所有互動。",
+          "將佢當60分鐘短停，而唔係半日動物園。"
+        ],
+        "understand": "最重要係知道定位：人工飼養展示Optional。你有興趣先去，唔係「去奧飛驒必到」。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-bear-park",
+        "name": "奧飛驒熊牧場",
+        "regionId": "jp27-region-okuhida",
+        "type": "attraction",
+        "summary": "人工飼養熊隻展示；同Snow Monkey野生觀察性質完全不同，只作興趣型Backup。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-indoor"
+        ],
+        "sourceIds": [
+          "jp27-source-takayama-tourism"
+        ],
+        "whyVisit": "只有對熊展示有興趣、D7時間非常鬆先去，優先級低過新穗高與冬季道路安全。",
+        "suggestedDurationMinutes": 60,
+        "rating": 6,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Okuhida%20Bear%20Park",
+        "officialURL": "https://www.nande.com/kuma/"
+      },
+      "v1VisitMetadata": {
+        "open": "冬季12–3月 09:00",
+        "last": "16:00",
+        "close": "16:30",
+        "fee": "官方現行價：成人 ¥1,400／小童 ¥700",
+        "note": "冬季星期三休園。部分旅遊資料仍顯示舊價 ¥1,100／¥600，以牧場官方最新價為準。",
+        "source": "https://www.nande.com/kuma/",
+        "photo": {
+          "show": false,
+          "status": "未見官方自拍棍全面禁令；接近動物時避免伸長器材。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-miyagawa",
+      "v1Identity": "miyagawa",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 8,
+          "date": "2027-01-16",
+          "title": "宮川朝市",
+          "startTime": "09:00",
+          "endTime": "09:40",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 53,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L53"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 88,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L88"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 146,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L146"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "miyagawa",
+        "aliases": [
+          "宮川朝市"
+        ],
+        "title": "🥬 高山・宮川朝市",
+        "why": "高山市區最容易見到「旅遊街以外生活感」嘅地方。攤檔有漬物、味噌、農產同日常小食，適合用短時間理解飛驒人食乜、買乜。",
+        "background": "高山朝市歷史可追溯數百年，宮川沿岸朝市由農家直接擺賣演變至今，仍保留當地食品同季節農產特色。",
+        "look": [
+          "睇漬物、味噌、豆類同飛驒地方食品。",
+          "沿宮川行一段，同三町古街商人街氣氛比較。",
+          "冬季檔口會少啲，但人流亦較舒服。"
+        ],
+        "fit": "高山市區方案朝早第一站，之後高山陣屋→中橋→三町。",
+        "winter": "12–3月營業時間通常較短／較遲，河邊路面會凍。",
+        "time": "30–40分鐘。",
+        "source": "https://www.hidatakayama.or.jp/modelCourse/detail_2.html",
+        "jp": "宮川朝市（みやがわあさいち）",
+        "whyLong": [
+          "宮川朝市唔係要你專程買好多嘢，而係用最簡單方式睇高山「居民日常」一面。三町古街多數係旅客店、酒藏同老町家；朝市就有漬物、味噌、蔬菜、手工品、小食，感覺更貼近地方生活。",
+          "冬季檔口少過旺季，但反而唔需要迫住行。你可以用30–40分鐘睇一圈，之後步行接高山陣屋、三町，成個早上路線非常順。"
+        ],
+        "history": [
+          "高山朝市歷史可追溯數百年，農戶將蔬菜、花、漬物等帶入市區交易。宮川沿岸朝市逐漸成為高山代表日常市場之一，今日仍保留地元食品同農產特色。"
+        ],
+        "importance": [
+          "佢嘅文化價值唔係宏大歷史，而係活生生地方生活。對旅程嚟講，可以平衡你後面一連串大型觀光景點。"
+        ],
+        "visit": [
+          "睇漬物、味噌、豆類、蔬菜、地方甜品。",
+          "沿宮川睇街景，唔一定每檔都買。",
+          "如果見到本地包裝食品，可以先記價，之後超市再比較。"
+        ],
+        "understand": "朝市係「高山日常」，三町係「高山歷史商業街」，兩個一齊睇先立體。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-miyagawa",
+        "name": "宮川朝市",
+        "regionId": "jp27-region-takayama",
+        "type": "shopping",
+        "summary": "高山市中心沿宮川的早市，冬季可看地元蔬果、漬物、手信及小食。",
+        "imageIds": [
+          "jp27-image-takayama"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-market"
+        ],
+        "sourceIds": [
+          "jp27-source-takayama-tourism"
+        ],
+        "whyVisit": "D8固定高山市區早段，節奏短而有生活感；冬季官方旅遊資料一般為08:00–12:00。",
+        "suggestedDurationMinutes": 40,
+        "rating": 7.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Miyagawa%20Morning%20Markets%20Takayama",
+        "officialURL": "https://www.hidatakayama.or.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "冬季12–3月 08:00",
+        "last": "不適用（露天朝市）",
+        "close": "12:00",
+        "fee": "免費入場",
+        "note": "攤檔會因天氣、商品售罄而提早收。",
+        "source": "https://www.hidatakayama.or.jp/",
+        "photo": {
+          "show": false,
+          "status": "公共朝市未見自拍棍禁令；勿阻塞攤檔及通道。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-takayama-jinya",
+      "v1Identity": "takayama-jinya",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 8,
+          "date": "2027-01-16",
+          "title": "高山陣屋",
+          "startTime": "09:50",
+          "endTime": "10:40",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 62,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L62"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 95,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L95"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 151,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L151"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "takayama-jinya",
+        "aliases": [
+          "高山陣屋"
+        ],
+        "title": "🏯 高山陣屋・江戶幕府直轄官署",
+        "why": "只行三町會見到「商人嘅高山」；入高山陣屋先明白飛驒點解曾由幕府直接管治，以及官府點樣管理木材、稅收同地方。兩者一齊先完整。",
+        "background": "1692年飛驒成為德川幕府直轄地，陣屋成為代官、郡代處理行政、司法同年貢嘅場所。日本各地昔日有好多陣屋，但高山陣屋保留得非常完整。",
+        "look": [
+          "比較高級接待房同一般辦公空間嘅榻榻米、入口同格局。",
+          "留意御白洲等行政／審理空間，呢度唔係單純武士住宅。",
+          "御藏木構同米／年貢管理，直接反映當時地方經濟。"
+        ],
+        "fit": "宮川朝市後步行／短程到陣屋，再過中橋去三町，成條線最順。",
+        "winter": "室內木地板非常凍，要厚襪；庭園可能積雪。",
+        "time": "40–60分鐘。",
+        "source": "https://jinya.gifu.jp/tw/",
+        "jp": "高山陣屋（たかやまじんや）",
+        "whyLong": [
+          "如果只行三町古街，你會知道「高山係一個保存得好靚嘅商人町」；但入高山陣屋，你先會明白點解飛驒政治地位咁特別。江戶幕府唔係交畀一個地方大名管，而係1692年將飛驒變成幕府直轄地，由中央派代官、後來郡代直接管理。",
+          "今日高山陣屋唔係後世重建一個「官府樣板房」，而係日本現存唯一仍保留代官／郡代所主要建築群嘅遺址。你行入去會見到行政辦公、接待、司法審理、生活空間、米藏，等於行入江戶時代地方政府。"
+        ],
+        "history": [
+          "高山原本由金森氏統治。1692年幕府命金森氏改封出羽上山，飛驒成為幕府直轄領。幕府先利用金森家臣宅邸作管理據點，其後移到今日陣屋位置，並將高山城三之丸米藏移建到此。",
+          "代官／郡代喺度處理行政、警察、司法、年貢等工作。到幕末全日本據說有60多處代官／郡代所，但今日只剩高山陣屋保留主要建築，呢點係佢全日本層面最重要嘅地方。"
+        ],
+        "importance": [
+          "高山陣屋係「國指定史跡」，而且係日本唯一主要建築仍現存嘅代官・郡代所遺構。佢重要唔係因為豪華，而係因為行政制度實物保存極罕有。",
+          "飛驒點解成為幕府直轄領有多種說法，其中豐富山林資源被認為係重要背景之一。當你知道呢點，再行三町、睇木工同商業，會更理解高山點解發展成今日樣貌。"
+        ],
+        "visit": [
+          "比較正式接待空間、普通辦公空間同生活空間，睇身份階級點樣反映喺榻榻米、入口、房間配置。",
+          "留意御白洲等行政／審理空間，呢度唔係一間武士豪宅。",
+          "米藏非常重要，因為年貢同物資管理就係幕府統治地方嘅核心。",
+          "建築內要除鞋，慢慢睇木結構同庭園。"
+        ],
+        "understand": "睇完你應該可以答到「點解高山唔只係古街」：因為佢曾經係幕府直接管治飛驒嘅行政中心。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-takayama-jinya",
+        "name": "高山陣屋",
+        "regionId": "jp27-region-takayama",
+        "type": "attraction",
+        "summary": "江戶幕府在飛驒的政務建築，保留辦公、法政、庭園與米藏空間。",
+        "imageIds": [
+          "jp27-image-takayama"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-historic-outdoor",
+          "jp27-profile-indoor"
+        ],
+        "sourceIds": [
+          "jp27-source-jinya"
+        ],
+        "whyVisit": "同三町古街一齊睇，可以由「政府管理」同「商家生活」兩面理解高山。",
+        "whatToSee": [
+          "御役所與大廣間",
+          "庭園",
+          "御蔵／米藏"
+        ],
+        "takeaway": "高山不只是古街，亦曾是幕府直接管理飛驒的重要行政中心。",
+        "suggestedDurationMinutes": 50,
+        "opening": "08:45",
+        "lastEntry": "16:00",
+        "closing": "16:30",
+        "fee": {
+          "amount": 500,
+          "currency": "JPY"
+        },
+        "rating": 8.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Takayama%20Jinya",
+        "officialURL": "https://jinya.gifu.jp/en/"
+      },
+      "v1VisitMetadata": {
+        "open": "冬季11–3月 08:45",
+        "last": "16:00",
+        "close": "16:30",
+        "fee": "成人 ¥440／高中生或以下免費",
+        "note": "12/29–1/3休館；你行程日期不在休館期。",
+        "source": "https://jinya.gifu.jp/",
+        "photo": {
+          "show": false,
+          "status": "官方公開頁未見一般遊客自拍棍明文禁令；商業／媒體拍攝需事前申請，館內以職員指示為準。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-sanmachi",
+      "v1Identity": "sanmachi",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 8,
+          "date": "2027-01-16",
+          "title": "三町古街／中橋／酒藏",
+          "startTime": "10:45",
+          "endTime": "12:10",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 71,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L71"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 102,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L102"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 156,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L156"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "sanmachi",
+        "aliases": [
+          "三町古街",
+          "三町古い町並",
+          "三町古街＋中橋＋酒藏",
+          "三町"
+        ],
+        "title": "🏘️ 高山三町古街・中橋・酒藏",
+        "why": "唔係純粹一條「靚舊街」，而係江戶商人町保存落嚟嘅城市骨架。木格子町家、酒藏、味噌店同商舖密集，所以食物、建築同地方生活可以一次過睇。",
+        "background": "高山因木材、商業同幕府直轄地位而發展，三町形成商家街。窄面闊深町家、連續屋簷、格子窗同用水渠道保留到今日，好多老屋改成酒藏、餐廳同商店。",
+        "look": [
+          "望屋頂線同木格子，唔好只睇店舖招牌。",
+          "酒藏門口杉玉係新酒標誌；駕駛日只參觀／買酒，唔即場試飲。",
+          "中橋紅橋連接陣屋同三町，冬雪時特別有層次。"
+        ],
+        "fit": "D6或D8高山市區方案主線，朝市→陣屋→中橋→三町最順。",
+        "winter": "石路、橋面可結冰；傍晚店舖收得較早。",
+        "time": "1–1.5小時。",
+        "source": "https://www.hidatakayama.or.jp/spot/detail_1101.html",
+        "jp": "古い町並・中橋・酒蔵（ふるいまちなみ・なかばし・さかぐら）",
+        "whyLong": [
+          "三町古街唔應該只理解成「日本舊街影相位」。佢其實係高山商人町保存落嚟嘅城市骨架：窄面而深嘅町家、連續木格子、屋簷、用水渠道、酒藏、味噌店、商舖全部集中。你行一條街，就可以睇到建築、飲食、商業同地方工藝。",
+          "同高山陣屋一齊睇尤其重要。陣屋代表幕府官府；三町代表普通商家同町人。兩邊加埋，你先真正理解江戶時代高山「政府＋民間商業」點共存。"
+        ],
+        "history": [
+          "高山城下町喺金森氏時代開始規劃，之後成為飛驒政治、商業中心。三町一帶保留大量江戶至明治町家，建築常見木格子、窄門面、深長屋身，同當時城下町土地使用方式有關。",
+          "飛驒寒冷氣候、清水同米亦令清酒文化發展，多間酒藏集中上三之町一帶。舩坂酒造、原田酒造等今日仍營運，令古街唔係一條純保存街，而係仍然有商業功能。"
+        ],
+        "importance": [
+          "三町係高山最具代表性歷史街區，價值在於「整體町並保存」，唔係某一棟單獨國寶。你睇嘅係一整段城市景觀同生活方式。"
+        ],
+        "visit": [
+          "先由中橋睇紅色橋身、宮川同古街關係，雪景時尤其突出。",
+          "入三町後抬頭睇屋簷線、木格子、杉玉，唔好只睇地面店舖。",
+          "酒藏門口杉玉代表釀酒文化；因你自駕，司機唔試酒，買細支裝返酒店／香港再飲。",
+          "舩坂酒造同原田酒造唔需要兩間都深入參觀，揀一間主睇、一間順路買已夠。"
+        ],
+        "understand": "三町最好嘅玩法係慢行，唔係逐個Google Map點打卡。明白「町家＋商人＋酒藏」先係重點。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-sanmachi",
+        "name": "三町古街／中橋／酒藏",
+        "regionId": "jp27-region-takayama",
+        "type": "attraction",
+        "summary": "高山代表性町家街景，集中酒藏、傳統老店、手信與中橋河岸畫面。",
+        "imageIds": [
+          "jp27-image-takayama"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-city-walk"
+        ],
+        "sourceIds": [
+          "jp27-source-takayama-tourism"
+        ],
+        "whyVisit": "D8用約80–90分鐘完整行一次，比之前幾日只在晚餐時經過更有意義。",
+        "whatToSee": [
+          "古町家立面",
+          "中橋",
+          "酒藏杉玉",
+          "飛驒地元食品與手信"
+        ],
+        "takeaway": "高山古街反映城下町商業生活，而唔只是旅客手信街。",
+        "suggestedDurationMinutes": 85,
+        "rating": 9,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Sanmachi%20Suji%20Takayama",
+        "officialURL": "https://www.hidatakayama.or.jp/spot/detail_1101.html"
+      },
+      "v1VisitMetadata": {
+        "open": "公共古街・全天可行",
+        "last": "不適用",
+        "close": "街道無閘門；商店多數約傍晚前後收舖",
+        "fee": "免費",
+        "note": "真正Shopping／酒藏參觀要按個別店舖時間；冬天傍晚後街上會靜好多。",
+        "source": "https://www.hidatakayama.or.jp/spot/detail_1101.html",
+        "photo": {
+          "show": false,
+          "status": "公共古街未見自拍棍禁令；勿阻塞道路及店舖入口。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-hida-cave",
+      "v1Identity": "hida-cave",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 8,
+          "date": "2027-01-16",
+          "title": "飛驒大鐘乳洞",
+          "startTime": "13:30",
+          "endTime": "14:45",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 80,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L80"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 109,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L109"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 161,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L161"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "hida-cave",
+        "aliases": [
+          "飛驒大鐘乳洞",
+          "飛騨大鍾乳洞",
+          "飛騨大鍾乳洞",
+          "冰之溪谷",
+          "氷の渓谷"
+        ],
+        "title": "🧊 飛驒大鐘乳洞・冰之溪谷",
+        "why": "D6–D8最好嘅「天氣保險」：山頂大霧、新穗高唔值得去時，洞穴仍然可以照玩；1月外面冰之溪谷又啱啱係最有季節感嘅時候。",
+        "background": "鐘乳洞位於海拔約900米，觀光洞段約800米。石灰岩經地下水長時間溶蝕形成鐘乳石、石筍同洞室；冬季館外利用低溫形成大型冰柱景觀，天然洞穴同人造引水冰景一內一外。",
+        "look": [
+          "抬頭睇鐘乳石形狀同洞頂，唔好只向前行。",
+          "留意通道高低差、狹窄位同水流，感受天然洞穴。",
+          "外面冰之溪谷如果結冰好，藍白色冰柱係冬季Bonus。"
+        ],
+        "fit": "D6高山市區方案下午去；若D6已去新穗高，就移到D8高山→松本線，地理上最順。",
+        "winter": "停車場、冰區、洞口都可能滑；冰柱規模按氣溫。",
+        "time": "60–90分鐘。",
+        "source": "https://www.syonyudo.com/",
+        "jp": "飛騨大鍾乳洞・氷の渓谷（ひだだいしょうにゅうどう・こおりのけいこく）",
+        "whyLong": [
+          "飛驒大鐘乳洞係你D6–D8天氣策略入面非常重要嘅「穩定牌」。新穗高好食能見度，白川鄉好食道路；鐘乳洞就算外面落雪，洞內主體仍然可以參觀，所以佢係山區天氣一般時仍然有內容嘅景點。",
+          "1月再加「冰之溪谷」就更啱季節。洞外利用嚴寒令水凍成巨大冰柱，天然鐘乳石同人工引水形成嘅冰景一內一外，完全唔似夏天去同一個洞。"
+        ],
+        "history": [
+          "鐘乳洞位於海拔約900米高地，石灰岩經地下水長時間溶蝕形成洞室、鐘乳石同石筍。觀光洞段約800米，路線有高低差、狹位同多種岩層形態。",
+          "「冰之溪谷」係利用當地冬季低溫引水結冰形成大型冰柱景觀，規模每年受氣溫影響，所以唔係固定一模一樣。"
+        ],
+        "importance": [
+          "佢未必係日本最知名鐘乳洞，但對你呢條路線地理位置非常好：由高山向丹生川、平湯、松本方向本來就順路，唔需要專程折返。"
+        ],
+        "visit": [
+          "洞內唔好一路只望前，抬頭睇鐘乳石、側面睇岩層同水痕。",
+          "留意通道高低差，天然洞穴唔係平路展館。",
+          "出洞後再睇冰之溪谷，將「幾萬年地質」同「一個冬季形成嘅冰」放埋一齊比較。"
+        ],
+        "understand": "佢最大意義係一個「不怕大雪嘅山區內容」，所以成個D6–D8彈性設計先咁穩。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-hida-cave",
+        "name": "飛驒大鐘乳洞",
+        "regionId": "jp27-region-takayama",
+        "type": "nature",
+        "summary": "海拔高地的大型鐘乳洞；冬季主體在室內，外圍冰景令D8成為較不受降雪影響的主景點。",
+        "imageIds": [
+          "jp27-image-hida-cave"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-cave",
+          "jp27-profile-winter-driving"
+        ],
+        "sourceIds": [
+          "jp27-source-hida-cave"
+        ],
+        "longDescription": "洞穴全長超過800米級，所在地約2.5億年前曾在海底。冬季洞外「冰之溪谷」一帶亦可形成冰景，但實際開放範圍要跟官方公告。",
+        "whyVisit": "D8固定去，因為比雪山觀景更耐受天氣；完成後直接向東返松本，不再安排白川鄉或新穗高。",
+        "whatToSee": [
+          "鐘乳石洞主要路段",
+          "大橋Collection館（同票）",
+          "冬季外圍冰景（如開放）"
+        ],
+        "takeaway": "飛驒山區除雪景外，亦保存非常古老的石灰岩地質。",
+        "suggestedDurationMinutes": 75,
+        "opening": "09:00",
+        "lastEntry": "16:00",
+        "closing": "16:30",
+        "fee": {
+          "amount": 1100,
+          "currency": "JPY"
+        },
+        "feeNotes": "成人¥1,100；Web前售¥1,000。",
+        "rating": 8,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida%20Great%20Limestone%20Cave",
+        "officialURL": "https://www.syonyudo.com/"
+      },
+      "v1VisitMetadata": {
+        "open": "冬季11–3月 09:00",
+        "last": "16:00（停止入洞）",
+        "close": "16:30",
+        "fee": "成人 ¥1,100／小童 ¥550",
+        "note": "年末年始或天候有臨時安排時，以官方公告為準。",
+        "source": "https://www.syonyudo.com/",
+        "photo": {
+          "show": false,
+          "status": "未見官方自拍棍禁令；洞內狹窄、濕滑，唔建議伸長使用。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-hida-furukawa",
+      "v1Identity": "hida-furukawa",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 7,
+          "date": "2027-01-15",
+          "title": "飛驒古川白壁土藏街 Optional",
+          "startTime": "16:30",
+          "endTime": "17:20",
+          "optional": true,
+          "bonus": true,
+          "surface": "timeline"
+        },
+        {
+          "dayNumber": 7,
+          "date": "2027-01-15",
+          "surface": "optionalContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 125,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L125"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 161,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L161"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 241,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L241"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "hida-furukawa",
+        "aliases": [
+          "飛驒古川 白壁土蔵街",
+          "白壁土蔵街",
+          "飛驒古川"
+        ],
+        "title": "🏘️ 飛驒古川・瀨戶川與白壁土藏街",
+        "why": "高山係比較繁華嘅商人町，飛驒古川就細緻安靜好多。瀨戶川、白壁土藏同小城街比例細，適合想睇「冇咁旅客化」飛驒街景時加。",
+        "background": "飛驒古川同高山一樣受飛驒匠人文化影響，中心瀨戶川旁保留白壁土藏、寺院同古町。春夏有鯉魚，冬季則變成雪街＋白牆，氣氛更安靜。",
+        "look": [
+          "瀨戶川沿岸白壁土藏係核心構圖。",
+          "三寺まいり三間寺都喺古川中心，1月15日晚更有節慶氣氛。"
+        ],
+        "fit": "D7主線早完→飛驒古川白壁土藏街→三寺まいり／返Residence。",
+        "winter": "最好天黑前完成日間街景；雪大就取消夜間加程。",
+        "time": "45–60分鐘。",
+        "source": "https://www.hida-kankou.jp/",
+        "jp": "瀬戸川と白壁土蔵街（せとがわとしらかべどぞうがい）",
+        "whyLong": [
+          "高山比較熱鬧、旅客多；飛驒古川就細緻同安靜好多。瀨戶川、白壁土藏、寺院同小城街比例細，行45分鐘已經可以感受到完全唔同嘅飛驒氣氛。",
+          "如果你D7下午早返高山，而三寺まいり要夜晚先開始，白壁土藏街就係最好嘅「同一程早少少去」選擇，唔需要再拆一日。"
+        ],
+        "history": [
+          "飛驒古川同高山一樣深受飛驒匠人文化影響。中心區沿瀨戶川保留白壁土藏、古町同寺院，歷史上係地方商業、工匠同祭禮文化中心。",
+          "瀨戶川今日以清水、白壁景觀聞名；春夏常見鯉魚，冬季則主要係雪街、白牆同安靜水道。"
+        ],
+        "importance": [
+          "價值唔係「一定要睇某棟國寶」，而係整體街景同地方氣氛。亦可以作三寺まいり背景預習。"
+        ],
+        "visit": [
+          "沿瀨戶川睇白壁土藏同窄街。",
+          "如果當晚去三寺，順便認清圓光寺、真宗寺、本光寺方向。"
+        ],
+        "understand": "古川係一個比高山更「小城生活」嘅飛驒版本。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-hida-furukawa",
+        "name": "飛驒古川・白壁土藏街",
+        "regionId": "jp27-region-takayama",
+        "type": "attraction",
+        "summary": "瀨戶川、白壁土藏與古町景觀；比高山更安靜細緻，D7早返高山才加。",
+        "imageIds": [
+          "jp27-image-hida-furukawa"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-city-walk"
+        ],
+        "sourceIds": [
+          "jp27-source-hida-furukawa"
+        ],
+        "whyVisit": "可以同1月15日三寺まいり一次完成；唔參加夜祭亦可用45–60分鐘日落前短行。",
+        "suggestedDurationMinutes": 50,
+        "rating": 8,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida-Furukawa%20Station",
+        "officialURL": "https://www.hida-kankou.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "公共古街・全天可行",
+        "last": "不適用",
+        "close": "街道無閘門；店舖／設施各自營業",
+        "fee": "免費",
+        "note": "D7只係主線早完先加；最好天黑前先行白壁土藏街。",
+        "source": "https://www.hida-kankou.jp/",
+        "photo": {
+          "show": false,
+          "status": "公共街道未見自拍棍禁令；祭禮人多時避免伸長。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-santera",
+      "v1Identity": "santera",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 7,
+          "date": "2027-01-15",
+          "title": "三寺まいり Optional",
+          "startTime": "17:30",
+          "endTime": "20:00",
+          "optional": true,
+          "bonus": true,
+          "surface": "timeline"
+        },
+        {
+          "dayNumber": 7,
+          "date": "2027-01-15",
+          "surface": "optionalContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 134,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L134"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 137,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L137"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 181,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L181"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "santera",
+        "aliases": [
+          "三寺巡禮",
+          "三寺まいり",
+          "三寺參り"
+        ],
+        "title": "🕯️ 飛驒古川・三寺巡禮",
+        "why": "你旅行日期啱啱撞正1月15日，呢個係「只有當晚先有」嘅地方傳統，唔係常設景點。雪地、巨型和蠟燭、寺院同古川夜街一齊出現，季節性比一般景點高好多。",
+        "background": "三寺まいり有超過200年傳統，每年1月15日參拜圓光寺、真宗寺、本光寺，原意追念親鸞聖人。明治、大正年代去信州製絲工作嘅飛驒女性返鄉盛裝參拜，後來亦有「結緣」文化。",
+        "look": [
+          "大和蠟燭、千本蠟燭同雪像蠟燭係夜晚氣氛核心。",
+          "三間寺唔只打卡，留意本地人參拜流線同古川街道。",
+          "如果太攰／道路差就取消，唔值得為Bonus夜駕冒險。"
+        ],
+        "fit": "D7主線早完、道路安全、精神好先去；可同白壁土藏街一程完成。",
+        "winter": "夜間雪路、低溫同駕駛疲勞係最大限制。",
+        "time": "活動1.5–2小時＋高山來回車程。",
+        "source": "https://www.city.hida.gifu.jp/soshiki/15/santeramairi.html",
+        "jp": "三寺まいり（さんてらまいり）",
+        "whyLong": [
+          "你旅行日期啱啱撞正1月15日，三寺まいり最大價值就係「只喺嗰晚先出現」。普通日子去飛驒古川，你會見到白壁土藏同寺院；1月15日晚會多咗大型和蠟燭、雪像燈火、參拜人流同節日氣氛，變成一個完全唔同嘅城市體驗。",
+          "所以佢雖然係Bonus，但季節性其實非常高。相反，亦正因為係夜間Bonus，絕對唔值得為咗趕活動犧牲冬季駕駛安全或者令自己太攰。"
+        ],
+        "history": [
+          "三寺まいり有超過200年傳統，每年1月15日參拜圓光寺、真宗寺、本光寺，源於淨土真宗追念親鸞聖人。",
+          "明治、大正年代，飛驒好多女性會去信州製絲工場工作，年頭返鄉後穿盛裝參拜三寺，之後逐漸又衍生「結緣」形象。今日活動以大和蠟燭、千本蠟燭、雪像同夜間參拜聞名。"
+        ],
+        "importance": [
+          "佢唔係為遊客新造活動，而係地方長期傳統。你日期正正遇上，所以文化「一期一會」價值比一般常設景點高。"
+        ],
+        "visit": [
+          "先睇整體燈火街景，再逐間寺院行，唔需要趕。",
+          "留意大和蠟燭同雪像燈火，呢啲先係1月15日特別元素。",
+          "太攰、道路差、大雪就立即取消。"
+        ],
+        "understand": "三寺まいり係「地方居民冬夜傳統」，唔係純燈飾節。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-santera",
+        "name": "飛驒古川・三寺まいり",
+        "regionId": "jp27-region-takayama",
+        "type": "attraction",
+        "summary": "每年1月15日傳統冬祭；和蠟燭、雪像、寺院參拜與夜景，只在D7日期撞正才有的季節Bonus。",
+        "imageIds": [
+          "jp27-image-hida-furukawa"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-city-walk",
+          "jp27-profile-winter-driving"
+        ],
+        "sourceIds": [
+          "jp27-source-santera"
+        ],
+        "history": "三寺まいり有超過200年傳統，每年1月15日參拜圓光寺、真宗寺、本光寺；亦與昔日飛驒女工返鄉盛裝參拜的歷史連結。",
+        "whyVisit": "一期一會價值高，但夜間駕駛安全、體力與2027正式活動時間優先；任何一項唔理想就取消。",
+        "whatToSee": [
+          "大和蠟燭",
+          "雪像燈火",
+          "三寺參拜",
+          "古川冬夜街景"
+        ],
+        "takeaway": "這是地方長期冬夜傳統，不是純燈飾活動。",
+        "suggestedDurationMinutes": 100,
+        "rating": 8,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida-Furukawa%20Station",
+        "officialURL": "https://www.city.hida.gifu.jp/soshiki/15/santeramairi.html"
+      },
+      "v1VisitMetadata": {
+        "open": "2027/1/15活動詳細時間尚未公布",
+        "last": "待2027官方活動表",
+        "close": "待2027官方活動表",
+        "fee": "參拜／街上活動免費",
+        "note": "只限1月15日；你D7日期啱啱撞正，但是否加入仍以主行程早完＋道路安全為先。",
+        "source": "https://www.city.hida.gifu.jp/soshiki/15/santeramairi.html",
+        "photo": {
+          "show": false,
+          "status": "街上祭禮未見自拍棍全面禁令；人多時避免伸長，寺內依現場攝影規則。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-daio-wasabi",
+      "v1Identity": "daio",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 8,
+          "date": "2027-01-16",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 143,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L143"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 144,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L144"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 186,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L186"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "daio",
+        "aliases": [
+          "大王山葵農場",
+          "大王わさび農場",
+          "Daio Wasabi"
+        ],
+        "title": "🌿 安曇野・大王山葵農場",
+        "why": "安曇野最大特色係北阿爾卑斯湧水，而山葵正正要靠大量清澈冷水種植。去農場可以將「雪山融水／湧水」同你食緊嘅山葵直接連起來。",
+        "background": "大王山葵農場係日本大型山葵農場之一，利用安曇野豐富湧水形成大面積山葵田。園內除農田，亦有水車、河道、神社同山葵食品。",
+        "look": [
+          "先睇水有幾清，同山葵田水流方式。",
+          "三連水車同河道係代表性景觀。",
+          "可以試山葵雪糕／山葵食品，但冬季田景較樸素。"
+        ],
+        "fit": "只適合D8新穗高→松本線非常早到安曇野先加。",
+        "winter": "冬季營業時間較短；唔為佢推遲松本Check-in。",
+        "time": "45–60分鐘。",
+        "source": "https://www.daiowasabi.co.jp/",
+        "jp": "大王わさび農場（だいおうわさびのうじょう）",
+        "whyLong": [
+          "大王山葵農場最值得理解嘅唔係「有山葵雪糕」，而係安曇野點解可以大規模種山葵。山葵需要大量清澈、低溫、流動水，而安曇野北阿爾卑斯雪水滲入地下後形成豐富湧水，正正提供咗理想環境。",
+          "所以你去到睇水道、水清澈程度、山葵田流動方式，會比淨係買手信有意思。佢其實係將北阿爾卑斯自然水系同地方農業連埋一齊嘅景點。"
+        ],
+        "history": [
+          "大王山葵農場係日本大型山葵農場之一，利用安曇野湧水培植大面積山葵田。園內亦有三連水車、河道、神社同食品設施。"
+        ],
+        "importance": [
+          "佢代表安曇野「湧水文化」，同你前面一路睇北阿爾卑斯雪山形成有趣連結：山上雪景最後變成地下水，再支持山葵農業。"
+        ],
+        "visit": [
+          "先睇水有幾清，再睇山葵根部周圍水流。",
+          "三連水車同河道係代表景。",
+          "山葵食品可以試，但冬季田景比春夏樸素。"
+        ],
+        "understand": "重點係「水」，唔係「辣」。明白安曇野湧水先明白點解呢度種到山葵。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-daio-wasabi",
+        "name": "大王山葵農場",
+        "regionId": "jp27-region-matsumoto",
+        "type": "nature",
+        "summary": "安曇野湧水與山葵田；只作D8極早返松本方向時的低優先Backup。",
+        "imageIds": [
+          "jp27-image-daio"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-city-walk"
+        ],
+        "sourceIds": [
+          "jp27-source-daio"
+        ],
+        "whyVisit": "真正重點係北阿爾卑斯雪水形成湧水，支援山葵農業，而唔只是山葵食品。",
+        "suggestedDurationMinutes": 50,
+        "rating": 7.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Daio%20Wasabi%20Farm",
+        "officialURL": "https://www.daiowasabi.co.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "冬季12–2月 09:00",
+        "last": "官方未列獨立最後入場；建議15:30前到",
+        "close": "16:00",
+        "fee": "免費入場",
+        "note": "12/31休園；D8只可非常早到安曇野先加。",
+        "source": "https://www.daiowasabi.co.jp/",
+        "photo": {
+          "show": false,
+          "status": "未見官方自拍棍全面禁令；勿阻塞農場步道。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-aeon-matsumoto",
+      "v1Identity": "aeon-matsumoto",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 9,
+          "date": "2027-01-17",
+          "title": "AEON Mall Matsumoto最後補貨",
+          "startTime": "09:30",
+          "endTime": "11:00",
+          "optional": false,
+          "surface": "timeline"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d5-d9.js",
+          "line": 171,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d5-d9.js#L171"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "aeon-matsumoto",
+        "aliases": [
+          "AEON Mall Matsumoto",
+          "AEON Mall 松本",
+          "AEON MALL 松本",
+          "AEON 松本"
+        ],
+        "title": "🛍️ 松本 AEON MALL・回程補貨",
+        "jp": "イオンモール松本",
+        "whyLong": [
+          "D9 AEON定位非常清楚：唔係觀光，而係最後補貨。你已經行完主要景點，今日最重要係還車、JR、機場，所以Shopping只應該用固定時間買食品、零食、生果、日用品，唔可以再變成半日Mall。",
+          "將AEON放喺還車前有一個實際好處：大行李仲喺車度，買完可以直接放車，再去入油還車；還車之後先拖住行李坐JR，流程最順。"
+        ],
+        "history": [
+          "イオンモール松本係松本市大型商場，AEON STYLE同專門店集中，適合作最後補貨。"
+        ],
+        "importance": [
+          "重要係行程管理：佢係D9最後一個可調節時間Block，11:00離開係Hard Cut。"
+        ],
+        "visit": [
+          "先食品／超市，再等專門店開門。",
+          "優先買已列購物清單；唔好臨時再行完整商場。",
+          "11:00就走，之後入油、還車。"
+        ],
+        "understand": "D9核心唔係「玩多一個地方」，而係平穩離開日本。",
+        "fit": "Iroha退房→AEON→油站→Times，完全順路。",
+        "winter": "市區路面仍可能積雪，還車Buffer唔縮。",
+        "time": "約90分鐘。",
+        "source": "https://matsumoto.aeonmall.jp/"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-aeon-matsumoto",
+        "name": "AEON Mall Matsumoto",
+        "regionId": "jp27-region-matsumoto",
+        "type": "shopping",
+        "summary": "D9最後補貨；大型行李仍在車內時買食品、零食、生果與日用品最順。",
+        "imageIds": [
+          "jp27-image-aeon-matsumoto"
+        ],
+        "activityProfileIds": [
+          "jp27-profile-indoor"
+        ],
+        "sourceIds": [
+          "jp27-source-jr"
+        ],
+        "whyVisit": "呢站重點係物流而唔係觀光；11:00離開後要入油、還車、食午餐再搭13:56規劃班次。",
+        "suggestedDurationMinutes": 90,
+        "rating": 6.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=AEON%20Mall%20Matsumoto",
+        "officialURL": "https://matsumoto.aeonmall.jp/"
+      },
+      "v1VisitMetadata": null
+    },
+    {
+      "entityId": "jp27-place-kumoba",
+      "v1Identity": "kumoba",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 2,
+          "date": "2027-01-10",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 73,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L73"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 152,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L152"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 196,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L196"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "kumoba",
+        "aliases": [
+          "雲場池",
+          "Kumoba Pond"
+        ],
+        "title": "🌲 輕井澤・雲場池",
+        "why": "佢係輕井澤最代表性池景，價值在於用30–40分鐘就睇到高原森林＋水面；冬季冇紅葉，但雪景同低人流令氣氛更安靜。",
+        "background": "雲場池係輕井澤舊別墅區附近細長池塘，四周有步道。歷來因水面倒影同季節樹色成為輕井澤代表自然景點。",
+        "look": [
+          "由池入口先睇長軸倒影，再視路況沿岸行一小段。",
+          "冬天重點係雪林、水面同薄冰，而唔係追求秋季紅葉畫面。"
+        ],
+        "fit": "鬼押出園完成後，如果去Outlet前仍有≥45分鐘先加。",
+        "winter": "環池步道可結冰。",
+        "time": "30–40分鐘。",
+        "source": "https://karuizawa-kankokyokai.jp/",
+        "jp": "雲場池（くもばいけ）",
+        "whyLong": [
+          "雲場池係輕井澤最經典嘅「高原森林＋水面」景觀。秋季紅葉最出名，但冬天優點係遊客少、樹木線條清楚，遇到雪時水面、薄冰同雪林會形成非常安靜嘅景。",
+          "佢唔值得專程打亂D2，但如果白絲、鬼押完成得早，30–40分鐘就可以補一個完全唔同類型嘅輕井澤畫面。"
+        ],
+        "history": [
+          "雲場池位於舊輕井澤別墅區附近，細長池形同周圍林木長期成為輕井澤代表性散步景點。"
+        ],
+        "importance": [
+          "價值係「輕量、低成本、畫面好」，而唔係重大歷史性。"
+        ],
+        "visit": [
+          "入口先影池長軸倒影。",
+          "視路況沿岸短行，冬季唔需要勉強繞完整圈。"
+        ],
+        "understand": "將佢當作早到Bonus就最好，唔應該同白絲／鬼押／Outlet搶時間。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-kumoba",
+        "name": "雲場池",
+        "regionId": "jp27-region-karuizawa",
+        "type": "nature",
+        "summary": "輕井澤高原森林與水面景觀；只在D2極早完成主線時短加。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-historic-outdoor"
+        ],
+        "sourceIds": [
+          "jp27-source-karuizawa-outlet"
+        ],
+        "suggestedDurationMinutes": 30,
+        "rating": 7,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Kumoba%20Pond",
+        "officialURL": "https://karuizawa-kankokyokai.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "戶外公共景點・全天可到",
+        "last": "不適用",
+        "close": "無閘門",
+        "fee": "免費",
+        "note": "冬季建議日照時間前往；環池步道可結冰。",
+        "source": "https://karuizawa-kankokyokai.jp/",
+        "photo": {
+          "show": false,
+          "status": "公共步道未見自拍棍禁令；冬季結冰時以安全為先。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-ueda-castle",
+      "v1Identity": "ueda-castle",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 2,
+          "date": "2027-01-10",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 65,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L65"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 153,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L153"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 201,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L201"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "ueda-castle",
+        "aliases": [
+          "上田城跡公園",
+          "上田城"
+        ],
+        "title": "🏯 上田城跡公園・真田氏歷史",
+        "why": "佢係D2山路差時最重要安全Backup。上田城由真田昌幸築城，最出名係兩次抵抗德川軍；即使冇完整天守，城門、石垣、護城河同真田故事仍然有清楚背景。",
+        "background": "上田城1583年由真田昌幸築城，第一次及第二次上田合戰令真田氏以少抗多成名。今日主要看東虎口櫓門、石垣、護城河同真田神社；部分櫓冬季可能休館。",
+        "look": [
+          "東虎口櫓門同石垣係最易理解城防位置。",
+          "真田神社同「真田」元素可以將歷史故事連返現場。",
+          "冬季就算室內設施休館，公園外圍仍可行。"
+        ],
+        "fit": "只喺白絲＋鬼押山路不理想時使用：Outlet → 上田城 → 千曲。",
+        "winter": "部分櫓設施冬季可能休館；公園外圍仍可行。",
+        "time": "40–60分鐘。",
+        "source": "https://go.ueda-kanko.or.jp/",
+        "jp": "上田城跡公園（うえだじょうせきこうえん）",
+        "whyLong": [
+          "上田城唔係因為今日仲有一座完整天守而出名；佢真正出名係「真田氏兩度擋住德川軍」。所以去到現場重點係將城門、石垣、護城河同真田昌幸故事連埋，而唔係期待好似松本城咁入一座大型現存天守。",
+          "對你D2更加重要嘅角色係安全Backup：當白絲Highland Way／鬼押一帶山路唔適合，就用較主要道路改去輕井澤＋上田，保留歷史景點但唔為風景硬闖雪山路。"
+        ],
+        "history": [
+          "上田城由真田昌幸喺1583年築城。1585年第一次上田合戰、1600年第二次上田合戰，真田方先後抵抗德川軍，令真田氏成為戰國史上極具知名度嘅地方勢力。",
+          "關原之戰後真田昌幸、幸村被流放，城亦經破壞；今日所見以城跡、公園、櫓門、石垣、護城河同真田神社為主，唔係完整原貌。"
+        ],
+        "importance": [
+          "上田城最大歷史價值係戰役同真田氏，而唔係建築完整度。呢點同松本城剛好相反：松本城係「原建築保存」；上田城係「戰國事件現場」。"
+        ],
+        "visit": [
+          "由東虎口櫓門開始，睇城門同石垣位置。",
+          "行到護城河／土壘位置，想像小規模真田軍點利用地形防守。",
+          "真田神社可作故事收尾，但1月部分室內／櫓設施可能休館。"
+        ],
+        "understand": "如果D2真係啟動Backup，你去上田城係一個「安全換景點」決策，唔係次等行程：由火山自然景改成戰國歷史景。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-ueda-castle",
+        "name": "上田城跡公園",
+        "regionId": "jp27-region-karuizawa",
+        "type": "attraction",
+        "summary": "真田氏兩度抵抗德川軍的戰國歷史現場；D2山路差時安全Backup。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-historic-outdoor"
+        ],
+        "sourceIds": [
+          "jp27-source-karuizawa-outlet"
+        ],
+        "suggestedDurationMinutes": 30,
+        "rating": 7.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Ueda%20Castle%20Ruins",
+        "officialURL": "https://go.ueda-kanko.or.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "城跡公園 24小時；櫓／博物館一般09:00",
+        "last": "櫓／博物館一般16:30",
+        "close": "公園全天；櫓／博物館一般17:00",
+        "fee": "公園免費；有料設施另收費",
+        "note": "1月屬冬季，部分櫓可能休館；你D2 Backup主要價值係公園、城門、石垣及真田歷史。",
+        "source": "https://go.ueda-kanko.or.jp/",
+        "photo": {
+          "show": false,
+          "status": "公園範圍未見自拍棍全面禁令；館內設施依現場指示。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-yanagimachi",
+      "v1Identity": "yanagimachi",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 2,
+          "date": "2027-01-10",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-deep-info-d1-d4.js",
+          "line": 81,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-deep-info-d1-d4.js#L81"
+        },
+        {
+          "path": "assets/trip-enhancement-data.js",
+          "line": 154,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-enhancement-data.js#L154"
+        },
+        {
+          "path": "assets/trip-v8-data.js",
+          "line": 206,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-data.js#L206"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "yanagimachi",
+        "aliases": [
+          "上田柳町",
+          "柳町"
+        ],
+        "title": "🏘️ 上田・柳町城下町街景",
+        "why": "如果已經去上田城又仲有20–30分鐘，柳町可以補返「城下町生活」一面。短街保留格子門、白牆同老商家，唔需要另開一個大景點時間。",
+        "background": "柳町位於舊北國街道沿線，歷史上係旅人、商家往來嘅城下町街區。今日仍保留老屋，亦有味噌、酒、麵包等店。",
+        "look": [
+          "格子門、白牆、窄街比例。",
+          "老商家外觀同上田城軍事遺址形成對比。"
+        ],
+        "fit": "上田城之後、去千曲之前最順。",
+        "winter": "店舖營業視日期；最遲16:40–16:50離開上田。",
+        "time": "20–30分鐘。",
+        "source": "https://go.ueda-kanko.or.jp/",
+        "jp": "柳町（やなぎまち）",
+        "whyLong": [
+          "如果你已經因D2雪路問題改去上田城，柳町可以用好短時間補返「城外居民點生活」嗰一面。上田城係軍事同真田故事；柳町就係北國街道商家、老屋同日常商業。",
+          "佢唔係必去大景點，但同上田城只係短距離，適合作為「已經去到上田先順手睇」嘅小Bonus。"
+        ],
+        "history": [
+          "柳町位於舊北國街道沿線，昔日旅人、商家往來頻繁，今日仍保留格子門、白牆同老商家建築，部分改成味噌、酒、麵包等店。"
+        ],
+        "importance": [
+          "最大價值係補完整城下町背景，而唔係單一名勝。"
+        ],
+        "visit": [
+          "睇格子門、白牆同窄街比例。",
+          "如果店舖開門，可簡單睇地方食品；唔需要長Shopping。"
+        ],
+        "understand": "只要20–30分鐘就夠，記住佢係上田城Backup嘅附加，而唔係另一個主景點。"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-yanagimachi",
+        "name": "上田・柳町",
+        "regionId": "jp27-region-karuizawa",
+        "type": "attraction",
+        "summary": "舊北國街道商家街景；上田城Backup後仍有20–30分鐘先順路加。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-historic-outdoor"
+        ],
+        "sourceIds": [
+          "jp27-source-karuizawa-outlet"
+        ],
+        "suggestedDurationMinutes": 30,
+        "rating": 6.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Yanagimachi%20Ueda",
+        "officialURL": "https://go.ueda-kanko.or.jp/"
+      },
+      "v1VisitMetadata": {
+        "open": "公共歷史街道・全天可行",
+        "last": "不適用",
+        "close": "街道無閘門；店舖各自營業",
+        "fee": "免費",
+        "note": "只係上田城Backup早完先順路加，唔需要為店舖開門時間拖延去千曲。",
+        "source": "https://go.ueda-kanko.or.jp/",
+        "photo": {
+          "show": false,
+          "status": "公共歷史街道未見自拍棍禁令；勿阻塞行人／店舖。"
+        }
+      }
+    },
+    {
+      "entityId": "jp27-place-hie-shrine",
+      "v1Identity": "shrine:日枝神社",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 8,
+          "date": "2027-01-16",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-v8-7-user-plan.js",
+          "line": 61,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-7-user-plan.js#L61"
+        },
+        {
+          "path": "assets/trip-v9-final-fixes.js",
+          "line": 128,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L128"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "shrine:日枝神社",
+        "title": "⛩️ 日枝神社｜高山祭「山王祭」嘅信仰中心",
+        "jp": "飛騨山王宮 日枝神社（ひえじんじゃ）",
+        "why": "日枝神社最大價值唔係「有一間靚神社」，而係春之高山祭山王祭就係佢嘅例祭。你喺高山會見到祭屋台、古街同城下町文化；知道日枝神社之後，先會明白高山祭原本係宗教例祭，而唔係為遊客表演嘅活動。",
+        "history": "相傳1141年由當時三佛寺城主勸請日吉山王而創建，之後金森長近平定飛驒、建立高山城，再將神社奉遷到現址並視為高山城鎮護神。高山成為幕府天領之後，歷代代官、郡代仍然敬奉。即係由中世、金森氏城下町到幕府直轄時代，佢都一直同高山政治與居民生活有連續關係。",
+        "importance": "今日佢仍係高山市南半部氏神，亦係聯合國教科文組織無形文化遺產相關嘅春之高山祭核心神社。拝殿前樹齡超過1000年大杉更被指定為岐阜縣天然紀念物。",
+        "look": [
+          "拝殿前千年大杉係第一重點，先睇樹嘅尺度再睇社殿。",
+          "杉林參道、石燈籠同冬季雪景，氣氛同三町商業街完全不同。",
+          "如果之前睇過高山祭屋台資料，喺呢度將「屋台」重新理解成神社例祭文化。"
+        ],
+        "fit": "按你之前決定，日枝神社繼續做 Backup，唔硬塞主線；高山市區主線明顯提早、仍有日光先加。",
+        "winter": "林蔭位置易積雪／結冰，日落前去較好。",
+        "time": "約25–35分鐘。",
+        "source": "https://www.hidatakayama.or.jp/spot/detail_1180.html"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-hie-shrine",
+        "name": "日枝神社",
+        "regionId": "jp27-region-takayama",
+        "type": "attraction",
+        "summary": "高山山王祭相關神社；有時間才去的市區Backup。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-historic-outdoor"
+        ],
+        "sourceIds": [
+          "jp27-source-takayama-tourism"
+        ],
+        "suggestedDurationMinutes": 30,
+        "rating": 7,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Hie%20Shrine%20Takayama",
+        "officialURL": "https://www.hidatakayama.or.jp/"
+      },
+      "v1VisitMetadata": null
+    },
+    {
+      "entityId": "jp27-place-hida-toshogu",
+      "v1Identity": "shrine:飛驒東照宮",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 8,
+          "date": "2027-01-16",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-v8-7-user-plan.js",
+          "line": 49,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-7-user-plan.js#L49"
+        },
+        {
+          "path": "assets/trip-v9-1-routing.js",
+          "line": 80,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-1-routing.js#L80"
+        },
+        {
+          "path": "assets/trip-v9-final-fixes.js",
+          "line": 80,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L80"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "shrine:飛驒東照宮",
+        "title": "⛩️ 飛驒東照宮｜德川家康、金森家與飛驒匠人",
+        "jp": "飛騨東照宮（ひだとうしょうぐう）",
+        "why": "飛驒東照宮值得放入你嘅高山行程，唔係因為「順便多睇一間神社」，而係佢正好補足高山陣屋同三町古街睇唔到嗰一面：德川幕府權威、金森家統治，以及飛驒木匠技術點樣交織。你去完高山陣屋會知道幕府點樣行政管理飛驒；再到東照宮，就可以睇到地方領主點樣透過祭祀德川家康表達政治忠誠，同時將最高水平嘅地方木工放入宗教建築。",
+        "history": "元和5年（1619），高山藩第三代藩主金森重賴將原本供奉喺高山城內嘅德川家康遷座到今日位置，成為飛驒東照宮。金森家係德川體制下嘅大名，所以東照宮唔只係宗教場所，亦有相當清楚嘅政治象徵。金森家離開飛驒之後，建築曾經荒廢；現存主要社殿到文政元年（1818）由名匠水間相模主持重建。即係你今日見到嘅唔係現代仿古，而係有二百年以上歷史、代表江戶後期飛驒工藝水平嘅建築。",
+        "importance": "官方資料指出，本殿、唐門同全長約62米嘅透塀都屬岐阜縣指定重要文化財；本地堂等亦有高山市文化財身份。對高山而言，佢係少見能夠同時講「德川政治」、「東照宮信仰」同「飛驒匠」嘅地方，所以比單純影古街更能理解高山點解會形成今日嘅文化面貌。",
+        "look": [
+          "先睇唐門同本殿比例：東照宮系建築比一般地方神社更有「廟」嘅華麗感。",
+          "沿住約62米透塀行，留意木格、光影同保存狀態；呢段係官方特別指出極具價值嘅構件。",
+          "睇雕刻、樑柱同細部木工，將佢同高山祭屋台嘅精細工藝放埋一齊理解。",
+          "冬季如果有雪，木建築、石階、樹林同白雪層次非常適合影相，但真正重點仍然係建築本身。"
+        ],
+        "fit": "如果 D6/D7/D8 入面有完整高山市區日，就放喺飛驒大鐘乳洞返高山後；如果 D6 已經用咗去新穗高，則放 D7 白川鄉返高山、Residence Check-in 之後。兩個方案都唔 Cut 松本城、白川鄉、新穗高、鐘乳洞等核心景點。",
+        "winter": "戶外參拜為主；石階同樹蔭位置一月有機會結冰，防滑鞋慢行。",
+        "time": "約20–30分鐘。",
+        "source": "https://www.hidatakayama.or.jp/spot/detail_1184.html"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-hida-toshogu",
+        "name": "飛驒東照宮",
+        "regionId": "jp27-region-takayama",
+        "type": "attraction",
+        "summary": "飛驒地方東照宮；有時間先加的歷史Backup。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-historic-outdoor"
+        ],
+        "sourceIds": [
+          "jp27-source-takayama-tourism"
+        ],
+        "suggestedDurationMinutes": 30,
+        "rating": 7.2,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida%20Toshogu",
+        "officialURL": "https://www.hidatakayama.or.jp/"
+      },
+      "v1VisitMetadata": null
+    },
+    {
+      "entityId": "jp27-place-hirayu-shrine",
+      "v1Identity": "shrine:平湯神社",
+      "affectedUI": [
+        "Detailed Itinerary PlaceCard/PlaceDetail",
+        "Attractions Overview/PlaceDetail"
+      ],
+      "canonicalOccurrences": [
+        {
+          "dayNumber": 7,
+          "date": "2027-01-15",
+          "surface": "backupContent"
+        }
+      ],
+      "credibility": "Exact repository text verified, not independent verification of every V1 historical/operational claim. Canonical V2 dates and destination binding take precedence.",
+      "remedy": "Unpublished sourced prose proposal only. Retain canonical occurrences/timing; review every V1 fit/time/winter claim, no blind restoration.",
+      "v1SourceLinks": [
+        {
+          "path": "assets/trip-core-v1.js",
+          "line": 89,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-core-v1.js#L89"
+        },
+        {
+          "path": "assets/trip-v8-7-user-plan.js",
+          "line": 73,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v8-7-user-plan.js#L73"
+        },
+        {
+          "path": "assets/trip-v9-1-routing.js",
+          "line": 94,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-1-routing.js#L94"
+        },
+        {
+          "path": "assets/trip-v9-final-fixes.js",
+          "line": 75,
+          "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L75"
+        }
+      ],
+      "v1AuthoredFields": {
+        "id": "shrine:平湯神社",
+        "title": "⛩️ 平湯神社｜奧飛驒溫泉鄉嘅地方信仰",
+        "jp": "平湯神社（ひらゆじんじゃ）",
+        "why": "平湯神社最值得加入今次行程嘅理由係幾乎零繞路：無論你 D6、D7 定 D8 去新穗高，來回都會經平湯。用約20分鐘落車參拜，就可以令新穗高一日唔再只係「搭纜車睇雪山」，而係加埋奧飛驒溫泉聚落、山岳環境同地方信仰。",
+        "history": "平湯係奧飛驒溫泉鄉歷史最悠久嘅溫泉地之一。地方資料記錄，神社過去同神明神社、山神信仰有關，1980年改稱平湯神社。平湯亦流傳白猿帶領人發現溫泉嘅傳說，所以今日地方祭事、護身符同「湯」文化仍然連結得好緊密。呢類神社規模唔大，但反而係真正服務當地聚落，而唔係為旅客而設嘅大型觀光神社。",
+        "importance": "佢將奧飛驒「山＋溫泉＋居民信仰」三樣嘢串連。你之後見到平湯溫泉、源泉同雪山環境時，就會知道當地人點解唔單止將溫泉當旅遊資源，而係同生活同祭祀放埋一齊。",
+        "look": [
+          "參拜本殿，睇雪覆屋頂同樹林環境。",
+          "留意附近平湯民俗館／溫泉聚落氣氛；神社唔需要獨立拉長行程。",
+          "記住白猿與溫泉發現傳說，之後去奧飛驒其他溫泉點會更有背景。"
+        ],
+        "fit": "固定放喺「你揀咗去新穗高嗰一日」回程：新穗高 → 平湯神社 → 高山／松本。唔需要額外繞路，所以三個可選日期都可以真正加入。",
+        "winter": "平湯係豪雪區，停車位、參道同石面可能有厚雪／冰；只做短停，現場除雪差就唔勉強。",
+        "time": "約20分鐘。",
+        "source": "https://www.kankou-gifu.jp/spot/detail_3165.html"
+      },
+      "publishedV2Fields": {
+        "id": "jp27-place-hirayu-shrine",
+        "name": "平湯神社",
+        "regionId": "jp27-region-okuhida",
+        "type": "attraction",
+        "summary": "平湯溫泉區短停神社；新穗高日早完才加。",
+        "imageIds": [],
+        "activityProfileIds": [
+          "jp27-profile-historic-outdoor"
+        ],
+        "sourceIds": [
+          "jp27-source-takayama-tourism"
+        ],
+        "suggestedDurationMinutes": 30,
+        "rating": 7.5,
+        "mapURL": "https://www.google.com/maps/search/?api=1&query=Hirayu%20Shrine",
+        "officialURL": "https://www.hidatakayama.or.jp/"
+      },
+      "v1VisitMetadata": null
+    }
+  ],
+  "v1OnlyEntities": [
+    {
+      "id": "nawate",
+      "aliases": [
+        "繩手通",
+        "縄手通り"
+      ],
+      "title": "🐸 松本・繩手通",
+      "why": "如果D1準時到松本但又唔想再坐車，呢條短老街係最輕量嘅夜行Backup。佢沿女鳥羽川發展，青蛙形象同細舖令氣氛同松本城完全唔同。",
+      "background": "繩手通原本係河岸小路，後來形成商店街；「縄手」有沿河堤道路意思。街上青蛙公仔、古物、小食同細店令佢成為松本最有生活感嘅散步街之一。",
+      "look": [
+        "青蛙主題、四柱神社入口同河岸街景。",
+        "夜晚好多店已關，所以只當散步，唔當Shopping主景點。"
+      ],
+      "fit": "D1／D8酒店後短行；唔影響休息。",
+      "winter": "夜晚路面可結冰。",
+      "time": "20–30分鐘。",
+      "source": "https://visitmatsumoto.com/",
+      "jp": "縄手通り（なわてどおり）",
+      "whyLong": [
+        "繩手通係松本最容易用20–30分鐘感受城下町生活氣氛嘅短街。佢唔係大型古街，價值係女鳥羽川旁細尺度、青蛙主題、小店同四柱神社一帶形成輕鬆散步區。",
+        "D1夜晚如果唔想再坐車，或者D8早返松本，呢度特別適合，因為可以步行完成，唔增加冬季駕駛。"
+      ],
+      "history": [
+        "「縄手」原指沿河堤嘅窄路。街道後來發展成商店街，青蛙形象逐漸成為標誌。"
+      ],
+      "importance": [
+        "唔係國寶級景點，而係補充松本城下町生活感。"
+      ],
+      "visit": [
+        "睇河岸、青蛙公仔、四柱神社入口。",
+        "夜晚好多店已關，所以當散步而唔係Shopping。"
+      ],
+      "understand": "松本唔只得城；周圍城下町街道先令城市有生活感。"
+    },
+    {
+      "id": "nakamachi",
+      "aliases": [
+        "中町通",
+        "中町"
+      ],
+      "title": "🏘️ 松本・中町通",
+      "why": "中町通係松本「城下町商業生活」一面，黑白土藏式店舖同松本城軍事建築形成對比。若D8早到松本，行30分鐘就可以補足城市背景。",
+      "background": "中町位於舊善光寺街道沿線，過去商家集中。多次火災後商人使用較耐火嘅土藏式「なまこ壁」，形成今日黑白格紋街景。",
+      "look": [
+        "黑白なまこ壁、土藏同細店。",
+        "同附近繩手通可串成短步行圈。"
+      ],
+      "fit": "D8早到松本先加，唔再駕遠路。",
+      "winter": "傍晚店舖較早關。",
+      "time": "30–45分鐘。",
+      "source": "https://visitmatsumoto.com/",
+      "jp": "中町通り（なかまちどおり）",
+      "whyLong": [
+        "中町通同繩手通氣氛唔同：繩手係河岸商店街；中町重點係黑白「なまこ壁」土藏式建築。呢啲耐火倉庫同商家建築反映城下町商業歷史，亦令你由松本城軍事建築延伸去睇普通商人點樣生活、做生意。",
+        "如果D8非常早返松本，30–45分鐘就可以補完整個「城＋城下町」故事。"
+      ],
+      "history": [
+        "中町位於舊善光寺街道沿線，過去商家集中。火災風險令商人採用較耐火土藏式建築，形成今日黑白格紋なまこ壁街景。"
+      ],
+      "importance": [
+        "價值係城市歷史連貫性：松本城係統治中心，中町係商業生活。"
+      ],
+      "visit": [
+        "睇黑白なまこ壁、土藏、細店同街闊比例。",
+        "可以同繩手通串成短步行圈。"
+      ],
+      "understand": "一座城唔會單獨存在；中町就係城下町商業面。"
+    },
+    {
+      "id": "mountain-harbor",
+      "aliases": [
+        "HAKUBA MOUNTAIN HARBOR",
+        "Mountain Harbor",
+        "MOUNTAIN HARBOR"
+      ],
+      "title": "☕ 白馬岩岳・Mountain Harbor觀景台",
+      "jp": "HAKUBA MOUNTAIN HARBOR",
+      "whyLong": [
+        "Mountain Harbor係你上白馬岩岳最值得專登停低嘅位置。佢唔係另一個Resort，而係山頂向白馬三山方向伸出去嘅大型觀景空間。最好嘅玩法唔係「影張相即走」，而係坐低一陣，等雲移、睇光線同雪峰層次變化。",
+        "你唔滑雪，所以呢度其實比雪道更加重要：你可以用最低體力換最高山景回報，亦可以飲咖啡、休息，再決定White Park玩幾耐。"
+      ],
+      "history": [
+        "Mountain Harbor係岩岳轉型全年山岳度假村其中一個標誌性設施，由岩岳山頂面向北阿爾卑斯白馬連峰。官方一直以「山景觀景＋休閒」作核心。"
+      ],
+      "importance": [
+        "佢嘅價值係視角。白馬三山由呢邊望過去非常直接，天氣清時山體層次清楚，係白馬代表畫面之一。"
+      ],
+      "visit": [
+        "先企觀景位睇完整山脈，再搵較側位置避人影相。",
+        "雲量高時可以等10–15分鐘，山區雲層變化有時好快。",
+        "如果山峰完全入雲，就唔需要硬留太耐。"
+      ],
+      "understand": "Mountain Harbor係「岩岳山頂最值得睇山嘅位置」，唔係另一個需要交通嘅景點。",
+      "fit": "D5上Gondola後第一個主觀景點，之後先接White Park。",
+      "winter": "露天位風感強，手套、帽非常有用。",
+      "time": "30–45分鐘。",
+      "source": "https://iwatake-mountain-resort.com/hmh"
+    },
+    {
+      "id": "white-park",
+      "aliases": [
+        "IWATAKE WHITE PARK",
+        "WHITE PARK",
+        "White Park"
+      ],
+      "title": "❄️ 白馬岩岳・White Park雪地區",
+      "jp": "IWATAKE WHITE PARK",
+      "whyLong": [
+        "White Park價值係俾唔滑雪嘅人都可以真正「落腳玩雪」，而唔係全程只企觀景台。你可以喺較安全、較容易活動嘅範圍散步、影相、接觸厚雪，令白馬一日唔會變成純搭纜車上落。",
+        "佢唔係必須追求刺激活動，反而適合你用30分鐘左右感受雪深、山頂空間同冬季環境。"
+      ],
+      "history": [
+        "White Park係白馬岩岳冬季山頂非滑雪客活動區之一，配合觀光Gondola票使用。佢反映近年日本滑雪場由單純服務滑雪客，轉向提供「雪山觀光」嘅方向。"
+      ],
+      "importance": [
+        "對你重要係體驗層面：你唔滑雪，但仍然可以真正在厚雪環境行一段、影相、玩雪，而唔需要租整套滑雪裝備。"
+      ],
+      "visit": [
+        "先確認邊啲範圍係步行／觀光客可用。",
+        "雪深時唔好走入未壓雪區太深，鞋同褲腳會濕。",
+        "時間緊就以雪景＋短行為主，唔需要付費玩全部活動。"
+      ],
+      "understand": "將White Park當作Mountain Harbor之後嘅「雪地實體體驗」就最合理。",
+      "fit": "D5 Mountain Harbor之後順路，同一山頂區。",
+      "winter": "注意風、積雪深度同濕鞋；預留落山Gondola時間。",
+      "time": "30–45分鐘。",
+      "source": "https://iwatake-mountain-resort.com/winter/whitepark"
+    },
+    {
+      "id": "takayama-supermarket",
+      "aliases": [
+        "高山地元超市",
+        "駿河屋",
+        "Valor",
+        "バロー"
+      ],
+      "title": "🛒 高山地元超市・飛驒生活購物",
+      "jp": "駿河屋／バロー 高山",
+      "whyLong": [
+        "呢個點唔係觀光景點，但同Oranche一樣有「睇地方人食乜」價值。古街飛驒牛通常以餐廳、小食、手信形式出現；地元超市就可以直接睇飛驒牛切片、牛奶、蔬果、味噌、即食食品同日常價錢。",
+        "你特別想買薄切飛驒牛，超市比旅客店更容易見到「しゃぶしゃぶ用」「切り落とし」「モモ」「肩ロース」呢類真正家用標示。"
+      ],
+      "history": [
+        "高山市內駿河屋、Valor等係居民日常超市，唔係為旅客而設。"
+      ],
+      "importance": [
+        "實際價值係補給同價格比較，亦可以避免只用觀光區價錢理解飛驒食品。"
+      ],
+      "visit": [
+        "睇飛驒牛部位同脂肪比例。",
+        "比較牛奶、乳製品、味噌、漬物、生果。",
+        "買酒店會食到嘅量，留意冷藏保存。"
+      ],
+      "understand": "超市係最快理解「觀光飛驒」同「居民飛驒」價差嘅地方。",
+      "fit": "D6高山市區方案下午返城後去，之後返高山櫻庵浸溫泉。",
+      "winter": "冷藏食品唔好長時間放暖車廂。",
+      "time": "60–75分鐘。",
+      "source": "https://www.hidatakayama.or.jp/"
+    }
+  ],
+  "dayHighlightComparison": [
+    {
+      "dayNumber": 1,
+      "date": "2027-01-09",
+      "v1BaseHTML": [
+        "⭐ 今日重點",
+        "✈️",
+        "06:45 左右到香港機場 T2",
+        "，唔好壓縮出發 Buffer。",
+        "🔴",
+        "17:40 JR 特急信濃",
+        "係今日最重要轉車目標。",
+        "🏨 約 19:50 抵達松本後先 Check-in。",
+        "⭐ 松本城夜間光影只係 Bonus，航班／JR 延誤就直接取消。"
+      ],
+      "v2": [
+        "UO680",
+        "μSKY＋JR轉乘",
+        "松本第一晚"
+      ],
+      "credibility": "Base V1 HTML only, later overlays may supersede. D2 and D6–8 legacy assumptions must not be restored."
+    },
+    {
+      "dayNumber": 2,
+      "date": "2027-01-10",
+      "v1BaseHTML": [
+        "⭐ 今日重點",
+        "🔴",
+        "10:00 Times 取車",
+        "，正式開始 4WD＋雪軚自駕。",
+        "🌨️ 白絲 Highland Way 路況差／封閉就立即轉 Backup，唔硬闖。",
+        "🔴",
+        "16:30 左右離開 Outlet",
+        "，避免太夜先去千曲。",
+        "🚗 今日第一次正式冬季山路，車速同安全距離比行程準時重要。"
+      ],
+      "v2": [
+        "松本城正式入天守約90分鐘",
+        "取4WD＋雪軚",
+        "Outlet約2小時",
+        "17:30前抵達溫泉旅館"
+      ],
+      "credibility": "Base V1 HTML only, later overlays may supersede. D2 and D6–8 legacy assumptions must not be restored."
+    },
+    {
+      "dayNumber": 3,
+      "date": "2027-01-11",
+      "v1BaseHTML": [
+        "⭐ 今日重點",
+        "📅",
+        "今日係成人の日",
+        "，所以刻意唔排 Snow Monkey。",
+        "🌰 小布施主力栗子、小食、舊街，唔需要每個館都入。",
+        "🔴",
+        "15:00 左右入住澀溫泉",
+        "，開始九湯巡禮。",
+        "♨️ 唔需要一次過浸晒九個外湯，以舒服為主。"
+      ],
+      "v2": [
+        "成人の日不排Snow Monkey",
+        "小布施＋地方農產",
+        "澀溫泉九湯巡禮"
+      ],
+      "credibility": "Base V1 HTML only, later overlays may supersede. D2 and D6–8 legacy assumptions must not be restored."
+    },
+    {
+      "dayNumber": 4,
+      "date": "2027-01-12",
+      "v1BaseHTML": [
+        "⭐ 今日重點",
+        "❄️ 地獄谷來回都要行雪地林道，防滑鞋要着好。",
+        "🐒 猴子係野生，唔保證一定浸溫泉。",
+        "🔴",
+        "17:00 左右離開 AEON 須坂",
+        "，之後去長野。",
+        "🛍️ AEON 須坂係今程主要生活 Shopping 時段之一。"
+      ],
+      "v2": [
+        "雪地步行看雪猴",
+        "AEON Mall須坂長Shopping",
+        "長野住宿"
+      ],
+      "credibility": "Base V1 HTML only, later overlays may supersede. D2 and D6–8 legacy assumptions must not be restored."
+    },
+    {
+      "dayNumber": 5,
+      "date": "2027-01-13",
+      "v1BaseHTML": [
+        "⭐ 今日重點",
+        "🌨️ 朝早先睇白馬岩岳 Live Cam，山頂景觀好先最值得。",
+        "🔴",
+        "13:20 左右離開白馬",
+        "，唔再加額外白馬景點。",
+        "🚗 白馬 → 高山係今日最大段冬季長途山路。",
+        "❌ 飛驒之里只係 Bonus，唔為佢拖到夜晚先到高山。"
+      ],
+      "v2": [
+        "白馬雪山全景",
+        "非滑雪觀光Gondola",
+        "午後冬季長途駕駛去高山"
+      ],
+      "credibility": "Base V1 HTML only, later overlays may supersede. D2 and D6–8 legacy assumptions must not be restored."
+    },
+    {
+      "dayNumber": 6,
+      "date": "2027-01-14",
+      "v1BaseHTML": [
+        "⭐ 今日重點",
+        "🔴",
+        "07:45 左右完成天氣判斷",
+        "，唔好一路拖。",
+        "🌨️ 新穗高要",
+        "極好天＋正常運行",
+        "先去。",
+        "🏯 天氣唔夠好就直接高山市區＋鐘乳洞，唔算 Plan 失敗。",
+        "🔄 D6 成功做咗新穗高，D7 就直接白川鄉。"
+      ],
+      "v2": [
+        "固定白川鄉日",
+        "合掌村＋和田家＋展望台",
+        "晚上飛驒牛燒肉"
+      ],
+      "credibility": "Base V1 HTML only, later overlays may supersede. D2 and D6–8 legacy assumptions must not be restored."
+    },
+    {
+      "dayNumber": 7,
+      "date": "2027-01-15",
+      "v1BaseHTML": [
+        "⭐ 今日重點",
+        "🔄 第一件事唔係睇天氣，係先確認",
+        "D6 做咗邊個主景點",
+        "。",
+        "🌨️ D6 未做新穗高先需要再睇山頂 Camera。",
+        "🏘️ D6 已完成新穗高，今日直接白川鄉，唔再猶豫。",
+        "🕯️ 飛驒古川三寺巡禮係 Bonus，唔影響白川鄉／新穗高主線。"
+      ],
+      "v2": [
+        "固定新穗高日",
+        "官方運行狀態＋Live Cam優先",
+        "三寺まいり只做夜間Bonus"
+      ],
+      "credibility": "Base V1 HTML only, later overlays may supersede. D2 and D6–8 legacy assumptions must not be restored."
+    },
+    {
+      "dayNumber": 8,
+      "date": "2027-01-16",
+      "v1BaseHTML": [
+        "⭐ 今日重點",
+        "🔄 今日只處理",
+        "尚未完成嘅主景點",
+        "。",
+        "🔴",
+        "無論行邊個 Scenario，都一定要返松本。",
+        "🌨️ 新穗高如果今日仍然大霧／停駛，就正式放棄，唔再追。",
+        "🚗 今日要預大量冬季山路 Buffer，大王山葵農場只係 Bonus。"
+      ],
+      "v2": [
+        "固定高山市區＋鐘乳洞",
+        "下午直接向東返松本",
+        "晚餐可選飛驒牛壽喜燒／火鍋"
+      ],
+      "credibility": "Base V1 HTML only, later overlays may supersede. D2 and D6–8 legacy assumptions must not be restored."
+    },
+    {
+      "dayNumber": 9,
+      "date": "2027-01-17",
+      "v1BaseHTML": [
+        "⭐ 今日重點",
+        "🔴",
+        "11:00 AEON 必須離開",
+        "，唔再 Shopping。",
+        "🔴",
+        "12:10 前完成 Times 還車",
+        "，留足 JR Buffer。",
+        "🔴",
+        "13:56 特急信濃",
+        "係今日最大 Hard Cut。",
+        "✈️ 今日唔再排松本城／額外景點，所有時間服務返程。"
+      ],
+      "v2": [
+        "最後補貨",
+        "中午還車",
+        "13:56目標JR",
+        "UO685返香港"
+      ],
+      "credibility": "Base V1 HTML only, later overlays may supersede. D2 and D6–8 legacy assumptions must not be restored."
+    }
+  ],
+  "driveRestComparison": [
+    {
+      "source": {
+        "path": "assets/trip-v9-final-fixes.js",
+        "line": 234,
+        "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L234"
+      },
+      "v1": {
+        "match": [
+          "松本 → 輕井澤",
+          "松本 → 輕井澤王子"
+        ],
+        "html": "<strong>🛣️ 預定高速線 SA／PA：</strong> 梓川SA → 筑北PA → 姨捨SA → 千曲川さかきPA → <span class=\"big\">⭐【大SA】東部湯の丸SA</span>。想落車行下，首選東部湯の丸SA；有餐飲、手信、加油等。冬季實際路線以導航／封路為準。"
+      },
+      "canonicalTimelineCandidates": [
+        {
+          "dayNumber": 2,
+          "date": "2027-01-10",
+          "item": {
+            "id": "jp27-tl-d2-drive-outlet",
+            "type": "travel",
+            "title": "松本 → 輕井澤",
+            "optional": false,
+            "startTime": "11:25",
+            "endTime": "13:15",
+            "description": "冬季預鬆；道路慢行。",
+            "durationMinutes": 110,
+            "transportId": "jp27-transport-rental-car"
+          }
+        }
+      ],
+      "credibility": "Title match is audit indexing only, NOT route verification; do not use this matcher in runtime.",
+      "remedy": "Official route/direction/winter-operation confirmation required before any future immutable-data authoring."
+    },
+    {
+      "source": {
+        "path": "assets/trip-v9-final-fixes.js",
+        "line": 235,
+        "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L235"
+      },
+      "v1": {
+        "match": [
+          "輕井澤 → 千曲",
+          "Outlet → 千曲"
+        ],
+        "html": "<strong>🛣️ 預定 E18 SA／PA：</strong> 佐久平PA → <span class=\"big\">⭐【大SA】東部湯の丸SA</span> → 千曲川さかきPA。呢段如果想正式休息／行下，東部湯の丸SA最合適。"
+      },
+      "canonicalTimelineCandidates": [
+        {
+          "dayNumber": 2,
+          "date": "2027-01-10",
+          "item": {
+            "id": "jp27-tl-d2-drive-chikuma",
+            "type": "travel",
+            "title": "輕井澤 → 千曲",
+            "optional": false,
+            "startTime": "15:30",
+            "endTime": "17:10",
+            "description": "15:30前離開，冬季路況優先。",
+            "durationMinutes": 100,
+            "transportId": "jp27-transport-rental-car",
+            "hardCutId": "jp27-cut-d2-chikumakan"
+          }
+        }
+      ],
+      "credibility": "Title match is audit indexing only, NOT route verification; do not use this matcher in runtime.",
+      "remedy": "Official route/direction/winter-operation confirmation required before any future immutable-data authoring."
+    },
+    {
+      "source": {
+        "path": "assets/trip-v9-final-fixes.js",
+        "line": 236,
+        "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L236"
+      },
+      "v1": {
+        "match": [
+          "千曲 → 小布施",
+          "千曲館 → 小布施"
+        ],
+        "html": "<strong>🛣️ 預定 SA／PA：</strong> <span class=\"big\">⭐【大PA】松代PA</span> → 小布施PA。松代PA小型車位規模較大、有餐飲／購物；小布施PA較細，但同今日小布施主題最貼。"
+      },
+      "canonicalTimelineCandidates": [
+        {
+          "dayNumber": 3,
+          "date": "2027-01-11",
+          "item": {
+            "id": "jp27-tl-d3-drive-obuse",
+            "type": "travel",
+            "title": "千曲 → 小布施",
+            "optional": false,
+            "startTime": "09:15",
+            "endTime": "10:00",
+            "description": "成人の日，刻意將Snow Monkey留D4。",
+            "durationMinutes": 45,
+            "transportId": "jp27-transport-rental-car"
+          }
+        }
+      ],
+      "credibility": "Title match is audit indexing only, NOT route verification; do not use this matcher in runtime.",
+      "remedy": "Official route/direction/winter-operation confirmation required before any future immutable-data authoring."
+    },
+    {
+      "source": {
+        "path": "assets/trip-v9-final-fixes.js",
+        "line": 237,
+        "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L237"
+      },
+      "v1": {
+        "match": [
+          "長野 → 白馬"
+        ],
+        "html": "<strong>🛣️ 休息點：</strong> <span class=\"none\">呢段主線主要係一般國道，冇高速SA／PA。</span> 如果想落車伸展，可視路線考慮「道の駅 中条」。"
+      },
+      "canonicalTimelineCandidates": [
+        {
+          "dayNumber": 5,
+          "date": "2027-01-13",
+          "item": {
+            "id": "jp27-tl-d5-drive-hakuba",
+            "type": "travel",
+            "title": "長野 → 白馬岩岳",
+            "optional": false,
+            "startTime": "09:00",
+            "endTime": "10:15",
+            "description": "冬季預鬆，遇大雪不趕。",
+            "durationMinutes": 75,
+            "transportId": "jp27-transport-rental-car",
+            "navigationTargetId": "jp27-nav-iwatake-base"
+          }
+        }
+      ],
+      "credibility": "Title match is audit indexing only, NOT route verification; do not use this matcher in runtime.",
+      "remedy": "Official route/direction/winter-operation confirmation required before any future immutable-data authoring."
+    },
+    {
+      "source": {
+        "path": "assets/trip-v9-final-fixes.js",
+        "line": 238,
+        "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L238"
+      },
+      "v1": {
+        "match": [
+          "白馬 → 高山"
+        ],
+        "html": "<strong>🛣️ 如採 R148 → 糸魚川 → E8 → 富山 → R41：</strong> 越中境PA → 入善PA → <span class=\"big\">⭐【大SA】有磯海SA</span> → 流杉PA。長途冬季車程建議將有磯海SA當正式休息站，食嘢／行下／去洗手間。"
+      },
+      "canonicalTimelineCandidates": [
+        {
+          "dayNumber": 5,
+          "date": "2027-01-13",
+          "item": {
+            "id": "jp27-tl-d5-drive-takayama",
+            "type": "travel",
+            "title": "白馬 → 高山",
+            "optional": false,
+            "startTime": "13:20",
+            "endTime": "16:30",
+            "description": "冬季長途段，保留安全Buffer。",
+            "durationMinutes": 190,
+            "transportId": "jp27-transport-rental-car",
+            "hardCutId": "jp27-cut-d5-hakuba"
+          }
+        }
+      ],
+      "credibility": "Title match is audit indexing only, NOT route verification; do not use this matcher in runtime.",
+      "remedy": "Official route/direction/winter-operation confirmation required before any future immutable-data authoring."
+    },
+    {
+      "source": {
+        "path": "assets/trip-v9-final-fixes.js",
+        "line": 239,
+        "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L239"
+      },
+      "v1": {
+        "match": [
+          "高山 → 新穗高",
+          "高山 → 新穗高纜車"
+        ],
+        "html": "<strong>🛣️ 休息點：</strong> <span class=\"none\">山區國道，冇高速SA／PA。</span> 沿線可留意「道の駅 奥飛騨温泉郷上宝」；但新穗高天氣窗口優先，唔好為休息站拖慢上山。"
+      },
+      "canonicalTimelineCandidates": [
+        {
+          "dayNumber": 7,
+          "date": "2027-01-15",
+          "item": {
+            "id": "jp27-tl-d7-drive-shinhotaka",
+            "type": "travel",
+            "title": "高山 → 新穗高",
+            "optional": false,
+            "startTime": "09:15",
+            "endTime": "10:35",
+            "description": "冬季預1小時20分，唔為趕纜車超速。",
+            "durationMinutes": 80,
+            "transportId": "jp27-transport-rental-car",
+            "navigationTargetId": "jp27-nav-shinhotaka-parking"
+          }
+        }
+      ],
+      "credibility": "Title match is audit indexing only, NOT route verification; do not use this matcher in runtime.",
+      "remedy": "Official route/direction/winter-operation confirmation required before any future immutable-data authoring."
+    },
+    {
+      "source": {
+        "path": "assets/trip-v9-final-fixes.js",
+        "line": 240,
+        "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L240"
+      },
+      "v1": {
+        "match": [
+          "高山 → 白川鄉",
+          "高山 → 白川郷"
+        ],
+        "html": "<strong>🛣️ E41 SA／PA：</strong> 飛驒河合PA → 飛驒白川PA；兩個都係小型PA，呢段冇大型SA。"
+      },
+      "canonicalTimelineCandidates": [
+        {
+          "dayNumber": 6,
+          "date": "2027-01-14",
+          "item": {
+            "id": "jp27-tl-d6-drive-shirakawa",
+            "type": "travel",
+            "title": "高山 → 白川鄉",
+            "optional": false,
+            "startTime": "09:00",
+            "endTime": "10:05",
+            "description": "冬季路況預鬆。",
+            "durationMinutes": 65,
+            "transportId": "jp27-transport-rental-car",
+            "navigationTargetId": "jp27-nav-shirakawago-parking"
+          }
+        }
+      ],
+      "credibility": "Title match is audit indexing only, NOT route verification; do not use this matcher in runtime.",
+      "remedy": "Official route/direction/winter-operation confirmation required before any future immutable-data authoring."
+    },
+    {
+      "source": {
+        "path": "assets/trip-v9-final-fixes.js",
+        "line": 241,
+        "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L241"
+      },
+      "v1": {
+        "match": [
+          "白川鄉 → 高山",
+          "白川郷 → 高山"
+        ],
+        "html": "<strong>🛣️ E41 SA／PA：</strong> 飛驒白川PA → 飛驒河合PA；兩個都係小型PA，唔需要特登為佢哋留長時間。"
+      },
+      "canonicalTimelineCandidates": [
+        {
+          "dayNumber": 6,
+          "date": "2027-01-14",
+          "item": {
+            "id": "jp27-tl-d6-return",
+            "type": "travel",
+            "title": "白川鄉 → 高山",
+            "optional": false,
+            "startTime": "14:00",
+            "endTime": "15:15",
+            "description": "14:15前離開為原則。",
+            "durationMinutes": 75,
+            "transportId": "jp27-transport-rental-car",
+            "hardCutId": "jp27-cut-d6-shirakawa"
+          }
+        }
+      ],
+      "credibility": "Title match is audit indexing only, NOT route verification; do not use this matcher in runtime.",
+      "remedy": "Official route/direction/winter-operation confirmation required before any future immutable-data authoring."
+    },
+    {
+      "source": {
+        "path": "assets/trip-v9-final-fixes.js",
+        "line": 242,
+        "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L242"
+      },
+      "v1": {
+        "match": [
+          "平湯 → 松本",
+          "新穗高 → 松本",
+          "飛驒大鐘乳洞 → 松本",
+          "高山 → 松本"
+        ],
+        "html": "<strong>🛣️ R158 山路：</strong> <span class=\"none\">冇高速SA／PA。</span> 過安房隧道後可用「道の駅 風穴の里」做主要休息／洗手間位；冬季天黑前到松本優先。"
+      },
+      "canonicalTimelineCandidates": [
+        {
+          "dayNumber": 8,
+          "date": "2027-01-16",
+          "item": {
+            "id": "jp27-tl-d8-drive-matsumoto",
+            "type": "travel",
+            "title": "飛驒大鐘乳洞 → 松本",
+            "optional": false,
+            "startTime": "14:50",
+            "endTime": "17:30",
+            "description": "D8只向東返松本；雪路慢行。",
+            "durationMinutes": 160,
+            "transportId": "jp27-transport-rental-car"
+          }
+        }
+      ],
+      "credibility": "Title match is audit indexing only, NOT route verification; do not use this matcher in runtime.",
+      "remedy": "Official route/direction/winter-operation confirmation required before any future immutable-data authoring."
+    },
+    {
+      "source": {
+        "path": "assets/trip-v9-final-fixes.js",
+        "line": 243,
+        "url": "https://github.com/yfgary/travelpilot/blob/8b5129b381d6ace94030b51c7b8de5c4e3d5f533/assets/trip-v9-final-fixes.js#L243"
+      },
+      "v1": {
+        "match": [
+          "白川鄉 → 松本",
+          "白川郷 → 松本"
+        ],
+        "html": "<strong>🛣️ 休息點：</strong> 前段E41有飛驒白川PA／飛驒河合PA；轉R158後冇高速SA／PA，過安房隧道後可用「道の駅 風穴の里」。"
+      },
+      "canonicalTimelineCandidates": [],
+      "credibility": "Title match is audit indexing only, NOT route verification; do not use this matcher in runtime.",
+      "remedy": "Official route/direction/winter-operation confirmation required before any future immutable-data authoring."
+    }
+  ]
+}

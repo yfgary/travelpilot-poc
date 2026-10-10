@@ -9,6 +9,7 @@ import { ExternalLink, MapsAction } from '../components/itinerary/ContentActions
 import { TodayWeather } from '../components/weather/TodayWeather'
 import { ScreenAwake } from '../components/today/ScreenAwake'
 import { NativeName } from '../components/itinerary/NativeName'
+import { RichText } from '../components/itinerary/RichText'
 import { deriveToday, isOperationalDay, type TodayStop } from '../data/today'
 import { calendarDate, formatTripDate } from '../data/tripDates'
 import { timelineTiming, timelineStartInstant, timelineTimeLabel, plannedDelta, tripTime } from '../data/tripTime'
@@ -95,7 +96,7 @@ export function TodayMode() {
     <section className="today-card today-activities" aria-label="當日活動"><h2>當日活動</h2>{model.activities.length ? <ol>{model.activities.map(({ item, stop }) => {
       const label = item.id === position.current?.id ? focusLabel : item.id === position.next?.id ? '下一項' : item.id === position.previous?.id ? '上一項' : undefined
       return <li key={item.id} data-item-id={item.id} data-exact-timing={timelineTiming(item) ? true : undefined} data-position={label ?? ''} aria-current={item.id === position.current?.id ? 'step' : undefined}>
-        <div className="today-row-time">{timelineTimeLabel(item, 'start')}{timelineTimeLabel(item, 'end') && <span> – {timelineTimeLabel(item, 'end')}</span>}</div><div><h3>{item.title}</h3><p className="today-item-type">{timelineTypes[item.type].icon} {timelineTypes[item.type].label}{label && <span className="today-tag">{label}</span>}{item.optional && <span className="today-tag">可選</span>}{item.bonus && <span className="today-tag">Bonus</span>}</p>{item.warning && <p className="content-warning">⚠ 注意：{item.warning}</p>}{stop && <MapsAction entity={{ mapURL: stop.maps }} name={stop.name} />}</div>
+        <div className="today-row-time">{timelineTimeLabel(item, 'start')}{timelineTimeLabel(item, 'end') && <span> – {timelineTimeLabel(item, 'end')}</span>}</div><div><h3>{item.title}</h3><p className="today-item-type">{timelineTypes[item.type].icon} {timelineTypes[item.type].label}{label && <span className="today-tag">{label}</span>}{item.optional && <span className="today-tag">可選</span>}{item.bonus && <span className="today-tag">Bonus</span>}</p>{item.description && <RichText value={item.description} />}{item.warning && <p className="content-warning">⚠ 注意：{item.warning}</p>}{stop && <MapsAction entity={{ mapURL: stop.maps }} name={stop.name} />}</div>
       </li>
     })}</ol> : <p>此行程日未有活動。</p>}</section>
     <ScreenAwake />
