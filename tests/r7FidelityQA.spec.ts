@@ -114,7 +114,7 @@ for (const font of ['small', 'medium', 'large']) test(`generic itinerary/drive/B
 })
 
 test('R7 pins canonical Japan and confines the runtime patch to shared authored-text presentation', () => {
-  expect(metadata.version).toBe('2.0.0-poc.42')
+  expect(metadata.version).toBe('2.0.0-poc.43')
   expect(createHash('sha256').update(japanBytes).digest('hex')).toBe('09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e')
   const source = readFileSync('src/views/TodayMode.tsx', 'utf8')
   expect(source).toContain('item.description && <RichText value={item.description} />')
