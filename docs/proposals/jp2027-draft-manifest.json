@@ -1,0 +1,86 @@
+{
+  "status": "UNPUBLISHED_REVIEW_ONLY",
+  "candidateLabel": "jp2027-schema6-review-draft-01",
+  "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
+  "published": false,
+  "isCurrent": false,
+  "authorizedForSupabaseWrite": false,
+  "parentDataVersion": "jp2027.1",
+  "parentSchemaVersion": 5,
+  "draftSchemaVersion": 6,
+  "publishedArchiveSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+  "approvedDecision": "D1 Projection Mapping retained; Nawate Street separately in backupContent with no fixed timeline slot",
+  "sourcedChanges": [
+    {
+      "area": "D1 Nawate",
+      "official": [
+        "https://visitmatsumoto.com/zh-hant/spot/detail_1083.html",
+        "https://visitmatsumoto.com/spot/detail_1083.html"
+      ],
+      "confidence": "official location and Japanese name; night shop hours NOT verified"
+    },
+    {
+      "area": "D1 projection",
+      "official": [
+        "https://visitmatsumoto.com/en/event/detail_3003.html"
+      ],
+      "confidence": "official 2026-12-12–2027-02-14; 18:00–22:00; free; recheck before travel"
+    },
+    {
+      "area": "D1 highlights",
+      "confidence": "reworded from immutable canonical times; no timing data edited",
+      "oldHighlights": [
+        "UO680",
+        "μSKY＋JR轉乘",
+        "松本第一晚"
+      ]
+    }
+  ],
+  "photoCandidate": {
+    "url": "https://commons.wikimedia.org/wiki/File:Matsumoto-Castle-day-view-2019-Luka-Peternel.jpg",
+    "author": "Luka Peternel",
+    "license": "CC BY-SA 4.0",
+    "status": "license file-page checked; no file downloaded or image record added"
+  },
+  "unresolved": [
+    {
+      "issue": 15,
+      "description": "Source-authored local names for original 36 Places and related hotels/transport/navigation"
+    },
+    {
+      "issue": 18,
+      "description": "6 missing transport fares; need actual quotes"
+    },
+    {
+      "issue": 20,
+      "description": "verify actual motorway direction, winter SA/PA and roadside stops"
+    },
+    {
+      "issue": 22,
+      "description": "licensed daytime image asset to add as new separate media mapping"
+    },
+    {
+      "issue": 23,
+      "description": "36-place researched long-form descriptions still incomplete"
+    },
+    {
+      "issue": 25,
+      "description": "real Live Cam source playback and embedding unverified"
+    }
+  ],
+  "invariants": {
+    "placesOriginal": 36,
+    "placesDraft": 37,
+    "days": 9,
+    "cameras": 5,
+    "transport": 7,
+    "publishedFixtureUntouched": true,
+    "protectedAssetsUntouched": true
+  },
+  "remainingGates": [
+    "Full Schema6 Zod validation and POC browser tests by Codex",
+    "Source verification of remaining fields and photo rights/format",
+    "Separate user authorization before creating or publishing actual new Supabase Trip Data Version",
+    "Step15D stays blocked"
+  ]
+}

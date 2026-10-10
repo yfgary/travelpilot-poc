@@ -1,0 +1,6472 @@
+{
+  "schemaVersion": 6,
+  "trip": {
+    "id": "349442d2-7bf3-426b-9f57-163e2272e909",
+    "slug": "shirakawago-shinhotaka-2027",
+    "title": "白川鄉・新穗高之旅 2027",
+    "shortTitle": "白川鄉・新穗高 2027",
+    "destinationLabel": "日本中部・長野・飛驒",
+    "summary": "9日8夜冬季自駕：松本、輕井澤、小布施、澀溫泉、地獄谷、白馬、高山、白川鄉、新穗高。",
+    "introduction": "名古屋進出，先鐵路到松本，再以4WD＋雪軚自駕穿越長野與飛驒。D6白川鄉、D7新穗高、D8飛驒大鐘乳洞後返松本已固定；天氣只影響適合度與安全判斷，不再交換D6–D8。",
+    "startDate": "2027-01-09",
+    "endDate": "2027-01-17",
+    "timezone": "Asia/Tokyo",
+    "heroImageId": "jp27-image-banner",
+    "bannerImageId": "jp27-image-banner"
+  },
+  "regions": [
+    {
+      "id": "jp27-region-matsumoto",
+      "name": "松本",
+      "label": "松本市區",
+      "coordinates": {
+        "latitude": 36.2381,
+        "longitude": 137.972
+      },
+      "weatherConfigurationId": "jp27-weather-matsumoto"
+    },
+    {
+      "id": "jp27-region-karuizawa",
+      "name": "輕井澤",
+      "label": "輕井澤／淺間山一帶",
+      "coordinates": {
+        "latitude": 36.3485,
+        "longitude": 138.5969
+      },
+      "weatherConfigurationId": "jp27-weather-karuizawa"
+    },
+    {
+      "id": "jp27-region-chikuma",
+      "name": "千曲",
+      "label": "戶倉上山田溫泉",
+      "coordinates": {
+        "latitude": 36.533,
+        "longitude": 138.12
+      },
+      "weatherConfigurationId": "jp27-weather-karuizawa"
+    },
+    {
+      "id": "jp27-region-obuse",
+      "name": "小布施／中野",
+      "label": "小布施・中野",
+      "coordinates": {
+        "latitude": 36.6975,
+        "longitude": 138.312
+      },
+      "weatherConfigurationId": "jp27-weather-yamanouchi"
+    },
+    {
+      "id": "jp27-region-yamanouchi",
+      "name": "山之內／澀溫泉",
+      "label": "澀溫泉・地獄谷",
+      "coordinates": {
+        "latitude": 36.7344,
+        "longitude": 138.4331
+      },
+      "weatherConfigurationId": "jp27-weather-yamanouchi"
+    },
+    {
+      "id": "jp27-region-nagano",
+      "name": "長野／須坂",
+      "label": "長野・須坂",
+      "coordinates": {
+        "latitude": 36.6486,
+        "longitude": 138.245
+      },
+      "weatherConfigurationId": "jp27-weather-nagano"
+    },
+    {
+      "id": "jp27-region-hakuba",
+      "name": "白馬",
+      "label": "白馬岩岳",
+      "coordinates": {
+        "latitude": 36.6982,
+        "longitude": 137.8619
+      },
+      "weatherConfigurationId": "jp27-weather-hakuba"
+    },
+    {
+      "id": "jp27-region-takayama",
+      "name": "高山",
+      "label": "高山市區／丹生川",
+      "coordinates": {
+        "latitude": 36.1461,
+        "longitude": 137.2522
+      },
+      "weatherConfigurationId": "jp27-weather-takayama"
+    },
+    {
+      "id": "jp27-region-shirakawago",
+      "name": "白川鄉",
+      "label": "白川鄉荻町",
+      "coordinates": {
+        "latitude": 36.2573,
+        "longitude": 136.9068
+      },
+      "weatherConfigurationId": "jp27-weather-shirakawago"
+    },
+    {
+      "id": "jp27-region-okuhida",
+      "name": "奧飛驒／新穗高",
+      "label": "新穗高・平湯",
+      "coordinates": {
+        "latitude": 36.2828,
+        "longitude": 137.5804
+      },
+      "weatherConfigurationId": "jp27-weather-shinhotaka"
+    }
+  ],
+  "days": [
+    {
+      "id": "jp27-day-1",
+      "dayNumber": 1,
+      "date": "2027-01-09",
+      "title": "香港 → 名古屋 → 松本",
+      "routeSummary": "香港 → 中部國際機場 T2 → 名古屋 → JR 特急しなの → 松本",
+      "highlights": [
+        "06:45（香港時間）開始機場報到及候機安排，保留出發 Buffer。",
+        "17:40–19:46 JR 特急しなの；16:35–17:35 預留名鐵轉 JR 及行李轉乘緩衝。",
+        "19:50–20:10 先辦酒店入住；松本城光影投影為原定可選 Bonus，繩手通另作無固定時間後備。"
+      ],
+      "imageIds": [
+        "jp27-image-centrair",
+        "jp27-image-shinano",
+        "jp27-image-matsumoto"
+      ],
+      "accommodationId": "jp27-stay-tabino",
+      "primaryWeatherRegionId": "jp27-weather-matsumoto",
+      "constraints": [],
+      "warnings": [
+        "D1 Bonus唔影響休息；翌日要正式入松本城及取車。"
+      ],
+      "timeline": [
+        {
+          "id": "jp27-tl-d1-airport",
+          "type": "travel",
+          "title": "香港機場 Check-in／候機",
+          "optional": false,
+          "startTime": "06:45",
+          "endTime": "09:20",
+          "description": "香港時間（HKT）。完成T2國際航班報到、行李及候機。",
+          "durationMinutes": 155,
+          "timing": {
+            "start": {
+              "dateTime": "2027-01-09T06:45:00+08:00",
+              "timeZone": "Asia/Hong_Kong"
+            },
+            "end": {
+              "dateTime": "2027-01-09T09:20:00+08:00",
+              "timeZone": "Asia/Hong_Kong"
+            }
+          }
+        },
+        {
+          "id": "jp27-tl-d1-uo680",
+          "type": "travel",
+          "title": "UO680 香港 → 名古屋",
+          "optional": false,
+          "startTime": "10:00",
+          "endTime": "14:30",
+          "description": "10:00 HKT由香港出發；14:30 JST抵達名古屋中部國際機場T2。Exact timing以兩端時區記錄。",
+          "durationMinutes": 210,
+          "transportId": "jp27-transport-uo680",
+          "timing": {
+            "start": {
+              "dateTime": "2027-01-09T10:00:00+08:00",
+              "timeZone": "Asia/Hong_Kong"
+            },
+            "end": {
+              "dateTime": "2027-01-09T14:30:00+09:00",
+              "timeZone": "Asia/Tokyo"
+            }
+          }
+        },
+        {
+          "id": "jp27-tl-d1-immigration",
+          "type": "break",
+          "title": "入境／取行李",
+          "optional": false,
+          "startTime": "14:30",
+          "endTime": "15:45",
+          "description": "T2入境、行李後前往Access Plaza。",
+          "durationMinutes": 75
+        },
+        {
+          "id": "jp27-tl-d1-meitetsu",
+          "type": "travel",
+          "title": "名鐵前往名古屋",
+          "optional": false,
+          "startTime": "15:45",
+          "endTime": "16:35",
+          "description": "按實際入境時間選班次。",
+          "durationMinutes": 50,
+          "transportId": "jp27-transport-meitetsu-out"
+        },
+        {
+          "id": "jp27-tl-d1-transfer",
+          "type": "break",
+          "title": "名鐵→JR轉車／Buffer",
+          "optional": false,
+          "startTime": "16:35",
+          "endTime": "17:35",
+          "description": "拖行李轉JR；早到可買票／便當。",
+          "durationMinutes": 60
+        },
+        {
+          "id": "jp27-tl-d1-shinano",
+          "type": "travel",
+          "title": "JR 特急しなの 名古屋 → 松本",
+          "optional": false,
+          "startTime": "17:40",
+          "endTime": "19:46",
+          "description": "現行規劃時間；冬季可能延誤。",
+          "durationMinutes": 126,
+          "transportId": "jp27-transport-shinano-out",
+          "hardCutId": "jp27-cut-d1-shinano"
+        },
+        {
+          "id": "jp27-tl-d1-checkin",
+          "type": "stay",
+          "title": "TABINO HOTEL lit 松本入住",
+          "optional": false,
+          "startTime": "19:50",
+          "endTime": "20:10",
+          "description": "放低行李休息。",
+          "durationMinutes": 20,
+          "accommodationId": "jp27-stay-tabino"
+        },
+        {
+          "id": "jp27-tl-d1-projection",
+          "type": "activity",
+          "title": "松本城冬季光影投影（Projection Mapping）",
+          "optional": true,
+          "startTime": "20:20",
+          "endTime": "21:00",
+          "description": "JR準時、精神好先去；延誤即Cut。",
+          "durationMinutes": 40,
+          "placeId": "jp27-place-matsumoto-projection",
+          "bonus": true
+        }
+      ],
+      "optionalContent": [
+        {
+          "type": "place",
+          "id": "jp27-place-matsumoto-projection"
+        }
+      ],
+      "backupContent": [
+        {
+          "type": "place",
+          "id": "jp27-place-nawate"
+        }
+      ]
+    },
+    {
+      "id": "jp27-day-2",
+      "dayNumber": 2,
+      "date": "2027-01-10",
+      "title": "松本城 → 輕井澤 Outlet → 千曲",
+      "routeSummary": "早餐 → 國寶松本城 → 回酒店取行李 → Times取4WD → 輕井澤Outlet → 千曲館",
+      "highlights": [
+        "松本城正式入天守約90分鐘",
+        "取4WD＋雪軚",
+        "Outlet約2小時",
+        "17:30前抵達溫泉旅館"
+      ],
+      "imageIds": [
+        "jp27-image-matsumoto",
+        "jp27-image-outlet"
+      ],
+      "accommodationId": "jp27-stay-chikumakan",
+      "primaryWeatherRegionId": "jp27-weather-karuizawa",
+      "constraints": [
+        "白絲瀑布／鬼押出園只係Backup，不可令千曲館遲過17:30。"
+      ],
+      "warnings": [
+        "冬季山路狀況差就直接Skip所有山區Backup。"
+      ],
+      "timeline": [
+        {
+          "id": "jp27-tl-d2-breakfast",
+          "type": "meal",
+          "title": "快速早餐",
+          "optional": false,
+          "startTime": "08:30",
+          "endTime": "09:00",
+          "description": "酒店附近簡單早餐。",
+          "durationMinutes": 30
+        },
+        {
+          "id": "jp27-tl-d2-castle",
+          "type": "activity",
+          "title": "國寶松本城",
+          "optional": false,
+          "startTime": "09:15",
+          "endTime": "10:45",
+          "description": "以攝影＋正式入天守為主，約90分鐘。",
+          "durationMinutes": 90,
+          "placeId": "jp27-place-matsumoto-castle"
+        },
+        {
+          "id": "jp27-tl-d2-luggage",
+          "type": "other",
+          "title": "返回TABINO取行李",
+          "optional": false,
+          "startTime": "10:45",
+          "endTime": "11:05",
+          "description": "行李留酒店，松本城完成後先取。",
+          "durationMinutes": 20,
+          "accommodationId": "jp27-stay-tabino"
+        },
+        {
+          "id": "jp27-tl-d2-pickup",
+          "type": "travel",
+          "title": "Times 松本站前取車",
+          "optional": false,
+          "startTime": "11:05",
+          "endTime": "11:25",
+          "description": "驗車、確認4WD＋雪軚＋雪刷。",
+          "durationMinutes": 20,
+          "transportId": "jp27-transport-rental-car",
+          "navigationTargetId": "jp27-nav-times-matsumoto"
+        },
+        {
+          "id": "jp27-tl-d2-drive-outlet",
+          "type": "travel",
+          "title": "松本 → 輕井澤",
+          "optional": false,
+          "startTime": "11:25",
+          "endTime": "13:15",
+          "description": "冬季預鬆；道路慢行。",
+          "durationMinutes": 110,
+          "transportId": "jp27-transport-rental-car"
+        },
+        {
+          "id": "jp27-tl-d2-outlet",
+          "type": "activity",
+          "title": "輕井澤王子購物廣場＋午餐",
+          "optional": false,
+          "startTime": "13:15",
+          "endTime": "15:15",
+          "description": "約2小時集中Shopping；先攻最想買品牌。",
+          "durationMinutes": 120,
+          "placeId": "jp27-place-karuizawa-outlet",
+          "hardCutId": "jp27-cut-d2-outlet-leave"
+        },
+        {
+          "id": "jp27-tl-d2-drive-chikuma",
+          "type": "travel",
+          "title": "輕井澤 → 千曲",
+          "optional": false,
+          "startTime": "15:30",
+          "endTime": "17:10",
+          "description": "15:30前離開，冬季路況優先。",
+          "durationMinutes": 100,
+          "transportId": "jp27-transport-rental-car",
+          "hardCutId": "jp27-cut-d2-chikumakan"
+        },
+        {
+          "id": "jp27-tl-d2-checkin",
+          "type": "stay",
+          "title": "Club Wyndham 千曲館入住",
+          "optional": false,
+          "startTime": "17:10",
+          "endTime": "17:30",
+          "description": "一泊二食；到埗後休息／溫泉。",
+          "durationMinutes": 20,
+          "accommodationId": "jp27-stay-chikumakan"
+        }
+      ],
+      "optionalContent": [],
+      "backupContent": [
+        {
+          "type": "place",
+          "id": "jp27-place-shiraito"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-onioshidashi"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-kumoba"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-ueda-castle"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-yanagimachi"
+        }
+      ]
+    },
+    {
+      "id": "jp27-day-3",
+      "dayNumber": 3,
+      "date": "2027-01-11",
+      "title": "千曲 → 小布施 → 澀溫泉",
+      "routeSummary": "千曲 → 小布施舊街／栗之小徑 → JA Oranche → 澀溫泉 → 九湯巡禮",
+      "highlights": [
+        "成人の日不排Snow Monkey",
+        "小布施＋地方農產",
+        "澀溫泉九湯巡禮"
+      ],
+      "imageIds": [
+        "jp27-image-obuse",
+        "jp27-image-shibu-day",
+        "jp27-image-shibu-night"
+      ],
+      "accommodationId": "jp27-stay-ichinoyu",
+      "primaryWeatherRegionId": "jp27-weather-yamanouchi",
+      "constraints": [],
+      "warnings": [],
+      "timeline": [
+        {
+          "id": "jp27-tl-d3-breakfast",
+          "type": "meal",
+          "title": "千曲館早餐",
+          "optional": false,
+          "startTime": "08:00",
+          "endTime": "09:00",
+          "description": "住宿包早餐。",
+          "durationMinutes": 60
+        },
+        {
+          "id": "jp27-tl-d3-drive-obuse",
+          "type": "travel",
+          "title": "千曲 → 小布施",
+          "optional": false,
+          "startTime": "09:15",
+          "endTime": "10:00",
+          "description": "成人の日，刻意將Snow Monkey留D4。",
+          "durationMinutes": 45,
+          "transportId": "jp27-transport-rental-car"
+        },
+        {
+          "id": "jp27-tl-d3-obuse",
+          "type": "activity",
+          "title": "小布施舊街＋栗之小徑",
+          "optional": false,
+          "startTime": "10:00",
+          "endTime": "11:15",
+          "description": "街景、栗菓子、栗おこわ及手信。",
+          "durationMinutes": 75,
+          "placeId": "jp27-place-obuse"
+        },
+        {
+          "id": "jp27-tl-d3-hokusai",
+          "type": "activity",
+          "title": "北齋館 Optional",
+          "optional": true,
+          "startTime": "11:15",
+          "endTime": "11:55",
+          "description": "對畫興趣一般，所以只作30–40分鐘Optional。",
+          "durationMinutes": 40,
+          "placeId": "jp27-place-hokusai",
+          "bonus": true
+        },
+        {
+          "id": "jp27-tl-d3-lunch",
+          "type": "meal",
+          "title": "小布施午餐",
+          "optional": false,
+          "startTime": "12:00",
+          "endTime": "12:40",
+          "description": "蕎麥麵／栗おこわ；晚餐旅館已包。",
+          "durationMinutes": 40
+        },
+        {
+          "id": "jp27-tl-d3-oranche",
+          "type": "activity",
+          "title": "JA中野市 Oranche",
+          "optional": false,
+          "startTime": "13:05",
+          "endTime": "13:40",
+          "description": "地元農產短Shopping。",
+          "durationMinutes": 35,
+          "placeId": "jp27-place-oranche"
+        },
+        {
+          "id": "jp27-tl-d3-drive-shibu",
+          "type": "travel",
+          "title": "JA Oranche → 澀溫泉",
+          "optional": false,
+          "startTime": "13:40",
+          "endTime": "14:20",
+          "description": "入溫泉街前按旅館指示泊車。",
+          "durationMinutes": 40,
+          "transportId": "jp27-transport-rental-car"
+        },
+        {
+          "id": "jp27-tl-d3-shibu-walk",
+          "type": "activity",
+          "title": "澀溫泉街散步",
+          "optional": false,
+          "startTime": "14:20",
+          "endTime": "15:00",
+          "description": "先認路影相，15:00入住。",
+          "durationMinutes": 40,
+          "placeId": "jp27-place-shibu-onsen"
+        },
+        {
+          "id": "jp27-tl-d3-onsen",
+          "type": "stay",
+          "title": "一乃湯果亭＋九湯巡禮",
+          "optional": false,
+          "startTime": "15:00",
+          "endTime": "17:30",
+          "description": "Check-in後穿浴衣巡湯。",
+          "durationMinutes": 150,
+          "placeId": "jp27-place-shibu-onsen",
+          "accommodationId": "jp27-stay-ichinoyu"
+        },
+        {
+          "id": "jp27-tl-d3-dinner",
+          "type": "meal",
+          "title": "一乃湯果亭晚餐",
+          "optional": false,
+          "startTime": "18:00",
+          "endTime": "19:30",
+          "description": "住宿包晚餐。",
+          "durationMinutes": 90,
+          "accommodationId": "jp27-stay-ichinoyu"
+        },
+        {
+          "id": "jp27-tl-d3-night",
+          "type": "activity",
+          "title": "澀溫泉夜行／再浸外湯",
+          "optional": true,
+          "startTime": "20:00",
+          "endTime": "21:30",
+          "description": "飯後按體力再巡湯。",
+          "durationMinutes": 90,
+          "placeId": "jp27-place-shibu-onsen"
+        }
+      ],
+      "optionalContent": [
+        {
+          "type": "place",
+          "id": "jp27-place-hokusai"
+        }
+      ],
+      "backupContent": [
+        {
+          "type": "place",
+          "id": "jp27-place-ganshoin"
+        }
+      ]
+    },
+    {
+      "id": "jp27-day-4",
+      "dayNumber": 4,
+      "date": "2027-01-12",
+      "title": "澀溫泉 → 地獄谷 → 須坂 → 長野",
+      "routeSummary": "澀溫泉 → 上林 → 地獄谷野猿公苑 → AEON Mall須坂 → 長野",
+      "highlights": [
+        "雪地步行看雪猴",
+        "AEON Mall須坂長Shopping",
+        "長野住宿"
+      ],
+      "imageIds": [
+        "jp27-image-snow-monkey",
+        "jp27-image-monkey-trail",
+        "jp27-image-aeon-suzaka"
+      ],
+      "accommodationId": "jp27-stay-jal-nagano",
+      "primaryWeatherRegionId": "jp27-weather-yamanouchi",
+      "constraints": [],
+      "warnings": [],
+      "timeline": [
+        {
+          "id": "jp27-tl-d4-breakfast",
+          "type": "meal",
+          "title": "一乃湯果亭早餐",
+          "optional": false,
+          "startTime": "08:00",
+          "endTime": "09:00",
+          "description": "住宿包早餐。",
+          "durationMinutes": 60,
+          "accommodationId": "jp27-stay-ichinoyu"
+        },
+        {
+          "id": "jp27-tl-d4-drive-kanbayashi",
+          "type": "travel",
+          "title": "澀溫泉 → 上林冬季入口",
+          "optional": false,
+          "startTime": "09:00",
+          "endTime": "09:40",
+          "description": "導航冬季可用入口，不走封閉林道。",
+          "durationMinutes": 40,
+          "transportId": "jp27-transport-rental-car",
+          "navigationTargetId": "jp27-nav-monkey-parking"
+        },
+        {
+          "id": "jp27-tl-d4-walk-in",
+          "type": "travel",
+          "title": "雪地步行入地獄谷",
+          "optional": false,
+          "startTime": "09:40",
+          "endTime": "10:15",
+          "description": "防水防滑鞋；結冰位慢行。",
+          "durationMinutes": 35
+        },
+        {
+          "id": "jp27-tl-d4-monkey",
+          "type": "activity",
+          "title": "地獄谷野猿公苑",
+          "optional": false,
+          "startTime": "10:15",
+          "endTime": "11:30",
+          "description": "猴群／入浴不保證，以官方開園與現場狀態為準。",
+          "durationMinutes": 75,
+          "placeId": "jp27-place-snow-monkey"
+        },
+        {
+          "id": "jp27-tl-d4-walk-out",
+          "type": "travel",
+          "title": "步行返回上林",
+          "optional": false,
+          "startTime": "11:30",
+          "endTime": "12:05",
+          "description": "原路返回。",
+          "durationMinutes": 35
+        },
+        {
+          "id": "jp27-tl-d4-drive-suzaka",
+          "type": "travel",
+          "title": "上林 → 須坂",
+          "optional": false,
+          "startTime": "12:05",
+          "endTime": "12:45",
+          "description": "前往AEON方向。",
+          "durationMinutes": 40,
+          "transportId": "jp27-transport-rental-car"
+        },
+        {
+          "id": "jp27-tl-d4-lunch",
+          "type": "meal",
+          "title": "須坂午餐",
+          "optional": false,
+          "startTime": "12:45",
+          "endTime": "13:30",
+          "description": "簡單午餐。",
+          "durationMinutes": 45
+        },
+        {
+          "id": "jp27-tl-d4-aeon",
+          "type": "activity",
+          "title": "AEON Mall 須坂",
+          "optional": false,
+          "startTime": "13:30",
+          "endTime": "17:00",
+          "description": "超市、日用品、藥妝、服裝集中補給。",
+          "durationMinutes": 210,
+          "placeId": "jp27-place-aeon-suzaka",
+          "hardCutId": "jp27-cut-d4-aeon"
+        },
+        {
+          "id": "jp27-tl-d4-drive-nagano",
+          "type": "travel",
+          "title": "須坂 → 長野",
+          "optional": false,
+          "startTime": "17:00",
+          "endTime": "17:40",
+          "description": "前往Hotel JAL City Nagano。",
+          "durationMinutes": 40,
+          "transportId": "jp27-transport-rental-car"
+        },
+        {
+          "id": "jp27-tl-d4-checkin",
+          "type": "stay",
+          "title": "Hotel JAL City Nagano入住",
+          "optional": false,
+          "startTime": "17:45",
+          "endTime": "18:30",
+          "description": "翌朝包早餐。",
+          "durationMinutes": 45,
+          "accommodationId": "jp27-stay-jal-nagano"
+        }
+      ],
+      "optionalContent": [
+        {
+          "type": "place",
+          "id": "jp27-place-suzaka-kura"
+        }
+      ],
+      "backupContent": []
+    },
+    {
+      "id": "jp27-day-5",
+      "dayNumber": 5,
+      "date": "2027-01-13",
+      "title": "長野 → 白馬岩岳 → 高山",
+      "routeSummary": "長野 → 白馬岩岳 → MOUNTAIN HARBOR／WHITE PARK → 高山",
+      "highlights": [
+        "白馬雪山全景",
+        "非滑雪觀光Gondola",
+        "午後冬季長途駕駛去高山"
+      ],
+      "imageIds": [
+        "jp27-image-iwatake",
+        "jp27-image-harbor",
+        "jp27-image-whitepark"
+      ],
+      "accommodationId": "jp27-stay-ouan",
+      "primaryWeatherRegionId": "jp27-weather-hakuba",
+      "constraints": [],
+      "warnings": [
+        "白馬→高山路程長，唔為Backup變成長時間夜駕。"
+      ],
+      "timeline": [
+        {
+          "id": "jp27-tl-d5-breakfast",
+          "type": "meal",
+          "title": "Hotel JAL City Nagano早餐",
+          "optional": false,
+          "startTime": "07:45",
+          "endTime": "08:30",
+          "description": "包兩位自助早餐。",
+          "durationMinutes": 45,
+          "accommodationId": "jp27-stay-jal-nagano"
+        },
+        {
+          "id": "jp27-tl-d5-checkout",
+          "type": "stay",
+          "title": "退房／上車",
+          "optional": false,
+          "startTime": "08:30",
+          "endTime": "09:00",
+          "description": "整理行李後出發。",
+          "durationMinutes": 30,
+          "accommodationId": "jp27-stay-jal-nagano"
+        },
+        {
+          "id": "jp27-tl-d5-drive-hakuba",
+          "type": "travel",
+          "title": "長野 → 白馬岩岳",
+          "optional": false,
+          "startTime": "09:00",
+          "endTime": "10:15",
+          "description": "冬季預鬆，遇大雪不趕。",
+          "durationMinutes": 75,
+          "transportId": "jp27-transport-rental-car",
+          "navigationTargetId": "jp27-nav-iwatake-base"
+        },
+        {
+          "id": "jp27-tl-d5-iwatake",
+          "type": "activity",
+          "title": "白馬岩岳 Mountain Resort",
+          "optional": false,
+          "startTime": "10:20",
+          "endTime": "12:20",
+          "description": "Gondola、MOUNTAIN HARBOR、WHITE PARK；不滑雪。",
+          "durationMinutes": 120,
+          "placeId": "jp27-place-hakuba-iwatake"
+        },
+        {
+          "id": "jp27-tl-d5-lunch",
+          "type": "meal",
+          "title": "白馬午餐",
+          "optional": false,
+          "startTime": "12:25",
+          "endTime": "13:15",
+          "description": "食完直接向高山。",
+          "durationMinutes": 50
+        },
+        {
+          "id": "jp27-tl-d5-drive-takayama",
+          "type": "travel",
+          "title": "白馬 → 高山",
+          "optional": false,
+          "startTime": "13:20",
+          "endTime": "16:30",
+          "description": "冬季長途段，保留安全Buffer。",
+          "durationMinutes": 190,
+          "transportId": "jp27-transport-rental-car",
+          "hardCutId": "jp27-cut-d5-hakuba"
+        },
+        {
+          "id": "jp27-tl-d5-checkin",
+          "type": "stay",
+          "title": "高山櫻庵入住",
+          "optional": false,
+          "startTime": "16:30",
+          "endTime": "17:00",
+          "description": "連住兩晚，先放低行李。",
+          "durationMinutes": 30,
+          "accommodationId": "jp27-stay-ouan"
+        },
+        {
+          "id": "jp27-tl-d5-onsen",
+          "type": "break",
+          "title": "溫泉／休息",
+          "optional": false,
+          "startTime": "17:00",
+          "endTime": "18:30",
+          "description": "D5以休息為主。",
+          "durationMinutes": 90,
+          "accommodationId": "jp27-stay-ouan"
+        }
+      ],
+      "optionalContent": [],
+      "backupContent": [
+        {
+          "type": "place",
+          "id": "jp27-place-hida-no-sato"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-yatai-kaikan"
+        }
+      ]
+    },
+    {
+      "id": "jp27-day-6",
+      "dayNumber": 6,
+      "date": "2027-01-14",
+      "title": "高山 → 白川鄉 → 高山",
+      "routeSummary": "高山 → 白川鄉荻町 → 和田家 → 荻町展望台 → 高山",
+      "highlights": [
+        "固定白川鄉日",
+        "合掌村＋和田家＋展望台",
+        "晚上飛驒牛燒肉"
+      ],
+      "imageIds": [
+        "jp27-image-banner",
+        "jp27-image-shirakawago",
+        "jp27-image-shirakawago-view"
+      ],
+      "accommodationId": "jp27-stay-ouan",
+      "primaryWeatherRegionId": "jp27-weather-shirakawago",
+      "constraints": [
+        "D6固定白川鄉；不再與D7/D8交換。"
+      ],
+      "warnings": [
+        "白川鄉停車場／道路封閉、真正暴雪時安全優先。"
+      ],
+      "timeline": [
+        {
+          "id": "jp27-tl-d6-breakfast",
+          "type": "meal",
+          "title": "早餐／出發準備",
+          "optional": false,
+          "startTime": "08:00",
+          "endTime": "09:00",
+          "description": "按高山櫻庵最終早餐方案；09:00左右出發。",
+          "durationMinutes": 60,
+          "accommodationId": "jp27-stay-ouan"
+        },
+        {
+          "id": "jp27-tl-d6-drive-shirakawa",
+          "type": "travel",
+          "title": "高山 → 白川鄉",
+          "optional": false,
+          "startTime": "09:00",
+          "endTime": "10:05",
+          "description": "冬季路況預鬆。",
+          "durationMinutes": 65,
+          "transportId": "jp27-transport-rental-car",
+          "navigationTargetId": "jp27-nav-shirakawago-parking"
+        },
+        {
+          "id": "jp27-tl-d6-village",
+          "type": "activity",
+          "title": "白川鄉・荻町合掌村",
+          "optional": false,
+          "startTime": "10:15",
+          "endTime": "11:20",
+          "description": "村內慢行、雪屋頂、水渠與街景。",
+          "durationMinutes": 65,
+          "placeId": "jp27-place-shirakawago"
+        },
+        {
+          "id": "jp27-tl-d6-wada",
+          "type": "activity",
+          "title": "和田家",
+          "optional": false,
+          "startTime": "11:20",
+          "endTime": "11:55",
+          "description": "入屋理解合掌造木架與生活空間。",
+          "durationMinutes": 35,
+          "placeId": "jp27-place-wada-house"
+        },
+        {
+          "id": "jp27-tl-d6-lunch",
+          "type": "meal",
+          "title": "白川鄉午餐",
+          "optional": false,
+          "startTime": "12:00",
+          "endTime": "12:50",
+          "description": "蕎麥麵／鄉土定食。",
+          "durationMinutes": 50
+        },
+        {
+          "id": "jp27-tl-d6-view",
+          "type": "activity",
+          "title": "荻町城跡展望台",
+          "optional": false,
+          "startTime": "13:00",
+          "endTime": "13:50",
+          "description": "按當日Shuttle／步行情況調整。",
+          "durationMinutes": 50,
+          "placeId": "jp27-place-ogimachi-view"
+        },
+        {
+          "id": "jp27-tl-d6-return",
+          "type": "travel",
+          "title": "白川鄉 → 高山",
+          "optional": false,
+          "startTime": "14:00",
+          "endTime": "15:15",
+          "description": "14:15前離開為原則。",
+          "durationMinutes": 75,
+          "transportId": "jp27-transport-rental-car",
+          "hardCutId": "jp27-cut-d6-shirakawa"
+        },
+        {
+          "id": "jp27-tl-d6-rest",
+          "type": "break",
+          "title": "高山休息／溫泉",
+          "optional": false,
+          "startTime": "15:30",
+          "endTime": "18:30",
+          "description": "返高山後休息，晚餐前唔再塞長景點。",
+          "durationMinutes": 180,
+          "accommodationId": "jp27-stay-ouan"
+        },
+        {
+          "id": "jp27-tl-d6-yakiniku",
+          "type": "meal",
+          "title": "飛驒牛燒肉",
+          "optional": false,
+          "startTime": "19:15",
+          "endTime": "20:45",
+          "description": "今程飛驒牛燒肉餐；候選味蔵天国／丸明／其他非放題優質燒肉，臨近再訂。",
+          "durationMinutes": 90
+        }
+      ],
+      "optionalContent": [],
+      "backupContent": []
+    },
+    {
+      "id": "jp27-day-7",
+      "dayNumber": 7,
+      "date": "2027-01-15",
+      "title": "高山 → 新穗高 → 高山",
+      "routeSummary": "高山櫻庵 → 搬行李 → 新穗高纜車 → Residence Hotel Takayama Station",
+      "highlights": [
+        "固定新穗高日",
+        "官方運行狀態＋Live Cam優先",
+        "三寺まいり只做夜間Bonus"
+      ],
+      "imageIds": [
+        "jp27-image-shinhotaka",
+        "jp27-image-hida-furukawa"
+      ],
+      "accommodationId": "jp27-stay-residence",
+      "primaryWeatherRegionId": "jp27-weather-shinhotaka",
+      "constraints": [
+        "D7固定新穗高，不再與白川鄉／D8互換。"
+      ],
+      "warnings": [
+        "官方纜車運行狀態優先於Weather Score；停駛就直接調整當日活動，不改D6/D8主行程。"
+      ],
+      "timeline": [
+        {
+          "id": "jp27-tl-d7-breakfast",
+          "type": "meal",
+          "title": "早餐／睇Operation Status",
+          "optional": false,
+          "startTime": "08:00",
+          "endTime": "08:45",
+          "description": "早餐同時睇新穗高官方運行、Live Cam、能見度與風。",
+          "durationMinutes": 45,
+          "accommodationId": "jp27-stay-ouan"
+        },
+        {
+          "id": "jp27-tl-d7-luggage",
+          "type": "stay",
+          "title": "高山櫻庵退房／搬行李",
+          "optional": false,
+          "startTime": "08:45",
+          "endTime": "09:15",
+          "description": "行李移去Residence／未可寄存就妥善放車內。",
+          "durationMinutes": 30,
+          "accommodationId": "jp27-stay-ouan"
+        },
+        {
+          "id": "jp27-tl-d7-drive-shinhotaka",
+          "type": "travel",
+          "title": "高山 → 新穗高",
+          "optional": false,
+          "startTime": "09:15",
+          "endTime": "10:35",
+          "description": "冬季預1小時20分，唔為趕纜車超速。",
+          "durationMinutes": 80,
+          "transportId": "jp27-transport-rental-car",
+          "navigationTargetId": "jp27-nav-shinhotaka-parking"
+        },
+        {
+          "id": "jp27-tl-d7-ropeway",
+          "type": "activity",
+          "title": "新穗高纜車／西穗高口",
+          "optional": false,
+          "startTime": "10:35",
+          "endTime": "13:15",
+          "description": "固定D7主景點；如果停駛／能見度極差，就唔硬上。",
+          "durationMinutes": 160,
+          "placeId": "jp27-place-shinhotaka"
+        },
+        {
+          "id": "jp27-tl-d7-lunch",
+          "type": "meal",
+          "title": "新穗高午餐",
+          "optional": false,
+          "startTime": "13:15",
+          "endTime": "14:00",
+          "description": "簡單午餐。",
+          "durationMinutes": 45
+        },
+        {
+          "id": "jp27-tl-d7-return",
+          "type": "travel",
+          "title": "新穗高 → 高山",
+          "optional": false,
+          "startTime": "14:00",
+          "endTime": "15:20",
+          "description": "保留冬季Buffer。",
+          "durationMinutes": 80,
+          "transportId": "jp27-transport-rental-car",
+          "hardCutId": "jp27-cut-d7-shinhotaka"
+        },
+        {
+          "id": "jp27-tl-d7-checkin",
+          "type": "stay",
+          "title": "Residence Hotel Takayama Station入住",
+          "optional": false,
+          "startTime": "15:30",
+          "endTime": "16:00",
+          "description": "放低行李休息。",
+          "durationMinutes": 30,
+          "accommodationId": "jp27-stay-residence"
+        },
+        {
+          "id": "jp27-tl-d7-furukawa",
+          "type": "activity",
+          "title": "飛驒古川白壁土藏街 Optional",
+          "optional": true,
+          "startTime": "16:30",
+          "endTime": "17:20",
+          "description": "主線早完、道路安全、精神好先加。",
+          "durationMinutes": 50,
+          "placeId": "jp27-place-hida-furukawa",
+          "bonus": true
+        },
+        {
+          "id": "jp27-tl-d7-santera",
+          "type": "activity",
+          "title": "三寺まいり Optional",
+          "optional": true,
+          "startTime": "17:30",
+          "endTime": "20:00",
+          "description": "1/15季節Bonus；2027正式時間、雪路與體力都OK先去。",
+          "durationMinutes": 150,
+          "placeId": "jp27-place-santera",
+          "bonus": true
+        }
+      ],
+      "optionalContent": [
+        {
+          "type": "place",
+          "id": "jp27-place-hida-furukawa"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-santera"
+        }
+      ],
+      "backupContent": [
+        {
+          "type": "place",
+          "id": "jp27-place-hirayu-no-mori"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-bear-park"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-hirayu-shrine"
+        }
+      ]
+    },
+    {
+      "id": "jp27-day-8",
+      "dayNumber": 8,
+      "date": "2027-01-16",
+      "title": "高山市區 → 飛驒大鐘乳洞 → 松本",
+      "routeSummary": "Residence → 宮川朝市 → 高山陣屋 → 三町古街 → 飛驒大鐘乳洞 → 松本",
+      "highlights": [
+        "固定高山市區＋鐘乳洞",
+        "下午直接向東返松本",
+        "晚餐可選飛驒牛壽喜燒／火鍋"
+      ],
+      "imageIds": [
+        "jp27-image-takayama",
+        "jp27-image-hida-cave"
+      ],
+      "accommodationId": "jp27-stay-iroha",
+      "primaryWeatherRegionId": "jp27-weather-takayama",
+      "constraints": [
+        "D8固定飛驒大鐘乳洞後返松本；不安排白川鄉或新穗高。"
+      ],
+      "warnings": [
+        "14:50左右離開鐘乳洞係重要冬季行車界線；Backup一律先Cut。"
+      ],
+      "timeline": [
+        {
+          "id": "jp27-tl-d8-breakfast",
+          "type": "meal",
+          "title": "早餐／Check-out",
+          "optional": false,
+          "startTime": "08:00",
+          "endTime": "08:45",
+          "description": "Residence不包早餐；附近簡單食後出發。",
+          "durationMinutes": 45,
+          "accommodationId": "jp27-stay-residence"
+        },
+        {
+          "id": "jp27-tl-d8-market",
+          "type": "activity",
+          "title": "宮川朝市",
+          "optional": false,
+          "startTime": "09:00",
+          "endTime": "09:40",
+          "description": "地元蔬果、漬物、手信、小食。",
+          "durationMinutes": 40,
+          "placeId": "jp27-place-miyagawa"
+        },
+        {
+          "id": "jp27-tl-d8-jinya",
+          "type": "activity",
+          "title": "高山陣屋",
+          "optional": false,
+          "startTime": "09:50",
+          "endTime": "10:40",
+          "description": "幕府政務建築與米藏。",
+          "durationMinutes": 50,
+          "placeId": "jp27-place-takayama-jinya",
+          "navigationTargetId": "jp27-nav-takayama-nakabashi"
+        },
+        {
+          "id": "jp27-tl-d8-sanmachi",
+          "type": "activity",
+          "title": "三町古街／中橋／酒藏",
+          "optional": false,
+          "startTime": "10:45",
+          "endTime": "12:10",
+          "description": "町家、酒藏、傳統老店與手信。",
+          "durationMinutes": 85,
+          "placeId": "jp27-place-sanmachi"
+        },
+        {
+          "id": "jp27-tl-d8-lunch",
+          "type": "meal",
+          "title": "高山市區午餐",
+          "optional": false,
+          "startTime": "12:10",
+          "endTime": "12:50",
+          "description": "高山拉麵／蕎麥麵等，夜晚留肚食飛驒牛火鍋。",
+          "durationMinutes": 40
+        },
+        {
+          "id": "jp27-tl-d8-drive-cave",
+          "type": "travel",
+          "title": "高山 → 飛驒大鐘乳洞",
+          "optional": false,
+          "startTime": "12:50",
+          "endTime": "13:30",
+          "description": "冬季山路預留Buffer。",
+          "durationMinutes": 40,
+          "transportId": "jp27-transport-rental-car",
+          "navigationTargetId": "jp27-nav-hida-cave-parking"
+        },
+        {
+          "id": "jp27-tl-d8-cave",
+          "type": "activity",
+          "title": "飛驒大鐘乳洞",
+          "optional": false,
+          "startTime": "13:30",
+          "endTime": "14:45",
+          "description": "鐘乳洞＋如開放則看冬季冰景。",
+          "durationMinutes": 75,
+          "placeId": "jp27-place-hida-cave",
+          "hardCutId": "jp27-cut-d8-cave"
+        },
+        {
+          "id": "jp27-tl-d8-drive-matsumoto",
+          "type": "travel",
+          "title": "飛驒大鐘乳洞 → 松本",
+          "optional": false,
+          "startTime": "14:50",
+          "endTime": "17:30",
+          "description": "D8只向東返松本；雪路慢行。",
+          "durationMinutes": 160,
+          "transportId": "jp27-transport-rental-car"
+        },
+        {
+          "id": "jp27-tl-d8-checkin",
+          "type": "stay",
+          "title": "Iroha Grand Hotel Matsumoto入住",
+          "optional": false,
+          "startTime": "17:30",
+          "endTime": "18:00",
+          "description": "放低行李休息。",
+          "durationMinutes": 30,
+          "accommodationId": "jp27-stay-iroha"
+        },
+        {
+          "id": "jp27-tl-d8-sukiyaki",
+          "type": "meal",
+          "title": "飛驒牛壽喜燒／火鍋晚餐",
+          "optional": true,
+          "startTime": "19:00",
+          "endTime": "20:30",
+          "description": "和牛厨ふか尾為候選；只有路況、到步時間正常先去，否則松本市內食。",
+          "durationMinutes": 90
+        }
+      ],
+      "optionalContent": [],
+      "backupContent": [
+        {
+          "type": "place",
+          "id": "jp27-place-yatai-kaikan"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-hida-no-sato"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-hie-shrine"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-hida-toshogu"
+        },
+        {
+          "type": "place",
+          "id": "jp27-place-daio-wasabi"
+        }
+      ]
+    },
+    {
+      "id": "jp27-day-9",
+      "dayNumber": 9,
+      "date": "2027-01-17",
+      "title": "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港",
+      "routeSummary": "Iroha早餐 → AEON最後補貨 → 入油 → Times還車 → JR特急しなの → 名鐵 → NGO T2 → UO685",
+      "highlights": [
+        "最後補貨",
+        "中午還車",
+        "13:56目標JR",
+        "UO685返香港"
+      ],
+      "imageIds": [
+        "jp27-image-aeon-matsumoto",
+        "jp27-image-matsumoto-station",
+        "jp27-image-centrair"
+      ],
+      "primaryWeatherRegionId": "jp27-weather-matsumoto",
+      "constraints": [
+        "D9不再安排松本城，避免重複D2及影響還車／JR。"
+      ],
+      "warnings": [],
+      "timeline": [
+        {
+          "id": "jp27-tl-d9-breakfast",
+          "type": "meal",
+          "title": "Iroha早餐／整理行李",
+          "optional": false,
+          "startTime": "08:00",
+          "endTime": "09:00",
+          "description": "酒店包早餐；最後一日行李放車內。",
+          "durationMinutes": 60,
+          "accommodationId": "jp27-stay-iroha"
+        },
+        {
+          "id": "jp27-tl-d9-aeon",
+          "type": "activity",
+          "title": "AEON Mall Matsumoto最後補貨",
+          "optional": false,
+          "startTime": "09:30",
+          "endTime": "11:00",
+          "description": "食品、零食、生果、日用品；11:00 Hard Cut。",
+          "durationMinutes": 90,
+          "placeId": "jp27-place-aeon-matsumoto",
+          "navigationTargetId": "jp27-nav-aeon-matsumoto",
+          "hardCutId": "jp27-cut-d9-aeon"
+        },
+        {
+          "id": "jp27-tl-d9-fuel",
+          "type": "travel",
+          "title": "AEON → 入滿油",
+          "optional": false,
+          "startTime": "11:00",
+          "endTime": "11:30",
+          "description": "Times附近油站入滿油，保留單據。",
+          "durationMinutes": 30,
+          "transportId": "jp27-transport-rental-car"
+        },
+        {
+          "id": "jp27-tl-d9-return",
+          "type": "travel",
+          "title": "Times 松本站前還車",
+          "optional": false,
+          "startTime": "11:35",
+          "endTime": "12:10",
+          "description": "目標12:10前完成還車。",
+          "durationMinutes": 35,
+          "transportId": "jp27-transport-rental-car",
+          "navigationTargetId": "jp27-nav-times-matsumoto",
+          "hardCutId": "jp27-cut-d9-return"
+        },
+        {
+          "id": "jp27-tl-d9-lunch",
+          "type": "meal",
+          "title": "松本站午餐／便當",
+          "optional": false,
+          "startTime": "12:20",
+          "endTime": "13:30",
+          "description": "還車後慢慢食午餐、買便當。",
+          "durationMinutes": 70
+        },
+        {
+          "id": "jp27-tl-d9-shinano",
+          "type": "travel",
+          "title": "JR 特急しなの 松本 → 名古屋",
+          "optional": false,
+          "startTime": "13:56",
+          "endTime": "16:07",
+          "description": "現行規劃時間；正式2027時刻再核對。",
+          "durationMinutes": 131,
+          "transportId": "jp27-transport-shinano-return",
+          "hardCutId": "jp27-cut-d9-shinano"
+        },
+        {
+          "id": "jp27-tl-d9-transfer",
+          "type": "travel",
+          "title": "JR名古屋 → 名鐵名古屋",
+          "optional": false,
+          "startTime": "16:07",
+          "endTime": "16:40",
+          "description": "拖行李轉車。",
+          "durationMinutes": 33
+        },
+        {
+          "id": "jp27-tl-d9-meitetsu",
+          "type": "travel",
+          "title": "名鐵名古屋 → 中部國際機場",
+          "optional": false,
+          "startTime": "16:49",
+          "endTime": "17:17",
+          "description": "如JR延誤改後續班次。",
+          "durationMinutes": 28,
+          "transportId": "jp27-transport-meitetsu-return"
+        },
+        {
+          "id": "jp27-tl-d9-airport",
+          "type": "break",
+          "title": "中部國際機場 T2 Check-in／晚餐／候機",
+          "optional": false,
+          "startTime": "17:17",
+          "endTime": "20:10",
+          "description": "T2出境；Plaza Premium T1不可用。",
+          "durationMinutes": 173,
+          "navigationTargetId": "jp27-nav-centrair-t2"
+        },
+        {
+          "id": "jp27-tl-d9-flight",
+          "type": "travel",
+          "title": "UO685 名古屋 → 香港",
+          "optional": false,
+          "startTime": "20:40",
+          "endTime": "00:30",
+          "description": "20:40 JST由名古屋出發；預計翌日00:30 HKT抵達香港。Exact timing以兩端時區記錄；正式時間以實際機票為準。",
+          "durationMinutes": 230,
+          "transportId": "jp27-transport-uo685",
+          "timing": {
+            "start": {
+              "dateTime": "2027-01-17T20:40:00+09:00",
+              "timeZone": "Asia/Tokyo"
+            },
+            "end": {
+              "dateTime": "2027-01-18T00:30:00+08:00",
+              "timeZone": "Asia/Hong_Kong"
+            }
+          }
+        }
+      ],
+      "optionalContent": [],
+      "backupContent": []
+    }
+  ],
+  "places": [
+    {
+      "id": "jp27-place-matsumoto-castle",
+      "name": "國寶・松本城",
+      "regionId": "jp27-region-matsumoto",
+      "type": "attraction",
+      "summary": "現存木造國寶天守；黑色外觀、護城河與北阿爾卑斯背景係松本最具代表性的歷史景觀。",
+      "imageIds": [
+        "jp27-image-matsumoto"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor"
+      ],
+      "sourceIds": [
+        "jp27-source-matsumoto-castle"
+      ],
+      "longDescription": "松本城核心價值唔係「古風外觀」，而係16世紀末保存至今的真正木造天守群。大天守、乾小天守、渡櫓保留戰國防禦性；辰巳附櫓、月見櫓則反映進入和平時代後的用途轉變。",
+      "whyVisit": "今程難得去松本，值得用約90分鐘正式入天守；比只看外圍更能理解現存木柱、梁架、狹窄陡梯與防禦設計。",
+      "history": "1590年代石川氏大規模整備城郭與天守。明治後曾面臨拆除及傾斜危機，靠地方保存運動及修復才保留至今；五棟天守建築1952年按現行制度指定為國寶。",
+      "localImportance": "係日本少數現存天守之一，也是研究戰國末期城郭發展的重要實物。",
+      "whatToSee": [
+        "護城河外黑色天守與水面倒影",
+        "原有木柱、粗樑、槍眼與石落",
+        "約60度級陡梯",
+        "比較大天守與月見櫓的軍事／和平用途差異"
+      ],
+      "takeaway": "松本城係400年以上大型木造文化財，不是戰後仿古重建。",
+      "suggestedDurationMinutes": 90,
+      "opening": "08:30",
+      "lastEntry": "16:30",
+      "closing": "17:00",
+      "fee": {
+        "amount": 1200,
+        "currency": "JPY"
+      },
+      "feeNotes": "成人電子日時指定票¥1,200；紙票¥1,300。",
+      "rating": 9.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Matsumoto%20Castle",
+      "officialURL": "https://www.matsumoto-castle.jp/info"
+    },
+    {
+      "id": "jp27-place-matsumoto-projection",
+      "name": "松本城冬季光影投影（Projection Mapping 2026–2027）",
+      "regionId": "jp27-region-matsumoto",
+      "type": "attraction",
+      "summary": "旅程期間舉行的免費冬季夜間光影活動，將天守與石垣變成短時間、低體力的D1 Bonus。",
+      "imageIds": [
+        "jp27-image-matsumoto"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor"
+      ],
+      "sourceIds": [
+        "jp27-source-matsumoto-projection",
+        "jp27-source-projection-ja"
+      ],
+      "whyVisit": "D1約19:46到松本後正常天守已關，但18:00–22:00仍可看投影；航班或JR延誤就即時取消。",
+      "whatToSee": [
+        "天守外牆與石垣投影",
+        "護城河附近完整視角"
+      ],
+      "takeaway": "夜間活動只補充城市氣氛，真正建築體驗留D2日間。",
+      "suggestedDurationMinutes": 40,
+      "opening": "18:00",
+      "closing": "22:00",
+      "fee": {
+        "amount": 0,
+        "currency": "JPY"
+      },
+      "rating": 8,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Matsumoto%20Castle",
+      "officialURL": "https://visitmatsumoto.com/en/event/detail_3003.html",
+      "localName": "松本城プロジェクションマッピング2026-2027"
+    },
+    {
+      "id": "jp27-place-karuizawa-outlet",
+      "name": "輕井澤王子購物廣場",
+      "regionId": "jp27-region-karuizawa",
+      "type": "shopping",
+      "summary": "輕井澤站南口大型開放式Outlet；D2集中Shopping兼午餐，之後直接去千曲。",
+      "imageIds": [
+        "jp27-image-outlet"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-indoor"
+      ],
+      "sourceIds": [
+        "jp27-source-karuizawa-outlet"
+      ],
+      "whyVisit": "一次過處理品牌、戶外用品、生活雜貨同餐飲，避免後面晚晚搵商場。",
+      "whatToSee": [
+        "先攻最想買品牌",
+        "留意開放式商場冬季保暖"
+      ],
+      "takeaway": "呢站係行程物流站，15:30離開Hard Cut比逛完整個Mall重要。",
+      "suggestedDurationMinutes": 120,
+      "rating": 7.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Karuizawa%20Prince%20Shopping%20Plaza",
+      "officialURL": "https://www.karuizawa-psp.jp/"
+    },
+    {
+      "id": "jp27-place-shiraito",
+      "name": "輕井澤・白絲瀑布",
+      "regionId": "jp27-region-karuizawa",
+      "type": "nature",
+      "summary": "地下水由約70米闊岩壁滲出形成幼細水簾；冬季雪、冰柱與流動水並存。",
+      "imageIds": [
+        "jp27-image-shiraito"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-snow-walk",
+        "jp27-profile-winter-driving"
+      ],
+      "sourceIds": [
+        "jp27-source-shiraito"
+      ],
+      "longDescription": "白絲瀑布唔係一般河川由高處跌落，而係淺間山火山地層保存的地下水由岩壁大量滲出。冬季畫面會同時見到流動水與結冰環境。",
+      "whyVisit": "自然景觀回報高而停留短，但現已降為D2 Backup；只有Highland Way路況安全、時間非常鬆先考慮。",
+      "whatToSee": [
+        "完整橫向水簾",
+        "岩縫滲水與冰柱",
+        "雪地、綠苔與流水層次"
+      ],
+      "takeaway": "白絲瀑布本質係一個大型地下水出口。",
+      "suggestedDurationMinutes": 40,
+      "rating": 7.8,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=%E7%99%BD%E7%B3%B8%E3%81%AE%E6%BB%9D%20%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E8%BB%BD%E4%BA%95%E6%B2%A2",
+      "officialURL": "https://karuizawa-kankokyokai.jp/spot/23206/"
+    },
+    {
+      "id": "jp27-place-onioshidashi",
+      "name": "鬼押出園",
+      "regionId": "jp27-region-karuizawa",
+      "type": "nature",
+      "summary": "1783年淺間山天明大噴發留下的熔岩荒原；冬季黑色熔岩與白雪對比強烈。",
+      "imageIds": [
+        "jp27-image-onioshidashi"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-snow-walk",
+        "jp27-profile-winter-driving"
+      ],
+      "sourceIds": [
+        "jp27-source-onioshidashi"
+      ],
+      "longDescription": "園內地貌係歷史噴發真正留下的熔岩流冷卻結果，亦保留火山災害與觀音堂追悼故事。",
+      "whyVisit": "景觀類型同古城、雪村、溫泉完全不同，但現只做D2 Backup，唔應該為佢壓縮Outlet或千曲入住時間。",
+      "whatToSee": [
+        "熔岩裂縫與扭曲形狀",
+        "淺間山方向",
+        "雪覆熔岩黑白對比"
+      ],
+      "takeaway": "成個園區係1783年火山災害留低的地表記錄。",
+      "suggestedDurationMinutes": 60,
+      "fee": {
+        "amount": 700,
+        "currency": "JPY"
+      },
+      "feeNotes": "成人票參考；道路通行費另計，2027出發前再確認。",
+      "rating": 7.6,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=%E9%AC%BC%E6%8A%BC%E5%87%BA%E3%81%97%E5%9C%92",
+      "officialURL": "https://www.princehotels.co.jp/amuse/onioshidashi/"
+    },
+    {
+      "id": "jp27-place-obuse",
+      "name": "小布施舊街＋栗之小徑",
+      "regionId": "jp27-region-obuse",
+      "type": "attraction",
+      "summary": "栗子文化、葛飾北齋晚年創作與町家街景集中於細小步行區。",
+      "imageIds": [
+        "jp27-image-obuse"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-city-walk"
+      ],
+      "sourceIds": [
+        "jp27-source-obuse"
+      ],
+      "longDescription": "小布施由栗子農產、老店與北齋晚年創作共同塑造地方身份；栗之小徑以栗木鋪路，連接町家、庭園、老店與北齋館。",
+      "whyVisit": "主角係街景、栗菓子同地方食物；唔需要為美術館犧牲溫泉旅館節奏。",
+      "whatToSee": [
+        "栗之小徑",
+        "町屋與庭園",
+        "栗おこわ／栗菓子"
+      ],
+      "takeaway": "小布施可以用「栗子＋北齋＋町家」去理解。",
+      "suggestedDurationMinutes": 75,
+      "rating": 8.2,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Obuse%20Nagano",
+      "officialURL": "https://www.obusekanko.jp/"
+    },
+    {
+      "id": "jp27-place-hokusai",
+      "name": "北齋館",
+      "regionId": "jp27-region-obuse",
+      "type": "attraction",
+      "summary": "展示葛飾北齋晚年與小布施關係、祭屋台天井畫等；今程只作Optional。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-indoor"
+      ],
+      "sourceIds": [
+        "jp27-source-hokusai"
+      ],
+      "whyVisit": "如果想理解點解小布施將北齋放在地方文化中心位置，用30–45分鐘看代表作已足夠。",
+      "history": "北齋晚年多次受高井鴻山邀請到小布施，留下肉筆畫及祭屋台天井畫。",
+      "whatToSee": [
+        "祭屋台天井畫",
+        "晚年肉筆作品"
+      ],
+      "takeaway": "北齋與小布施係真實晚年創作關係，不只是觀光品牌。",
+      "suggestedDurationMinutes": 40,
+      "opening": "09:00",
+      "lastEntry": "16:30",
+      "closing": "17:00",
+      "fee": {
+        "amount": 1200,
+        "currency": "JPY"
+      },
+      "feeNotes": "2027/1/11展覽期成人¥1,200；出發前再核對。",
+      "rating": 7.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E6%96%8E%E9%A4%A8%20%E5%B0%8F%E5%B8%83%E6%96%BD",
+      "officialURL": "https://hokusai-kan.com/"
+    },
+    {
+      "id": "jp27-place-oranche",
+      "name": "JA中野市 農産物産館 Oranche",
+      "regionId": "jp27-region-obuse",
+      "type": "shopping",
+      "summary": "JA系地元農產直賣所，重點係蔬果、菇菌、蘋果與地方加工品。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-indoor"
+      ],
+      "sourceIds": [
+        "jp27-source-oranche"
+      ],
+      "whyVisit": "比純旅客手信店更接近地方日常價錢與農產；順路去澀溫泉前補貨。",
+      "whatToSee": [
+        "菇菌與蘋果",
+        "地元加工品",
+        "當日100円市／新鮮農產（如有）"
+      ],
+      "takeaway": "中野係長野重要水果與菇菌產地，Oranche係最直接的地方農產窗口。",
+      "suggestedDurationMinutes": 35,
+      "rating": 6.8,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=JA%E4%B8%AD%E9%87%8E%E5%B8%82%20%E8%BE%B2%E7%94%A3%E7%89%A9%E7%94%A3%E9%A4%A8%20%E3%82%AA%E3%83%A9%E3%83%B3%E3%83%81%E3%82%A7",
+      "officialURL": "https://www.nakanokanko.jp/spots/196/"
+    },
+    {
+      "id": "jp27-place-shibu-onsen",
+      "name": "澀溫泉・九湯巡禮",
+      "regionId": "jp27-region-yamanouchi",
+      "type": "attraction",
+      "summary": "石板溫泉街＋住客限定九個共同浴場；住區內旅館可借專用鎖匙巡湯。",
+      "imageIds": [
+        "jp27-image-shibu-day",
+        "jp27-image-shibu-night"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-onsen",
+        "jp27-profile-city-walk"
+      ],
+      "sourceIds": [
+        "jp27-source-shibu"
+      ],
+      "longDescription": "九湯巡禮唔係公共遊客通票；官方規則係住澀溫泉指定旅館的住宿客才可借鎖匙進入九個外湯。",
+      "whyVisit": "今程唯一真正「住在溫泉街入面」的傳統體驗，日落前後穿浴衣慢行最有氣氛。",
+      "whatToSee": [
+        "石板街與木造旅館",
+        "九個外湯不同泉源",
+        "祈願印章"
+      ],
+      "takeaway": "澀溫泉重點係住客身份帶來的溫泉街生活體驗。",
+      "suggestedDurationMinutes": 150,
+      "opening": "06:00",
+      "closing": "22:00",
+      "fee": {
+        "amount": 0,
+        "currency": "JPY"
+      },
+      "feeNotes": "九湯巡禮對住宿客免費；以旅館鎖匙及現場規則為準。",
+      "rating": 9,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Shibu%20Onsen",
+      "officialURL": "https://shibuonsen.net/"
+    },
+    {
+      "id": "jp27-place-ganshoin",
+      "name": "岩松院",
+      "regionId": "jp27-region-obuse",
+      "type": "attraction",
+      "summary": "小布施寺院；北齋晚年巨型鳳凰天井畫、福島正則靈廟及小林一茶故事集中於一處。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-indoor",
+        "jp27-profile-historic-outdoor"
+      ],
+      "sourceIds": [
+        "jp27-source-obuse"
+      ],
+      "whyVisit": "文化型Backup；如果小布施主線快完成而又想補北齋脈絡先去。",
+      "suggestedDurationMinutes": 40,
+      "fee": {
+        "amount": 500,
+        "currency": "JPY"
+      },
+      "feeNotes": "參考價；冬季參拜時間與費用出發前再查。",
+      "rating": 7.2,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Ganshoin%20Temple%20Obuse",
+      "officialURL": "https://www.gansho-in.or.jp/"
+    },
+    {
+      "id": "jp27-place-snow-monkey",
+      "name": "地獄谷野猿公苑",
+      "regionId": "jp27-region-yamanouchi",
+      "type": "nature",
+      "summary": "冬季雪谷內觀察野生日本獼猴；由上林入口需步行約30–35分鐘雪地林道。",
+      "imageIds": [
+        "jp27-image-snow-monkey",
+        "jp27-image-monkey-trail"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-snow-walk"
+      ],
+      "sourceIds": [
+        "jp27-source-snow-monkey"
+      ],
+      "longDescription": "地獄谷的猴子並非動物園圈養；牠們在周邊山林生活，公苑透過管理餵食吸引猴群到場，因此當日未必一定出現或浸溫泉。",
+      "whyVisit": "雪地步行＋野生動物觀察係今程獨特體驗；真正限制係結冰步道、猴群行動及官方臨時開閉園。",
+      "whatToSee": [
+        "雪地林道",
+        "猴群自然互動",
+        "溫泉邊活動（不保證入浴）"
+      ],
+      "takeaway": "這是野生動物觀察，不是保證「雪猴浸溫泉」表演。",
+      "suggestedDurationMinutes": 75,
+      "opening": "09:00",
+      "lastEntry": "15:30",
+      "closing": "16:00",
+      "feeNotes": "官方已公告2026/12/1起調整入苑費；2027實際成人票價出發前再核對，不沿用舊¥800。",
+      "rating": 9,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Jigokudani%20Yaen%20Koen",
+      "officialURL": "https://en.jigokudani-yaenkoen.co.jp/guide/"
+    },
+    {
+      "id": "jp27-place-aeon-suzaka",
+      "name": "AEON Mall 須坂",
+      "regionId": "jp27-region-nagano",
+      "type": "shopping",
+      "summary": "D4大型生活Shopping時段，可一次處理食品、生果、日用品、服裝、藥妝與補給。",
+      "imageIds": [
+        "jp27-image-aeon-suzaka"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-indoor"
+      ],
+      "sourceIds": [
+        "jp27-source-aeon-suzaka"
+      ],
+      "whyVisit": "前幾日多是旅遊小鎮與溫泉街，留長一點Mall時間可用較貼近當地的價格補貨，也避開傍晚戶外低溫。",
+      "suggestedDurationMinutes": 210,
+      "rating": 6.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=AEON%20MALL%20Suzaka",
+      "officialURL": "https://suzaka.aeonmall.com/"
+    },
+    {
+      "id": "jp27-place-suzaka-kura",
+      "name": "須坂・蔵之町並み",
+      "regionId": "jp27-region-nagano",
+      "type": "attraction",
+      "summary": "白壁土藏、舊商家與製絲業時代街景；Snow Monkey早完先加。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-city-walk"
+      ],
+      "sourceIds": [
+        "jp27-source-suzaka"
+      ],
+      "whyVisit": "同AEON同市，繞路少；用30–45分鐘補一個生活化舊街，而唔壓縮主Shopping。",
+      "suggestedDurationMinutes": 40,
+      "rating": 7,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Suzaka%20Nagano",
+      "officialURL": "https://www.suzaka-kankokyokai.jp/"
+    },
+    {
+      "id": "jp27-place-hakuba-iwatake",
+      "name": "白馬岩岳 Mountain Resort",
+      "regionId": "jp27-region-hakuba",
+      "type": "nature",
+      "summary": "不滑雪亦可用觀光Gondola上山，看白馬三山、HAKUBA MOUNTAIN HARBOR及雪地活動區。",
+      "imageIds": [
+        "jp27-image-iwatake",
+        "jp27-image-harbor",
+        "jp27-image-whitepark"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-mountain-operated",
+        "jp27-profile-winter-driving"
+      ],
+      "sourceIds": [
+        "jp27-source-iwatake",
+        "jp27-source-iwatake-rates"
+      ],
+      "longDescription": "白馬岩岳係整個山區Resort，而MOUNTAIN HARBOR及WHITE PARK係山頂內不同體驗。今程定位係純雪景、攝影與輕量玩雪，不是滑雪。",
+      "whyVisit": "北阿爾卑斯視野回報極高；但風、雲量與Gondola運行會直接影響價值，所以Weather Score同官方運行狀態要一齊看。",
+      "whatToSee": [
+        "Gondola上山視野",
+        "白馬三山全景",
+        "MOUNTAIN HARBOR",
+        "WHITE PARK雪地活動"
+      ],
+      "takeaway": "「岩岳＝整個Resort；MOUNTAIN HARBOR＝山頂其中一個觀景點」。",
+      "suggestedDurationMinutes": 120,
+      "fee": {
+        "amount": 2900,
+        "currency": "JPY"
+      },
+      "feeNotes": "官方觀光用Gondola往返成人¥2,900；2026–27當季如有改價，以官方為準。",
+      "rating": 9,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hakuba%20Iwatake%20Mountain%20Resort",
+      "officialURL": "https://iwatake-mountain-resort.com/winter"
+    },
+    {
+      "id": "jp27-place-hida-no-sato",
+      "name": "飛驒之里",
+      "regionId": "jp27-region-takayama",
+      "type": "attraction",
+      "summary": "移築飛驒古民家與合掌造的戶外民家博物館；冬季積雪畫面適合攝影。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor",
+        "jp27-profile-snow-walk"
+      ],
+      "sourceIds": [
+        "jp27-source-takayama-tourism"
+      ],
+      "whyVisit": "D5很早到高山先加；唔為呢個Backup變成夜間長途駕駛。",
+      "suggestedDurationMinutes": 60,
+      "rating": 8,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida%20no%20Sato",
+      "officialURL": "https://www.hidatakayama.or.jp/"
+    },
+    {
+      "id": "jp27-place-yatai-kaikan",
+      "name": "高山祭屋台會館",
+      "regionId": "jp27-region-takayama",
+      "type": "attraction",
+      "summary": "近距離看高山祭華麗祭屋台；天氣差或早到時的室內文化Backup。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-indoor"
+      ],
+      "sourceIds": [
+        "jp27-source-takayama-tourism"
+      ],
+      "whyVisit": "補完整高山祭文化，適合作D5/D8時間鬆時Backup。",
+      "suggestedDurationMinutes": 45,
+      "rating": 8,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Takayama%20Festival%20Floats%20Exhibition%20Hall",
+      "officialURL": "https://www.hidatakayama.or.jp/"
+    },
+    {
+      "id": "jp27-place-shirakawago",
+      "name": "世界遺產・白川鄉荻町合掌村",
+      "regionId": "jp27-region-shirakawago",
+      "type": "attraction",
+      "summary": "豪雪山區合掌造聚落；建築、農田、水渠與山谷地形共同構成世界遺產價值。",
+      "imageIds": [
+        "jp27-image-banner",
+        "jp27-image-shirakawago",
+        "jp27-image-shirakawago-view"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-village-scenic",
+        "jp27-profile-winter-driving"
+      ],
+      "sourceIds": [
+        "jp27-source-shirakawago",
+        "jp27-source-shirakawago-access"
+      ],
+      "longDescription": "白川鄉不是主題公園，而是仍有人生活的活聚落。陡斜茅葺屋頂、屋內多層空間、農田、水渠與房屋朝向，全部係對豪雪環境及過往生產方式的回應。",
+      "whyVisit": "冬季厚雪令合掌屋結構原因一眼可見；配合和田家內部與荻町展望台三個尺度，先真正理解聚落。",
+      "history": "荻町與五箇山合掌造聚落1995年列入UNESCO世界文化遺產。大型茅葺屋頂上層過去亦支援養蠶等生產活動。",
+      "localImportance": "世界遺產重點係「聚落整體＋傳統建築＋持續生活」，不是單獨一間打卡屋。",
+      "whatToSee": [
+        "村內近距離合掌屋與水渠",
+        "和田家內部木架",
+        "荻町展望台全村構圖",
+        "尊重私人物業與居民生活"
+      ],
+      "takeaway": "白川鄉係建築點樣配合氣候、農業與生活的完整系統。",
+      "suggestedDurationMinutes": 210,
+      "rating": 10,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Shirakawa-go",
+      "officialURL": "https://shirakawa-go.gr.jp/"
+    },
+    {
+      "id": "jp27-place-wada-house",
+      "name": "白川鄉・和田家",
+      "regionId": "jp27-region-shirakawago",
+      "type": "attraction",
+      "summary": "荻町大型合掌造民家及國家重要文化財；最適合由屋內理解木架、圍爐與多層生活空間。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-indoor",
+        "jp27-profile-village-scenic"
+      ],
+      "sourceIds": [
+        "jp27-source-wada"
+      ],
+      "whyVisit": "如果白川鄉只入一間合掌屋，和田家係最具代表性的選擇之一。",
+      "history": "和田家族過去曾任名主、番所役人並參與焔硝交易，反映其地方行政及經濟地位。",
+      "whatToSee": [
+        "一樓圍爐與生活空間",
+        "上層合掌屋架",
+        "由室內窗位理解聚落關係"
+      ],
+      "takeaway": "入屋後再看其他合掌屋，就會由「靚屋頂」變成理解如何過冬和生產。",
+      "suggestedDurationMinutes": 35,
+      "opening": "09:00",
+      "closing": "17:00",
+      "fee": {
+        "amount": 400,
+        "currency": "JPY"
+      },
+      "rating": 8.8,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Wada%20House%20Shirakawa-go",
+      "officialURL": "https://shirakawa-go.gr.jp/active/13/"
+    },
+    {
+      "id": "jp27-place-ogimachi-view",
+      "name": "荻町城跡展望台",
+      "regionId": "jp27-region-shirakawago",
+      "type": "nature",
+      "summary": "由高位俯瞰整個荻町合掌村、田地、道路與山谷，是理解聚落整體最直接的觀察點。",
+      "imageIds": [
+        "jp27-image-shirakawago-view"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-village-scenic"
+      ],
+      "sourceIds": [
+        "jp27-source-shirakawago",
+        "jp27-source-shirakawago-access"
+      ],
+      "whyVisit": "先在村內步行、入和田家，最後上展望台由高位總結整個聚落，會比只影一張全景有意思。",
+      "whatToSee": [
+        "合掌屋屋脊方向",
+        "村內道路與田地",
+        "山谷與聚落尺度"
+      ],
+      "takeaway": "展望台把「一間屋」變成「一個聚落系統」。",
+      "suggestedDurationMinutes": 45,
+      "rating": 9.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Ogimachi%20Castle%20Observation%20Deck",
+      "officialURL": "https://shirakawa-go.gr.jp/"
+    },
+    {
+      "id": "jp27-place-shinhotaka",
+      "name": "新穗高纜車",
+      "regionId": "jp27-region-okuhida",
+      "type": "nature",
+      "summary": "兩段纜車上到海拔2,156米西穗高口，近距離看北阿爾卑斯雪峰；今程最食能見度與風況的景點。",
+      "imageIds": [
+        "jp27-image-shinhotaka"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-mountain-operated",
+        "jp27-profile-winter-driving"
+      ],
+      "sourceIds": [
+        "jp27-source-shinhotaka"
+      ],
+      "longDescription": "第一、第二纜車由新穗高溫泉一路上高山展望位置，第二段使用雙層車廂。山頂回報很高，但強風、雲霧或維修可直接停駛。",
+      "whyVisit": "非登山客亦可以安全接近2,000米以上高地視野；D7固定去，但仍以官方Operation Status及Live Cam決定是否值得上山。",
+      "whatToSee": [
+        "西穗高口展望台360度山景",
+        "雙層纜車",
+        "山脊與谷地高差",
+        "出發前先看官方Live Cam"
+      ],
+      "takeaway": "Weather Score只評估天氣；官方運行狀態永遠優先。",
+      "suggestedDurationMinutes": 160,
+      "fee": {
+        "amount": 3800,
+        "currency": "JPY"
+      },
+      "feeNotes": "第1+第2纜車成人往返¥3,800。",
+      "rating": 9.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Shinhotaka%20Ropeway",
+      "officialURL": "https://shinhotaka-ropeway.jp/en/price/"
+    },
+    {
+      "id": "jp27-place-hirayu-no-mori",
+      "name": "平湯之森",
+      "regionId": "jp27-region-okuhida",
+      "type": "attraction",
+      "summary": "奧飛驒日歸溫泉；雪地露天風呂可作新穗高日有時間先加的山岳溫泉Backup。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-onsen"
+      ],
+      "sourceIds": [
+        "jp27-source-takayama-tourism"
+      ],
+      "whyVisit": "如果新穗高完成得早、道路與體力都好，可將雪山觀景延伸成真正雪見露天溫泉。",
+      "suggestedDurationMinutes": 90,
+      "rating": 8.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hirayu%20no%20Mori",
+      "officialURL": "https://www.hirayunomori.co.jp/"
+    },
+    {
+      "id": "jp27-place-bear-park",
+      "name": "奧飛驒熊牧場",
+      "regionId": "jp27-region-okuhida",
+      "type": "attraction",
+      "summary": "人工飼養熊隻展示；同Snow Monkey野生觀察性質完全不同，只作興趣型Backup。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-indoor"
+      ],
+      "sourceIds": [
+        "jp27-source-takayama-tourism"
+      ],
+      "whyVisit": "只有對熊展示有興趣、D7時間非常鬆先去，優先級低過新穗高與冬季道路安全。",
+      "suggestedDurationMinutes": 60,
+      "rating": 6,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Okuhida%20Bear%20Park",
+      "officialURL": "https://www.nande.com/kuma/"
+    },
+    {
+      "id": "jp27-place-miyagawa",
+      "name": "宮川朝市",
+      "regionId": "jp27-region-takayama",
+      "type": "shopping",
+      "summary": "高山市中心沿宮川的早市，冬季可看地元蔬果、漬物、手信及小食。",
+      "imageIds": [
+        "jp27-image-takayama"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-market"
+      ],
+      "sourceIds": [
+        "jp27-source-takayama-tourism"
+      ],
+      "whyVisit": "D8固定高山市區早段，節奏短而有生活感；冬季官方旅遊資料一般為08:00–12:00。",
+      "suggestedDurationMinutes": 40,
+      "rating": 7.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Miyagawa%20Morning%20Markets%20Takayama",
+      "officialURL": "https://www.hidatakayama.or.jp/"
+    },
+    {
+      "id": "jp27-place-takayama-jinya",
+      "name": "高山陣屋",
+      "regionId": "jp27-region-takayama",
+      "type": "attraction",
+      "summary": "江戶幕府在飛驒的政務建築，保留辦公、法政、庭園與米藏空間。",
+      "imageIds": [
+        "jp27-image-takayama"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor",
+        "jp27-profile-indoor"
+      ],
+      "sourceIds": [
+        "jp27-source-jinya"
+      ],
+      "whyVisit": "同三町古街一齊睇，可以由「政府管理」同「商家生活」兩面理解高山。",
+      "whatToSee": [
+        "御役所與大廣間",
+        "庭園",
+        "御蔵／米藏"
+      ],
+      "takeaway": "高山不只是古街，亦曾是幕府直接管理飛驒的重要行政中心。",
+      "suggestedDurationMinutes": 50,
+      "opening": "08:45",
+      "lastEntry": "16:00",
+      "closing": "16:30",
+      "fee": {
+        "amount": 500,
+        "currency": "JPY"
+      },
+      "rating": 8.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Takayama%20Jinya",
+      "officialURL": "https://jinya.gifu.jp/en/"
+    },
+    {
+      "id": "jp27-place-sanmachi",
+      "name": "三町古街／中橋／酒藏",
+      "regionId": "jp27-region-takayama",
+      "type": "attraction",
+      "summary": "高山代表性町家街景，集中酒藏、傳統老店、手信與中橋河岸畫面。",
+      "imageIds": [
+        "jp27-image-takayama"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-city-walk"
+      ],
+      "sourceIds": [
+        "jp27-source-takayama-tourism"
+      ],
+      "whyVisit": "D8用約80–90分鐘完整行一次，比之前幾日只在晚餐時經過更有意義。",
+      "whatToSee": [
+        "古町家立面",
+        "中橋",
+        "酒藏杉玉",
+        "飛驒地元食品與手信"
+      ],
+      "takeaway": "高山古街反映城下町商業生活，而唔只是旅客手信街。",
+      "suggestedDurationMinutes": 85,
+      "rating": 9,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Sanmachi%20Suji%20Takayama",
+      "officialURL": "https://www.hidatakayama.or.jp/spot/detail_1101.html"
+    },
+    {
+      "id": "jp27-place-hida-cave",
+      "name": "飛驒大鐘乳洞",
+      "regionId": "jp27-region-takayama",
+      "type": "nature",
+      "summary": "海拔高地的大型鐘乳洞；冬季主體在室內，外圍冰景令D8成為較不受降雪影響的主景點。",
+      "imageIds": [
+        "jp27-image-hida-cave"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-cave",
+        "jp27-profile-winter-driving"
+      ],
+      "sourceIds": [
+        "jp27-source-hida-cave"
+      ],
+      "longDescription": "洞穴全長超過800米級，所在地約2.5億年前曾在海底。冬季洞外「冰之溪谷」一帶亦可形成冰景，但實際開放範圍要跟官方公告。",
+      "whyVisit": "D8固定去，因為比雪山觀景更耐受天氣；完成後直接向東返松本，不再安排白川鄉或新穗高。",
+      "whatToSee": [
+        "鐘乳石洞主要路段",
+        "大橋Collection館（同票）",
+        "冬季外圍冰景（如開放）"
+      ],
+      "takeaway": "飛驒山區除雪景外，亦保存非常古老的石灰岩地質。",
+      "suggestedDurationMinutes": 75,
+      "opening": "09:00",
+      "lastEntry": "16:00",
+      "closing": "16:30",
+      "fee": {
+        "amount": 1100,
+        "currency": "JPY"
+      },
+      "feeNotes": "成人¥1,100；Web前售¥1,000。",
+      "rating": 8,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida%20Great%20Limestone%20Cave",
+      "officialURL": "https://www.syonyudo.com/"
+    },
+    {
+      "id": "jp27-place-hida-furukawa",
+      "name": "飛驒古川・白壁土藏街",
+      "regionId": "jp27-region-takayama",
+      "type": "attraction",
+      "summary": "瀨戶川、白壁土藏與古町景觀；比高山更安靜細緻，D7早返高山才加。",
+      "imageIds": [
+        "jp27-image-hida-furukawa"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-city-walk"
+      ],
+      "sourceIds": [
+        "jp27-source-hida-furukawa"
+      ],
+      "whyVisit": "可以同1月15日三寺まいり一次完成；唔參加夜祭亦可用45–60分鐘日落前短行。",
+      "suggestedDurationMinutes": 50,
+      "rating": 8,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida-Furukawa%20Station",
+      "officialURL": "https://www.hida-kankou.jp/"
+    },
+    {
+      "id": "jp27-place-santera",
+      "name": "飛驒古川・三寺まいり",
+      "regionId": "jp27-region-takayama",
+      "type": "attraction",
+      "summary": "每年1月15日傳統冬祭；和蠟燭、雪像、寺院參拜與夜景，只在D7日期撞正才有的季節Bonus。",
+      "imageIds": [
+        "jp27-image-hida-furukawa"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-city-walk",
+        "jp27-profile-winter-driving"
+      ],
+      "sourceIds": [
+        "jp27-source-santera"
+      ],
+      "history": "三寺まいり有超過200年傳統，每年1月15日參拜圓光寺、真宗寺、本光寺；亦與昔日飛驒女工返鄉盛裝參拜的歷史連結。",
+      "whyVisit": "一期一會價值高，但夜間駕駛安全、體力與2027正式活動時間優先；任何一項唔理想就取消。",
+      "whatToSee": [
+        "大和蠟燭",
+        "雪像燈火",
+        "三寺參拜",
+        "古川冬夜街景"
+      ],
+      "takeaway": "這是地方長期冬夜傳統，不是純燈飾活動。",
+      "suggestedDurationMinutes": 100,
+      "rating": 8,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida-Furukawa%20Station",
+      "officialURL": "https://www.city.hida.gifu.jp/soshiki/15/santeramairi.html"
+    },
+    {
+      "id": "jp27-place-daio-wasabi",
+      "name": "大王山葵農場",
+      "regionId": "jp27-region-matsumoto",
+      "type": "nature",
+      "summary": "安曇野湧水與山葵田；只作D8極早返松本方向時的低優先Backup。",
+      "imageIds": [
+        "jp27-image-daio"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-city-walk"
+      ],
+      "sourceIds": [
+        "jp27-source-daio"
+      ],
+      "whyVisit": "真正重點係北阿爾卑斯雪水形成湧水，支援山葵農業，而唔只是山葵食品。",
+      "suggestedDurationMinutes": 50,
+      "rating": 7.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Daio%20Wasabi%20Farm",
+      "officialURL": "https://www.daiowasabi.co.jp/"
+    },
+    {
+      "id": "jp27-place-aeon-matsumoto",
+      "name": "AEON Mall Matsumoto",
+      "regionId": "jp27-region-matsumoto",
+      "type": "shopping",
+      "summary": "D9最後補貨；大型行李仍在車內時買食品、零食、生果與日用品最順。",
+      "imageIds": [
+        "jp27-image-aeon-matsumoto"
+      ],
+      "activityProfileIds": [
+        "jp27-profile-indoor"
+      ],
+      "sourceIds": [
+        "jp27-source-jr"
+      ],
+      "whyVisit": "呢站重點係物流而唔係觀光；11:00離開後要入油、還車、食午餐再搭13:56規劃班次。",
+      "suggestedDurationMinutes": 90,
+      "rating": 6.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=AEON%20Mall%20Matsumoto",
+      "officialURL": "https://matsumoto.aeonmall.jp/"
+    },
+    {
+      "id": "jp27-place-kumoba",
+      "name": "雲場池",
+      "regionId": "jp27-region-karuizawa",
+      "type": "nature",
+      "summary": "輕井澤高原森林與水面景觀；只在D2極早完成主線時短加。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor"
+      ],
+      "sourceIds": [
+        "jp27-source-karuizawa-outlet"
+      ],
+      "suggestedDurationMinutes": 30,
+      "rating": 7,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Kumoba%20Pond",
+      "officialURL": "https://karuizawa-kankokyokai.jp/"
+    },
+    {
+      "id": "jp27-place-ueda-castle",
+      "name": "上田城跡公園",
+      "regionId": "jp27-region-karuizawa",
+      "type": "attraction",
+      "summary": "真田氏兩度抵抗德川軍的戰國歷史現場；D2山路差時安全Backup。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor"
+      ],
+      "sourceIds": [
+        "jp27-source-karuizawa-outlet"
+      ],
+      "suggestedDurationMinutes": 30,
+      "rating": 7.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Ueda%20Castle%20Ruins",
+      "officialURL": "https://go.ueda-kanko.or.jp/"
+    },
+    {
+      "id": "jp27-place-yanagimachi",
+      "name": "上田・柳町",
+      "regionId": "jp27-region-karuizawa",
+      "type": "attraction",
+      "summary": "舊北國街道商家街景；上田城Backup後仍有20–30分鐘先順路加。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor"
+      ],
+      "sourceIds": [
+        "jp27-source-karuizawa-outlet"
+      ],
+      "suggestedDurationMinutes": 30,
+      "rating": 6.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Yanagimachi%20Ueda",
+      "officialURL": "https://go.ueda-kanko.or.jp/"
+    },
+    {
+      "id": "jp27-place-hie-shrine",
+      "name": "日枝神社",
+      "regionId": "jp27-region-takayama",
+      "type": "attraction",
+      "summary": "高山山王祭相關神社；有時間才去的市區Backup。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor"
+      ],
+      "sourceIds": [
+        "jp27-source-takayama-tourism"
+      ],
+      "suggestedDurationMinutes": 30,
+      "rating": 7,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hie%20Shrine%20Takayama",
+      "officialURL": "https://www.hidatakayama.or.jp/"
+    },
+    {
+      "id": "jp27-place-hida-toshogu",
+      "name": "飛驒東照宮",
+      "regionId": "jp27-region-takayama",
+      "type": "attraction",
+      "summary": "飛驒地方東照宮；有時間先加的歷史Backup。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor"
+      ],
+      "sourceIds": [
+        "jp27-source-takayama-tourism"
+      ],
+      "suggestedDurationMinutes": 30,
+      "rating": 7.2,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida%20Toshogu",
+      "officialURL": "https://www.hidatakayama.or.jp/"
+    },
+    {
+      "id": "jp27-place-hirayu-shrine",
+      "name": "平湯神社",
+      "regionId": "jp27-region-okuhida",
+      "type": "attraction",
+      "summary": "平湯溫泉區短停神社；新穗高日早完才加。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor"
+      ],
+      "sourceIds": [
+        "jp27-source-takayama-tourism"
+      ],
+      "suggestedDurationMinutes": 30,
+      "rating": 7.5,
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hirayu%20Shrine",
+      "officialURL": "https://www.hidatakayama.or.jp/"
+    },
+    {
+      "id": "jp27-place-nawate",
+      "name": "松本・繩手通",
+      "localName": "縄手通り",
+      "regionId": "jp27-region-matsumoto",
+      "type": "attraction",
+      "summary": "松本城周邊女鳥羽川旁的青蛙主題行人街。僅作D1獨立後備；如JR延誤、太夜、天氣不佳或疲倦就取消，不影響原定光影投影及酒店入住。",
+      "longDescription": "松本市官方觀光網站介紹，繩手通在松本城南側護城河與女鳥羽川之間，有青蛙造型和多種特色小店，並全年設為行人專用區。個別商店夜間開門時間不同；如果抵達時間太晚，只考慮路面散步，不假定商店營業。",
+      "whyVisit": "僅在完成酒店入住、原有可選光影活動安排後，仍有充裕時間與體力時才考慮；不是必去行程，也不是投影活動的替代。",
+      "whatToSee": [
+        "青蛙主題街道入口",
+        "女鳥羽川與街道景觀"
+      ],
+      "takeaway": "D1 只作低壓力後備步行景點，切勿壓縮休息、入住及翌日行程。",
+      "imageIds": [],
+      "activityProfileIds": [
+        "jp27-profile-historic-outdoor"
+      ],
+      "sourceIds": [
+        "jp27-source-nawate-official"
+      ],
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Nawate%20Street%20Matsumoto",
+      "officialURL": "https://visitmatsumoto.com/zh-hant/spot/detail_1083.html"
+    }
+  ],
+  "accommodations": [
+    {
+      "id": "jp27-stay-tabino",
+      "name": "TABINO HOTEL lit 松本",
+      "type": "hotel",
+      "address": "〒390-0815 長野県松本市深志1-4-5",
+      "phone": "+81 263-39-5050",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=TABINO%20HOTEL%20lit%20Matsumoto",
+      "stayStartDate": "2027-01-09",
+      "stayEndDate": "2027-01-10",
+      "room": "豪華雙人房・非吸煙",
+      "mealPlan": "早餐不包",
+      "bookingState": "已訂",
+      "paymentState": "到店付款",
+      "total": {
+        "amount": 13668,
+        "currency": "JPY",
+        "notes": "房價；HKD換算只作參考"
+      },
+      "arrivalPayment": {
+        "amount": 13668,
+        "currency": "JPY",
+        "notes": "到店以JPY支付房費"
+      },
+      "checkIn": "15:00",
+      "checkOut": "11:00",
+      "notes": [
+        "D1第一晚；翌朝早餐自行安排。"
+      ]
+    },
+    {
+      "id": "jp27-stay-chikumakan",
+      "name": "Club Wyndham 千曲館",
+      "type": "onsen hotel",
+      "address": "〒389-0821 長野県千曲市上山田温泉1-33-4",
+      "phone": "+81 26-275-1111",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Club%20Wyndham%20Chikumakan%20Nagano",
+      "stayStartDate": "2027-01-10",
+      "stayEndDate": "2027-01-11",
+      "room": "King Bed／高級雙人房",
+      "mealPlan": "一泊二食：早餐＋晚餐",
+      "bookingState": "已訂",
+      "paymentState": "Pay later；按預訂安排信用卡扣款",
+      "total": {
+        "amount": 1506,
+        "currency": "HKD",
+        "notes": "約數；以訂單最終金額為準"
+      },
+      "checkIn": "15:00",
+      "checkOut": "10:00",
+      "notes": [
+        "天然溫泉。",
+        "D2目標17:30前抵達；實際晚餐時間入住時確認。"
+      ]
+    },
+    {
+      "id": "jp27-stay-ichinoyu",
+      "name": "一乃湯果亭",
+      "type": "ryokan",
+      "address": "〒381-0401 長野県下高井郡山ノ内町大字平穏2219",
+      "phone": "+81 269-33-2101",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Ichinoyu%20Katei",
+      "stayStartDate": "2027-01-11",
+      "stayEndDate": "2027-01-12",
+      "room": "10疊和室B・2張日式床墊",
+      "mealPlan": "早餐＋晚餐",
+      "bookingState": "已訂",
+      "paymentState": "房費主要部分已付；到店付地方稅",
+      "total": {
+        "amount": 2157.98,
+        "currency": "HKD"
+      },
+      "paid": {
+        "amount": 2142.73,
+        "currency": "HKD"
+      },
+      "arrivalPayment": {
+        "amount": 15.25,
+        "currency": "HKD",
+        "notes": "地方稅約數"
+      },
+      "checkIn": "15:00",
+      "checkOut": "10:00",
+      "cancellation": "2027-01-04 23:59前免費取消（按目前訂單）",
+      "notes": [
+        "澀溫泉中心；住客可借鎖匙參與九湯巡禮。"
+      ]
+    },
+    {
+      "id": "jp27-stay-jal-nagano",
+      "name": "Hotel JAL City Nagano",
+      "type": "hotel",
+      "address": "〒380-0834 長野県長野市問御所町1221",
+      "phone": "+81 26-225-1131",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hotel%20JAL%20City%20Nagano",
+      "stayStartDate": "2027-01-12",
+      "stayEndDate": "2027-01-13",
+      "room": "Renewal 經濟雙人房・非吸煙",
+      "mealPlan": "包2人自助早餐",
+      "bookingState": "已訂",
+      "paymentState": "已付",
+      "total": {
+        "amount": 841.96,
+        "currency": "HKD"
+      },
+      "paid": {
+        "amount": 841.96,
+        "currency": "HKD"
+      },
+      "arrivalPayment": {
+        "amount": 0,
+        "currency": "JPY",
+        "notes": "如另有住宿稅，以酒店當日規定為準"
+      },
+      "checkIn": "15:00",
+      "checkOut": "10:00",
+      "cancellation": "2027-01-11 23:59前免費取消（按目前訂單）",
+      "notes": [
+        "翌朝D5預留早餐後出發白馬。"
+      ]
+    },
+    {
+      "id": "jp27-stay-ouan",
+      "name": "飛驒花里之湯・高山櫻庵",
+      "type": "onsen hotel",
+      "address": "〒506-0026 岐阜県高山市花里町4-313",
+      "phone": "+81 577-37-2244",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Takayama%20Ouan",
+      "stayStartDate": "2027-01-13",
+      "stayEndDate": "2027-01-15",
+      "room": "雙床房・非吸煙",
+      "mealPlan": "早餐依最終訂房方案確認",
+      "bookingState": "已訂・2晚",
+      "paymentState": "主要房費已付；到店付城市／地方稅",
+      "total": {
+        "amount": 1761.43,
+        "currency": "HKD",
+        "notes": "2晚"
+      },
+      "paid": {
+        "amount": 1731.24,
+        "currency": "HKD"
+      },
+      "arrivalPayment": {
+        "amount": 30.19,
+        "currency": "HKD",
+        "notes": "2晚地方稅約數"
+      },
+      "checkIn": "15:00",
+      "checkOut": "11:00",
+      "parking": "酒店停車場現行¥1,100／晚，先到先得；2027出發前再核對。",
+      "notes": [
+        "D5、D6連住兩晚。",
+        "天然溫泉＋展望露天風呂。"
+      ]
+    },
+    {
+      "id": "jp27-stay-residence",
+      "name": "Residence Hotel Takayama Station",
+      "type": "apartment hotel",
+      "address": "〒506-0026 岐阜県高山市花里町6-105",
+      "phone": "+81 577-57-5578",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Residence%20Hotel%20Takayama%20Station",
+      "stayStartDate": "2027-01-15",
+      "stayEndDate": "2027-01-16",
+      "room": "標準雙人房・非吸煙",
+      "mealPlan": "早餐不包",
+      "bookingState": "已正式預訂",
+      "paymentState": "已付",
+      "total": {
+        "amount": 447.28,
+        "currency": "HKD"
+      },
+      "paid": {
+        "amount": 447.28,
+        "currency": "HKD"
+      },
+      "arrivalPayment": {
+        "amount": 0,
+        "currency": "JPY"
+      },
+      "checkIn": "15:00",
+      "checkOut": "11:00",
+      "cancellation": "不可退款",
+      "parking": "酒店現行17個車位；15:00–翌日12:00 ¥800／晚。",
+      "notes": [
+        "房內有小型廚房及洗衣／乾衣設備；高山站東口步行約2分鐘。"
+      ]
+    },
+    {
+      "id": "jp27-stay-iroha",
+      "name": "Iroha Grand Hotel Matsumoto Ekimae",
+      "type": "hotel",
+      "address": "〒390-0811 長野県松本市中央1-14-9",
+      "phone": "+81 263-87-0168",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Iroha%20Grand%20Hotel%20Matsumoto%20Ekimae",
+      "stayStartDate": "2027-01-16",
+      "stayEndDate": "2027-01-17",
+      "room": "Moderate Twin 22.5㎡・2×110cm床・非吸煙",
+      "mealPlan": "包2人早餐",
+      "bookingState": "已正式預訂",
+      "paymentState": "已付",
+      "total": {
+        "amount": 625.28,
+        "currency": "HKD"
+      },
+      "paid": {
+        "amount": 625.28,
+        "currency": "HKD"
+      },
+      "arrivalPayment": {
+        "amount": 0,
+        "currency": "JPY"
+      },
+      "checkIn": "14:00",
+      "checkOut": "11:00",
+      "parking": "提攜停車場現行約¥1,200／晚。",
+      "notes": [
+        "松本最後一晚；酒店距JR松本站步行約4分鐘。"
+      ]
+    }
+  ],
+  "transport": [
+    {
+      "id": "jp27-transport-uo680",
+      "type": "flight",
+      "provider": "HK Express",
+      "service": "UO680",
+      "origin": "香港國際機場",
+      "destination": "中部國際機場 T2",
+      "departure": "2027-01-09T10:00:00+08:00",
+      "arrival": "2027-01-09T14:30:00+09:00",
+      "durationMinutes": 210,
+      "bookingState": "已規劃／按實際機票",
+      "navigationTargetIds": [
+        "jp27-nav-centrair-t2"
+      ],
+      "notes": [
+        "正式航班時間出發前再核對。"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "jp27-transport-meitetsu-out",
+      "type": "train",
+      "provider": "名古屋鐵道",
+      "service": "μSKY／機場特急規劃",
+      "origin": "中部國際機場",
+      "destination": "名鐵名古屋",
+      "departure": "2027-01-09T15:45:00+09:00",
+      "arrival": "2027-01-09T16:35:00+09:00",
+      "durationMinutes": 50,
+      "bookingState": "2027正式時刻待核對",
+      "navigationTargetIds": [
+        "jp27-nav-centrair-t2"
+      ],
+      "notes": [
+        "實際班次按入境時間選擇；μSKY指定席。"
+      ],
+      "warnings": [
+        "錯過就搭下一班，不為追車壓縮安全轉乘。"
+      ]
+    },
+    {
+      "id": "jp27-transport-shinano-out",
+      "type": "train",
+      "provider": "JR Central",
+      "service": "特急しなの 規劃班次",
+      "origin": "名古屋",
+      "destination": "松本",
+      "departure": "2027-01-09T17:40:00+09:00",
+      "arrival": "2027-01-09T19:46:00+09:00",
+      "durationMinutes": 126,
+      "bookingState": "2027正式時刻待核對",
+      "navigationTargetIds": [
+        "jp27-nav-nagoya-station",
+        "jp27-nav-matsumoto-station"
+      ],
+      "notes": [
+        "現行規劃參考；2026年12月再核對2027正式時刻。"
+      ],
+      "warnings": [
+        "冬季大雪可能慢車或延誤。"
+      ]
+    },
+    {
+      "id": "jp27-transport-rental-car",
+      "type": "car",
+      "provider": "Times Car Rental",
+      "service": "C1級 4WD＋雪軚＋Super Safety Package",
+      "origin": "Times 松本站前",
+      "destination": "Times 松本站前",
+      "departure": "2027-01-10T11:15:00+09:00",
+      "arrival": "2027-01-17T12:10:00+09:00",
+      "bookingState": "已規劃／按實際訂單",
+      "paymentState": "按Times訂單",
+      "price": {
+        "amount": 59961,
+        "currency": "JPY",
+        "notes": "歷來比較價參考；實際訂單優先"
+      },
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Times%20Car%20Rental%20Matsumoto%20Station",
+      "navigationTargetIds": [
+        "jp27-nav-times-matsumoto"
+      ],
+      "notes": [
+        "取車：4WD＋雪軚。",
+        "Times已回覆提供Snow brush；Snow shovel／Ice scraper不保證。",
+        "D2取車後開始冬季自駕，D9中午還車。"
+      ],
+      "warnings": [
+        "冬季道路慢加速、慢煞車、慢轉向；安全距離明顯拉長。",
+        "封路／暴雪時安全優先，不為景點硬闖。"
+      ]
+    },
+    {
+      "id": "jp27-transport-shinano-return",
+      "type": "train",
+      "provider": "JR Central",
+      "service": "特急しなの 規劃班次",
+      "origin": "松本",
+      "destination": "名古屋",
+      "departure": "2027-01-17T13:56:00+09:00",
+      "arrival": "2027-01-17T16:07:00+09:00",
+      "durationMinutes": 131,
+      "bookingState": "2027正式時刻待核對",
+      "navigationTargetIds": [
+        "jp27-nav-matsumoto-station",
+        "jp27-nav-nagoya-station"
+      ],
+      "notes": [
+        "D9最重要固定交通之一。"
+      ],
+      "warnings": [
+        "還車與午餐必須保留Buffer。"
+      ]
+    },
+    {
+      "id": "jp27-transport-meitetsu-return",
+      "type": "train",
+      "provider": "名古屋鐵道",
+      "service": "μSKY／機場特急規劃",
+      "origin": "名鐵名古屋",
+      "destination": "中部國際機場",
+      "departure": "2027-01-17T16:49:00+09:00",
+      "arrival": "2027-01-17T17:17:00+09:00",
+      "durationMinutes": 28,
+      "bookingState": "2027正式時刻待核對",
+      "navigationTargetIds": [
+        "jp27-nav-centrair-t2"
+      ],
+      "notes": [
+        "如JR有少量延誤，改搭後續名鐵班次。"
+      ],
+      "warnings": []
+    },
+    {
+      "id": "jp27-transport-uo685",
+      "type": "flight",
+      "provider": "HK Express",
+      "service": "UO685",
+      "origin": "中部國際機場 T2",
+      "destination": "香港國際機場",
+      "departure": "2027-01-17T20:40:00+09:00",
+      "arrival": "2027-01-18T00:30:00+08:00",
+      "durationMinutes": 230,
+      "bookingState": "已規劃／按實際機票",
+      "navigationTargetIds": [
+        "jp27-nav-centrair-t2"
+      ],
+      "notes": [
+        "正式航班時間出發前再核對。"
+      ],
+      "warnings": []
+    }
+  ],
+  "navigationTargets": [
+    {
+      "id": "jp27-nav-times-matsumoto",
+      "type": "pickup",
+      "title": "Times Car Rental 松本站前",
+      "mapQuery": "Times Car Rental Matsumoto Station",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Times%20Car%20Rental%20Matsumoto%20Station",
+      "description": "D2取車、D9還車同一店。",
+      "warning": "取車確認4WD＋雪軚、雪刷、油量、ETC／導航；還車前入滿油並保留單據。"
+    },
+    {
+      "id": "jp27-nav-monkey-parking",
+      "type": "parking",
+      "title": "地獄谷野猿公苑・冬季上林入口停車",
+      "placeId": "jp27-place-snow-monkey",
+      "mapQuery": "Snow Monkey Park parking Kanbayashi",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Snow%20Monkey%20Park%20parking%20Kanbayashi",
+      "description": "泊車後步行約30–35分鐘冬季林道入公苑。",
+      "warning": "1月不要跟舊路由澀溫泉駛入冬季封閉林道；按公苑官方Access及現場指示。"
+    },
+    {
+      "id": "jp27-nav-iwatake-base",
+      "type": "parking",
+      "title": "白馬岩岳山麓 Gondola／停車場",
+      "placeId": "jp27-place-hakuba-iwatake",
+      "mapQuery": "Hakuba Iwatake Mountain Resort",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hakuba%20Iwatake%20Mountain%20Resort",
+      "description": "導航到山麓，不要導航到山頂HAKUBA MOUNTAIN HARBOR。"
+    },
+    {
+      "id": "jp27-nav-shirakawago-parking",
+      "type": "parking",
+      "title": "白川鄉・村營せせらぎ公園駐車場",
+      "placeId": "jp27-place-shirakawago",
+      "mapQuery": "せせらぎ公園駐車場 白川郷",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=%E3%81%9B%E3%81%9B%E3%82%89%E3%81%8E%E5%85%AC%E5%9C%92%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E7%99%BD%E5%B7%9D%E9%83%B7",
+      "description": "官方公共停車場；泊車後經であい橋步行入荻町。",
+      "warning": "不要駛入合掌村住宅區；官方現行普通車¥2,000、08:00–17:00、最終入場16:30。"
+    },
+    {
+      "id": "jp27-nav-shinhotaka-parking",
+      "type": "parking",
+      "title": "新穗高纜車・新穗高溫泉站一帶停車",
+      "placeId": "jp27-place-shinhotaka",
+      "mapQuery": "Shinhotaka Ropeway Parking",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Shinhotaka%20Ropeway%20Parking",
+      "description": "冬季以官方當日開放停車安排為準，步行往第一纜車站。"
+    },
+    {
+      "id": "jp27-nav-takayama-nakabashi",
+      "type": "parking",
+      "title": "高山古街／高山陣屋停車目標",
+      "placeId": "jp27-place-takayama-jinya",
+      "mapQuery": "中橋駐車場 高山",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E6%A9%8B%E9%A7%90%E8%BB%8A%E5%A0%B4%20%E9%AB%98%E5%B1%B1",
+      "description": "泊車後步行到高山陣屋、中橋及三町古街。"
+    },
+    {
+      "id": "jp27-nav-hida-cave-parking",
+      "type": "parking",
+      "title": "飛驒大鐘乳洞停車場",
+      "placeId": "jp27-place-hida-cave",
+      "mapQuery": "Hida Great Limestone Cave",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida%20Great%20Limestone%20Cave",
+      "description": "官方一般車停車場免費。"
+    },
+    {
+      "id": "jp27-nav-aeon-matsumoto",
+      "type": "parking",
+      "title": "AEON Mall Matsumoto",
+      "placeId": "jp27-place-aeon-matsumoto",
+      "mapQuery": "AEON Mall Matsumoto",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=AEON%20Mall%20Matsumoto",
+      "description": "D9最後補貨；大型行李留車內並自行留意財物安全。"
+    },
+    {
+      "id": "jp27-nav-centrair-t2",
+      "type": "other",
+      "title": "中部國際機場 Terminal 2",
+      "mapQuery": "Chubu Centrair International Airport Terminal 2",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Chubu%20Centrair%20International%20Airport%20Terminal%202"
+    },
+    {
+      "id": "jp27-nav-nagoya-station",
+      "type": "station",
+      "title": "JR 名古屋站",
+      "mapQuery": "Nagoya Station",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Nagoya%20Station"
+    },
+    {
+      "id": "jp27-nav-matsumoto-station",
+      "type": "station",
+      "title": "JR 松本站",
+      "mapQuery": "Matsumoto Station",
+      "mapURL": "https://www.google.com/maps/search/?api=1&query=Matsumoto%20Station"
+    }
+  ],
+  "hardCuts": [
+    {
+      "id": "jp27-cut-d1-shinano",
+      "dayId": "jp27-day-1",
+      "time": "17:40",
+      "title": "名古屋→松本 特急しなの目標班次",
+      "severity": "critical",
+      "priority": 1,
+      "category": "train",
+      "icon": "train",
+      "description": "D1現行規劃班次；2027正式時刻公布後再核對。",
+      "sourceId": "jp27-source-jr"
+    },
+    {
+      "id": "jp27-cut-d2-outlet-leave",
+      "dayId": "jp27-day-2",
+      "time": "15:30",
+      "title": "最遲離開輕井澤 Outlet",
+      "severity": "critical",
+      "priority": 1,
+      "category": "winter-driving",
+      "icon": "car",
+      "description": "保留冬季開車去千曲Buffer；Backup景點唔可以拖過呢個時間。"
+    },
+    {
+      "id": "jp27-cut-d2-chikumakan",
+      "dayId": "jp27-day-2",
+      "time": "17:30",
+      "title": "最遲抵達千曲館",
+      "severity": "critical",
+      "priority": 1,
+      "category": "accommodation",
+      "icon": "hotel",
+      "description": "溫泉旅館一泊二食；若前段延誤，優先縮短Outlet／Backup，不縮雪路安全Buffer。"
+    },
+    {
+      "id": "jp27-cut-d4-aeon",
+      "dayId": "jp27-day-4",
+      "time": "17:00",
+      "title": "離開AEON Mall須坂",
+      "severity": "warning",
+      "priority": 2,
+      "category": "shopping",
+      "icon": "clock",
+      "description": "前往長野酒店；不為Bonus／Shopping令入住太夜。",
+      "sourceId": "jp27-source-aeon-suzaka"
+    },
+    {
+      "id": "jp27-cut-d5-hakuba",
+      "dayId": "jp27-day-5",
+      "time": "13:20",
+      "title": "離開白馬開始長途冬季駕駛",
+      "severity": "critical",
+      "priority": 1,
+      "category": "winter-driving",
+      "icon": "car",
+      "description": "白馬→高山冬季長途段，唔為山頂活動拖成夜間山路。"
+    },
+    {
+      "id": "jp27-cut-d6-shirakawa",
+      "dayId": "jp27-day-6",
+      "time": "14:15",
+      "title": "離開白川鄉返高山",
+      "severity": "warning",
+      "priority": 2,
+      "category": "winter-driving",
+      "icon": "car",
+      "description": "D6已固定白川鄉；保留返高山、休息及晚餐時間。",
+      "sourceId": "jp27-source-shirakawago-access"
+    },
+    {
+      "id": "jp27-cut-d7-shinhotaka",
+      "dayId": "jp27-day-7",
+      "time": "14:00",
+      "title": "離開新穗高返高山",
+      "severity": "warning",
+      "priority": 2,
+      "category": "winter-driving",
+      "icon": "car",
+      "description": "保留冬季返高山Buffer與Residence入住；官方停駛／低能見度則不勉強逗留。",
+      "sourceId": "jp27-source-shinhotaka"
+    },
+    {
+      "id": "jp27-cut-d8-cave",
+      "dayId": "jp27-day-8",
+      "time": "14:50",
+      "title": "離開飛驒大鐘乳洞向松本",
+      "severity": "critical",
+      "priority": 1,
+      "category": "winter-driving",
+      "icon": "car",
+      "description": "D8固定向東返松本；不再加白川鄉／新穗高。",
+      "sourceId": "jp27-source-hida-cave"
+    },
+    {
+      "id": "jp27-cut-d9-aeon",
+      "dayId": "jp27-day-9",
+      "time": "11:00",
+      "title": "必須離開AEON Mall Matsumoto",
+      "severity": "critical",
+      "priority": 1,
+      "category": "return",
+      "icon": "clock",
+      "description": "之後入油、還車、午餐，唔可以畀最後Shopping影響JR。"
+    },
+    {
+      "id": "jp27-cut-d9-return",
+      "dayId": "jp27-day-9",
+      "time": "12:10",
+      "title": "目標完成Times還車",
+      "severity": "critical",
+      "priority": 1,
+      "category": "rental-car",
+      "icon": "car",
+      "description": "租約Buffer保留到13:00級別；實際訂單優先。",
+      "sourceId": "jp27-source-times"
+    },
+    {
+      "id": "jp27-cut-d9-shinano",
+      "dayId": "jp27-day-9",
+      "time": "13:56",
+      "title": "松本→名古屋 特急しなの目標班次",
+      "severity": "critical",
+      "priority": 0,
+      "category": "train",
+      "icon": "train",
+      "description": "D9最重要Hard Cut；2027正式JR時刻公布後再核對。",
+      "sourceId": "jp27-source-jr"
+    }
+  ],
+  "checklists": [
+    {
+      "id": "jp27-checklist-departure",
+      "type": "departure",
+      "title": "香港出發前・已帶物品 Checklist",
+      "description": "離開香港前執行李用；完整96項，stable item IDs保留俾跨版本Checklist sync。",
+      "order": 0,
+      "notes": [
+        "預期項目數：96。"
+      ],
+      "groups": [
+        {
+          "id": "jp27-pack-group-docs",
+          "title": "🪪 隨身／證件／金錢",
+          "order": 0,
+          "notes": [],
+          "items": [
+            {
+              "id": "pack_docs",
+              "label": "證件",
+              "order": 0,
+              "notes": []
+            },
+            {
+              "id": "pack_cash",
+              "label": "現金（日元）",
+              "order": 1,
+              "notes": []
+            },
+            {
+              "id": "pack_sim",
+              "label": "電話卡",
+              "order": 2,
+              "notes": []
+            },
+            {
+              "id": "pack_pen",
+              "label": "筆",
+              "order": 3,
+              "notes": []
+            },
+            {
+              "id": "pack_wallet",
+              "label": "銀包",
+              "order": 4,
+              "notes": []
+            },
+            {
+              "id": "pack_visa",
+              "label": "Visa 卡",
+              "order": 5,
+              "notes": []
+            },
+            {
+              "id": "pack_master",
+              "label": "Master 卡",
+              "order": 6,
+              "notes": []
+            },
+            {
+              "id": "pack_unionpay",
+              "label": "銀聯卡",
+              "order": 7,
+              "notes": []
+            }
+          ]
+        },
+        {
+          "id": "jp27-pack-group-winter",
+          "title": "🧥 冬季衣物",
+          "order": 1,
+          "notes": [],
+          "items": [
+            {
+              "id": "pack_ski_gloves",
+              "label": "滑雪手套：各一對",
+              "order": 0,
+              "notes": []
+            },
+            {
+              "id": "pack_decathlon_gloves",
+              "label": "迪卡儂手套：一對",
+              "order": 1,
+              "notes": []
+            },
+            {
+              "id": "pack_hats",
+              "label": "冷帽×2",
+              "order": 2,
+              "notes": []
+            },
+            {
+              "id": "pack_scarves",
+              "label": "頸巾×2",
+              "order": 3,
+              "notes": []
+            },
+            {
+              "id": "pack_regular_socks",
+              "label": "普通襪：各8對",
+              "order": 4,
+              "notes": []
+            },
+            {
+              "id": "pack_thick_socks",
+              "label": "厚襪：各2對",
+              "order": 5,
+              "notes": []
+            },
+            {
+              "id": "pack_coat",
+              "label": "防水羽絨外套：各一件",
+              "order": 6,
+              "notes": []
+            },
+            {
+              "id": "pack_sleepwear",
+              "label": "睡衣：各一套",
+              "order": 7,
+              "notes": []
+            },
+            {
+              "id": "pack_underwear",
+              "label": "內衣：各8套",
+              "order": 8,
+              "notes": []
+            },
+            {
+              "id": "pack_outfits_min",
+              "label": "衣服整體：最少6套",
+              "order": 9,
+              "notes": []
+            },
+            {
+              "id": "pack_base_layers",
+              "label": "打底保暖衫：各2套",
+              "order": 10,
+              "notes": []
+            },
+            {
+              "id": "pack_windy_thermal",
+              "label": "保暖內衣：Windy 3件",
+              "order": 11,
+              "notes": []
+            },
+            {
+              "id": "pack_long_sleeves",
+              "label": "長袖衫：各8件",
+              "order": 12,
+              "notes": []
+            },
+            {
+              "id": "pack_snow_pants",
+              "label": "雪褲：各3條",
+              "order": 13,
+              "notes": []
+            },
+            {
+              "id": "pack_gary_jeans",
+              "label": "牛仔褲：Gary 1條",
+              "order": 14,
+              "notes": []
+            },
+            {
+              "id": "pack_windy_skirt",
+              "label": "冬天長裙：Windy 1條",
+              "order": 15,
+              "notes": []
+            }
+          ]
+        },
+        {
+          "id": "jp27-pack-group-toiletries",
+          "title": "🪥 盥洗／頭髮用品",
+          "order": 2,
+          "notes": [],
+          "items": [
+            {
+              "id": "pack_electric_toothbrush",
+              "label": "電動牙刷：1套",
+              "order": 0,
+              "notes": []
+            },
+            {
+              "id": "pack_sensitive_toothpaste",
+              "label": "防敏牙膏：1支",
+              "order": 1,
+              "notes": []
+            },
+            {
+              "id": "pack_disposable_toothpaste",
+              "label": "即用即棄牙膏：2套",
+              "order": 2,
+              "notes": []
+            },
+            {
+              "id": "pack_disposable_toothbrush",
+              "label": "即用即棄牙刷：2套",
+              "order": 3,
+              "notes": []
+            },
+            {
+              "id": "pack_cups",
+              "label": "漱口杯：2個",
+              "order": 4,
+              "notes": []
+            },
+            {
+              "id": "pack_conditioner",
+              "label": "護髮素：1件",
+              "order": 5,
+              "notes": []
+            },
+            {
+              "id": "pack_shampoo",
+              "label": "洗頭水：1件",
+              "order": 6,
+              "notes": []
+            },
+            {
+              "id": "pack_comb",
+              "label": "梳：1件",
+              "order": 7,
+              "notes": []
+            },
+            {
+              "id": "pack_hairclip",
+              "label": "髮夾",
+              "order": 8,
+              "notes": []
+            }
+          ]
+        },
+        {
+          "id": "jp27-pack-group-laundry",
+          "title": "🧺 洗衣／住宿用品",
+          "order": 3,
+          "notes": [],
+          "items": [
+            {
+              "id": "pack_hangers",
+              "label": "衣架",
+              "order": 0,
+              "notes": []
+            },
+            {
+              "id": "pack_clothesline",
+              "label": "曬衫繩",
+              "order": 1,
+              "notes": []
+            },
+            {
+              "id": "pack_laundrypods",
+              "label": "洗衣珠：4粒",
+              "order": 2,
+              "notes": []
+            },
+            {
+              "id": "pack_bathtowels",
+              "label": "沖涼毛巾：各一條",
+              "order": 3,
+              "notes": []
+            },
+            {
+              "id": "pack_hairtowel",
+              "label": "吸水毛巾（頭髮）：1條",
+              "order": 4,
+              "notes": []
+            },
+            {
+              "id": "pack_slippers",
+              "label": "拖鞋：各一對",
+              "order": 5,
+              "notes": []
+            },
+            {
+              "id": "pack_garbagebags",
+              "label": "新垃圾膠袋：8個",
+              "order": 6,
+              "notes": []
+            }
+          ]
+        },
+        {
+          "id": "jp27-pack-group-clean",
+          "title": "🧻 紙品／清潔／防護",
+          "order": 4,
+          "notes": [],
+          "items": [
+            {
+              "id": "pack_masks",
+              "label": "口罩",
+              "order": 0,
+              "notes": []
+            },
+            {
+              "id": "pack_earplugs",
+              "label": "耳塞",
+              "order": 1,
+              "notes": []
+            },
+            {
+              "id": "pack_disposable_gloves",
+              "label": "即棄手套",
+              "order": 2,
+              "notes": []
+            },
+            {
+              "id": "pack_wetwipes",
+              "label": "濕紙巾：4包",
+              "order": 3,
+              "notes": []
+            },
+            {
+              "id": "pack_tissues",
+              "label": "紙巾：12包",
+              "order": 4,
+              "notes": []
+            },
+            {
+              "id": "pack_boxtissue",
+              "label": "抽紙：1盒／包",
+              "order": 5,
+              "notes": []
+            },
+            {
+              "id": "pack_toiletroll",
+              "label": "卷裝廁紙：1卷",
+              "order": 6,
+              "notes": []
+            },
+            {
+              "id": "pack_disinfectspray",
+              "label": "消毒噴霧：1支",
+              "order": 7,
+              "notes": []
+            },
+            {
+              "id": "pack_sanitizer",
+              "label": "搓手液：1支",
+              "order": 8,
+              "notes": []
+            }
+          ]
+        },
+        {
+          "id": "jp27-pack-group-personal",
+          "title": "🧴 護膚／個人用品",
+          "order": 5,
+          "notes": [],
+          "items": [
+            {
+              "id": "pack_sunglasses",
+              "label": "太陽眼鏡：2副",
+              "order": 0,
+              "notes": []
+            },
+            {
+              "id": "pack_lipbalm",
+              "label": "潤唇膏：2支",
+              "order": 1,
+              "notes": []
+            },
+            {
+              "id": "pack_skincare_set",
+              "label": "保濕護膚品：1套",
+              "order": 2,
+              "notes": []
+            },
+            {
+              "id": "pack_handcream",
+              "label": "護手霜：1支",
+              "order": 3,
+              "notes": []
+            },
+            {
+              "id": "pack_bodylotion",
+              "label": "Body Lotion：1支",
+              "order": 4,
+              "notes": []
+            },
+            {
+              "id": "pack_vaseline",
+              "label": "凡士林：1瓶",
+              "order": 5,
+              "notes": []
+            },
+            {
+              "id": "pack_eczema_cream",
+              "label": "濕疹手霜：1支",
+              "order": 6,
+              "notes": []
+            },
+            {
+              "id": "pack_deodorant",
+              "label": "止汗劑：1支",
+              "order": 7,
+              "notes": []
+            },
+            {
+              "id": "pack_eyebrow",
+              "label": "眉筆：1支",
+              "order": 8,
+              "notes": []
+            },
+            {
+              "id": "pack_makeup",
+              "label": "化妝品",
+              "order": 9,
+              "notes": []
+            },
+            {
+              "id": "pack_makeup_wipes",
+              "label": "卸妝濕紙巾",
+              "order": 10,
+              "notes": []
+            },
+            {
+              "id": "pack_warmers",
+              "label": "暖包",
+              "order": 11,
+              "notes": []
+            },
+            {
+              "id": "pack_nailclipper",
+              "label": "指甲鉗",
+              "order": 12,
+              "notes": []
+            },
+            {
+              "id": "pack_sewing",
+              "label": "針線包",
+              "order": 13,
+              "notes": []
+            },
+            {
+              "id": "pack_toothpicks",
+              "label": "牙籤",
+              "order": 14,
+              "notes": []
+            },
+            {
+              "id": "pack_floss",
+              "label": "牙線",
+              "order": 15,
+              "notes": []
+            },
+            {
+              "id": "pack_sunscreen",
+              "label": "防曬：1支",
+              "order": 16,
+              "notes": []
+            },
+            {
+              "id": "pack_umbrellas",
+              "label": "遮：2把",
+              "order": 17,
+              "notes": []
+            },
+            {
+              "id": "pack_lunchbox",
+              "label": "飯盒：1個",
+              "order": 18,
+              "notes": []
+            },
+            {
+              "id": "pack_forks",
+              "label": "叉：2隻",
+              "order": 19,
+              "notes": []
+            },
+            {
+              "id": "pack_fruitknife",
+              "label": "生果刀：1把",
+              "order": 20,
+              "notes": []
+            },
+            {
+              "id": "pack_thermos",
+              "label": "保暖杯：2個",
+              "order": 21,
+              "notes": []
+            }
+          ]
+        },
+        {
+          "id": "jp27-pack-group-medicine",
+          "title": "💊 藥物／雜項",
+          "order": 6,
+          "notes": [],
+          "items": [
+            {
+              "id": "pack_thermalbags",
+              "label": "即棄保溫袋（銀色）：3個",
+              "order": 0,
+              "notes": []
+            },
+            {
+              "id": "pack_luggagescale",
+              "label": "行李磅",
+              "order": 1,
+              "notes": []
+            },
+            {
+              "id": "pack_sleepmed",
+              "label": "安眠藥：7粒／份",
+              "order": 2,
+              "notes": []
+            },
+            {
+              "id": "pack_panadol",
+              "label": "必理痛",
+              "order": 3,
+              "notes": []
+            },
+            {
+              "id": "pack_trumpet",
+              "label": "喇叭丸",
+              "order": 4,
+              "notes": []
+            },
+            {
+              "id": "pack_cold_drink",
+              "label": "感冒熱飲",
+              "order": 5,
+              "notes": []
+            },
+            {
+              "id": "pack_plasters",
+              "label": "膠布",
+              "order": 6,
+              "notes": []
+            },
+            {
+              "id": "pack_antiseptic_wipes",
+              "label": "消毒紙巾",
+              "order": 7,
+              "notes": []
+            },
+            {
+              "id": "pack_antiseptic_liquid",
+              "label": "消毒藥水",
+              "order": 8,
+              "notes": []
+            },
+            {
+              "id": "pack_qingreku",
+              "label": "清熱酷：8件",
+              "order": 9,
+              "notes": []
+            },
+            {
+              "id": "pack_baoanxin",
+              "label": "保安心藥膏：1支",
+              "order": 10,
+              "notes": []
+            },
+            {
+              "id": "pack_ecobag",
+              "label": "環保購物袋",
+              "order": 11,
+              "notes": []
+            }
+          ]
+        },
+        {
+          "id": "jp27-pack-group-electronics",
+          "title": "📷 電子／攝影／車用",
+          "order": 7,
+          "notes": [],
+          "items": [
+            {
+              "id": "pack_batteries",
+              "label": "電池",
+              "order": 0,
+              "notes": []
+            },
+            {
+              "id": "pack_selfiestick",
+              "label": "自拍神棍",
+              "order": 1,
+              "notes": []
+            },
+            {
+              "id": "pack_tripod",
+              "label": "腳架",
+              "order": 2,
+              "notes": []
+            },
+            {
+              "id": "pack_camera",
+              "label": "相機",
+              "order": 3,
+              "notes": []
+            },
+            {
+              "id": "pack_adapters",
+              "label": "旅行插蘇：2個",
+              "order": 4,
+              "notes": []
+            },
+            {
+              "id": "pack_kettle",
+              "label": "電熱水壺",
+              "order": 5,
+              "notes": []
+            },
+            {
+              "id": "pack_stove",
+              "label": "電爐",
+              "order": 6,
+              "notes": []
+            },
+            {
+              "id": "pack_powerbanks",
+              "label": "細尿袋：3個",
+              "order": 7,
+              "notes": []
+            },
+            {
+              "id": "pack_cctv",
+              "label": "閉錄電視",
+              "order": 8,
+              "notes": []
+            },
+            {
+              "id": "pack_memorycard",
+              "label": "記憶卡",
+              "order": 9,
+              "notes": []
+            },
+            {
+              "id": "pack_dashcam",
+              "label": "車Cam",
+              "order": 10,
+              "notes": []
+            },
+            {
+              "id": "pack_dashcam_mount",
+              "label": "車Cam固定器",
+              "order": 11,
+              "notes": []
+            },
+            {
+              "id": "pack_cables",
+              "label": "充電線：4條",
+              "order": 12,
+              "notes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jp27-checklist-daily-car",
+      "type": "daily",
+      "title": "每朝出車 Checklist",
+      "description": "冬季自駕出發前快速檢查。",
+      "order": 1,
+      "notes": [
+        "落大雪時要清走車頂積雪，唔好只清前擋風玻璃。"
+      ],
+      "groups": [
+        {
+          "id": "jp27-daily-group-drive",
+          "title": "🚗 出車前",
+          "order": 0,
+          "notes": [],
+          "items": [
+            {
+              "id": "jp27-daily-phone",
+              "label": "📱 手機＋充足電量",
+              "order": 0,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-powerbank",
+              "label": "🔋 Power Bank",
+              "order": 1,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-carcharge",
+              "label": "🔌 車充／充電線",
+              "order": 2,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-warm",
+              "label": "🧥 外套／保暖用品",
+              "order": 3,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-shoes",
+              "label": "👢 防水防滑鞋",
+              "order": 4,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-gloves",
+              "label": "🧤 手套",
+              "order": 5,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-snowbrush",
+              "label": "❄️ 雪刷／刮冰器",
+              "order": 6,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-clearsnow",
+              "label": "🚗 清走車窗、車頂積雪",
+              "order": 7,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-fuel",
+              "label": "⛽ 確認油量",
+              "order": 8,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-maps",
+              "label": "🧭 Google Maps／導航設定",
+              "order": 9,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-cams",
+              "label": "📹 先睇今日 Live Cam",
+              "order": 10,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-roadweather",
+              "label": "🌨️ 睇降雪／道路情況",
+              "order": 11,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-tickets",
+              "label": "🎫 景點票／預約資料",
+              "order": 12,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-money",
+              "label": "💴 現金／信用卡",
+              "order": 13,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-water",
+              "label": "🥤 水／簡單小食",
+              "order": 14,
+              "notes": []
+            },
+            {
+              "id": "jp27-daily-luggage",
+              "label": "🎒 行李固定好",
+              "order": 15,
+              "notes": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "weather": {
+    "forecastProviders": [
+      {
+        "id": "jp27-forecast-openmeteo",
+        "adapter": "open-meteo",
+        "label": "Open-Meteo"
+      }
+    ],
+    "weatherRegions": [
+      {
+        "id": "jp27-weather-matsumoto",
+        "regionId": "jp27-region-matsumoto",
+        "label": "松本",
+        "providerId": "jp27-forecast-openmeteo",
+        "operationNotes": [
+          "道路積雪／結冰要另外確認。"
+        ]
+      },
+      {
+        "id": "jp27-weather-karuizawa",
+        "regionId": "jp27-region-karuizawa",
+        "label": "輕井澤",
+        "providerId": "jp27-forecast-openmeteo",
+        "operationNotes": [
+          "Highland Way山區道路狀態要另外確認。"
+        ]
+      },
+      {
+        "id": "jp27-weather-yamanouchi",
+        "regionId": "jp27-region-yamanouchi",
+        "label": "山之內／澀溫泉",
+        "providerId": "jp27-forecast-openmeteo",
+        "operationNotes": [
+          "地獄谷步道積雪／結冰及開園狀態要另外確認。"
+        ]
+      },
+      {
+        "id": "jp27-weather-nagano",
+        "regionId": "jp27-region-nagano",
+        "label": "長野／須坂",
+        "providerId": "jp27-forecast-openmeteo",
+        "operationNotes": [
+          "市區道路積雪／結冰要另外確認。"
+        ]
+      },
+      {
+        "id": "jp27-weather-hakuba",
+        "regionId": "jp27-region-hakuba",
+        "label": "白馬岩岳",
+        "providerId": "jp27-forecast-openmeteo",
+        "location": {
+          "latitude": 36.703,
+          "longitude": 137.851,
+          "elevationM": 1289
+        },
+        "operationNotes": [
+          "最後仍要睇岩岳Live Cam及Gondola運行狀況。"
+        ]
+      },
+      {
+        "id": "jp27-weather-takayama",
+        "regionId": "jp27-region-takayama",
+        "label": "高山市區／飛驒大鐘乳洞",
+        "providerId": "jp27-forecast-openmeteo",
+        "operationNotes": [
+          "鐘乳洞官方開放範圍與國道158號路況要另外確認。"
+        ]
+      },
+      {
+        "id": "jp27-weather-shirakawago",
+        "regionId": "jp27-region-shirakawago",
+        "label": "白川鄉",
+        "providerId": "jp27-forecast-openmeteo",
+        "operationNotes": [
+          "停車場、道路封閉、交通擠塞要另外確認。"
+        ]
+      },
+      {
+        "id": "jp27-weather-shinhotaka",
+        "regionId": "jp27-region-okuhida",
+        "label": "新穗高",
+        "providerId": "jp27-forecast-openmeteo",
+        "location": {
+          "latitude": 36.2828,
+          "longitude": 137.5804,
+          "elevationM": 2156
+        },
+        "operationNotes": [
+          "最後仍要睇山頂Live Cam＋纜車Operation Status。"
+        ]
+      }
+    ],
+    "activityProfiles": [
+      {
+        "id": "jp27-profile-city-walk",
+        "label": "城市／古街步行",
+        "icon": "🚶",
+        "weights": {},
+        "experience": {
+          "metrics": [
+            {
+              "metric": "visibilityKm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 2
+                },
+                {
+                  "value": 1,
+                  "score": 4
+                },
+                {
+                  "value": 5,
+                  "score": 8
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            },
+            {
+              "metric": "cloudPct",
+              "weight": 0.8,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 40,
+                  "score": 9
+                },
+                {
+                  "value": 70,
+                  "score": 6
+                },
+                {
+                  "value": 100,
+                  "score": 3
+                }
+              ]
+            }
+          ]
+        },
+        "access": {
+          "metrics": [
+            {
+              "metric": "gustKmh",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 25,
+                  "score": 9
+                },
+                {
+                  "value": 45,
+                  "score": 6
+                },
+                {
+                  "value": 65,
+                  "score": 2
+                },
+                {
+                  "value": 90,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "apparentC",
+              "weight": 0.6,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": -25,
+                  "score": 1
+                },
+                {
+                  "value": -15,
+                  "score": 4
+                },
+                {
+                  "value": -5,
+                  "score": 7
+                },
+                {
+                  "value": 5,
+                  "score": 10
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            }
+          ]
+        },
+        "accessShare": 0.3,
+        "safetyCaps": [
+          {
+            "accessBelow": 2.5,
+            "maximumFinal": 3.5
+          },
+          {
+            "accessBelow": 4,
+            "maximumFinal": 5
+          },
+          {
+            "accessBelow": 5.5,
+            "maximumFinal": 6.5
+          }
+        ],
+        "operationRequired": false,
+        "operationNotes": [],
+        "minimumCoverage": 0.55
+      },
+      {
+        "id": "jp27-profile-historic-outdoor",
+        "label": "戶外歷史景點",
+        "icon": "🏯",
+        "weights": {},
+        "experience": {
+          "metrics": [
+            {
+              "metric": "visibilityKm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 2
+                },
+                {
+                  "value": 1,
+                  "score": 4
+                },
+                {
+                  "value": 5,
+                  "score": 8
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            },
+            {
+              "metric": "cloudPct",
+              "weight": 0.8,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 40,
+                  "score": 9
+                },
+                {
+                  "value": 70,
+                  "score": 6
+                },
+                {
+                  "value": 100,
+                  "score": 3
+                }
+              ]
+            }
+          ]
+        },
+        "access": {
+          "metrics": [
+            {
+              "metric": "gustKmh",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 25,
+                  "score": 9
+                },
+                {
+                  "value": 45,
+                  "score": 6
+                },
+                {
+                  "value": 65,
+                  "score": 2
+                },
+                {
+                  "value": 90,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "apparentC",
+              "weight": 0.6,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": -25,
+                  "score": 1
+                },
+                {
+                  "value": -15,
+                  "score": 4
+                },
+                {
+                  "value": -5,
+                  "score": 7
+                },
+                {
+                  "value": 5,
+                  "score": 10
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            }
+          ]
+        },
+        "accessShare": 0.3,
+        "safetyCaps": [
+          {
+            "accessBelow": 2.5,
+            "maximumFinal": 3.5
+          },
+          {
+            "accessBelow": 4,
+            "maximumFinal": 5
+          },
+          {
+            "accessBelow": 5.5,
+            "maximumFinal": 6.5
+          }
+        ],
+        "operationRequired": false,
+        "operationNotes": [],
+        "minimumCoverage": 0.55
+      },
+      {
+        "id": "jp27-profile-indoor",
+        "label": "室內景點／購物",
+        "icon": "🏬",
+        "weights": {},
+        "experience": {
+          "metrics": [],
+          "baseline": {
+            "score": 9.2,
+            "weight": 1
+          }
+        },
+        "access": {
+          "metrics": [
+            {
+              "metric": "gustKmh",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 25,
+                  "score": 9
+                },
+                {
+                  "value": 45,
+                  "score": 6
+                },
+                {
+                  "value": 65,
+                  "score": 2
+                },
+                {
+                  "value": 90,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "snowfallCm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            }
+          ]
+        },
+        "accessShare": 0.2,
+        "safetyCaps": [
+          {
+            "accessBelow": 2.5,
+            "maximumFinal": 4.5
+          },
+          {
+            "accessBelow": 4,
+            "maximumFinal": 6
+          }
+        ],
+        "operationRequired": false,
+        "operationNotes": [],
+        "minimumCoverage": 0.45
+      },
+      {
+        "id": "jp27-profile-snow-walk",
+        "label": "雪地步行",
+        "icon": "🥾",
+        "weights": {},
+        "experience": {
+          "metrics": [
+            {
+              "metric": "visibilityKm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 2
+                },
+                {
+                  "value": 1,
+                  "score": 4
+                },
+                {
+                  "value": 5,
+                  "score": 8
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            },
+            {
+              "metric": "cloudPct",
+              "weight": 0.8,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 40,
+                  "score": 9
+                },
+                {
+                  "value": 70,
+                  "score": 6
+                },
+                {
+                  "value": 100,
+                  "score": 3
+                }
+              ]
+            }
+          ]
+        },
+        "access": {
+          "metrics": [
+            {
+              "metric": "gustKmh",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 25,
+                  "score": 9
+                },
+                {
+                  "value": 45,
+                  "score": 6
+                },
+                {
+                  "value": 65,
+                  "score": 2
+                },
+                {
+                  "value": 90,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "snowfallCm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "apparentC",
+              "weight": 0.6,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": -25,
+                  "score": 1
+                },
+                {
+                  "value": -15,
+                  "score": 4
+                },
+                {
+                  "value": -5,
+                  "score": 7
+                },
+                {
+                  "value": 5,
+                  "score": 10
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            }
+          ]
+        },
+        "accessShare": 0.5,
+        "safetyCaps": [
+          {
+            "accessBelow": 2.5,
+            "maximumFinal": 3
+          },
+          {
+            "accessBelow": 4,
+            "maximumFinal": 4.5
+          },
+          {
+            "accessBelow": 5.5,
+            "maximumFinal": 6
+          }
+        ],
+        "operationRequired": false,
+        "operationNotes": [
+          "步道結冰、積雪深度及現場封閉狀態仍須另外確認。"
+        ],
+        "minimumCoverage": 0.6
+      },
+      {
+        "id": "jp27-profile-mountain-operated",
+        "label": "山岳纜車／高地景觀",
+        "icon": "🚡",
+        "weights": {},
+        "experience": {
+          "metrics": [
+            {
+              "metric": "visibilityKm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 0
+                },
+                {
+                  "value": 1,
+                  "score": 2
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            },
+            {
+              "metric": "cloudPct",
+              "weight": 0.8,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 40,
+                  "score": 9
+                },
+                {
+                  "value": 70,
+                  "score": 6
+                },
+                {
+                  "value": 100,
+                  "score": 3
+                }
+              ]
+            }
+          ]
+        },
+        "access": {
+          "metrics": [
+            {
+              "metric": "gustKmh",
+              "weight": 1.2,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 20,
+                  "score": 9
+                },
+                {
+                  "value": 35,
+                  "score": 6
+                },
+                {
+                  "value": 50,
+                  "score": 2
+                },
+                {
+                  "value": 70,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "visibilityKm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 2
+                },
+                {
+                  "value": 1,
+                  "score": 4
+                },
+                {
+                  "value": 5,
+                  "score": 8
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "snowfallCm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "apparentC",
+              "weight": 0.6,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": -25,
+                  "score": 1
+                },
+                {
+                  "value": -15,
+                  "score": 4
+                },
+                {
+                  "value": -5,
+                  "score": 7
+                },
+                {
+                  "value": 5,
+                  "score": 10
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            }
+          ]
+        },
+        "accessShare": 0.55,
+        "safetyCaps": [
+          {
+            "accessBelow": 2.5,
+            "maximumFinal": 3
+          },
+          {
+            "accessBelow": 4,
+            "maximumFinal": 4.5
+          },
+          {
+            "accessBelow": 5.5,
+            "maximumFinal": 6
+          }
+        ],
+        "operationRequired": true,
+        "operationNotes": [
+          "官方運行狀態優先於天氣分數。"
+        ],
+        "minimumCoverage": 0.65
+      },
+      {
+        "id": "jp27-profile-village-scenic",
+        "label": "雪村景觀",
+        "icon": "🏘️",
+        "weights": {},
+        "experience": {
+          "metrics": [
+            {
+              "metric": "visibilityKm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 0
+                },
+                {
+                  "value": 1,
+                  "score": 2
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            },
+            {
+              "metric": "cloudPct",
+              "weight": 0.8,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 40,
+                  "score": 9
+                },
+                {
+                  "value": 70,
+                  "score": 6
+                },
+                {
+                  "value": 100,
+                  "score": 3
+                }
+              ]
+            }
+          ]
+        },
+        "access": {
+          "metrics": [
+            {
+              "metric": "gustKmh",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 25,
+                  "score": 9
+                },
+                {
+                  "value": 45,
+                  "score": 6
+                },
+                {
+                  "value": 65,
+                  "score": 2
+                },
+                {
+                  "value": 90,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "snowfallCm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "apparentC",
+              "weight": 0.6,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": -25,
+                  "score": 1
+                },
+                {
+                  "value": -15,
+                  "score": 4
+                },
+                {
+                  "value": -5,
+                  "score": 7
+                },
+                {
+                  "value": 5,
+                  "score": 10
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            }
+          ]
+        },
+        "accessShare": 0.35,
+        "safetyCaps": [
+          {
+            "accessBelow": 2.5,
+            "maximumFinal": 3.5
+          },
+          {
+            "accessBelow": 4,
+            "maximumFinal": 5
+          },
+          {
+            "accessBelow": 5.5,
+            "maximumFinal": 6.5
+          }
+        ],
+        "operationRequired": false,
+        "operationNotes": [
+          "停車場、道路封閉與村內管制須以官方資訊為準。"
+        ],
+        "minimumCoverage": 0.6
+      },
+      {
+        "id": "jp27-profile-winter-driving",
+        "label": "冬季自駕",
+        "icon": "🚗",
+        "weights": {},
+        "experience": {
+          "metrics": [
+            {
+              "metric": "visibilityKm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 2
+                },
+                {
+                  "value": 1,
+                  "score": 4
+                },
+                {
+                  "value": 5,
+                  "score": 8
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            }
+          ]
+        },
+        "access": {
+          "metrics": [
+            {
+              "metric": "visibilityKm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 2
+                },
+                {
+                  "value": 1,
+                  "score": 4
+                },
+                {
+                  "value": 5,
+                  "score": 8
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            },
+            {
+              "metric": "gustKmh",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 25,
+                  "score": 9
+                },
+                {
+                  "value": 45,
+                  "score": 6
+                },
+                {
+                  "value": 65,
+                  "score": 2
+                },
+                {
+                  "value": 90,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "snowfallCm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "snowDepthCm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 5,
+                  "score": 8
+                },
+                {
+                  "value": 20,
+                  "score": 5
+                },
+                {
+                  "value": 50,
+                  "score": 2
+                },
+                {
+                  "value": 100,
+                  "score": 0
+                }
+              ]
+            }
+          ]
+        },
+        "accessShare": 0.75,
+        "safetyCaps": [
+          {
+            "accessBelow": 2.5,
+            "maximumFinal": 2.5
+          },
+          {
+            "accessBelow": 4,
+            "maximumFinal": 4
+          },
+          {
+            "accessBelow": 5.5,
+            "maximumFinal": 5.5
+          }
+        ],
+        "operationRequired": false,
+        "operationNotes": [
+          "實際積雪、結冰、封路及交通管制要另查官方道路資訊。"
+        ],
+        "minimumCoverage": 0.65
+      },
+      {
+        "id": "jp27-profile-onsen",
+        "label": "溫泉／室內休息",
+        "icon": "♨️",
+        "weights": {},
+        "experience": {
+          "metrics": [],
+          "baseline": {
+            "score": 9.5,
+            "weight": 1
+          }
+        },
+        "access": {
+          "metrics": [
+            {
+              "metric": "gustKmh",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 25,
+                  "score": 9
+                },
+                {
+                  "value": 45,
+                  "score": 6
+                },
+                {
+                  "value": 65,
+                  "score": 2
+                },
+                {
+                  "value": 90,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "snowfallCm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            }
+          ]
+        },
+        "accessShare": 0.2,
+        "safetyCaps": [
+          {
+            "accessBelow": 2.5,
+            "maximumFinal": 4.5
+          },
+          {
+            "accessBelow": 4,
+            "maximumFinal": 6
+          }
+        ],
+        "operationRequired": false,
+        "operationNotes": [],
+        "minimumCoverage": 0.45
+      },
+      {
+        "id": "jp27-profile-cave",
+        "label": "鐘乳洞",
+        "icon": "🪨",
+        "weights": {},
+        "experience": {
+          "metrics": [],
+          "baseline": {
+            "score": 8.8,
+            "weight": 1
+          }
+        },
+        "access": {
+          "metrics": [
+            {
+              "metric": "gustKmh",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 25,
+                  "score": 9
+                },
+                {
+                  "value": 45,
+                  "score": 6
+                },
+                {
+                  "value": 65,
+                  "score": 2
+                },
+                {
+                  "value": 90,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "snowfallCm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            }
+          ]
+        },
+        "accessShare": 0.25,
+        "safetyCaps": [
+          {
+            "accessBelow": 2.5,
+            "maximumFinal": 4
+          },
+          {
+            "accessBelow": 4,
+            "maximumFinal": 5.5
+          }
+        ],
+        "operationRequired": true,
+        "operationNotes": [
+          "以官方開放範圍及維修公告為準。"
+        ],
+        "minimumCoverage": 0.45
+      },
+      {
+        "id": "jp27-profile-market",
+        "label": "戶外市場",
+        "icon": "🛍️",
+        "weights": {},
+        "experience": {
+          "metrics": [
+            {
+              "metric": "apparentC",
+              "weight": 0.6,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": -25,
+                  "score": 1
+                },
+                {
+                  "value": -15,
+                  "score": 4
+                },
+                {
+                  "value": -5,
+                  "score": 7
+                },
+                {
+                  "value": 5,
+                  "score": 10
+                },
+                {
+                  "value": 15,
+                  "score": 10
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            }
+          ]
+        },
+        "access": {
+          "metrics": [
+            {
+              "metric": "gustKmh",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 25,
+                  "score": 9
+                },
+                {
+                  "value": 45,
+                  "score": 6
+                },
+                {
+                  "value": 65,
+                  "score": 2
+                },
+                {
+                  "value": 90,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "precipitationMm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            },
+            {
+              "metric": "snowfallCm",
+              "weight": 1,
+              "mode": "linear",
+              "points": [
+                {
+                  "value": 0,
+                  "score": 10
+                },
+                {
+                  "value": 1,
+                  "score": 9
+                },
+                {
+                  "value": 5,
+                  "score": 6
+                },
+                {
+                  "value": 15,
+                  "score": 2
+                },
+                {
+                  "value": 30,
+                  "score": 0
+                }
+              ]
+            }
+          ]
+        },
+        "accessShare": 0.3,
+        "safetyCaps": [
+          {
+            "accessBelow": 2.5,
+            "maximumFinal": 4
+          },
+          {
+            "accessBelow": 4,
+            "maximumFinal": 5.5
+          }
+        ],
+        "operationRequired": false,
+        "operationNotes": [],
+        "minimumCoverage": 0.5
+      }
+    ],
+    "weighting": [
+      {
+        "regionId": "jp27-region-matsumoto",
+        "activityProfileId": "jp27-profile-historic-outdoor",
+        "weight": 2
+      },
+      {
+        "regionId": "jp27-region-matsumoto",
+        "activityProfileId": "jp27-profile-city-walk",
+        "weight": 1
+      },
+      {
+        "regionId": "jp27-region-matsumoto",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 1
+      },
+      {
+        "regionId": "jp27-region-karuizawa",
+        "activityProfileId": "jp27-profile-indoor",
+        "weight": 2
+      },
+      {
+        "regionId": "jp27-region-karuizawa",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 2
+      },
+      {
+        "regionId": "jp27-region-karuizawa",
+        "activityProfileId": "jp27-profile-snow-walk",
+        "weight": 1
+      },
+      {
+        "regionId": "jp27-region-yamanouchi",
+        "activityProfileId": "jp27-profile-snow-walk",
+        "weight": 3
+      },
+      {
+        "regionId": "jp27-region-yamanouchi",
+        "activityProfileId": "jp27-profile-onsen",
+        "weight": 1
+      },
+      {
+        "regionId": "jp27-region-yamanouchi",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 2
+      },
+      {
+        "regionId": "jp27-region-nagano",
+        "activityProfileId": "jp27-profile-indoor",
+        "weight": 3
+      },
+      {
+        "regionId": "jp27-region-nagano",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 1
+      },
+      {
+        "regionId": "jp27-region-hakuba",
+        "activityProfileId": "jp27-profile-mountain-operated",
+        "weight": 4
+      },
+      {
+        "regionId": "jp27-region-hakuba",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 2
+      },
+      {
+        "regionId": "jp27-region-takayama",
+        "activityProfileId": "jp27-profile-city-walk",
+        "weight": 2
+      },
+      {
+        "regionId": "jp27-region-takayama",
+        "activityProfileId": "jp27-profile-cave",
+        "weight": 2
+      },
+      {
+        "regionId": "jp27-region-takayama",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 2
+      },
+      {
+        "regionId": "jp27-region-shirakawago",
+        "activityProfileId": "jp27-profile-village-scenic",
+        "weight": 4
+      },
+      {
+        "regionId": "jp27-region-shirakawago",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 2
+      },
+      {
+        "regionId": "jp27-region-okuhida",
+        "activityProfileId": "jp27-profile-mountain-operated",
+        "weight": 4
+      },
+      {
+        "regionId": "jp27-region-okuhida",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 3
+      },
+      {
+        "dayId": "jp27-day-1",
+        "activityProfileId": "jp27-profile-city-walk",
+        "weight": 1
+      },
+      {
+        "dayId": "jp27-day-2",
+        "activityProfileId": "jp27-profile-historic-outdoor",
+        "weight": 2
+      },
+      {
+        "dayId": "jp27-day-2",
+        "activityProfileId": "jp27-profile-indoor",
+        "weight": 2
+      },
+      {
+        "dayId": "jp27-day-2",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 2
+      },
+      {
+        "dayId": "jp27-day-3",
+        "activityProfileId": "jp27-profile-city-walk",
+        "weight": 2
+      },
+      {
+        "dayId": "jp27-day-3",
+        "activityProfileId": "jp27-profile-onsen",
+        "weight": 2
+      },
+      {
+        "dayId": "jp27-day-4",
+        "activityProfileId": "jp27-profile-snow-walk",
+        "weight": 3
+      },
+      {
+        "dayId": "jp27-day-4",
+        "activityProfileId": "jp27-profile-indoor",
+        "weight": 2
+      },
+      {
+        "dayId": "jp27-day-4",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 2
+      },
+      {
+        "dayId": "jp27-day-5",
+        "activityProfileId": "jp27-profile-mountain-operated",
+        "weight": 4
+      },
+      {
+        "dayId": "jp27-day-5",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 3
+      },
+      {
+        "dayId": "jp27-day-6",
+        "activityProfileId": "jp27-profile-village-scenic",
+        "weight": 4
+      },
+      {
+        "dayId": "jp27-day-6",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 3
+      },
+      {
+        "dayId": "jp27-day-7",
+        "activityProfileId": "jp27-profile-mountain-operated",
+        "weight": 5
+      },
+      {
+        "dayId": "jp27-day-7",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 3
+      },
+      {
+        "dayId": "jp27-day-8",
+        "activityProfileId": "jp27-profile-city-walk",
+        "weight": 2
+      },
+      {
+        "dayId": "jp27-day-8",
+        "activityProfileId": "jp27-profile-cave",
+        "weight": 3
+      },
+      {
+        "dayId": "jp27-day-8",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 3
+      },
+      {
+        "dayId": "jp27-day-9",
+        "activityProfileId": "jp27-profile-indoor",
+        "weight": 1
+      },
+      {
+        "dayId": "jp27-day-9",
+        "activityProfileId": "jp27-profile-winter-driving",
+        "weight": 1
+      }
+    ],
+    "dayRegions": [
+      {
+        "dayId": "jp27-day-1",
+        "weatherRegionId": "jp27-weather-matsumoto"
+      },
+      {
+        "dayId": "jp27-day-2",
+        "weatherRegionId": "jp27-weather-karuizawa"
+      },
+      {
+        "dayId": "jp27-day-3",
+        "weatherRegionId": "jp27-weather-yamanouchi"
+      },
+      {
+        "dayId": "jp27-day-4",
+        "weatherRegionId": "jp27-weather-yamanouchi"
+      },
+      {
+        "dayId": "jp27-day-5",
+        "weatherRegionId": "jp27-weather-hakuba"
+      },
+      {
+        "dayId": "jp27-day-6",
+        "weatherRegionId": "jp27-weather-shirakawago"
+      },
+      {
+        "dayId": "jp27-day-7",
+        "weatherRegionId": "jp27-weather-shinhotaka"
+      },
+      {
+        "dayId": "jp27-day-8",
+        "weatherRegionId": "jp27-weather-takayama"
+      },
+      {
+        "dayId": "jp27-day-9",
+        "weatherRegionId": "jp27-weather-matsumoto"
+      }
+    ],
+    "scoring": {
+      "schemaVersion": 1,
+      "config": {}
+    },
+    "operationNotes": [
+      "天氣分數只屬行程建議；道路封閉、纜車停駛、景點休館等官方狀態優先。"
+    ],
+    "alertProviders": [
+      {
+        "id": "jp27-alert-jma",
+        "adapter": "jma",
+        "label": "日本氣象廳",
+        "weatherRegionIds": [
+          "jp27-weather-matsumoto",
+          "jp27-weather-karuizawa",
+          "jp27-weather-yamanouchi",
+          "jp27-weather-nagano",
+          "jp27-weather-hakuba",
+          "jp27-weather-takayama",
+          "jp27-weather-shirakawago",
+          "jp27-weather-shinhotaka"
+        ],
+        "config": {
+          "feedMode": "pull",
+          "products": [
+            "weather-warning",
+            "earthquake",
+            "tsunami",
+            "volcano"
+          ],
+          "regionGroups": [
+            {
+              "label": "長野縣",
+              "matchNames": [
+                "長野県"
+              ],
+              "weatherRegionIds": [
+                "jp27-weather-matsumoto",
+                "jp27-weather-karuizawa",
+                "jp27-weather-yamanouchi",
+                "jp27-weather-nagano",
+                "jp27-weather-hakuba"
+              ],
+              "jmaAreaCodes": [
+                "200000"
+              ]
+            },
+            {
+              "label": "岐阜縣",
+              "matchNames": [
+                "岐阜県"
+              ],
+              "weatherRegionIds": [
+                "jp27-weather-takayama",
+                "jp27-weather-shirakawago",
+                "jp27-weather-shinhotaka"
+              ],
+              "jmaAreaCodes": [
+                "210000"
+              ]
+            }
+          ],
+          "note": "JMA region routing must use configured official JMA area codes first (長野県 200000 / 岐阜県 210000); matchNames are descriptive fallback only. Provider selection is driven only by Trip Data adapter id, never country, timezone, slug or place name.",
+          "feedURLs": {
+            "weatherExtra": "https://www.data.jma.go.jp/developer/xml/feed/extra.xml",
+            "earthquakeVolcano": "https://www.data.jma.go.jp/developer/xml/feed/eqvol.xml"
+          },
+          "productCodes": {
+            "weatherWarnings": [
+              "VPWW55",
+              "VPWW56",
+              "VPWW57",
+              "VPWW58",
+              "VPWW59",
+              "VPWW60",
+              "VPWW61",
+              "VPWS50"
+            ],
+            "earthquake": [
+              "VXSE51",
+              "VXSE52",
+              "VXSE53"
+            ],
+            "tsunami": [
+              "VTSE41",
+              "VTSE51",
+              "VTSE52"
+            ],
+            "volcano": [
+              "VFVO50",
+              "VFVO56"
+            ]
+          },
+          "multilingualDictionaryURL": "https://www.data.jma.go.jp/developer/multilingual.html",
+          "gisURL": "https://www.data.jma.go.jp/developer/gis.html"
+        }
+      }
+    ]
+  },
+  "liveCams": [
+    {
+      "id": "jp27-cam-snowmonkey",
+      "label": "地獄谷野猿公苑 Live Camera",
+      "description": "出發前確認猴群、雪況及現場視覺狀態；猴子出現與浸溫泉不保證。",
+      "regionId": "jp27-region-yamanouchi",
+      "placeId": "jp27-place-snow-monkey",
+      "routeDayIds": [
+        "jp27-day-4"
+      ],
+      "group": "D4 地獄谷",
+      "priority": "primary",
+      "tags": [
+        "雪況",
+        "人流",
+        "猴群"
+      ],
+      "sourceType": "external",
+      "sourceURL": "https://jigokudani-yaenkoen.co.jp/livecam2/video.php",
+      "officialURL": "https://jigokudani-yaenkoen.co.jp/livecam2/video.php",
+      "statusURL": "https://en.jigokudani-yaenkoen.co.jp/guide/",
+      "sourceLabel": "地獄谷野猿公苑官方"
+    },
+    {
+      "id": "jp27-cam-hakuba-iwatake",
+      "label": "白馬岩岳 Live Camera",
+      "description": "確認山頂能見度、雲層及雪況；Gondola運行狀態仍以岩岳官方頁面為準。",
+      "regionId": "jp27-region-hakuba",
+      "placeId": "jp27-place-hakuba-iwatake",
+      "routeDayIds": [
+        "jp27-day-5"
+      ],
+      "group": "D5 白馬",
+      "priority": "primary",
+      "tags": [
+        "山景",
+        "能見度",
+        "積雪"
+      ],
+      "sourceType": "external",
+      "sourceURL": "https://www.vill.hakuba.nagano.jp/livecamera/",
+      "officialURL": "https://www.vill.hakuba.nagano.jp/livecamera/",
+      "statusURL": "https://iwatake-mountain-resort.com/winter",
+      "sourceLabel": "白馬村觀光局／白馬岩岳官方"
+    },
+    {
+      "id": "jp27-cam-shirakawago",
+      "label": "白川鄉 Live Camera／交通Live",
+      "description": "用於確認村內雪景、能見度、道路及擠塞；官方頁面提供Live Camera連結。",
+      "regionId": "jp27-region-shirakawago",
+      "placeId": "jp27-place-shirakawago",
+      "routeDayIds": [
+        "jp27-day-6"
+      ],
+      "group": "D6 白川鄉",
+      "priority": "primary",
+      "tags": [
+        "雪景",
+        "能見度",
+        "交通",
+        "人流"
+      ],
+      "sourceType": "external",
+      "sourceURL": "https://shirakawa-going.jp/",
+      "officialURL": "https://shirakawa-go.gr.jp/events/156/",
+      "statusURL": "https://shirakawa-go.gr.jp/access/",
+      "sourceLabel": "白川鄉官方"
+    },
+    {
+      "id": "jp27-cam-shinhotaka",
+      "label": "新穗高纜車 Live Camera",
+      "description": "D7最重要實況參考：先看西穗高口山頂能見度，再配合官方Operation Status。",
+      "regionId": "jp27-region-okuhida",
+      "placeId": "jp27-place-shinhotaka",
+      "routeDayIds": [
+        "jp27-day-7"
+      ],
+      "group": "D7 新穗高",
+      "priority": "primary",
+      "tags": [
+        "山頂",
+        "能見度",
+        "積雪",
+        "纜車"
+      ],
+      "sourceType": "external",
+      "sourceURL": "https://shinhotaka-ropeway.jp/en/",
+      "officialURL": "https://shinhotaka-ropeway.jp/en/",
+      "statusURL": "https://shinhotaka-ropeway.jp/en/price/",
+      "sourceLabel": "新穗高纜車官方"
+    },
+    {
+      "id": "jp27-cam-gifu-road",
+      "label": "岐阜縣道路 Live Camera／路況",
+      "description": "高山—平湯—新穗高及D8向松本方向的道路視覺參考；實際封路／規制仍以官方道路公告為準。",
+      "regionId": "jp27-region-okuhida",
+      "routeDayIds": [
+        "jp27-day-7",
+        "jp27-day-8"
+      ],
+      "group": "國道158號／奧飛驒",
+      "priority": "reference",
+      "tags": [
+        "道路",
+        "積雪",
+        "能見度",
+        "交通規制"
+      ],
+      "sourceType": "external",
+      "sourceURL": "https://douro.pref.gifu.lg.jp/",
+      "officialURL": "https://douro.pref.gifu.lg.jp/",
+      "statusURL": "https://douro.pref.gifu.lg.jp/",
+      "sourceLabel": "岐阜縣道路情報"
+    }
+  ],
+  "images": [
+    {
+      "id": "jp27-image-banner",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/banner-shirakawago-winter.jpg",
+      "alt": "冬季白川鄉合掌村雪景",
+      "sourceURL": "https://commons.wikimedia.org/wiki/File:Shirakawa-go_winter_(51815452116).jpg",
+      "attribution": "Raita Futo / Wikimedia Commons",
+      "licenseNote": "CC BY 2.0; derivative crop/resize must retain attribution."
+    },
+    {
+      "id": "jp27-image-centrair",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/centrair.jpg",
+      "alt": "中部國際機場"
+    },
+    {
+      "id": "jp27-image-matsumoto",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/matsumoto-castle.jpg",
+      "alt": "冬季松本城"
+    },
+    {
+      "id": "jp27-image-shinano",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/shinano.jpg",
+      "alt": "特急信濃"
+    },
+    {
+      "id": "jp27-image-outlet",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/karuizawa-outlet.jpg",
+      "alt": "輕井澤王子購物廣場"
+    },
+    {
+      "id": "jp27-image-onioshidashi",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/onioshidashi.jpg",
+      "alt": "鬼押出園冬季火山熔岩地貌"
+    },
+    {
+      "id": "jp27-image-shiraito",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/shiraito-falls.jpg",
+      "alt": "輕井澤白絲瀑布"
+    },
+    {
+      "id": "jp27-image-obuse",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/obuse.jpg",
+      "alt": "小布施舊街"
+    },
+    {
+      "id": "jp27-image-shibu-day",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/shibu-onsen-day.jpg",
+      "alt": "澀溫泉街日間"
+    },
+    {
+      "id": "jp27-image-shibu-night",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/shibu-onsen-night.jpg",
+      "alt": "澀溫泉街夜景"
+    },
+    {
+      "id": "jp27-image-aeon-suzaka",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/aeon-mall-suzaka.jpg",
+      "alt": "AEON Mall 須坂"
+    },
+    {
+      "id": "jp27-image-monkey-trail",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/jigokudani-winter-trail.jpg",
+      "alt": "地獄谷冬季步道"
+    },
+    {
+      "id": "jp27-image-snow-monkey",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/jigokudani-snow-monkey.jpg",
+      "alt": "地獄谷野猿公苑雪猴"
+    },
+    {
+      "id": "jp27-image-iwatake",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/hakuba-iwatake.jpg",
+      "alt": "白馬岩岳冬季山景"
+    },
+    {
+      "id": "jp27-image-harbor",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/hakuba-mountain-harbor.jpg",
+      "alt": "HAKUBA MOUNTAIN HARBOR"
+    },
+    {
+      "id": "jp27-image-whitepark",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/hakuba-white-park.jpg",
+      "alt": "白馬岩岳 WHITE PARK"
+    },
+    {
+      "id": "jp27-image-hida-cave",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/hida-great-limestone-cave.jpg",
+      "alt": "飛驒大鐘乳洞"
+    },
+    {
+      "id": "jp27-image-shinhotaka",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/shinhotaka-ropeway.jpg",
+      "alt": "新穗高纜車雪山景"
+    },
+    {
+      "id": "jp27-image-takayama",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/takayama-old-town.jpg",
+      "alt": "冬季高山古街"
+    },
+    {
+      "id": "jp27-image-hida-furukawa",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/hida-furukawa.jpg",
+      "alt": "冬季飛驒古川"
+    },
+    {
+      "id": "jp27-image-shirakawago-view",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/shirakawago-viewpoint.jpg",
+      "alt": "白川鄉荻町展望台雪景"
+    },
+    {
+      "id": "jp27-image-shirakawago",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/shirakawago-ogimachi.jpg",
+      "alt": "白川鄉合掌村冬景"
+    },
+    {
+      "id": "jp27-image-daio",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/daio-wasabi-farm.jpg",
+      "alt": "大王山葵農場"
+    },
+    {
+      "id": "jp27-image-aeon-matsumoto",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/aeon-mall-matsumoto.jpg",
+      "alt": "AEON Mall Matsumoto"
+    },
+    {
+      "id": "jp27-image-matsumoto-station",
+      "url": "assets/trips/shirakawago-shinhotaka-2027/matsumoto-station.jpg",
+      "alt": "松本站"
+    }
+  ],
+  "sources": [
+    {
+      "id": "jp27-source-matsumoto-castle",
+      "title": "國寶松本城｜觀覽案內",
+      "url": "https://www.matsumoto-castle.jp/info",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-matsumoto-castle"
+      }
+    },
+    {
+      "id": "jp27-source-matsumoto-projection",
+      "title": "Visit Matsumoto｜松本城 Projection Mapping 2026-2027",
+      "url": "https://visitmatsumoto.com/en/event/detail_3003.html",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-matsumoto-projection"
+      }
+    },
+    {
+      "id": "jp27-source-karuizawa-outlet",
+      "title": "Karuizawa Prince Shopping Plaza",
+      "url": "https://www.karuizawa-psp.jp/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-karuizawa-outlet"
+      }
+    },
+    {
+      "id": "jp27-source-shiraito",
+      "title": "輕井澤觀光協會｜白絲瀑布",
+      "url": "https://karuizawa-kankokyokai.jp/spot/23206/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-shiraito"
+      }
+    },
+    {
+      "id": "jp27-source-onioshidashi",
+      "title": "鬼押出園",
+      "url": "https://www.princehotels.co.jp/amuse/onioshidashi/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-onioshidashi"
+      }
+    },
+    {
+      "id": "jp27-source-obuse",
+      "title": "小布施文化觀光協會",
+      "url": "https://www.obusekanko.jp/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-obuse"
+      }
+    },
+    {
+      "id": "jp27-source-hokusai",
+      "title": "北齋館",
+      "url": "https://hokusai-kan.com/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-hokusai"
+      }
+    },
+    {
+      "id": "jp27-source-oranche",
+      "title": "信州中野觀光｜Oranche",
+      "url": "https://www.nakanokanko.jp/spots/196/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-oranche"
+      }
+    },
+    {
+      "id": "jp27-source-shibu",
+      "title": "澀溫泉官方",
+      "url": "https://shibuonsen.net/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-shibu-onsen"
+      }
+    },
+    {
+      "id": "jp27-source-snow-monkey",
+      "title": "地獄谷野猿公苑官方",
+      "url": "https://en.jigokudani-yaenkoen.co.jp/guide/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-snow-monkey"
+      }
+    },
+    {
+      "id": "jp27-source-aeon-suzaka",
+      "title": "AEON Mall 須坂",
+      "url": "https://suzaka.aeonmall.com/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-aeon-suzaka"
+      }
+    },
+    {
+      "id": "jp27-source-suzaka",
+      "title": "須坂觀光協會",
+      "url": "https://www.suzaka-kankokyokai.jp/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-suzaka-kura"
+      }
+    },
+    {
+      "id": "jp27-source-iwatake",
+      "title": "白馬岩岳 Mountain Resort｜Winter",
+      "url": "https://iwatake-mountain-resort.com/winter",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-hakuba-iwatake"
+      }
+    },
+    {
+      "id": "jp27-source-iwatake-rates",
+      "title": "白馬岩岳｜觀光用 Gondola 票價",
+      "url": "https://iwatake-mountain-resort.com/winter/rates",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00"
+    },
+    {
+      "id": "jp27-source-takayama-tourism",
+      "title": "飛驒高山觀光公式",
+      "url": "https://www.hidatakayama.or.jp/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00"
+    },
+    {
+      "id": "jp27-source-shirakawago",
+      "title": "白川鄉觀光協會",
+      "url": "https://shirakawa-go.gr.jp/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-shirakawago"
+      }
+    },
+    {
+      "id": "jp27-source-shirakawago-access",
+      "title": "白川鄉｜停車及交通",
+      "url": "https://shirakawa-go.gr.jp/access/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00"
+    },
+    {
+      "id": "jp27-source-wada",
+      "title": "白川鄉｜和田家",
+      "url": "https://shirakawa-go.gr.jp/active/13/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-wada-house"
+      }
+    },
+    {
+      "id": "jp27-source-shinhotaka",
+      "title": "新穗高纜車官方",
+      "url": "https://shinhotaka-ropeway.jp/en/price/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-shinhotaka"
+      }
+    },
+    {
+      "id": "jp27-source-hida-cave",
+      "title": "飛驒大鐘乳洞官方",
+      "url": "https://www.syonyudo.com/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-hida-cave"
+      }
+    },
+    {
+      "id": "jp27-source-jinya",
+      "title": "高山陣屋官方",
+      "url": "https://jinya.gifu.jp/en/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-takayama-jinya"
+      }
+    },
+    {
+      "id": "jp27-source-santera",
+      "title": "飛驒市｜三寺まいり",
+      "url": "https://www.city.hida.gifu.jp/soshiki/15/santeramairi.html",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-santera"
+      }
+    },
+    {
+      "id": "jp27-source-hida-furukawa",
+      "title": "飛驒市觀光協會",
+      "url": "https://www.hida-kankou.jp/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-hida-furukawa"
+      }
+    },
+    {
+      "id": "jp27-source-daio",
+      "title": "大王山葵農場",
+      "url": "https://www.daiowasabi.co.jp/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-daio-wasabi"
+      }
+    },
+    {
+      "id": "jp27-source-times",
+      "title": "Times Car Rental 松本站前",
+      "url": "https://www.timescar-rental.com/zh_hk/nagano/shop/2003?layout=0&btn=0",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00"
+    },
+    {
+      "id": "jp27-source-jr",
+      "title": "JR Central",
+      "url": "https://global.jr-central.co.jp/en/",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00"
+    },
+    {
+      "id": "jp27-source-meitetsu",
+      "title": "名鐵路線搜尋",
+      "url": "https://trainbus.meitetsu.co.jp/meitetsu-transfer-eng/pc/map/Top",
+      "type": "official",
+      "checkedAt": "2026-10-09T06:00:00+08:00"
+    },
+    {
+      "id": "jp27-source-jma",
+      "title": "日本氣象廳｜氣象資料高度利用Portal",
+      "url": "https://www.data.jma.go.jp/developer/",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-jma-gis",
+      "title": "日本氣象廳｜預報區GIS資料",
+      "url": "https://www.data.jma.go.jp/developer/gis.html",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-hakuba-live",
+      "title": "白馬村官方Live Camera",
+      "url": "https://www.vill.hakuba.nagano.jp/livecamera/",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-shirakawago-live",
+      "title": "白川鄉觀光協會｜Live Camera",
+      "url": "https://shirakawa-go.gr.jp/events/156/",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-snowmonkey-live",
+      "title": "地獄谷野猿公苑｜Live Camera",
+      "url": "https://jigokudani-yaenkoen.co.jp/livecam2/video.php",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-gifu-road",
+      "title": "岐阜縣道路情報",
+      "url": "https://douro.pref.gifu.lg.jp/",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-banner",
+      "title": "Wikimedia Commons｜Shirakawa-go winter (Raita Futo)",
+      "url": "https://commons.wikimedia.org/wiki/File:Shirakawa-go_winter_(51815452116).jpg",
+      "type": "image-source",
+      "checkedAt": "2026-10-09T06:00:00+08:00"
+    },
+    {
+      "id": "jp27-source-jma-feed",
+      "title": "日本氣象廳｜防災情報XML PULL型 Feed",
+      "url": "https://www.data.jma.go.jp/developer/xml/feed/extra.xml",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-jma-multilingual",
+      "title": "日本氣象廳｜多言語辭書資料",
+      "url": "https://www.data.jma.go.jp/developer/multilingual.html",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-hkexpress",
+      "title": "HK Express｜Nagoya route / flight booking",
+      "url": "https://www.hkexpress.com/en/flights-from-nagoya-to-hong-kong",
+      "type": "official",
+      "checkedAt": "2026-10-09T11:34:00+08:00"
+    },
+    {
+      "id": "jp27-source-jma-weather-warning-catalog",
+      "title": "日本氣象廳｜特別警報・警報・注意報資料規格",
+      "url": "https://www.data.jma.go.jp/suishin/cgi-bin/catalogue/make_product_page.cgi?id=Keiho",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-jma-earthquake-catalog",
+      "title": "日本氣象廳｜地震情報等資料規格",
+      "url": "https://www.data.jma.go.jp/suishin/cgi-bin/catalogue/make_product_page.cgi?id=Jishin",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-jma-tsunami-warning-catalog",
+      "title": "日本氣象廳｜津波警報・注意報・予報資料規格",
+      "url": "https://www.data.jma.go.jp/suishin/cgi-bin/catalogue/make_product_page.cgi?id=TsuKeiho",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-jma-volcano-warning-catalog",
+      "title": "日本氣象廳｜噴火警報・噴火予報資料規格",
+      "url": "https://www.data.jma.go.jp/suishin/cgi-bin/catalogue/make_product_page.cgi?id=FunkaKei",
+      "type": "official",
+      "checkedAt": "2026-10-09T13:55:00+08:00"
+    },
+    {
+      "id": "jp27-source-nawate-official",
+      "title": "松本市官方觀光網站｜繩手通（縄手通り）",
+      "url": "https://visitmatsumoto.com/zh-hant/spot/detail_1083.html",
+      "type": "official",
+      "checkedAt": "2026-10-11T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-nawate"
+      }
+    },
+    {
+      "id": "jp27-source-projection-ja",
+      "title": "松本市官方觀光網站｜Projection Mapping 2026–2027",
+      "url": "https://visitmatsumoto.com/en/event/detail_3003.html",
+      "type": "official",
+      "checkedAt": "2026-10-11T06:00:00+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-matsumoto-projection"
+      }
+    }
+  ],
+  "emergency": {
+    "title": "日本緊急資料",
+    "description": "真正緊急情況使用；非緊急事故／租車故障則優先按Times及保險文件。",
+    "notes": [
+      "酒店非緊急情況可先聯絡當晚Front Desk。"
+    ],
+    "contacts": [
+      {
+        "id": "jp27-emergency-police",
+        "type": "police",
+        "title": "警察",
+        "phone": "110",
+        "description": "交通事故、犯罪、人身安全等緊急情況。",
+        "notes": [],
+        "sourceIds": []
+      },
+      {
+        "id": "jp27-emergency-ambulance",
+        "type": "ambulance",
+        "title": "救護／消防",
+        "phone": "119",
+        "description": "急病、受傷、火警等緊急情況。",
+        "notes": [],
+        "sourceIds": []
+      },
+      {
+        "id": "jp27-emergency-times",
+        "type": "roadside",
+        "title": "Times租車事故／故障支援",
+        "description": "以實際租車文件、保險文件內電話及程序為準；安全位置停車後才處理。",
+        "url": "https://www.timescar-rental.com/zh_hk/",
+        "notes": [
+          "出發前將實際訂單支援電話寫入離線可用資料。"
+        ],
+        "sourceIds": [
+          "jp27-source-times"
+        ]
+      }
+    ]
+  }
+}
