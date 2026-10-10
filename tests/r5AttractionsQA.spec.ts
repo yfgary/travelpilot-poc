@@ -1,7 +1,7 @@
 import { test, expect } from './fixtures'
 import { roadContent, openContent } from './contentFixtures'
 import { derivePlaceUsage } from '../src/data/attractions'
-import { splitRichParagraphs } from '../src/components/itinerary/RichText'
+import { splitRichParagraphs } from '../src/data/richText'
 
 test('R5 retains every authored paragraph without shortening or inventing missing prose', async ({ page }) => {
   const snapshot = structuredClone(roadContent)

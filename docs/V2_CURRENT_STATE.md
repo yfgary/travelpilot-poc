@@ -682,3 +682,7 @@ R5 staged candidate `v2.0.0-poc.37` on `qa/pre15d-r5-attractions` handles origin
 - This is **presentation capability only**. The immutable published/current Japan `jp2027.1` Schema5 snapshot may still have short content; #23 content-authoring parity remains open until authentic, verified long-form Japan content is prepared as a **new immutable Trip Data Version** and separately approved for publication. V1 Golden Content Reference must be compared before claiming full data-fidelity parity.
 - Focused R5 automated tests added for full multi-paragraph preservation, same-day status/date intersection, sticky selectors and responsive horizontal overflow. Cross-trip checks use synthetic demo data. R5 must not merge before full PR CI/visual review; release candidate only.
 - Production repo/V1, Supabase, current Trip Data, Schema6 contract and Step15D remain untouched.
+
+### R5 initial PR QA build repair (10/10/2026)
+
+R5 `poc.37` PR QA failed **at TypeScript build** (Playwright not run): TypeScript tests imported the `.tsx` RichText presentation module under a test tsconfig without JSX. Candidate **v2.0.0-poc.38** moves the pure paragraph splitter into `src/data/richText.ts` and reuses it from the UI React `.tsx` wrapper and tests. This preserves exact content output and adds no schema/data change. Await fresh Build and complete Playwright before merge.

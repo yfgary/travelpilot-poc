@@ -119,3 +119,5 @@ Recommended new-chat first action:
 - R5 #24: two sticky shortcuts—day (canonical referenced days), location/region—below trip tab bar; status/day is intersected per occurrence. R5 #23: generic full paragraph renderer in shared Place Detail. No heuristic summaries/translations, no per-trip branches.
 - **Data gap:** authentic Japan long-form Place content is not altered; separate verified new Trip Data Version authoring/publication authorization required to fully satisfy #23 on real Japan itinerary. Do not declare complete V1 content parity on presentation tests alone.
 - New `tests/r5AttractionsQA.spec.ts` runs across five widths. Run R4 main deployment + R5 PR full tests, review mobile/desktop/fontrender, then merge POC only when green. Production/Supabase/jp2027.1 untouched; Step 15D blocked.
+
+- R5 first QA Build failed due to importing a TSX renderer into Node tests; fixed by moving pure paragraph splitting to `src/data/richText.ts`. Candidate App Version v2.0.0-poc.38; rerun full PR CI before merge.
