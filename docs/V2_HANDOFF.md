@@ -113,3 +113,9 @@ Recommended new-chat first action:
 - Final R4 premerge audit: v2.0.0-poc.35, updated last stale TodayArchitecture schema assertion and added exact timing inheritance test; only latest PR QA counts.
 
 - R4 pre-merge CI [38005282470](https://github.com/yfgary/travelpilot-poc/actions/runs/38005282470) failed 10 of 2,550 Playwright tests (only two outdated hardcoded Schema6-as-unsupported Loader cases repeated at all five widths). Updated both to CURRENT_TRIP_SCHEMA_VERSION+1 while retaining no-cache assertions; release candidate **v2.0.0-poc.36**. Need new full PR QA green before R4 Merge.
+
+## Pre-15D R5 candidate and boundaries (10/10/2026)
+- POC-only branch `qa/pre15d-r5-attractions`, App Version `v2.0.0-poc.37`. R4 `poc.36` merged `1914295` after green PR QA, main CI/Pages pending.
+- R5 #24: two sticky shortcuts—day (canonical referenced days), location/region—below trip tab bar; status/day is intersected per occurrence. R5 #23: generic full paragraph renderer in shared Place Detail. No heuristic summaries/translations, no per-trip branches.
+- **Data gap:** authentic Japan long-form Place content is not altered; separate verified new Trip Data Version authoring/publication authorization required to fully satisfy #23 on real Japan itinerary. Do not declare complete V1 content parity on presentation tests alone.
+- New `tests/r5AttractionsQA.spec.ts` runs across five widths. Run R4 main deployment + R5 PR full tests, review mobile/desktop/fontrender, then merge POC only when green. Production/Supabase/jp2027.1 untouched; Step 15D blocked.

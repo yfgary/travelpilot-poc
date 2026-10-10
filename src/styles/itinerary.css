@@ -175,3 +175,10 @@
 
 /* Schema 6: optional real local-language name directly under the Chinese name. */
 .entity-native-name { display: block; margin: .1rem 0 .4rem; color: #4f6472; font-size: .8rem; font-weight: 500; line-height: 1.4; overflow-wrap: anywhere; }
+
+/* R5: long source-authored attraction history, relevance and takeaways are never clipped. */
+.place-rich-text { overflow-wrap: anywhere; }
+.place-rich-text p { margin: .4rem 0 .7rem; line-height: 1.7; white-space: normal; }
+.place-rich-text p:last-child { margin-bottom: .35rem; }
+.place-detail-section { min-width: 0; }
+.place-detail-section > h3 { margin-bottom: .35rem; }

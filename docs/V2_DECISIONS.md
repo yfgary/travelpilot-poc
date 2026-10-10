@@ -233,3 +233,7 @@ Repository-relative canonical paths:
 **UI rule:** Text is authored and rendered only if present; existing display/Chinese name stays primary, source-provided native name is visually secondary. No locale inference or automated transliteration. Client does not convert cached schema or silently publish.
 
 **Publishing boundary:** The Japan `jp2027.1` published Schema5 snapshot remains untouched. Adding genuine Japanese native names later requires verified source review, a separately validated future immutable trip version and explicit user permission to publish. No production SQL, snapshots or V1/Production repo work now.
+
+## 2026-10-10 — R5 generic Attraction day/region selectors and full-source prose
+
+**Decision:** Derive both sticky Attraction day and region shortcuts entirely from canonical PlaceUsage/TripDay data. Selecting day and main/optional/backup filters intersects on a single occurrence, not merely place-level union status. Never write a filtered status into immutable Place entities. Place Detail renders all authored paragraphs for introduction, reasons, history, local importance and takeaway; lists/notices and citations remain. Missing long prose is **not** replaced with guessed facts. Proper Japan content restoration requires a separately verified future immutable Trip Data Version, not an unapproved mutation of `jp2027.1`. No Supabase/Production/Step15D changes.

@@ -5,6 +5,7 @@ import { placeTypes } from '../../data/itinerary'
 import { PlaceFacts } from './EntityCards'
 import { ExternalLink, MapsAction } from './ContentActions'
 import { NativeName } from './NativeName'
+import { RichText } from './RichText'
 
 export function PlaceDetail({ place, sources, onClose }: { place: Place; sources: TripSnapshot['sources']; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null)
@@ -21,10 +22,15 @@ export function PlaceDetail({ place, sources, onClose }: { place: Place; sources
     onClose={(event) => { if (event.currentTarget === dialog.current && !event.currentTarget.open) onClose() }}>
     <header className="place-dialog-head"><div><p className="entity-kicker">{placeTypes[place.type]}</p><h2 id={titleId}>{place.name}</h2><NativeName entity={place} /></div>
       <button className="itinerary-action dialog-close" autoFocus onClick={onClose} aria-label="關閉詳細介紹">×</button></header>
-    <div className="place-dialog-body"><p>{place.summary}</p>{place.longDescription && <p>{place.longDescription}</p>}<PlaceFacts place={place} />
+    <div className="place-dialog-body">
+      <section className="place-detail-section" aria-label="景點介紹" data-testid="place-detail-introduction">
+        <h3>景點介紹</h3><RichText value={place.summary} />
+        {place.longDescription && <RichText value={place.longDescription} />}
+      </section>
+      <PlaceFacts place={place} />
       {([{ title: '為何值得到訪', value: place.whyVisit }, { title: '歷史／背景', value: place.history },
         { title: '在地重要性', value: place.localImportance }, { title: '到訪後的收穫', value: place.takeaway }]).map(({ title, value }) => value &&
-          <section className="place-detail-section" key={title}><h3>{title}</h3><p>{value}</p></section>)}
+          <section className="place-detail-section" key={title}><h3>{title}</h3><RichText value={value} /></section>)}
       {Boolean(place.whatToSee?.length) && <section className="place-detail-section"><h3>值得留意</h3><ul>{place.whatToSee!.map((text, i) => <li key={i}>{text}</li>)}</ul></section>}
       <div className="itinerary-actions"><MapsAction entity={place} name={place.name} /><ExternalLink href={place.officialURL}>官方網站 ↗</ExternalLink></div>
       {resolvedSources.length > 0 && <section className="place-detail-section"><h3>資料來源</h3><div className="itinerary-actions">{resolvedSources.map((source) => <ExternalLink key={source.id} href={source.url}>{source.title} ↗</ExternalLink>)}</div></section>}
