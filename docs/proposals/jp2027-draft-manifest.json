@@ -1,6 +1,6 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
-  "candidateLabel": "jp2027-schema6-review-draft-01",
+  "candidateLabel": "jp2027-schema6-review-draft-02",
   "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
   "published": false,
   "isCurrent": false,
@@ -40,32 +40,32 @@
     "url": "https://commons.wikimedia.org/wiki/File:Matsumoto-Castle-day-view-2019-Luka-Peternel.jpg",
     "author": "Luka Peternel",
     "license": "CC BY-SA 4.0",
-    "status": "license file-page checked; no file downloaded or image record added"
+    "status": "file-page licence checked; original download HTTP 403; no asset installed"
   },
   "unresolved": [
     {
       "issue": 15,
-      "description": "Source-authored local names for original 36 Places and related hotels/transport/navigation"
+      "description": "Target-specific navigation names and remaining transport native labels not fully sourced"
     },
     {
       "issue": 18,
-      "description": "6 missing transport fares; need actual quotes"
+      "description": "Two Meitetsu reference fares qualified; four fares unknown and all six actual booking costs unconfirmed"
     },
     {
       "issue": 20,
-      "description": "verify actual motorway direction, winter SA/PA and roadside stops"
+      "description": "General winter advice sourced; direction/IC ordering and winter facility services per leg unverified"
     },
     {
       "issue": 22,
-      "description": "licensed daytime image asset to add as new separate media mapping"
+      "description": "Daytime photo licence verified but original-file HTTP 403 blocks byte/visual review"
     },
     {
       "issue": 23,
-      "description": "36-place researched long-form descriptions still incomplete"
+      "description": "New sourced prose for 36 original Places; inherited detailed history/fees/hours not fully reverified"
     },
     {
       "issue": 25,
-      "description": "real Live Cam source playback and embedding unverified"
+      "description": "No camera playback or embedding guarantee; new official Panomax link tunnel-blocked"
     }
   ],
   "invariants": {
@@ -78,9 +78,25 @@
     "protectedAssetsUntouched": true
   },
   "remainingGates": [
-    "Full Schema6 Zod validation and POC browser tests by Codex",
-    "Source verification of remaining fields and photo rights/format",
-    "Separate user authorization before creating or publishing actual new Supabase Trip Data Version",
+    "Outstanding source/media fields remain explicitly unresolved",
+    "Separate user authorization before any Supabase write/publication",
     "Step15D stays blocked"
-  ]
+  ],
+  "draftSha256": "ae0f451910beb960b4974003e518f5ad59f088f57aaaee36be9530ec8c7ad3d4",
+  "sourceReview": "jp2027-source-review.json",
+  "validation": {
+    "initialStrictCases": 1,
+    "focusedCases": 55,
+    "fullRegressionCases": 2800,
+    "fullRegressionDuration": "38.0m",
+    "result": "PASS",
+    "typecheckBuild": "PASS",
+    "npmCi": "PASS",
+    "visualQA": [
+      "320 Large",
+      "390 Medium",
+      "1440 Medium"
+    ],
+    "publicationApproval": false
+  }
 }
