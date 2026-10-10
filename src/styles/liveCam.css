@@ -21,3 +21,5 @@
 .camera-media img { object-fit: cover; }
 @media (max-width: 700px) { .camera-grid { grid-template-columns: 1fr; } .camera-card { padding: .85rem; } }
 @media (max-width: 360px) { .camera-media { aspect-ratio: auto; min-height: 9rem; } .camera-media:has(iframe), .camera-media:has(img) { aspect-ratio: 16 / 9; min-height: 0; } }
+.camera-media-controls { display: flex; flex-wrap: wrap; gap: .5rem; margin: .5rem 0; }
+.camera-aliases { padding: .4rem .65rem; margin: .5rem 0; border-left: 3px solid var(--tp-line); color: var(--tp-muted); font-size: .8rem; }

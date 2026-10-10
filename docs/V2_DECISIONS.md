@@ -237,3 +237,12 @@ Repository-relative canonical paths:
 ## 2026-10-10 — R5 generic Attraction day/region selectors and full-source prose
 
 **Decision:** Derive both sticky Attraction day and region shortcuts entirely from canonical PlaceUsage/TripDay data. Selecting day and main/optional/backup filters intersects on a single occurrence, not merely place-level union status. Never write a filtered status into immutable Place entities. Place Detail renders all authored paragraphs for introduction, reasons, history, local importance and takeaway; lists/notices and citations remain. Missing long prose is **not** replaced with guessed facts. Proper Japan content restoration requires a separately verified future immutable Trip Data Version, not an unapproved mutation of `jp2027.1`. No Supabase/Production/Step15D changes.
+
+
+## 2026-10-11 — R6 camera identity, truthful media evidence and publication boundary
+
+**Decision:** Deduplicate only equal normalized source URLs with the same authored capability; distinct external preview resources remain distinct. Preserve source query parameters and every associated day, region, place, group, priority and safe official/status/Maps link. Filter presentation without modifying immutable snapshots or inferring cameras from provider/destination names.
+
+**Evidence:** Frame load is only a browser load event, never verified playback. Cross-origin CSP, X-Frame-Options and player errors cannot be diagnosed reliably by parent iframe events. Show unconfirmed status, retain safe external links, and offer explicit user fallback/retry. Image device-load timestamps do not mean capture time or source freshness; no autoplay, periodic refresh, fake stream, CSP bypass or speculative relaxation of sandbox/referrer permissions.
+
+**Content boundary:** Production is a read-only inventory, not an approved working-source set. Nine native-browser source attempts were blocked by the managed network tunnel, so real availability and provider restrictions remain unverified. Current Japan jp2027.1 has five external records and remains immutable; R6 does not populate or publish a replacement. Future verified camera enrichment requires a separately approved new immutable Trip Data Version with fixed canonical day mappings. Schema/readers and existing cached snapshots remain unchanged. R6 creates a Draft PR only; no merge/deploy, R7/R8 or Step15D work.

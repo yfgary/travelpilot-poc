@@ -2,7 +2,7 @@ import type { TripSnapshot } from './schema/trip'
 import { safeExternalURL } from './itinerary'
 export type LiveCamera = TripSnapshot['liveCams'][number]
 export const cameraPriorityLabels = { primary: '必睇', reference: '參考', backup: 'Backup' } as const
-export const cameraSourceLabels = { embed: 'Live', image: 'Live Image', external: '官方來源' } as const
+export const cameraSourceLabels = { embed: '嵌入來源', image: '靜止畫面', external: '官方來源' } as const
 export function getLiveCamDayIds(cam: LiveCamera): string[] {
   return 'routeDayIds' in cam ? [...cam.routeDayIds] : cam.routeDayId ? [cam.routeDayId] : []
 }
@@ -17,13 +17,29 @@ export function resolveCamera(snapshot: TripSnapshot, cam: LiveCamera) {
     sourceLabel: ('sourceLabel' in cam ? cam.sourceLabel : undefined) ?? cameraSourceLabels[cam.sourceType],
   }
 }
-export type ResolvedCamera = ReturnType<typeof resolveCamera>
+export type ResolvedCamera = ReturnType<typeof resolveCamera> & { aliases?: ReturnType<typeof resolveCamera>[] }
 export function cameraFilterDays(snapshot: TripSnapshot) {
   const ids = new Set(snapshot.liveCams.flatMap(getLiveCamDayIds))
   return [...snapshot.days].filter((day) => ids.has(day.id)).sort((a, b) => a.dayNumber - b.dayNumber)
 }
 export function groupLiveCams(snapshot: TripSnapshot, dayId?: string) {
-  const cameras = snapshot.liveCams.filter((cam) => !dayId || getLiveCamDayIds(cam).includes(dayId)).map((cam) => resolveCamera(snapshot, cam))
+  // Exact capability + normalized source URL identify one media resource. Never
+  // remove query parameters or infer a camera from a destination/provider name.
+  const sources = new Map<string, ReturnType<typeof resolveCamera>[]>()
+  for (const cam of snapshot.liveCams) {
+    const previewKey = cam.sourceType === 'external' ? `:${secureInlineURL(cam.previewURL) ?? ''}` : ''
+    const key = `${cam.sourceType}:${safeExternalURL(cam.sourceURL) ?? cam.id}${previewKey}`
+    const entries = sources.get(key) ?? []
+    entries.push(resolveCamera(snapshot, cam)); sources.set(key, entries)
+  }
+  const cameras: ResolvedCamera[] = [...sources.values()].flatMap((entries) => {
+    const primary = entries.find((entry) => !dayId || entry.days.some((day) => day.id === dayId))
+    if (!primary) return []
+    const dayIds = new Set(entries.flatMap((entry) => entry.days.map((day) => day.id)))
+    return [{ ...primary, aliases: entries.filter((entry) => entry !== primary),
+      days: [...snapshot.days].filter((day) => dayIds.has(day.id)).sort((a, b) => a.dayNumber - b.dayNumber),
+      tags: [...new Set(entries.flatMap((entry) => entry.tags))] }]
+  })
   const groups = snapshot.regions.map((region) => ({ id: region.id, label: region.label ?? region.name, cameras: cameras.filter((item) => item.region?.id === region.id) })).filter((group) => group.cameras.length)
   const global = cameras.filter((item) => !item.region)
   return global.length ? [...groups, { id: '__global', label: '其他／全程', cameras: global }] : groups
