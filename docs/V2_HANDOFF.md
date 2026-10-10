@@ -111,3 +111,5 @@ Recommended new-chat first action:
 - R4 QA fixture correction: v2.0.0-poc.34; Day 2 explicitly opened for Place native-name display, Day 1 lodging scoped. Prior PR CI was superseded; latest run must pass.
 
 - Final R4 premerge audit: v2.0.0-poc.35, updated last stale TodayArchitecture schema assertion and added exact timing inheritance test; only latest PR QA counts.
+
+- R4 pre-merge CI [38005282470](https://github.com/yfgary/travelpilot-poc/actions/runs/38005282470) failed 10 of 2,550 Playwright tests (only two outdated hardcoded Schema6-as-unsupported Loader cases repeated at all five widths). Updated both to CURRENT_TRIP_SCHEMA_VERSION+1 while retaining no-cache assertions; release candidate **v2.0.0-poc.36**. Need new full PR QA green before R4 Merge.

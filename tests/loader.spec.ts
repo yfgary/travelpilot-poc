@@ -2,6 +2,7 @@ import { test, expect, supabaseOrigin, testUser, storageKey, fakeSession } from 
 import { seedAuth, mockRemote, remoteVersion, remoteId, remoteSlug, cacheContents } from './tripFixtures'
 import type { Page } from '@playwright/test'
 import packageMetadata from '../package.json' with { type: 'json' }
+import { CURRENT_TRIP_SCHEMA_VERSION } from '../src/data/schema/trip'
 const itinerary = `#/trip/${remoteSlug}/itinerary`
 const dataSource = (page: Page) => page.getByTestId('trip-source')
 
@@ -156,8 +157,8 @@ test('unavailable remote with no cache gives generic state, still showing shared
 })
 
 const invalidCases: [string, (version: ReturnType<typeof remoteVersion>) => void, string][] = [
-  ['unsupported row schema', (v) => { v.schema_version = 6 }, '未支援此旅程資料格式'],
-  ['unsupported payload schema', (v) => { v.payload.schemaVersion = 6 as 1 }, '未支援此旅程資料格式'],
+  ['unsupported row schema', (v) => { v.schema_version = CURRENT_TRIP_SCHEMA_VERSION + 1 }, '未支援此旅程資料格式'],
+  ['unsupported payload schema', (v) => { v.payload.schemaVersion = (CURRENT_TRIP_SCHEMA_VERSION + 1) as 1 }, '未支援此旅程資料格式'],
   ['slug mismatch', (v) => { v.payload.trip.slug = 'wrong-slug' }, '旅程資料未能通過驗證'],
   ['trip ID mismatch', (v) => { v.payload.trip.id = 'wrong-id' }, '旅程資料未能通過驗證'],
   ['version trip ID mismatch', (v) => { v.trip_id = '00000000-0000-4000-8000-000000000004' }, '旅程資料未能通過驗證'],

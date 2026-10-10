@@ -665,3 +665,9 @@ App Version candidate raised to **v2.0.0-poc.34**. Fictional road-trip Day 1 has
 
 ### R4 final static test sweep before full PR QA (10/10/2026)
 Additional audit found one legacy Today Architecture test still hardcoding current Schema 5; revised the *current supported reader* assertion to 6 while preserving its immutable demo versions and source-boundary checks. Added a focused Schema6 inherited exact-timing regression. Candidate App Version increases to **v2.0.0-poc.35**. Older PR QA attempts are superseded; the latest complete PR run is the release gate.
+
+### R4 v2.0.0-poc.35 pre-merge QA failure and correction (10/10/2026)
+
+Run [38005282470](https://github.com/yfgary/travelpilot-poc/actions/runs/38005282470): **2,540 passed / 10 failed**, Build PASS. The 10 failures consist of two outdated unknown-schema Loader cases × five viewport widths, hardcoded to reject Schema6 even though it is now explicitly supported. All other cases, including the new Schema6 remote/cache/local-name/old-schema/exact-timing tests, passed.
+
+Candidate App Version **v2.0.0-poc.36** changes only `tests/loader.spec.ts` to derive the **first unsupported version as CURRENT_TRIP_SCHEMA_VERSION + 1**, rather than hardcoding 6. The tests still require a rejected remote row/payload, the proper unsupported-schema message, **and absolutely no IndexedDB version/pointer/device cache writes**. No security validation is relaxed, and no production/Supabase/Trip Data changes. Latest full PR QA must pass before R4 Merge.
