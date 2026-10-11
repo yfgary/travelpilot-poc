@@ -1,6 +1,6 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
-  "candidateLabel": "jp2027-schema6-review-draft-02",
+  "candidateLabel": "jp2027-schema6-review-draft-03",
   "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
   "published": false,
   "isCurrent": false,
@@ -34,6 +34,11 @@
         "μSKY＋JR轉乘",
         "松本第一晚"
       ]
+    },
+    {
+      "area": "11 October independent-review follow-up",
+      "evidence": "jp2027-source-review.json#followUpReview",
+      "confidence": "Targeted fees/hours and structured details verified; Ganshoin600 correction, outdated Iwatake numeric fare omitted; D2/D6 route advice conditional only; SnowMonkey revised amount blocked"
     }
   ],
   "photoCandidate": {
@@ -53,7 +58,7 @@
     },
     {
       "issue": 20,
-      "description": "General winter advice sourced; direction/IC ordering and winter facility services per leg unverified"
+      "description": "Conditional D2/D6 direction and PA ordering verified; actual IC selections, other legs and winter services remain unresolved"
     },
     {
       "issue": 22,
@@ -61,7 +66,7 @@
     },
     {
       "issue": 23,
-      "description": "New sourced prose for 36 original Places; inherited detailed history/fees/hours not fully reverified"
+      "description": "36 sourced introductions retained; selected structured details and operational fields rechecked; Snow Monkey revised amounts blocked; inherited fields not comprehensively certified"
     },
     {
       "issue": 25,
@@ -82,21 +87,35 @@
     "Separate user authorization before any Supabase write/publication",
     "Step15D stays blocked"
   ],
-  "draftSha256": "ae0f451910beb960b4974003e518f5ad59f088f57aaaee36be9530ec8c7ad3d4",
+  "draftSha256": "2b37f291c82015224369837f4b589a176930b1e79130ae11f92141101c165d84",
   "sourceReview": "jp2027-source-review.json",
   "validation": {
-    "initialStrictCases": 1,
-    "focusedCases": 55,
-    "fullRegressionCases": 2800,
-    "fullRegressionDuration": "38.0m",
     "result": "PASS",
+    "checkedAt": "2026-10-11T17:27:27+08:00",
+    "focusedCases": 55,
+    "focusedResult": "55/55 PASS (1.9m)",
+    "fullRegressionCases": 2800,
+    "fullRegressionResult": "2800/2800 PASS (38.6m), exit 0; one final complete run, two workers",
     "typecheckBuild": "PASS",
-    "npmCi": "PASS",
+    "diffCheck": "PASS",
     "visualQA": [
       "320 Large",
       "390 Medium",
       "1440 Medium"
     ],
-    "publicationApproval": false
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "productionSha": "8b5129b381d6ace94030b51c7b8de5c4e3d5f533",
+    "changedScope": "candidate, evidence ledger, derived manifest only",
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false,
+    "interpretation": "Valid and renderable unpublished proposal; NOT comprehensive factual certification or publication approval"
+  },
+  "previousValidation": {
+    "commit": "a678686ea70c99f1a77aedc2e7a4ecd1457eb75f",
+    "focusedCases": 55,
+    "fullRegressionCases": 2800,
+    "result": "PASS",
+    "ciRun": 38096677950
   }
 }

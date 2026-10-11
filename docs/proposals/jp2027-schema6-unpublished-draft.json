@@ -1427,19 +1427,19 @@
       ],
       "sourceIds": [
         "jp27-source-matsumoto-castle",
-        "jp27-source-draft-matsumoto-castle"
+        "jp27-source-draft-matsumoto-castle",
+        "jp27-source-followup-matsumoto-castle"
       ],
-      "longDescription": "松本城的天守外觀以黑白對比及護城河景觀見稱；現存建築為五重六階，而非現代仿古的觀景塔。參觀可先從外圍辨認天守羣，再留意登城後木構空間與防禦用途的關係。\n\n這次日間參觀與前一晚光影活動是兩種體驗：日間看實際文化財與城郭，晚上看投影演出。原有入場費與時間仍屬既有行程資料，未在本次重新核實，出發前須查官方觀覽公告。",
-      "whyVisit": "今程難得去松本，值得用約90分鐘正式入天守；比只看外圍更能理解現存木柱、梁架、狹窄陡梯與防禦設計。",
+      "longDescription": "松本城的天守外觀以黑白對比及護城河景觀見稱；現存建築為五重六階，而非現代仿古的觀景塔。參觀可先從外圍辨認天守羣，再留意登城後木構空間與防禦用途的關係。\n\n官方普通開城時間08:30–17:00，最後入城16:30；成人電子日時指定票¥1,200、即日紙票¥1,300，核對日為11/10/2026。登城約140級樓梯、最陡61度，無升降機並須脫鞋；樓梯禁止拍攝。2027臨時營運公告仍須出發前確認。",
+      "whyVisit": "白天入天守可觀察木構與城內空間，與前一晚外牆光影觀賞分開；登樓須能應付陡梯。",
       "history": "1590年代石川氏大規模整備城郭與天守。明治後曾面臨拆除及傾斜危機，靠地方保存運動及修復才保留至今；五棟天守建築1952年按現行制度指定為國寶。",
       "localImportance": "係日本少數現存天守之一，也是研究戰國末期城郭發展的重要實物。",
       "whatToSee": [
-        "護城河外黑色天守與水面倒影",
-        "原有木柱、粗樑、槍眼與石落",
-        "約60度級陡梯",
-        "比較大天守與月見櫓的軍事／和平用途差異"
+        "護城河與天守外觀",
+        "天守內木構與六層空間",
+        "約140級、最陡61度的樓梯（注意腳下）"
       ],
-      "takeaway": "松本城係400年以上大型木造文化財，不是戰後仿古重建。",
+      "takeaway": "由黒門入城；天守無升降機、需脫鞋，樓梯不准拍攝，不能把外圍散步視作已登城。",
       "suggestedDurationMinutes": 90,
       "opening": "08:30",
       "lastEntry": "16:30",
@@ -1448,7 +1448,7 @@
         "amount": 1200,
         "currency": "JPY"
       },
-      "feeNotes": "成人電子日時指定票¥1,200；紙票¥1,300。",
+      "feeNotes": "11/10/2026核對官方：成人電子日時指定票¥1,200；即日紙票¥1,300。普通開城08:30–17:00，最後入城16:30；2027臨時公告須再確認。",
       "rating": 9.5,
       "mapURL": "https://www.google.com/maps/search/?api=1&query=Matsumoto%20Castle",
       "officialURL": "https://www.matsumoto-castle.jp/info",
@@ -1565,9 +1565,10 @@
       ],
       "sourceIds": [
         "jp27-source-onioshidashi",
-        "jp27-source-draft-onioshidashi"
+        "jp27-source-draft-onioshidashi",
+        "jp27-source-followup-onioshidashi"
       ],
-      "longDescription": "鬼押出園以岩石景觀與步行遊園為主，官方網站另列入園、交通及季節營運資訊。參觀重點是沿園內路線觀察不同形態的巖羣與山地環境，不宜把全區視為平坦的短捷徑。\n\n一月行程要先確認開園及步道狀態，再決定步行範圍。當前公佈的時間和票價未作2027年承諾；本次未重新核實原有火山年代敘述，因此保留原欄位並列入待覈實清單。",
+      "longDescription": "鬼押出園以岩石景觀與步行遊園為主，官方網站另列入園、交通及季節營運資訊。參觀重點是沿園內路線觀察不同形態的巖羣與山地環境，不宜把全區視為平坦的短捷徑。\n\n官方目前普通成人入園¥700，08:00–17:00、最後入園16:30；但明示季節可改時或休園，並非保證2027年1月運作。原有火山年代敘述未在這輪重核，出發前另查冬季步道及道路狀態。",
       "whyVisit": "景觀類型同古城、雪村、溫泉完全不同，但現只做D2 Backup，唔應該為佢壓縮Outlet或千曲入住時間。",
       "whatToSee": [
         "熔岩裂縫與扭曲形狀",
@@ -1580,11 +1581,14 @@
         "amount": 700,
         "currency": "JPY"
       },
-      "feeNotes": "成人票參考；道路通行費另計，2027出發前再確認。",
+      "feeNotes": "11/10/2026官方普通成人¥700；普通開園08:00–17:00、最後入園16:30。官方明示季節可改時或休園，2027冬季須再確認；道路通行費另計。",
       "rating": 7.6,
       "mapURL": "https://www.google.com/maps/search/?api=1&query=%E9%AC%BC%E6%8A%BC%E5%87%BA%E3%81%97%E5%9C%92",
       "officialURL": "https://www.princehotels.co.jp/amuse/onioshidashi/",
-      "localName": "鬼押出し園"
+      "localName": "鬼押出し園",
+      "opening": "08:00",
+      "lastEntry": "16:30",
+      "closing": "17:00"
     },
     {
       "id": "jp27-place-obuse",
@@ -1628,15 +1632,17 @@
       ],
       "sourceIds": [
         "jp27-source-hokusai",
-        "jp27-source-draft-hokusai"
+        "jp27-source-draft-hokusai",
+        "jp27-source-followup-hokusai"
       ],
-      "whyVisit": "如果想理解點解小布施將北齋放在地方文化中心位置，用30–45分鐘看代表作已足夠。",
+      "whyVisit": "以北齋作品、版畫與肉筆畫了解其藝術面貌，配合小布施街區及岩松院參觀。",
       "history": "北齋晚年多次受高井鴻山邀請到小布施，留下肉筆畫及祭屋台天井畫。",
       "whatToSee": [
-        "祭屋台天井畫",
-        "晚年肉筆作品"
+        "北斎づくし當期展覽",
+        "富嶽三十六景、瀑布及橋樑版畫題材（按展期換展）",
+        "肉筆畫及祭屋臺天井繪收藏"
       ],
-      "takeaway": "北齋與小布施係真實晚年創作關係，不只是觀光品牌。",
+      "takeaway": "本次旅程日期落在已公布展期內；個別作品會因保存需求換展，不保證每件名作同時展示。",
       "suggestedDurationMinutes": 40,
       "opening": "09:00",
       "lastEntry": "16:30",
@@ -1645,12 +1651,12 @@
         "amount": 1200,
         "currency": "JPY"
       },
-      "feeNotes": "2027/1/11展覽期成人¥1,200；出發前再核對。",
+      "feeNotes": "官方已公布「北斎づくし」後期09/12/2026–17/01/2027，涵蓋11/01/2027；成人¥1,200，09:00–17:00、最後入館16:30。臨時変更出發前再查。",
       "rating": 7.5,
       "mapURL": "https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E6%96%8E%E9%A4%A8%20%E5%B0%8F%E5%B8%83%E6%96%BD",
       "officialURL": "https://hokusai-kan.com/",
       "localName": "北斎館",
-      "longDescription": "北齋館以葛飾北齋作品為核心，收藏與展示涵蓋畫作、版畫及祭屋臺天井繪。除了熟悉的版畫形象，也可留意龍、鳳凰及波浪題材，理解北齋晚年與小布施的連結。\n\n展覽內容與門票可能隨特別展更換，不能把當前展覽費當成2027年1月價目。參觀前查看當期展覽及開館公告；本草稿補充觀看重點，不改動原有預留時間。"
+      "longDescription": "北齋館以葛飾北齋作品為核心，收藏與展示涵蓋畫作、版畫及祭屋臺天井繪。除了熟悉的版畫形象，也可留意龍、鳳凰及波浪題材，理解北齋晚年與小布施的連結。\n\n官方「北斎づくし」後期為09/12/2026–17/01/2027，涵蓋原定11/01/2027到訪日；成人¥1,200，09:00–17:00、最後入館16:30。作品會因保存需要換展，仍須查看臨時公告；不新增活動預約或改動原有時段。"
     },
     {
       "id": "jp27-place-oranche",
@@ -1732,20 +1738,29 @@
       ],
       "sourceIds": [
         "jp27-source-obuse",
-        "jp27-source-draft-ganshoin"
+        "jp27-source-draft-ganshoin",
+        "jp27-source-followup-ganshoin"
       ],
-      "whyVisit": "文化型Backup；如果小布施主線快完成而又想補北齋脈絡先去。",
+      "whyVisit": "近距離仰看北齋天井鳳凰圖，與北齋館的展覽形成不同觀看方式。",
       "suggestedDurationMinutes": 40,
       "fee": {
-        "amount": 500,
+        "amount": 600,
         "currency": "JPY"
       },
-      "feeNotes": "參考價；冬季參拜時間與費用出發前再查。",
+      "feeNotes": "11/10/2026核對官方：一般¥600；12月至3月通常09:30–15:30。正式當日開門時間、法會及臨時休館以官方公告為準。",
       "rating": 7.2,
       "mapURL": "https://www.google.com/maps/search/?api=1&query=Ganshoin%20Temple%20Obuse",
-      "officialURL": "https://www.gansho-in.or.jp/",
+      "officialURL": "https://ganshoin.com/",
       "localName": "岩松院",
-      "longDescription": "巖松院的觀看重點是北齋天井繪「八方睨み鳳凰図」，作品覆蓋約21疊的空間，從不同位置觀看可感受鳳凰視線的構圖效果。它與北齋館是不同場所：前者在寺院中看固定大幅作品，後者看館藏與展覽。\n\n參觀時遵從寺方觀看、攝影及開放範圍規定。官方當前開門與入場資料不是一月保證；本草稿不新增需要另行核實的修復年代或宗教傳說。"
+      "longDescription": "巖松院的觀看重點是北齋天井繪「八方睨み鳳凰図」，作品覆蓋約21疊的空間，從不同位置觀看可感受鳳凰視線的構圖效果。它與北齋館是不同場所：前者在寺院中看固定大幅作品，後者看館藏與展覽。\n\n11/10/2026核對官方一般拝觀料為¥600，不沿用舊¥500；12月至3月通常09:30–15:30，仍須查當日正式開門公告。個人參拜約40分鐘，本堂禁止拍攝、飲食與通話；法會或臨時休館可能改變安排。",
+      "opening": "09:30",
+      "closing": "15:30",
+      "whatToSee": [
+        "本堂天井八方睨み鳳凰図",
+        "開門30分鐘後起、每半小時一次的日語解說（有例外）",
+        "本堂其他展示及庭園"
+      ],
+      "takeaway": "一般參拜約40分鐘；本堂禁止拍攝、飲食、通話與喧嘩，不能把冬季時間套用夏季開門表。"
     },
     {
       "id": "jp27-place-snow-monkey",
@@ -1762,9 +1777,10 @@
       ],
       "sourceIds": [
         "jp27-source-snow-monkey",
-        "jp27-source-draft-snow-monkey"
+        "jp27-source-draft-snow-monkey",
+        "jp27-source-followup-snow-monkey"
       ],
-      "longDescription": "野猿公苑觀察的是自由活動的野生猴羣，不是動物園定時表演。冬季可觀察牠們在寒冷環境中的行為，但到場數目、出現時間及是否浸溫泉都不能保證；保持距離，不餵食、不觸摸。\n\n官方指南公佈冬季開放安排，也提示2026年12月1日起有票價修訂。原有費用欄位尚未據新價目更新，須另行核對；不要把本草稿或相機畫面視為猴羣必定在場的證明。",
+      "longDescription": "野猿公苑觀察的是自由活動的野生猴羣，不是動物園定時表演。冬季可觀察牠們在寒冷環境中的行為，但到場數目、出現時間及是否浸溫泉都不能保證；保持距離，不餵食、不觸摸。\n\n官方冬季11月至3月09:00–16:00，建議閉園前30分鐘到達；20/09/2026公告01/12/2026起改價。新價只載圖片，本輪下載HTTP 403未能讀取，草稿不填金額；猴群與天氣可能令開園安排改變。",
       "whyVisit": "雪地步行＋野生動物觀察係今程獨特體驗；真正限制係結冰步道、猴群行動及官方臨時開閉園。",
       "whatToSee": [
         "雪地林道",
@@ -1776,7 +1792,7 @@
       "opening": "09:00",
       "lastEntry": "15:30",
       "closing": "16:00",
-      "feeNotes": "官方已公告2026/12/1起調整入苑費；2027實際成人票價出發前再核對，不沿用舊¥800。",
+      "feeNotes": "官方20/09/2026公告01/12/2026起改價；新價只載圖片，這輪下載HTTP 403未能讀取，2027金額待原圖核實，不沿用¥800或填第三方估值。",
       "rating": 9,
       "mapURL": "https://www.google.com/maps/search/?api=1&query=Jigokudani%20Yaen%20Koen",
       "officialURL": "https://en.jigokudani-yaenkoen.co.jp/guide/",
@@ -1846,9 +1862,10 @@
       "sourceIds": [
         "jp27-source-iwatake",
         "jp27-source-iwatake-rates",
-        "jp27-source-draft-hakuba-iwatake"
+        "jp27-source-draft-hakuba-iwatake",
+        "jp27-source-followup-hakuba-iwatake"
       ],
-      "longDescription": "白馬巖嶽冬季官方頁把雪場、山上景觀及設施資訊分開列示。這是受季節、積雪與索道營運影響的山地項目，不應用綠季的營業或體驗承諾冬季同樣可用。\n\n出發前確認當日索道、入場資格及觀景設施狀態。官方頁另提供Panomax相機連結，但本環境未能驗證播放；本草稿不把網頁有連結等同相機可播，也不更新原有票價。",
+      "longDescription": "白馬巖嶽冬季官方頁把雪場、山上景觀及設施資訊分開列示。這是受季節、積雪與索道營運影響的山地項目，不應用綠季的營業或體驗承諾冬季同樣可用。\n\n核對日11/10/2026，冬季票頁仍列2025–26季，綠季¥2,900亦不證明2027冬季價格。本草稿不保留未獲當季確認的數字；到訪前核對2026–27觀光票、運行時間及天氣停運公告，不把網頁可讀視作運行保證。",
       "whyVisit": "北阿爾卑斯視野回報極高；但風、雲量與Gondola運行會直接影響價值，所以Weather Score同官方運行狀態要一齊看。",
       "whatToSee": [
         "Gondola上山視野",
@@ -1858,11 +1875,7 @@
       ],
       "takeaway": "「岩岳＝整個Resort；MOUNTAIN HARBOR＝山頂其中一個觀景點」。",
       "suggestedDurationMinutes": 120,
-      "fee": {
-        "amount": 2900,
-        "currency": "JPY"
-      },
-      "feeNotes": "官方觀光用Gondola往返成人¥2,900；2026–27當季如有改價，以官方為準。",
+      "feeNotes": "官方目前冬季票頁仍列2025–26，觀光票成人¥2,900亦見2026綠季；兩者均不足確認2026–27冬季。2027觀光票待當季正式公告，本草稿不填數字。",
       "rating": 9,
       "mapURL": "https://www.google.com/maps/search/?api=1&query=Hakuba%20Iwatake%20Mountain%20Resort",
       "officialURL": "https://iwatake-mountain-resort.com/winter",
@@ -1963,16 +1976,17 @@
       ],
       "sourceIds": [
         "jp27-source-wada",
-        "jp27-source-draft-wada-house"
+        "jp27-source-draft-wada-house",
+        "jp27-source-followup-wada-house"
       ],
-      "whyVisit": "如果白川鄉只入一間合掌屋，和田家係最具代表性的選擇之一。",
-      "history": "和田家族過去曾任名主、番所役人並參與焔硝交易，反映其地方行政及經濟地位。",
+      "whyVisit": "進屋看合掌家屋內部，與在村外拍攝屋頂的體驗不同。",
+      "history": "和田家在江戶時代擔任村中名主及關所職務，並經營硝石交易；官方介紹其為村內大型合掌家屋之一。",
       "whatToSee": [
-        "一樓圍爐與生活空間",
-        "上層合掌屋架",
-        "由室內窗位理解聚落關係"
+        "開放參觀的一樓與二樓",
+        "二樓所見村落景觀",
+        "合掌家屋內部空間"
       ],
-      "takeaway": "入屋後再看其他合掌屋，就會由「靚屋頂」變成理解如何過冬和生產。",
+      "takeaway": "只進入公開區域，尊重仍居住的家人；備現金，不能假定不定休代表每天開放。",
       "suggestedDurationMinutes": 35,
       "opening": "09:00",
       "closing": "17:00",
@@ -1984,7 +1998,9 @@
       "mapURL": "https://www.google.com/maps/search/?api=1&query=Wada%20House%20Shirakawa-go",
       "officialURL": "https://shirakawa-go.gr.jp/active/13/",
       "localName": "和田家",
-      "longDescription": "和田家是荻町大型合掌造民居及重要文化財，家族歷史與村中行政、關卡及硝石交易有關。參觀可從室內生活尺度與上層空間理解合掌屋用途，補足外面只看屋頂的印象。\n\n建築仍保留居住用途，公開參觀區和私人區必須分清。館舍開放時間及雪季限制待臨行確認；原行程的參觀安排不代表可進入整棟所有房間。"
+      "longDescription": "和田家是荻町大型合掌造民居及重要文化財，家族歷史與村中行政、關卡及硝石交易有關。參觀可從室內生活尺度與上層空間理解合掌屋用途，補足外面只看屋頂的印象。\n\n官方介紹和田家曾任村中名主、關所職務並經營硝石交易；現在仍有人居住，僅公開一、二樓。11/10/2026核對成人¥400、現金支付，通常09:00–17:00且不定休；尊重非公開生活空間。",
+      "feeNotes": "11/10/2026核對白川鄉觀光協會：成人（中學生以上）¥400，現金支付；09:00–17:00，不定休，出發前確認。",
+      "localImportance": "國家重要文化財，同時仍是有人居住的家屋，保育與日常生活並存。"
     },
     {
       "id": "jp27-place-ogimachi-view",
@@ -2032,7 +2048,8 @@
       ],
       "sourceIds": [
         "jp27-source-shinhotaka",
-        "jp27-source-draft-shinhotaka"
+        "jp27-source-draft-shinhotaka",
+        "jp27-source-followup-shinhotaka"
       ],
       "longDescription": "新穗高纜車以兩層車廂及海拔逾二千米的山景見稱，旅程的核心是索道上山與展望，而不是保證可進行任意山地步行。乘車前應看清各段服務狀態與山上可開放範圍。\n\n山區強風、天氣與維修可影響營運，不能憑前一日天氣或相機畫面保證開車。D7保持新穗高，原有時間不改；實際可達範圍以運營方當日公告為準。",
       "whyVisit": "非登山客亦可以安全接近2,000米以上高地視野；D7固定去，但仍以官方Operation Status及Live Cam決定是否值得上山。",
@@ -2042,13 +2059,13 @@
         "山脊與谷地高差",
         "出發前先看官方Live Cam"
       ],
-      "takeaway": "Weather Score只評估天氣；官方運行狀態永遠優先。",
+      "takeaway": "票種須分清第1＋第2線和第2線單獨票；先查運行公告，不能把購票頁可讀等同當日纜車運行。",
       "suggestedDurationMinutes": 160,
       "fee": {
         "amount": 3800,
         "currency": "JPY"
       },
-      "feeNotes": "第1+第2纜車成人往返¥3,800。",
+      "feeNotes": "11/10/2026核對官方第1＋第2纜車普通成人往返¥3,800；不是已購票金額或2027保證票價。運行受天氣與維修影響，冬季時間另確認。",
       "rating": 9.5,
       "mapURL": "https://www.google.com/maps/search/?api=1&query=Shinhotaka%20Ropeway",
       "officialURL": "https://shinhotaka-ropeway.jp/en/price/",
@@ -2137,15 +2154,17 @@
       ],
       "sourceIds": [
         "jp27-source-jinya",
-        "jp27-source-draft-takayama-jinya"
+        "jp27-source-draft-takayama-jinya",
+        "jp27-source-followup-takayama-jinya",
+        "jp27-source-followup-jinya-history"
       ],
-      "whyVisit": "同三町古街一齊睇，可以由「政府管理」同「商家生活」兩面理解高山。",
+      "whyVisit": "從辦公、審理及儲藏空間了解地方行政，比只看外牆更完整。",
       "whatToSee": [
-        "御役所與大廣間",
-        "庭園",
-        "御蔵／米藏"
+        "政務及審理空間",
+        "保存的米倉",
+        "室內木構與疊敷空間"
       ],
-      "takeaway": "高山不只是古街，亦曾是幕府直接管理飛驒的重要行政中心。",
+      "takeaway": "入屋脫鞋並自備鞋袋；冬季無暖氣、亦不借拖鞋，可備厚襪或室內鞋。",
       "suggestedDurationMinutes": 50,
       "opening": "08:45",
       "lastEntry": "16:00",
@@ -2158,7 +2177,10 @@
       "mapURL": "https://www.google.com/maps/search/?api=1&query=Takayama%20Jinya",
       "officialURL": "https://jinya.gifu.jp/en/",
       "localName": "高山陣屋",
-      "longDescription": "高山陣屋與1692年飛驒納入幕府直接管轄有關，是地方官署而非天守城堡。參觀可留意政務、司法及倉儲空間，理解統治制度如何落到日常行政。\n\n館內觀看有助區別公務空間與生活區域，不能僅看外觀便等同參觀完畢。2027年開館及費用仍需官方確認；本草稿不加入未經查證的房間用途細節或改動時間。"
+      "longDescription": "高山陣屋與1692年飛驒納入幕府直接管轄有關，是地方官署而非天守城堡。參觀可留意政務、司法及倉儲空間，理解統治制度如何落到日常行政。\n\n官方11月至3月開館08:45–16:30、最後入場16:00，普通個人¥500；核對日11/10/2026。室內須脫鞋，宜自備鞋袋；冬季無暖氣且不借拖鞋，年末年始、荒天及設施原因可能閉館。",
+      "feeNotes": "11/10/2026核對官方普通個人¥500；11月至3月08:45–16:30、最後入場16:00。年末年始、荒天及設施原因可閉館。",
+      "history": "1692年飛驒成為幕府直轄地，高山陣屋用作地方官署；至1868年幕府派任官員管治，之後仍作行政用途直到1969年。",
+      "localImportance": "從官署、審理與米倉等空間了解地方行政，而非以城堡天守為中心的參觀。"
     },
     {
       "id": "jp27-place-sanmachi",
@@ -2206,16 +2228,17 @@
       ],
       "sourceIds": [
         "jp27-source-hida-cave",
-        "jp27-source-draft-hida-cave"
+        "jp27-source-draft-hida-cave",
+        "jp27-source-followup-hida-cave"
       ],
-      "longDescription": "飛驒大鐘乳洞官網介紹洞內約800米、分段通行，後段有較陡的上行，可按體力選擇出口。觀看重點是地下水與石灰岩形成的洞穴結構及鐘乳石，而不是把全程當成平路散步。\n\n洞內與室外溫度不同，冬季要兼顧入口附近路面；冰谷屬季節項目，不保證指定日呈現。D8保留大鐘乳洞後往松本，內容補充不改變方向、時段或路線。",
-      "whyVisit": "D8固定去，因為比雪山觀景更耐受天氣；完成後直接向東返松本，不再安排白川鄉或新穗高。",
+      "longDescription": "飛驒大鐘乳洞官網介紹洞內約800米、分段通行，後段有較陡的上行，可按體力選擇出口。觀看重點是地下水與石灰岩形成的洞穴結構及鐘乳石，而不是把全程當成平路散步。\n\n官方冬季09:00–16:00受理、16:30閉館，成人¥1,100為大鐘乳洞與大橋收藏館共通票。05/08/2026公告第三洞改修、目標12月中旬，第一及第二洞照常；不把目標視作確定重開，2027到訪前再核對。",
+      "whyVisit": "觀察洞內岩石形態與高山地下環境，按體力選出口，不需走完全部洞段。",
       "whatToSee": [
-        "鐘乳石洞主要路段",
-        "大橋Collection館（同票）",
-        "冬季外圍冰景（如開放）"
+        "當日開放的第一、第二洞",
+        "洞內岩石形態與照明",
+        "大橋收藏館（共通入場票）"
       ],
-      "takeaway": "飛驒山區除雪景外，亦保存非常古老的石灰岩地質。",
+      "takeaway": "第二出口後有陡坡；第三洞曾因改修閉鎖，官方目標12月中旬不等於確認重開，2027須再查。",
       "suggestedDurationMinutes": 75,
       "opening": "09:00",
       "lastEntry": "16:00",
@@ -2224,7 +2247,7 @@
         "amount": 1100,
         "currency": "JPY"
       },
-      "feeNotes": "成人¥1,100；Web前售¥1,000。",
+      "feeNotes": "11/10/2026核對官方成人¥1,100（大鐘乳洞＋大橋收藏館）；11月至3月09:00–16:00受理、16:30閉館。前售優惠另查，不沿用未核實Web¥1,000。",
       "rating": 8,
       "mapURL": "https://www.google.com/maps/search/?api=1&query=Hida%20Great%20Limestone%20Cave",
       "officialURL": "https://www.syonyudo.com/",
@@ -2809,7 +2832,8 @@
         "取車：4WD＋雪軚。",
         "Times已回覆提供Snow brush；Snow shovel／Ice scraper不保證。",
         "D2取車後開始冬季自駕，D9中午還車。",
-        "冬季高速：NEXCO中日本要求冬用輪胎；大雪預報時避免不必要外出，部分路段可實施輪胎鏈管制。4WD不代表可豁免管制；租車輪胎鏈配備及可通行路線須向租車公司與道路管理者再確認。"
+        "冬季高速：NEXCO中日本要求冬用輪胎；大雪預報時避免不必要外出，部分路段可實施輪胎鏈管制。4WD不代表可豁免管制；租車輪胎鏈配備及可通行路線須向租車公司與道路管理者再確認。",
+        "路段休息點核對：若D2按更埴JCT轉E18前往輕井澤，可考慮東部湯の丸SA上行（藤岡方向）；由輕井澤沿E18返回千曲用下行。若D6採高山→飛驒清見IC→E41→白川鄉IC，飛驒河合PA位於這段途中：往白川鄉用下行（金澤／新潟方向），返回用上行。飛驒白川PA在白川鄉IC北側，不應列作此去程出口前的休息點。以上不是新增必停點或已選定IC路線；須按實際導航、道路管制及冬季設施狀態再確認。"
       ],
       "warnings": [
         "冬季道路慢加速、慢煞車、慢轉向；安全距離明顯拉長。",
@@ -7051,6 +7075,182 @@
       "entity": {
         "type": "transport",
         "id": "jp27-transport-rental-car"
+      }
+    },
+    {
+      "id": "jp27-source-followup-matsumoto-castle",
+      "title": "国宝 松本城｜官方核對 11/10/2026",
+      "url": "https://www.matsumoto-castle.jp/info",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-matsumoto-castle"
+      }
+    },
+    {
+      "id": "jp27-source-followup-ganshoin",
+      "title": "岩松院｜官方核對 11/10/2026",
+      "url": "https://ganshoin.com/guide/",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-ganshoin"
+      }
+    },
+    {
+      "id": "jp27-source-followup-hokusai",
+      "title": "北斎館｜官方核對 11/10/2026",
+      "url": "https://hokusai-kan.com/exhibition2026-exposition-hokusai/",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-hokusai"
+      }
+    },
+    {
+      "id": "jp27-source-followup-onioshidashi",
+      "title": "鬼押出し園｜官方核對 11/10/2026",
+      "url": "https://www.princehotels.co.jp/amuse/onioshidashi/",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-onioshidashi"
+      }
+    },
+    {
+      "id": "jp27-source-followup-wada-house",
+      "title": "和田家｜官方核對 11/10/2026",
+      "url": "https://shirakawa-go.gr.jp/active/13/",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-wada-house"
+      }
+    },
+    {
+      "id": "jp27-source-followup-shinhotaka",
+      "title": "新穂高ロープウェイ｜官方核對 11/10/2026",
+      "url": "https://shinhotaka-ropeway.jp/en/price/",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-shinhotaka"
+      }
+    },
+    {
+      "id": "jp27-source-followup-takayama-jinya",
+      "title": "高山陣屋｜官方核對 11/10/2026",
+      "url": "https://jinya.gifu.jp/guide/info/",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-takayama-jinya"
+      }
+    },
+    {
+      "id": "jp27-source-followup-hida-cave",
+      "title": "飛騨大鍾乳洞｜官方核對 11/10/2026",
+      "url": "https://www.syonyudo.com/",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-hida-cave"
+      }
+    },
+    {
+      "id": "jp27-source-followup-hakuba-iwatake",
+      "title": "白馬岩岳マウンテンリゾート｜官方核對 11/10/2026",
+      "url": "https://iwatake-mountain-resort.com/winter/rates",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-hakuba-iwatake"
+      }
+    },
+    {
+      "id": "jp27-source-followup-snow-monkey",
+      "title": "地獄谷野猿公苑｜官方核對 11/10/2026",
+      "url": "https://jigokudani-yaenkoen.co.jp/information/information-3104/",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-snow-monkey"
+      }
+    },
+    {
+      "id": "jp27-source-followup-road-0",
+      "title": "NEXCO｜條件式路段休息點核對",
+      "url": "https://www.driveplaza.com/sapa/1810/1810056/1/shisetsu_service.html",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "transport",
+        "id": "jp27-transport-rental-car"
+      }
+    },
+    {
+      "id": "jp27-source-followup-road-1",
+      "title": "NEXCO｜條件式路段休息點核對",
+      "url": "https://www.driveplaza.com/sapa/1810/1810056/2/shisetsu_service.html",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "transport",
+        "id": "jp27-transport-rental-car"
+      }
+    },
+    {
+      "id": "jp27-source-followup-road-2",
+      "title": "NEXCO｜條件式路段休息點核對",
+      "url": "https://dc.c-nexco.co.jp/dsrc/sapa.php?area=5&rd_cd=1830&sapaCode=1830ba002&sapaDir=1",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "transport",
+        "id": "jp27-transport-rental-car"
+      }
+    },
+    {
+      "id": "jp27-source-followup-road-3",
+      "title": "NEXCO｜條件式路段休息點核對",
+      "url": "https://sapa.c-nexco.co.jp/sapa?sapainfoid=157",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "transport",
+        "id": "jp27-transport-rental-car"
+      }
+    },
+    {
+      "id": "jp27-source-followup-road-4",
+      "title": "NEXCO｜條件式路段休息點核對",
+      "url": "https://www.driveplaza.com/sapa/1830/1830104/1/",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "transport",
+        "id": "jp27-transport-rental-car"
+      }
+    },
+    {
+      "id": "jp27-source-followup-jinya-history",
+      "title": "高山陣屋｜官方歷史與參觀重點",
+      "url": "https://jinya.gifu.jp/en/",
+      "type": "official",
+      "checkedAt": "2026-10-11T16:45:01+08:00",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-takayama-jinya"
       }
     }
   ],
