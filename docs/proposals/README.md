@@ -22,10 +22,10 @@ The archived published Schema5 fixture retains SHA-256 `09a0bc1a5b75e50b579fd5ec
 
 Important follow-ups:
 
-- Monkey-park official guide announces a **1 December 2026 fee change**; revised amount is not verified. The inherited price is not certified for January 2027.
+- Snow Monkey fees were implemented from **GPT-6 verified packet #1**: adult standard ¥1,000, approved Web-price notes and qualified arrival advice. The unproven hard `lastEntry` was removed. See the source ledger; other inherited operational fields are not thereby certified.
 - Santera's checked detailed schedule is **2026**, not a published 2027 timetable. Iwatake seasonal page information must not be transposed between green/winter seasons. Bear cub photo dates reviewed cover April–October 2026, not January.
 - Official viewpoint parking closure notice prohibits promising direct parking at 荻町城跡展望台. No new navigation target is added.
-- A daytime castle photo candidate has verified file-page attribution: **Luka Peternel, CC BY-SA 4.0**, [Commons file](https://commons.wikimedia.org/wiki/File:Matsumoto-Castle-day-view-2019-Luka-Peternel.jpg), revision 861963817. Original-file acquisition returned **HTTP 403**. No image bytes downloaded, visual approval performed or new image mapping installed. Future D2/Place daytime mapping must keep D1 night artwork separate and retain licence/attribution.
+- Issue #22 selects **tsuruta yosuke / Wikimedia Commons / CC BY 2.0** as the approved daytime castle source. Exact approved-thumbnail retrieval returned **HTTP 403**; no JPEG, image record or selective mapping installed. D1 night artwork remains untouched. The prior Luka Peternel candidate is retained only as historical ledger evidence; no source substitution occurred.
 - The official Iwatake winter page links [Panomax](https://iwatake.panomax.com/). Native Chromium returned **ERR_TUNNEL_CONNECTION_FAILED**. A linked source is not verified playback or embedding permission; all five original records remain external and unchanged. R6 coverage/playback blockers remain open.
 - Existing detailed history, why-visit, fee and hours fields outside newly authored prose are **inherited, not newly certified**. These are explicitly listed per entity. Target-specific native navigation labels and some transport labels remain pending.
 
@@ -34,3 +34,7 @@ Important follow-ups:
 Focused tests use the exact draft as intercepted review data in native Playwright, never real Supabase records. They exercise strict Schema6/reference validation, immutable fixture/timing, every Place dialog, native names, all five trip routes/reload, all five widths and three fonts, source provenance and signed-out cache fallback. This validates renderability, not factual completeness or camera playability. Final results appear in [current state](../V2_CURRENT_STATE.md).
 
 `jp2027-draft-manifest.json` includes the exact draft hash, invariants and outstanding gates. Source verification and a green Draft PR **do not authorize publication**. Any actual Supabase version creation/publication requires separate explicit user authorization; Step 15D remains blocked.
+
+## Issue #22 reopened visual gate
+
+[Final 28-item browser evidence](../V2_FINAL_28_REMEDIATION.md) reopens every original requirement using this actual unpublished candidate. Today’s missing shared five-day forecast is repaired generically in poc.44; image/content/camera blockers remain open. No user acceptance, publication, merge or deployment is implied.

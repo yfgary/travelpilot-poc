@@ -1092,14 +1092,27 @@
     }
   },
   "daytimePhoto": {
-    "filePage": "https://commons.wikimedia.org/wiki/File:Matsumoto-Castle-day-view-2019-Luka-Peternel.jpg",
-    "author": "Luka Peternel",
-    "license": "CC BY-SA 4.0",
-    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "revision": "https://commons.wikimedia.org/w/index.php?title=File:Matsumoto-Castle-day-view-2019-Luka-Peternel.jpg&oldid=861963817",
-    "size": "3648x5472 JPEG",
-    "status": "File-page rights verified; actual original download HTTP 403; no bytes acquired, visually approved or installed",
-    "proposedUse": "New D2 castle/daytime Place image reference only after byte/visual/licence review; retain existing D1 night image"
+    "filePage": "https://commons.wikimedia.org/wiki/File:%E6%9D%BE%E6%9C%AC%E5%9F%8E_-_Matsumoto_Castle_-_Flickr_-_tsuruta_yosuke.jpg",
+    "author": "tsuruta yosuke",
+    "license": "CC BY 2.0",
+    "licenseURL": "https://creativecommons.org/licenses/by/2.0/",
+    "originalSource": "https://www.flickr.com/photos/tsurutayosuke/49447661767/",
+    "approvedThumbnailURL": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/%E6%9D%BE%E6%9C%AC%E5%9F%8E_-_Matsumoto_Castle_-_Flickr_-_tsuruta_yosuke.jpg/960px-%E6%9D%BE%E6%9C%AC%E5%9F%8E_-_Matsumoto_Castle_-_Flickr_-_tsuruta_yosuke.jpg",
+    "status": "BLOCKED: exact GPT-6 approved thumbnail download returned HTTP 403 on 11/10/2026 (Asia/Hong_Kong); no JPEG bytes acquired, no image record or mapping added",
+    "verification": "Source/licence/content decision supplied by GPT-6 in Issue #22; Codex attempted approved binary retrieval only, no independent source research",
+    "attribution": "tsuruta yosuke / Wikimedia Commons / CC BY 2.0",
+    "derivativeNotice": "Approved thumbnail is resized; record any further crop/resize if bytes later become available",
+    "proposedUse": "Only D2 imageIds[0] and castle Place imageIds[0]; preserve D1/projection night image and every protected asset",
+    "previousCandidateHistoricalEvidence": {
+      "filePage": "https://commons.wikimedia.org/wiki/File:Matsumoto-Castle-day-view-2019-Luka-Peternel.jpg",
+      "author": "Luka Peternel",
+      "license": "CC BY-SA 4.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "revision": "https://commons.wikimedia.org/w/index.php?title=File:Matsumoto-Castle-day-view-2019-Luka-Peternel.jpg&oldid=861963817",
+      "size": "3648x5472 JPEG",
+      "status": "File-page rights verified; actual original download HTTP 403; no bytes acquired, visually approved or installed",
+      "proposedUse": "New D2 castle/daytime Place image reference only after byte/visual/licence review; retain existing D1 night image"
+    }
   },
   "liveCams": {
     "existingRecords": [

@@ -2,6 +2,16 @@
 
 Last updated: 11/10/2026 (Hong Kong)
 
+## Issue #22 — Final 28-item remediation (Draft PR #21)
+
+Candidate **v2.0.0-poc.44**, continuing `content/jp2027-vnext-unpublished-draft` from `ec26784`. All 28 items reopened using actual unpublished Schema6 Japan data through intercepted remote reads. See [fresh evidence matrix](V2_FINAL_28_REMEDIATION.md); this is local review, not user acceptance or completed Japan parity.
+
+Real browser diagnosis found item #27 missing: Today showed only selected-day/current metrics, not the shared five-day forecast. Extracted the existing presentation into generic `WeatherForecast` plus unchanged formatting helpers, reused by Today and WeatherPanel. Forecast spans the full Today grid and preserves day-region mapping, horizon/simulation notices, keyboard scrolling, existing cache/provider/scoring/preview behavior. No additional network request design or trip-specific rule.
+
+The exact GPT-6 selected daytime castle thumbnail returned **HTTP 403**. Ledger/manifest record `tsuruta yosuke / Wikimedia Commons / CC BY 2.0` and the technical block. No bytes/asset/image record/mapping added; original D1 night/protected assets unchanged. Unpublished candidate checksum remains `0a4d085d49cc86043e290b97c3636a31300c07f0f47b61559b9b7952c9e080d8`; published jp2027.1 remains immutable. No travel research was performed.
+
+Validation: baseline-focused **120 PASS**; patch-focused **155 PASS**, including 15 actual-draft Today forecast viewport/font cases; build/typecheck PASS. Complete final local regression **2,820/2,820 PASS (39.5m), exit0**, all 2,805 old cases plus 15 new, no failures/skips/retries; final build/typecheck and diff check PASS. Browser screenshots cover seven pages × five widths × three fonts plus real scrolling, detail sections and post-repair weather/gallery/navigation. Content/route/fares/native-name completeness and genuine LiveCam gaps remain PARTIAL/BLOCKED; no 28/28 claim. Production and Supabase untouched; Draft only, no merge/deploy, Step15D not started.
+
 ## Progress
 **Step 14/16 — Today Mode: COMPLETE**
 
