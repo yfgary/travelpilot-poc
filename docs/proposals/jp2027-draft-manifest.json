@@ -1,6 +1,6 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
-  "candidateLabel": "jp2027-schema6-review-draft-07",
+  "candidateLabel": "jp2027-schema6-review-draft-08",
   "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
   "published": false,
   "isCurrent": false,
@@ -125,6 +125,44 @@
         "jp27-source-gpt6-airport-tabino-access"
       ],
       "confidence": "GPT-6 operator/airport source review; planned schedule assumptions, no confirmed flights or hotel arrival guarantee"
+    },
+    {
+      "area": "GPT-6 Packet #5 D6/D8/D9 operational notes and external-only village scenery reference",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6113262289",
+      "fields": [
+        {
+          "kind": "timeline",
+          "dayId": "jp27-day-9",
+          "id": "jp27-tl-d9-aeon"
+        },
+        {
+          "kind": "place",
+          "id": "jp27-place-aeon-matsumoto"
+        },
+        {
+          "kind": "timeline",
+          "dayId": "jp27-day-8",
+          "id": "jp27-tl-d8-market"
+        },
+        {
+          "kind": "place",
+          "id": "jp27-place-miyagawa"
+        },
+        {
+          "kind": "timeline",
+          "dayId": "jp27-day-6",
+          "id": "jp27-tl-d6-view"
+        }
+      ],
+      "sourceIds": [
+        "jp27-source-gpt6-aeon-mall-hours",
+        "jp27-source-gpt6-aeon-style-hours",
+        "jp27-source-gpt6-miyagawa-winter-timeline",
+        "jp27-source-gpt6-miyagawa-winter-place",
+        "jp27-source-gpt6-shirakawago-view-access",
+        "jp27-source-gpt6-shirakawago-village-camera"
+      ],
+      "confidence": "Exact approved text, only second Place paragraphs replaced; no timing/route/booking change. Distinct official external webpage; no playback or rights completion. Recheck2027."
     }
   ],
   "photoCandidate": {
@@ -169,7 +207,7 @@
     },
     {
       "issue": 25,
-      "description": "No camera playback or embedding guarantee; new official Panomax link tunnel-blocked"
+      "description": "Official village scenery webpage added external-only; licensed playback/embedding and real availability unverified. #25 BLOCKED; traffic camera untouched."
     },
     {
       "issue": 9,
@@ -180,7 +218,7 @@
     "placesOriginal": 36,
     "placesDraft": 37,
     "days": 9,
-    "cameras": 5,
+    "cameras": 6,
     "transport": 7,
     "publishedFixtureUntouched": true,
     "protectedAssetsUntouched": true
@@ -190,26 +228,28 @@
     "Separate user authorization before any Supabase write/publication",
     "Step15D stays blocked"
   ],
-  "draftSha256": "8cf05ea8dd13a9154588e99b10a1fa0f242f6f1fbaef137f5f5b0a7a4870040e",
+  "draftSha256": "350b02bb8f365e973f1209a803d181453bd96c73fee1e3aa23d1cec459a7b59e",
   "sourceReview": "jp2027-source-review.json",
   "validation": {
-    "result": "PASS (local); independent GitHub PR QA pending",
+    "result": "PASS (local); independent GitHub PR QA result recorded in Draft PR21 after push",
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6113262289",
     "independentCodexResearch": false,
     "publicationApproval": false,
     "supabaseWrites": false,
     "step15DStarted": false,
-    "checkedAt": "2026-10-12T03:19:13+08:00",
-    "focusedCases": 135,
-    "focusedResult": "135/135 PASS (3.5m), final airport-rendering/capture35/35 PASS (52.7s)",
-    "fullRegressionCases": 2895,
-    "fullRegressionResult": "2895/2895 PASS (42.5m), exit0; exactly one full local run, two workers; no skips/retries",
+    "checkedAt": "2026-10-12T05:11:50+08:00",
+    "focusedCases": 200,
+    "focusedResult": "200/200 PASS (4.7m); final Packet5 rendering65/65 PASS (1.3m), corrected camera capture15/15 PASS (18.9s)",
+    "fullRegressionCases": 2960,
+    "fullRegressionResult": "2960/2960 PASS (41.9m), exit0; exactly one full regression, two workers, no skips/retries",
     "typecheckBuild": "PASS",
     "diffCheck": "PASS",
-    "viewportFontCoverage": "actual Itinerary/Today,320/390/430/1024/1440 × Small/Medium/Large; exact highlights and all five descriptions, no horizontal overflow",
-    "visualQA": "12 airport captures retained under docs/qa/packet4; representative320Large/390Medium/1440Medium Itinerary/Today inspected; long mobile text remains scrollable",
+    "viewportFontCoverage": "Actual Today/Itinerary/Place/LiveCam,320/390/430/1024/1440 × Small/Medium/Large; exact text, external href/target/rel, no media/provider request or body horizontal overflow",
+    "visualQA": "30 captures retained under docs/qa/packet5; representative320Large/390Medium/1440Medium interfaces inspected; camera heading and action separately captured on mobile",
     "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
-    "packetOnlyCandidateDelta": "PASS: exactly seven text replacements +five official source records reversed; reconstruct prior3861b294...SHA; prior Packet2/3 assertions preserved without Git history",
-    "interpretation": "Unpublished source-backed/renderable draft; item9 PARTIAL, not deployed/user-approved acceptance or booked-flight confirmation"
+    "packetOnlyCandidateDelta": "PASS: exactly three timeline descriptions, two second Place paragraphs, six sources, one Miyagawa sourceId and one external-only camera reversed; reconstruct Packet4 SHA8cf05ea8...; prior packet baseline checks retained without Git history",
+    "productionSha": "8b5129b381d6ace94030b51c7b8de5c4e3d5f533",
+    "interpretation": "Unpublished renderability only; #20/#23 PARTIAL, #25 BLOCKED; all28 require final acceptance, no publication/booking/playback certification"
   },
   "previousValidation": {
     "result": "PASS",
@@ -310,6 +350,30 @@
     "githubCI": {
       "runId": 38161242921,
       "jobId": 114534430263,
+      "result": "SUCCESS"
+    }
+  },
+  "previousValidationPacket4": {
+    "result": "PASS (local); independent GitHub PR QA pending",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false,
+    "checkedAt": "2026-10-12T03:19:13+08:00",
+    "focusedCases": 135,
+    "focusedResult": "135/135 PASS (3.5m), final airport-rendering/capture35/35 PASS (52.7s)",
+    "fullRegressionCases": 2895,
+    "fullRegressionResult": "2895/2895 PASS (42.5m), exit0; exactly one full local run, two workers; no skips/retries",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "actual Itinerary/Today,320/390/430/1024/1440 × Small/Medium/Large; exact highlights and all five descriptions, no horizontal overflow",
+    "visualQA": "12 airport captures retained under docs/qa/packet4; representative320Large/390Medium/1440Medium Itinerary/Today inspected; long mobile text remains scrollable",
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: exactly seven text replacements +five official source records reversed; reconstruct prior3861b294...SHA; prior Packet2/3 assertions preserved without Git history",
+    "interpretation": "Unpublished source-backed/renderable draft; item9 PARTIAL, not deployed/user-approved acceptance or booked-flight confirmation",
+    "githubCI": {
+      "runId": 38167526679,
+      "jobId": 114553080908,
       "result": "SUCCESS"
     }
   }

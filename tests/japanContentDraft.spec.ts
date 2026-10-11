@@ -1,6 +1,7 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { test, expect } from './fixtures'
+import { restoreOperationsPacket } from './japanOperationsPacketData'
 import { validateTripSnapshot } from '../src/data/schema/trip'
 
 const originalBytes = readFileSync('tests/fixtures/japan2027-schema5.json')
@@ -50,7 +51,7 @@ test('content evidence covers original 36 Places and qualifies prices/media with
     expect(entry.notReverified).toContain('existing fee/opening/lastEntry/closing')
   }
   expect(draft.images).toEqual(original.images)
-  expect(draft.liveCams).toEqual(original.liveCams)
+  expect(restoreOperationsPacket(draft).liveCams).toEqual(original.liveCams)
   expect(draft.navigationTargets).toEqual(original.navigationTargets)
   for (const key of ['regions', 'weather', 'hardCuts', 'checklists']) expect(draft[key]).toEqual(original[key])
   for (const stay of original.accommodations) {

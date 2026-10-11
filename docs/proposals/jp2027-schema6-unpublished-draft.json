@@ -908,7 +908,7 @@
           "optional": false,
           "startTime": "13:00",
           "endTime": "13:50",
-          "description": "按當日Shuttle／步行情況調整。",
+          "description": "展望台不能私家車駛入；白川鄉官方現列步行上坡約15分鐘單程，或乘接駁車單程¥300（車上現金），冬天路況可能停駛。13:00–13:50原有50分鐘包括轉乘／步行與觀景，遇長隊、積雪或班次不合要縮短觀景而非強行趕路；以2027當日官方資料為準。",
           "durationMinutes": 50,
           "placeId": "jp27-place-ogimachi-view"
         },
@@ -1143,7 +1143,7 @@
           "optional": false,
           "startTime": "09:00",
           "endTime": "09:40",
-          "description": "地元蔬果、漬物、手信、小食。",
+          "description": "高山市官方顯示宮川朝市12–3月08:00–12:00，09:00–09:40適合看雪季漬物、味噌、小食和手信；冬天攤檔較少，亦可能提早售罄，不能承諾指定生果或攤位有開。",
           "durationMinutes": 40,
           "placeId": "jp27-place-miyagawa"
         },
@@ -1302,7 +1302,7 @@
           "optional": false,
           "startTime": "09:30",
           "endTime": "11:00",
-          "description": "食品、零食、生果、日用品；11:00 Hard Cut。",
+          "description": "09:30–10:00先去09:00開門的AEON STYLE超市補食品、零食及日用品；其餘晴庭／風庭／空庭主要專門店通常10:00先開，10:00–11:00先可選購。11:00必須Hard Cut，仲要入油及還車，不能因店舖未開而延遲。以上為2026/10官方一般營業時間，2027當日如有改動須重查。",
           "durationMinutes": 90,
           "placeId": "jp27-place-aeon-matsumoto",
           "navigationTargetId": "jp27-nav-aeon-matsumoto",
@@ -2133,7 +2133,8 @@
       ],
       "sourceIds": [
         "jp27-source-takayama-tourism",
-        "jp27-source-draft-miyagawa"
+        "jp27-source-draft-miyagawa",
+        "jp27-source-gpt6-miyagawa-winter-place"
       ],
       "whyVisit": "D8固定高山市區早段，節奏短而有生活感；冬季官方旅遊資料一般為08:00–12:00。",
       "suggestedDurationMinutes": 40,
@@ -2141,7 +2142,7 @@
       "mapURL": "https://www.google.com/maps/search/?api=1&query=Miyagawa%20Morning%20Markets%20Takayama",
       "officialURL": "https://www.hidatakayama.or.jp/",
       "localName": "飛騨高山宮川朝市",
-      "longDescription": "宮川朝市沿鍛冶橋到彌生橋一帶的宮川東岸展開，地方介紹列有農產、漬物及手作等攤販。它是早市與地方日常購物場景，不是固定清單的美食套餐。\n\n冬季攤販數目與當日出攤會變動；可邊走邊看，但不要承諾指定攤位或鮮果必有供應。與高山陣屋前朝市是不同位置，導航及預留時間保持原行程。"
+      "longDescription": "宮川朝市沿鍛冶橋到彌生橋一帶的宮川東岸展開，地方介紹列有農產、漬物及手作等攤販。它是早市與地方日常購物場景，不是固定清單的美食套餐。\n\n高山市朝市傳統整體可追溯1820年前後的桑市，1894年後有蔬菜市，並非指現時宮川河畔市集自1820年已在同址開設。官方冬季12–3月08:00–12:00，雪天攤檔通常比夏秋少，食物以味噌、漬物、餅等保存食品較具季節特色；實際出攤和售罄時間逐日變動。D8原定09:00–09:40不變。"
     },
     {
       "id": "jp27-place-takayama-jinya",
@@ -2360,7 +2361,7 @@
       "mapURL": "https://www.google.com/maps/search/?api=1&query=AEON%20Mall%20Matsumoto",
       "officialURL": "https://matsumoto.aeonmall.jp/",
       "localName": "イオンモール松本",
-      "longDescription": "AEON Mall松本在行程中承擔用餐、購物與補給功能，官網分列店鋪及服務。它與松本城的文化財體驗不同，可按需要選擇餐飲或採購，避免把全館購物當成必須完成的景點。\n\n各店與餐飲營業可能不同，返程前要爲購物和回車留緩衝。沒有查到可新增的歷史事實，本草稿不爲商場編造文化背景；現有時間及費用字段仍待出發前複覈。"
+      "longDescription": "AEON Mall松本在行程中承擔用餐、購物與補給功能，官網分列店鋪及服務。它與松本城的文化財體驗不同，可按需要選擇餐飲或採購，避免把全館購物當成必須完成的景點。\n\n官方目前顯示AEON STYLE（超市／直營區）09:00–22:00、晴庭／風庭／空庭專門店10:00–21:00，部分個別商店不同。D9原有09:30–11:00內，前30分鐘只應預期超市已營業，專門店約10:00後才開始；11:00離開Hard Cut不可讓購物擠走入油、還車及JR時間。2027年1月出發前再核對。"
     },
     {
       "id": "jp27-place-kumoba",
@@ -6059,6 +6060,28 @@
       "officialURL": "https://douro.pref.gifu.lg.jp/",
       "statusURL": "https://douro.pref.gifu.lg.jp/",
       "sourceLabel": "岐阜縣道路情報"
+    },
+    {
+      "id": "jp27-cam-shirakawago-village",
+      "label": "白川鄉官方村景定時畫面",
+      "description": "官方村景靜止畫面約每分鐘更新，05:00–19:00運作，19:00–05:00停止自動更新；冬季天氣及積雪可能中斷或遮擋畫面。為居民私隱而稍微柔焦；只可在官方頁面查看，非本程式內嵌或已認證的即時串流。",
+      "regionId": "jp27-region-shirakawago",
+      "placeId": "jp27-place-shirakawago",
+      "routeDayIds": [
+        "jp27-day-6"
+      ],
+      "group": "D6 白川鄉",
+      "priority": "reference",
+      "tags": [
+        "村景",
+        "積雪",
+        "展望台",
+        "定時更新"
+      ],
+      "sourceType": "external",
+      "sourceURL": "https://kankou.shirakawa-go.org/livecam/",
+      "officialURL": "https://kankou.shirakawa-go.org/livecam/",
+      "sourceLabel": "白川村官方"
     }
   ],
   "images": [
@@ -7386,6 +7409,66 @@
       "entity": {
         "type": "timeline",
         "id": "jp27-tl-d1-checkin"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-aeon-mall-hours",
+      "title": "AEON Mall松本官方營業時間（GPT-6核對2026-10-12）",
+      "url": "https://matsumoto.aeonmall.jp/guide/hours",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d9-aeon"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-aeon-style-hours",
+      "title": "AEON STYLE松本官方店舖營業時間（GPT-6核對2026-10-12）",
+      "url": "https://www.aeon.com/store/%E3%82%A4%E3%82%AA%E3%83%B3/%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E6%9D%BE%E6%9C%AC/shop_info/hours/",
+      "type": "official",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-aeon-matsumoto"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-miyagawa-winter-timeline",
+      "title": "高山市官方宮川朝市冬季資料（GPT-6核對2026-10-12）",
+      "url": "https://www.hidatakayama.or.jp/spot/detail_1127.html",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d8-market"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-miyagawa-winter-place",
+      "title": "高山市官方朝市歷史與冬季時間（GPT-6核對2026-10-12）",
+      "url": "https://www.hidatakayama.or.jp/spot/detail_1127.html",
+      "type": "official",
+      "entity": {
+        "type": "place",
+        "id": "jp27-place-miyagawa"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-shirakawago-view-access",
+      "title": "白川鄉官方展望台通行與接駁資料（GPT-6核對2026-10-12）",
+      "url": "https://shirakawa-going.jp/",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d6-view"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-shirakawago-village-camera",
+      "title": "白川村官方村景畫面及使用限制（GPT-6核對2026-10-12）",
+      "url": "https://kankou.shirakawa-go.org/livecam/",
+      "type": "official",
+      "entity": {
+        "type": "liveCam",
+        "id": "jp27-cam-shirakawago-village"
       }
     }
   ],

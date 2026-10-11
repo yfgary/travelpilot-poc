@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { expect } from './fixtures'
+import { restoreOperationsPacket } from './japanOperationsPacketData'
 import type { TripSnapshot } from '../src/data/schema/trip'
 
 // Exact closed GPT-6 packet and pre-packet literals, never fetched during tests.
@@ -12,7 +13,7 @@ export const airportPacket = JSON.parse(readFileSync('tests/fixtures/japan-airpo
 
 export function restoreAirportPacket<T extends TripSnapshot>(snapshot: T): T {
   expect(airportPacket.priorCandidateSha256).toBe('3861b2943e1fb6cdf615f23cc9c518d62a5ea5d45d15705271058d3b489d51d4')
-  const restored = structuredClone(snapshot)
+  const restored = restoreOperationsPacket(snapshot)
   expect(restored.sources.slice(-5)).toEqual(airportPacket.sources)
   restored.sources = restored.sources.slice(0, -5)
   for (const field of airportPacket.fields) {

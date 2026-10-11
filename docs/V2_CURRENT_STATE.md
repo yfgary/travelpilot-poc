@@ -2,6 +2,18 @@
 
 Last updated: 12/10/2026 (Hong Kong)
 
+## GPT-6 verified Packet #5 — D6/D8/D9 operational notes and external scenery page
+
+Continuing Draft PR #21 from `cd4d2173a9c1604711cf0d214fc742bc30fc7f27`; [exact closed packet](https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6113262289). Packet4 CI [38167526679](https://github.com/yfgary/travelpilot-poc/actions/runs/38167526679) SUCCESS. Coding/testing only; no independent travel research or external travel-page browsing.
+
+Exactly three timeline descriptions and two second Place paragraphs replaced. D9 distinguishes supermarket09:00 opening from specialty10:00 opening inside the unchanged09:30–11:00 slot and11:00 hard cut. D8 distinguishes winter08:00–12:00 market operation and variable stalls from the overall Takayama market tradition, without assigning1820 to the current riverside location. D6 describes no personal-car viewpoint access,15min each-way walking/current300JPY one-way cash shuttle and winter/queue risk inside unchanged13:00–13:50. Optional viewpoint Place paragraph is unchanged; GPT-6 parking/bus/private-car reference facts remain ledger-only, not new booking claims or invented candidate fields. Recheck2027.
+
+A distinct external-only `jp27-cam-shirakawago-village` links the approved official HTML webpage. Existing traffic camera and all five original records remain exact. No image/preview/hotlink/iframe/playback/refresh request is added; minutely05–19 still updates,19–05 stop, snow interruption and privacy softening are described. #25 remains BLOCKED: no licensed playback/embedding or actual provider availability certification. Six entity-bound official sources and Miyagawa Place source reference added. Prior packet deltas remain strongly SHA-guarded without Git history.
+
+App remains **v2.0.0-poc.45**, Schema6/readers1–6 and demo versions unchanged (unpublished authoring only). Candidate `jp2027-schema6-review-draft-08`; review label `jp2027.2-DRAFT-UNPUBLISHED`; SHA256 `350b02bb8f365e973f1209a803d181453bd96c73fee1e3aa23d1cec459a7b59e`. Reversing exactly Packet5 reconstructs Packet4 SHA8cf05ea8...; original published SHA09a0bc1a... unchanged. **200/200 focused PASS (4.7m)**; final Packet5 **65/65 PASS (1.3m)** and corrected camera captures **15/15 PASS (18.9s)**. Build/typecheck/diff PASS; **2,960/2,960 full regression PASS (41.9m), exit0**, exactly one complete run, two workers, no skips/retries. All2,895 prior cases retained plus65 new. Actual Today/Itinerary/Place/LiveCam assertions cover five widths × three fonts. [Responsive evidence](qa/packet5/README.md):30 retained captures, representative320Large/390Medium/1440Medium inspected; exact warnings wrap, mobile dialogs/long notes remain vertically scrollable, camera heading and source action visible in separate frames. No provider page was opened, image/media requested or playback certified. GitHub PR CI result will be recorded in Draft PR21 after push; no final28-item acceptance claimed.
+
+Improves #20/#23 only; #9/#13/#14/#15/#18/#20/#22/#23/#25 remain open and all28 require final confirmation. Flight fares, booked/payment amounts, future operations/route choices, remaining Place fields, daytime photo403 and camera permissions/availability remain unresolved. No runtime/source/schema/asset changes, merge/deploy, Production/Supabase/published jp2027.1 modification or Step15D.
+
 ## GPT-6 verified Packet #4 — D1/D9 airport and hotel walking buffers
 
 Continuing Draft PR #21 fromaf7cc6d7; [exact closed packet](https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6112231362). Prior Packet3 CI [38161242921](https://github.com/yfgary/travelpilot-poc/actions/runs/38161242921) SUCCESS (validate114534430263). No independent travel research.
