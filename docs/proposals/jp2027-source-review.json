@@ -1,7 +1,7 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
   "checkedAt": "2026-10-11T16:45:01+08:00",
-  "method": "Official pages read through web tool; original Chinese paraphrases. Reused R6–R8 audit; no new live database requests. Source availability is not playback or January-operating confirmation.",
+  "method": "Official pages read through web tool; original Chinese paraphrases. Reused R6–R8 audit; no new live database requests. Source availability is not playback or January-operating confirmation. Latest Snow Monkey correction implements GPT-6 verified packet #1 only; Codex performed no independent external-source research or image download.",
   "places": [
     {
       "id": "jp27-place-matsumoto-castle",
@@ -307,39 +307,68 @@
       "localName": "地獄谷野猿公苑",
       "urls": [
         "https://en.jigokudani-yaenkoen.co.jp/guide/",
-        "https://jigokudani-yaenkoen.co.jp/information/information-3104/"
+        "https://jigokudani-yaenkoen.co.jp/information/information-3104/",
+        "https://jigokudani-yaenkoen.co.jp/wp-content/uploads/2026/09/8e706a84d13cb2800302700fed5ffb5d-834x1180.jpg",
+        "https://jigokudani-yaenkoen.co.jp/guide/",
+        "https://jigokudani-yaenkoen.co.jp/",
+        "https://jigokudani-yaenkoen.co.jp/information/2990/"
       ],
       "verifiedFields": [
         "closing",
+        "fee",
         "feeNotes",
-        "lastEntry",
         "localName",
         "longDescription",
         "opening"
       ],
       "facts": [
         "野猿公苑觀察的是自由活動的野生猴羣，不是動物園定時表演。冬季可觀察牠們在寒冷環境中的行為，但到場數目、出現時間及是否浸溫泉都不能保證；保持距離，不餵食、不觸摸。",
-        "官方冬季11月至3月09:00–16:00，建議閉園前30分鐘到達；20/09/2026公告01/12/2026起改價。新價只載圖片，本輪下載HTTP 403未能讀取，草稿不填金額；猴群與天氣可能令開園安排改變。"
+        "官方冬季11月至3月09:00–16:00，建議關門前30分鐘到達，並未公告15:30是嚴格最後入場時間。2026/12/01起成人一般入苑¥1,000，Web指定日期票¥880；12月至4月Web票有優先入苑安排，但不能保證猴群必定出現或沒有等候。天氣、野生猴群或人數管制可能導致臨時改變安排，出發前再查官方。"
       ],
       "notReverified": [
         "existing history/localImportance/whatToSee/takeaway",
         "existing fee/opening/lastEntry/closing"
       ],
-      "pending": "Any inherited field not explicitly covered by operationalReview remains unverified; exceptional January closures/changes require departure-time checks.",
+      "pending": "Other inherited fields not expressly covered remain unverified; January temporary operation and wild-monkey presence are not guaranteed.",
       "operationalReview": {
-        "checkedAt": "2026-10-11T16:45:01+08:00",
+        "checkedAt": "2026-10-11T18:17:04+08:00",
         "url": "https://jigokudani-yaenkoen.co.jp/information/information-3104/",
         "fields": [
-          "feeNotes"
+          "fee",
+          "feeNotes",
+          "longDescription"
         ],
-        "basis": "Effective date verified, revised amounts NOT verified; guide separately confirms Nov–Mar 09:00–16:00 and arrival 30 minutes before closing",
         "confirmedUnchangedFields": [
           "opening",
-          "lastEntry",
           "closing"
         ],
+        "removedFields": [
+          "lastEntry"
+        ],
         "hoursSource": "https://jigokudani-yaenkoen.co.jp/guide/",
-        "lastEntryMeaning": "Recommended arrival at least 30 minutes before closing, not separately advertised ticket-desk cutoff"
+        "verification": {
+          "verifiedBy": "GPT-6",
+          "verifiedOn": "2026-10-11",
+          "implementationPacket": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6107780532",
+          "basis": "Official fee-table image visually verified by GPT-6; Codex implements packet only, no independent research or image download",
+          "notice": "https://jigokudani-yaenkoen.co.jp/information/information-3104/",
+          "image": "https://jigokudani-yaenkoen.co.jp/wp-content/uploads/2026/09/8e706a84d13cb2800302700fed5ffb5d-834x1180.jpg",
+          "noticeDate": "2026-09-20",
+          "effectiveFrom": "2026-12-01",
+          "adultStandard": {
+            "amount": 1000,
+            "currency": "JPY",
+            "age": "18+"
+          },
+          "adultWeb": 880,
+          "schoolchildToHighSchoolStandard": 500,
+          "schoolchildToHighSchoolWeb": 440,
+          "under6": "Free with guardian",
+          "lastEntry": "No proven strict 15:30 cutoff; removed field. Arrival30minutesbeforeclosing is advice only.",
+          "winterHours": "November–March 09:00–16:00",
+          "webPriority": "December–April entry priority, not guaranteed admission/no queue",
+          "paymentClaim": false
+        }
       },
       "initialNotReverifiedStatus": "notReverified records the earlier review checkpoint; operationalReview and verifiedFields supersede it only for explicitly listed fields."
     },
@@ -1118,7 +1147,9 @@
   "operatingExceptions": [
     {
       "id": "jp27-place-snow-monkey",
-      "finding": "December2026 revision verified from original notice; price image fetch HTTP403. Candidate has no numerical fee. Winter guide hours verified, arrival30minbeforeclose recommendation."
+      "finding": "Official fee image visually verified by GPT-6: effective2026-12-01 adult standardJPY1000/Web880, schoolchild–high school500/Web440, under6freewithguardian. Winter09:00–16:00; arrivalby15:30 advice, no proven strict lastEntry. Draft corrected; not paid or guaranteed admission.",
+      "url": "https://jigokudani-yaenkoen.co.jp/wp-content/uploads/2026/09/8e706a84d13cb2800302700fed5ffb5d-834x1180.jpg",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6107780532"
     },
     {
       "id": "jp27-place-santera",
@@ -1347,7 +1378,8 @@
         "after": {
           "feeNotes": "官方20/09/2026公告01/12/2026起改價；新價只載圖片，這輪下載HTTP 403未能讀取，2027金額待原圖核實，不沿用¥800或填第三方估值。"
         },
-        "basis": "Effective date verified, revised amounts NOT verified; guide separately confirms Nov–Mar 09:00–16:00 and arrival 30 minutes before closing"
+        "basis": "Effective date verified, revised amounts NOT verified; guide separately confirms Nov–Mar 09:00–16:00 and arrival 30 minutes before closing",
+        "supersededBy": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6107780532"
       }
     ],
     "snowMonkeyRevision": {
@@ -1355,8 +1387,32 @@
       "effectiveFrom": "2026-12-01",
       "noticeDate": "2026-09-20",
       "image": "https://jigokudani-yaenkoen.co.jp/wp-content/uploads/2026/09/8e706a84d13cb2800302700fed5ffb5d-834x1180.jpg",
-      "result": "HTTP403; no image bytes read, new amounts unverified; no fee in candidate",
-      "winterGuide": "https://jigokudani-yaenkoen.co.jp/guide/"
+      "result": "RESOLVED by GPT-6 primary-image visual verification in implementation packet #1; draft standard adultJPY1000, Web880 notes only; misleading lastEntry removed.",
+      "winterGuide": "https://jigokudani-yaenkoen.co.jp/guide/",
+      "previousCodexFetchResult": "HTTP403; no image bytes read, new amounts unverified; no fee in candidate",
+      "verification": {
+        "verifiedBy": "GPT-6",
+        "verifiedOn": "2026-10-11",
+        "implementationPacket": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6107780532",
+        "basis": "Official fee-table image visually verified by GPT-6; Codex implements packet only, no independent research or image download",
+        "notice": "https://jigokudani-yaenkoen.co.jp/information/information-3104/",
+        "image": "https://jigokudani-yaenkoen.co.jp/wp-content/uploads/2026/09/8e706a84d13cb2800302700fed5ffb5d-834x1180.jpg",
+        "noticeDate": "2026-09-20",
+        "effectiveFrom": "2026-12-01",
+        "adultStandard": {
+          "amount": 1000,
+          "currency": "JPY",
+          "age": "18+"
+        },
+        "adultWeb": 880,
+        "schoolchildToHighSchoolStandard": 500,
+        "schoolchildToHighSchoolWeb": 440,
+        "under6": "Free with guardian",
+        "lastEntry": "No proven strict 15:30 cutoff; removed field. Arrival30minutesbeforeclosing is advice only.",
+        "winterHours": "November–March 09:00–16:00",
+        "webPriority": "December–April entry priority, not guaranteed admission/no queue",
+        "paymentClaim": false
+      }
     },
     "fourFares": {
       "status": "BLOCKED: actual flight receipts and JR service/class/date-specific authoritative quote missing",
@@ -1386,6 +1442,52 @@
       "supabaseWrites": false,
       "step15DStarted": false,
       "interpretation": "Valid and renderable unpublished proposal; NOT comprehensive factual certification or publication approval"
+    }
+  },
+  "implementationPacket1": {
+    "status": "IMPLEMENTED_UNPUBLISHED",
+    "implementedAt": "2026-10-11T18:17:04+08:00",
+    "verification": {
+      "verifiedBy": "GPT-6",
+      "verifiedOn": "2026-10-11",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6107780532",
+      "basis": "Official fee-table image visually verified by GPT-6; Codex implements packet only, no independent research or image download",
+      "notice": "https://jigokudani-yaenkoen.co.jp/information/information-3104/",
+      "image": "https://jigokudani-yaenkoen.co.jp/wp-content/uploads/2026/09/8e706a84d13cb2800302700fed5ffb5d-834x1180.jpg",
+      "noticeDate": "2026-09-20",
+      "effectiveFrom": "2026-12-01",
+      "adultStandard": {
+        "amount": 1000,
+        "currency": "JPY",
+        "age": "18+"
+      },
+      "adultWeb": 880,
+      "schoolchildToHighSchoolStandard": 500,
+      "schoolchildToHighSchoolWeb": 440,
+      "under6": "Free with guardian",
+      "lastEntry": "No proven strict 15:30 cutoff; removed field. Arrival30minutesbeforeclosing is advice only.",
+      "winterHours": "November–March 09:00–16:00",
+      "webPriority": "December–April entry priority, not guaranteed admission/no queue",
+      "paymentClaim": false
+    },
+    "feeNotes": "官方2026/09/20公告：由2026/12/01起，成人（18歲或以上）一般票¥1,000；成人Web指定日期票¥880。小學生至高中生一般¥500／Web¥440；6歲以下監護人陪同免費。冬季Web票持有人優先入苑，但不保證免排隊或必定入場。價格為官方公告非已付款金額；2027出發前再查。官方冬季09:00–16:00，建議最遲15:30前到達（不是已核實的硬性最後入場時間）。",
+    "descriptionSecondParagraph": "官方冬季11月至3月09:00–16:00，建議關門前30分鐘到達，並未公告15:30是嚴格最後入場時間。2026/12/01起成人一般入苑¥1,000，Web指定日期票¥880；12月至4月Web票有優先入苑安排，但不能保證猴群必定出現或沒有等候。天氣、野生猴群或人數管制可能導致臨時改變安排，出發前再查官方。",
+    "validation": {
+      "result": "PASS",
+      "checkedAt": "2026-10-11T18:59:56+08:00",
+      "focusedCases": 60,
+      "focusedResult": "60/60 PASS (2.0m)",
+      "fullRegressionCases": 2805,
+      "fullRegressionResult": "2805/2805 PASS (39.4m), exit0; one full local run, two workers",
+      "typecheckBuild": "PASS",
+      "diffCheck": "PASS",
+      "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; mocked draft dialogs/routes/cache",
+      "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+      "packetOnlyCandidateDelta": "PASS: only Snow Monkey fee, feeNotes, lastEntry deletion, second paragraph and source link/record changed",
+      "independentCodexResearch": false,
+      "publicationApproval": false,
+      "supabaseWrites": false,
+      "step15DStarted": false
     }
   }
 }

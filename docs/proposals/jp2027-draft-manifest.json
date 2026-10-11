@@ -1,6 +1,6 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
-  "candidateLabel": "jp2027-schema6-review-draft-03",
+  "candidateLabel": "jp2027-schema6-review-draft-04",
   "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
   "published": false,
   "isCurrent": false,
@@ -38,7 +38,17 @@
     {
       "area": "11 October independent-review follow-up",
       "evidence": "jp2027-source-review.json#followUpReview",
-      "confidence": "Targeted fees/hours and structured details verified; Ganshoin600 correction, outdated Iwatake numeric fare omitted; D2/D6 route advice conditional only; SnowMonkey revised amount blocked"
+      "confidence": "Targeted fees/hours and structured details verified; Ganshoin600 correction, outdated Iwatake numeric fare omitted; D2/D6 route advice conditional only; SnowMonkey revised amount blocked",
+      "snowMonkeyEvidenceSupersededBy": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6107780532"
+    },
+    {
+      "area": "Snow Monkey Park GPT-6 verified implementation packet #1",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6107780532",
+      "official": [
+        "https://jigokudani-yaenkoen.co.jp/information/information-3104/",
+        "https://jigokudani-yaenkoen.co.jp/wp-content/uploads/2026/09/8e706a84d13cb2800302700fed5ffb5d-834x1180.jpg"
+      ],
+      "confidence": "GPT-6 visually verified official price table; adultstandard1000/Web880notes, remove unproven15:30lastEntry; no independent Codex research or payment claims"
     }
   ],
   "photoCandidate": {
@@ -66,7 +76,7 @@
     },
     {
       "issue": 23,
-      "description": "36 sourced introductions retained; selected structured details and operational fields rechecked; Snow Monkey revised amounts blocked; inherited fields not comprehensively certified"
+      "description": "Snow Monkey fee/arrival advice corrected from GPT-6 verified packet; remaining inherited fields and comprehensive Place authoring still incomplete"
     },
     {
       "issue": 25,
@@ -87,9 +97,26 @@
     "Separate user authorization before any Supabase write/publication",
     "Step15D stays blocked"
   ],
-  "draftSha256": "2b37f291c82015224369837f4b589a176930b1e79130ae11f92141101c165d84",
+  "draftSha256": "0a4d085d49cc86043e290b97c3636a31300c07f0f47b61559b9b7952c9e080d8",
   "sourceReview": "jp2027-source-review.json",
   "validation": {
+    "result": "PASS",
+    "checkedAt": "2026-10-11T18:59:56+08:00",
+    "focusedCases": 60,
+    "focusedResult": "60/60 PASS (2.0m)",
+    "fullRegressionCases": 2805,
+    "fullRegressionResult": "2805/2805 PASS (39.4m), exit0; one full local run, two workers",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; mocked draft dialogs/routes/cache",
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: only Snow Monkey fee, feeNotes, lastEntry deletion, second paragraph and source link/record changed",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false
+  },
+  "previousValidation": {
     "result": "PASS",
     "checkedAt": "2026-10-11T17:27:27+08:00",
     "focusedCases": 55,
@@ -109,13 +136,7 @@
     "publicationApproval": false,
     "supabaseWrites": false,
     "step15DStarted": false,
-    "interpretation": "Valid and renderable unpublished proposal; NOT comprehensive factual certification or publication approval"
-  },
-  "previousValidation": {
-    "commit": "a678686ea70c99f1a77aedc2e7a4ecd1457eb75f",
-    "focusedCases": 55,
-    "fullRegressionCases": 2800,
-    "result": "PASS",
-    "ciRun": 38096677950
+    "interpretation": "Valid and renderable unpublished proposal; NOT comprehensive factual certification or publication approval",
+    "commit": "c0267ef397e696c6d365137f18bfe727bf7df46b"
   }
 }
