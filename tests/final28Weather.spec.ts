@@ -27,6 +27,9 @@ for (const font of ['small', 'medium', 'large']) test(`actual unpublished Japan 
   await scroller.scrollIntoViewIfNeeded()
   const geometry = await scroller.evaluate(node => ({ client: node.clientWidth, scroll: node.scrollWidth, ys: [...node.children].map(child => child.getBoundingClientRect().top) }))
   expect(new Set(geometry.ys).size).toBe(1)
+  const metricRows = await scroller.locator('.weather-forecast-day').evaluateAll(nodes => nodes.map(node => [...node.querySelectorAll('.weather-daily-metrics > div')].map(row => row.getBoundingClientRect().top)))
+  for (let row = 0; row < 10; row++) expect(Math.max(...metricRows.map(rows => rows[row])) - Math.min(...metricRows.map(rows => rows[row]))).toBeLessThanOrEqual(1)
+
   if (page.viewportSize()!.width >= 900) expect(geometry.scroll).toBeLessThanOrEqual(geometry.client + 2)
   else {
     expect(geometry.scroll).toBeGreaterThan(geometry.client)

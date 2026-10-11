@@ -14,6 +14,8 @@ test('five forecast days use desktop width while small screens retain horizontal
     ys: [...el.children].map((child) => Math.round(child.getBoundingClientRect().top)),
   }))
   expect(new Set(dims.ys).size).toBe(1)
+  const metricRows = await days.evaluateAll(nodes => nodes.map(node => [...node.querySelectorAll('.weather-daily-metrics > div')].map(row => row.getBoundingClientRect().top)))
+  for (let row = 0; row < 10; row++) expect(Math.max(...metricRows.map(rows => rows[row])) - Math.min(...metricRows.map(rows => rows[row]))).toBeLessThanOrEqual(1)
   if (page.viewportSize()!.width >= 900) expect(dims.scroll).toBeLessThanOrEqual(dims.client + 2)
   else expect(dims.scroll).toBeGreaterThan(dims.client)
   expect(await page.locator('main').evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true)

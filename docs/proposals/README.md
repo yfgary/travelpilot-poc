@@ -37,4 +37,4 @@ Focused tests use the exact draft as intercepted review data in native Playwrigh
 
 ## Issue #22 reopened visual gate
 
-[Final 28-item browser evidence](../V2_FINAL_28_REMEDIATION.md) reopens every original requirement using this actual unpublished candidate. Today’s missing shared five-day forecast is repaired generically in poc.44; image/content/camera blockers remain open. No user acceptance, publication, merge or deployment is implied.
+[Final 28-item browser evidence](../V2_FINAL_28_REMEDIATION.md) reopens every original requirement using this actual unpublished candidate. Today’s missing shared five-day forecast is repaired generically in poc.44, with comparison-track alignment repaired in poc.45; image/content/camera blockers remain open. No user acceptance, publication, merge or deployment is implied.

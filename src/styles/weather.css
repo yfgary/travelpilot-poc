@@ -88,3 +88,9 @@
   .weather-forecast { grid-auto-flow: row; grid-auto-columns: initial; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow-x: visible; scroll-snap-type: none; }
   .weather-forecast-day { scroll-snap-align: none; }
 }
+
+/* Share header/metrics/score tracks across comparison cards: wrapping trend
+   labels must not shift days 4–5 below the other days' metric rows. */
+.weather-forecast { grid-template-rows: repeat(3, auto); row-gap: 0; }
+.weather-forecast-day { display: grid; grid-row: span 3; grid-template-rows: subgrid; }
+.weather-forecast-overview { min-width: 0; }

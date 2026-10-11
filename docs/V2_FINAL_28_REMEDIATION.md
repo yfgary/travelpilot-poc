@@ -1,6 +1,6 @@
 # Final 28-item remediation — Issue #22
 
-Review date: **11/10/2026 (Asia/Hong_Kong)**. Existing Draft PR **#21**, branch `content/jp2027-vnext-unpublished-draft`, starting commit `ec26784ef7b3341d867533a7bf1850a3c59b2bb2`. Implementation candidate **v2.0.0-poc.44**. No merge/deployment/publication.
+Review date: **11/10/2026 (Asia/Hong_Kong)**. Existing Draft PR **#21**, branch `content/jp2027-vnext-unpublished-draft`, starting commit `ec26784ef7b3341d867533a7bf1850a3c59b2bb2`. Implementation candidate **v2.0.0-poc.45**. No merge/deployment/publication.
 
 **All 28 items reopened. This is local Chromium evidence, not user acceptance or 28/28 completion.** Local presentation assessment: 19 PASS / 7 PARTIAL / 2 BLOCKED. Every item still requires the separately authorized published-POC/user acceptance gate. Earlier R8 PASS labels were not treated as accepted. Physical Safari/iPhone is untested.
 
@@ -9,6 +9,12 @@ Review date: **11/10/2026 (Asia/Hong_Kong)**. Existing Draft PR **#21**, branch 
 Baseline poc.43's Today Mode `TodayWeather` renders current/selected-day metrics and one score, but never renders the five-day forecast. Screenshot diagnosis reproduced item #27 despite earlier passing tests: those tests checked single-day metrics, not five cards. **Issue #22 #27: FAIL before → local PASS after.**
 
 Extract the unchanged five-day WeatherPanel presentation into `WeatherForecast`, and the existing metric/condition formatting into `weatherDisplay`. Today uses that same component and already-loaded selected-day region forecast. A separate full-grid-width forecast section preserves the compact current-weather/navigation columns and existing current/preview/weather status behavior. No additional request, provider, score calculation rule, date/time, storage, auth or trip inference was introduced. Existing old weather assertions remain intact. The source fingerprint audit adds only the four specifically authorized weather presentation files and still protects all other R6/R7 files.
+
+### Item #2 reopened after the poc.44 checkpoint
+
+A deeper real-browser coordinate check supersedes the earlier visual/green-test assessment: at **1024px/Large**, days4–5’s wrapping trend badges made their headers taller and moved every metric **34.15625px** below days1–3. Card-origin and row-display assertions did not detect this. The earlier poc.44 local full run remained green, but item2 was immediately reopened as FAIL in Issue #22 before final acceptance.
+
+Repair poc.45 makes the existing comparison cards share header/metrics/score tracks using CSS subgrid. Header wrapping remains readable, all ten corresponding metric rows align, and card content/scores/values are unchanged. Stronger assertions now compare actual metric row coordinates in both generic demo WeatherPanel and actual Japan Today at all 15 viewport/font combinations. A second full regression is necessary for this newly confirmed defect; the earlier green poc.44 run is retained as history, not final acceptance.
 
 ## Image implementation blocker — no content substitution
 
@@ -30,6 +36,8 @@ Weather responses and clock are controlled UI fixtures, not live forecasts. Came
 
 Each contact sheet's columns are Small / Medium / Large. Evidence link in the matrix opens a 320px contact sheet; use the five-width table for the same section at every width/font. Original-resolution [320 Large castle dialog](qa/final28/320-large-attractions-dialog.png), [OFFLINE](qa/final28/320-large-offline.png) and post-repair forecast PNGs supplement layout thumbnails. Direct source metadata is available in the candidate/ledger; a visible screenshot cannot certify unknown content facts.
 
+Post-alignment repair captures and actual row deltas: [320](qa/final28/contact-320-alignment45.jpg), [390](qa/final28/contact-390-alignment45.jpg), [430](qa/final28/contact-430-alignment45.jpg), [1024](qa/final28/contact-1024-alignment45.jpg), [1440](qa/final28/contact-1440-alignment45.jpg); [coordinate evidence](qa/final28/alignment45-results.json). These supersede baseline weather alignment screenshots only.
+
 ## Reopened acceptance matrix
 
 All rows concern the actual unpublished candidate, reviewed in PR #21 on the date above. PASS means only the stated local presentation behavior, **never published/user accepted**. PARTIAL/BLOCKED retain their explicit missing data/provider/licence conditions. Complete regression covers generic city/road behavior, readers1–6 and cross-trip isolation separately from Japan visual evidence.
@@ -37,7 +45,7 @@ All rows concern the actual unpublished candidate, reviewed in PR #21 on the dat
 | # | Requirement / previous issue | Local status | Fresh browser evidence | Outstanding condition |
 | --- | --- | --- | --- | --- |
 | 1 | Back-to-Top fixed/accessible | PASS (local) | [weather-today](qa/final28/contact-320-weather-today.jpg): Actual main-pane scroll, visible arrow and smooth return to scrollTop=0 at all 15 combinations. | Published/user acceptance still open. |
-| 2 | Five-day metrics / whitespace | PASS (local) | [weather-today](qa/final28/contact-320-weather-today.jpg): Actual Japan forecast cards show ten aligned rows, compact spacing; no empty comparison column. | Controlled forecast, not real future weather. |
+| 2 | Five-day metrics / whitespace | PASS (local) | [aligned comparison](qa/final28/contact-1024-alignment45.jpg): poc.44 FAIL: wrapped trend labels shifted rows34.15625px. poc.45 shared tracks repair confirmed by real coordinates and new screenshots. | Controlled forecast, not real future weather. |
 | 3 | Technical metadata in footer | PASS (local) | [weather-today](qa/final28/contact-320-weather-today.jpg): Data/Schema/Source are at the compact footer, not trip heading. | Unpublished draft version explicitly shown. |
 | 4 | Shared sticky five-page tabs | PASS (local) | [content](qa/final28/contact-320-content.jpg): Real main scrolling preserves trip tabs on each destination page. | Narrow tabs intentionally scroll horizontally; not all five fit simultaneously. |
 | 5 | Recognisable page icons | PASS (local) | [content](qa/final28/contact-320-content.jpg): Shared SVG icons retain visible Traditional Chinese labels. | No physical Safari certification. |
@@ -69,9 +77,10 @@ All rows concern the actual unpublished candidate, reviewed in PR #21 on the dat
 
 - Baseline-focused (unmodified UI): `japanContentDraft`, `sharedShellQA`, `r2WeatherVisual`, `r5AttractionsQA`: **120/120 PASS (2.9m)**.
 - Patch-focused: `final28Weather`, `todayWeather`, `todayVisual`, `todayArchitecture`, `r2WeatherVisual`, `japanContentDraft`, two Chromium workers: **155/155 PASS (3.4m)**; 15 new actual-candidate viewport/font cases, unchanged old assertions retained.
-- Full final local: `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test -- --workers=2`: **2,820/2,820 PASS (39.5m), exit0**, no failures/skips/retries. All 2,805 existing cases retained plus 15 new. Run once after focused success.
+- Full final local: `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm test -- --workers=2`: **poc.44 historical: 2,820/2,820 PASS (39.5m), exit0**, no failures/skips/retries. All 2,805 existing cases retained plus 15 new. Superseded by the subsequently diagnosed item2 repair; final poc.45 result below.
+- poc.45 alignment-focused: **90/90 PASS (1.5m)**. Final poc.45 local regression **2,820/2,820 PASS (40.3m), exit0**, no failures/skips/retries; final build/typecheck and diff check PASS. All 2,805 original cases and 15 new retained; actual coordinate checks strengthened, not relaxed.
 - `npm run build` / strict application/tool/test TypeScript: **PASS** before focused tests and again after full regression. Existing nonfatal bundle-size notices remain.
-- `git diff --check`: **PASS**. **495 raw screenshots** captured across baseline, detail and post-repair scenarios; **25 contact sheets** plus representative full-resolution PNGs retained in review artifacts. Screenshot fixtures and test clocks are controlled; real media/weather availability is not certified.
+- `git diff --check`: **PASS**. **525 raw screenshots** captured across baseline, detail and post-repair scenarios; **30 contact sheets** plus representative full-resolution PNGs retained in review artifacts. Screenshot fixtures and test clocks are controlled; real media/weather availability is not certified.
 - Draft PR QA: branch-only pull-request workflow; its result is recorded in PR #21 / Issue #22. No main push or Pages deployment.
 
 - Original published fixture SHA-256 **09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e**, draft SHA-256 **0a4d085d49cc86043e290b97c3636a31300c07f0f47b61559b9b7952c9e080d8** and all canonical D1–D9 timing/identity checks retained. Schema6/readers1–6; demos city.5/road.5 unchanged.
