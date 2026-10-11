@@ -1,7 +1,7 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
   "checkedAt": "2026-10-11T16:45:01+08:00",
-  "method": "Official pages read through web tool; original Chinese paraphrases. Reused R6–R8 audit; no new live database requests. Source availability is not playback or January-operating confirmation. Latest Snow Monkey correction implements GPT-6 verified packet #1 only; Codex performed no independent external-source research or image download. Packet #2 implements exact GPT-6 verified conditional D7/D8 descriptions and timeline-bound sources; no independent Codex travel research.",
+  "method": "Official pages read through web tool; original Chinese paraphrases. Reused R6–R8 audit; no new live database requests. Source availability is not playback or January-operating confirmation. Latest Snow Monkey correction implements GPT-6 verified packet #1 only; Codex performed no independent external-source research or image download. Packet #2 implements exact GPT-6 verified conditional D7/D8 descriptions and timeline-bound sources; no independent Codex travel research. Packet #3 is supplied GPT-6 verification only, no Codex travel research.",
   "places": [
     {
       "id": "jp27-place-matsumoto-castle",
@@ -1049,10 +1049,90 @@
     "unresolved": [
       "uo680 actual booking fare",
       "uo685 actual booking fare",
-      "shinano-out selected service/class/date fare",
-      "shinano-return selected service/class/date fare"
+      "all six actual booking/payment amounts",
+      "2027 service/seat/price confirmation for both Shinano records"
     ],
-    "rental": "Existing 59961 comparison and timing conflict retained, not an actual confirmed booking"
+    "rental": "Existing 59961 comparison and timing conflict retained, not an actual confirmed booking",
+    "shinano": {
+      "verifiedBy": "GPT-6",
+      "verifiedDate": "2026-10-12",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6111341798",
+      "referenceRevision": "2026-03",
+      "season": "ordinary",
+      "seat": "ordinary reserved seat",
+      "unit": "adult one person one way",
+      "baseFare": 3430,
+      "reservedSurcharge": 2730,
+      "total": 6160,
+      "currency": "JPY",
+      "dates": [
+        "2027-01-09",
+        "2027-01-17"
+      ],
+      "entries": [
+        {
+          "id": "jp27-transport-shinano-out",
+          "price": {
+            "amount": 6160,
+            "currency": "JPY",
+            "notes": "2026年3月修訂公開票價參考：名古屋→松本，成人1人單程普通指定席通常期¥6,160（基本運賃¥3,430＋特急指定席料金¥2,730）；2027/1/9按JR官方2026年度季節表屬通常期。非已購票／已付款金額；2027實際班次、票種與售價須於開售後重新確認。"
+          }
+        },
+        {
+          "id": "jp27-transport-shinano-return",
+          "price": {
+            "amount": 6160,
+            "currency": "JPY",
+            "notes": "2026年3月修訂公開票價參考：松本→名古屋，成人1人單程普通指定席通常期¥6,160（基本運賃¥3,430＋特急指定席料金¥2,730）；2027/1/17按JR官方2026年度季節表屬通常期。非已購票／已付款金額；2027實際班次、票種與售價須於開售後重新確認。"
+          }
+        }
+      ],
+      "sources": [
+        {
+          "id": "jp27-source-gpt6-shinano-tokai",
+          "title": "JR東海｜2026年度しなの年末年始全席指定席期間",
+          "url": "https://railway.jr-central.co.jp/zairai/",
+          "type": "official",
+          "entity": {
+            "type": "transport",
+            "id": "jp27-transport-shinano-out"
+          }
+        },
+        {
+          "id": "jp27-source-gpt6-shinano-season",
+          "title": "JR東日本｜会社間列車の通常期・繁忙期・閑散期規則",
+          "url": "https://www.jreast.co.jp/ko/kippu/1202.html",
+          "type": "official",
+          "entity": {
+            "type": "transport",
+            "id": "jp27-transport-shinano-return"
+          }
+        },
+        {
+          "id": "jp27-source-gpt6-shinano-fare-guide",
+          "title": "JR-group.jp｜2026年3月修訂しなの公開票價參考（非JR官方報價）",
+          "url": "https://jr-group.jp/shinano-ryokin/",
+          "type": "reference",
+          "entity": {
+            "type": "transport",
+            "id": "jp27-transport-shinano-out"
+          }
+        },
+        {
+          "id": "jp27-source-gpt6-shinano-ekitan",
+          "title": "駅探｜名古屋至松本普通指定席票價交叉參考",
+          "url": "https://ekitan.com/transit/express/section/exm-110585/exs-110585002/sf-4455/st-3726",
+          "type": "reference",
+          "entity": {
+            "type": "transport",
+            "id": "jp27-transport-shinano-return"
+          }
+        }
+      ],
+      "qualification": "Public reference guide, not official operator purchase quote or booking/payment amount. Reverse direction assumes symmetric fare zone. Operator seasonal rules do not confirm a booked seat or selected train. Reconfirm 2027 service, ticket and price after sales open.",
+      "yearEndRestriction": "JR Tokai all-reserved period2026-12-25–2027-01-05 excludes both travel dates",
+      "bookingPaymentConfirmed": false
+    }
   },
   "winterRoads": {
     "url": "https://www.c-nexco.co.jp/special/snow/",

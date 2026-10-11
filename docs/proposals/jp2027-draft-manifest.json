@@ -1,6 +1,6 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
-  "candidateLabel": "jp2027-schema6-review-draft-05",
+  "candidateLabel": "jp2027-schema6-review-draft-06",
   "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
   "published": false,
   "isCurrent": false,
@@ -58,6 +58,17 @@
         "https://www.city.matsumoto.nagano.jp/soshiki/72/4345.html"
       ],
       "confidence": "Conditional descriptions only, supplied and verified by GPT-6; actual route/IC gate remains open; no stop/time/route edits"
+    },
+    {
+      "area": "GPT-6 verified Packet #3 Shinano reserved-seat reference fares",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6111341798",
+      "sourceIds": [
+        "jp27-source-gpt6-shinano-tokai",
+        "jp27-source-gpt6-shinano-season",
+        "jp27-source-gpt6-shinano-fare-guide",
+        "jp27-source-gpt6-shinano-ekitan"
+      ],
+      "confidence": "6160JPY reference only, inclusive basic3430+surcharge2730; official seasonal rules distinguished from reference fare guides; no booked/paid or future train confirmation"
     }
   ],
   "photoCandidate": {
@@ -86,7 +97,7 @@
     },
     {
       "issue": 18,
-      "description": "Two Meitetsu reference fares qualified; four fares unknown and all six actual booking costs unconfirmed"
+      "description": "Meitetsu and Shinano reference fares qualified; two flight fares, all six actual booking/payment amounts and2027 service/seat confirmations remain unresolved"
     },
     {
       "issue": 20,
@@ -119,34 +130,32 @@
     "Separate user authorization before any Supabase write/publication",
     "Step15D stays blocked"
   ],
-  "draftSha256": "89473863e779de33a0d627bfec7812b5ad33b4b0845d76735885d27b3ad4513d",
+  "draftSha256": "3861b2943e1fb6cdf615f23cc9c518d62a5ea5d45d15705271058d3b489d51d4",
   "sourceReview": "jp2027-source-review.json",
   "validation": {
-    "result": "PASS",
-    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6109775041",
+    "result": "PASS (local); independent GitHub PR QA pending",
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6111341798",
     "independentCodexResearch": false,
     "publicationApproval": false,
     "supabaseWrites": false,
     "step15DStarted": false,
-    "checkedAt": "2026-10-11T22:59:46+08:00",
-    "focusedCases": 80,
-    "focusedResult": "80/80 PASS (2.6m); final packet-only screenshot capture checks20/20 PASS (29.5s)",
-    "fullRegressionCases": 2840,
-    "fullRegressionResult": "2840/2840 PASS (42.3m), exit0; one complete local regression, two workers; no skips/retries",
+    "checkedAt": "2026-10-12T01:49:14+08:00",
+    "focusedCases": 100,
+    "focusedResult": "100/100 PASS (2.9m), plus final rail visual-capture20/20 PASS (23.3s)",
+    "fullRegressionCases": 2860,
+    "fullRegressionResult": "2860/2860 PASS (42.5m), exit0; exactly one complete local run, two workers; no skips/retries",
     "typecheckBuild": "PASS",
     "diffCheck": "PASS",
-    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; both conditional timeline descriptions, unchanged schedule, no horizontal overflow",
-    "visualQA": [
-      "docs/qa/packet2/320-large-d7.png",
-      "docs/qa/packet2/320-large-d8.png",
-      "docs/qa/packet2/390-medium-d7.png",
-      "docs/qa/packet2/390-medium-d8.png",
-      "docs/qa/packet2/1440-medium-d7.png",
-      "docs/qa/packet2/1440-medium-d8.png"
-    ],
+    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; rail reference notes visible, no overflow; D7/D8 retained",
     "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
-    "packetOnlyCandidateDelta": "PASS: exactly two description suffixes and two timeline-bound official source records; restored full JSON equals pre-packet0417838 candidate",
-    "interpretation": "Validation/renderability only; actual route/IC and winter operating gate remains open; no user acceptance or publication authorization"
+    "packetOnlyCandidateDelta": "PASS: reconstruct Packet2 SHA89473863... after removing exact two prices and four sources; reconstruct pre-Packet2 SHA0a4d085d... after reversing exact two description suffixes/sources; no Git history dependency",
+    "visualQA": [
+      "docs/qa/packet3/320-large-shinano-0.png",
+      "docs/qa/packet3/320-large-shinano-1.png",
+      "docs/qa/packet3/1440-medium-shinano-0.png",
+      "docs/qa/packet3/1440-medium-shinano-1.png"
+    ],
+    "interpretation": "Reference fares and renderability only; actual flight costs, all six booking/payment amounts and2027 rail confirmations unresolved; no publication authorization"
   },
   "previousValidation": {
     "result": "PASS",
@@ -187,5 +196,37 @@
     "publicationApproval": false,
     "supabaseWrites": false,
     "step15DStarted": false
+  },
+  "previousValidationPacket2": {
+    "result": "PASS",
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6109775041",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false,
+    "checkedAt": "2026-10-11T22:59:46+08:00",
+    "focusedCases": 80,
+    "focusedResult": "80/80 PASS (2.6m); final packet-only screenshot capture checks20/20 PASS (29.5s)",
+    "fullRegressionCases": 2840,
+    "fullRegressionResult": "2840/2840 PASS (42.3m), exit0; one complete local regression, two workers; no skips/retries",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; both conditional timeline descriptions, unchanged schedule, no horizontal overflow",
+    "visualQA": [
+      "docs/qa/packet2/320-large-d7.png",
+      "docs/qa/packet2/320-large-d8.png",
+      "docs/qa/packet2/390-medium-d7.png",
+      "docs/qa/packet2/390-medium-d8.png",
+      "docs/qa/packet2/1440-medium-d7.png",
+      "docs/qa/packet2/1440-medium-d8.png"
+    ],
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: exactly two description suffixes and two timeline-bound official source records; restored full JSON equals pre-packet0417838 candidate",
+    "interpretation": "Validation/renderability only; actual route/IC and winter operating gate remains open; no user acceptance or publication authorization",
+    "githubCI": {
+      "runId": 38149460911,
+      "result": "FAIL before Playwright collection: git show historical tree unavailable in shallow checkout",
+      "supersededByRepair": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6111311373"
+    }
   }
 }

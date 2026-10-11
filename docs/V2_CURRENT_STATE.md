@@ -1,6 +1,14 @@
 # TravelPilot V2 — Current State
 
-Last updated: 11/10/2026 (Hong Kong)
+Last updated: 12/10/2026 (Hong Kong)
+
+## Coding-only CI repair + GPT-6 verified Packet #3
+
+Continuing Draft PR #21 from906d42c, same unpublished branch. [Closed CI repair](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6111311373): GitHub run38149460911 failed during module import because a shallow checkout lacked the historical Git tree. Local2840 PASS was real but did not certify CI compatibility. The test now pins original D7/D8 descriptions/times, reverses only independently asserted approved packet deltas, and hashes the reconstructed baseline to0a4d085d49cc86043e290b97c3636a31300c07f0f47b61559b9b7952c9e080d8. No runtime Git/history lookup, fixture duplication, workflow change or weakened assertion.
+
+[Exact Packet #3](https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6111341798) adds¥6,160 ordinary reserved-seat reference prices to both Shinano records, with full approved qualification notes. Official operator seasonal rules are distinguished from third-party reference fare sources. No selected train, departure/arrival, booking/payment, canonical day/route/timing, flight fare or other candidate field change. Packet2 delta and new Packet3 delta each reconstruct their pinned SHA256 baseline without repository history.
+
+App remains **v2.0.0-poc.45**; no application implementation/release. Schema6/readers1–6, demos and published jp2027.1 unchanged. Candidate `jp2027-schema6-review-draft-06`, review-only version `jp2027.2-DRAFT-UNPUBLISHED`, SHA256 `3861b2943e1fb6cdf615f23cc9c518d62a5ea5d45d15705271058d3b489d51d4`. Local validation: **100/100 focused PASS (2.9m)** plus final rail screenshot capture **20/20 PASS (23.3s)**; build/typecheck/diff PASS; **2,860/2,860 full regression PASS (42.5m), exit0**, exactly one full run, no skips/retries. All2,840 preceding cases retained plus20 new. Reconstructed baseline digests pass without Git; all five widths × three fonts retain readable reference notes/no overflow. [320 Large outbound](qa/packet3/320-large-shinano-0.png), [320 Large return](qa/packet3/320-large-shinano-1.png) and1440 Medium screenshots inspected. Independent repaired GitHub CI result will be recorded in Draft PR #21 after push. #18 remains PARTIAL: two flight fares, all six actual booking/payment amounts and winter2027 service/seat/price confirmations remain open. Existing route/IC, image403, Place/camera/content blockers retained. No research, merge/deploy, Supabase/Production/published fixture/protected asset change or Step15D.
 
 ## GPT-6 verified Packet #2 — unpublished D7/D8 conditional roadside notes
 
