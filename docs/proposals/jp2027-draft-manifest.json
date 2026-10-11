@@ -1,6 +1,6 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
-  "candidateLabel": "jp2027-schema6-review-draft-04",
+  "candidateLabel": "jp2027-schema6-review-draft-05",
   "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
   "published": false,
   "isCurrent": false,
@@ -49,6 +49,15 @@
         "https://jigokudani-yaenkoen.co.jp/wp-content/uploads/2026/09/8e706a84d13cb2800302700fed5ffb5d-834x1180.jpg"
       ],
       "confidence": "GPT-6 visually verified official price table; adultstandard1000/Web880notes, remove unproven15:30lastEntry; no independent Codex research or payment claims"
+    },
+    {
+      "area": "D7/D8 conditional roadside guidance — GPT-6 verified packet #2",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6109775041",
+      "official": [
+        "https://okuhida-camp.com/michinoeki/index.html",
+        "https://www.city.matsumoto.nagano.jp/soshiki/72/4345.html"
+      ],
+      "confidence": "Conditional descriptions only, supplied and verified by GPT-6; actual route/IC gate remains open; no stop/time/route edits"
     }
   ],
   "photoCandidate": {
@@ -81,7 +90,7 @@
     },
     {
       "issue": 20,
-      "description": "Conditional D2/D6 direction and PA ordering verified; actual IC selections, other legs and winter services remain unresolved"
+      "description": "Conditional D2/D6 and GPT-6 D7/D8 roadside notes recorded; actual IC/route selections, other legs and future winter availability remain unresolved"
     },
     {
       "issue": 22,
@@ -110,24 +119,34 @@
     "Separate user authorization before any Supabase write/publication",
     "Step15D stays blocked"
   ],
-  "draftSha256": "0a4d085d49cc86043e290b97c3636a31300c07f0f47b61559b9b7952c9e080d8",
+  "draftSha256": "89473863e779de33a0d627bfec7812b5ad33b4b0845d76735885d27b3ad4513d",
   "sourceReview": "jp2027-source-review.json",
   "validation": {
     "result": "PASS",
-    "checkedAt": "2026-10-11T18:59:56+08:00",
-    "focusedCases": 60,
-    "focusedResult": "60/60 PASS (2.0m)",
-    "fullRegressionCases": 2805,
-    "fullRegressionResult": "2805/2805 PASS (39.4m), exit0; one full local run, two workers",
-    "typecheckBuild": "PASS",
-    "diffCheck": "PASS",
-    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; mocked draft dialogs/routes/cache",
-    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
-    "packetOnlyCandidateDelta": "PASS: only Snow Monkey fee, feeNotes, lastEntry deletion, second paragraph and source link/record changed",
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6109775041",
     "independentCodexResearch": false,
     "publicationApproval": false,
     "supabaseWrites": false,
-    "step15DStarted": false
+    "step15DStarted": false,
+    "checkedAt": "2026-10-11T22:59:46+08:00",
+    "focusedCases": 80,
+    "focusedResult": "80/80 PASS (2.6m); final packet-only screenshot capture checks20/20 PASS (29.5s)",
+    "fullRegressionCases": 2840,
+    "fullRegressionResult": "2840/2840 PASS (42.3m), exit0; one complete local regression, two workers; no skips/retries",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; both conditional timeline descriptions, unchanged schedule, no horizontal overflow",
+    "visualQA": [
+      "docs/qa/packet2/320-large-d7.png",
+      "docs/qa/packet2/320-large-d8.png",
+      "docs/qa/packet2/390-medium-d7.png",
+      "docs/qa/packet2/390-medium-d8.png",
+      "docs/qa/packet2/1440-medium-d7.png",
+      "docs/qa/packet2/1440-medium-d8.png"
+    ],
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: exactly two description suffixes and two timeline-bound official source records; restored full JSON equals pre-packet0417838 candidate",
+    "interpretation": "Validation/renderability only; actual route/IC and winter operating gate remains open; no user acceptance or publication authorization"
   },
   "previousValidation": {
     "result": "PASS",
@@ -151,5 +170,22 @@
     "step15DStarted": false,
     "interpretation": "Valid and renderable unpublished proposal; NOT comprehensive factual certification or publication approval",
     "commit": "c0267ef397e696c6d365137f18bfe727bf7df46b"
+  },
+  "previousValidationPacket1": {
+    "result": "PASS",
+    "checkedAt": "2026-10-11T18:59:56+08:00",
+    "focusedCases": 60,
+    "focusedResult": "60/60 PASS (2.0m)",
+    "fullRegressionCases": 2805,
+    "fullRegressionResult": "2805/2805 PASS (39.4m), exit0; one full local run, two workers",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; mocked draft dialogs/routes/cache",
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: only Snow Monkey fee, feeNotes, lastEntry deletion, second paragraph and source link/record changed",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false
   }
 }

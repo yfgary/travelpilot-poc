@@ -1002,7 +1002,7 @@
           "optional": false,
           "startTime": "09:15",
           "endTime": "10:35",
-          "description": "冬季預1小時20分，唔為趕纜車超速。",
+          "description": "冬季預1小時20分，唔為趕纜車超速。\n如實際導航經奧飛驒田頃家，可視天氣、時間及安全需要，以「道の駅 奥飛騨温泉郷上宝」作可選短休息站；營運者列冬季11–3月物產館09:00–16:30，個別餐飲有不同休息日，露營場不是冬季必然開放。唔係已核實必經站，更唔應壓縮纜車時間；臨行查路況和當日營業。",
           "durationMinutes": 80,
           "transportId": "jp27-transport-rental-car",
           "navigationTargetId": "jp27-nav-shinhotaka-parking"
@@ -1211,7 +1211,7 @@
           "optional": false,
           "startTime": "14:50",
           "endTime": "17:30",
-          "description": "D8只向東返松本；雪路慢行。",
+          "description": "D8只向東返松本；雪路慢行。\n如飛驒大鐘乳洞返松本實際採R158並經過「道の駅 風穴の里」，可在安全可行時作可選短休／洗手間；松本市資料指停車場及洗手間24小時，商店09:00–17:00、餐廳09:30–16:00，冬季逢星期四店舖休息且風穴景點冬季關閉。該處不是必停；如因路況或安全停車而延誤，實際ETA需另作調整，不能為趕原定17:30到松本而冒險。",
           "durationMinutes": 160,
           "transportId": "jp27-transport-rental-car"
         },
@@ -7266,6 +7266,26 @@
       "entity": {
         "type": "place",
         "id": "jp27-place-snow-monkey"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-d7-kamitakara",
+      "title": "道の駅 奥飛騨温泉郷上宝｜營運者冬季物產館資訊",
+      "url": "https://okuhida-camp.com/michinoeki/index.html",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d7-drive-shinhotaka"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-d8-fuketsu",
+      "title": "道の駅 風穴の里｜松本市冬季營業及休息設施資訊",
+      "url": "https://www.city.matsumoto.nagano.jp/soshiki/72/4345.html",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d8-drive-matsumoto"
       }
     }
   ],

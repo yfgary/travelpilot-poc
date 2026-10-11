@@ -2,6 +2,14 @@
 
 Last updated: 11/10/2026 (Hong Kong)
 
+## GPT-6 verified Packet #2 — unpublished D7/D8 conditional roadside notes
+
+Existing Draft PR #21 / `content/jp2027-vnext-unpublished-draft`; source decision is [Issue #20 comment6109775041](https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6109775041). Codex implements supplied content only, with no independent travel research. Exactly one approved conditional note is appended to each D7/D8 drive description, preserving the original first sentence. Two official source records bind to those exact timeline entities. No scheduled stop, route summary, timing, navigation target, backup, provider, published fixture or asset change.
+
+Schema6 candidate label `jp2027-schema6-review-draft-05`; proposed review-only version stays `jp2027.2-DRAFT-UNPUBLISHED`. App Version stays **v2.0.0-poc.45**: this is unpublished content/evidence/test work, no application implementation or release. Strict schema/readers1–6 and demos remain unchanged. Candidate SHA-256: `89473863e779de33a0d627bfec7812b5ad33b4b0845d76735885d27b3ad4513d`.
+
+Validation: **80/80 focused PASS (2.6m)**; final packet screenshot checks **20/20 PASS (29.5s)** after correcting capture framing (no application change); **2,840/2,840 full regression PASS (42.3m), exit0**, one full run, no skips/retries. All2,820 prior cases plus20 new retained. Build/typecheck/diff PASS. Both notes tested at five widths × three fonts; [320 Large D7](qa/packet2/320-large-d7.png), [320 Large D8](qa/packet2/320-large-d8.png),390 Medium and1440 Medium captures inspected. Full JSON delta proves all fields unchanged except the two suffixes and two source records; published SHA-256 remains09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e. Route/IC selection remains **OPEN**; the notes are conditional, not confirmed mandatory stops or 2027 operating guarantees. The D8 drive14:50–17:30 and17:30 check-in remain unchanged; safety-related real-world ETA adjustments do not rewrite canonical timing. The 28-item result stays19 local PASS /7 PARTIAL /2 BLOCKED, not user-approved. Production/Supabase/published jp2027.1/protected assets untouched; no merge/deploy or Step15D.
+
 ## Issue #22 — Final 28-item remediation (Draft PR #21)
 
 Candidate **v2.0.0-poc.45**, continuing `content/jp2027-vnext-unpublished-draft` from `ec26784`. All 28 items reopened using actual unpublished Schema6 Japan data through intercepted remote reads. See [fresh evidence matrix](V2_FINAL_28_REMEDIATION.md); this is local review, not user acceptance or completed Japan parity.

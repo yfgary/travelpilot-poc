@@ -38,3 +38,7 @@ Focused tests use the exact draft as intercepted review data in native Playwrigh
 ## Issue #22 reopened visual gate
 
 [Final 28-item browser evidence](../V2_FINAL_28_REMEDIATION.md) reopens every original requirement using this actual unpublished candidate. Today’s missing shared five-day forecast is repaired generically in poc.44, with comparison-track alignment repaired in poc.45; image/content/camera blockers remain open. No user acceptance, publication, merge or deployment is implied.
+
+## GPT-6 verified Packet #2 (11 October 2026)
+
+[Exact implementation packet](https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6109775041) adds only conditional D7/D8 roadside notes and two timeline-bound official sources. Original description sentences, every route/location/time and published bytes remain intact. There is no added actual stop. Operator-listed D7 winter shop16:30 and Matsumoto-city D8 hours/toilets/closures are GPT-6-supplied reference facts, not verified 2027 availability or a confirmed route. Actual navigation/IC/other-leg SA/PA gate stays open; discretionary safety breaks require real-world ETA adjustment. No independent Codex research. App remains poc.45; this is unpublished candidate authoring, not an app release. Results/checksum are in the manifest and current state.
