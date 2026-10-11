@@ -5,6 +5,7 @@ import { validateTripSnapshot } from '../src/data/schema/trip'
 import { railPrices, railSources } from './japanRailPacketData'
 import { japanVersion, mockJapan } from './japanFixtures'
 import { seedAuth } from './tripFixtures'
+import { restoreAirportPacket } from './japanAirportPacketData'
 
 const bytes = readFileSync('docs/proposals/jp2027-schema6-unpublished-draft.json')
 const draft = JSON.parse(bytes.toString())
@@ -13,7 +14,7 @@ const manifest = JSON.parse(readFileSync('docs/proposals/jp2027-draft-manifest.j
 
 test('Packet3 exact rail fares and provenance are the only changes to Packet2 candidate', () => {
   expect(validateTripSnapshot(draft)).toMatchObject({ valid: true })
-  const restored = structuredClone(draft)
+  const restored = restoreAirportPacket(draft)
   for (const record of railPrices) {
     const transport = restored.transport.find((t: { id: string }) => t.id === record.id)
     expect(transport.price).toEqual(record.price)

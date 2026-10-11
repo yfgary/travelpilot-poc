@@ -1,0 +1,107 @@
+{
+  "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6112231362",
+  "priorCandidateSha256": "3861b2943e1fb6cdf615f23cc9c518d62a5ea5d45d15705271058d3b489d51d4",
+  "fields": [
+    {
+      "dayId": "jp27-day-1",
+      "kind": "highlight",
+      "index": 0,
+      "previous": "06:45（香港時間）開始機場報到及候機安排，保留出發 Buffer。",
+      "text": "06:45 HKT預留抵達香港機場T2及排隊Buffer；HK Express正常07:00開始於T2 U行辦理報到／寄艙，寄艙通常09:00截止、閘口09:30關閉，06:45唔代表櫃位已開。出發前按實際航班重新核對。"
+    },
+    {
+      "dayId": "jp27-day-1",
+      "kind": "description",
+      "itemId": "jp27-tl-d1-airport",
+      "previous": "香港時間（HKT）。完成T2國際航班報到、行李及候機。",
+      "text": "06:45 HKT開始機場到達／排隊Buffer，HK Express自2026/06/10起在香港機場T2 U行辦理報到及寄艙。按目前10:00預計起飛推算正常07:00才開櫃、自助機約08:45截止、寄艙約09:00截止、閘口約09:30關閉。T2日間安檢／出境後按登機證經APM前往指定閘口，登機閘口不一定在T2；實際以航班通知及機場顯示為準。"
+    },
+    {
+      "dayId": "jp27-day-1",
+      "kind": "description",
+      "itemId": "jp27-tl-d1-immigration",
+      "previous": "T2入境、行李後前往Access Plaza。",
+      "text": "名古屋中部國際機場T2入境及取行李；官方指T2至Access Plaza步行約10分鐘（有自動行人道），此段已包括在14:30–15:45的整體預留時間之內。實際輪候或航班延誤即調整後續名鐵／JR；唔應為追趕原規劃班次跑步冒險。"
+    },
+    {
+      "dayId": "jp27-day-1",
+      "kind": "description",
+      "itemId": "jp27-tl-d1-checkin",
+      "previous": "放低行李休息。",
+      "text": "松本站お城口至TABINO HOTEL lit松本，酒店官方寫步行約4分鐘，未計下車、找出口、拖行李、積雪路面及辦理入住；19:46列車到達後19:50即開始入住只屬非常緊湊的規劃參考，不能保證。若遲到或累，直接取消可選光影投影及繩手通，勿壓縮休息。"
+    },
+    {
+      "dayId": "jp27-day-9",
+      "kind": "highlight",
+      "index": 3,
+      "previous": "UO685返香港",
+      "text": "UO685規劃20:40 JST由名古屋T2返香港；名鐵到站後另預留Access Plaza至T2約10分鐘步行，HK Express一般在T2 A櫃台出發前約3小時開櫃；香港到埗為T1，實際航班及櫃台以當日官方資訊為準。"
+    },
+    {
+      "dayId": "jp27-day-9",
+      "kind": "description",
+      "itemId": "jp27-tl-d9-airport",
+      "previous": "T2出境；Plaza Premium T1不可用。",
+      "text": "17:17 JST名鐵到中部國際機場站後，須另步行約10分鐘由Access Plaza至T2；HK Express目前使用T2 A櫃台，正常在規劃20:40起飛前約3小時（17:40）開櫃，櫃台／航班時間可能調整。完成報到、寄艙、出境及晚餐後按登機證往閘口；現有T1 Plaza Premium Lounge並非T2禁區可用選項，唔為趕Lounge跨禁區。"
+    },
+    {
+      "dayId": "jp27-day-9",
+      "kind": "description",
+      "itemId": "jp27-tl-d9-flight",
+      "previous": "20:40 JST由名古屋出發；預計翌日00:30 HKT抵達香港。Exact timing以兩端時區記錄；正式時間以實際機票為準。",
+      "text": "規劃20:40 JST由名古屋T2起飛，翌日00:30 HKT到香港；HK Express香港到埗使用T1。日／港相差1小時，現有跨日時間欄位不變；正式航班／抵達航站樓以電子機票及航空公司最新資料為準。"
+    }
+  ],
+  "sources": [
+    {
+      "id": "jp27-source-gpt6-airport-t2-policy",
+      "title": "HK Express｜香港T2報到及香港T1抵達安排",
+      "url": "https://www.hkexpress.com/en/Plan/Travel/HKIA-T2",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d1-airport"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-airport-counter-policy",
+      "title": "HK Express｜機場櫃位及閘口時間規則",
+      "url": "https://www.hkexpress.com/en/Plan/Guideline/Airport-Check-in/Counter-Check-in-Timetable",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d1-airport"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-airport-centrair-counter",
+      "title": "中部國際機場｜HK Express T2 A櫃台",
+      "url": "https://www.centrair.jp/en/flight/airline/hkexpress.html",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d9-airport"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-airport-centrair-walking",
+      "title": "中部國際機場｜Access Plaza與T2步行緩衝",
+      "url": "https://www.centrair.jp/en/service/terminal2.html",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d1-immigration"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-airport-tabino-access",
+      "title": "TABINO HOTEL lit松本｜松本站お城口步行指引",
+      "url": "https://matsumoto.tabino-hotel.jp/en/",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d1-checkin"
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
-  "candidateLabel": "jp2027-schema6-review-draft-06",
+  "candidateLabel": "jp2027-schema6-review-draft-07",
   "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
   "published": false,
   "isCurrent": false,
@@ -69,6 +69,62 @@
         "jp27-source-gpt6-shinano-ekitan"
       ],
       "confidence": "6160JPY reference only, inclusive basic3430+surcharge2730; official seasonal rules distinguished from reference fare guides; no booked/paid or future train confirmation"
+    },
+    {
+      "area": "GPT-6 Packet #4 D1/D9 airport/terminal and hotel walking buffer descriptions",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6112231362",
+      "fields": [
+        {
+          "dayId": "jp27-day-1",
+          "kind": "highlight",
+          "itemId": null,
+          "index": 0
+        },
+        {
+          "dayId": "jp27-day-1",
+          "kind": "description",
+          "itemId": "jp27-tl-d1-airport",
+          "index": null
+        },
+        {
+          "dayId": "jp27-day-1",
+          "kind": "description",
+          "itemId": "jp27-tl-d1-immigration",
+          "index": null
+        },
+        {
+          "dayId": "jp27-day-1",
+          "kind": "description",
+          "itemId": "jp27-tl-d1-checkin",
+          "index": null
+        },
+        {
+          "dayId": "jp27-day-9",
+          "kind": "highlight",
+          "itemId": null,
+          "index": 3
+        },
+        {
+          "dayId": "jp27-day-9",
+          "kind": "description",
+          "itemId": "jp27-tl-d9-airport",
+          "index": null
+        },
+        {
+          "dayId": "jp27-day-9",
+          "kind": "description",
+          "itemId": "jp27-tl-d9-flight",
+          "index": null
+        }
+      ],
+      "sourceIds": [
+        "jp27-source-gpt6-airport-t2-policy",
+        "jp27-source-gpt6-airport-counter-policy",
+        "jp27-source-gpt6-airport-centrair-counter",
+        "jp27-source-gpt6-airport-centrair-walking",
+        "jp27-source-gpt6-airport-tabino-access"
+      ],
+      "confidence": "GPT-6 operator/airport source review; planned schedule assumptions, no confirmed flights or hotel arrival guarantee"
     }
   ],
   "photoCandidate": {
@@ -114,6 +170,10 @@
     {
       "issue": 25,
       "description": "No camera playback or embedding guarantee; new official Panomax link tunnel-blocked"
+    },
+    {
+      "issue": 9,
+      "description": "GPT-6 researched terminal/check-in/walking buffer details implemented as unpublished draft; eventual visible POC deployment/user approval and actual flight/terminal rechecks remain required"
     }
   ],
   "invariants": {
@@ -130,32 +190,26 @@
     "Separate user authorization before any Supabase write/publication",
     "Step15D stays blocked"
   ],
-  "draftSha256": "3861b2943e1fb6cdf615f23cc9c518d62a5ea5d45d15705271058d3b489d51d4",
+  "draftSha256": "8cf05ea8dd13a9154588e99b10a1fa0f242f6f1fbaef137f5f5b0a7a4870040e",
   "sourceReview": "jp2027-source-review.json",
   "validation": {
     "result": "PASS (local); independent GitHub PR QA pending",
-    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6111341798",
     "independentCodexResearch": false,
     "publicationApproval": false,
     "supabaseWrites": false,
     "step15DStarted": false,
-    "checkedAt": "2026-10-12T01:49:14+08:00",
-    "focusedCases": 100,
-    "focusedResult": "100/100 PASS (2.9m), plus final rail visual-capture20/20 PASS (23.3s)",
-    "fullRegressionCases": 2860,
-    "fullRegressionResult": "2860/2860 PASS (42.5m), exit0; exactly one complete local run, two workers; no skips/retries",
+    "checkedAt": "2026-10-12T03:19:13+08:00",
+    "focusedCases": 135,
+    "focusedResult": "135/135 PASS (3.5m), final airport-rendering/capture35/35 PASS (52.7s)",
+    "fullRegressionCases": 2895,
+    "fullRegressionResult": "2895/2895 PASS (42.5m), exit0; exactly one full local run, two workers; no skips/retries",
     "typecheckBuild": "PASS",
     "diffCheck": "PASS",
-    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; rail reference notes visible, no overflow; D7/D8 retained",
+    "viewportFontCoverage": "actual Itinerary/Today,320/390/430/1024/1440 × Small/Medium/Large; exact highlights and all five descriptions, no horizontal overflow",
+    "visualQA": "12 airport captures retained under docs/qa/packet4; representative320Large/390Medium/1440Medium Itinerary/Today inspected; long mobile text remains scrollable",
     "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
-    "packetOnlyCandidateDelta": "PASS: reconstruct Packet2 SHA89473863... after removing exact two prices and four sources; reconstruct pre-Packet2 SHA0a4d085d... after reversing exact two description suffixes/sources; no Git history dependency",
-    "visualQA": [
-      "docs/qa/packet3/320-large-shinano-0.png",
-      "docs/qa/packet3/320-large-shinano-1.png",
-      "docs/qa/packet3/1440-medium-shinano-0.png",
-      "docs/qa/packet3/1440-medium-shinano-1.png"
-    ],
-    "interpretation": "Reference fares and renderability only; actual flight costs, all six booking/payment amounts and2027 rail confirmations unresolved; no publication authorization"
+    "packetOnlyCandidateDelta": "PASS: exactly seven text replacements +five official source records reversed; reconstruct prior3861b294...SHA; prior Packet2/3 assertions preserved without Git history",
+    "interpretation": "Unpublished source-backed/renderable draft; item9 PARTIAL, not deployed/user-approved acceptance or booked-flight confirmation"
   },
   "previousValidation": {
     "result": "PASS",
@@ -227,6 +281,36 @@
       "runId": 38149460911,
       "result": "FAIL before Playwright collection: git show historical tree unavailable in shallow checkout",
       "supersededByRepair": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6111311373"
+    }
+  },
+  "previousValidationPacket3": {
+    "result": "PASS (local); independent GitHub PR QA pending",
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6111341798",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false,
+    "checkedAt": "2026-10-12T01:49:14+08:00",
+    "focusedCases": 100,
+    "focusedResult": "100/100 PASS (2.9m), plus final rail visual-capture20/20 PASS (23.3s)",
+    "fullRegressionCases": 2860,
+    "fullRegressionResult": "2860/2860 PASS (42.5m), exit0; exactly one complete local run, two workers; no skips/retries",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; rail reference notes visible, no overflow; D7/D8 retained",
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: reconstruct Packet2 SHA89473863... after removing exact two prices and four sources; reconstruct pre-Packet2 SHA0a4d085d... after reversing exact two description suffixes/sources; no Git history dependency",
+    "visualQA": [
+      "docs/qa/packet3/320-large-shinano-0.png",
+      "docs/qa/packet3/320-large-shinano-1.png",
+      "docs/qa/packet3/1440-medium-shinano-0.png",
+      "docs/qa/packet3/1440-medium-shinano-1.png"
+    ],
+    "interpretation": "Reference fares and renderability only; actual flight costs, all six booking/payment amounts and2027 rail confirmations unresolved; no publication authorization",
+    "githubCI": {
+      "runId": 38161242921,
+      "jobId": 114534430263,
+      "result": "SUCCESS"
     }
   }
 }

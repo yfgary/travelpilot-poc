@@ -5,6 +5,7 @@ import { validateTripSnapshot } from '../src/data/schema/trip'
 import { mockJapan, japanVersion } from './japanFixtures'
 import { seedAuth } from './tripFixtures'
 import { railPrices, railSources } from './japanRailPacketData'
+import { restoreAirportPacket } from './japanAirportPacketData'
 
 const path = 'docs/proposals/jp2027-schema6-unpublished-draft.json'
 const draft = JSON.parse(readFileSync(path, 'utf8'))
@@ -20,7 +21,7 @@ const notes = [
 
 test('GPT-6 packet2 changes only two descriptions and two timeline-bound official sources', () => {
   expect(validateTripSnapshot(draft)).toMatchObject({ valid: true })
-  const restored = structuredClone(draft)
+  const restored = restoreAirportPacket(draft)
   // Validate and reverse the subsequent approved Packet3 before auditing Packet2.
   expect(restored.sources.slice(-4)).toEqual(railSources)
   restored.sources = restored.sources.slice(0, -4)
