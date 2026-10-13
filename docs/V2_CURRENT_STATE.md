@@ -1,6 +1,10 @@
 # TravelPilot V2 — Current State
 
-Last updated: 12/10/2026 (Hong Kong)
+Last updated: 14/10/2026 (Hong Kong)
+
+## Packet #7 — D8 Today landslide/snow check and D5/D7/D8 R158 caution (Draft-only)
+
+Based on unchanged PR #21 parent 78b12a9. Added one user-requested D8 highlight after the second existing highlight: check R158 landslide closure, whether the Takayama City-managed opposite-bank diversion is open or snow/ice-closed, rejoin R158 only if official routing permits, else consider official wider routes, never rush for17:30. Added one sourced paragraph each to existing D5/D7/D8 drive descriptions; 8 official timeline-bound source records. **This is not actual January 2027 road status or a selected route, and original days/times/offsets/hard cuts are unchanged.** Candidate label review-draft-09; SHA256 702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0, Packet5 prior 350b02bb8f365e973f1209a803d181453bd96c73fee1e3aa23d1cec459a7b59e, source/manifest ledger updated. Independent full CI **PENDING**; historical 2,960 PASS applies only to previous parent. #20 PARTIAL; all 28 not user-accepted. NO merge/deploy/Production/Supabase/published jp2027.1/asset modifications or Step15D.
 
 ## GPT-6 verified Packet #5 — D6/D8/D9 operational notes and external scenery page
 

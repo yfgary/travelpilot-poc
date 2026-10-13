@@ -1,6 +1,6 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
-  "candidateLabel": "jp2027-schema6-review-draft-08",
+  "candidateLabel": "jp2027-schema6-review-draft-09",
   "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
   "published": false,
   "isCurrent": false,
@@ -163,6 +163,37 @@
         "jp27-source-gpt6-shirakawago-village-camera"
       ],
       "confidence": "Exact approved text, only second Place paragraphs replaced; no timing/route/booking change. Distinct official external webpage; no playback or rights completion. Recheck2027."
+    },
+    {
+      "area": "GPT-6 Packet7 R158 D5/D7/D8 and D8 Today highlight",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6152921778",
+      "highlightPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6153293821",
+      "fields": [
+        {
+          "dayId": "jp27-day-5",
+          "id": "jp27-tl-d5-drive-takayama"
+        },
+        {
+          "dayId": "jp27-day-7",
+          "id": "jp27-tl-d7-drive-shinhotaka"
+        },
+        {
+          "dayId": "jp27-day-8",
+          "id": "jp27-tl-d8-drive-matsumoto"
+        }
+      ],
+      "newHighlightIndex": 2,
+      "sourceIds": [
+        "jp27-source-gpt6-r158-d5-closure",
+        "jp27-source-gpt6-r158-d5-caution",
+        "jp27-source-gpt6-r158-d7-closure",
+        "jp27-source-gpt6-r158-d7-okuhida",
+        "jp27-source-gpt6-r158-d8-cave",
+        "jp27-source-gpt6-r158-d8-abo",
+        "jp27-source-gpt6-r158-d8-closure",
+        "jp27-source-gpt6-r158-d8-city"
+      ],
+      "confidence": "2026/10 official source; NOT actual 2027 road or snow status"
     }
   ],
   "photoCandidate": {
@@ -195,7 +226,7 @@
     },
     {
       "issue": 20,
-      "description": "Conditional D2/D6 and GPT-6 D7/D8 roadside notes recorded; actual IC/route selections, other legs and future winter availability remain unresolved"
+      "description": "R158/municipal-detour warnings added in unpublished D5/D7/D8 and D8 Today; 2027 snow closure, safe diversion, selected ICs, alternate-route ETA and remaining legs remain unverified"
     },
     {
       "issue": 22,
@@ -228,28 +259,18 @@
     "Separate user authorization before any Supabase write/publication",
     "Step15D stays blocked"
   ],
-  "draftSha256": "350b02bb8f365e973f1209a803d181453bd96c73fee1e3aa23d1cec459a7b59e",
+  "draftSha256": "702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0",
   "sourceReview": "jp2027-source-review.json",
   "validation": {
-    "result": "PASS (local); independent GitHub PR QA result recorded in Draft PR21 after push",
-    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6113262289",
-    "independentCodexResearch": false,
+    "result": "PENDING GitHub PR QA; no new PASS claimed",
+    "checkedAt": "2026-10-14",
+    "candidateSha256": "702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0",
+    "previousFullRegression": "2960 PASS was from 78b12a9 parent ONLY",
+    "newFullRegression": "NOT VERIFIED",
     "publicationApproval": false,
     "supabaseWrites": false,
     "step15DStarted": false,
-    "checkedAt": "2026-10-12T05:11:50+08:00",
-    "focusedCases": 200,
-    "focusedResult": "200/200 PASS (4.7m); final Packet5 rendering65/65 PASS (1.3m), corrected camera capture15/15 PASS (18.9s)",
-    "fullRegressionCases": 2960,
-    "fullRegressionResult": "2960/2960 PASS (41.9m), exit0; exactly one full regression, two workers, no skips/retries",
-    "typecheckBuild": "PASS",
-    "diffCheck": "PASS",
-    "viewportFontCoverage": "Actual Today/Itinerary/Place/LiveCam,320/390/430/1024/1440 × Small/Medium/Large; exact text, external href/target/rel, no media/provider request or body horizontal overflow",
-    "visualQA": "30 captures retained under docs/qa/packet5; representative320Large/390Medium/1440Medium interfaces inspected; camera heading and action separately captured on mobile",
-    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
-    "packetOnlyCandidateDelta": "PASS: exactly three timeline descriptions, two second Place paragraphs, six sources, one Miyagawa sourceId and one external-only camera reversed; reconstruct Packet4 SHA8cf05ea8...; prior packet baseline checks retained without Git history",
-    "productionSha": "8b5129b381d6ace94030b51c7b8de5c4e3d5f533",
-    "interpretation": "Unpublished renderability only; #20/#23 PARTIAL, #25 BLOCKED; all28 require final acceptance, no publication/booking/playback certification"
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6152921778"
   },
   "previousValidation": {
     "result": "PASS",
@@ -376,5 +397,26 @@
       "jobId": 114553080908,
       "result": "SUCCESS"
     }
+  },
+  "previousValidationPacket5": {
+    "result": "PASS (local); independent GitHub PR QA result recorded in Draft PR21 after push",
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6113262289",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false,
+    "checkedAt": "2026-10-12T05:11:50+08:00",
+    "focusedCases": 200,
+    "focusedResult": "200/200 PASS (4.7m); final Packet5 rendering65/65 PASS (1.3m), corrected camera capture15/15 PASS (18.9s)",
+    "fullRegressionCases": 2960,
+    "fullRegressionResult": "2960/2960 PASS (41.9m), exit0; exactly one full regression, two workers, no skips/retries",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "Actual Today/Itinerary/Place/LiveCam,320/390/430/1024/1440 × Small/Medium/Large; exact text, external href/target/rel, no media/provider request or body horizontal overflow",
+    "visualQA": "30 captures retained under docs/qa/packet5; representative320Large/390Medium/1440Medium interfaces inspected; camera heading and action separately captured on mobile",
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: exactly three timeline descriptions, two second Place paragraphs, six sources, one Miyagawa sourceId and one external-only camera reversed; reconstruct Packet4 SHA8cf05ea8...; prior packet baseline checks retained without Git history",
+    "productionSha": "8b5129b381d6ace94030b51c7b8de5c4e3d5f533",
+    "interpretation": "Unpublished renderability only; #20/#23 PARTIAL, #25 BLOCKED; all28 require final acceptance, no publication/booking/playback certification"
   }
 }

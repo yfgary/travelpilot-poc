@@ -34,7 +34,7 @@ test('Packet5 exact operational text/source/camera delta preserves full pre-pack
   expect(packet.fields.find(f => f.id === 'jp27-place-miyagawa')!.text).toContain('並非指現時宮川河畔市集自1820年已在同址開設')
   expect(packet.fields.find(f => f.id === 'jp27-tl-d6-view')!.text).toContain('展望台不能私家車駛入')
   expect(createHash('sha256').update(bytes).digest('hex')).toBe(manifest.draftSha256)
-  expect(manifest).toMatchObject({ published: false, isCurrent: false, authorizedForSupabaseWrite: false, candidateLabel: 'jp2027-schema6-review-draft-08' })
+  expect(manifest).toMatchObject({ published: false, isCurrent: false, authorizedForSupabaseWrite: false, candidateLabel: 'jp2027-schema6-review-draft-09' })
   expect(createHash('sha256').update(readFileSync('tests/fixtures/japan2027-schema5.json')).digest('hex')).toBe('09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e')
 })
 
