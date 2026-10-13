@@ -47,7 +47,12 @@ for (const view of ['itinerary','today']) for (const font of ['small','medium','
     if (view==='itinerary' && await section.getAttribute('open')===null) await section.locator('summary').first().click()
     const row=section.locator((view==='today' ? '.today-activities ' : '')+'[data-item-id="'+f.id+'"]')
     await expect(row).toContainText(f.appended)
-    await expect(row).toContainText(f.previous)
+    // The Today Mode renderer collapses newline-separated description paragraphs.
+    // Assert every exact historical paragraph independently; keep full-byte
+    // previous/appended equality enforced by restoreRoadSafetyPacket above.
+    for (const paragraph of f.previous.split('\n').filter(Boolean)) {
+      await expect(row).toContainText(paragraph)
+    }
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true)
   }
   if(view==='today') await page.getByRole('navigation',{name:'今日模式行程日期'}).getByRole('button',{name:'D8',exact:true}).click()
