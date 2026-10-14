@@ -13,7 +13,7 @@ const review=JSON.parse(readFileSync('docs/proposals/jp2027-source-review.json',
 test('Packet8 exact Matsumoto external camera/source restores all pre-Packet8 content',()=>{
   expect(validateTripSnapshot(draft)).toMatchObject({valid:true})
   expect(createHash('sha256').update(bytes).digest('hex')).toBe(manifest.draftSha256)
-  expect(manifest).toMatchObject({candidateLabel:'jp2027-schema6-review-draft-10',published:false,isCurrent:false,authorizedForSupabaseWrite:false,invariants:{cameras:7,publishedFixtureUntouched:true,protectedAssetsUntouched:true}})
+  expect(manifest).toMatchObject({candidateLabel:'jp2027-schema6-review-draft-11',published:false,isCurrent:false,authorizedForSupabaseWrite:false,invariants:{cameras:7,publishedFixtureUntouched:true,protectedAssetsUntouched:true}})
   expect(packet.playbackVerified).toBe(false)
   expect(packet.embeddingAuthorized).toBe(false)
   expect(packet.verifiedAngles).toHaveLength(3)

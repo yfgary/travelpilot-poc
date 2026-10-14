@@ -52,7 +52,7 @@ test('content evidence covers original 36 Places and qualifies prices/media with
   }
   expect(draft.images).toEqual(original.images)
   expect(restoreOperationsPacket(draft).liveCams).toEqual(original.liveCams)
-  expect(draft.navigationTargets).toEqual(original.navigationTargets)
+  expect(draft.navigationTargets.map(({localName, ...target}:{localName?:string;[key:string]:unknown})=>target)).toEqual(original.navigationTargets)
   for (const key of ['regions', 'weather', 'hardCuts', 'checklists']) expect(draft[key]).toEqual(original[key])
   for (const stay of original.accommodations) {
     const next = { ...draft.accommodations.find((s: { id: string }) => s.id === stay.id) }

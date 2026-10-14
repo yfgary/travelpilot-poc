@@ -1,6 +1,6 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
-  "candidateLabel": "jp2027-schema6-review-draft-10",
+  "candidateLabel": "jp2027-schema6-review-draft-11",
   "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
   "published": false,
   "isCurrent": false,
@@ -205,6 +205,62 @@
         "jp27-cam-matsumoto-castle-official"
       ],
       "confidence": "Official city and tourism links, NOT certified playback or embedding rights"
+    },
+    {
+      "area": "GPT-6 Packet9 eight source-supported localName fields (6 NavigationTarget, 2 Transport)",
+      "fields": [
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-matsumoto-station",
+          "localName": "松本駅"
+        },
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-nagoya-station",
+          "localName": "名古屋駅"
+        },
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-centrair-t2",
+          "localName": "第2ターミナル"
+        },
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-aeon-matsumoto",
+          "localName": "イオンモール松本"
+        },
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-iwatake-base",
+          "localName": "白馬岩岳マウンテンリゾート"
+        },
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-shirakawago-parking",
+          "localName": "村営せせらぎ公園駐車場"
+        },
+        {
+          "kind": "transport",
+          "id": "jp27-transport-shinano-out",
+          "localName": "特急しなの"
+        },
+        {
+          "kind": "transport",
+          "id": "jp27-transport-shinano-return",
+          "localName": "特急しなの"
+        }
+      ],
+      "sourceIds": [
+        "jp27-source-gpt6-native-nav-matsumoto-station",
+        "jp27-source-gpt6-native-nav-nagoya-station",
+        "jp27-source-gpt6-native-nav-centrair-t2",
+        "jp27-source-gpt6-native-nav-aeon-matsumoto",
+        "jp27-source-gpt6-native-nav-iwatake-base",
+        "jp27-source-gpt6-native-nav-shirakawago-parking",
+        "jp27-source-gpt6-native-transport-shinano-out",
+        "jp27-source-gpt6-native-transport-shinano-return"
+      ],
+      "confidence": "Operator/JR current native labels only; no booking or 2027 timetable claims"
     }
   ],
   "photoCandidate": {
@@ -229,7 +285,7 @@
   "unresolved": [
     {
       "issue": 15,
-      "description": "Target-specific navigation names and remaining transport native labels not fully sourced"
+      "description": "6 navigation targets + 2 JR Shinano service labels source-verified in unpublished Packet9; other exact target-specific parking/store names, transport native labels and 2027 validation remain open"
     },
     {
       "issue": 18,
@@ -270,19 +326,18 @@
     "Separate user authorization before any Supabase write/publication",
     "Step15D stays blocked"
   ],
-  "draftSha256": "a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e",
+  "draftSha256": "fe4f2dd90a2f3cb8c182ea93e7c231b2e30718af362cb2f6e590534ce560c458",
   "sourceReview": "jp2027-source-review.json",
   "validation": {
-    "result": "Packet8 CI PENDING; Packet7 2995/2995 PASS",
+    "result": "Packet9 GitHub Actions QA PENDING; Packet8 3015/3015 PASS",
     "checkedAt": "2026-10-14",
-    "candidateSha256": "a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e",
-    "priorCandidateSha256": "702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0",
-    "previousFullRegression": "2995/2995 PASS on 886f678, run 38461568115",
+    "candidateSha256": "fe4f2dd90a2f3cb8c182ea93e7c231b2e30718af362cb2f6e590534ce560c458",
+    "priorCandidateSha256": "a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e",
+    "previousFullRegression": "3015/3015 PASS parent 4a916b7 only",
     "newFullRegression": "NOT YET VERIFIED",
     "publicationApproval": false,
     "supabaseWrites": false,
-    "step15DStarted": false,
-    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6159272278"
+    "step15DStarted": false
   },
   "previousValidation": {
     "result": "PASS",
@@ -438,6 +493,14 @@
     "fullRegressionCases": 2995,
     "fullRegressionResult": "2995/2995 PASS, 0 FAIL",
     "typecheckBuild": "PASS",
+    "checkedAt": "2026-10-14"
+  },
+  "previousValidationPacket8": {
+    "commit": "4a916b73bc88578a67daa25b079f5573440b7bf0",
+    "runId": 38499569383,
+    "result": "SUCCESS",
+    "fullRegressionCases": 3015,
+    "fullRegressionResult": "3015/3015 PASS, 0 FAIL",
     "checkedAt": "2026-10-14"
   }
 }

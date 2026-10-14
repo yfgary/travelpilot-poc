@@ -70,3 +70,7 @@ Review-only `jp2027-schema6-review-draft-09` includes the user-approved D8 今�
 ## Packet #8 — Matsumoto official Live Camera
 
 One external-only D1/D2 Matsumoto Castle camera card links the [official combined page](https://visitmatsumoto.com/en/livecamera/) (City Hall roof, Honmaru Garden, Kuromon Gate). City office separately verifies the municipal source and Honmaru published 08:00–22:00, not a universal camera schedule. Direct YouTube playback blocked in this research environment, so licensing/embedding/playback are NOT certified; #25 BLOCKED. Candidate draft-10 SHA-reversible to Packet7 with original six camera records untouched. New CI pending; no publication or Prod changes.
+
+## Packet #9 — Japanese names only (review draft-11)
+
+Adds source-verified Japanese local names for six existing navigation targets (JR Matsumoto/Nagoya stations, Centrair T2, AEON Mall Matsumoto, Hakuba Iwatake, Shirakawago municipal parking) and two Shinano transport entries. Distinct official Japanese labels are kept separate from original Chinese titles and unchanged map destinations. Real 2027 schedules, unresolved target-specific car parks, flights and rental counter details are not certified. 8 entity-bound sources and strict reversible previous SHA proof protect all other JSON. POC only; #15 PARTIAL, Packet9 CI pending and no production publication.

@@ -13,7 +13,7 @@ const ledger = JSON.parse(readFileSync('docs/proposals/jp2027-source-review.json
 test('Packet7 exact source/highlight/descriptions reconstruct Packet5 SHA with all routes/times immutable', () => {
   expect(validateTripSnapshot(draft)).toMatchObject({ valid: true })
   expect(createHash('sha256').update(bytes).digest('hex')).toBe(manifest.draftSha256)
-  expect(manifest).toMatchObject({candidateLabel:'jp2027-schema6-review-draft-10',published:false,isCurrent:false,authorizedForSupabaseWrite:false})
+  expect(manifest).toMatchObject({candidateLabel:'jp2027-schema6-review-draft-11',published:false,isCurrent:false,authorizedForSupabaseWrite:false})
   expect(packet.fields).toHaveLength(3)
   expect(packet.sources).toHaveLength(8)
   expect(packet.highlight).toMatchObject({dayId:'jp27-day-8',index:2,after:'下午直接向東返松本'})

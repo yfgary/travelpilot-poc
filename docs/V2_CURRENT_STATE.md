@@ -2,6 +2,12 @@
 
 Last updated: 14/10/2026 (Hong Kong)
 
+## Packet #9 — Official Japanese native names for navigation/transport (unpublished)
+
+Packet8 CI [38499569383](https://github.com/yfgary/travelpilot-poc/actions/runs/38499569383) SUCCESS, **3015/3015 PASS, 0 FAIL**. Official JR East, Centrair T2, AEON Mall Matsumoto, Hakuba Iwatake and Shirakawago visitor access sources verified by GPT-6 (2026-10-14). Added six navigation and two Shinano train `localName` strings using the already generic optional Schema6 field, with 8 timeline-appropriate official entity-bound source records. Destination mapURL/mapQuery, all trip dates/times/booking/parking selections, original six cameras, media and publication unchanged. The full exact candidate restores Packet8 SHA `a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e`; draft-11 hash `fe4f2dd90a2f3cb8c182ea93e7c231b2e30718af362cb2f6e590534ce560c458`, CI **PENDING**. #15 remains PARTIAL until remaining exact rental/parking native names and user-visible acceptance.
+
+#22 daytime castle file remains **BLOCKED**; city's download archive allows JPEG with attribution `写真提供：松本城管理課` (commercial use requires prior inquiry), but selected Commons CC BY 2.0 photo bytes remain inaccessible from container; no fabricated image/asset mapping added. All 28 still unaccepted.
+
 ## Packet #8 — Matsumoto Castle official LiveCam link, unpublished
 
 Packet7 parent `886f678`: CI [38461568115](https://github.com/yfgary/travelpilot-poc/actions/runs/38461568115) SUCCESS; **2995/2995 PASS**. GPT-6 [official Packet8](https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6159272278) verified Matsumoto City/official tourism coverage of Castle from rooftop, Honmaru and Kuromon. One external-only card connects to the official combined page from D1/D2. No embedded/rehosted video, live playback/permission certification or provider auto-fetch. Camera count 6→7; exact old six remain immutable, Packet8 SHA restoration checks prior `702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0`. New review draft label `jp2027-schema6-review-draft-10`, new SHA `a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e`; new CI **pending**. #25 **BLOCKED**, all28 final acceptance pending. No Production, Supabase, published Japan, runtime/schema, timing or media changes.

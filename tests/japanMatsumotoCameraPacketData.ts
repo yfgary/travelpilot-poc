@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { expect } from './fixtures'
 import type { TripSnapshot } from '../src/data/schema/trip'
+import { restoreNativeNamesPacket9 } from './japanNativeNamesPacketData'
 
 // Packet8 reverse before old Packet7 and Packet5 exact SHA checks.
 export const matsumotoPacket = JSON.parse(readFileSync('tests/fixtures/japan-matsumoto-camera-packet8.json','utf8')) as {
@@ -14,7 +15,7 @@ export const matsumotoPacket = JSON.parse(readFileSync('tests/fixtures/japan-mat
 }
 export function restoreMatsumotoCameraPacket8<T extends TripSnapshot>(snapshot: T): T {
   expect(matsumotoPacket.priorCandidateSha256).toBe('702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0')
-  const r = structuredClone(snapshot)
+  const r = restoreNativeNamesPacket9(snapshot)
   expect(r.liveCams).toHaveLength(matsumotoPacket.originalCameraCount + 1)
   expect(r.liveCams[matsumotoPacket.cameraInsertIndex]).toEqual(matsumotoPacket.camera)
   r.liveCams.splice(matsumotoPacket.cameraInsertIndex,1)
