@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto'
 import { test, expect } from './fixtures'
 import { validateTripSnapshot } from '../src/data/schema/trip'
 import { roadSafetyPacket as packet, restoreRoadSafetyPacket } from './japanRoadSafetyPacketData'
+import { restoreNativeNamesPacket9 } from './japanNativeNamesPacketData'
 import { mockJapan, japanVersion } from './japanFixtures'
 import { seedAuth } from './tripFixtures'
 
@@ -23,7 +24,9 @@ test('Packet7 exact source/highlight/descriptions reconstruct Packet5 SHA with a
   expect(createHash('sha256').update(originalBytes).digest('hex')).toBe('09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e')
   const original = JSON.parse(originalBytes.toString())
   expect(draft.images).toEqual(original.images)
-  expect(draft.navigationTargets).toEqual(original.navigationTargets)
+  // Packet9 adds optional sourced localName fields only. Reverse that exact
+  // delta with its pinned SHA256 proof before comparing EVERY legacy target.
+  expect(restoreNativeNamesPacket9(draft).navigationTargets).toEqual(original.navigationTargets)
   for (const day of original.days) {
     const next = draft.days.find((d: {id:string}) => d.id === day.id)
     expect(next.date).toBe(day.date)
