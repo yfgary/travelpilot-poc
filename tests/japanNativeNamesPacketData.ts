@@ -11,7 +11,7 @@ export function restoreNativeNamesPacket9<T extends TripSnapshot>(snapshot:T):T 
   expect(nativePacket.priorCandidateSha256).toBe('a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e')
   const r=structuredClone(snapshot)
   for(const f of nativePacket.fields){
-    const target=(f.kind==='transport'?r.transport:r.navigationTargets).find(e=>e.id===f.id)!
+    const target=(f.kind==='transport'?r.transport:r.navigationTargets).find(e=>e.id===f.id)! as {localName?:string}
     expect(target.localName).toBe(f.localName)
     delete target.localName
   }
