@@ -27,7 +27,7 @@ test('Packet9 exact native-name-only and eight bound source delta restores Packe
   const r=restoreNativeNamesPacket9(draft)
   expect(r.liveCams).toEqual(draft.liveCams)
   expect(r.days).toEqual(draft.days)
-  expect(r.navigationTargets.every(x=>!('localName' in x))).toBe(true)
+  expect(r.navigationTargets.every((x:{id:string;localName?:string})=>!('localName' in x))).toBe(true)
   expect(createHash('sha256').update(readFileSync('tests/fixtures/japan2027-schema5.json')).digest('hex')).toBe('09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e')
 })
 for(const font of ['small','medium','large']) test('Official native-name fields displayed in generic Trip Info cards at '+font,async({page},info)=>{
