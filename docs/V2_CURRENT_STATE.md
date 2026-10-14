@@ -2,6 +2,10 @@
 
 Last updated: 14/10/2026 (Hong Kong)
 
+## Packet #8 — Matsumoto Castle official LiveCam link, unpublished
+
+Packet7 parent `886f678`: CI [38461568115](https://github.com/yfgary/travelpilot-poc/actions/runs/38461568115) SUCCESS; **2995/2995 PASS**. GPT-6 [official Packet8](https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6159272278) verified Matsumoto City/official tourism coverage of Castle from rooftop, Honmaru and Kuromon. One external-only card connects to the official combined page from D1/D2. No embedded/rehosted video, live playback/permission certification or provider auto-fetch. Camera count 6→7; exact old six remain immutable, Packet8 SHA restoration checks prior `702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0`. New review draft label `jp2027-schema6-review-draft-10`, new SHA `a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e`; new CI **pending**. #25 **BLOCKED**, all28 final acceptance pending. No Production, Supabase, published Japan, runtime/schema, timing or media changes.
+
 ## Packet #7 — D8 Today landslide/snow check and D5/D7/D8 R158 caution (Draft-only)
 
 Based on unchanged PR #21 parent 78b12a9. Added one user-requested D8 highlight after the second existing highlight: check R158 landslide closure, whether the Takayama City-managed opposite-bank diversion is open or snow/ice-closed, rejoin R158 only if official routing permits, else consider official wider routes, never rush for17:30. Added one sourced paragraph each to existing D5/D7/D8 drive descriptions; 8 official timeline-bound source records. **This is not actual January 2027 road status or a selected route, and original days/times/offsets/hard cuts are unchanged.** Candidate label review-draft-09; SHA256 702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0, Packet5 prior 350b02bb8f365e973f1209a803d181453bd96c73fee1e3aa23d1cec459a7b59e, source/manifest ledger updated. Independent full CI **PENDING**; historical 2,960 PASS applies only to previous parent. #20 PARTIAL; all 28 not user-accepted. NO merge/deploy/Production/Supabase/published jp2027.1/asset modifications or Step15D.

@@ -1,6 +1,6 @@
 {
   "status": "UNPUBLISHED_REVIEW_ONLY",
-  "candidateLabel": "jp2027-schema6-review-draft-09",
+  "candidateLabel": "jp2027-schema6-review-draft-10",
   "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
   "published": false,
   "isCurrent": false,
@@ -194,6 +194,17 @@
         "jp27-source-gpt6-r158-d8-city"
       ],
       "confidence": "2026/10 official source; NOT actual 2027 road or snow status"
+    },
+    {
+      "area": "GPT-6 Packet8 Matsumoto Castle single official live camera entry (three views)",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6159272278",
+      "sourceIds": [
+        "jp27-source-gpt6-matsumoto-castle-official-live"
+      ],
+      "cameraIds": [
+        "jp27-cam-matsumoto-castle-official"
+      ],
+      "confidence": "Official city and tourism links, NOT certified playback or embedding rights"
     }
   ],
   "photoCandidate": {
@@ -238,7 +249,7 @@
     },
     {
       "issue": 25,
-      "description": "Official village scenery webpage added external-only; licensed playback/embedding and real availability unverified. #25 BLOCKED; traffic camera untouched."
+      "description": "Official Matsumoto Castle 3-view compilation added once as an external-only D1/D2 candidate alongside 6 original cameras; licensed playback and real availability still NOT verified. #25 BLOCKED."
     },
     {
       "issue": 9,
@@ -249,7 +260,7 @@
     "placesOriginal": 36,
     "placesDraft": 37,
     "days": 9,
-    "cameras": 6,
+    "cameras": 7,
     "transport": 7,
     "publishedFixtureUntouched": true,
     "protectedAssetsUntouched": true
@@ -259,18 +270,19 @@
     "Separate user authorization before any Supabase write/publication",
     "Step15D stays blocked"
   ],
-  "draftSha256": "702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0",
+  "draftSha256": "a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e",
   "sourceReview": "jp2027-source-review.json",
   "validation": {
-    "result": "PENDING GitHub PR QA; no new PASS claimed",
+    "result": "Packet8 CI PENDING; Packet7 2995/2995 PASS",
     "checkedAt": "2026-10-14",
-    "candidateSha256": "702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0",
-    "previousFullRegression": "2960 PASS was from 78b12a9 parent ONLY",
-    "newFullRegression": "NOT VERIFIED",
+    "candidateSha256": "a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e",
+    "priorCandidateSha256": "702f3d75a54aefb5348e54bb0b71a4ce520569b15bfdbe8bcbf79837503766d0",
+    "previousFullRegression": "2995/2995 PASS on 886f678, run 38461568115",
+    "newFullRegression": "NOT YET VERIFIED",
     "publicationApproval": false,
     "supabaseWrites": false,
     "step15DStarted": false,
-    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6152921778"
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6159272278"
   },
   "previousValidation": {
     "result": "PASS",
@@ -418,5 +430,14 @@
     "packetOnlyCandidateDelta": "PASS: exactly three timeline descriptions, two second Place paragraphs, six sources, one Miyagawa sourceId and one external-only camera reversed; reconstruct Packet4 SHA8cf05ea8...; prior packet baseline checks retained without Git history",
     "productionSha": "8b5129b381d6ace94030b51c7b8de5c4e3d5f533",
     "interpretation": "Unpublished renderability only; #20/#23 PARTIAL, #25 BLOCKED; all28 require final acceptance, no publication/booking/playback certification"
+  },
+  "previousValidationPacket7": {
+    "runId": 38461568115,
+    "commit": "886f6783e55a65c5cd59bfb0a0139bdfbe04ab9c",
+    "result": "SUCCESS (GitHub CI)",
+    "fullRegressionCases": 2995,
+    "fullRegressionResult": "2995/2995 PASS, 0 FAIL",
+    "typecheckBuild": "PASS",
+    "checkedAt": "2026-10-14"
   }
 }

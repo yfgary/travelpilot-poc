@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { expect } from './fixtures'
 import type { TripSnapshot } from '../src/data/schema/trip'
+import { restoreMatsumotoCameraPacket8 } from './japanMatsumotoCameraPacketData'
 
 // Reverse only this exact sourced packet before preserving all historical packet SHA assertions.
 export const roadSafetyPacket = JSON.parse(readFileSync('tests/fixtures/japan-road-safety-packet7.json', 'utf8')) as {
@@ -12,7 +13,7 @@ export const roadSafetyPacket = JSON.parse(readFileSync('tests/fixtures/japan-ro
 }
 export function restoreRoadSafetyPacket<T extends TripSnapshot>(snapshot: T): T {
   expect(roadSafetyPacket.priorCandidateSha256).toBe('350b02bb8f365e973f1209a803d181453bd96c73fee1e3aa23d1cec459a7b59e')
-  const r = structuredClone(snapshot)
+  const r = restoreMatsumotoCameraPacket8(snapshot)
   const day = r.days.find(d => d.id === roadSafetyPacket.highlight.dayId)!
   expect(day.highlights[roadSafetyPacket.highlight.index]).toBe(roadSafetyPacket.highlight.text)
   day.highlights.splice(roadSafetyPacket.highlight.index, 1)

@@ -66,3 +66,7 @@ Six official source records accompany the exact copy and distinct external-only 
 ## Packet #7 R158 safety addendum
 
 Review-only `jp2027-schema6-review-draft-09` includes the user-approved D8 今日重點 warning for the R158 塩屋 landslide, nearby city-managed municipal diversion, and **snow/ice/road-closure recheck** before any January 2027 use. Official Gifu Prefecture, Takayama City, Hida Cave and Nagano Prefecture notices checked 2026-10-14. D5/D7/D8 have append-only road safety descriptions and 8 official timeline references; original D1–D9 schedule, routes, 5 old camera data, published Japan and protected images untouched. Full prior Packet5 SHA guarded by new restoration test; GitHub CI pending, so no new regression pass claimed. No publication or user acceptance.
+
+## Packet #8 — Matsumoto official Live Camera
+
+One external-only D1/D2 Matsumoto Castle camera card links the [official combined page](https://visitmatsumoto.com/en/livecamera/) (City Hall roof, Honmaru Garden, Kuromon Gate). City office separately verifies the municipal source and Honmaru published 08:00–22:00, not a universal camera schedule. Direct YouTube playback blocked in this research environment, so licensing/embedding/playback are NOT certified; #25 BLOCKED. Candidate draft-10 SHA-reversible to Packet7 with original six camera records untouched. New CI pending; no publication or Prod changes.

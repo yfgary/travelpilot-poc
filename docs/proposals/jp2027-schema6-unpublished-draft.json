@@ -6063,6 +6063,29 @@
       "sourceLabel": "岐阜縣道路情報"
     },
     {
+      "id": "jp27-cam-matsumoto-castle-official",
+      "label": "松本城官方 Live Camera（3個角度）",
+      "description": "松本市官方觀光網站集合3個松本城拍攝角度：市役所屋頂望天守與北阿爾卑斯、本丸庭園及黑門。可用於D1/D2出發前查看城景、雲量與積雪；其中本丸庭園官方通常提供08:00–22:00觀看，其他鏡頭不可套用同一時段。鏡頭及串流可因維護、天氣或YouTube更換而暫停；請在官方頁面開啟，並非本App內嵌或已認證可播放的即時串流。",
+      "regionId": "jp27-region-matsumoto",
+      "placeId": "jp27-place-matsumoto-castle",
+      "routeDayIds": [
+        "jp27-day-1",
+        "jp27-day-2"
+      ],
+      "group": "D1–D2 松本城",
+      "priority": "reference",
+      "tags": [
+        "天守",
+        "北阿爾卑斯",
+        "天氣",
+        "3個角度"
+      ],
+      "sourceType": "external",
+      "sourceURL": "https://visitmatsumoto.com/en/livecamera/",
+      "officialURL": "https://visitmatsumoto.com/en/livecamera/",
+      "sourceLabel": "松本市官方觀光網站"
+    },
+    {
       "id": "jp27-cam-shirakawago-village",
       "label": "白川鄉官方村景定時畫面",
       "description": "官方村景靜止畫面約每分鐘更新，05:00–19:00運作，19:00–05:00停止自動更新；冬季天氣及積雪可能中斷或遮擋畫面。為居民私隱而稍微柔焦；只可在官方頁面查看，非本程式內嵌或已認證的即時串流。",
@@ -7550,6 +7573,16 @@
       "entity": {
         "type": "liveCam",
         "id": "jp27-cam-shirakawago-village"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-matsumoto-castle-official-live",
+      "title": "松本市官方松本城三個視角 Live Camera（GPT-6核對2026-10-14）",
+      "url": "https://visitmatsumoto.com/en/livecamera/",
+      "type": "official",
+      "entity": {
+        "type": "liveCam",
+        "id": "jp27-cam-matsumoto-castle-official"
       }
     }
   ],
