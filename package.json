@@ -11,7 +11,10 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
     "build": "npm run typecheck && vite build",
     "preview": "vite preview",
-    "test": "playwright test"
+    "test": "playwright test",
+    "typecheck:isolated-preview": "tsc --noEmit -p tsconfig.preview.json",
+    "build:isolated-preview": "npm run typecheck:isolated-preview && vite build --config vite.preview.config.ts --mode isolated-preview",
+    "serve:isolated-preview": "vite preview --config vite.preview.config.ts --mode isolated-preview --host 127.0.0.1"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.117.3",

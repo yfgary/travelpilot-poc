@@ -1,0 +1,3 @@
+.preview-notice { flex-shrink: 0; display: flex; flex-wrap: wrap; gap: .15rem .7rem; padding: .35rem max(.75rem, env(safe-area-inset-left)) .35rem max(.75rem, env(safe-area-inset-right)); background: #fff0ca; color: #563500; border-bottom: 2px solid #ae7900; font-size: .7rem; line-height: 1.4; overflow-wrap: anywhere; }
+.preview-notice small { flex-basis: 100%; font-size: inherit; }
+.preview-build-details { overflow-wrap: anywhere; }

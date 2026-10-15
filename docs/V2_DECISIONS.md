@@ -256,3 +256,12 @@ Repository-relative canonical paths:
 ## 2026-10-11 — R8 final acceptance separates UI readiness from published content
 
 The 28-item review retains separate PASS/PARTIAL/BLOCKED/FAIL statuses. Passing synthetic/provider fixtures does not certify Japan content fidelity, verified fares/native names, image rights, real camera playback or future weather. R8 adds only known generic compound lodging-category labels; unknown authored categories remain unchanged. No schema/data/cache/asset migration follows from this presentation correction. The final report and separately approved verified content authoring/publication remain review gates; Draft only, no merge/deployment or Step15D.
+
+
+## 2026-10-16 — Explicit isolated Preview build; Stage A only
+
+Approved [Stage A packet](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6199542612): a separate opt-in build/entry uses a generic validated local registry and build-time service bindings. It never selects Preview from BASE_URL. Raw review bytes and manifest are pinned, canonical validation and checksum gates fail closed at build/startup; source is explicitly `preview`, not publication. Normal source/build behavior and immutable inputs remain protected by byte fingerprints.
+
+Auth/session restoration, SDK, backend/update checks, cloud checklist transport and live forecast/alert adapters are excluded from Preview. Shared local checklist behavior uses an isolated IndexedDB namespace. Fixed labelled samples feed shared scoring/presentation; disconnected JMA is unverified/unavailable. Namespace and presentation substitutions are exact, build-only and fail on drift, avoiding normal runtime changes. Browser network observations and module guards provide separate safety evidence. Reuse shared pages/routes/navigation/fonts/Today; do not introduce a second trip renderer or a clock override.
+
+Separate future origin plus tailnet-only Windows/Tailscale Serve requires Stage B review; no hosting now. Private hosting protects only the endpoint; the existing GitHub repository/draft is public. A later release/merge needs the normal App Version gate. No new Trip Data publication, Supabase operation, Production change, UAT acceptance or Step15D follows from this decision. [Boundary and limitations](V2_PREVIEW_STAGE_A.md).
