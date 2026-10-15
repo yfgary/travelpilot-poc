@@ -1,3 +1,4 @@
+import { waitForInitialTrip } from './tripReadiness'
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { Page } from '@playwright/test'
@@ -21,6 +22,7 @@ async function changeTrip(page: Page, slug: string, view = 'info') {
   await expect(page).toHaveURL(new RegExp(`#/trip/${slug}/${view}$`))
 }
 async function checkTrip(page: Page, payload: (typeof localTrips)[number]['payload'], version: string, source: string) {
+  await waitForInitialTrip(page, payload.trip.slug)
   await expect(page.locator('.trip-heading h2')).toHaveText(payload.trip.title)
   await expect(page.locator('.trip-heading')).toContainText(payload.trip.summary)
   await expect(page.locator('code')).toHaveText(payload.trip.slug)
@@ -107,25 +109,28 @@ for (const now of ['2025-02-06', '2026-10-07', '2030-04-12', '2030-04-14', '2030
   })
 }
 
-for (const record of localTrips) {
-  test(`all available shared routes, reloads and Settings Back work for ${record.payload.trip.slug}`, async ({ page }) => {
+// Each route remains an independent workflow; retain the original adjacent
+// page transition by entering its predecessor before selecting the target.
+for (const record of localTrips) for (const [index, view] of tripShortcuts(record.payload).entries()) {
+  test(`shared route/reload/Settings Back for ${record.payload.trip.slug}/${view.path}`, async ({ page }) => {
     const other = localTrips.find((trip) => trip !== record)!
     await page.goto('#/')
     await page.getByRole('article').filter({ hasText: record.payload.trip.title }).getByRole('link', { name: '詳細行程', exact: true }).click()
-    for (const view of tripShortcuts(record.payload)) {
-      await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: view.title, exact: true }).click()
-      await checkTrip(page, record.payload, record.dataVersion, 'demo')
-      await expect(page.getByRole('heading', { level: 1 })).toHaveText(view.title)
-      await expect(page.getByText(other.payload.trip.title, { exact: true })).toHaveCount(0)
-      await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveText(tripShortcuts(record.payload).map((view) => view.title))
-      await page.reload()
-      await checkTrip(page, record.payload, record.dataVersion, 'demo')
-      await expect(page.getByRole('status')).toBeVisible()
-      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-      await page.getByRole('navigation', { name: '主導覽' }).getByRole('link', { name: '設定' }).click()
-      await page.getByRole('button', { name: '返回上一頁' }).click()
-      await expect(page).toHaveURL(new RegExp(`#/trip/${record.payload.trip.slug}/${view.path}$`))
-    }
+    const predecessor = tripShortcuts(record.payload)[Math.max(0, index - 1)]
+    if (predecessor.path !== 'itinerary') await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: predecessor.title, exact: true }).click()
+    await page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link', { name: view.title, exact: true }).click()
+    await checkTrip(page, record.payload, record.dataVersion, 'demo')
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(view.title)
+    await expect(page.getByText(other.payload.trip.title, { exact: true })).toHaveCount(0)
+    await expect(page.getByRole('navigation', { name: '旅程頁面' }).getByRole('link')).toHaveText(tripShortcuts(record.payload).map((view) => view.title))
+    await page.reload()
+    await checkTrip(page, record.payload, record.dataVersion, 'demo')
+    await expect(page.getByRole('status')).toBeVisible()
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+    await page.getByRole('navigation', { name: '主導覽' }).getByRole('link', { name: '設定' }).click()
+    await page.getByRole('button', { name: '返回上一頁' }).click()
+    await expect(page).toHaveURL(new RegExp(`#/trip/${record.payload.trip.slug}/${view.path}$`))
+    await checkTrip(page, record.payload, record.dataVersion, 'demo')
   })
 }
 

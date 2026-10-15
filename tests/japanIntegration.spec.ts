@@ -1,3 +1,4 @@
+import { waitForInitialTrip } from './tripReadiness'
 import { createHash } from 'node:crypto'
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -62,6 +63,7 @@ for (const view of ['itinerary', 'info', 'attractions', 'live', 'today']) test(`
   await seedAuth(page); await mockJapan(page); await page.goto(`#/trip/${slug}/${view}`)
   for (let reload = 0; reload < 2; reload++) {
     if (reload) await page.reload()
+    await waitForInitialTrip(page, slug)
     await expect(page.locator('.trip-heading h2')).toHaveText(japan.trip.title)
     await expect(page.getByTestId('trip-versions')).toHaveText('Trip Data Version：jp2027.1 · Trip Schema Version：5')
     await expect(page.getByTestId('trip-source')).toContainText('remote')
@@ -74,6 +76,7 @@ for (const view of ['itinerary', 'info', 'attractions', 'live', 'today']) test(`
 })
 test('Detailed Itinerary preserves D6–D8 and exact D1/D9 offset/date/zone display', async ({ page }, testInfo) => {
   await seedAuth(page); await mockJapan(page); await page.goto(`#/trip/${slug}/itinerary`)
+  await waitForInitialTrip(page, slug)
   await expect(page.locator('.trip-heading h2')).toHaveText(japan.trip.title)
   for (const n of [1, 6, 7, 8, 9]) {
     const day = japan.days.find((day) => day.dayNumber === n)!
@@ -163,7 +166,10 @@ for (const view of ['home', 'itinerary', 'info', 'attractions', 'live', 'today']
   await seedAuth(page); await mockJapan(page)
   await page.goto(view === 'home' ? '#/' : `#/trip/${slug}/${view}`)
   if (view === 'home') await expect(homeCard(page)).toBeVisible()
-  else await expect(page.locator('.trip-heading h2')).toHaveText(japan.trip.title)
+  else {
+    await waitForInitialTrip(page, slug)
+    await expect(page.locator('.trip-heading h2')).toHaveText(japan.trip.title)
+  }
   // Full-page QA explicitly loads lazy fixture images; normal application loading remains lazy.
   await page.evaluate(async () => { await document.fonts.ready; for (const image of document.images) image.loading = 'eager'; await Promise.all([...document.images].map((image) => image.decode().catch(() => undefined))) })
   expect(await page.evaluate(() => document.documentElement.dataset.fontSize)).toBe('large')

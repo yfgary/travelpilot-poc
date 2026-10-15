@@ -1,4 +1,5 @@
 import { test as base, expect } from '@playwright/test'
+import { observeLoading } from './loadingDiagnostics'
 import { openMeteoResponse } from './weatherFixtures'
 import { supabaseConfig } from '../src/services/supabaseConfig'
 
@@ -22,7 +23,8 @@ export function fakeSession(expiresAt = Math.floor(Date.now() / 1000) + 3600) {
 
 // Every suite uses network interception; no real account or database requests in CI.
 export const test = base.extend<{ supabaseNetwork: void }>({
-  supabaseNetwork: [async ({ page }, use) => {
+  supabaseNetwork: [async ({ page }, use, info) => {
+    const finishDiagnostics = process.env.TRAVELPILOT_LOADING_DIAGNOSTICS ? await observeLoading(page, info) : null
     await page.route(`${supabaseOrigin}/**`, async (route) => {
       const url = new URL(route.request().url())
       if (url.pathname === '/rest/v1/v2_app_versions' || (url.pathname === '/rest/v1/v2_checklist_state' && route.request().method() === 'GET')) {
@@ -32,7 +34,7 @@ export const test = base.extend<{ supabaseNetwork: void }>({
       }
     })
     await page.route('https://api.open-meteo.com/**', (route) => route.fulfill({ json: openMeteoResponse() }))
-    await use()
+    try { await use() } finally { await finishDiagnostics?.() }
   }, { auto: true }],
 })
 export { expect }

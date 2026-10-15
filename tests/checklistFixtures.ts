@@ -5,6 +5,7 @@ import type { TripSnapshot } from '../src/data/schema/trip'
 import { compareChanges } from '../src/data/checklistState'
 import { testUser, fakeSession, storageKey, supabaseOrigin, expect } from './fixtures'
 import { seedAuth } from './tripFixtures'
+import { waitForInitialTrip } from './tripReadiness'
 
 export const syncCity = structuredClone(cityTrip), syncRoad = structuredClone(roadTrip)
 syncCity.trip = { ...syncCity.trip, id: '00000000-0000-4000-8000-000000000012', slug: 'sync-city', title: '清單城市測試旅程' }
@@ -37,7 +38,7 @@ export function localRow(row: ServerRow, dirty = true) {
   return { scope: row.user_id, ownerId: row.user_id, tripId: row.trip_id, checklistItemId: row.checklist_item_id, checked: row.checked, clientUpdatedAt: row.client_updated_at, deviceId: row.device_id ?? '', dirty }
 }
 export async function mockChecklistBackend(page: Page, snapshots = [syncCity, syncRoad]) {
-  const backend = { rows: [] as ServerRow[], pulls: [] as string[], batches: [] as any[][], requests: [] as { method: string; table: string }[], fail: false,
+  const backend = { rows: [] as ServerRow[], pulls: [] as string[], pullItems: [] as string[][], batches: [] as any[][], requests: [] as { method: string; table: string }[], fail: false,
     versions: new Map<string,string>(), beforePush: undefined as undefined | ((batch: any[]) => void), gate: undefined as undefined | Promise<void>, owner: testUser.id }
   await page.route(`${supabaseOrigin}/rest/v1/**`, async (route: Route) => {
     const request = route.request(), url = new URL(request.url()), table = url.pathname.split('/').at(-1)!
@@ -63,6 +64,7 @@ export async function mockChecklistBackend(page: Page, snapshots = [syncCity, sy
       expect(requestedIds.length).toBeLessThanOrEqual(200)
       expect(requestedIds.every((id) => itemIds(snapshots.find((snapshot) => snapshot.trip.id === tripId)!).includes(id))).toBe(true)
       backend.pulls.push(tripId)
+      backend.pullItems.push([...requestedIds])
       if (backend.gate) await backend.gate
       await route.fulfill({ json: backend.rows.filter((row) => row.user_id === backend.owner && row.trip_id === tripId && requestedIds.includes(row.checklist_item_id)) }); return
     }
@@ -90,6 +92,7 @@ export async function mockChecklistBackend(page: Page, snapshots = [syncCity, sy
 }
 export async function openOwned(page: Page, snapshot = syncCity) {
   await seedAuth(page); await page.goto(`#/trip/${snapshot.trip.slug}/info`)
+  await waitForInitialTrip(page, snapshot.trip.slug)
   await expect(page.getByTestId('trip-source')).toContainText('remote')
   await expect(page.locator('.checklist-item input').first()).toBeEnabled()
 }

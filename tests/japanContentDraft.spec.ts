@@ -1,6 +1,15 @@
+import { waitForInitialTrip } from './tripReadiness'
 import { readFileSync, existsSync } from 'node:fs'
 import { createHash } from 'node:crypto'
-import { test, expect } from './fixtures'
+import { test as base, expect } from './fixtures'
+import { createStageTiming } from './stageTiming'
+
+const test = base.extend<{ stageTiming: Awaited<ReturnType<typeof createStageTiming>> }>({
+  stageTiming: [async ({ page }, use, info) => {
+    const timing = await createStageTiming(page, info)
+    try { await use(timing) } finally { await timing.finish() }
+  }, { auto: true }],
+})
 import { restoreOperationsPacket } from './japanOperationsPacketData'
 import { validateTripSnapshot } from '../src/data/schema/trip'
 
@@ -102,48 +111,90 @@ for (const view of ['itinerary', 'info', 'attractions', 'live', 'today']) test(`
   await seedAuth(page)
   const requests = await mockJapan(page, { versions: [version()] })
   await page.goto(`#/trip/${draft.trip.slug}/${view}`)
+  await waitForInitialTrip(page, draft.trip.slug)
   await expect(page.getByTestId('trip-versions')).toContainText(`${manifest.proposedDataVersion} · Trip Schema Version：6`)
   await expect(page.locator('.trip-heading h2')).toHaveText(draft.trip.title)
   await page.reload()
+  await waitForInitialTrip(page, draft.trip.slug)
   await expect(page.getByTestId('trip-versions')).toContainText(manifest.proposedDataVersion)
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   expect(requests.every(r => r.method === 'GET')).toBe(true)
 })
 
-for (const font of ['small', 'medium', 'large']) test(`unpublished content/native names are readable at ${font} font and retain offline cache`, async ({ page }, info) => {
-  await page.addInitScript(font => localStorage.setItem('travelpilot.font-size', font), font)
-  await seedAuth(page); await mockJapan(page, { versions: [version()] })
-  await page.goto(`#/trip/${draft.trip.slug}/attractions`)
-  await expect(page.locator('.trip-heading h2')).toHaveText(draft.trip.title)
-  // Every original Place remains reachable through the existing generic detail dialog.
-  for (const place of draft.places) {
-    const action = page.getByRole('button', { name: `詳細介紹：${place.name}`, exact: true }).first()
-    await action.click()
-    const dialog = page.getByRole('dialog')
-    await expect(dialog.getByTestId('native-name')).toHaveText(place.localName)
-    const introduction = dialog.getByTestId('place-detail-introduction')
-    for (const paragraph of place.longDescription.split('\n\n')) await expect(introduction).toContainText(paragraph)
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-    if (place.id === 'jp27-place-snow-monkey') {
-      await expect(dialog).toContainText('JPY 1,000')
-      await expect(dialog).toContainText(place.feeNotes)
-      await expect(dialog.locator('dt', { hasText: '最後入場' })).toHaveCount(0)
-      await expect(introduction).toContainText('並未公告15:30是嚴格最後入場時間')
-    }
-    if (place.id === 'jp27-place-matsumoto-castle') await page.screenshot({ path: info.outputPath(`castle-${font}.png`) })
-    await dialog.getByRole('button', { name: '關閉詳細介紹' }).click()
+// Bound each independent browser workflow without dropping any Place/font/viewport.
+const placesPerGroup = 10
+const placeGroups = Array.from({ length: Math.ceil(draft.places.length / placesPerGroup) }, (_, index) => ({
+  label: `group ${index + 1} (${index * placesPerGroup + 1}–${Math.min((index + 1) * placesPerGroup, draft.places.length)})`,
+  places: draft.places.slice(index * placesPerGroup, (index + 1) * placesPerGroup) as typeof draft.places,
+}))
+
+test('content groups cover all 37 Places exactly once in canonical order', () => {
+  const ids = placeGroups.flatMap(group => group.places.map((place: { id: string }) => place.id))
+  expect(ids).toEqual(draft.places.map((place: { id: string }) => place.id))
+  expect(ids).toHaveLength(37)
+  expect(new Set(ids).size).toBe(ids.length)
+  for (const group of placeGroups) {
+    expect(group.places.length).toBeGreaterThanOrEqual(7)
+    expect(group.places.length).toBeLessThanOrEqual(placesPerGroup)
   }
-  const before = await cacheContents(page)
-  await page.evaluate(() => localStorage.removeItem(Object.keys(localStorage).find(k => k.startsWith('sb-') && k.endsWith('-auth-token'))!))
-  await page.reload()
-  await expect(page.getByTestId('trip-source')).toContainText('cache')
-  expect(await cacheContents(page)).toEqual(before)
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
+
+for (const font of ['small', 'medium', 'large']) {
+  for (const group of placeGroups) test(`unpublished content/native names ${group.label} are readable at ${font} font without cache mutation`, async ({ page, stageTiming }, info) => {
+    await stageTiming.measure('setup.font-auth-mocks', async () => {
+      await page.addInitScript(font => localStorage.setItem('travelpilot.font-size', font), font)
+      await seedAuth(page); await mockJapan(page, { versions: [version()] })
+    })
+    await stageTiming.measure('navigation', () => page.goto(`#/trip/${draft.trip.slug}/attractions`))
+    await stageTiming.measure('trip.initial-readiness', () => waitForInitialTrip(page, draft.trip.slug))
+    await stageTiming.measure('heading.readiness', () => expect(page.locator('.trip-heading h2')).toHaveText(draft.trip.title))
+    const before = await stageTiming.measure('cache.before', () => cacheContents(page))
+    for (const place of group.places) {
+      const action = page.getByRole('button', { name: `詳細介紹：${place.name}`, exact: true }).first()
+      await stageTiming.measure(`${place.id}.open`, () => action.click())
+      await stageTiming.measure(`${place.id}.validate`, async () => {
+        const dialog = page.getByRole('dialog')
+        await expect(dialog.getByTestId('native-name')).toHaveText(place.localName)
+        const introduction = dialog.getByTestId('place-detail-introduction')
+        for (const paragraph of place.longDescription.split('\n\n')) await expect(introduction).toContainText(paragraph)
+        expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+        if (place.id === 'jp27-place-snow-monkey') {
+          await expect(dialog).toContainText('JPY 1,000')
+          await expect(dialog).toContainText(place.feeNotes)
+          await expect(dialog.locator('dt', { hasText: '最後入場' })).toHaveCount(0)
+          await expect(introduction).toContainText('並未公告15:30是嚴格最後入場時間')
+        }
+      })
+      if (place.id === 'jp27-place-matsumoto-castle') await stageTiming.measure(`${place.id}.screenshot`, () => page.screenshot({ path: info.outputPath(`castle-${font}.png`) }))
+      await stageTiming.measure(`${place.id}.close`, () => page.getByRole('dialog').getByRole('button', { name: '關閉詳細介紹' }).click())
+    }
+    await stageTiming.measure('cache.equality', async () => expect(await cacheContents(page)).toEqual(before))
+  })
+
+  test(`unpublished content retains signed-out offline cache after reload at ${font} font`, async ({ page, stageTiming }) => {
+    await stageTiming.measure('setup.font-auth-mocks', async () => {
+      await page.addInitScript(font => localStorage.setItem('travelpilot.font-size', font), font)
+      await seedAuth(page); await mockJapan(page, { versions: [version()] })
+    })
+    await stageTiming.measure('navigation', () => page.goto(`#/trip/${draft.trip.slug}/attractions`))
+    await stageTiming.measure('trip.initial-readiness', () => waitForInitialTrip(page, draft.trip.slug))
+    await stageTiming.measure('heading.readiness', () => expect(page.locator('.trip-heading h2')).toHaveText(draft.trip.title))
+    const before = await stageTiming.measure('cache.before', () => cacheContents(page))
+    await stageTiming.measure('auth.remove-token', () => page.evaluate(() => localStorage.removeItem(Object.keys(localStorage).find(k => k.startsWith('sb-') && k.endsWith('-auth-token'))!)))
+    await stageTiming.measure('reload.navigation', () => page.reload())
+    await stageTiming.measure('reload.initial-readiness', () => waitForInitialTrip(page, draft.trip.slug))
+    await stageTiming.measure('reload.cache-readiness', () => expect(page.getByTestId('trip-source')).toContainText('cache'))
+    await stageTiming.measure('trip.initial-readiness', () => waitForInitialTrip(page, draft.trip.slug))
+    await stageTiming.measure('heading.readiness', () => expect(page.locator('.trip-heading h2')).toHaveText(draft.trip.title))
+    await stageTiming.measure('cache.equality', async () => expect(await cacheContents(page)).toEqual(before))
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  })
+}
 
 test('unpublished itinerary preserves D1 choice and D1/D9 exact datetime semantics', async ({ page }) => {
   await seedAuth(page); await mockJapan(page, { versions: [version()] })
   await page.goto(`#/trip/${draft.trip.slug}/itinerary`)
+  await waitForInitialTrip(page, draft.trip.slug)
   await expect(page.getByTestId('trip-versions')).toContainText(manifest.proposedDataVersion)
   for (const n of [1, 6, 7, 8, 9]) {
     const day = draft.days.find((d: { dayNumber: number }) => d.dayNumber === n)

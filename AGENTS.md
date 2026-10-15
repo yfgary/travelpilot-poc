@@ -72,6 +72,16 @@ Asset-role rules:
 
 ## Workflow
 Use Chat/architecture work to settle requirements first. Use Codex/implementation only for bounded tasks with clear acceptance criteria.
+
+### User-approved POC Draft PR-first gate — 16/10/2026
+The [permanent workflow in Issue #23](https://github.com/yfgary/travelpilot-poc/issues/23) and [PR #21 authorization](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6198853855) supersede the former local-full-green-before-push rule for this Draft branch.
+- Reviewed changes may be committed/pushed only to existing Draft PR #21 branch `content/jp2027-vnext-unpublished-draft` after diff/secret review, build/TypeScript, diff checks and relevant focused checks where runnable. Reuse verified unchanged-source results; disclose all FAIL/BLOCKED cases.
+- GitHub Actions provides independent browser CI after the Draft push. Red CI remains a failure; do not hide it with retries, skips or weaker assertions. Stop after the first CI result for GPT-6 High review.
+- Draft push permission does not authorize POC main changes, merge, Pages deployment, Preview or Production. Isolated Preview requires separately reviewed critical safeguards; Issue #22 user acceptance remains open even with green CI.
+- Preserve Production, live Supabase, published `jp2027.1`, protected content/assets and Step15D. Do not reset/recreate the unexported workspace. Push only reviewed source, never local traces/logs/archives/credentials.
+- This test/docs-only Draft snapshot keeps App Version `package.json` unchanged; the existing release-version rule applies to a later merge/release.
+- Default division: GPT-6 High analysis/review; Codex GPT-6.1 Sol Medium coding/testing. No model switch or excessive delegation without explicit direction.
+
 At the end of every implementation task:
 1. Run relevant tests.
 2. Check for cross-trip leakage/regression.

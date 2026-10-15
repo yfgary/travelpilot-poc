@@ -1,3 +1,4 @@
+import { waitForInitialTrip } from './tripReadiness'
 import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
@@ -17,6 +18,7 @@ const city = localTrips[1].payload as Schema4Snapshot, road = localTrips[0].payl
 const panel = (page: Page) => page.getByTestId('weather-panel')
 async function open(page: Page, slug = city.trip.slug, view = 'info') {
   await page.goto(`#/trip/${slug}/${view}`)
+  await waitForInitialTrip(page, slug)
   await expect(panel(page).locator('.weather-forecast-day')).toHaveCount(5)
 }
 async function remote(page: Page, original: TripSnapshot, version = 'weather.1') {
@@ -25,6 +27,7 @@ async function remote(page: Page, original: TripSnapshot, version = 'weather.1')
   await seedAuth(page); await mockRemote(page, () => ({ ...remoteVersion(), schema_version: snapshot.schemaVersion, data_version: version, payload: snapshot }))
   if (page.url() !== 'about:blank') await page.reload()
   await page.goto(`#/trip/${remoteSlug}/info`)
+  await waitForInitialTrip(page, remoteSlug)
   await expect(page.getByTestId('trip-information')).toBeVisible()
   return snapshot
 }

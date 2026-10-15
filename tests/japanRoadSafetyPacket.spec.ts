@@ -3,7 +3,8 @@ import { createHash } from 'node:crypto'
 import { test, expect } from './fixtures'
 import { validateTripSnapshot } from '../src/data/schema/trip'
 import { roadSafetyPacket as packet, restoreRoadSafetyPacket } from './japanRoadSafetyPacketData'
-import { restoreNativeNamesPacket9 } from './japanNativeNamesPacketData'
+import { nativePacket, restoreNativeNamesPacket9 } from './japanNativeNamesPacketData'
+import { matsumotoPacket } from './japanMatsumotoCameraPacketData'
 import { mockJapan, japanVersion } from './japanFixtures'
 import { seedAuth } from './tripFixtures'
 
@@ -36,7 +37,10 @@ test('Packet7 exact source/highlight/descriptions reconstruct Packet5 SHA with a
       for (const key of ['id','type','startTime','endTime','durationMinutes','timing','placeId','transportId','accommodationId','navigationTargetId','hardCutId']) expect(actual[key],t.id+'.'+key).toEqual(t[key])
     }
   }
-  expect(restoreRoadSafetyPacket(draft).sources).toHaveLength(draft.sources.length-8-1)
+  // The restoration chain removes Packet9 → Packet8 → Packet7 sources.
+  // Derive the complete delta from their exact fixtures, not fixed counts.
+  const removedSources = [...nativePacket.sources, matsumotoPacket.source, ...packet.sources]
+  expect(restoreRoadSafetyPacket(draft).sources).toHaveLength(draft.sources.length - removedSources.length)
 })
 for (const view of ['itinerary','today']) for (const font of ['small','medium','large']) test('R158 safety in '+view+' '+font, async({page},info)=>{
   await page.addInitScript(size=>localStorage.setItem('travelpilot.font-size',size),font)

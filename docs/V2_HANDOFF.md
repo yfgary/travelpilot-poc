@@ -2,6 +2,18 @@
 
 This file exists so the project does not depend on chat memory.
 
+## Latest handoff — 16/10/2026, PR #21 Draft-first CI
+
+Read [Issue #23](https://github.com/yfgary/travelpilot-poc/issues/23), [user-approved override](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6198853855) and the newest Current State section before the historical handoffs below. The existing branch is `content/jp2027-vnext-unpublished-draft`; preparation starts at8d46bd1df3c9691d123d015da175a7ce7d5b3fb8. Test/docs-only Draft snapshot, App v2.0.0-poc.45 unchanged; no release.
+
+- Local-full-PASS is no longer required before a reviewed Draft branch push. Review diff/secrets, build/TypeScript/diff and runnable focused evidence; disclose red/blocked results. Existing unchanged-source build and focused records may be reused.
+- Latest complete local result is **3,185 PASS /15 FAIL /3,200**, exit1; no skip/retry/interruption. Affected focused70/70 and205-item2/2 are passing controls, not proof the15 failures are fixed. Do not repeat the full suite in the blocked local browser environment.
+- Playwright1.63.0 requires bundled Chromium153; local system151 differs, bundled download is proxy CONNECT403-blocked. GitHub CI uses matching browsers; current PR QA35-minute timeout may still be insufficient. Do not alter workflow/test budgets without a separate reviewed task.
+- Preserve all16 reviewed source files, Foundation/37-Place/font/viewport/cache/history assertions, Packet source-count repair and opt-in diagnostics. Only intended tests/docs plus this policy update are staged. Raw work/Trace/credentials/archive stay local and ignored.
+- Local backup SHA256 `6888c7dcfcf0f08aa37314a48ed7d1dd275f7723e4f9d3c2260f36cfdccbf2bd` validated; external archive backup remains OPEN. Authorized remote commit protects committed source only. Never reset/recreate the original workspace to obtain a clean checkout.
+- After Draft push: verify remote HEAD and source inventory; inspect first GitHub CI run/steps/logs/artifacts and report exact conclusion, including failure/cancellation/timeout. Then STOP for GPT-6 High review; no speculative fixes or extra full local run.
+- No main, merge, deploy, Preview, Production, Supabase, published Japan/content/assets changes or Step15D. Critical automated safeguards and separate user UAT still gate Preview/release; all28 items are not accepted. Default Codex GPT-6.1 Sol Medium.
+
 ## Source of truth
 Repository documentation is authoritative for project state:
 - `AGENTS.md`
