@@ -135,14 +135,21 @@ test('concurrent Preview tab operations converge by explicit revision and operat
   try {
     await openDemoChecklist(other, site); await holdChecklistLock(page)
     other.once('dialog', dialog => dialog.accept())
-    await Promise.all([page.getByRole('checkbox').first().check(), other.getByRole('button', { name: /^全部取消勾選：/ }).first().click()])
+    // Two genuine opposing clicks can supersede each other's UI state before Playwright check() finishes.
+    // Use a native user click and assert both accepted intents plus the final deterministic winner.
+    await Promise.all([page.getByRole('checkbox').first().click(), other.getByRole('button', { name: /^全部取消勾選：/ }).first().click()])
     const records = (await pendingIntents(page)).filter(row => row.itemId === demoChecklistItem.id)
     expect(records).toHaveLength(2)
+    expect(records.every(row => row.tripId === demoTripId && row.itemId === demoChecklistItem.id)).toBe(true)
+    expect(records.map(row => row.checked).sort()).toEqual([false, true])
+    expect(new Set(records.map(row => row.operationId)).size).toBe(2)
+    expect(records.every(row => Number.isSafeInteger(row.revision) && row.revision >= 0)).toBe(true)
     const winner = records.sort((a, b) => a.revision - b.revision || (a.operationId < b.operationId ? -1 : a.operationId > b.operationId ? 1 : 0)).at(-1)!
     await page.evaluate(() => (window as any).releaseChecklistLock())
     await expect(page.getByRole('checkbox').first()).toBeChecked({ checked: winner.checked })
     await expect(other.getByRole('checkbox').first()).toBeChecked({ checked: winner.checked })
     await expect.poll(() => pendingIntents(page)).toEqual([])
+    await expect.poll(() => storedDemoItem(page)).toEqual({ tripId: demoTripId, itemId: demoChecklistItem.id, checked: winner.checked })
     await page.reload(); await expect(page.getByRole('checkbox').first()).toBeChecked({ checked: winner.checked })
     await other.reload(); await expect(other.getByRole('checkbox').first()).toBeChecked({ checked: winner.checked })
   } finally { await other.close() }
