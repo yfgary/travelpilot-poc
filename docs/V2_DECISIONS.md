@@ -1,5 +1,23 @@
 # TravelPilot V2 — Decision Log
 
+## 2026-10-17 — Preview-only acknowledged intent and reload recovery
+
+[Review6220020397](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6220020397) approves a bounded mitigation for the known acknowledgement gap, while historical CI loss stays ROOT INCONCLUSIVE. A Preview-only Provider/local manager replaces the shared cloud-sync Provider at build time; normal `src/` and its bundle/storage behavior stay byte-identical. The local adapter deliberately excludes cloud/auth/owner operations rather than copying the shared sync engine. Both isolated and packaged Review paths use identical output.
+
+Accept null-owner checklist changes only after a small validated synchronous append-only intent record under `travelpilot-preview.checklist-intent.v1.*`. Replay before initial Ready. Use explicit revision + unique operation ID, per-item `travelpilot-preview.checklist-head.v1.*` ordering watermarks, a Preview Web Lock and conditional IDB transactions; delete only the acknowledged immutable operation after durable commit or confirmed supersession. Same-item Reset/recheck and Preview tabs converge by this total order. Concurrent operations with equal Lamport time tie-break by operation ID; causally later actions observe pending/head revisions and advance. Storage events expose pending accepted changes while the IDB lock is occupied; Preview BroadcastChannel/focus reconcile committed rows.
+
+Keep truthful saving/saved/failure presentation separate from the existing device-only scope label. Journal failure rejects UI acknowledgement, IDB failure keeps the intent, malformed/unsupported records and unavailable locks fail closed. No silent fallback to volatile memory. Bounds are1KiB/record,2000 pending operations,10000 watermarks; future explicit offline-clear UX must respect these Preview-only prefixes. No journal origin-wide clear is added. This guarantees only ordinary reload recovery of recorded intent while browser storage remains available; it does not guarantee eviction/site-data-clear/power-loss survival or solve same-origin confidentiality. Normal POC Clear must leave the Preview journal untouched. Safari hardware UAT remains required.
+
+## 2026-10-16 — Public POC review path and same-origin behavioral isolation
+
+[User-approved public review packet](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6217065300) replaces the Windows/Tailscale delivery preference. Target: normal POC `/travelpilot-poc/#/` plus a separate explicitly unpublished build at `/travelpilot-poc/review/#/`. This is a target, not a deployed URL. Draft PR preparation does not authorize main, merge, deployment, Production, Supabase publication or Step15D.
+
+Keep shared trip/rendering architecture and exact raw Schema6 review bytes. Only a POC Home navigation component links to the review app; it is excluded by the Preview build binding. No trip/country/slug condition enters loaders or business rules. Normal `npm run build` stays normal-only; `npm run build:pages` builds both, stages `dist-preview/` into `dist/review/`, verifies unchanged normal files and complete scoped assets/manifests, and produces one future Pages artifact. Main-only/repository-only deployment gates remain; a release must first bump App Version from the current Draft baseline45 and update matching assertions.
+
+Because all GitHub Pages subpaths share an origin, Preview-only build substitutions namespace font/recent/weather preferences, Today selection/progress, navigation session history, three IDB database names and checklist BroadcastChannel. Exact substitution drift fails the build. Normal identities/migrations remain byte-unchanged. Neither app registers a service worker or uses Cache Storage APIs; Preview does not clear/unregister origin-wide caches/workers. Synthetic same-origin sentinels, two-app Reset/Clear and network observations verify behavior. This is **not cryptographic/auth origin separation** and cannot restrict unrelated same-origin scripts or pre-existing workers.
+
+Preview retains no real Auth/SDK/Supabase/backend/cloud sync or weather/JMA transport; fixed samples and unavailable/unverified alerts stay visible. Real device clock only. Public consent does not certify cameras, future weather, the unexplained intermittent checklist durability issue or any of Issue22's28 user acceptances. Physical iPhone Safari remains untested until user UAT. The daytime castle image and verified camera playback remain blocked.
+
 ## 2026-10-08 — Rebuild architecture, preserve V1 experience
 **Decision:** Build TravelPilot V2 as a new architecture while using V1 as Golden Visual Reference.  
 **Reason:** Retrofitting full multi-trip behaviour into the existing half-refactored app has produced high regression/context cost.  
@@ -256,3 +274,12 @@ Repository-relative canonical paths:
 ## 2026-10-11 — R8 final acceptance separates UI readiness from published content
 
 The 28-item review retains separate PASS/PARTIAL/BLOCKED/FAIL statuses. Passing synthetic/provider fixtures does not certify Japan content fidelity, verified fares/native names, image rights, real camera playback or future weather. R8 adds only known generic compound lodging-category labels; unknown authored categories remain unchanged. No schema/data/cache/asset migration follows from this presentation correction. The final report and separately approved verified content authoring/publication remain review gates; Draft only, no merge/deployment or Step15D.
+
+
+## 2026-10-16 — Explicit isolated Preview build; Stage A only
+
+Approved [Stage A packet](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6199542612): a separate opt-in build/entry uses a generic validated local registry and build-time service bindings. It never selects Preview from BASE_URL. Raw review bytes and manifest are pinned, canonical validation and checksum gates fail closed at build/startup; source is explicitly `preview`, not publication. Normal source/build behavior and immutable inputs remain protected by byte fingerprints.
+
+Auth/session restoration, SDK, backend/update checks, cloud checklist transport and live forecast/alert adapters are excluded from Preview. Shared local checklist behavior uses an isolated IndexedDB namespace. Fixed labelled samples feed shared scoring/presentation; disconnected JMA is unverified/unavailable. Namespace and presentation substitutions are exact, build-only and fail on drift, avoiding normal runtime changes. Browser network observations and module guards provide separate safety evidence. Reuse shared pages/routes/navigation/fonts/Today; do not introduce a second trip renderer or a clock override.
+
+Separate future origin plus tailnet-only Windows/Tailscale Serve requires Stage B review; no hosting now. Private hosting protects only the endpoint; the existing GitHub repository/draft is public. A later release/merge needs the normal App Version gate. No new Trip Data publication, Supabase operation, Production change, UAT acceptance or Step15D follows from this decision. [Boundary and limitations](V2_PREVIEW_STAGE_A.md).

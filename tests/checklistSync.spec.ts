@@ -314,6 +314,7 @@ test('bounded canonical-item reads handle large definitions without server-limit
   const backend=await mockChecklistBackend(page,[snapshot]);backend.rows=[serverRow(snapshot,204)]
   await openOwned(page,snapshot);await expect(checks(page)).toHaveCount(205);await expect(checks(page).last()).toBeChecked()
   await expect.poll(()=>backend.pulls.length).toBe(2)
+  expect(backend.pullItems).toEqual([itemIds(snapshot).slice(0,200), itemIds(snapshot).slice(200)])
 })
 
 test('blocked storage still presents valid remote winners in session with a visible warning',async({page})=>{

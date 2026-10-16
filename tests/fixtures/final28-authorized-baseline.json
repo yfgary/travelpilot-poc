@@ -1,0 +1,10 @@
+{
+  "baseCommit": "ec26784ef7b3341d867533a7bf1850a3c59b2bb2",
+  "reason": "Issue #22 items2/27 authorize shared five-day Today weather and comparison-row alignment only; all remaining R6/R7 protected fingerprints stay pinned.",
+  "hashes": {
+    "src/components/weather/TodayWeather.tsx": "7776b82e84aff4071100906645f4945b757e078f50c20f198309186d01952e41",
+    "src/components/weather/WeatherPanel.tsx": "c03ef091b300971d5dbf4f8fa846c7d964d46265d370eace80b4f9e45338d717",
+    "src/components/weather/WeatherForecast.tsx": "42e328ca0f889b7819313c7e83faa8c087627ba826b970f330d4cb0ec421eca4",
+    "src/components/weather/weatherDisplay.ts": "4c65825a23a93cc5d689ad866c588a36124bbf235d0c2ac78b5120ff18806c78"
+  }
+}

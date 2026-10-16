@@ -1,8 +1,8 @@
 {
   "baseCommit": "5f24bb66f1e31c544cb2bd3767e3db5f5ddfcbbe",
   "hashes": {
-    ".github/workflows/pages.yml": "b6e4414bf08e9fce6c97ef998b7606c6c5be5bfc9aeb6b4611f3fee10c1f6973",
-    ".github/workflows/pr-qa.yml": "db191889a77ea96fa2e281b04c35438dfbe15cfa1e8bf1cf967b70cd4d3989e4",
+    ".github/workflows/pages.yml": "636711a57b5c813602d851dc7b9004c2feea07c9be0a90e082e42d2ed9f1445e",
+    ".github/workflows/pr-qa.yml": "42bff12528f0840694613d45d56d1f1e859afc7934cbf8eef6f8b351f6c63f11",
     "assets/demo/flow.svg": "5d54c77a1ff552c0260b0ec3db648fdaf561165f5bb8a186f72685d7e829a146",
     "assets/demo/forms.svg": "a233643fe433cf5a197c4c45df12963405c468e4949600290708d7d89aff1295",
     "assets/demo/orbit.svg": "7a003fc63bf8a8c927a7c9c9db17e98869c47af09d0398e465dec65114826e59",
@@ -78,6 +78,7 @@
     "src/views/TripLayout.tsx": "9bd0256dee6f40fec44377407115e94ad0489d2e1897f21c8aea4a301648f189",
     "supabase/migrations/20261008135932_step11_checklist_client_clock.sql": "dd7737b5f7dfd695cc5df3550ced00f37889c05481a910ad0134725819012d55",
     "supabase/schema/v2_foundation.sql": "5a316fab04c317f20bccc03fced7733399002ba13a8edb17e4f3aef148f92309",
-    "supabase/verification/step11.md": "d471220b2017ed95f3ed46480a0c1332099433555bf9a29d52b43ee8e7369995"
+    "supabase/verification/step11.md": "d471220b2017ed95f3ed46480a0c1332099433555bf9a29d52b43ee8e7369995",
+    ".github/workflows/preview-durability-diagnostics.yml": "9fccecd5d6051dd0fafc86e9cc01286fdd9677438815c94d844ace7564ee7b96"
   }
 }

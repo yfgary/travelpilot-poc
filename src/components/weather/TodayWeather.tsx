@@ -9,7 +9,9 @@ import { activeAlerts } from '../../services/weather/alerts'
 import { ExternalLink } from '../itinerary/ContentActions'
 import { ScoreSummary } from './ScoreSummary'
 import { POC_WEATHER_PREVIEW, simulatedWeatherNotice } from '../../data/weather/qaPreview'
-import { weatherCondition, severityLabels, typeLabels } from './WeatherPanel'
+import { severityLabels, typeLabels } from './WeatherPanel'
+import { weatherCondition } from './weatherDisplay'
+import { WeatherForecast } from './WeatherForecast'
 import '../../styles/weather.css'
 
 const display = (value: number | undefined, unit: string) => value === undefined ? '—' : `${Math.round(value * 10) / 10} ${unit}`
@@ -34,7 +36,7 @@ export function TodayWeather({ day, actualToday, now }: { day: TripDay; actualTo
   const active = useMemo(() => activeAlerts(alerts, regionId, now), [alerts, regionId, now])
   const time = (value: string) => { const date = new Date(value), timezone = forecast?.timezone ?? snapshot.trip.timezone; return `${formatTripDate(calendarDate(date, timezone))} ${tripTime(date, timezone)}` }
   const condition = weatherCondition(metrics?.weatherCode)
-  return <section className="today-card today-weather" data-testid="today-weather" data-weather-region={regionId}>
+  return <><section className="today-card today-weather" data-testid="today-weather" data-weather-region={regionId}>
     <div className="today-section-heading"><h2>{actualToday ? '當地即時天氣' : '行程日天氣'}</h2>{region && <span>{region.label}</span>}</div>
     {!configured ? <p>此旅程資料格式未提供天氣供應商及評分設定。</p> : !mapping ? <p>所選行程日尚未設定天氣地區。</p> : <>
       {active.length > 0 && <section className="today-alerts" aria-label="官方警告"><h3>官方警告</h3>{active.map((alert) => <article className="weather-alert" key={`${alert.providerId}:${alert.id}`}>
@@ -65,4 +67,8 @@ export function TodayWeather({ day, actualToday, now }: { day: TripDay; actualTo
       <p className="weather-note">天氣適宜度不代表道路或服務正在運作；官方警告及運行狀態需分開確認。</p>
     </>}
   </section>
+    {configured && forecast && region && <section className="today-card today-five-day-weather" data-testid="today-five-day-weather" data-weather-region={regionId}>
+      <WeatherForecast forecast={forecast} config={snapshot.weather} regionId={region.regionId} startDate={snapshot.trip.startDate} endDate={snapshot.trip.endDate} />
+    </section>}
+  </>
 }

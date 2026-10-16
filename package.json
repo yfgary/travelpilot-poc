@@ -1,7 +1,7 @@
 {
   "name": "travelpilot-poc",
   "private": true,
-  "version": "2.0.0-poc.43",
+  "version": "2.0.0-poc.46",
   "type": "module",
   "engines": {
     "node": ">=22.12.0"
@@ -10,8 +10,13 @@
     "dev": "vite",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
     "build": "npm run typecheck && vite build",
+    "build:pages": "npm run build && npm run build:isolated-preview && node preview/build/packagePages.mjs",
+    "verify:pages": "node preview/build/packagePages.mjs --verify",
     "preview": "vite preview",
-    "test": "playwright test"
+    "test": "playwright test",
+    "typecheck:isolated-preview": "tsc --noEmit -p tsconfig.preview.json",
+    "build:isolated-preview": "npm run typecheck:isolated-preview && vite build --config vite.preview.config.ts --mode isolated-preview",
+    "serve:isolated-preview": "vite preview --config vite.preview.config.ts --mode isolated-preview --host 127.0.0.1"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.117.3",

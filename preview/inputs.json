@@ -1,0 +1,9 @@
+{
+  "file": "docs/proposals/jp2027-schema6-unpublished-draft.json",
+  "manifest": "docs/proposals/jp2027-draft-manifest.json",
+  "sha256": "fe4f2dd90a2f3cb8c182ea93e7c231b2e30718af362cb2f6e590534ce560c458",
+  "schemaVersion": 6,
+  "tripId": "349442d2-7bf3-426b-9f57-163e2272e909",
+  "slug": "shirakawago-shinhotaka-2027",
+  "dataVersion": "jp2027.2-DRAFT-UNPUBLISHED"
+}

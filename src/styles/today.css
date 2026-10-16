@@ -84,3 +84,6 @@
 
 /* Place supplemental parking/entrance guidance inside the same primary navigation card. */
 .today-navigation { margin-top: .6rem; padding-top: .6rem; border-top: 1px solid var(--tp-line); }
+
+/* Shared five-day comparison needs the full operational grid width. */
+.today-five-day-weather { grid-column: 1 / -1; min-width: 0; }

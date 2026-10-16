@@ -1,0 +1,3647 @@
+[
+  {
+    "width": 320,
+    "font": "small",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "small",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 269,
+          "scroll": 1219,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 320,
+    "font": "small",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 269,
+          "scroll": 1219,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 320,
+    "font": "small",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 184.078125,
+      "tabsBottom": 183.265625
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "small",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 269,
+          "scroll": 1219,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 320,
+    "font": "small",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "small",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "medium",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "medium",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 262,
+          "scroll": 1314,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 320,
+    "font": "medium",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 262,
+          "scroll": 1314,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 320,
+    "font": "medium",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 190.375,
+      "tabsBottom": 190.15625
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "medium",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 262,
+          "scroll": 1314,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 320,
+    "font": "medium",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "medium",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "large",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "large",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 255,
+          "scroll": 1278,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 320,
+    "font": "large",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 255,
+          "scroll": 1278,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 320,
+    "font": "large",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 201.375,
+      "tabsBottom": 200.453125
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "large",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 255,
+          "scroll": 1278,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 320,
+    "font": "large",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 320,
+    "font": "large",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "small",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "small",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 339,
+          "scroll": 1219,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "font": "small",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 339,
+          "scroll": 1219,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "font": "small",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 133.078125,
+      "tabsBottom": 132.265625
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "small",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 339,
+          "scroll": 1219,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "font": "small",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "small",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "medium",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "medium",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 332,
+          "scroll": 1394,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "font": "medium",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 332,
+          "scroll": 1394,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "font": "medium",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 190.375,
+      "tabsBottom": 190.15625
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "medium",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 332,
+          "scroll": 1394,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "font": "medium",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "medium",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "large",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "large",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 325,
+          "scroll": 1568,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "font": "large",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 325,
+          "scroll": 1568,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "font": "large",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 201.375,
+      "tabsBottom": 200.453125
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "large",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 325,
+          "scroll": 1568,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 390,
+    "font": "large",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 390,
+    "font": "large",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "small",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "small",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 379,
+          "scroll": 1219,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 430,
+    "font": "small",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 379,
+          "scroll": 1219,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 430,
+    "font": "small",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 133.078125,
+      "tabsBottom": 132.265625
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "small",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 379,
+          "scroll": 1219,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 430,
+    "font": "small",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "small",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "medium",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "medium",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 372,
+          "scroll": 1394,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 430,
+    "font": "medium",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 372,
+          "scroll": 1394,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 430,
+    "font": "medium",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 138.375,
+      "tabsBottom": 138.15625
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "medium",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 372,
+          "scroll": 1394,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 430,
+    "font": "medium",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "medium",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "large",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "large",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 365,
+          "scroll": 1568,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 430,
+    "font": "large",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 365,
+          "scroll": 1568,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 430,
+    "font": "large",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 201.375,
+      "tabsBottom": 200.453125
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "large",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 365,
+          "scroll": 1568,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 430,
+    "font": "large",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 430,
+    "font": "large",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "small",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "small",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 959,
+          "scroll": 959,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1024,
+    "font": "small",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 959,
+          "scroll": 959,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1024,
+    "font": "small",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 135.1875,
+      "tabsBottom": 134.375
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "small",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 959,
+          "scroll": 959,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1024,
+    "font": "small",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "small",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "medium",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "medium",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 950,
+          "scroll": 950,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1024,
+    "font": "medium",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 950,
+          "scroll": 950,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1024,
+    "font": "medium",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 140.78125,
+      "tabsBottom": 140.5625
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "medium",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 950,
+          "scroll": 950,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1024,
+    "font": "medium",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "medium",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "large",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "large",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 941,
+          "scroll": 941,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1024,
+    "font": "large",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 941,
+          "scroll": 941,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1024,
+    "font": "large",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 151.078125,
+      "tabsBottom": 150.15625
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "large",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 941,
+          "scroll": 941,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1024,
+    "font": "large",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1024,
+    "font": "large",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "small",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "small",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 1175,
+          "scroll": 1175,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "font": "small",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 1175,
+          "scroll": 1175,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "font": "small",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 135.1875,
+      "tabsBottom": 134.375
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "small",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": [
+        {
+          "client": 1175,
+          "scroll": 1175,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "font": "small",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "small",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "small",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 28.390625
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "medium",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "medium",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 1166,
+          "scroll": 1166,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "font": "medium",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 1166,
+          "scroll": 1166,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "font": "medium",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 140.78125,
+      "tabsBottom": 140.5625
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "medium",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": [
+        {
+          "client": 1166,
+          "scroll": 1166,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "font": "medium",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "medium",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "medium",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 31.59375
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "large",
+    "view": "home",
+    "route": "#/",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "每一段旅程，都準備妥當。",
+        "我的旅程"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "large",
+    "view": "itinerary",
+    "route": "#/trip/shirakawago-shinhotaka-2027/itinerary",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "詳細行程",
+        "天氣與活動適宜度",
+        "香港 → 名古屋 → 松本",
+        "松本城 → 輕井澤 Outlet → 千曲",
+        "千曲 → 小布施 → 澀溫泉",
+        "澀溫泉 → 地獄谷 → 須坂 → 長野",
+        "長野 → 白馬岩岳 → 高山",
+        "高山 → 白川鄉 → 高山",
+        "高山 → 新穗高 → 高山",
+        "高山市區 → 飛驒大鐘乳洞 → 松本",
+        "松本 → AEON → 還車 → 名古屋 → 中部國際機場 → 香港"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 1157,
+          "scroll": 1157,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "font": "large",
+    "view": "info",
+    "route": "#/trip/shirakawago-shinhotaka-2027/info",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "旅程資料",
+        "天氣與活動適宜度",
+        "主要交通",
+        "租車／自駕",
+        "住宿酒店",
+        "導航／泊車",
+        "全程重要 Hard Cut",
+        "Checklist 定義",
+        "當地緊急資料"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 1157,
+          "scroll": 1157,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "font": "large",
+    "view": "attractions",
+    "route": "#/trip/shirakawago-shinhotaka-2027/attractions",
+    "errors": [],
+    "sticky": {
+      "position": "sticky",
+      "y": 151.078125,
+      "tabsBottom": 150.15625
+    },
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "景點總覽",
+        "松本市區",
+        "輕井澤／淺間山一帶",
+        "小布施・中野",
+        "澀溫泉・地獄谷",
+        "長野・須坂",
+        "白馬岩岳",
+        "高山市區／丹生川",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "large",
+    "view": "live",
+    "route": "#/trip/shirakawago-shinhotaka-2027/live",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "Live Cam",
+        "天氣與活動適宜度",
+        "澀溫泉・地獄谷",
+        "白馬岩岳",
+        "白川鄉荻町",
+        "新穗高・平湯"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": [
+        {
+          "client": 1157,
+          "scroll": 1157,
+          "count": 5
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "font": "large",
+    "view": "today",
+    "route": "#/trip/shirakawago-shinhotaka-2027/today",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "白川鄉・新穗高之旅 2027",
+        "今日模式",
+        "香港 → 名古屋 → 松本",
+        "中部國際機場 Terminal 2",
+        "泊車／入口等導航補充",
+        "行程日天氣",
+        "所選日住宿／終點",
+        "重要 Hard Cut",
+        "當日活動"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  },
+  {
+    "width": 1440,
+    "font": "large",
+    "view": "settings",
+    "route": "#/settings",
+    "errors": [],
+    "layout": {
+      "bodyOverflow": false,
+      "mainOverflow": false,
+      "statusClearance": true,
+      "font": "large",
+      "headings": [
+        "設定",
+        "帳戶",
+        "閱讀偏好",
+        "同步狀態",
+        "離線資料",
+        "更新",
+        "語言",
+        "關於應用程式"
+      ],
+      "smallButtons": [
+        {
+          "text": "跳至內容",
+          "aria": null,
+          "height": 34.796875
+        }
+      ],
+      "forecast": []
+    }
+  }
+]

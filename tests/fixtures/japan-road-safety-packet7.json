@@ -1,0 +1,120 @@
+{
+  "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6152921778",
+  "highlightPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6153293821",
+  "checkedAt": "2026-10-14",
+  "priorCandidateSha256": "350b02bb8f365e973f1209a803d181453bd96c73fee1e3aa23d1cec459a7b59e",
+  "highlight": {
+    "dayId": "jp27-day-8",
+    "index": 2,
+    "after": "下午直接向東返松本",
+    "previous": [
+      "固定高山市區＋鐘乳洞",
+      "下午直接向東返松本",
+      "晚餐可選飛驒牛壽喜燒／火鍋"
+    ],
+    "text": "🚧 出發返松本前，檢查國道158號丹生川町塩屋塌方路段有冇解封；如仍封閉，先查附近高山市道（對岸市道繞道）當日有冇開放及是否因積雪、結冰或交通管制封路，再按官方指示繞過封閉段接返158號。若市道唔安全／封閉，改用官方建議的國道41／471／361號廣域繞道；唔好為趕17:30到松本而冒險。2027年1月實際路況必須當日核實。"
+  },
+  "fields": [
+    {
+      "dayId": "jp27-day-5",
+      "id": "jp27-tl-d5-drive-takayama",
+      "previous": "冬季長途段，保留安全Buffer。",
+      "appended": "如當日白馬往高山路線經平湯／國道158號，岐阜縣2026年10月仍公告高山市丹生川町塩屋約2.4公里因山泥傾瀉封閉，復修目標為2026年度末而非2027年1月保證重開；私家車當時可經指定高山市道短途繞道（一般參考額外約10分鐘）或按官方指引選擇其他繞道，冬季通行、時間及安全須臨行再查。県道89號冬季封閉，76號有陡坡窄彎，切勿因導航顯示較快而冒險或硬趕原定16:30。"
+    },
+    {
+      "dayId": "jp27-day-7",
+      "id": "jp27-tl-d7-drive-shinhotaka",
+      "previous": "冬季預1小時20分，唔為趕纜車超速。\n如實際導航經奧飛驒田頃家，可視天氣、時間及安全需要，以「道の駅 奥飛騨温泉郷上宝」作可選短休息站；營運者列冬季11–3月物產館09:00–16:30，個別餐飲有不同休息日，露營場不是冬季必然開放。唔係已核實必經站，更唔應壓縮纜車時間；臨行查路況和當日營業。",
+      "appended": "2026年10月岐阜縣仍公告高山市丹生川町塩屋附近國道158號塌方路段封閉；前往平湯／新穗高時須臨行按官方道路規制核對私家車可用的繞道。官方當時提供高山市道繞行，平常參考約多10分鐘，但2027年1月雪況、路面和塞車可能令時間增加；県道89號冬季封閉，県道76號坡陡彎多，唔應為準時10:35到達而走危險捷徑。"
+    },
+    {
+      "dayId": "jp27-day-8",
+      "id": "jp27-tl-d8-drive-matsumoto",
+      "previous": "D8只向東返松本；雪路慢行。\n如飛驒大鐘乳洞返松本實際採R158並經過「道の駅 風穴の里」，可在安全可行時作可選短休／洗手間；松本市資料指停車場及洗手間24小時，商店09:00–17:00、餐廳09:30–16:00，冬季逢星期四店舖休息且風穴景點冬季關閉。該處不是必停；如因路況或安全停車而延誤，實際ETA需另作調整，不能為趕原定17:30到松本而冒險。",
+      "appended": "飛驒大鐘乳洞官方曾確認鐘乳洞往平湯的國道158號方向受塌方封路影響，普通私家車需依當日正式道路指示繞行；2026年10月岐阜縣仍列封閉，勿假設2027年1月已修好。另長野縣公告2026–27冬季舊安房峠（舊山路）分段封閉，往松本若經平湯須分清安房隧道路線與已關閉舊峠道；即使隧道可用亦須查當日雪／封路公告。14:50–17:30只係原定規劃，絕不為追趕到達時間冒險。"
+    }
+  ],
+  "sources": [
+    {
+      "id": "jp27-source-gpt6-r158-d5-closure",
+      "title": "R158丹生川塌方復修公告（核實2026-10-14）",
+      "url": "https://www.pref.gifu.lg.jp/page/483822.html",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d5-drive-takayama"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-r158-d5-caution",
+      "title": "縣道89及76冬季／窄路安全指引（核實2026-10-14）",
+      "url": "https://www.pref.gifu.lg.jp/page/519536.html",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d5-drive-takayama"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-r158-d7-closure",
+      "title": "R158塌方道路規制（核實2026-10-14）",
+      "url": "https://www.pref.gifu.lg.jp/page/483822.html",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d7-drive-shinhotaka"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-r158-d7-okuhida",
+      "title": "奧飛驒觀光協會官方繞道指引（核實2026-10-14）",
+      "url": "https://okuhida.or.jp/p/topics/%E5%9B%BD%E9%81%93158%E5%8F%B7%E3%80%80%E5%9C%9F%E7%A0%82%E5%B4%A9%E3%82%8C%E3%81%AB%E4%BC%B4%E3%81%86%E9%80%9A%E8%A1%8C%E6%AD%A2%E3%82%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d7-drive-shinhotaka"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-r158-d8-cave",
+      "title": "飛驒大鐘乳洞官方R158通行止公告（核實2026-10-14）",
+      "url": "https://www.syonyudo.com/%E3%80%90%E5%9B%BD%E9%81%93158%E5%8F%B7%E9%80%9A%E8%A1%8C%E6%AD%A2%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85%E3%80%91/",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d8-drive-matsumoto"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-r158-d8-abo",
+      "title": "長野縣舊安房峠冬季封閉（核實2026-10-14）",
+      "url": "https://www.pref.nagano.lg.jp/matsuken/doro/kotsu/",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d8-drive-matsumoto"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-r158-d8-closure",
+      "title": "R158塌方路段封閉公告（核實2026-10-14）",
+      "url": "https://www.pref.gifu.lg.jp/page/483822.html",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d8-drive-matsumoto"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-r158-d8-city",
+      "title": "高山市官方市道繞道指引（核實2026-10-14）",
+      "url": "https://www.city.takayama.lg.jp/kurashi/1000023/1023232.html",
+      "type": "official",
+      "entity": {
+        "type": "timeline",
+        "id": "jp27-tl-d8-drive-matsumoto"
+      }
+    }
+  ],
+  "tailPacket5SourceCount": 6
+}

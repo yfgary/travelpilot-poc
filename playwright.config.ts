@@ -12,9 +12,13 @@ export default defineConfig({
     name: `width-${width}`,
     use: { viewport: { width, height: width < 700 ? 740 : 900 } },
   })),
-  webServer: {
+  webServer: [{
     command: 'npm run preview -- --host 127.0.0.1 --port 4173 --strictPort',
     url: 'http://127.0.0.1:4173/travelpilot-poc/',
     reuseExistingServer: !process.env.CI,
-  },
+  }, {
+    command: 'npm run serve:isolated-preview -- --port 4174 --strictPort',
+    url: 'http://127.0.0.1:4174/travelpilot-poc/review/',
+    reuseExistingServer: !process.env.CI,
+  }],
 })

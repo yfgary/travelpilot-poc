@@ -1,3 +1,4 @@
+import { waitForInitialTrip } from './tripReadiness'
 import type { Page } from '@playwright/test'
 import type { Schema4Snapshot, TripSnapshot } from '../src/data/schema/trip'
 import { validateTripSnapshot } from '../src/data/schema/trip'
@@ -41,6 +42,7 @@ export async function openToday(page: Page, original: TripSnapshot = todayFixtur
   }, { key: storageKey, session: fakeSession(Math.floor(Date.parse(time) / 1000) + 86400) })
   await mockRemote(page, () => ({ ...remoteVersion(), schema_version: snapshot.schemaVersion, data_version: 'today.test.1', payload: snapshot }))
   await page.goto(`#/trip/${remoteSlug}/today`)
+  await waitForInitialTrip(page, remoteSlug)
   await expect(page.getByTestId('today-mode')).toBeVisible()
   return snapshot
 }

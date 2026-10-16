@@ -1,0 +1,92 @@
+[
+  {
+    "width": 320,
+    "font": "small",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 320,
+    "font": "medium",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 320,
+    "font": "large",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 390,
+    "font": "small",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 390,
+    "font": "medium",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 390,
+    "font": "large",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 430,
+    "font": "small",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 430,
+    "font": "medium",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 430,
+    "font": "large",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 1024,
+    "font": "small",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 1024,
+    "font": "medium",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 1024,
+    "font": "large",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "font": "small",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "font": "medium",
+    "actualDraft": true,
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "font": "large",
+    "actualDraft": true,
+    "passed": true
+  }
+]

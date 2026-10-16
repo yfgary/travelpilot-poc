@@ -1,0 +1,506 @@
+{
+  "status": "UNPUBLISHED_REVIEW_ONLY",
+  "candidateLabel": "jp2027-schema6-review-draft-11",
+  "proposedDataVersion": "jp2027.2-DRAFT-UNPUBLISHED",
+  "published": false,
+  "isCurrent": false,
+  "authorizedForSupabaseWrite": false,
+  "parentDataVersion": "jp2027.1",
+  "parentSchemaVersion": 5,
+  "draftSchemaVersion": 6,
+  "publishedArchiveSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+  "approvedDecision": "D1 Projection Mapping retained; Nawate Street separately in backupContent with no fixed timeline slot",
+  "sourcedChanges": [
+    {
+      "area": "D1 Nawate",
+      "official": [
+        "https://visitmatsumoto.com/zh-hant/spot/detail_1083.html",
+        "https://visitmatsumoto.com/spot/detail_1083.html"
+      ],
+      "confidence": "official location and Japanese name; night shop hours NOT verified"
+    },
+    {
+      "area": "D1 projection",
+      "official": [
+        "https://visitmatsumoto.com/en/event/detail_3003.html"
+      ],
+      "confidence": "official 2026-12-12–2027-02-14; 18:00–22:00; free; recheck before travel"
+    },
+    {
+      "area": "D1 highlights",
+      "confidence": "reworded from immutable canonical times; no timing data edited",
+      "oldHighlights": [
+        "UO680",
+        "μSKY＋JR轉乘",
+        "松本第一晚"
+      ]
+    },
+    {
+      "area": "11 October independent-review follow-up",
+      "evidence": "jp2027-source-review.json#followUpReview",
+      "confidence": "Targeted fees/hours and structured details verified; Ganshoin600 correction, outdated Iwatake numeric fare omitted; D2/D6 route advice conditional only; SnowMonkey revised amount blocked",
+      "snowMonkeyEvidenceSupersededBy": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6107780532"
+    },
+    {
+      "area": "Snow Monkey Park GPT-6 verified implementation packet #1",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6107780532",
+      "official": [
+        "https://jigokudani-yaenkoen.co.jp/information/information-3104/",
+        "https://jigokudani-yaenkoen.co.jp/wp-content/uploads/2026/09/8e706a84d13cb2800302700fed5ffb5d-834x1180.jpg"
+      ],
+      "confidence": "GPT-6 visually verified official price table; adultstandard1000/Web880notes, remove unproven15:30lastEntry; no independent Codex research or payment claims"
+    },
+    {
+      "area": "D7/D8 conditional roadside guidance — GPT-6 verified packet #2",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6109775041",
+      "official": [
+        "https://okuhida-camp.com/michinoeki/index.html",
+        "https://www.city.matsumoto.nagano.jp/soshiki/72/4345.html"
+      ],
+      "confidence": "Conditional descriptions only, supplied and verified by GPT-6; actual route/IC gate remains open; no stop/time/route edits"
+    },
+    {
+      "area": "GPT-6 verified Packet #3 Shinano reserved-seat reference fares",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6111341798",
+      "sourceIds": [
+        "jp27-source-gpt6-shinano-tokai",
+        "jp27-source-gpt6-shinano-season",
+        "jp27-source-gpt6-shinano-fare-guide",
+        "jp27-source-gpt6-shinano-ekitan"
+      ],
+      "confidence": "6160JPY reference only, inclusive basic3430+surcharge2730; official seasonal rules distinguished from reference fare guides; no booked/paid or future train confirmation"
+    },
+    {
+      "area": "GPT-6 Packet #4 D1/D9 airport/terminal and hotel walking buffer descriptions",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6112231362",
+      "fields": [
+        {
+          "dayId": "jp27-day-1",
+          "kind": "highlight",
+          "itemId": null,
+          "index": 0
+        },
+        {
+          "dayId": "jp27-day-1",
+          "kind": "description",
+          "itemId": "jp27-tl-d1-airport",
+          "index": null
+        },
+        {
+          "dayId": "jp27-day-1",
+          "kind": "description",
+          "itemId": "jp27-tl-d1-immigration",
+          "index": null
+        },
+        {
+          "dayId": "jp27-day-1",
+          "kind": "description",
+          "itemId": "jp27-tl-d1-checkin",
+          "index": null
+        },
+        {
+          "dayId": "jp27-day-9",
+          "kind": "highlight",
+          "itemId": null,
+          "index": 3
+        },
+        {
+          "dayId": "jp27-day-9",
+          "kind": "description",
+          "itemId": "jp27-tl-d9-airport",
+          "index": null
+        },
+        {
+          "dayId": "jp27-day-9",
+          "kind": "description",
+          "itemId": "jp27-tl-d9-flight",
+          "index": null
+        }
+      ],
+      "sourceIds": [
+        "jp27-source-gpt6-airport-t2-policy",
+        "jp27-source-gpt6-airport-counter-policy",
+        "jp27-source-gpt6-airport-centrair-counter",
+        "jp27-source-gpt6-airport-centrair-walking",
+        "jp27-source-gpt6-airport-tabino-access"
+      ],
+      "confidence": "GPT-6 operator/airport source review; planned schedule assumptions, no confirmed flights or hotel arrival guarantee"
+    },
+    {
+      "area": "GPT-6 Packet #5 D6/D8/D9 operational notes and external-only village scenery reference",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6113262289",
+      "fields": [
+        {
+          "kind": "timeline",
+          "dayId": "jp27-day-9",
+          "id": "jp27-tl-d9-aeon"
+        },
+        {
+          "kind": "place",
+          "id": "jp27-place-aeon-matsumoto"
+        },
+        {
+          "kind": "timeline",
+          "dayId": "jp27-day-8",
+          "id": "jp27-tl-d8-market"
+        },
+        {
+          "kind": "place",
+          "id": "jp27-place-miyagawa"
+        },
+        {
+          "kind": "timeline",
+          "dayId": "jp27-day-6",
+          "id": "jp27-tl-d6-view"
+        }
+      ],
+      "sourceIds": [
+        "jp27-source-gpt6-aeon-mall-hours",
+        "jp27-source-gpt6-aeon-style-hours",
+        "jp27-source-gpt6-miyagawa-winter-timeline",
+        "jp27-source-gpt6-miyagawa-winter-place",
+        "jp27-source-gpt6-shirakawago-view-access",
+        "jp27-source-gpt6-shirakawago-village-camera"
+      ],
+      "confidence": "Exact approved text, only second Place paragraphs replaced; no timing/route/booking change. Distinct official external webpage; no playback or rights completion. Recheck2027."
+    },
+    {
+      "area": "GPT-6 Packet7 R158 D5/D7/D8 and D8 Today highlight",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6152921778",
+      "highlightPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6153293821",
+      "fields": [
+        {
+          "dayId": "jp27-day-5",
+          "id": "jp27-tl-d5-drive-takayama"
+        },
+        {
+          "dayId": "jp27-day-7",
+          "id": "jp27-tl-d7-drive-shinhotaka"
+        },
+        {
+          "dayId": "jp27-day-8",
+          "id": "jp27-tl-d8-drive-matsumoto"
+        }
+      ],
+      "newHighlightIndex": 2,
+      "sourceIds": [
+        "jp27-source-gpt6-r158-d5-closure",
+        "jp27-source-gpt6-r158-d5-caution",
+        "jp27-source-gpt6-r158-d7-closure",
+        "jp27-source-gpt6-r158-d7-okuhida",
+        "jp27-source-gpt6-r158-d8-cave",
+        "jp27-source-gpt6-r158-d8-abo",
+        "jp27-source-gpt6-r158-d8-closure",
+        "jp27-source-gpt6-r158-d8-city"
+      ],
+      "confidence": "2026/10 official source; NOT actual 2027 road or snow status"
+    },
+    {
+      "area": "GPT-6 Packet8 Matsumoto Castle single official live camera entry (three views)",
+      "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6159272278",
+      "sourceIds": [
+        "jp27-source-gpt6-matsumoto-castle-official-live"
+      ],
+      "cameraIds": [
+        "jp27-cam-matsumoto-castle-official"
+      ],
+      "confidence": "Official city and tourism links, NOT certified playback or embedding rights"
+    },
+    {
+      "area": "GPT-6 Packet9 eight source-supported localName fields (6 NavigationTarget, 2 Transport)",
+      "fields": [
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-matsumoto-station",
+          "localName": "松本駅"
+        },
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-nagoya-station",
+          "localName": "名古屋駅"
+        },
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-centrair-t2",
+          "localName": "第2ターミナル"
+        },
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-aeon-matsumoto",
+          "localName": "イオンモール松本"
+        },
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-iwatake-base",
+          "localName": "白馬岩岳マウンテンリゾート"
+        },
+        {
+          "kind": "navigationTarget",
+          "id": "jp27-nav-shirakawago-parking",
+          "localName": "村営せせらぎ公園駐車場"
+        },
+        {
+          "kind": "transport",
+          "id": "jp27-transport-shinano-out",
+          "localName": "特急しなの"
+        },
+        {
+          "kind": "transport",
+          "id": "jp27-transport-shinano-return",
+          "localName": "特急しなの"
+        }
+      ],
+      "sourceIds": [
+        "jp27-source-gpt6-native-nav-matsumoto-station",
+        "jp27-source-gpt6-native-nav-nagoya-station",
+        "jp27-source-gpt6-native-nav-centrair-t2",
+        "jp27-source-gpt6-native-nav-aeon-matsumoto",
+        "jp27-source-gpt6-native-nav-iwatake-base",
+        "jp27-source-gpt6-native-nav-shirakawago-parking",
+        "jp27-source-gpt6-native-transport-shinano-out",
+        "jp27-source-gpt6-native-transport-shinano-return"
+      ],
+      "confidence": "Operator/JR current native labels only; no booking or 2027 timetable claims"
+    }
+  ],
+  "photoCandidate": {
+    "filePage": "https://commons.wikimedia.org/wiki/File:%E6%9D%BE%E6%9C%AC%E5%9F%8E_-_Matsumoto_Castle_-_Flickr_-_tsuruta_yosuke.jpg",
+    "author": "tsuruta yosuke",
+    "license": "CC BY 2.0",
+    "licenseURL": "https://creativecommons.org/licenses/by/2.0/",
+    "originalSource": "https://www.flickr.com/photos/tsurutayosuke/49447661767/",
+    "approvedThumbnailURL": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/%E6%9D%BE%E6%9C%AC%E5%9F%8E_-_Matsumoto_Castle_-_Flickr_-_tsuruta_yosuke.jpg/960px-%E6%9D%BE%E6%9C%AC%E5%9F%8E_-_Matsumoto_Castle_-_Flickr_-_tsuruta_yosuke.jpg",
+    "status": "BLOCKED: exact GPT-6 approved thumbnail download returned HTTP 403 on 11/10/2026 (Asia/Hong_Kong); no JPEG bytes acquired, no image record or mapping added",
+    "verification": "Source/licence/content decision supplied by GPT-6 in Issue #22; Codex attempted approved binary retrieval only, no independent source research",
+    "attribution": "tsuruta yosuke / Wikimedia Commons / CC BY 2.0",
+    "derivativeNotice": "Approved thumbnail is resized; record any further crop/resize if bytes later become available",
+    "proposedUse": "Only D2 imageIds[0] and castle Place imageIds[0]; preserve D1/projection night image and every protected asset",
+    "previousCandidateHistoricalEvidence": {
+      "url": "https://commons.wikimedia.org/wiki/File:Matsumoto-Castle-day-view-2019-Luka-Peternel.jpg",
+      "author": "Luka Peternel",
+      "license": "CC BY-SA 4.0",
+      "status": "file-page licence checked; original download HTTP 403; no asset installed"
+    }
+  },
+  "unresolved": [
+    {
+      "issue": 15,
+      "description": "6 navigation targets + 2 JR Shinano service labels source-verified in unpublished Packet9; other exact target-specific parking/store names, transport native labels and 2027 validation remain open"
+    },
+    {
+      "issue": 18,
+      "description": "Meitetsu and Shinano reference fares qualified; two flight fares, all six actual booking/payment amounts and2027 service/seat confirmations remain unresolved"
+    },
+    {
+      "issue": 20,
+      "description": "R158/municipal-detour warnings added in unpublished D5/D7/D8 and D8 Today; 2027 snow closure, safe diversion, selected ICs, alternate-route ETA and remaining legs remain unverified"
+    },
+    {
+      "issue": 22,
+      "description": "Daytime photo licence verified but original-file HTTP 403 blocks byte/visual review"
+    },
+    {
+      "issue": 23,
+      "description": "Snow Monkey fee/arrival advice corrected from GPT-6 verified packet; remaining inherited fields and comprehensive Place authoring still incomplete"
+    },
+    {
+      "issue": 25,
+      "description": "Official Matsumoto Castle 3-view compilation added once as an external-only D1/D2 candidate alongside 6 original cameras; licensed playback and real availability still NOT verified. #25 BLOCKED."
+    },
+    {
+      "issue": 9,
+      "description": "GPT-6 researched terminal/check-in/walking buffer details implemented as unpublished draft; eventual visible POC deployment/user approval and actual flight/terminal rechecks remain required"
+    }
+  ],
+  "invariants": {
+    "placesOriginal": 36,
+    "placesDraft": 37,
+    "days": 9,
+    "cameras": 7,
+    "transport": 7,
+    "publishedFixtureUntouched": true,
+    "protectedAssetsUntouched": true
+  },
+  "remainingGates": [
+    "Outstanding source/media fields remain explicitly unresolved",
+    "Separate user authorization before any Supabase write/publication",
+    "Step15D stays blocked"
+  ],
+  "draftSha256": "fe4f2dd90a2f3cb8c182ea93e7c231b2e30718af362cb2f6e590534ce560c458",
+  "sourceReview": "jp2027-source-review.json",
+  "validation": {
+    "result": "Packet9 GitHub Actions QA PENDING; Packet8 3015/3015 PASS",
+    "checkedAt": "2026-10-14",
+    "candidateSha256": "fe4f2dd90a2f3cb8c182ea93e7c231b2e30718af362cb2f6e590534ce560c458",
+    "priorCandidateSha256": "a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e",
+    "previousFullRegression": "3015/3015 PASS parent 4a916b7 only",
+    "newFullRegression": "NOT YET VERIFIED",
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false
+  },
+  "previousValidation": {
+    "result": "PASS",
+    "checkedAt": "2026-10-11T17:27:27+08:00",
+    "focusedCases": 55,
+    "focusedResult": "55/55 PASS (1.9m)",
+    "fullRegressionCases": 2800,
+    "fullRegressionResult": "2800/2800 PASS (38.6m), exit 0; one final complete run, two workers",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "visualQA": [
+      "320 Large",
+      "390 Medium",
+      "1440 Medium"
+    ],
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "productionSha": "8b5129b381d6ace94030b51c7b8de5c4e3d5f533",
+    "changedScope": "candidate, evidence ledger, derived manifest only",
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false,
+    "interpretation": "Valid and renderable unpublished proposal; NOT comprehensive factual certification or publication approval",
+    "commit": "c0267ef397e696c6d365137f18bfe727bf7df46b"
+  },
+  "previousValidationPacket1": {
+    "result": "PASS",
+    "checkedAt": "2026-10-11T18:59:56+08:00",
+    "focusedCases": 60,
+    "focusedResult": "60/60 PASS (2.0m)",
+    "fullRegressionCases": 2805,
+    "fullRegressionResult": "2805/2805 PASS (39.4m), exit0; one full local run, two workers",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; mocked draft dialogs/routes/cache",
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: only Snow Monkey fee, feeNotes, lastEntry deletion, second paragraph and source link/record changed",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false
+  },
+  "previousValidationPacket2": {
+    "result": "PASS",
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6109775041",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false,
+    "checkedAt": "2026-10-11T22:59:46+08:00",
+    "focusedCases": 80,
+    "focusedResult": "80/80 PASS (2.6m); final packet-only screenshot capture checks20/20 PASS (29.5s)",
+    "fullRegressionCases": 2840,
+    "fullRegressionResult": "2840/2840 PASS (42.3m), exit0; one complete local regression, two workers; no skips/retries",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; both conditional timeline descriptions, unchanged schedule, no horizontal overflow",
+    "visualQA": [
+      "docs/qa/packet2/320-large-d7.png",
+      "docs/qa/packet2/320-large-d8.png",
+      "docs/qa/packet2/390-medium-d7.png",
+      "docs/qa/packet2/390-medium-d8.png",
+      "docs/qa/packet2/1440-medium-d7.png",
+      "docs/qa/packet2/1440-medium-d8.png"
+    ],
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: exactly two description suffixes and two timeline-bound official source records; restored full JSON equals pre-packet0417838 candidate",
+    "interpretation": "Validation/renderability only; actual route/IC and winter operating gate remains open; no user acceptance or publication authorization",
+    "githubCI": {
+      "runId": 38149460911,
+      "result": "FAIL before Playwright collection: git show historical tree unavailable in shallow checkout",
+      "supersededByRepair": "https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6111311373"
+    }
+  },
+  "previousValidationPacket3": {
+    "result": "PASS (local); independent GitHub PR QA pending",
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6111341798",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false,
+    "checkedAt": "2026-10-12T01:49:14+08:00",
+    "focusedCases": 100,
+    "focusedResult": "100/100 PASS (2.9m), plus final rail visual-capture20/20 PASS (23.3s)",
+    "fullRegressionCases": 2860,
+    "fullRegressionResult": "2860/2860 PASS (42.5m), exit0; exactly one complete local run, two workers; no skips/retries",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "320/390/430/1024/1440 × Small/Medium/Large; rail reference notes visible, no overflow; D7/D8 retained",
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: reconstruct Packet2 SHA89473863... after removing exact two prices and four sources; reconstruct pre-Packet2 SHA0a4d085d... after reversing exact two description suffixes/sources; no Git history dependency",
+    "visualQA": [
+      "docs/qa/packet3/320-large-shinano-0.png",
+      "docs/qa/packet3/320-large-shinano-1.png",
+      "docs/qa/packet3/1440-medium-shinano-0.png",
+      "docs/qa/packet3/1440-medium-shinano-1.png"
+    ],
+    "interpretation": "Reference fares and renderability only; actual flight costs, all six booking/payment amounts and2027 rail confirmations unresolved; no publication authorization",
+    "githubCI": {
+      "runId": 38161242921,
+      "jobId": 114534430263,
+      "result": "SUCCESS"
+    }
+  },
+  "previousValidationPacket4": {
+    "result": "PASS (local); independent GitHub PR QA pending",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false,
+    "checkedAt": "2026-10-12T03:19:13+08:00",
+    "focusedCases": 135,
+    "focusedResult": "135/135 PASS (3.5m), final airport-rendering/capture35/35 PASS (52.7s)",
+    "fullRegressionCases": 2895,
+    "fullRegressionResult": "2895/2895 PASS (42.5m), exit0; exactly one full local run, two workers; no skips/retries",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "actual Itinerary/Today,320/390/430/1024/1440 × Small/Medium/Large; exact highlights and all five descriptions, no horizontal overflow",
+    "visualQA": "12 airport captures retained under docs/qa/packet4; representative320Large/390Medium/1440Medium Itinerary/Today inspected; long mobile text remains scrollable",
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: exactly seven text replacements +five official source records reversed; reconstruct prior3861b294...SHA; prior Packet2/3 assertions preserved without Git history",
+    "interpretation": "Unpublished source-backed/renderable draft; item9 PARTIAL, not deployed/user-approved acceptance or booked-flight confirmation",
+    "githubCI": {
+      "runId": 38167526679,
+      "jobId": 114553080908,
+      "result": "SUCCESS"
+    }
+  },
+  "previousValidationPacket5": {
+    "result": "PASS (local); independent GitHub PR QA result recorded in Draft PR21 after push",
+    "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20#issuecomment-6113262289",
+    "independentCodexResearch": false,
+    "publicationApproval": false,
+    "supabaseWrites": false,
+    "step15DStarted": false,
+    "checkedAt": "2026-10-12T05:11:50+08:00",
+    "focusedCases": 200,
+    "focusedResult": "200/200 PASS (4.7m); final Packet5 rendering65/65 PASS (1.3m), corrected camera capture15/15 PASS (18.9s)",
+    "fullRegressionCases": 2960,
+    "fullRegressionResult": "2960/2960 PASS (41.9m), exit0; exactly one full regression, two workers, no skips/retries",
+    "typecheckBuild": "PASS",
+    "diffCheck": "PASS",
+    "viewportFontCoverage": "Actual Today/Itinerary/Place/LiveCam,320/390/430/1024/1440 × Small/Medium/Large; exact text, external href/target/rel, no media/provider request or body horizontal overflow",
+    "visualQA": "30 captures retained under docs/qa/packet5; representative320Large/390Medium/1440Medium interfaces inspected; camera heading and action separately captured on mobile",
+    "immutableOriginalSha256": "09a0bc1a5b75e50b579fd5ec4596912026cf8311fdf262df0c14ca6e235ea57e",
+    "packetOnlyCandidateDelta": "PASS: exactly three timeline descriptions, two second Place paragraphs, six sources, one Miyagawa sourceId and one external-only camera reversed; reconstruct Packet4 SHA8cf05ea8...; prior packet baseline checks retained without Git history",
+    "productionSha": "8b5129b381d6ace94030b51c7b8de5c4e3d5f533",
+    "interpretation": "Unpublished renderability only; #20/#23 PARTIAL, #25 BLOCKED; all28 require final acceptance, no publication/booking/playback certification"
+  },
+  "previousValidationPacket7": {
+    "runId": 38461568115,
+    "commit": "886f6783e55a65c5cd59bfb0a0139bdfbe04ab9c",
+    "result": "SUCCESS (GitHub CI)",
+    "fullRegressionCases": 2995,
+    "fullRegressionResult": "2995/2995 PASS, 0 FAIL",
+    "typecheckBuild": "PASS",
+    "checkedAt": "2026-10-14"
+  },
+  "previousValidationPacket8": {
+    "commit": "4a916b73bc88578a67daa25b079f5573440b7bf0",
+    "runId": 38499569383,
+    "result": "SUCCESS",
+    "fullRegressionCases": 3015,
+    "fullRegressionResult": "3015/3015 PASS, 0 FAIL",
+    "checkedAt": "2026-10-14"
+  }
+}

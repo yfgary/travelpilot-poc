@@ -1,0 +1,24 @@
+{
+  "appVersion": "v2.0.0-poc.44",
+  "commit": "852e4729fa3dc496d36af2322838f689a911dc1b",
+  "width": 1024,
+  "font": "large",
+  "view": "info",
+  "actualUnpublishedJapanCandidate": true,
+  "dateHeights": [
+    24.765625,
+    24.765625,
+    24.765625,
+    58.921875,
+    58.921875
+  ],
+  "firstMetricTop": [
+    1593.921875,
+    1593.921875,
+    1593.921875,
+    1628.078125,
+    1628.078125
+  ],
+  "maximumRowMisalignmentPx": 34.15625,
+  "evidence": "Direct Chromium getBoundingClientRect measurement; no real weather availability asserted"
+}

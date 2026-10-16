@@ -105,21 +105,58 @@ test('approved labels and release version are shown', async ({ page }) => {
   await expect(page.getByText('即時影像', { exact: true })).toHaveCount(0)
 })
 
-test('all font sizes scale the global UI, persist and fit every route', async ({ page }) => {
+const fontChoices = [['小', 'small'], ['中', 'medium'], ['大', 'large']] as const
+const routesPerBatch = 2
+const layoutBatches = Array.from({ length: Math.ceil(pages.length / routesPerBatch) }, (_, index) =>
+  pages.slice(index * routesPerBatch, (index + 1) * routesPerBatch))
+
+test('font layout batches retain all 18 distinct font/route combinations', () => {
+  const combinations = fontChoices.flatMap(([, size]) => layoutBatches.flatMap(batch => batch.map(([route]) => `${size}:${route}`)))
+  expect(combinations).toEqual(fontChoices.flatMap(([, size]) => pages.map(([route]) => `${size}:${route}`)))
+  expect(combinations).toHaveLength(18)
+  expect(new Set(combinations).size).toBe(18)
+})
+
+for (const [label, size] of fontChoices) test(`${size} font UI selection persists after reload`, async ({ page }) => {
+  await page.goto('#/settings')
+  // Force a real transition even for the default medium choice.
+  const [initialLabel, initialSize] = fontChoices.find(([, value]) => value !== size)!
+  await page.getByRole('radio', { name: initialLabel, exact: true }).check()
+  await expect(page.locator('html')).toHaveAttribute('data-font-size', initialSize)
+  await page.getByRole('radio', { name: label, exact: true }).check()
+  await expect(page.getByRole('radio', { name: label, exact: true })).toBeChecked()
+  await expect(page.locator('html')).toHaveAttribute('data-font-size', size)
+  await page.reload()
+  await expect(page.getByRole('radio', { name: label, exact: true })).toBeChecked()
+  await expect(page.locator('html')).toHaveAttribute('data-font-size', size)
+})
+
+test('font controls strictly scale body, heading, brand and status CSS sizes', async ({ page }) => {
   const samples: number[][] = []
-  for (const [label, size] of [['小', 'small'], ['中', 'medium'], ['大', 'large']]) {
-    await page.goto('#/settings')
+  await page.goto('#/settings')
+  for (const [label, size] of fontChoices) {
     await page.getByRole('radio', { name: label, exact: true }).check()
     await expect(page.getByRole('radio', { name: label, exact: true })).toBeChecked()
     await expect(page.locator('html')).toHaveAttribute('data-font-size', size)
-    await page.reload()
-    await expect(page.getByRole('radio', { name: label, exact: true })).toBeChecked()
     samples.push(await page.evaluate(() => [
       document.body, document.querySelector('h1')!, document.querySelector('.brand')!,
       document.querySelector('.app-status')!,
     ].map((element) => parseFloat(getComputedStyle(element).fontSize))))
-    for (const [route] of pages) {
+  }
+  for (let index = 0; index < samples[0].length; index++) {
+    expect(samples[0][index]).toBeLessThan(samples[1][index])
+    expect(samples[1][index]).toBeLessThan(samples[2][index])
+  }
+})
+
+// Pure layout checks use a fresh persisted font per test. UI/change/reload
+// behaviour remains exercised independently above, not replaced by this seed.
+for (const [, size] of fontChoices) for (const [index, batch] of layoutBatches.entries()) {
+  test(`${size} font layout/navigation batch ${index + 1}: ${batch.map(([route]) => route).join(', ')}`, async ({ page }) => {
+    await page.addInitScript(value => localStorage.setItem('travelpilot.font-size', value), size)
+    for (const [route, title] of batch) {
       await page.goto(route)
+      await expect(page.getByRole('heading', { level: 1, name: title, exact: true })).toBeVisible()
       await expect(page.locator('html')).toHaveAttribute('data-font-size', size)
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
       expect(await page.locator('main').evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true)
@@ -145,12 +182,8 @@ test('all font sizes scale the global UI, persist and fit every route', async ({
       }
       await expect(page.getByRole('status')).toBeVisible()
     }
-  }
-  for (let index = 0; index < samples[0].length; index++) {
-    expect(samples[0][index]).toBeLessThan(samples[1][index])
-    expect(samples[1][index]).toBeLessThan(samples[2][index])
-  }
-})
+  })
+}
 
 test('invalid saved font value falls back to medium', async ({ page }) => {
   await page.goto('#/settings')

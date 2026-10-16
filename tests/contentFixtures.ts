@@ -1,3 +1,4 @@
+import { waitForInitialTrip } from './tripReadiness'
 import type { Page } from '@playwright/test'
 import { localTrips } from '../src/data/trips'
 import type { TripSnapshot, Schema4Snapshot } from '../src/data/schema/trip'
@@ -26,6 +27,7 @@ export async function openContent(page: Page, original: TripSnapshot, view: 'att
   await seedAuth(page)
   await mockRemote(page, () => ({ ...remoteVersion(), schema_version: snapshot.schemaVersion, data_version: dataVersion, payload: snapshot }))
   await page.goto(`#/trip/${remoteSlug}/${view}`)
+  await waitForInitialTrip(page, remoteSlug)
   await expect(page.getByTestId(view === 'live' ? 'live-cam' : 'attractions-overview')).toBeVisible()
   return snapshot
 }

@@ -1,0 +1,136 @@
+{
+  "implementationPacket": "https://github.com/yfgary/travelpilot-poc/issues/20",
+  "checkedAt": "2026-10-14",
+  "priorCandidateSha256": "a7dbb7207bd2c5b29a8b87f6b03f7a39a3584eb21fc1b9ee63028b1ecbd9c67e",
+  "previousCandidateLabel": "jp2027-schema6-review-draft-10",
+  "fields": [
+    {
+      "kind": "navigationTarget",
+      "id": "jp27-nav-matsumoto-station",
+      "localName": "松本駅"
+    },
+    {
+      "kind": "navigationTarget",
+      "id": "jp27-nav-nagoya-station",
+      "localName": "名古屋駅"
+    },
+    {
+      "kind": "navigationTarget",
+      "id": "jp27-nav-centrair-t2",
+      "localName": "第2ターミナル"
+    },
+    {
+      "kind": "navigationTarget",
+      "id": "jp27-nav-aeon-matsumoto",
+      "localName": "イオンモール松本"
+    },
+    {
+      "kind": "navigationTarget",
+      "id": "jp27-nav-iwatake-base",
+      "localName": "白馬岩岳マウンテンリゾート"
+    },
+    {
+      "kind": "navigationTarget",
+      "id": "jp27-nav-shirakawago-parking",
+      "localName": "村営せせらぎ公園駐車場"
+    },
+    {
+      "kind": "transport",
+      "id": "jp27-transport-shinano-out",
+      "localName": "特急しなの"
+    },
+    {
+      "kind": "transport",
+      "id": "jp27-transport-shinano-return",
+      "localName": "特急しなの"
+    }
+  ],
+  "sources": [
+    {
+      "id": "jp27-source-gpt6-native-nav-matsumoto-station",
+      "title": "JR東日本 松本駅官方資料（GPT-6核對2026-10-14）",
+      "url": "https://www.jreast.co.jp/estation/stations/1444.html",
+      "type": "official",
+      "entity": {
+        "type": "navigationTarget",
+        "id": "jp27-nav-matsumoto-station"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-native-nav-nagoya-station",
+      "title": "JR東日本 特急しなの站名時刻表（GPT-6核對2026-10-14）",
+      "url": "https://timetables.jreast.co.jp/2610/train/000/000041.html",
+      "type": "official",
+      "entity": {
+        "type": "navigationTarget",
+        "id": "jp27-nav-nagoya-station"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-native-nav-centrair-t2",
+      "title": "中部國際機場官方第2航廈接駁資料（GPT-6核對2026-10-14）",
+      "url": "https://www.centrair.jp/access/terminal2/",
+      "type": "official",
+      "entity": {
+        "type": "navigationTarget",
+        "id": "jp27-nav-centrair-t2"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-native-nav-aeon-matsumoto",
+      "title": "AEON Mall松本官方設施名稱（GPT-6核對2026-10-14）",
+      "url": "https://matsumoto.aeonmall.jp/guide",
+      "type": "official",
+      "entity": {
+        "type": "navigationTarget",
+        "id": "jp27-nav-aeon-matsumoto"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-native-nav-iwatake-base",
+      "title": "白馬岩岳官方山麓纜車入口／停車場（GPT-6核對2026-10-14）",
+      "url": "https://iwatake-mountain-resort.com/access",
+      "type": "official",
+      "entity": {
+        "type": "navigationTarget",
+        "id": "jp27-nav-iwatake-base"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-native-nav-shirakawago-parking",
+      "title": "白川郷觀光協會官方村營停車場名稱（GPT-6核對2026-10-14）",
+      "url": "https://shirakawa-go.gr.jp/access/",
+      "type": "official",
+      "entity": {
+        "type": "navigationTarget",
+        "id": "jp27-nav-shirakawago-parking"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-native-transport-shinano-out",
+      "title": "JR東日本特急しなの列車名稱（2026列車資料）（GPT-6核對2026-10-14）",
+      "url": "https://timetables.jreast.co.jp/2610/train/000/000041.html",
+      "type": "official",
+      "entity": {
+        "type": "transport",
+        "id": "jp27-transport-shinano-out"
+      }
+    },
+    {
+      "id": "jp27-source-gpt6-native-transport-shinano-return",
+      "title": "JR東日本特急しなの列車名稱（2026回程參考）（GPT-6核對2026-10-14）",
+      "url": "https://timetables.jreast.co.jp/2610/train/020/020081.html",
+      "type": "official",
+      "entity": {
+        "type": "transport",
+        "id": "jp27-transport-shinano-return"
+      }
+    }
+  ],
+  "sourceInsertBeforeLastCount": 1,
+  "assumptions": "Official Japanese names only, not confirmed 2027 service/parking availability; Maps routes/queries unchanged",
+  "acceptance": {
+    "item": 15,
+    "status": "PARTIAL"
+  }
+}
