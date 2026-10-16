@@ -2,6 +2,22 @@
 
 Last updated: 16/10/2026 (Hong Kong)
 
+## 16/10/2026 — Approved matching Chromium153 diagnostic Draft push (CI pending)
+
+[GPT-6 High packet](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6211355166) authorizes one diagnostic push from `944b426` to existing Draft PR21 only. The four preserved diagnostic test/docs files are retained. Added temporary `preview-durability-diagnostics.yml`: POC/Draft/PR21/head-branch guarded, read-only permissions, normal install/build, Playwright-managed Chromium153 verification, exactly two original titles across390/430/1024 (six cases), two workers, zero retries, focused tracing ON. Original immediate reloads and five-second assertions remain unchanged. Existing `pr-qa.yml` is byte-identical and will also run its complete mandatory suite. No manual full local rerun or product change.
+
+Public evidence is fail-closed, field-allowlisted, hashed timing/readback JSON only, capped below800KiB total with seven-day retention. Raw traces are generated on the focused runner but deliberately NOT uploaded because they can contain DOM/draft/synthetic session data. No raw reports, screenshots, credentials or recovery archives are uploaded by the new workflow. The source fingerprint inventory gains only the approved new workflow; all existing QA/Pages and runtime/asset fingerprints remain protected.
+
+Pre-push normal build/TypeScript, exact six-case collection, sanitizer positive/negative checks, YAML parsing, workflow fingerprints, protected payload checksums and diff check PASS. Prior Chromium151 controls remain directional only. App remains45, Schema6/readers1–6, both payloads/assets and normal runtime unchanged. Previous CI3387PASS/3FAIL remains unresolved; new focused/full results are pending and must be reported independently. A non-reproduction is INCONCLUSIVE, not a durability fix. Stop after this single push and CI report for GPT-6 High review; no Stage B/Serve/UAT/main/merge/deploy/Supabase/Production/Step15D.
+
+## 16/10/2026 — Preview checklist durability diagnosis: root UNCONFIRMED / review pending
+
+HEAD remains `944b426d91b39eff493f7a72be278b9fdf0e6a68`. First Stage A GitHub CI run38792285169/job116619625554 is **3,387 PASS /3 FAIL /3,390**,13.7m, exit1. All three are post-reload checkbox persistence assertions; the3,200 existing cases passed. Stage A remains **RED**, not released.
+
+[Bounded evidence and pending repair proposal](qa/PREVIEW_CHECKLIST_DURABILITY_DIAGNOSIS.md): exact three cases passed3/3 with one worker(49.447s),3/3 with two workers(36.518s), zero retry/skip, opt-in nonblocking test-only instrumentation. One separate immediate-model-reload control passed and proved the checked UI/beforeunload can precede IDB commit; that write subsequently survived. All local evidence uses system Chromium151, not required153. Original86MB CI artifact exceeds32MiB transfer limit; scoped range access was proxy403-blocked. The current CI command/config did not enable automatic tracing; its three failure summaries only list error-context, so original failure traces must not be assumed to exist. Actual CI data-loss cause is **not confirmed**. Successful controls do not clear the3FAIL.
+
+Node/test TypeScript and diff checks PASS; original reload assertions unchanged. Proposed next step is individual original traces or separately reviewed matching153 focused CI, then a fact-driven durability/hydration repair. No journal, timeout/retry workaround, shared src/ or Preview runtime change was implemented. Only diagnostic tests/docs remain uncommitted; no new Commit/Push/full regression. App45, Schema6/readers1–6, snapshots/timing/assets/packages/workflows, POC main/Production/Supabase unchanged. No Stage B/Tailscale/deploy/Step15D. Await GPT-6 High review.
+
 ## 16/10/2026 — Preview Stage A: isolated Draft build, not deployment
 
 Baseline `1a962fad4253aad16c948b65053ccab922cc9502` was independently verified by GitHub PR QA **3,200/3,200 PASS**, run `38783078613`, job `116588012051`, matching managed Chrome153, 14.3m. This is separate evidence from the historical local **3,185 PASS /15 FAIL**; those failures were not silently reclassified as product fixes.

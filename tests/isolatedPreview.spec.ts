@@ -12,13 +12,15 @@ import { assertSourceBaseline } from './sourceBaseline'
 import { pages } from '../src/app/pages'
 import { isOperationalDay, selectTodayDay } from '../src/data/today'
 import type { TripSnapshot } from '../src/data/schema/trip'
+import { orderedDefinitions } from '../src/data/tripInformation'
+import { observePreviewChecklist } from './previewChecklistDiagnostics'
 
 const origin = 'http://127.0.0.1:4174'
 const site = `${origin}/travelpilot-poc/`
 const snapshot = JSON.parse(readFileSync(descriptor.file, 'utf8'))
 // Raw Playwright: do NOT inherit the ordinary Supabase/network mock.
 const test = base.extend<{ isolatedNetwork: void }>({
-  isolatedNetwork: [async ({ page }, use) => {
+  isolatedNetwork: [async ({ page }, use, info) => {
     const external: string[] = [], errors: string[] = [], blocked: string[] = []
     page.on('request', request => { if (new URL(request.url()).origin !== origin) external.push(new URL(request.url()).origin) })
     page.on('pageerror', error => errors.push(error.message))
@@ -29,7 +31,11 @@ const test = base.extend<{ isolatedNetwork: void }>({
     })
     // Prevent accidental real I/O while preserving evidence of every attempted external request.
     await page.route('**/*', route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort('blockedbyclient'))
+    const diagnose = process.env.TRAVELPILOT_PREVIEW_DURABILITY_DIAGNOSTICS === '1' && /^(stale auth|device-clock Today)/.test(info.title)
+      ? await observePreviewChecklist(page, info, { tripId: snapshot.trip.id, itemId: orderedDefinitions(orderedDefinitions(orderedDefinitions((snapshot as TripSnapshot).checklists)[0].groups)[0].items)[0].id })
+      : null
     try { await use() } finally {
+      await diagnose?.()
       const violations = await page.locator('html').getAttribute('data-preview-blocked').catch(() => null)
       if (violations) blocked.push(violations)
       expect(external, 'Preview must not request ANY remote service, including Supabase/weather/JMA/media').toEqual([])

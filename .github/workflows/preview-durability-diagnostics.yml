@@ -1,0 +1,74 @@
+name: POC Preview Durability Diagnostics (temporary)
+
+# ONE approved diagnostic push for Draft PR21; never deploy or change PR QA.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/preview-durability-diagnostics.yml
+      - tests/isolatedPreview.spec.ts
+      - tests/previewChecklistDiagnostics.ts
+      - tests/previewDurabilityReport.mjs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: poc-preview-durability-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  focused:
+    if: >-
+      github.repository == 'yfgary/travelpilot-poc' &&
+      github.event.pull_request.number == 21 &&
+      github.event.pull_request.draft == true &&
+      github.event.pull_request.head.repo.full_name == 'yfgary/travelpilot-poc' &&
+      github.event.pull_request.head.ref == 'content/jp2027-vnext-unpublished-draft'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CI: 'true'
+      TRAVELPILOT_PREVIEW_DURABILITY_DIAGNOSTICS: '1'
+      FOCUSED_TITLES: 'stale auth/session and normal caches are ignored; local checklist persists, resets, and never syncs|device-clock Today manual controls and warm offline local checklist remain usable'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Verify managed Chromium153 (no system override)
+        run: |
+          test -z "${PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH:-}"
+          node --input-type=module <<'JS'
+          import { chromium } from 'playwright';
+          const browser = await chromium.launch();
+          const version = browser.version();
+          await browser.close();
+          console.log('Managed Chromium:', version);
+          if (!version.startsWith('153.')) throw new Error('Expected Playwright-managed Chromium153');
+          JS
+      - name: Verify exactly six approved scenarios
+        run: |
+          mkdir -p work/preview-durability-ci
+          npx playwright test tests/isolatedPreview.spec.ts --project=width-390 --project=width-430 --project=width-1024 --grep "$FOCUSED_TITLES" --list --reporter=json > work/preview-durability-ci/selection.json
+          node tests/previewDurabilityReport.mjs --selection
+      - name: Focused immediate-reload diagnosis (two workers, zero retries)
+        id: focused
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_FILE: work/preview-durability-ci/result.json
+        run: npx playwright test tests/isolatedPreview.spec.ts --project=width-390 --project=width-430 --project=width-1024 --grep "$FOCUSED_TITLES" --workers=2 --retries=0 --trace=on --reporter=line,json
+      - name: Publish only sanitized, capped timing evidence
+        if: always() && steps.focused.outcome != 'skipped'
+        run: node tests/previewDurabilityReport.mjs --collect
+      - name: Upload sanitized evidence (raw traces deliberately omitted)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-durability-safe-${{ github.run_id }}
+          path: work/preview-durability-public/*.json
+          if-no-files-found: error
+          retention-days: 7
