@@ -17,11 +17,13 @@ export const previewBoundaries = {
   'src/services/weather/alerts.ts': 'preview/alerts.ts',
   'src/data/weather/qaPreview.ts': 'preview/qaPreview.ts',
   'src/components/PocReviewEntry.tsx': 'preview/ReviewEntry.tsx',
+  'src/app/ChecklistSync.tsx': 'preview/ChecklistSync.tsx',
 } as const
 const previewCopy: Record<string, Record<string, string>> = {
   'src/components/tripInfo/ChecklistDefinitions.tsx': {
     '勾選先儲存在此裝置；帳戶旅程可在連線後同步。': 'Preview 清單只儲存在此裝置，不會雲端同步。',
     '確定要取消此清單的全部勾選？更改會先儲存在此裝置，帳戶旅程稍後同步。': '確定要取消此清單的全部勾選？Preview 更改只儲存在此裝置，不會同步。',
+    '此瀏覽器未能儲存清單，本次更改只保留於本次使用，重新載入後可能遺失。': '儲存失敗：尚未確認本機清單已儲存。請保留網站資料，待儲存恢復後重新載入。',
   },
   'src/components/weather/WeatherPanel.tsx': { '天氣資料已更新': 'SIMULATED 固定天氣樣本', '座標樣本預測': '固定樣本，並非實況或預報' },
   'src/components/weather/TodayWeather.tsx': { '天氣資料已更新': 'SIMULATED 固定天氣樣本', '當地即時天氣': '模擬天氣樣本', '現時天氣樣本': '固定天氣樣本', '目前觀測／模型資料': '固定模擬資料，非即時觀測' },
@@ -75,6 +77,8 @@ function isolation(): Plugin {
     } },
     generateBundle() {
       if (!this.getModuleInfo(modulePath('preview/main.tsx'))?.isIncluded || this.getModuleInfo(modulePath('src/main.tsx'))?.isIncluded) this.error('Preview entry boundary failed')
+      if (!this.getModuleInfo(modulePath('preview/ChecklistSync.tsx'))?.isIncluded ||
+        ['src/app/ChecklistSync.tsx', 'src/services/checklistSync.ts', 'src/offline/checklistState.ts'].some(file => this.getModuleInfo(modulePath(file))?.isIncluded)) this.error('Preview checklist durability boundary failed')
       for (const id of this.getModuleIds()) {
         if (/node_modules\/@supabase\//.test(id) || /\/src\/(?:services\/(?:supabase|backend|appVersions|checklists|trips|weather\/(?:jma|alerts|forecasts))|auth\/AuthProvider|components\/(?:AuthPanel|BackendStatus|UpdatePanel)|views\/Settings)\.(?:ts|tsx)$/.test(id)) this.error(`Forbidden live module in Preview: ${id}`)
       }

@@ -1,5 +1,13 @@
 # TravelPilot V2 — Decision Log
 
+## 2026-10-17 — Preview-only acknowledged intent and reload recovery
+
+[Review6220020397](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6220020397) approves a bounded mitigation for the known acknowledgement gap, while historical CI loss stays ROOT INCONCLUSIVE. A Preview-only Provider/local manager replaces the shared cloud-sync Provider at build time; normal `src/` and its bundle/storage behavior stay byte-identical. The local adapter deliberately excludes cloud/auth/owner operations rather than copying the shared sync engine. Both isolated and packaged Review paths use identical output.
+
+Accept null-owner checklist changes only after a small validated synchronous append-only intent record under `travelpilot-preview.checklist-intent.v1.*`. Replay before initial Ready. Use explicit revision + unique operation ID, per-item `travelpilot-preview.checklist-head.v1.*` ordering watermarks, a Preview Web Lock and conditional IDB transactions; delete only the acknowledged immutable operation after durable commit or confirmed supersession. Same-item Reset/recheck and Preview tabs converge by this total order. Concurrent operations with equal Lamport time tie-break by operation ID; causally later actions observe pending/head revisions and advance. Storage events expose pending accepted changes while the IDB lock is occupied; Preview BroadcastChannel/focus reconcile committed rows.
+
+Keep truthful saving/saved/failure presentation separate from the existing device-only scope label. Journal failure rejects UI acknowledgement, IDB failure keeps the intent, malformed/unsupported records and unavailable locks fail closed. No silent fallback to volatile memory. Bounds are1KiB/record,2000 pending operations,10000 watermarks; future explicit offline-clear UX must respect these Preview-only prefixes. No journal origin-wide clear is added. This guarantees only ordinary reload recovery of recorded intent while browser storage remains available; it does not guarantee eviction/site-data-clear/power-loss survival or solve same-origin confidentiality. Normal POC Clear must leave the Preview journal untouched. Safari hardware UAT remains required.
+
 ## 2026-10-16 — Public POC review path and same-origin behavioral isolation
 
 [User-approved public review packet](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6217065300) replaces the Windows/Tailscale delivery preference. Target: normal POC `/travelpilot-poc/#/` plus a separate explicitly unpublished build at `/travelpilot-poc/review/#/`. This is a target, not a deployed URL. Draft PR preparation does not authorize main, merge, deployment, Production, Supabase publication or Step15D.
