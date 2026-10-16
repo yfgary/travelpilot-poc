@@ -1,5 +1,13 @@
 # Preview checklist reload — bounded diagnosis, 16/10/2026 (+08)
 
+## New bounded packet6218966453: actual4173 Demo control
+
+The previous six153 cases passed but covered4174/Japan. Baseline `a4bb7c5` full run38920117709 failed two **same-origin Demo** assertions (3513/3515 pass). Width1024 loses checked after its first reload, before a normal tab exists;390 loses checked after Preview Reset/recheck, before normal Clear. Do not attribute either to normal Clear, Schema6 content or namespace transforms without evidence.
+
+The opt-in observer is installed before navigation only for the existing publicReview Reset/Clear title. It derives the same ordered Demo item from fixture definitions, compares the first UI checkbox identity with that key, and reads the exact null-owner compound key only after the original test. Prefix/path guards keep4173 normal-page navigation uninstrumented. No private values, labels, session/token, device ID, raw row or error text is exported. Reset-click and false/true put rows are distinguishable by document/transaction IDs plus epoch-relative browser/receive timestamps. Missing transaction completion is not itself proof of abort; getAll/readback/UI comparisons differentiate missing persistence from hydration/key mismatches where evidence permits.
+
+One reviewed Draft push replaces the temporary workflow's selection with exactly the original publicReview title at390/1024,2workers,0retry,Chromium153. Strict two-case/source-file allowlist is separate from retained old six-case collector checks. Each sanitized report remains capped128KiB, total below800KiB, retention7days; raw trace upload is prohibited. The normal full PR workflow is unchanged and remains mandatory. No second diagnostic CI cycle, runtime repair, sleep, retry, timeout, assertion or version change. Original test action/assertion body is byte-identical. Results and any proposed Preview-only durable acknowledgement/replay contract are handed off on PR21 after CI, not represented as an implemented fix.
+
 ## Approved next checkpoint: one matching-browser diagnostic push
 
 [Review6211355166](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6211355166) supersedes the historical pending-approval statements below **only for one diagnostic push and CI collection**. No runtime repair is approved. The original four-file evidence remains intact.

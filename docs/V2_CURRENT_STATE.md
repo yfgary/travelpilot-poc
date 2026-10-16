@@ -2,6 +2,16 @@
 
 Last updated: 16/10/2026 (Hong Kong)
 
+## 16/10/2026 — Bounded same-origin Demo Checklist diagnosis (one CI cycle)
+
+[Approved review6218966453](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6218966453) starts at `a4bb7c55b904d63b9ee8ade2c2f4b3ae6446cee3`. Full CI38920117709/job117037581553 is **3513 PASS /2 FAIL /3515**,21.0m. Both failures are the same `publicReview.spec.ts` Reset/Clear case on **4173 `/travelpilot-poc/review/#/trip/demo-trip/info`**, at1024 after the first check/reload and390 after Reset/recheck/reload. Neither reached normal Clear;1024 had not created the normal tab. Old focused38920117055 **6/6 PASS** concerns4174/Japan and cannot diagnose these new failures. Root remains **INCONCLUSIVE**, release gate RED.
+
+Normally-OFF test observation now supports the actual4173 review path and fixture-derived first Demo key (`demo-trip-id` / `city-ticket`, null owner / local-demo scope). It records hashed identity comparisons, UI/change/reset markers, IDB puts/readbacks and transaction completion/abort/error across reloads. Browser timestamps share the runner epoch with independent receive times; instrumentation adds observer overhead and cannot prove an absent unload event or empty created-transaction set means no pending work. Postmortem exact-key reads occur only AFTER original assertions. The entire failing test body remains byte-identical: immediate reload,5s assertions, no sleep/retry/skip/timeout increase.
+
+One temporary Draft-only workflow selection now runs only that exact publicReview title at390/1024, managed Chromium153, two workers, zero retries. Reporter validates this distinct two-case profile/source file, preserving old six-case/parallelIndex safeguards. Only allowlisted hashed JSON is uploaded (128KiB/report, at most800KiB total,7-day retention); raw traces remain on the ephemeral runner. Mandatory `pr-qa.yml` is unchanged and will run its full3515 cases automatically. No local full run or repeated focused CI is scheduled. Node checks, exact selection, original-body equality, build/typecheck/package, YAML and diff checks are verified before push; independent CI/artifact results are pending and will be recorded on PR21.
+
+No shared `src/`, Preview runtime, schema, package/version, draft/published payload, timing/routes, protected assets, POC main/Production/Supabase changes. App remains **v2.0.0-poc.45**. No recovery journal or durability repair is implemented. If this single focused run does not reproduce, stop with ROOT INCONCLUSIVE and submit a separate minimal Preview-only durability/visible-saving design for review. No merge/deploy/Tailscale/Step15D. Historical backup remains intact; external archive export remains OPEN.
+
 ## 16/10/2026 — Public POC review integration preparation (Draft only; not deployed)
 
 [User-approved packet6217065300](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6217065300) starts at `48927de566bfa3a12e899de786d66efe0ba67eda`. Baseline full CI38880480224 **3390/3390 PASS**,19.1m; Focused38880480221 **6/6 PASS**,20.7s, six sanitized reports plus summary retrieved/verified. Original checklist loss mechanism remains **ROOT INCONCLUSIVE** despite passing controls. Public Pages replaces the Windows/Tailscale delivery preference; it does not authorize this Draft merge/deployment or resolve user UAT.

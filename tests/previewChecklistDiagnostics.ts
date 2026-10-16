@@ -4,7 +4,8 @@ import { join } from 'node:path'
 
 // Opt-in test observation only. No writes, awaited probes or durability barriers
 // between checkbox change and the ORIGINAL immediate reload assertion.
-export async function observePreviewChecklist(page: Page, info: TestInfo, target: { tripId: string; itemId: string }) {
+export async function observePreviewChecklist(page: Page, info: TestInfo, target: { tripId: string; itemId: string; site?: 'review-demo' }) {
+  const site = target.site === 'review-demo' ? 'http://127.0.0.1:4173/travelpilot-poc/review/' : 'http://127.0.0.1:4174/travelpilot-poc/review/'
   const started = Date.now(), events: unknown[] = []
   const prefix = '__TP_PREVIEW_DURABILITY__'
   const log = (data: object) => events.push({ receivedMs: Date.now() - started, ...data })
@@ -20,8 +21,8 @@ export async function observePreviewChecklist(page: Page, info: TestInfo, target
     log({ kind: 'test-reload-call' })
     return originalReload.apply(this, args).then(result => { log({ kind: 'test-reload-return' }); return result })
   }
-  await page.addInitScript(({ prefix, started }) => {
-    if (location.origin !== 'http://127.0.0.1:4174') return
+  await page.addInitScript(({ prefix, started, site, target }) => {
+    if (!location.href.startsWith(site)) return
     const hash = (value: unknown) => {
       let result = 2166136261
       for (const character of String(value)) result = Math.imul(result ^ character.charCodeAt(0), 16777619)
@@ -32,6 +33,7 @@ export async function observePreviewChecklist(page: Page, info: TestInfo, target
     const row = (value: any) => value && typeof value === 'object' ? {
       scope: value.scope === 'local-demo' ? 'local-demo' : 'redacted-owner', owner: value.ownerId === null ? 'null' : 'redacted',
       tripHash: hash(value.tripId), itemHash: hash(value.checklistItemId), checked: Boolean(value.checked),
+      sameTrip: value.tripId === target.tripId, sameItem: value.checklistItemId === target.itemId,
     } : null
     const key = (value: unknown) => Array.isArray(value) ? { scope: value[0] === 'local-demo' ? 'local-demo' : 'redacted-owner', tripHash: hash(value[1]), itemHash: hash(value[2]) } : undefined
     let sequence = 0
@@ -78,11 +80,15 @@ export async function observePreviewChecklist(page: Page, info: TestInfo, target
     }
     const state = () => {
       const input = document.querySelector<HTMLInputElement>('[data-checklist-item-id] input[type="checkbox"]')
-      return input ? { itemHash: hash(input.closest<HTMLElement>('[data-checklist-item-id]')?.dataset.checklistItemId), checked: input.checked, disabled: input.disabled } : null
+      const itemId = input?.closest<HTMLElement>('[data-checklist-item-id]')?.dataset.checklistItemId
+      return input ? { itemHash: hash(itemId), sameItem: itemId === target.itemId, checked: input.checked, disabled: input.disabled } : null
     }
     document.addEventListener('change', event => {
       const input = event.target
       if (input instanceof HTMLInputElement && input.type === 'checkbox' && input.closest('[data-checklist-item-id]')) emit({ kind: 'checkbox-change', ...state() })
+    }, true)
+    document.addEventListener('click', event => {
+      if (event.target instanceof Element && event.target.closest('button[aria-label^="全部取消勾選："]')) emit({ kind: 'reset-click', ui: state() })
     }, true)
     let previous = ''
     new MutationObserver(() => {
@@ -92,8 +98,8 @@ export async function observePreviewChecklist(page: Page, info: TestInfo, target
     // pending tracks created transactions only. An outstanding db-open or
     // manager queue can still exist even when this array is empty.
     for (const event of ['beforeunload', 'pagehide']) window.addEventListener(event, () => emit({ kind: event, pending: [...pending], ui: state() }))
-    emit({ kind: 'document-init' })
-  }, { prefix, started })
+    emit({ kind: 'document-init', expected: { scope: 'local-demo', tripHash: hash(target.tripId), itemHash: hash(target.itemId) } })
+  }, { prefix, started, site, target })
   return async () => {
     log({ kind: 'postmortem-start', result: info.status })
     // This read is AFTER the original test/assertion, never before its reload.
@@ -118,6 +124,7 @@ export async function observePreviewChecklist(page: Page, info: TestInfo, target
     page.off('console', consoleEvent); page.reload = originalReload
     const directory = join(process.cwd(), 'work/checklist-durability')
     await mkdir(directory, { recursive: true })
-    await writeFile(join(directory, `${info.project.name}-${info.title.startsWith('stale') ? 'stale' : 'warm'}-worker${info.workerIndex}.json`), JSON.stringify({ title: info.title, project: info.project.name, status: info.status, browser: page.context().browser()?.version(), events }, null, 2))
+    const scenario = target.site ?? (info.title.startsWith('stale') ? 'stale' : 'warm')
+    await writeFile(join(directory, `${info.project.name}-${scenario}-worker${info.workerIndex}.json`), JSON.stringify({ title: info.title, project: info.project.name, status: info.status, browser: page.context().browser()?.version(), events }, null, 2))
   }
 }

@@ -33,14 +33,29 @@ test('invalid/missing parallel indices, process IDs, retries and result counts a
   const missing = fixture(); missing.suites[0].specs[0].tests[0].results = []; assert.throws(() => verifyWorkers(missing), /one result/)
 })
 test('missing or duplicated approved scenarios are rejected', () => {
-  const missing = fixture(); missing.suites.pop(); assert.throws(() => verifySelection(missing), /six approved/)
-  const duplicate = fixture(); duplicate.suites[0].specs[1].title = titles[0]; assert.throws(() => verifySelection(duplicate), /six approved/)
+  const missing = fixture(); missing.suites.pop(); assert.throws(() => verifySelection(missing), /approved project\/title/)
+  const duplicate = fixture(); duplicate.suites[0].specs[1].title = titles[0]; assert.throws(() => verifySelection(duplicate), /approved project\/title/)
 })
 test('all six distinct diagnostic files are required', () => {
   verifyDiagnosticFiles(files)
-  assert.throws(() => verifyDiagnosticFiles(files.slice(1)), /six distinct/)
-  assert.throws(() => verifyDiagnosticFiles([files[1], ...files.slice(1)]), /six distinct/)
+  assert.throws(() => verifyDiagnosticFiles(files.slice(1)), /distinct approved/)
+  assert.throws(() => verifyDiagnosticFiles([files[1], ...files.slice(1)]), /distinct approved/)
   assert.throws(() => verifyDiagnosticFiles([...files.slice(1), '../private.json']), /Unexpected diagnostic filename/)
+})
+test('review-demo requires exactly the actual same-origin title, file and two viewports', () => {
+  const report = fixture()
+  report.suites = report.suites.filter((_, index) => index !== 1)
+  for (const suite of report.suites) suite.specs = [{ ...suite.specs[0], file: 'publicReview.spec.ts', title: 'same-origin Checklist Reset and normal Clear preserve the other app data' }]
+  assert.equal(verifySelection(report, 'review-demo').length, 2)
+  assert.deepEqual(verifyWorkers(report, 'review-demo'), { configuredWorkers: 2, observedParallelIndices: [0, 1], observedWorkerProcesses: 2 })
+  const reports = ['width-390-review-demo-worker0.json', 'width-1024-review-demo-worker2.json']
+  verifyDiagnosticFiles(reports, 'review-demo')
+  assert.throws(() => verifyDiagnosticFiles(reports.slice(1), 'review-demo'))
+  assert.throws(() => verifyDiagnosticFiles([...reports, 'width-430-review-demo-worker1.json'], 'review-demo'))
+  assert.throws(() => verifySelection(fixture(), 'review-demo'))
+  report.suites[0].specs[0].file = 'isolatedPreview.spec.ts'
+  assert.throws(() => verifySelection(report, 'review-demo'), /source file/)
+  assert.throws(() => verifySelection(report, 'unknown'), /profile/)
 })
 test('sanitizer retains safe events and rejects sensitive, invalid or oversized input', () => {
   const event = { kind: 'tx-complete', browserMs: 12.5, tx: 1, row: { scope: 'local-demo', tripHash: '01234567', itemHash: '89abcdef', checked: true } }

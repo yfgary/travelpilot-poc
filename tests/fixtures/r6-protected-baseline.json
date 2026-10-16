@@ -79,6 +79,6 @@
     "supabase/migrations/20261008135932_step11_checklist_client_clock.sql": "dd7737b5f7dfd695cc5df3550ced00f37889c05481a910ad0134725819012d55",
     "supabase/schema/v2_foundation.sql": "5a316fab04c317f20bccc03fced7733399002ba13a8edb17e4f3aef148f92309",
     "supabase/verification/step11.md": "d471220b2017ed95f3ed46480a0c1332099433555bf9a29d52b43ee8e7369995",
-    ".github/workflows/preview-durability-diagnostics.yml": "79eee04a2fc7d9663369e8fcb8abdcf0dcd09506578fd74b8d2d2c07267c4024"
+    ".github/workflows/preview-durability-diagnostics.yml": "9fccecd5d6051dd0fafc86e9cc01286fdd9677438815c94d844ace7564ee7b96"
   }
 }

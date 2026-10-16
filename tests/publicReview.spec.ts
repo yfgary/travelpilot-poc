@@ -5,11 +5,14 @@ import { execFileSync } from 'node:child_process'
 import descriptor from '../preview/inputs.json' with { type: 'json' }
 import { selectTodayDay, isOperationalDay } from '../src/data/today'
 import type { TripSnapshot } from '../src/data/schema/trip'
+import { cityTrip } from '../src/data/demoTrips/cityTrip'
+import { orderedDefinitions } from '../src/data/tripInformation'
+import { observePreviewChecklist } from './previewChecklistDiagnostics'
 
 const origin = 'http://127.0.0.1:4173', normal = `${origin}/travelpilot-poc/`, review = `${normal}review/`
 const snapshot = JSON.parse(readFileSync(descriptor.file, 'utf8')) as TripSnapshot
 const test = normalTest.extend<{ reviewNetwork: void }>({
-  reviewNetwork: [async ({ page }, use) => {
+  reviewNetwork: [async ({ page }, use, testInfo) => {
     const unexpected: string[] = [], errors: string[] = []
     const reviewing = () => page.url().startsWith(review)
     page.on('pageerror', error => { if (reviewing()) errors.push(error.message) })
@@ -21,7 +24,13 @@ const test = normalTest.extend<{ reviewNetwork: void }>({
       if (url.startsWith(review)) return route.continue()
       unexpected.push(new URL(url).origin); return route.abort('blockedbyclient')
     })
-    try { await use() } finally { expect(unexpected, 'Review must load only its own static root; zero live/normal backend requests').toEqual([]); expect(errors).toEqual([]) }
+    const diagnose = process.env.TRAVELPILOT_PREVIEW_DURABILITY_DIAGNOSTICS === '1' && testInfo.title === 'same-origin Checklist Reset and normal Clear preserve the other app data'
+      ? await observePreviewChecklist(page, testInfo, { site: 'review-demo', tripId: cityTrip.trip.id, itemId: orderedDefinitions(orderedDefinitions(orderedDefinitions(cityTrip.checklists)[0].groups)[0].items)[0].id })
+      : null
+    try { await use() } finally {
+      await diagnose?.()
+      expect(unexpected, 'Review must load only its own static root; zero live/normal backend requests').toEqual([]); expect(errors).toEqual([])
+    }
   }, { auto: true }],
 })
 async function open(page: Page, route = '/') {
