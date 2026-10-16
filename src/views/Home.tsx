@@ -5,6 +5,7 @@ import { nextUpcomingSlug } from '../data/tripPresentation'
 import { useRecentTrip } from '../app/useRecentTrip'
 import { TripCard } from '../components/TripCard'
 import { EmptyState } from '../components/ViewState'
+import { PocReviewEntry } from '../components/PocReviewEntry'
 import '../styles/home.css'
 
 export function Home() {
@@ -22,6 +23,7 @@ export function Home() {
           <p>行程、景點、天氣與旅途資訊，一站管理。</p>
         </div>
       </section>
+      <PocReviewEntry />
       <section className="panel home-trips" aria-labelledby="trips-title">
         <div className="section-heading"><div><p className="trips-kicker">MY TRIPS</p><h2 id="trips-title">我的旅程</h2></div><span className="trip-count">{ordered.length} 個旅程</span></div>
         {listing.loading && <p className="muted" data-testid="trip-list-loading">正在載入已儲存及帳戶旅程…</p>}

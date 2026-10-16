@@ -1,5 +1,11 @@
 # TravelPilot V2 — Architecture
 
+## Public POC review delivery boundary (16/10/2026)
+
+The approved future `/travelpilot-poc/review/#/` is a separate static build within the **same origin** as normal POC and Production GitHub Pages paths. Preserve normal base/storage/loader behavior; a POC-only Home entry links to the review app without introducing a trip-specific application branch. Preview-only build bindings exclude real services and namespace all app local/session keys, IDB database names and BroadcastChannel. No service-worker or Cache Storage lifecycle is introduced; no origin-wide deletion is permitted. Namespaces protect expected application behavior, not confidentiality from other same-origin code.
+
+`build:pages` packages both roots into one verified `dist/` artifact, review beneath `dist/review/`; normal `build` remains separate. PR CI tests the actual combined artifact on one origin in addition to legacy separate-port tests. Main-only Pages still requires the full suite, dedicated smoke, final verification and a release version bump before its single gated deployment. This Draft implementation does not deploy. See [delivery/storage decision](V2_DECISIONS.md) and [commands and exact identities](V2_PREVIEW_STAGE_A.md).
+
 ## Architecture status
 Locked baseline: 08/10/2026
 

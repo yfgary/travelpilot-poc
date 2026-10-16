@@ -16,7 +16,7 @@ import { orderedDefinitions } from '../src/data/tripInformation'
 import { observePreviewChecklist } from './previewChecklistDiagnostics'
 
 const origin = 'http://127.0.0.1:4174'
-const site = `${origin}/travelpilot-poc/`
+const site = `${origin}/travelpilot-poc/review/`
 const snapshot = JSON.parse(readFileSync(descriptor.file, 'utf8'))
 // Raw Playwright: do NOT inherit the ordinary Supabase/network mock.
 const test = base.extend<{ isolatedNetwork: void }>({
@@ -67,10 +67,10 @@ async function layout(page: Page) {
   await expect(page.locator('.app-status')).toBeVisible()
 }
 
-test('normal runtime, entry, branding, assets and public manifest remain byte-identical', () => {
+test('normal runtime except approved POC review entry, branding, assets and public manifest remain byte-identical', () => {
   assertSourceBaseline(['src', 'vite.config.ts', 'assets', 'public'], baseline)
   const walk = (dir: string): string[] => readdirSync(dir, { withFileTypes: true }).flatMap(entry => entry.isDirectory() ? walk(join(dir, entry.name)) : [join(dir, entry.name)])
-  const normal = walk('dist').filter(file => /\.(?:js|html|css|json)$/.test(file)).map(file => readFileSync(file, 'utf8')).join('\n')
+  const normal = walk('dist').filter(file => !file.startsWith('dist/review/') && /\.(?:js|html|css|json)$/.test(file)).map(file => readFileSync(file, 'utf8')).join('\n')
   for (const marker of [descriptor.dataVersion, descriptor.sha256, 'isolated-preview-fixed-sample-v1', 'travelpilot-preview-v2-user-state', 'PREVIEW · 未發佈']) expect(normal).not.toContain(marker)
   expect(readFileSync('dist/index.html', 'utf8')).not.toContain('PREVIEW 未發佈')
   expect(readFileSync('dist-preview/index.html', 'utf8')).toContain('PREVIEW 未發佈')
@@ -136,7 +136,7 @@ const views = [
   ['itinerary', 'detailed-itinerary'], ['info', 'trip-information'], ['attractions', 'attractions-overview'], ['live', 'live-cam'], ['today', 'today-mode'],
 ] as const
 for (const font of ['small', 'medium', 'large']) for (const view of ['home', 'settings', ...views.map(([view]) => view)]) test(`${font} Preview ${view}: shared UI, reload, no overflow and zero service requests`, async ({ page }, info) => {
-  await page.addInitScript(font => localStorage.setItem('travelpilot.font-size', font), font)
+  await page.addInitScript(font => localStorage.setItem('travelpilot-preview.font-size', font), font)
   if (view === 'home' || view === 'settings') await open(page, view === 'home' ? '/' : '/settings')
   else {
     await trip(page, view)

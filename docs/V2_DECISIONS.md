@@ -1,5 +1,15 @@
 # TravelPilot V2 — Decision Log
 
+## 2026-10-16 — Public POC review path and same-origin behavioral isolation
+
+[User-approved public review packet](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6217065300) replaces the Windows/Tailscale delivery preference. Target: normal POC `/travelpilot-poc/#/` plus a separate explicitly unpublished build at `/travelpilot-poc/review/#/`. This is a target, not a deployed URL. Draft PR preparation does not authorize main, merge, deployment, Production, Supabase publication or Step15D.
+
+Keep shared trip/rendering architecture and exact raw Schema6 review bytes. Only a POC Home navigation component links to the review app; it is excluded by the Preview build binding. No trip/country/slug condition enters loaders or business rules. Normal `npm run build` stays normal-only; `npm run build:pages` builds both, stages `dist-preview/` into `dist/review/`, verifies unchanged normal files and complete scoped assets/manifests, and produces one future Pages artifact. Main-only/repository-only deployment gates remain; a release must first bump App Version from the current Draft baseline45 and update matching assertions.
+
+Because all GitHub Pages subpaths share an origin, Preview-only build substitutions namespace font/recent/weather preferences, Today selection/progress, navigation session history, three IDB database names and checklist BroadcastChannel. Exact substitution drift fails the build. Normal identities/migrations remain byte-unchanged. Neither app registers a service worker or uses Cache Storage APIs; Preview does not clear/unregister origin-wide caches/workers. Synthetic same-origin sentinels, two-app Reset/Clear and network observations verify behavior. This is **not cryptographic/auth origin separation** and cannot restrict unrelated same-origin scripts or pre-existing workers.
+
+Preview retains no real Auth/SDK/Supabase/backend/cloud sync or weather/JMA transport; fixed samples and unavailable/unverified alerts stay visible. Real device clock only. Public consent does not certify cameras, future weather, the unexplained intermittent checklist durability issue or any of Issue22's28 user acceptances. Physical iPhone Safari remains untested until user UAT. The daytime castle image and verified camera playback remain blocked.
+
 ## 2026-10-08 — Rebuild architecture, preserve V1 experience
 **Decision:** Build TravelPilot V2 as a new architecture while using V1 as Golden Visual Reference.  
 **Reason:** Retrofitting full multi-trip behaviour into the existing half-refactored app has produced high regression/context cost.  

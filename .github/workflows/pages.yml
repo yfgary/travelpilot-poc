@@ -24,9 +24,18 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - name: Require reviewed release version bump
+        run: |
+          node --input-type=module <<'JS'
+          import metadata from './package.json' with { type: 'json' };
+          if (metadata.version === '2.0.0-poc.45') throw new Error('Draft baseline version: bump App Version with matching assertions before a main release');
+          JS
+      - run: npm run build:pages
       - run: npx playwright install --with-deps chromium
       - run: npm test
+      - name: Dedicated same-origin review smoke
+        run: npx playwright test tests/publicReview.spec.ts --grep 'same-origin release smoke' --workers=2 --retries=0
+      - run: npm run verify:pages
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

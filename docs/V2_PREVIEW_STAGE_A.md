@@ -1,5 +1,23 @@
 # Stage A — isolated review build
 
+## Current public POC review preparation — 16/10/2026
+
+[Public hosting consent and bounded implementation](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6217065300) supersede the separate-origin/Windows/Tailscale hosting preference in the historical Stage A description below. The future public target is `/travelpilot-poc/review/#/`; no Preview has been deployed by this Draft work. Normal POC keeps its existing root and adds one explicit unpublished review entry.
+
+- `npm run build`: unchanged normal build purpose, emits normal `dist/` only.
+- `npm run build:isolated-preview`: validated, service-isolated review build with base `/travelpilot-poc/review/`, emits `dist-preview/`.
+- `npm run build:pages`: normal + isolated typecheck/build, then byte-preserving copy to `dist/review/` and artifact verification. Always run this before `npm test`; both local test servers serve these freshly built roots.
+- `npm run verify:pages`: verify both entry bases, manifests/scopes/icons, all source assets, review copy completeness, normal payload exclusion and review live-transport exclusion.
+- Future main-only Pages workflow runs both builds, complete regression, dedicated same-origin release smoke and final artifact verification before its **single** upload/deploy. Current Draft App45 deliberately fails the main release-version guard; a reviewed version bump and matching assertions are required before main integration. Draft push runs PR CI, not deployment.
+
+Preview build-only identities: `travelpilot-preview.font-size`, `.recent-trip`, `.weather-region.*`, `.navigation-history`, `.today.preview.*`, `.today.progress.*`; IDB `travelpilot-preview-v2-trips`, `travelpilot-preview-v2-user-state`, `travelpilot-preview-v2-weather-cache`; BroadcastChannel `travelpilot-preview.checklist-state`. No normal storage identity changes or migration/readback from normal keys. No Cache Storage or service-worker operations are introduced; existing same-origin caches/workers are never globally removed. Separate manifest-relative scope/identity does not create a security origin.
+
+New `publicReview.spec.ts` exercises normal + review on the same4173 origin, all seven pages ×3 fonts ×5 widths, direct reload/scoped images/manifest, synthetic normal local/session/IDB/cache sentinels, channel identities and two-app Checklist Reset/normal Clear. Existing separate-port Preview cases remain intact with the new URL and font namespace. Original immediate reload/5s/zero-retry checks remain. An old local4174 server from the previous day was detected via asset404 Trace; it was stopped without workspace reset and its failed/interrupted run was retained under ignored work/. Browser-matched independent CI remains required.
+
+Public site/data remains unpublished review content. No actual Safari/iPhone or camera playback/future-weather certification. Checklist durability root remains INCONCLUSIVE. No Tailscale, merge/deploy, main/Production/Supabase/content/assets/Step15D changes.
+
+## Historical Stage A boundary
+
 Approved boundary: [PR #21 decision](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6199542612), based on `1a962fad4253aad16c948b65053ccab922cc9502`.
 
 This is a Medium, bounded build-time integration. Normal `src/`, `vite.config.ts`, Pages workflows, published snapshots, draft bytes and assets stay unchanged. A separate opt-in Vite configuration selects a Preview entry and replaces eight explicit service/presentation modules: Auth, trip loading, cloud checklist transport, Settings, application shell, and weather/alerts. The shared router, pages, validator, checklist engine, scoring, navigation and font preferences remain shared. A bundle-module guard rejects real Auth/Supabase/backend/update/JMA transports. Alias drift fails the build rather than silently enabling network services.
