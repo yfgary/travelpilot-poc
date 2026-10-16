@@ -2,6 +2,16 @@
 
 Last updated: 16/10/2026 (Hong Kong)
 
+## 16/10/2026 — Approved diagnostic collector repair (new CI pending)
+
+[Review6212286374](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6212286374) confirms baseline `adbc72b`: normal GitHub run38875861613 **3390/3390 PASS**,19.4m; focused run38875861477 test step **6/6 PASS**,18.3s, but workflow failed before artifact creation. Collector cause confirmed: distinct `workerIndex` process IDs are not the concurrency limit. Checklist loss root remains **INCONCLUSIVE**, no permanent repair claimed.
+
+Bounded collector-only change validates configured workers2, integer `parallelIndex` within0/1, zero retries and exactly one result for each approved scenario. It reports `configuredWorkers`, `observedParallelIndices` and `observedWorkerProcesses` separately; observed occupancy of both slots is not required. All six distinct diagnostic filenames are mandatory. New tiny Node checks cover three processes/two slots, one observed slot, invalid/missing indices, retries/results, missing/duplicate scenarios/files and sanitizer rejection.
+
+Local verification: **6/6 Node checks PASS**, Node syntax/TypeScript/diff checks PASS; synthetic end-to-end collection produces six safe reports plus summary; all275 events from the existing safe two-worker controls pass unchanged sanitization. These synthetic checks are not browser/durability evidence. Reuse the verified unchanged normal build from adbc72b; no redundant local browser/full regression. Sensitive-data whitelist,128KiB-per-report/<800KiB-total cap and no raw trace upload remain unchanged. Original six browser cases, immediate reloads,5s assertions, zero retry, opt-in observer, all workflows and protected fingerprints are untouched.
+
+Single Draft PR21 repair push is approved; new Focused/full CI and six-file artifact inspection are pending. If no reproduction, retain ROOT INCONCLUSIVE. App remains v2.0.0-poc.45, Schema6/readers1–6. No src/Preview runtime, main/Production/Supabase, published or draft trip data/timing, assets, merge/deploy/Tailscale/Stage B/Step15D change. Stop after first new CI/artifact verdict for GPT-6 High review.
+
 ## 16/10/2026 — Approved matching Chromium153 diagnostic Draft push (CI pending)
 
 [GPT-6 High packet](https://github.com/yfgary/travelpilot-poc/pull/21#issuecomment-6211355166) authorizes one diagnostic push from `944b426` to existing Draft PR21 only. The four preserved diagnostic test/docs files are retained. Added temporary `preview-durability-diagnostics.yml`: POC/Draft/PR21/head-branch guarded, read-only permissions, normal install/build, Playwright-managed Chromium153 verification, exactly two original titles across390/430/1024 (six cases), two workers, zero retries, focused tracing ON. Original immediate reloads and five-second assertions remain unchanged. Existing `pr-qa.yml` is byte-identical and will also run its complete mandatory suite. No manual full local rerun or product change.

@@ -50,6 +50,28 @@ export function verifySelection(report) {
   if (JSON.stringify(pairs) !== JSON.stringify(expected)) throw new Error('Expected exactly the six approved project/title pairs')
   return specs
 }
+export function verifyWorkers(report) {
+  const tests = verifySelection(report).flatMap(spec => spec.tests)
+  if (tests.some(test => test.results?.length !== 1)) throw new Error('Expected one result per approved scenario')
+  const results = tests.flatMap(test => test.results)
+  if (report.config.workers !== 2 || results.some(result => result.retry !== 0)) throw new Error('Expected two configured workers and zero retries')
+  if (results.some(result => !Number.isInteger(result.parallelIndex) || result.parallelIndex < 0 || result.parallelIndex > 1)) throw new Error('Expected parallelIndex in configured slots [0,1]')
+  if (results.some(result => !Number.isInteger(result.workerIndex) || result.workerIndex < 0)) throw new Error('Expected nonnegative worker process IDs')
+  return {
+    configuredWorkers: 2,
+    observedParallelIndices: [...new Set(results.map(result => result.parallelIndex))].sort(),
+    observedWorkerProcesses: new Set(results.map(result => result.workerIndex)).size,
+  }
+}
+export function verifyDiagnosticFiles(files) {
+  const pairs = files.map(file => {
+    const match = /^(width-(?:390|430|1024))-(stale|warm)-worker\d+\.json$/.exec(file)
+    if (!match) throw new Error('Unexpected diagnostic filename')
+    return `${match[1]}|${match[2]}`
+  }).sort()
+  const expected = projects.flatMap(project => ['stale', 'warm'].map(scenario => `${project}|${scenario}`)).sort()
+  if (JSON.stringify(pairs) !== JSON.stringify(expected)) throw new Error('Expected all six distinct diagnostic reports')
+}
 function main() {
   if (process.argv[2] === '--selection') {
     verifySelection(JSON.parse(readFileSync(`${directory}/selection.json`, 'utf8')))
@@ -58,16 +80,12 @@ function main() {
   }
   if (process.argv[2] !== '--collect') throw new Error('Expected --selection or --collect')
   const report = JSON.parse(readFileSync(`${directory}/result.json`, 'utf8'))
-  const specs = verifySelection(report)
-  const results = specs.flatMap(spec => spec.tests.flatMap(test => test.results))
-  if (report.config.workers !== 2 || results.some(result => result.retry !== 0)) throw new Error('Expected two configured workers and zero retries')
-  const workers = [...new Set(results.map(result => result.workerIndex))]
-  if (workers.length !== 2) throw new Error('Expected two actual workers')
+  const workers = verifyWorkers(report)
   const files = readdirSync('work/checklist-durability').filter(name => /^width-(390|430|1024)-(stale|warm)-worker\d+\.json$/.test(name))
-  if (files.length !== 6) throw new Error('Expected six completed diagnostic reports')
+  verifyDiagnosticFiles(files)
   const output = 'work/preview-durability-public'
   mkdirSync(output, { recursive: true })
-  const summary = { configuredWorkers: 2, actualWorkers: workers.length, scenarios: [], rawTracesUploaded: false }
+  const summary = { ...workers, scenarios: [], rawTracesUploaded: false }
   for (const file of files) {
     const raw = readFileSync(`work/checklist-durability/${file}`)
     if (raw.length > 128 * 1024) throw new Error('Diagnostic report exceeds 128KiB cap')
